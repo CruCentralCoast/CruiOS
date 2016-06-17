@@ -6,11 +6,11 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		bD/8VVZ3zq7p2fNe+Ain5BW4/7w=
+		r9kkMR5+uHy/Z3GdHcX5CqeLC0c=
 		</data>
 		<key>FullCardHeader.nib</key>
 		<data>
-		hiD82Ej4DlPcLWdWGkh32Hv6kFI=
+		Mo1upkuW2CLvSfyunG+l21yYDNM=
 		</data>
 		<key>Headers/WCAnalytics.h</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Headers/WildcardSDK-Swift.h</key>
 		<data>
-		xkj+PUDIKhoKjllQIFAgjMjyu38=
+		PEHIX7YyhdTCIbPQsXOniJcU5Do=
 		</data>
 		<key>Headers/WildcardSDK.h</key>
 		<data>
@@ -54,19 +54,19 @@
 		</data>
 		<key>ImageAndCaptionBody.nib</key>
 		<data>
-		U3JdQpGURY+J6uARuI+prHpHjLc=
+		rQj5456DTesywBsDJ/a6fG7FyO0=
 		</data>
 		<key>ImageFloatLeftBody.nib</key>
 		<data>
-		HxQm3vxkz5HM1E5Y1Pvruc/duLU=
+		B/uIzKHR5FcK+6PYSAEUeVHRT3k=
 		</data>
 		<key>ImageFloatRightBody.nib</key>
 		<data>
-		0LV/jnBCsx7ffRpbsEpikuGULto=
+		6zn2XEbj4S9pXwbo6aMm8qhPjTo=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		oFNaXltiLhRrBoFQDEqHSa9HGjU=
+		zGgpXvkQScgBcRmRPFtgD9akDsE=
 		</data>
 		<key>MediaReadingCss.css</key>
 		<data>
@@ -74,23 +74,23 @@
 		</data>
 		<key>MediaTextFullWebView.nib</key>
 		<data>
-		CWQdTv5aajtUAEIXK7DtctjntXA=
+		Zngmg04g9VCTmauMY+GDjz2gVDg=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftdoc</key>
 		<data>
-		tYYTR4v917Fw8+p/z9qbCXJkXvM=
+		Sk1hKF4IoKq9/LazfSA7oWQHvdY=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftmodule</key>
 		<data>
-		N7eoglyP2D315COt9CIck5gxaZc=
+		LeqtCzdGxS88JDONZuaUxyfPZnw=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
-		B4qo+ftG/KTG+8YFkwq8b1iErTc=
+		M3rnZuiUJiA2M7zT9GeEmVIXRJY=
 		</data>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		K8czuSaUa+5lEPEnVbBL1YJJHqk=
+		tXH/VjLBBWh2JvU46I3GDN5WlV4=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -98,7 +98,7 @@
 		</data>
 		<key>TwitterHeader.nib</key>
 		<data>
-		Lm0A2gwhXZ5auRSchXwJKqhl8Xc=
+		lFRN9fxHtj2dv1ZqRdQCueS5BCg=
 		</data>
 		<key>YTPlayerView-iframe-player.html</key>
 		<data>
@@ -112,105 +112,280 @@
 	<key>files2</key>
 	<dict>
 		<key>Assets.car</key>
-		<data>
-		bD/8VVZ3zq7p2fNe+Ain5BW4/7w=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			r9kkMR5+uHy/Z3GdHcX5CqeLC0c=
+			</data>
+			<key>hash2</key>
+			<data>
+			p5BTa8gaYKGo9gpw/KehVzLfaqxJnHb4lIhJRMmzeUg=
+			</data>
+		</dict>
 		<key>FullCardHeader.nib</key>
-		<data>
-		hiD82Ej4DlPcLWdWGkh32Hv6kFI=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Mo1upkuW2CLvSfyunG+l21yYDNM=
+			</data>
+			<key>hash2</key>
+			<data>
+			v3Zyevr+UGFqke8IOVJ/ANoeaUs3bKlxEC/i4NXJ1F0=
+			</data>
+		</dict>
 		<key>Headers/WCAnalytics.h</key>
-		<data>
-		vdRz5ano9SdniIlvYrvoOCz4hdU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			vdRz5ano9SdniIlvYrvoOCz4hdU=
+			</data>
+			<key>hash2</key>
+			<data>
+			wxT90sVTYZv6hfAcJ9KCv5a2pxVeDfvx8lCOeyLV0CY=
+			</data>
+		</dict>
 		<key>Headers/WCCardAction.h</key>
-		<data>
-		NczehCcmZvgX3+W/+vukuqWcbvk=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			NczehCcmZvgX3+W/+vukuqWcbvk=
+			</data>
+			<key>hash2</key>
+			<data>
+			1Kr3W9D/jjMEx0bvvu9hLdhydaL2aYZ6XVoQjYao5eQ=
+			</data>
+		</dict>
 		<key>Headers/WCCardLayout.h</key>
-		<data>
-		PZ9BpyFK4JxfxFCLVoUYMGEgc48=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			PZ9BpyFK4JxfxFCLVoUYMGEgc48=
+			</data>
+			<key>hash2</key>
+			<data>
+			dMndePiEeEgSekd5FhLeNcDL8owA8OunHXDcOTmo5Aw=
+			</data>
+		</dict>
 		<key>Headers/WCCardType.h</key>
-		<data>
-		sKfoCvDWKjyihQYD4rHd/dLJK08=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			sKfoCvDWKjyihQYD4rHd/dLJK08=
+			</data>
+			<key>hash2</key>
+			<data>
+			68lD/rvr5sZlGXz6Y83neXJX4I6F3x86L7n6kpsdsqc=
+			</data>
+		</dict>
 		<key>Headers/WCElementType.h</key>
-		<data>
-		Ji8N2YUx4zvL+yRABMbL7zQ3N9w=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Ji8N2YUx4zvL+yRABMbL7zQ3N9w=
+			</data>
+			<key>hash2</key>
+			<data>
+			N58ZpZwcjRCw1IoVQv2jfoPDLaeQ6fvm5F736IhMEX0=
+			</data>
+		</dict>
 		<key>Headers/WCErrorCode.h</key>
-		<data>
-		/nFakjWS96gwxrExNqAU9Z40HLs=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			/nFakjWS96gwxrExNqAU9Z40HLs=
+			</data>
+			<key>hash2</key>
+			<data>
+			OkXDAyymM7rq2ykW8p2ixK/mJjUL26R5jofab+tbcQs=
+			</data>
+		</dict>
 		<key>Headers/WildcardSDK-Swift.h</key>
-		<data>
-		xkj+PUDIKhoKjllQIFAgjMjyu38=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			PEHIX7YyhdTCIbPQsXOniJcU5Do=
+			</data>
+			<key>hash2</key>
+			<data>
+			5nW+Mfr8FjsijHVnLCs51eXd9O71K9w4LAhR/tj30Mc=
+			</data>
+		</dict>
 		<key>Headers/WildcardSDK.h</key>
-		<data>
-		NLVi5lYNlaiLdxx+8i4zTLfWqBg=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			NLVi5lYNlaiLdxx+8i4zTLfWqBg=
+			</data>
+			<key>hash2</key>
+			<data>
+			ij1Cmgn19lJ1CV7jvWaQ8UBj2IjJd4rEBuUHdT9Dem8=
+			</data>
+		</dict>
 		<key>Headers/YTPlayerView.h</key>
-		<data>
-		dlqq/qG1Fj+ev1xLwysUly3zJnU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			dlqq/qG1Fj+ev1xLwysUly3zJnU=
+			</data>
+			<key>hash2</key>
+			<data>
+			ktSqUr8sqlPrqd2zWKDcUqvtKH4LSM3AP/5r/A+NcfU=
+			</data>
+		</dict>
 		<key>Headers/YTVimeoExtractor.h</key>
-		<data>
-		I+HLjjGZaggiJzc/A36kkILdYFM=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			I+HLjjGZaggiJzc/A36kkILdYFM=
+			</data>
+			<key>hash2</key>
+			<data>
+			lcChsSo3eZfNePqTC0OzX4pXUWk9iBitim61ZIWd2p4=
+			</data>
+		</dict>
 		<key>ImageAndCaptionBody.nib</key>
-		<data>
-		U3JdQpGURY+J6uARuI+prHpHjLc=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			rQj5456DTesywBsDJ/a6fG7FyO0=
+			</data>
+			<key>hash2</key>
+			<data>
+			KmqEOqZu4TX/09Q0IdGFslYW1r0qYmflgAiuvWV77yE=
+			</data>
+		</dict>
 		<key>ImageFloatLeftBody.nib</key>
-		<data>
-		HxQm3vxkz5HM1E5Y1Pvruc/duLU=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			B/uIzKHR5FcK+6PYSAEUeVHRT3k=
+			</data>
+			<key>hash2</key>
+			<data>
+			mP+w5apka5yKpJ8nnP/eBnZEOD6+F3IVy+v1VzImGNI=
+			</data>
+		</dict>
 		<key>ImageFloatRightBody.nib</key>
-		<data>
-		0LV/jnBCsx7ffRpbsEpikuGULto=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			6zn2XEbj4S9pXwbo6aMm8qhPjTo=
+			</data>
+			<key>hash2</key>
+			<data>
+			xYI3I0CjbqVsB3w5ElKwUHFRFhW04TPnMaTnyPvBisI=
+			</data>
+		</dict>
 		<key>MediaReadingCss.css</key>
-		<data>
-		zoCmdJaqUwTYuibF+Zr6uRP2zXE=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			zoCmdJaqUwTYuibF+Zr6uRP2zXE=
+			</data>
+			<key>hash2</key>
+			<data>
+			hNOoFuqux4UH9Yi+8bldpmSr/30cA3HCsS7BAqckvHw=
+			</data>
+		</dict>
 		<key>MediaTextFullWebView.nib</key>
-		<data>
-		CWQdTv5aajtUAEIXK7DtctjntXA=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Zngmg04g9VCTmauMY+GDjz2gVDg=
+			</data>
+			<key>hash2</key>
+			<data>
+			YWvgw6w82Fi6OqUkjYurHBw/p+Idwxp3k4SoSSEEVNY=
+			</data>
+		</dict>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftdoc</key>
-		<data>
-		tYYTR4v917Fw8+p/z9qbCXJkXvM=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			Sk1hKF4IoKq9/LazfSA7oWQHvdY=
+			</data>
+			<key>hash2</key>
+			<data>
+			dS5z0oDvqda4FZuZPNzGHqzK+4fFI7UWIE5IqZosMzE=
+			</data>
+		</dict>
 		<key>Modules/WildcardSDK.swiftmodule/arm.swiftmodule</key>
-		<data>
-		N7eoglyP2D315COt9CIck5gxaZc=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			LeqtCzdGxS88JDONZuaUxyfPZnw=
+			</data>
+			<key>hash2</key>
+			<data>
+			S2T+BwJscH3Vy+eTuTkQI7iBqwWOXHusKMhbsVFqdQ0=
+			</data>
+		</dict>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftdoc</key>
-		<data>
-		B4qo+ftG/KTG+8YFkwq8b1iErTc=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			M3rnZuiUJiA2M7zT9GeEmVIXRJY=
+			</data>
+			<key>hash2</key>
+			<data>
+			QQLES263EL8AmmoFmc/EUg8318/kywLerVRgZL6cn8k=
+			</data>
+		</dict>
 		<key>Modules/WildcardSDK.swiftmodule/arm64.swiftmodule</key>
-		<data>
-		K8czuSaUa+5lEPEnVbBL1YJJHqk=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			tXH/VjLBBWh2JvU46I3GDN5WlV4=
+			</data>
+			<key>hash2</key>
+			<data>
+			e/d9QW6xLYndz6exBKuhSeMRsDO1jP11DCo7JFL1O7A=
+			</data>
+		</dict>
 		<key>Modules/module.modulemap</key>
-		<data>
-		LyS/RuSSQTl26srMXDz+qLTBjTY=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			LyS/RuSSQTl26srMXDz+qLTBjTY=
+			</data>
+			<key>hash2</key>
+			<data>
+			aGjjfpTRyuMVUYOL52+x95rkF8zS9Wl7xwf1YGYJzU8=
+			</data>
+		</dict>
 		<key>TwitterHeader.nib</key>
-		<data>
-		Lm0A2gwhXZ5auRSchXwJKqhl8Xc=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			lFRN9fxHtj2dv1ZqRdQCueS5BCg=
+			</data>
+			<key>hash2</key>
+			<data>
+			v9r/9rCwMSOL1bfU1DvM9a8UV492SM7ExJOtGk+iuZA=
+			</data>
+		</dict>
 		<key>YTPlayerView-iframe-player.html</key>
-		<data>
-		m7+pqbcW37orgkicsacFbZ4wr30=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			m7+pqbcW37orgkicsacFbZ4wr30=
+			</data>
+			<key>hash2</key>
+			<data>
+			DCaCiLfHqnnDH5930TvEOXu0PIBpegLcFkBToGqwqEY=
+			</data>
+		</dict>
 		<key>html5VideoListeners.js</key>
-		<data>
-		HDm0S5ukYVum7iBBn24YYb+wxMo=
-		</data>
+		<dict>
+			<key>hash</key>
+			<data>
+			HDm0S5ukYVum7iBBn24YYb+wxMo=
+			</data>
+			<key>hash2</key>
+			<data>
+			/w5gDVUHxsvfDjpKvD4VcLMIgUBmXVB1xJCcMvrCSaU=
+			</data>
+		</dict>
 	</dict>
 	<key>rules</key>
 	<dict>

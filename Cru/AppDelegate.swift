@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     func applicationDidBecomeActive( application: UIApplication) {
         // Connect to the GCM server to receive non-APNS notifications
         GCMService.sharedInstance().connectWithHandler({
-            (NSError error) -> Void in
+            (error) -> Void in
             if error != nil {
                 print("Could not connect to GCM: \(error.localizedDescription)")
             } else {

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="aaX-gX-cpJ">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="FreigSanProBook.otf">
+            <string>FreightSansProBook-Regular</string>
+            <string>FreightSansProBook-Regular</string>
+            <string>FreightSansProBook-Regular</string>
+            <string>FreightSansProBook-Regular</string>
+        </mutableArray>
+        <mutableArray key="FreigSanProSem.otf">
+            <string>FreightSansProSemibold-Regular</string>
+            <string>FreightSansProSemibold-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Rider Ride Detail View Controller-->
+        <scene sceneID="9Ga-qe-kjg">
+            <objects>
+                <viewController storyboardIdentifier="RiderRideDetailViewController" id="aaX-gX-cpJ" customClass="RiderRideDetailViewController" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gd9-t0-Nh5"/>
+                        <viewControllerLayoutGuide type="bottom" id="l2x-zE-tBp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c0E-uo-wqf">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hlO-HX-eT8">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="493"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="80" id="NnD-Sf-CcE" customClass="DetailCell" customModule="CruCentralCoast" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NnD-Sf-CcE" id="oNK-ch-hE3">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSV-Hk-WIU">
+                                                    <rect key="frame" x="14" y="7" width="573" height="21"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="POs-aN-0jL"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="FreightSansProSemibold-Regular" family="FreightSans Pro" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Jp-Y1-Mlq">
+                                                    <rect key="frame" x="20" y="29" width="572" height="47"/>
+                                                    <animations/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d1f-Fd-xIc">
+                                                    <rect key="frame" x="20" y="26" width="568" height="53"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                    <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="d1f-Fd-xIc" secondAttribute="trailing" constant="4" id="8Mn-zl-ica"/>
+                                                <constraint firstItem="iSV-Hk-WIU" firstAttribute="trailing" secondItem="5Jp-Y1-Mlq" secondAttribute="trailing" constant="-5" id="Csd-RK-zdT"/>
+                                                <constraint firstItem="d1f-Fd-xIc" firstAttribute="top" secondItem="oNK-ch-hE3" secondAttribute="topMargin" constant="18" id="JAc-Op-TVV"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="d1f-Fd-xIc" secondAttribute="bottom" constant="-7" id="NFA-s4-tY5"/>
+                                                <constraint firstItem="5Jp-Y1-Mlq" firstAttribute="trailing" secondItem="oNK-ch-hE3" secondAttribute="trailingMargin" id="aOD-A3-qxq"/>
+                                                <constraint firstItem="5Jp-Y1-Mlq" firstAttribute="leading" secondItem="oNK-ch-hE3" secondAttribute="leadingMargin" constant="12" id="bfe-dH-CTH"/>
+                                                <constraint firstItem="d1f-Fd-xIc" firstAttribute="leading" secondItem="oNK-ch-hE3" secondAttribute="leadingMargin" constant="12" id="dYx-ZM-IMO"/>
+                                                <constraint firstItem="5Jp-Y1-Mlq" firstAttribute="leading" secondItem="iSV-Hk-WIU" secondAttribute="leading" constant="6" id="fFa-OB-M6O"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="5Jp-Y1-Mlq" secondAttribute="bottom" constant="-4" id="l8B-ug-Yev"/>
+                                                <constraint firstItem="5Jp-Y1-Mlq" firstAttribute="top" secondItem="iSV-Hk-WIU" secondAttribute="bottom" constant="1" id="oWw-oc-l9S"/>
+                                                <constraint firstItem="iSV-Hk-WIU" firstAttribute="top" secondItem="oNK-ch-hE3" secondAttribute="topMargin" constant="-1" id="qHt-US-HVf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <connections>
+                                            <outlet property="textViewValue" destination="d1f-Fd-xIc" id="E4Z-su-XUB"/>
+                                            <outlet property="title" destination="iSV-Hk-WIU" id="jbU-D6-GZe"/>
+                                            <outlet property="value" destination="5Jp-Y1-Mlq" id="Zto-MN-z1D"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="smallerCell" rowHeight="95" id="uv1-Ka-N3H" customClass="DetailCell" customModule="CruCentralCoast" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="108" width="600" height="95"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uv1-Ka-N3H" id="2FR-yi-ySX">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="95"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Departure Address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uzV-MV-6R6">
+                                                    <rect key="frame" x="14" y="13" width="150" height="24"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="FreightSansProSemibold-Regular" family="FreightSans Pro" pointSize="18"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Lorem ipsum dolor " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0Ht-ps-zjh">
+                                                    <rect key="frame" x="180" y="8" width="420" height="84"/>
+                                                    <animations/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0Ht-ps-zjh" secondAttribute="bottom" constant="-5" id="ECA-QM-mZB"/>
+                                                <constraint firstItem="uzV-MV-6R6" firstAttribute="leading" secondItem="2FR-yi-ySX" secondAttribute="leadingMargin" constant="6" id="GG1-az-YYT"/>
+                                                <constraint firstItem="0Ht-ps-zjh" firstAttribute="top" secondItem="2FR-yi-ySX" secondAttribute="topMargin" id="ckh-Qj-MdP"/>
+                                                <constraint firstItem="0Ht-ps-zjh" firstAttribute="trailing" secondItem="2FR-yi-ySX" secondAttribute="trailingMargin" constant="8" id="gKe-1O-fPu"/>
+                                                <constraint firstItem="uzV-MV-6R6" firstAttribute="top" secondItem="2FR-yi-ySX" secondAttribute="topMargin" constant="5" id="qgX-O0-aeX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstItem="0Ht-ps-zjh" firstAttribute="leading" secondItem="uv1-Ka-N3H" secondAttribute="leading" constant="180" id="xmG-Ua-3Ix"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="textViewValue" destination="0Ht-ps-zjh" id="0ig-Qw-uB8"/>
+                                            <outlet property="title" destination="uzV-MV-6R6" id="PfS-mZ-TLp"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="aaX-gX-cpJ" id="qrx-Mz-CTp"/>
+                                    <outlet property="delegate" destination="aaX-gX-cpJ" id="mIk-qG-dBC"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lDP-iX-G64">
+                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.72941176470000002" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="l5o-X0-FIC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="23"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" title="Cancel Ride">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="aaX-gX-cpJ" eventType="touchUpInside" id="zgV-Lk-Aur"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lDP-iX-G64" firstAttribute="leading" secondItem="c0E-uo-wqf" secondAttribute="leadingMargin" constant="-20" id="71r-H5-OZD"/>
+                            <constraint firstItem="hlO-HX-eT8" firstAttribute="top" secondItem="gd9-t0-Nh5" secondAttribute="bottom" id="Jqr-eF-egD"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lDP-iX-G64" secondAttribute="trailing" constant="-20" id="UtW-A4-Xoi"/>
+                            <constraint firstItem="hlO-HX-eT8" firstAttribute="trailing" secondItem="lDP-iX-G64" secondAttribute="trailing" id="X6p-VY-nto"/>
+                            <constraint firstItem="hlO-HX-eT8" firstAttribute="leading" secondItem="lDP-iX-G64" secondAttribute="leading" id="ZPZ-cs-McC"/>
+                            <constraint firstItem="l2x-zE-tBp" firstAttribute="top" secondItem="hlO-HX-eT8" secondAttribute="bottom" constant="43" id="dUx-9C-JKt"/>
+                            <constraint firstItem="l2x-zE-tBp" firstAttribute="top" secondItem="lDP-iX-G64" secondAttribute="bottom" id="enJ-9h-9XB"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO">
+                        <color key="barTintColor" red="0.72628045080000003" green="0.72629773620000004" blue="0.72628843779999996" alpha="1" colorSpace="deviceRGB"/>
+                    </simulatedNavigationBarMetrics>
+                    <connections>
+                        <outlet property="detailsTable" destination="hlO-HX-eT8" id="N5d-YK-xBq"/>
+                        <segue destination="a5W-Rw-hLT" kind="show" identifier="eventDetailSegue" id="sUl-6n-xbp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="akl-L1-KLd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1587" y="459"/>
+        </scene>
+        <!--eventDetail-->
+        <scene sceneID="pSG-Ou-W8i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="events" referencedIdentifier="eventDetail" id="a5W-Rw-hLT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ua1-56-RJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2097.5" y="459"/>
+        </scene>
+    </scenes>
+</document>
