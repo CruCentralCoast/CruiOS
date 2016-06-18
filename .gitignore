@@ -27,3 +27,4 @@ Cru.xcworkspace/xcuserdata/ericasolum.xcuserdatad/UserInterfaceState.xcuserstate
 
 # Swift package manager
 .build/
+.Build/*
