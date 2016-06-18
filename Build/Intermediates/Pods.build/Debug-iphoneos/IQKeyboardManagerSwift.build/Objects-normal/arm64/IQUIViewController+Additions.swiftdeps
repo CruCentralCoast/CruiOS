@@ -1,0 +1,139 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+provides-nominal:
+provides-member:
+- ["CSo16UIViewController", ""]
+- ["CSo16UIViewController", "IQLayoutGuideConstraint"]
+provides-dynamic-lookup:
+- "IQLayoutGuideConstraint"
+depends-top-level:
+- "UIViewController"
+- !private "kIQLayoutGuideConstraint"
+- "NSLayoutConstraint"
+- !private "objc_setAssociatedObject"
+- "StringLiteralType"
+- !private "objc_getAssociatedObject"
+- !private "objc_AssociationPolicy"
+depends-member:
+- ["Ps9AnyObject", "IQLayoutGuideConstraint"]
+- !private ["Ps9AnyObject", "kIQLayoutGuideConstraint"]
+- !private ["Ps9AnyObject", "objc_AssociationPolicy"]
+- !private ["Ps9AnyObject", "objc_getAssociatedObject"]
+- !private ["Ps9AnyObject", "objc_setAssociatedObject"]
+- ["Ps11CVarArgType", "IQLayoutGuideConstraint"]
+- !private ["Ps11CVarArgType", "kIQLayoutGuideConstraint"]
+- !private ["Ps11CVarArgType", "objc_AssociationPolicy"]
+- !private ["Ps11CVarArgType", "objc_getAssociatedObject"]
+- !private ["Ps11CVarArgType", "objc_setAssociatedObject"]
+- ["Ps28CustomDebugStringConvertible", "IQLayoutGuideConstraint"]
+- !private ["Ps28CustomDebugStringConvertible", "kIQLayoutGuideConstraint"]
+- !private ["Ps28CustomDebugStringConvertible", "objc_AssociationPolicy"]
+- !private ["Ps28CustomDebugStringConvertible", "objc_getAssociatedObject"]
+- !private ["Ps28CustomDebugStringConvertible", "objc_setAssociatedObject"]
+- ["Ps23CustomStringConvertible", "IQLayoutGuideConstraint"]
+- !private ["Ps23CustomStringConvertible", "kIQLayoutGuideConstraint"]
+- !private ["Ps23CustomStringConvertible", "objc_AssociationPolicy"]
+- !private ["Ps23CustomStringConvertible", "objc_getAssociatedObject"]
+- !private ["Ps23CustomStringConvertible", "objc_setAssociatedObject"]
+- ["Ps9Equatable", "IQLayoutGuideConstraint"]
+- !private ["Ps9Equatable", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+- !private ["Ps9Equatable", "kIQLayoutGuideConstraint"]
+- !private ["Ps9Equatable", "objc_AssociationPolicy"]
+- !private ["Ps9Equatable", "objc_getAssociatedObject"]
+- !private ["Ps9Equatable", "objc_setAssociatedObject"]
+- ["Ps8Hashable", "IQLayoutGuideConstraint"]
+- !private ["Ps8Hashable", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+- !private ["Ps8Hashable", "kIQLayoutGuideConstraint"]
+- !private ["Ps8Hashable", "objc_AssociationPolicy"]
+- !private ["Ps8Hashable", "objc_getAssociatedObject"]
+- !private ["Ps8Hashable", "objc_setAssociatedObject"]
+- !private ["SQ", "deinit"]
+- !private ["PSo8NSCoding", "kIQLayoutGuideConstraint"]
+- !private ["PSo8NSCoding", "objc_AssociationPolicy"]
+- !private ["PSo8NSCoding", "objc_getAssociatedObject"]
+- !private ["PSo8NSCoding", "objc_setAssociatedObject"]
+- !private ["PSo26NSExtensionRequestHandling", "kIQLayoutGuideConstraint"]
+- !private ["PSo26NSExtensionRequestHandling", "objc_AssociationPolicy"]
+- !private ["PSo26NSExtensionRequestHandling", "objc_getAssociatedObject"]
+- !private ["PSo26NSExtensionRequestHandling", "objc_setAssociatedObject"]
+- ["CSo8NSObject", "IQLayoutGuideConstraint"]
+- ["CSo8NSObject", "NSLayoutConstraint"]
+- !private ["CSo8NSObject", "kIQLayoutGuideConstraint"]
+- !private ["CSo8NSObject", "objc_AssociationPolicy"]
+- !private ["CSo8NSObject", "objc_getAssociatedObject"]
+- !private ["CSo8NSObject", "objc_setAssociatedObject"]
+- ["PSo16NSObjectProtocol", "IQLayoutGuideConstraint"]
+- !private ["PSo16NSObjectProtocol", "kIQLayoutGuideConstraint"]
+- !private ["PSo16NSObjectProtocol", "objc_AssociationPolicy"]
+- !private ["PSo16NSObjectProtocol", "objc_getAssociatedObject"]
+- !private ["PSo16NSObjectProtocol", "objc_setAssociatedObject"]
+- !private ["Sq", "deinit"]
+- !private ["Ps16RawRepresentable", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+- !private ["PSo21UIAppearanceContainer", "kIQLayoutGuideConstraint"]
+- !private ["PSo21UIAppearanceContainer", "objc_AssociationPolicy"]
+- !private ["PSo21UIAppearanceContainer", "objc_getAssociatedObject"]
+- !private ["PSo21UIAppearanceContainer", "objc_setAssociatedObject"]
+- !private ["PSo18UIContentContainer", "kIQLayoutGuideConstraint"]
+- !private ["PSo18UIContentContainer", "objc_AssociationPolicy"]
+- !private ["PSo18UIContentContainer", "objc_getAssociatedObject"]
+- !private ["PSo18UIContentContainer", "objc_setAssociatedObject"]
+- !private ["PSo18UIFocusEnvironment", "kIQLayoutGuideConstraint"]
+- !private ["PSo18UIFocusEnvironment", "objc_AssociationPolicy"]
+- !private ["PSo18UIFocusEnvironment", "objc_getAssociatedObject"]
+- !private ["PSo18UIFocusEnvironment", "objc_setAssociatedObject"]
+- ["CSo11UIResponder", "IQLayoutGuideConstraint"]
+- ["CSo11UIResponder", "NSLayoutConstraint"]
+- !private ["CSo11UIResponder", "kIQLayoutGuideConstraint"]
+- !private ["CSo11UIResponder", "objc_AssociationPolicy"]
+- !private ["CSo11UIResponder", "objc_getAssociatedObject"]
+- !private ["CSo11UIResponder", "objc_setAssociatedObject"]
+- !private ["PSo16UIStateRestoring", "kIQLayoutGuideConstraint"]
+- !private ["PSo16UIStateRestoring", "objc_AssociationPolicy"]
+- !private ["PSo16UIStateRestoring", "objc_getAssociatedObject"]
+- !private ["PSo16UIStateRestoring", "objc_setAssociatedObject"]
+- !private ["PSo18UITraitEnvironment", "kIQLayoutGuideConstraint"]
+- !private ["PSo18UITraitEnvironment", "objc_AssociationPolicy"]
+- !private ["PSo18UITraitEnvironment", "objc_getAssociatedObject"]
+- !private ["PSo18UITraitEnvironment", "objc_setAssociatedObject"]
+- ["CSo16UIViewController", "IQLayoutGuideConstraint"]
+- ["CSo16UIViewController", "NSLayoutConstraint"]
+- !private ["CSo16UIViewController", "kIQLayoutGuideConstraint"]
+- !private ["CSo16UIViewController", "objc_AssociationPolicy"]
+- !private ["CSo16UIViewController", "objc_getAssociatedObject"]
+- !private ["CSo16UIViewController", "objc_setAssociatedObject"]
+- !private ["OSC22objc_AssociationPolicy", "OBJC_ASSOCIATION_RETAIN_NONATOMIC"]
+depends-nominal:
+- "Ps9AnyObject"
+- "Ps11CVarArgType"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- "Ps8Hashable"
+- !private "SQ"
+- !private "PSo8NSCoding"
+- !private "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "Sq"
+- !private "Ps16RawRepresentable"
+- !private "PSo21UIAppearanceContainer"
+- !private "PSo18UIContentContainer"
+- !private "PSo18UIFocusEnvironment"
+- "CSo11UIResponder"
+- !private "PSo16UIStateRestoring"
+- !private "PSo18UITraitEnvironment"
+- "CSo16UIViewController"
+- !private "OSC22objc_AssociationPolicy"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/IQKeyboardManagerSwift.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+interface-hash: "31e695c6e1ab5c83506e809a843d2b2d"

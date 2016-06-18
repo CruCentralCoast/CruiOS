@@ -1,0 +1,614 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SearchHistoryManager"
+- "LocationDicKeys"
+- "CoordinateDicKeys"
+provides-nominal:
+- "V14LocationPicker20SearchHistoryManager"
+- "V14LocationPicker15LocationDicKeys"
+- "V14LocationPicker17CoordinateDicKeys"
+provides-member:
+- ["V14LocationPicker20SearchHistoryManager", ""]
+- ["V14LocationPicker15LocationDicKeys", ""]
+- ["V14LocationPicker17CoordinateDicKeys", ""]
+- ["VSC22CLLocationCoordinate2D", ""]
+- ["C14LocationPicker8Location", ""]
+- ["VSC22CLLocationCoordinate2D", "toDefaultsDic"]
+- ["VSC22CLLocationCoordinate2D", "fromDefaultsDic"]
+- ["C14LocationPicker8Location", "toDefaultsDic"]
+- ["C14LocationPicker8Location", "fromDefaultsDic"]
+provides-dynamic-lookup:
+- "toDefaultsDic"
+- "fromDefaultsDic"
+depends-top-level:
+- !private "??"
+- !private "String"
+- !private "Array"
+- "CLLocationCoordinate2D"
+- !private "BooleanLiteralType"
+- "NSUserDefaults"
+- !private "AnyObject"
+- "SearchHistoryManager"
+- !private "=="
+- "NSDictionary"
+- !private "CLLocation"
+- "Location"
+- "LocationDicKeys"
+- "CoordinateDicKeys"
+- !private "MKPlacemark"
+- !private "Dictionary"
+- !private "NSNumber"
+- "StringLiteralType"
+depends-member:
+- !private ["Ps9AnyObject", "CLLocation"]
+- !private ["Ps9AnyObject", "CLLocationCoordinate2D"]
+- !private ["Ps9AnyObject", "Key"]
+- !private ["Ps9AnyObject", "Location"]
+- !private ["Ps9AnyObject", "LocationDicKeys"]
+- !private ["Ps9AnyObject", "MKPlacemark"]
+- !private ["Ps9AnyObject", "Value"]
+- !private ["Ps9AnyObject", "addressDictionary"]
+- !private ["Ps9AnyObject", "coordinate"]
+- !private ["Ps9AnyObject", "doubleValue"]
+- ["Ps9AnyObject", "fromDefaultsDic"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "location"]
+- !private ["Ps9AnyObject", "name"]
+- !private ["Ps9AnyObject", "objectForKey"]
+- !private ["Ps9AnyObject", "placemark"]
+- !private ["Ps9AnyObject", "setObject"]
+- !private ["Ps9AnyObject", "standardUserDefaults"]
+- !private ["Ps9AnyObject", "subscript"]
+- ["Ps9AnyObject", "toDefaultsDic"]
+- !private ["Sa", "Element"]
+- !private ["Sa", "Generator"]
+- !private ["Sa", "Index"]
+- !private ["Sa", "SubSequence"]
+- !private ["Sa", "_Element"]
+- !private ["Sa", "append"]
+- !private ["Sa", "deinit"]
+- !private ["Sa", "flatMap"]
+- !private ["Sa", "indexOf"]
+- !private ["Ps23ArrayLiteralConvertible", "Element"]
+- !private ["Ps23ArrayLiteralConvertible", "Generator"]
+- !private ["Ps23ArrayLiteralConvertible", "Index"]
+- !private ["Ps23ArrayLiteralConvertible", "SubSequence"]
+- !private ["Ps23ArrayLiteralConvertible", "_Element"]
+- !private ["Ps23ArrayLiteralConvertible", "append"]
+- !private ["Ps23ArrayLiteralConvertible", "flatMap"]
+- !private ["Ps23ArrayLiteralConvertible", "indexOf"]
+- !private ["Vs10ArraySlice", "Generator"]
+- !private ["Vs10ArraySlice", "Index"]
+- !private ["Ps22BidirectionalIndexType", "Distance"]
+- !private ["Ps22BidirectionalIndexType", "IntegerLiteralType"]
+- !private ["Ps21BitwiseOperationsType", "Distance"]
+- !private ["Ps21BitwiseOperationsType", "IntegerLiteralType"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "doubleValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["CSo10CLLocation", "coordinate"]
+- !private ["CSo10CLLocation", "init"]
+- ["VSC22CLLocationCoordinate2D", "CLLocationCoordinate2D"]
+- !private ["VSC22CLLocationCoordinate2D", "CoordinateDicKeys"]
+- ["VSC22CLLocationCoordinate2D", "NSDictionary"]
+- !private ["VSC22CLLocationCoordinate2D", "NSNumber"]
+- ["VSC22CLLocationCoordinate2D", "fromDefaultsDic"]
+- !private ["VSC22CLLocationCoordinate2D", "init"]
+- !private ["VSC22CLLocationCoordinate2D", "latitude"]
+- !private ["VSC22CLLocationCoordinate2D", "longitude"]
+- ["VSC22CLLocationCoordinate2D", "toDefaultsDic"]
+- !private ["CSo11CLPlacemark", "addressDictionary"]
+- !private ["CSo11CLPlacemark", "init"]
+- !private ["CSo11CLPlacemark", "location"]
+- !private ["Ps11CVarArgType", "CLLocation"]
+- !private ["Ps11CVarArgType", "CLLocationCoordinate2D"]
+- !private ["Ps11CVarArgType", "Distance"]
+- !private ["Ps11CVarArgType", "IntegerLiteralType"]
+- !private ["Ps11CVarArgType", "Key"]
+- !private ["Ps11CVarArgType", "Location"]
+- !private ["Ps11CVarArgType", "LocationDicKeys"]
+- !private ["Ps11CVarArgType", "MKPlacemark"]
+- !private ["Ps11CVarArgType", "Value"]
+- !private ["Ps11CVarArgType", "addressDictionary"]
+- !private ["Ps11CVarArgType", "coordinate"]
+- !private ["Ps11CVarArgType", "doubleValue"]
+- ["Ps11CVarArgType", "fromDefaultsDic"]
+- !private ["Ps11CVarArgType", "init"]
+- !private ["Ps11CVarArgType", "location"]
+- !private ["Ps11CVarArgType", "name"]
+- !private ["Ps11CVarArgType", "objectForKey"]
+- !private ["Ps11CVarArgType", "placemark"]
+- !private ["Ps11CVarArgType", "setObject"]
+- !private ["Ps11CVarArgType", "standardUserDefaults"]
+- !private ["Ps11CVarArgType", "subscript"]
+- ["Ps11CVarArgType", "toDefaultsDic"]
+- !private ["Ps14CollectionType", "Element"]
+- !private ["Ps14CollectionType", "Generator"]
+- !private ["Ps14CollectionType", "Index"]
+- !private ["Ps14CollectionType", "Key"]
+- !private ["Ps14CollectionType", "SubSequence"]
+- !private ["Ps14CollectionType", "Value"]
+- !private ["Ps14CollectionType", "_Element"]
+- !private ["Ps14CollectionType", "append"]
+- !private ["Ps14CollectionType", "flatMap"]
+- !private ["Ps14CollectionType", "indexOf"]
+- !private ["Ps14CollectionType", "subscript"]
+- !private ["Ps10Comparable", "Distance"]
+- !private ["Ps10Comparable", "IntegerLiteralType"]
+- ["V14LocationPicker17CoordinateDicKeys", "init"]
+- ["V14LocationPicker17CoordinateDicKeys", "latitude"]
+- ["V14LocationPicker17CoordinateDicKeys", "longitude"]
+- !private ["Ps28CustomDebugStringConvertible", "CLLocation"]
+- !private ["Ps28CustomDebugStringConvertible", "CLLocationCoordinate2D"]
+- !private ["Ps28CustomDebugStringConvertible", "Element"]
+- !private ["Ps28CustomDebugStringConvertible", "Generator"]
+- !private ["Ps28CustomDebugStringConvertible", "Index"]
+- !private ["Ps28CustomDebugStringConvertible", "Key"]
+- !private ["Ps28CustomDebugStringConvertible", "Location"]
+- !private ["Ps28CustomDebugStringConvertible", "LocationDicKeys"]
+- !private ["Ps28CustomDebugStringConvertible", "MKPlacemark"]
+- ["Ps28CustomDebugStringConvertible", "Some"]
+- !private ["Ps28CustomDebugStringConvertible", "SubSequence"]
+- !private ["Ps28CustomDebugStringConvertible", "Value"]
+- !private ["Ps28CustomDebugStringConvertible", "_Element"]
+- !private ["Ps28CustomDebugStringConvertible", "addressDictionary"]
+- !private ["Ps28CustomDebugStringConvertible", "append"]
+- !private ["Ps28CustomDebugStringConvertible", "coordinate"]
+- !private ["Ps28CustomDebugStringConvertible", "doubleValue"]
+- !private ["Ps28CustomDebugStringConvertible", "flatMap"]
+- ["Ps28CustomDebugStringConvertible", "fromDefaultsDic"]
+- !private ["Ps28CustomDebugStringConvertible", "indexOf"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "location"]
+- !private ["Ps28CustomDebugStringConvertible", "name"]
+- !private ["Ps28CustomDebugStringConvertible", "objectForKey"]
+- !private ["Ps28CustomDebugStringConvertible", "placemark"]
+- !private ["Ps28CustomDebugStringConvertible", "setObject"]
+- !private ["Ps28CustomDebugStringConvertible", "standardUserDefaults"]
+- !private ["Ps28CustomDebugStringConvertible", "subscript"]
+- ["Ps28CustomDebugStringConvertible", "toDefaultsDic"]
+- !private ["Ps23CustomStringConvertible", "CLLocation"]
+- !private ["Ps23CustomStringConvertible", "CLLocationCoordinate2D"]
+- !private ["Ps23CustomStringConvertible", "Distance"]
+- !private ["Ps23CustomStringConvertible", "Element"]
+- !private ["Ps23CustomStringConvertible", "Generator"]
+- !private ["Ps23CustomStringConvertible", "Index"]
+- !private ["Ps23CustomStringConvertible", "IntegerLiteralType"]
+- !private ["Ps23CustomStringConvertible", "Key"]
+- !private ["Ps23CustomStringConvertible", "Location"]
+- !private ["Ps23CustomStringConvertible", "LocationDicKeys"]
+- !private ["Ps23CustomStringConvertible", "MKPlacemark"]
+- !private ["Ps23CustomStringConvertible", "SubSequence"]
+- !private ["Ps23CustomStringConvertible", "Value"]
+- !private ["Ps23CustomStringConvertible", "_Element"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "addressDictionary"]
+- !private ["Ps23CustomStringConvertible", "append"]
+- !private ["Ps23CustomStringConvertible", "coordinate"]
+- !private ["Ps23CustomStringConvertible", "doubleValue"]
+- !private ["Ps23CustomStringConvertible", "flatMap"]
+- ["Ps23CustomStringConvertible", "fromDefaultsDic"]
+- !private ["Ps23CustomStringConvertible", "indexOf"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "location"]
+- !private ["Ps23CustomStringConvertible", "name"]
+- !private ["Ps23CustomStringConvertible", "objectForKey"]
+- !private ["Ps23CustomStringConvertible", "placemark"]
+- !private ["Ps23CustomStringConvertible", "setObject"]
+- !private ["Ps23CustomStringConvertible", "standardUserDefaults"]
+- !private ["Ps23CustomStringConvertible", "subscript"]
+- ["Ps23CustomStringConvertible", "toDefaultsDic"]
+- !private ["Vs10Dictionary", "Key"]
+- !private ["Vs10Dictionary", "Value"]
+- !private ["Vs10Dictionary", "deinit"]
+- !private ["Vs10Dictionary", "subscript"]
+- !private ["Ps28DictionaryLiteralConvertible", "Key"]
+- !private ["Ps28DictionaryLiteralConvertible", "Value"]
+- !private ["Ps28DictionaryLiteralConvertible", "subscript"]
+- !private ["Sd", "deinit"]
+- !private ["Ps9Equatable", "CLLocation"]
+- !private ["Ps9Equatable", "CLLocationCoordinate2D"]
+- !private ["Ps9Equatable", "Distance"]
+- !private ["Ps9Equatable", "IntegerLiteralType"]
+- !private ["Ps9Equatable", "Key"]
+- !private ["Ps9Equatable", "Location"]
+- !private ["Ps9Equatable", "LocationDicKeys"]
+- !private ["Ps9Equatable", "MKPlacemark"]
+- !private ["Ps9Equatable", "Value"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "addressDictionary"]
+- !private ["Ps9Equatable", "coordinate"]
+- !private ["Ps9Equatable", "doubleValue"]
+- ["Ps9Equatable", "fromDefaultsDic"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "location"]
+- !private ["Ps9Equatable", "name"]
+- !private ["Ps9Equatable", "objectForKey"]
+- !private ["Ps9Equatable", "placemark"]
+- !private ["Ps9Equatable", "setObject"]
+- !private ["Ps9Equatable", "standardUserDefaults"]
+- !private ["Ps9Equatable", "subscript"]
+- ["Ps9Equatable", "toDefaultsDic"]
+- !private ["Ps23FloatLiteralConvertible", "doubleValue"]
+- !private ["Ps16ForwardIndexType", "Distance"]
+- !private ["Ps16ForwardIndexType", "IntegerLiteralType"]
+- !private ["Ps13GeneratorType", "Element"]
+- !private ["Ps8Hashable", "CLLocation"]
+- !private ["Ps8Hashable", "CLLocationCoordinate2D"]
+- !private ["Ps8Hashable", "Distance"]
+- !private ["Ps8Hashable", "IntegerLiteralType"]
+- !private ["Ps8Hashable", "Key"]
+- !private ["Ps8Hashable", "Location"]
+- !private ["Ps8Hashable", "LocationDicKeys"]
+- !private ["Ps8Hashable", "MKPlacemark"]
+- !private ["Ps8Hashable", "Value"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "addressDictionary"]
+- !private ["Ps8Hashable", "coordinate"]
+- !private ["Ps8Hashable", "doubleValue"]
+- ["Ps8Hashable", "fromDefaultsDic"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "location"]
+- !private ["Ps8Hashable", "name"]
+- !private ["Ps8Hashable", "objectForKey"]
+- !private ["Ps8Hashable", "placemark"]
+- !private ["Ps8Hashable", "setObject"]
+- !private ["Ps8Hashable", "standardUserDefaults"]
+- !private ["Ps8Hashable", "subscript"]
+- ["Ps8Hashable", "toDefaultsDic"]
+- !private ["Ps9Indexable", "Element"]
+- !private ["Ps9Indexable", "Generator"]
+- !private ["Ps9Indexable", "Index"]
+- !private ["Ps9Indexable", "Key"]
+- !private ["Ps9Indexable", "SubSequence"]
+- !private ["Ps9Indexable", "Value"]
+- !private ["Ps9Indexable", "_Element"]
+- !private ["Ps9Indexable", "append"]
+- !private ["Ps9Indexable", "flatMap"]
+- !private ["Ps9Indexable", "indexOf"]
+- !private ["Ps9Indexable", "subscript"]
+- !private ["Vs17IndexingGenerator", "Element"]
+- !private ["Si", "Distance"]
+- !private ["Si", "IntegerLiteralType"]
+- !private ["Ps21IntegerArithmeticType", "Distance"]
+- !private ["Ps21IntegerArithmeticType", "IntegerLiteralType"]
+- !private ["Ps25IntegerLiteralConvertible", "Distance"]
+- !private ["Ps25IntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps25IntegerLiteralConvertible", "doubleValue"]
+- !private ["Ps11IntegerType", "Distance"]
+- !private ["Ps11IntegerType", "IntegerLiteralType"]
+- !private ["C14LocationPicker8Location", "AnyObject"]
+- !private ["C14LocationPicker8Location", "CLLocation"]
+- !private ["C14LocationPicker8Location", "CLLocationCoordinate2D"]
+- ["C14LocationPicker8Location", "Location"]
+- !private ["C14LocationPicker8Location", "LocationDicKeys"]
+- !private ["C14LocationPicker8Location", "MKPlacemark"]
+- ["C14LocationPicker8Location", "NSDictionary"]
+- !private ["C14LocationPicker8Location", "String"]
+- ["C14LocationPicker8Location", "fromDefaultsDic"]
+- !private ["C14LocationPicker8Location", "init"]
+- !private ["C14LocationPicker8Location", "location"]
+- !private ["C14LocationPicker8Location", "name"]
+- !private ["C14LocationPicker8Location", "placemark"]
+- ["C14LocationPicker8Location", "toDefaultsDic"]
+- ["V14LocationPicker15LocationDicKeys", "init"]
+- ["V14LocationPicker15LocationDicKeys", "locationCoordinates"]
+- ["V14LocationPicker15LocationDicKeys", "name"]
+- ["V14LocationPicker15LocationDicKeys", "placemarkAddressDic"]
+- ["V14LocationPicker15LocationDicKeys", "placemarkCoordinates"]
+- !private ["PSo12MKAnnotation", "CLLocation"]
+- !private ["PSo12MKAnnotation", "CLLocationCoordinate2D"]
+- !private ["PSo12MKAnnotation", "Location"]
+- !private ["PSo12MKAnnotation", "LocationDicKeys"]
+- !private ["PSo12MKAnnotation", "MKPlacemark"]
+- !private ["PSo12MKAnnotation", "fromDefaultsDic"]
+- !private ["PSo12MKAnnotation", "init"]
+- !private ["PSo12MKAnnotation", "location"]
+- !private ["PSo12MKAnnotation", "name"]
+- !private ["PSo12MKAnnotation", "placemark"]
+- !private ["PSo12MKAnnotation", "toDefaultsDic"]
+- !private ["CSo11MKPlacemark", "init"]
+- !private ["Ps14MirrorPathType", "Distance"]
+- !private ["Ps14MirrorPathType", "IntegerLiteralType"]
+- !private ["Ps21MutableCollectionType", "Element"]
+- !private ["Ps21MutableCollectionType", "Generator"]
+- !private ["Ps21MutableCollectionType", "Index"]
+- !private ["Ps21MutableCollectionType", "SubSequence"]
+- !private ["Ps21MutableCollectionType", "_Element"]
+- !private ["Ps21MutableCollectionType", "append"]
+- !private ["Ps21MutableCollectionType", "flatMap"]
+- !private ["Ps21MutableCollectionType", "indexOf"]
+- !private ["Ps16MutableIndexable", "Element"]
+- !private ["Ps16MutableIndexable", "Generator"]
+- !private ["Ps16MutableIndexable", "Index"]
+- !private ["Ps16MutableIndexable", "SubSequence"]
+- !private ["Ps16MutableIndexable", "_Element"]
+- !private ["Ps16MutableIndexable", "append"]
+- !private ["Ps16MutableIndexable", "flatMap"]
+- !private ["Ps16MutableIndexable", "indexOf"]
+- !private ["Ps16MutableSliceable", "Element"]
+- !private ["Ps16MutableSliceable", "Generator"]
+- !private ["Ps16MutableSliceable", "Index"]
+- !private ["Ps16MutableSliceable", "SubSequence"]
+- !private ["Ps16MutableSliceable", "_Element"]
+- !private ["Ps16MutableSliceable", "append"]
+- !private ["Ps16MutableSliceable", "flatMap"]
+- !private ["Ps16MutableSliceable", "indexOf"]
+- !private ["PSo8NSCoding", "Key"]
+- !private ["PSo8NSCoding", "Value"]
+- !private ["PSo8NSCoding", "addressDictionary"]
+- !private ["PSo8NSCoding", "coordinate"]
+- !private ["PSo8NSCoding", "doubleValue"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "location"]
+- !private ["PSo8NSCoding", "subscript"]
+- !private ["PSo9NSCopying", "Key"]
+- !private ["PSo9NSCopying", "Value"]
+- !private ["PSo9NSCopying", "addressDictionary"]
+- !private ["PSo9NSCopying", "coordinate"]
+- !private ["PSo9NSCopying", "doubleValue"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "location"]
+- !private ["PSo9NSCopying", "subscript"]
+- !private ["CSo12NSDictionary", "Key"]
+- !private ["CSo12NSDictionary", "Value"]
+- !private ["CSo12NSDictionary", "subscript"]
+- !private ["PSo17NSFastEnumeration", "Key"]
+- !private ["PSo17NSFastEnumeration", "Value"]
+- !private ["PSo17NSFastEnumeration", "subscript"]
+- !private ["PSo16NSMutableCopying", "Key"]
+- !private ["PSo16NSMutableCopying", "Value"]
+- !private ["PSo16NSMutableCopying", "subscript"]
+- !private ["CSo8NSNumber", "doubleValue"]
+- !private ["CSo8NSObject", "AnyObject"]
+- !private ["CSo8NSObject", "CLLocation"]
+- !private ["CSo8NSObject", "CLLocationCoordinate2D"]
+- !private ["CSo8NSObject", "Key"]
+- ["CSo8NSObject", "Location"]
+- !private ["CSo8NSObject", "LocationDicKeys"]
+- !private ["CSo8NSObject", "MKPlacemark"]
+- ["CSo8NSObject", "NSDictionary"]
+- !private ["CSo8NSObject", "String"]
+- !private ["CSo8NSObject", "Value"]
+- !private ["CSo8NSObject", "addressDictionary"]
+- !private ["CSo8NSObject", "coordinate"]
+- !private ["CSo8NSObject", "doubleValue"]
+- ["CSo8NSObject", "fromDefaultsDic"]
+- !private ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "location"]
+- !private ["CSo8NSObject", "name"]
+- !private ["CSo8NSObject", "objectForKey"]
+- !private ["CSo8NSObject", "placemark"]
+- !private ["CSo8NSObject", "setObject"]
+- !private ["CSo8NSObject", "standardUserDefaults"]
+- !private ["CSo8NSObject", "subscript"]
+- ["CSo8NSObject", "toDefaultsDic"]
+- !private ["PSo16NSObjectProtocol", "CLLocation"]
+- !private ["PSo16NSObjectProtocol", "CLLocationCoordinate2D"]
+- !private ["PSo16NSObjectProtocol", "Key"]
+- !private ["PSo16NSObjectProtocol", "Location"]
+- !private ["PSo16NSObjectProtocol", "LocationDicKeys"]
+- !private ["PSo16NSObjectProtocol", "MKPlacemark"]
+- !private ["PSo16NSObjectProtocol", "Value"]
+- !private ["PSo16NSObjectProtocol", "addressDictionary"]
+- !private ["PSo16NSObjectProtocol", "coordinate"]
+- !private ["PSo16NSObjectProtocol", "doubleValue"]
+- ["PSo16NSObjectProtocol", "fromDefaultsDic"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "location"]
+- !private ["PSo16NSObjectProtocol", "name"]
+- !private ["PSo16NSObjectProtocol", "objectForKey"]
+- !private ["PSo16NSObjectProtocol", "placemark"]
+- !private ["PSo16NSObjectProtocol", "setObject"]
+- !private ["PSo16NSObjectProtocol", "standardUserDefaults"]
+- !private ["PSo16NSObjectProtocol", "subscript"]
+- ["PSo16NSObjectProtocol", "toDefaultsDic"]
+- !private ["PSo14NSSecureCoding", "Key"]
+- !private ["PSo14NSSecureCoding", "Value"]
+- !private ["PSo14NSSecureCoding", "addressDictionary"]
+- !private ["PSo14NSSecureCoding", "coordinate"]
+- !private ["PSo14NSSecureCoding", "doubleValue"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "location"]
+- !private ["PSo14NSSecureCoding", "subscript"]
+- !private ["CSo14NSUserDefaults", "objectForKey"]
+- !private ["CSo14NSUserDefaults", "setObject"]
+- !private ["CSo14NSUserDefaults", "standardUserDefaults"]
+- !private ["CSo7NSValue", "doubleValue"]
+- ["Ps21NilLiteralConvertible", "Some"]
+- !private ["Ps21NilLiteralConvertible", "flatMap"]
+- ["Sq", "Some"]
+- !private ["Sq", "deinit"]
+- !private ["Sq", "flatMap"]
+- !private ["Ps21RandomAccessIndexType", "Distance"]
+- !private ["Ps21RandomAccessIndexType", "IntegerLiteralType"]
+- !private ["Ps30RangeReplaceableCollectionType", "Element"]
+- !private ["Ps30RangeReplaceableCollectionType", "Generator"]
+- !private ["Ps30RangeReplaceableCollectionType", "Index"]
+- !private ["Ps30RangeReplaceableCollectionType", "SubSequence"]
+- !private ["Ps30RangeReplaceableCollectionType", "_Element"]
+- !private ["Ps30RangeReplaceableCollectionType", "append"]
+- !private ["Ps30RangeReplaceableCollectionType", "flatMap"]
+- !private ["Ps30RangeReplaceableCollectionType", "indexOf"]
+- !private ["V14LocationPicker20SearchHistoryManager", "HistoryKey"]
+- ["V14LocationPicker20SearchHistoryManager", "Location"]
+- !private ["V14LocationPicker20SearchHistoryManager", "LocationDicKeys"]
+- !private ["V14LocationPicker20SearchHistoryManager", "NSDictionary"]
+- ["V14LocationPicker20SearchHistoryManager", "NSUserDefaults"]
+- !private ["V14LocationPicker20SearchHistoryManager", "String"]
+- ["V14LocationPicker20SearchHistoryManager", "addToHistory"]
+- !private ["V14LocationPicker20SearchHistoryManager", "defaults"]
+- ["V14LocationPicker20SearchHistoryManager", "history"]
+- ["V14LocationPicker20SearchHistoryManager", "init"]
+- !private ["Ps12SequenceType", "Element"]
+- !private ["Ps12SequenceType", "Generator"]
+- !private ["Ps12SequenceType", "Index"]
+- !private ["Ps12SequenceType", "Key"]
+- !private ["Ps12SequenceType", "SubSequence"]
+- !private ["Ps12SequenceType", "Value"]
+- !private ["Ps12SequenceType", "_Element"]
+- !private ["Ps12SequenceType", "append"]
+- !private ["Ps12SequenceType", "flatMap"]
+- !private ["Ps12SequenceType", "indexOf"]
+- !private ["Ps12SequenceType", "subscript"]
+- !private ["Ps17SignedIntegerType", "Distance"]
+- !private ["Ps17SignedIntegerType", "IntegerLiteralType"]
+- !private ["Ps16SignedNumberType", "Distance"]
+- !private ["Ps16SignedNumberType", "IntegerLiteralType"]
+- !private ["Vs5Slice", "Generator"]
+- !private ["Vs5Slice", "Index"]
+- !private ["Vs5Slice", "SubSequence"]
+- !private ["Vs5Slice", "_Element"]
+- !private ["Ps10Strideable", "Distance"]
+- !private ["Ps10Strideable", "IntegerLiteralType"]
+- !private ["SS", "deinit"]
+- !private ["Ps10_ArrayType", "Element"]
+- !private ["Ps10_ArrayType", "Generator"]
+- !private ["Ps10_ArrayType", "Index"]
+- !private ["Ps10_ArrayType", "SubSequence"]
+- !private ["Ps10_ArrayType", "_Element"]
+- !private ["Ps10_ArrayType", "append"]
+- !private ["Ps10_ArrayType", "flatMap"]
+- !private ["Ps10_ArrayType", "indexOf"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "Distance"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps24_DestructorSafeContainer", "Element"]
+- !private ["Ps24_DestructorSafeContainer", "Generator"]
+- !private ["Ps24_DestructorSafeContainer", "Index"]
+- !private ["Ps24_DestructorSafeContainer", "SubSequence"]
+- !private ["Ps24_DestructorSafeContainer", "_Element"]
+- !private ["Ps24_DestructorSafeContainer", "append"]
+- !private ["Ps24_DestructorSafeContainer", "flatMap"]
+- !private ["Ps24_DestructorSafeContainer", "indexOf"]
+- !private ["Ps14_Incrementable", "Distance"]
+- !private ["Ps14_Incrementable", "IntegerLiteralType"]
+- !private ["Ps22_IntegerArithmeticType", "Distance"]
+- !private ["Ps22_IntegerArithmeticType", "IntegerLiteralType"]
+- !private ["Ps12_IntegerType", "Distance"]
+- !private ["Ps12_IntegerType", "IntegerLiteralType"]
+- !private ["Ps21_ObjectiveCBridgeable", "Distance"]
+- !private ["Ps21_ObjectiveCBridgeable", "Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "Generator"]
+- !private ["Ps21_ObjectiveCBridgeable", "Index"]
+- !private ["Ps21_ObjectiveCBridgeable", "IntegerLiteralType"]
+- !private ["Ps21_ObjectiveCBridgeable", "Key"]
+- !private ["Ps21_ObjectiveCBridgeable", "SubSequence"]
+- !private ["Ps21_ObjectiveCBridgeable", "Value"]
+- !private ["Ps21_ObjectiveCBridgeable", "_Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "append"]
+- !private ["Ps21_ObjectiveCBridgeable", "flatMap"]
+- !private ["Ps21_ObjectiveCBridgeable", "indexOf"]
+- !private ["Ps21_ObjectiveCBridgeable", "subscript"]
+- !private ["Vs26_OptionalNilComparisonType", "deinit"]
+- !private ["Ps22_RandomAccessAmbiguity", "Distance"]
+- !private ["Ps22_RandomAccessAmbiguity", "IntegerLiteralType"]
+- !private ["Ps12_Reflectable", "Distance"]
+- !private ["Ps12_Reflectable", "Element"]
+- !private ["Ps12_Reflectable", "Generator"]
+- !private ["Ps12_Reflectable", "Index"]
+- !private ["Ps12_Reflectable", "IntegerLiteralType"]
+- !private ["Ps12_Reflectable", "Key"]
+- ["Ps12_Reflectable", "Some"]
+- !private ["Ps12_Reflectable", "SubSequence"]
+- !private ["Ps12_Reflectable", "Value"]
+- !private ["Ps12_Reflectable", "_Element"]
+- !private ["Ps12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["Ps12_Reflectable", "append"]
+- !private ["Ps12_Reflectable", "flatMap"]
+- !private ["Ps12_Reflectable", "indexOf"]
+- !private ["Ps12_Reflectable", "subscript"]
+- !private ["Ps18_SignedIntegerType", "Distance"]
+- !private ["Ps18_SignedIntegerType", "IntegerLiteralType"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Sa"
+- !private "Ps23ArrayLiteralConvertible"
+- !private "Vs10ArraySlice"
+- !private "Ps22BidirectionalIndexType"
+- !private "Ps21BitwiseOperationsType"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "CSo10CLLocation"
+- "VSC22CLLocationCoordinate2D"
+- !private "CSo11CLPlacemark"
+- "Ps11CVarArgType"
+- !private "Ps14CollectionType"
+- !private "Ps10Comparable"
+- "V14LocationPicker17CoordinateDicKeys"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- !private "Vs10Dictionary"
+- !private "Ps28DictionaryLiteralConvertible"
+- !private "Sd"
+- "Ps9Equatable"
+- !private "Ps23FloatLiteralConvertible"
+- !private "Ps16ForwardIndexType"
+- !private "Ps13GeneratorType"
+- "Ps8Hashable"
+- !private "Ps9Indexable"
+- !private "Vs17IndexingGenerator"
+- !private "Si"
+- !private "Ps21IntegerArithmeticType"
+- !private "Ps25IntegerLiteralConvertible"
+- !private "Ps11IntegerType"
+- "C14LocationPicker8Location"
+- "V14LocationPicker15LocationDicKeys"
+- !private "PSo12MKAnnotation"
+- !private "CSo11MKPlacemark"
+- !private "Ps14MirrorPathType"
+- !private "Ps21MutableCollectionType"
+- !private "Ps16MutableIndexable"
+- !private "Ps16MutableSliceable"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "CSo12NSDictionary"
+- !private "PSo17NSFastEnumeration"
+- !private "PSo16NSMutableCopying"
+- !private "CSo8NSNumber"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo14NSUserDefaults"
+- !private "CSo7NSValue"
+- "Ps21NilLiteralConvertible"
+- "Sq"
+- !private "Ps21RandomAccessIndexType"
+- !private "Ps30RangeReplaceableCollectionType"
+- "V14LocationPicker20SearchHistoryManager"
+- !private "Ps12SequenceType"
+- !private "Ps17SignedIntegerType"
+- !private "Ps16SignedNumberType"
+- !private "Vs5Slice"
+- !private "Ps10Strideable"
+- !private "SS"
+- !private "Ps10_ArrayType"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps33_BuiltinIntegerLiteralConvertible"
+- !private "Ps24_DestructorSafeContainer"
+- !private "Ps14_Incrementable"
+- !private "Ps22_IntegerArithmeticType"
+- !private "Ps12_IntegerType"
+- !private "Ps21_ObjectiveCBridgeable"
+- !private "Vs26_OptionalNilComparisonType"
+- !private "Ps22_RandomAccessAmbiguity"
+- "Ps12_Reflectable"
+- !private "Ps18_SignedIntegerType"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/LocationPicker/LocationPicker/LocationPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/LocationPicker/LocationPicker-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/LocationPicker.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+interface-hash: "d5efd1263a9c8120b2d34955652a8ae9"

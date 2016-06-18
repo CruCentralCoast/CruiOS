@@ -1,0 +1,624 @@
+{
+  'version': 0,
+  'case-sensitive': 'false',
+  'roots': [
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "AbstractActionSheetPicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/AbstractActionSheetPicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetCustomPicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetCustomPicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetCustomPickerDelegate.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetCustomPickerDelegate.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetDatePicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetDatePicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetDistancePicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetDistancePicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetLocalePicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetLocalePicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetMultipleStringPicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetMultipleStringPicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetPicker-3.0-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/ActionSheetPicker-3.0/ActionSheetPicker-3.0-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetPicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetPicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetPicker_3_0-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker_3_0-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "ActionSheetStringPicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/ActionSheetStringPicker.h"
+        },
+        {
+          'type': 'file',
+          'name': "DistancePickerView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/DistancePickerView.h"
+        },
+        {
+          'type': 'file',
+          'name': "SWActionSheet.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ActionSheetPicker-3.0/Pickers/SWActionSheet.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/ActionSheetPicker-3.0.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Alamofire-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "Alamofire-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/Alamofire/Alamofire-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/Alamofire.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "DZNEmptyDataSet-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "DZNEmptyDataSet-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/DZNEmptyDataSet/DZNEmptyDataSet-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "UIScrollView+EmptyDataSet.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/DZNEmptyDataSet/Source/UIScrollView+EmptyDataSet.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/DZNEmptyDataSet.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DatePickerCell.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "DatePickerCell-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DatePickerCell.framework/Headers/DatePickerCell-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "DatePickerCell-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/DatePickerCell/DatePickerCell-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DatePickerCell.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/DatePickerCell.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "HTMLComment.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLComment.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLDocument.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLDocument.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLDocumentType.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLDocumentType.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLElement.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLElement.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLEncoding.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLEncoding.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLEntities.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLEntities.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLNamespace.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLNamespace.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLNode.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLNode.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLOrderedDictionary.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLOrderedDictionary.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLParser.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLParser.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLPreprocessedInputStream.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLPreprocessedInputStream.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLQuirksMode.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLQuirksMode.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLReader-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLReader-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/HTMLReader/HTMLReader-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLReader.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLReader.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLSelector.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLSelector.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLSerialization.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLSerialization.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLString.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLString.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLSupport.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLSupport.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLTextNode.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLTextNode.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLTokenizer.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLTokenizer.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLTokenizerState.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLTokenizerState.h"
+        },
+        {
+          'type': 'file',
+          'name': "HTMLTreeEnumerator.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/HTMLTreeEnumerator.h"
+        },
+        {
+          'type': 'file',
+          'name': "NSString+HTMLEntities.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/HTMLReader/Code/NSString+HTMLEntities.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/HTMLReader.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "IQKeyboardManagerSwift-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "IQKeyboardManagerSwift-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/IQKeyboardManagerSwift/IQKeyboardManagerSwift-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/IQKeyboardManagerSwift.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "ImageLoader-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "ImageLoader-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/ImageLoader/ImageLoader-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/ImageLoader.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "LocationPicker-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "LocationPicker-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/LocationPicker/LocationPicker-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "LocationPicker.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/LocationPicker/LocationPicker/LocationPicker.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/LocationPicker.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "MRActivityIndicatorView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRActivityIndicatorView.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRBlurView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Blur/MRBlurView.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRCircularProgressView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRCircularProgressView.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRIconView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRIconView.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRNavigationBarProgressView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRNavigationBarProgressView.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRProgress-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRProgress-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/MRProgress/MRProgress-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRProgress.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/MRProgress.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRProgressHelper.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Utils/MRProgressHelper.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRProgressOverlayView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRProgressOverlayView.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRProgressView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRProgressView.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRStopButton.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRStopButton.h"
+        },
+        {
+          'type': 'file',
+          'name': "MRStopableView.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Components/MRStopableView.h"
+        },
+        {
+          'type': 'file',
+          'name': "UIImage+MRImageEffects.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/MRProgress/src/Blur/UIImage+MRImageEffects.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/MRProgress.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Pods_Cru.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "Pods-Cru-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/Pods-Cru/Pods-Cru-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "Pods_Cru-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Pods_Cru.framework/Headers/Pods_Cru-Swift.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Pods_Cru.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/Pods-Cru.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "RadioButton-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "RadioButton-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/RadioButton/RadioButton-umbrella.h"
+        },
+        {
+          'type': 'file',
+          'name': "RadioButton.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/RadioButton/RadioButton.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/RadioButton.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "SideMenu-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "SideMenu-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/SideMenu/SideMenu-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/SideMenu.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "SwiftValidator-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "SwiftValidator-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/SwiftValidator/SwiftValidator-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/SwiftValidator.build/module.modulemap"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftyJSON.framework/Headers",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "SwiftyJSON-Swift.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftyJSON.framework/Headers/SwiftyJSON-Swift.h"
+        },
+        {
+          'type': 'file',
+          'name': "SwiftyJSON-umbrella.h",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/SwiftyJSON/SwiftyJSON-umbrella.h"
+        }
+      ]
+    },
+    {
+      'type': 'directory',
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftyJSON.framework/Modules",
+      'contents': [
+        {
+          'type': 'file',
+          'name': "module.modulemap",
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/SwiftyJSON.build/module.modulemap"
+        }
+      ]
+    }
+  ]
+}

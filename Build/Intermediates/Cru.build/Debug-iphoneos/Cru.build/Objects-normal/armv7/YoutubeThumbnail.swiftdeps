@@ -1,0 +1,400 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "ThumbnailQuailty"
+- "thumbnailURLString"
+provides-nominal:
+- "O3Cru16ThumbnailQuailty"
+provides-member:
+- ["O3Cru16ThumbnailQuailty", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- "=="
+- !private "~="
+- !private "IntegerLiteralType"
+- "StringLiteralType"
+- "ThumbnailQuailty"
+- "String"
+- "Array"
+- !private "FloatLiteralType"
+- !private "UnicodeScalarType"
+- "thumbnailURLString"
+depends-member:
+- !private ["Ps9AnyObject", "init"]
+- ["Sa", "Element"]
+- ["Ps23ArrayLiteralConvertible", "Element"]
+- !private ["Ps22BidirectionalIndexType", "hashValue"]
+- !private ["Ps21BitwiseOperationsType", "hashValue"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Sb", "deinit"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["Ps11CVarArgType", "hashValue"]
+- !private ["Ps11CVarArgType", "init"]
+- !private ["Vs9Character", "deinit"]
+- ["Ps14CollectionType", "Element"]
+- !private ["Ps10Comparable", "hashValue"]
+- !private ["Ps10Comparable", "init"]
+- ["Ps28CustomDebugStringConvertible", "Element"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "Element"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "hashValue"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Sd", "deinit"]
+- ["Ps9Equatable", "Default"]
+- ["Ps9Equatable", "High"]
+- ["Ps9Equatable", "Medium"]
+- ["Ps9Equatable", "One"]
+- ["Ps9Equatable", "RawValue"]
+- ["Ps9Equatable", "Standard"]
+- ["Ps9Equatable", "Three"]
+- ["Ps9Equatable", "Two"]
+- ["Ps9Equatable", "Zero"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- ["Ps9Equatable", "hashValue"]
+- ["Ps9Equatable", "init"]
+- ["Ps9Equatable", "rawValue"]
+- ["Ps9Equatable", ""]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["Sf", "deinit"]
+- !private ["Ps16ForwardIndexType", "hashValue"]
+- ["Ps8Hashable", "Default"]
+- ["Ps8Hashable", "High"]
+- ["Ps8Hashable", "Medium"]
+- ["Ps8Hashable", "One"]
+- ["Ps8Hashable", "RawValue"]
+- ["Ps8Hashable", "Standard"]
+- ["Ps8Hashable", "Three"]
+- ["Ps8Hashable", "Two"]
+- ["Ps8Hashable", "Zero"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- ["Ps8Hashable", "hashValue"]
+- ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "rawValue"]
+- ["Ps8Hashable", ""]
+- ["Ps9Indexable", "Element"]
+- !private ["Si", "deinit"]
+- !private ["Si", "hashValue"]
+- !private ["Vs5Int16", "deinit"]
+- !private ["Vs5Int32", "deinit"]
+- !private ["Vs5Int64", "deinit"]
+- !private ["Vs4Int8", "deinit"]
+- !private ["Ps21IntegerArithmeticType", "hashValue"]
+- !private ["Ps25IntegerLiteralConvertible", "hashValue"]
+- !private ["Ps11IntegerType", "hashValue"]
+- !private ["Ps14MirrorPathType", "hashValue"]
+- !private ["Ps14MirrorPathType", "init"]
+- ["Ps21MutableCollectionType", "Element"]
+- ["Ps16MutableIndexable", "Element"]
+- ["Ps16MutableSliceable", "Element"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo16NSMutableCopying", "init"]
+- !private ["CSo8NSObject", "deinit"]
+- !private ["CSo8NSObject", "init"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["CSo8NSString", "deinit"]
+- !private ["CSo8NSString", "init"]
+- !private ["Ps16OutputStreamType", "init"]
+- !private ["Ps21RandomAccessIndexType", "hashValue"]
+- !private ["Vs5Range", "deinit"]
+- ["Ps30RangeReplaceableCollectionType", "Element"]
+- ["Ps16RawRepresentable", "Default"]
+- ["Ps16RawRepresentable", "High"]
+- ["Ps16RawRepresentable", "Medium"]
+- ["Ps16RawRepresentable", "One"]
+- ["Ps16RawRepresentable", "RawValue"]
+- ["Ps16RawRepresentable", "Standard"]
+- ["Ps16RawRepresentable", "Three"]
+- ["Ps16RawRepresentable", "Two"]
+- ["Ps16RawRepresentable", "Zero"]
+- ["Ps16RawRepresentable", "hashValue"]
+- ["Ps16RawRepresentable", "init"]
+- ["Ps16RawRepresentable", "rawValue"]
+- ["Ps16RawRepresentable", ""]
+- ["Ps12SequenceType", "Element"]
+- !private ["Ps17SignedIntegerType", "hashValue"]
+- !private ["Ps16SignedNumberType", "hashValue"]
+- !private ["Ps10Streamable", "init"]
+- !private ["Ps10Strideable", "hashValue"]
+- ["SS", "deinit"]
+- !private ["SS", "init"]
+- !private ["Ps30StringInterpolationConvertible", "init"]
+- !private ["Ps24StringLiteralConvertible", "init"]
+- ["O3Cru16ThumbnailQuailty", "Default"]
+- ["O3Cru16ThumbnailQuailty", "High"]
+- ["O3Cru16ThumbnailQuailty", "Max"]
+- ["O3Cru16ThumbnailQuailty", "Medium"]
+- ["O3Cru16ThumbnailQuailty", "One"]
+- ["O3Cru16ThumbnailQuailty", "RawValue"]
+- ["O3Cru16ThumbnailQuailty", "Standard"]
+- ["O3Cru16ThumbnailQuailty", "Three"]
+- ["O3Cru16ThumbnailQuailty", "Two"]
+- ["O3Cru16ThumbnailQuailty", "Zero"]
+- ["O3Cru16ThumbnailQuailty", "allValues"]
+- ["O3Cru16ThumbnailQuailty", "deinit"]
+- ["O3Cru16ThumbnailQuailty", "hashValue"]
+- ["O3Cru16ThumbnailQuailty", "init"]
+- ["O3Cru16ThumbnailQuailty", "rawValue"]
+- !private ["Su", "deinit"]
+- !private ["Vs6UInt16", "deinit"]
+- !private ["Vs6UInt32", "deinit"]
+- !private ["Vs6UInt64", "deinit"]
+- !private ["Vs5UInt8", "deinit"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "init"]
+- !private ["P9Alamofire20URLStringConvertible", "init"]
+- !private ["Sc", "deinit"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "init"]
+- ["Ps10_ArrayType", "Element"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "hashValue"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "init"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "init"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "init"]
+- ["Ps24_DestructorSafeContainer", "Element"]
+- !private ["Ps14_Incrementable", "hashValue"]
+- !private ["Ps22_IntegerArithmeticType", "hashValue"]
+- !private ["Ps12_IntegerType", "hashValue"]
+- ["Ps21_ObjectiveCBridgeable", "Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "hashValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "init"]
+- !private ["Vs26_OptionalNilComparisonType", "deinit"]
+- !private ["Ps22_RandomAccessAmbiguity", "hashValue"]
+- ["Ps12_Reflectable", "Element"]
+- !private ["Ps12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["Ps12_Reflectable", "hashValue"]
+- !private ["Ps12_Reflectable", "init"]
+- !private ["Ps18_SignedIntegerType", "hashValue"]
+depends-nominal:
+- !private "Ps9AnyObject"
+- "Sa"
+- "Ps23ArrayLiteralConvertible"
+- !private "Ps22BidirectionalIndexType"
+- !private "Ps21BitwiseOperationsType"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "Ps11CVarArgType"
+- !private "Vs9Character"
+- "Ps14CollectionType"
+- !private "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- !private "Sd"
+- "Ps9Equatable"
+- !private "Ps41ExtendedGraphemeClusterLiteralConvertible"
+- !private "Sf"
+- !private "Ps16ForwardIndexType"
+- "Ps8Hashable"
+- "Ps9Indexable"
+- !private "Si"
+- !private "Vs5Int16"
+- !private "Vs5Int32"
+- !private "Vs5Int64"
+- !private "Vs4Int8"
+- !private "Ps21IntegerArithmeticType"
+- !private "Ps25IntegerLiteralConvertible"
+- !private "Ps11IntegerType"
+- !private "Ps14MirrorPathType"
+- "Ps21MutableCollectionType"
+- "Ps16MutableIndexable"
+- "Ps16MutableSliceable"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "PSo16NSMutableCopying"
+- !private "CSo8NSObject"
+- !private "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "Ps16OutputStreamType"
+- !private "Ps21RandomAccessIndexType"
+- !private "Vs5Range"
+- "Ps30RangeReplaceableCollectionType"
+- "Ps16RawRepresentable"
+- "Ps12SequenceType"
+- !private "Ps17SignedIntegerType"
+- !private "Ps16SignedNumberType"
+- !private "Ps10Streamable"
+- !private "Ps10Strideable"
+- "SS"
+- !private "Ps30StringInterpolationConvertible"
+- !private "Ps24StringLiteralConvertible"
+- "O3Cru16ThumbnailQuailty"
+- !private "Su"
+- !private "Vs6UInt16"
+- !private "Vs6UInt32"
+- !private "Vs6UInt64"
+- !private "Vs5UInt8"
+- !private "P11ImageLoader21URLLiteralConvertible"
+- !private "P9Alamofire20URLStringConvertible"
+- !private "Sc"
+- !private "Ps31UnicodeScalarLiteralConvertible"
+- "Ps10_ArrayType"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible"
+- !private "Ps33_BuiltinIntegerLiteralConvertible"
+- !private "Ps32_BuiltinStringLiteralConvertible"
+- !private "Ps37_BuiltinUTF16StringLiteralConvertible"
+- !private "Ps39_BuiltinUnicodeScalarLiteralConvertible"
+- "Ps24_DestructorSafeContainer"
+- !private "Ps14_Incrementable"
+- !private "Ps22_IntegerArithmeticType"
+- !private "Ps12_IntegerType"
+- "Ps21_ObjectiveCBridgeable"
+- !private "Vs26_OptionalNilComparisonType"
+- !private "Ps22_RandomAccessAmbiguity"
+- "Ps12_Reflectable"
+- !private "Ps18_SignedIntegerType"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/Cru-Bridging-Header.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/Core.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreImage.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLErrorCode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GMRConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMPubSub.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMService.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext+CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDHeaders.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceID.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GoogleCloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMReceiverDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/SWRevealViewController.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressHelper.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/UIImage+MRImageEffects.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRBlurView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressOverlayView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRNavigationBarProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRIconView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRCircularProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopableView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRActivityIndicatorView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/UIScrollView+EmptyDataSet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/SwiftValidator.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/Alamofire.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/SignIn-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Core-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/CloudMessaging-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AppInvite-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Analytics-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AdMob-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/SideMenu.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreData.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/WildcardSDK.framework/Modules/WildcardSDK.swiftmodule/arm.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/WebKit.swiftmodule"
+- "./WildcardSDK.framework/Headers/WildcardSDK-Swift.h"
+- "./WildcardSDK.framework/Headers/YTVimeoExtractor.h"
+- "./WildcardSDK.framework/Headers/YTPlayerView.h"
+- "./WildcardSDK.framework/Headers/WCElementType.h"
+- "./WildcardSDK.framework/Headers/WCErrorCode.h"
+- "./WildcardSDK.framework/Headers/WCAnalytics.h"
+- "./WildcardSDK.framework/Headers/WCCardAction.h"
+- "./WildcardSDK.framework/Headers/WCCardType.h"
+- "./WildcardSDK.framework/Headers/WCCardLayout.h"
+- "./WildcardSDK.framework/Headers/WildcardSDK.h"
+- "./WildcardSDK.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/IQKeyboardManagerSwift.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/Fabric.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Answers.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Headers/Appsee.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTreeEnumerator.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizerState.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizer.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLString.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/NSString+HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTextNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSerialization.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSelector.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLPreprocessedInputStream.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLParser.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLOrderedDictionary.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEncoding.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLQuirksMode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLElement.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocumentType.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocument.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSupport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNamespace.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLComment.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/SWActionSheet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetMultipleStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetLocalePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/DistancePickerView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDistancePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDatePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPickerDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/AbstractActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker-3.0-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/LocationPicker.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/ImageLoader.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/EventKit.swiftmodule"
+interface-hash: "45df86c756acb82134545c2359a6b92a"

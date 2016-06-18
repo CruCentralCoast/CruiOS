@@ -1,0 +1,21 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "d3bcab3b6e3f6220f95257751dc0644a"
+build_time: [519523830, 441631000]
+inputs:
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Alamofire.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Download.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Error.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Manager.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/MultipartFormData.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/NetworkReachabilityManager.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Notifications.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/ParameterEncoding.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Request.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Response.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/ResponseSerialization.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Result.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/ServerTrustPolicy.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Stream.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Timeline.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Upload.swift": [519434807, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Alamofire/Source/Validation.swift": [519434807, 0]

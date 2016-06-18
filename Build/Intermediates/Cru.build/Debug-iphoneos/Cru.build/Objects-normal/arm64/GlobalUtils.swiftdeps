@@ -1,0 +1,1304 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "GlobalUtils"
+provides-nominal:
+- "C3Cru11GlobalUtils"
+- "CC3Cru11GlobalUtils8PhoneRes"
+provides-member:
+- ["C3Cru11GlobalUtils", ""]
+- ["CC3Cru11GlobalUtils8PhoneRes", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "+="
+- !private "UnicodeScalarType"
+- !private "unichar"
+- !private "&&"
+- !private "NSCalendar"
+- !private "!="
+- !private "+"
+- !private "NSMutableString"
+- !private "||"
+- !private "!"
+- "AnyObject"
+- "BooleanLiteralType"
+- "GlobalUtils"
+- !private "<="
+- "UIBarButtonItem"
+- "String"
+- !private "Array"
+- "NSDateComponents"
+- !private "NSKeyedArchiver"
+- !private "NSKeyedUnarchiver"
+- !private "??"
+- !private "NSUTF8StringEncoding"
+- !private "NSString"
+- !private "=="
+- !private "Int"
+- !private "NSLocale"
+- !private "NSCalendarUnit"
+- !private "NSJSONSerialization"
+- !private "NSMakeRange"
+- !private "SWRevealViewControllerDelegate"
+- "NSDateFormatter"
+- !private "NSUserDefaults"
+- "Bool"
+- !private "NSCharacterSet"
+- !private "NSJSONWritingOptions"
+- !private "NSData"
+- !private "..<"
+- "UIViewController"
+- "NSDate"
+- "NSDictionary"
+- "NSRange"
+- !private "-"
+- !private "print"
+- !private ">"
+- "StringLiteralType"
+depends-member:
+- !private ["Ps9AnyObject", "NSCalendar"]
+- !private ["Ps9AnyObject", "NSCharacterSet"]
+- !private ["Ps9AnyObject", "NSDate"]
+- !private ["Ps9AnyObject", "NSDateFormatter"]
+- !private ["Ps9AnyObject", "NSJSONSerialization"]
+- !private ["Ps9AnyObject", "NSJSONWritingOptions"]
+- !private ["Ps9AnyObject", "NSKeyedArchiver"]
+- !private ["Ps9AnyObject", "NSKeyedUnarchiver"]
+- !private ["Ps9AnyObject", "NSLocale"]
+- !private ["Ps9AnyObject", "NSMakeRange"]
+- !private ["Ps9AnyObject", "NSMutableString"]
+- !private ["Ps9AnyObject", "NSString"]
+- !private ["Ps9AnyObject", "NSUTF8StringEncoding"]
+- !private ["Ps9AnyObject", "NSUserDefaults"]
+- !private ["Ps9AnyObject", "PhoneRes"]
+- !private ["Ps9AnyObject", "action"]
+- !private ["Ps9AnyObject", "addGestureRecognizer"]
+- !private ["Ps9AnyObject", "append"]
+- !private ["Ps9AnyObject", "appendFormat"]
+- !private ["Ps9AnyObject", "appendString"]
+- !private ["Ps9AnyObject", "archivedDataWithRootObject"]
+- !private ["Ps9AnyObject", "characterAtIndex"]
+- !private ["Ps9AnyObject", "characters"]
+- !private ["Ps9AnyObject", "components"]
+- !private ["Ps9AnyObject", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps9AnyObject", "componentsSeparatedByString"]
+- !private ["Ps9AnyObject", "currentCalendar"]
+- !private ["Ps9AnyObject", "dataWithJSONObject"]
+- !private ["Ps9AnyObject", "dateFormat"]
+- !private ["Ps9AnyObject", "dateFromString"]
+- !private ["Ps9AnyObject", "decimalDigitCharacterSet"]
+- !private ["Ps9AnyObject", "delegate"]
+- !private ["Ps9AnyObject", "getDefaultDateFormatter"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "invertedSet"]
+- !private ["Ps9AnyObject", "length"]
+- !private ["Ps9AnyObject", "locale"]
+- !private ["Ps9AnyObject", "newText"]
+- !private ["Ps9AnyObject", "objectForKey"]
+- !private ["Ps9AnyObject", "panGestureRecognizer"]
+- !private ["Ps9AnyObject", "print"]
+- !private ["Ps9AnyObject", "revealToggle"]
+- !private ["Ps9AnyObject", "revealViewController"]
+- !private ["Ps9AnyObject", "setObject"]
+- !private ["Ps9AnyObject", "shouldChange"]
+- !private ["Ps9AnyObject", "standardUserDefaults"]
+- !private ["Ps9AnyObject", "startIndex"]
+- !private ["Ps9AnyObject", "stringByReplacingCharactersInRange"]
+- !private ["Ps9AnyObject", "stringFromDate"]
+- !private ["Ps9AnyObject", "subscript"]
+- !private ["Ps9AnyObject", "substringFromIndex"]
+- !private ["Ps9AnyObject", "substringToIndex"]
+- !private ["Ps9AnyObject", "substringWithRange"]
+- !private ["Ps9AnyObject", "synchronize"]
+- !private ["Ps9AnyObject", "target"]
+- !private ["Ps9AnyObject", "unarchiveObjectWithData"]
+- !private ["Ps9AnyObject", "view"]
+- ["Ps9AnyObject", ""]
+- !private ["Sa", "Generator"]
+- !private ["Sa", "Index"]
+- !private ["Sa", "_Element"]
+- !private ["Sa", "deinit"]
+- !private ["Sa", "joinWithSeparator"]
+- !private ["Sa", "subscript"]
+- !private ["Ps23ArrayLiteralConvertible", "Day"]
+- !private ["Ps23ArrayLiteralConvertible", "Element"]
+- !private ["Ps23ArrayLiteralConvertible", "Generator"]
+- !private ["Ps23ArrayLiteralConvertible", "Hour"]
+- !private ["Ps23ArrayLiteralConvertible", "Index"]
+- !private ["Ps23ArrayLiteralConvertible", "Minute"]
+- !private ["Ps23ArrayLiteralConvertible", "Month"]
+- !private ["Ps23ArrayLiteralConvertible", "PrettyPrinted"]
+- !private ["Ps23ArrayLiteralConvertible", "Year"]
+- !private ["Ps23ArrayLiteralConvertible", "_Element"]
+- !private ["Ps23ArrayLiteralConvertible", "joinWithSeparator"]
+- !private ["Ps23ArrayLiteralConvertible", "subscript"]
+- !private ["Ps22BidirectionalIndexType", "Distance"]
+- !private ["Ps22BidirectionalIndexType", "IntegerLiteralType"]
+- !private ["Ps22BidirectionalIndexType", "_DisabledRangeIndex"]
+- !private ["Ps22BidirectionalIndexType", "advancedBy"]
+- !private ["Ps21BitwiseOperationsType", "Distance"]
+- !private ["Ps21BitwiseOperationsType", "IntegerLiteralType"]
+- !private ["Ps21BitwiseOperationsType", "_DisabledRangeIndex"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["Ps11CVarArgType", "Distance"]
+- !private ["Ps11CVarArgType", "IntegerLiteralType"]
+- !private ["Ps11CVarArgType", "_DisabledRangeIndex"]
+- !private ["Ps11CVarArgType", "action"]
+- !private ["Ps11CVarArgType", "addGestureRecognizer"]
+- !private ["Ps11CVarArgType", "append"]
+- !private ["Ps11CVarArgType", "appendFormat"]
+- !private ["Ps11CVarArgType", "appendString"]
+- !private ["Ps11CVarArgType", "archivedDataWithRootObject"]
+- !private ["Ps11CVarArgType", "characterAtIndex"]
+- !private ["Ps11CVarArgType", "characters"]
+- !private ["Ps11CVarArgType", "components"]
+- !private ["Ps11CVarArgType", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps11CVarArgType", "componentsSeparatedByString"]
+- !private ["Ps11CVarArgType", "currentCalendar"]
+- !private ["Ps11CVarArgType", "dataWithJSONObject"]
+- !private ["Ps11CVarArgType", "dateFormat"]
+- !private ["Ps11CVarArgType", "dateFromString"]
+- !private ["Ps11CVarArgType", "decimalDigitCharacterSet"]
+- !private ["Ps11CVarArgType", "delegate"]
+- !private ["Ps11CVarArgType", "init"]
+- !private ["Ps11CVarArgType", "invertedSet"]
+- !private ["Ps11CVarArgType", "length"]
+- !private ["Ps11CVarArgType", "locale"]
+- !private ["Ps11CVarArgType", "objectForKey"]
+- !private ["Ps11CVarArgType", "panGestureRecognizer"]
+- !private ["Ps11CVarArgType", "revealToggle"]
+- !private ["Ps11CVarArgType", "revealViewController"]
+- !private ["Ps11CVarArgType", "setObject"]
+- !private ["Ps11CVarArgType", "standardUserDefaults"]
+- !private ["Ps11CVarArgType", "startIndex"]
+- !private ["Ps11CVarArgType", "stringByReplacingCharactersInRange"]
+- !private ["Ps11CVarArgType", "stringFromDate"]
+- !private ["Ps11CVarArgType", "subscript"]
+- !private ["Ps11CVarArgType", "substringFromIndex"]
+- !private ["Ps11CVarArgType", "substringToIndex"]
+- !private ["Ps11CVarArgType", "substringWithRange"]
+- !private ["Ps11CVarArgType", "synchronize"]
+- !private ["Ps11CVarArgType", "target"]
+- !private ["Ps11CVarArgType", "unarchiveObjectWithData"]
+- !private ["Ps11CVarArgType", "view"]
+- !private ["VSS13CharacterView", "Generator"]
+- !private ["VSS13CharacterView", "Index"]
+- !private ["VSS13CharacterView", "SubSequence"]
+- !private ["VSS13CharacterView", "count"]
+- !private ["Ps14CollectionType", "Generator"]
+- !private ["Ps14CollectionType", "Index"]
+- !private ["Ps14CollectionType", "SubSequence"]
+- !private ["Ps14CollectionType", "_Element"]
+- !private ["Ps14CollectionType", "count"]
+- !private ["Ps14CollectionType", "joinWithSeparator"]
+- !private ["Ps14CollectionType", "subscript"]
+- !private ["Ps10Comparable", "Distance"]
+- !private ["Ps10Comparable", "IntegerLiteralType"]
+- !private ["Ps10Comparable", "_DisabledRangeIndex"]
+- !private ["Ps10Comparable", "advancedBy"]
+- !private ["Ps10Comparable", "append"]
+- !private ["Ps10Comparable", "characters"]
+- !private ["Ps10Comparable", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps10Comparable", "componentsSeparatedByString"]
+- !private ["Ps10Comparable", "startIndex"]
+- !private ["Ps10Comparable", "subscript"]
+- !private ["Ps10Comparable", "substringFromIndex"]
+- !private ["Ps10Comparable", "substringToIndex"]
+- !private ["Ps28CustomDebugStringConvertible", "Generator"]
+- !private ["Ps28CustomDebugStringConvertible", "Index"]
+- ["Ps28CustomDebugStringConvertible", "Some"]
+- !private ["Ps28CustomDebugStringConvertible", "_Element"]
+- !private ["Ps28CustomDebugStringConvertible", "action"]
+- !private ["Ps28CustomDebugStringConvertible", "addGestureRecognizer"]
+- !private ["Ps28CustomDebugStringConvertible", "append"]
+- !private ["Ps28CustomDebugStringConvertible", "appendFormat"]
+- !private ["Ps28CustomDebugStringConvertible", "appendString"]
+- !private ["Ps28CustomDebugStringConvertible", "archivedDataWithRootObject"]
+- !private ["Ps28CustomDebugStringConvertible", "characterAtIndex"]
+- !private ["Ps28CustomDebugStringConvertible", "characters"]
+- !private ["Ps28CustomDebugStringConvertible", "components"]
+- !private ["Ps28CustomDebugStringConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps28CustomDebugStringConvertible", "componentsSeparatedByString"]
+- !private ["Ps28CustomDebugStringConvertible", "currentCalendar"]
+- !private ["Ps28CustomDebugStringConvertible", "dataWithJSONObject"]
+- !private ["Ps28CustomDebugStringConvertible", "dateFormat"]
+- !private ["Ps28CustomDebugStringConvertible", "dateFromString"]
+- !private ["Ps28CustomDebugStringConvertible", "decimalDigitCharacterSet"]
+- !private ["Ps28CustomDebugStringConvertible", "delegate"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "invertedSet"]
+- !private ["Ps28CustomDebugStringConvertible", "joinWithSeparator"]
+- !private ["Ps28CustomDebugStringConvertible", "length"]
+- !private ["Ps28CustomDebugStringConvertible", "locale"]
+- !private ["Ps28CustomDebugStringConvertible", "objectForKey"]
+- !private ["Ps28CustomDebugStringConvertible", "panGestureRecognizer"]
+- !private ["Ps28CustomDebugStringConvertible", "revealToggle"]
+- !private ["Ps28CustomDebugStringConvertible", "revealViewController"]
+- !private ["Ps28CustomDebugStringConvertible", "setObject"]
+- !private ["Ps28CustomDebugStringConvertible", "standardUserDefaults"]
+- !private ["Ps28CustomDebugStringConvertible", "startIndex"]
+- !private ["Ps28CustomDebugStringConvertible", "stringByReplacingCharactersInRange"]
+- !private ["Ps28CustomDebugStringConvertible", "stringFromDate"]
+- !private ["Ps28CustomDebugStringConvertible", "subscript"]
+- !private ["Ps28CustomDebugStringConvertible", "substringFromIndex"]
+- !private ["Ps28CustomDebugStringConvertible", "substringToIndex"]
+- !private ["Ps28CustomDebugStringConvertible", "substringWithRange"]
+- !private ["Ps28CustomDebugStringConvertible", "synchronize"]
+- !private ["Ps28CustomDebugStringConvertible", "target"]
+- !private ["Ps28CustomDebugStringConvertible", "unarchiveObjectWithData"]
+- !private ["Ps28CustomDebugStringConvertible", "view"]
+- !private ["Ps23CustomStringConvertible", "Distance"]
+- !private ["Ps23CustomStringConvertible", "Generator"]
+- !private ["Ps23CustomStringConvertible", "Index"]
+- !private ["Ps23CustomStringConvertible", "IntegerLiteralType"]
+- !private ["Ps23CustomStringConvertible", "_DisabledRangeIndex"]
+- !private ["Ps23CustomStringConvertible", "_Element"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "action"]
+- !private ["Ps23CustomStringConvertible", "addGestureRecognizer"]
+- !private ["Ps23CustomStringConvertible", "append"]
+- !private ["Ps23CustomStringConvertible", "appendFormat"]
+- !private ["Ps23CustomStringConvertible", "appendString"]
+- !private ["Ps23CustomStringConvertible", "archivedDataWithRootObject"]
+- !private ["Ps23CustomStringConvertible", "characterAtIndex"]
+- !private ["Ps23CustomStringConvertible", "characters"]
+- !private ["Ps23CustomStringConvertible", "components"]
+- !private ["Ps23CustomStringConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps23CustomStringConvertible", "componentsSeparatedByString"]
+- !private ["Ps23CustomStringConvertible", "currentCalendar"]
+- !private ["Ps23CustomStringConvertible", "dataWithJSONObject"]
+- !private ["Ps23CustomStringConvertible", "dateFormat"]
+- !private ["Ps23CustomStringConvertible", "dateFromString"]
+- !private ["Ps23CustomStringConvertible", "decimalDigitCharacterSet"]
+- !private ["Ps23CustomStringConvertible", "delegate"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "invertedSet"]
+- !private ["Ps23CustomStringConvertible", "joinWithSeparator"]
+- !private ["Ps23CustomStringConvertible", "length"]
+- !private ["Ps23CustomStringConvertible", "locale"]
+- !private ["Ps23CustomStringConvertible", "objectForKey"]
+- !private ["Ps23CustomStringConvertible", "panGestureRecognizer"]
+- !private ["Ps23CustomStringConvertible", "revealToggle"]
+- !private ["Ps23CustomStringConvertible", "revealViewController"]
+- !private ["Ps23CustomStringConvertible", "setObject"]
+- !private ["Ps23CustomStringConvertible", "standardUserDefaults"]
+- !private ["Ps23CustomStringConvertible", "startIndex"]
+- !private ["Ps23CustomStringConvertible", "stringByReplacingCharactersInRange"]
+- !private ["Ps23CustomStringConvertible", "stringFromDate"]
+- !private ["Ps23CustomStringConvertible", "subscript"]
+- !private ["Ps23CustomStringConvertible", "substringFromIndex"]
+- !private ["Ps23CustomStringConvertible", "substringToIndex"]
+- !private ["Ps23CustomStringConvertible", "substringWithRange"]
+- !private ["Ps23CustomStringConvertible", "synchronize"]
+- !private ["Ps23CustomStringConvertible", "target"]
+- !private ["Ps23CustomStringConvertible", "unarchiveObjectWithData"]
+- !private ["Ps23CustomStringConvertible", "view"]
+- !private ["Ps28DictionaryLiteralConvertible", "subscript"]
+- !private ["Ps9Equatable", "Day"]
+- !private ["Ps9Equatable", "Distance"]
+- !private ["Ps9Equatable", "Element"]
+- !private ["Ps9Equatable", "Generator"]
+- !private ["Ps9Equatable", "Hour"]
+- !private ["Ps9Equatable", "IntegerLiteralType"]
+- !private ["Ps9Equatable", "Minute"]
+- !private ["Ps9Equatable", "Month"]
+- !private ["Ps9Equatable", "PrettyPrinted"]
+- !private ["Ps9Equatable", "Year"]
+- !private ["Ps9Equatable", "_DisabledRangeIndex"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "action"]
+- !private ["Ps9Equatable", "addGestureRecognizer"]
+- !private ["Ps9Equatable", "advancedBy"]
+- !private ["Ps9Equatable", "append"]
+- !private ["Ps9Equatable", "appendFormat"]
+- !private ["Ps9Equatable", "appendString"]
+- !private ["Ps9Equatable", "archivedDataWithRootObject"]
+- !private ["Ps9Equatable", "characterAtIndex"]
+- !private ["Ps9Equatable", "characters"]
+- !private ["Ps9Equatable", "components"]
+- !private ["Ps9Equatable", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps9Equatable", "componentsSeparatedByString"]
+- !private ["Ps9Equatable", "currentCalendar"]
+- !private ["Ps9Equatable", "dataWithJSONObject"]
+- !private ["Ps9Equatable", "dateFormat"]
+- !private ["Ps9Equatable", "dateFromString"]
+- !private ["Ps9Equatable", "decimalDigitCharacterSet"]
+- !private ["Ps9Equatable", "delegate"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "invertedSet"]
+- !private ["Ps9Equatable", "length"]
+- !private ["Ps9Equatable", "locale"]
+- !private ["Ps9Equatable", "objectForKey"]
+- !private ["Ps9Equatable", "panGestureRecognizer"]
+- !private ["Ps9Equatable", "revealToggle"]
+- !private ["Ps9Equatable", "revealViewController"]
+- !private ["Ps9Equatable", "setObject"]
+- !private ["Ps9Equatable", "standardUserDefaults"]
+- !private ["Ps9Equatable", "startIndex"]
+- !private ["Ps9Equatable", "stringByReplacingCharactersInRange"]
+- !private ["Ps9Equatable", "stringFromDate"]
+- !private ["Ps9Equatable", "subscript"]
+- !private ["Ps9Equatable", "substringFromIndex"]
+- !private ["Ps9Equatable", "substringToIndex"]
+- !private ["Ps9Equatable", "substringWithRange"]
+- !private ["Ps9Equatable", "synchronize"]
+- !private ["Ps9Equatable", "target"]
+- !private ["Ps9Equatable", "unarchiveObjectWithData"]
+- !private ["Ps9Equatable", "view"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "append"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "appendFormat"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "appendString"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "characterAtIndex"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "characters"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "componentsSeparatedByString"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "init"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "length"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "startIndex"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "stringByReplacingCharactersInRange"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "subscript"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "substringFromIndex"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "substringToIndex"]
+- !private ["Ps41ExtendedGraphemeClusterLiteralConvertible", "substringWithRange"]
+- !private ["Ps16ForwardIndexType", "Distance"]
+- !private ["Ps16ForwardIndexType", "IntegerLiteralType"]
+- !private ["Ps16ForwardIndexType", "_DisabledRangeIndex"]
+- !private ["Ps16ForwardIndexType", "advancedBy"]
+- !private ["Ps13GeneratorType", "Element"]
+- ["C3Cru11GlobalUtils", "AnyObject"]
+- ["C3Cru11GlobalUtils", "Bool"]
+- !private ["C3Cru11GlobalUtils", "Int"]
+- !private ["C3Cru11GlobalUtils", "NSCalendar"]
+- !private ["C3Cru11GlobalUtils", "NSCalendarUnit"]
+- !private ["C3Cru11GlobalUtils", "NSCharacterSet"]
+- !private ["C3Cru11GlobalUtils", "NSData"]
+- ["C3Cru11GlobalUtils", "NSDate"]
+- ["C3Cru11GlobalUtils", "NSDateComponents"]
+- ["C3Cru11GlobalUtils", "NSDateFormatter"]
+- ["C3Cru11GlobalUtils", "NSDictionary"]
+- !private ["C3Cru11GlobalUtils", "NSJSONSerialization"]
+- !private ["C3Cru11GlobalUtils", "NSJSONWritingOptions"]
+- !private ["C3Cru11GlobalUtils", "NSKeyedArchiver"]
+- !private ["C3Cru11GlobalUtils", "NSKeyedUnarchiver"]
+- !private ["C3Cru11GlobalUtils", "NSLocale"]
+- !private ["C3Cru11GlobalUtils", "NSMakeRange"]
+- !private ["C3Cru11GlobalUtils", "NSMutableString"]
+- ["C3Cru11GlobalUtils", "NSRange"]
+- !private ["C3Cru11GlobalUtils", "NSString"]
+- !private ["C3Cru11GlobalUtils", "NSUTF8StringEncoding"]
+- !private ["C3Cru11GlobalUtils", "NSUserDefaults"]
+- ["C3Cru11GlobalUtils", "PhoneRes"]
+- !private ["C3Cru11GlobalUtils", "SWRevealViewControllerDelegate"]
+- ["C3Cru11GlobalUtils", "String"]
+- ["C3Cru11GlobalUtils", "UIBarButtonItem"]
+- ["C3Cru11GlobalUtils", "UIViewController"]
+- ["C3Cru11GlobalUtils", "dateComponentsFromDate"]
+- ["C3Cru11GlobalUtils", "dateFromString"]
+- ["C3Cru11GlobalUtils", "deinit"]
+- ["C3Cru11GlobalUtils", "formatPhoneNumber"]
+- ["C3Cru11GlobalUtils", "getDefaultDateFormatter"]
+- ["C3Cru11GlobalUtils", "init"]
+- ["C3Cru11GlobalUtils", "loadDictionary"]
+- ["C3Cru11GlobalUtils", "loadString"]
+- ["C3Cru11GlobalUtils", "parsePhoneNumber"]
+- !private ["C3Cru11GlobalUtils", "print"]
+- ["C3Cru11GlobalUtils", "printRequest"]
+- ["C3Cru11GlobalUtils", "saveString"]
+- ["C3Cru11GlobalUtils", "setupViewForSideMenu"]
+- ["C3Cru11GlobalUtils", "shouldChangeNameTextInRange"]
+- ["C3Cru11GlobalUtils", "shouldChangePhoneTextInRange"]
+- ["C3Cru11GlobalUtils", "stringFromDate"]
+- ["C3Cru11GlobalUtils", "stringFromLocation"]
+- !private ["C3Cru11GlobalUtils", "unichar"]
+- !private ["Vs16HalfOpenInterval", "deinit"]
+- !private ["Ps8Hashable", "Distance"]
+- !private ["Ps8Hashable", "IntegerLiteralType"]
+- !private ["Ps8Hashable", "_DisabledRangeIndex"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "action"]
+- !private ["Ps8Hashable", "addGestureRecognizer"]
+- !private ["Ps8Hashable", "append"]
+- !private ["Ps8Hashable", "appendFormat"]
+- !private ["Ps8Hashable", "appendString"]
+- !private ["Ps8Hashable", "archivedDataWithRootObject"]
+- !private ["Ps8Hashable", "characterAtIndex"]
+- !private ["Ps8Hashable", "characters"]
+- !private ["Ps8Hashable", "components"]
+- !private ["Ps8Hashable", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps8Hashable", "componentsSeparatedByString"]
+- !private ["Ps8Hashable", "currentCalendar"]
+- !private ["Ps8Hashable", "dataWithJSONObject"]
+- !private ["Ps8Hashable", "dateFormat"]
+- !private ["Ps8Hashable", "dateFromString"]
+- !private ["Ps8Hashable", "decimalDigitCharacterSet"]
+- !private ["Ps8Hashable", "delegate"]
+- !private ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "invertedSet"]
+- !private ["Ps8Hashable", "length"]
+- !private ["Ps8Hashable", "locale"]
+- !private ["Ps8Hashable", "objectForKey"]
+- !private ["Ps8Hashable", "panGestureRecognizer"]
+- !private ["Ps8Hashable", "revealToggle"]
+- !private ["Ps8Hashable", "revealViewController"]
+- !private ["Ps8Hashable", "setObject"]
+- !private ["Ps8Hashable", "standardUserDefaults"]
+- !private ["Ps8Hashable", "startIndex"]
+- !private ["Ps8Hashable", "stringByReplacingCharactersInRange"]
+- !private ["Ps8Hashable", "stringFromDate"]
+- !private ["Ps8Hashable", "subscript"]
+- !private ["Ps8Hashable", "substringFromIndex"]
+- !private ["Ps8Hashable", "substringToIndex"]
+- !private ["Ps8Hashable", "substringWithRange"]
+- !private ["Ps8Hashable", "synchronize"]
+- !private ["Ps8Hashable", "target"]
+- !private ["Ps8Hashable", "unarchiveObjectWithData"]
+- !private ["Ps8Hashable", "view"]
+- !private ["SQ", "deinit"]
+- !private ["VVSS13CharacterView5Index", "Distance"]
+- !private ["VVSS13CharacterView5Index", "advancedBy"]
+- !private ["Ps9Indexable", "Generator"]
+- !private ["Ps9Indexable", "Index"]
+- !private ["Ps9Indexable", "SubSequence"]
+- !private ["Ps9Indexable", "_Element"]
+- !private ["Ps9Indexable", "count"]
+- !private ["Ps9Indexable", "joinWithSeparator"]
+- !private ["Ps9Indexable", "subscript"]
+- !private ["Vs17IndexingGenerator", "Element"]
+- !private ["Si", "Distance"]
+- !private ["Si", "IntegerLiteralType"]
+- !private ["Si", "_DisabledRangeIndex"]
+- !private ["Ps21IntegerArithmeticType", "Distance"]
+- !private ["Ps21IntegerArithmeticType", "IntegerLiteralType"]
+- !private ["Ps21IntegerArithmeticType", "_DisabledRangeIndex"]
+- !private ["Ps25IntegerLiteralConvertible", "Distance"]
+- !private ["Ps25IntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps25IntegerLiteralConvertible", "_DisabledRangeIndex"]
+- !private ["Ps11IntegerType", "Distance"]
+- !private ["Ps11IntegerType", "IntegerLiteralType"]
+- !private ["Ps11IntegerType", "_DisabledRangeIndex"]
+- !private ["Ps14MirrorPathType", "Distance"]
+- !private ["Ps14MirrorPathType", "IntegerLiteralType"]
+- !private ["Ps14MirrorPathType", "_DisabledRangeIndex"]
+- !private ["Ps14MirrorPathType", "append"]
+- !private ["Ps14MirrorPathType", "characters"]
+- !private ["Ps14MirrorPathType", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps14MirrorPathType", "componentsSeparatedByString"]
+- !private ["Ps14MirrorPathType", "startIndex"]
+- !private ["Ps14MirrorPathType", "subscript"]
+- !private ["Ps14MirrorPathType", "substringFromIndex"]
+- !private ["Ps14MirrorPathType", "substringToIndex"]
+- !private ["Ps21MutableCollectionType", "Generator"]
+- !private ["Ps21MutableCollectionType", "Index"]
+- !private ["Ps21MutableCollectionType", "_Element"]
+- !private ["Ps21MutableCollectionType", "joinWithSeparator"]
+- !private ["Ps21MutableCollectionType", "subscript"]
+- !private ["Ps16MutableIndexable", "Generator"]
+- !private ["Ps16MutableIndexable", "Index"]
+- !private ["Ps16MutableIndexable", "_Element"]
+- !private ["Ps16MutableIndexable", "joinWithSeparator"]
+- !private ["Ps16MutableIndexable", "subscript"]
+- !private ["Ps16MutableSliceable", "Generator"]
+- !private ["Ps16MutableSliceable", "Index"]
+- !private ["Ps16MutableSliceable", "_Element"]
+- !private ["Ps16MutableSliceable", "joinWithSeparator"]
+- !private ["Ps16MutableSliceable", "subscript"]
+- !private ["CSo10NSCalendar", "components"]
+- !private ["CSo10NSCalendar", "currentCalendar"]
+- !private ["VSC14NSCalendarUnit", "Day"]
+- !private ["VSC14NSCalendarUnit", "Element"]
+- !private ["VSC14NSCalendarUnit", "Hour"]
+- !private ["VSC14NSCalendarUnit", "Minute"]
+- !private ["VSC14NSCalendarUnit", "Month"]
+- !private ["VSC14NSCalendarUnit", "Year"]
+- !private ["CSo14NSCharacterSet", "decimalDigitCharacterSet"]
+- !private ["CSo14NSCharacterSet", "invertedSet"]
+- !private ["CSo7NSCoder", "archivedDataWithRootObject"]
+- !private ["CSo7NSCoder", "unarchiveObjectWithData"]
+- !private ["PSo8NSCoding", "action"]
+- !private ["PSo8NSCoding", "addGestureRecognizer"]
+- !private ["PSo8NSCoding", "append"]
+- !private ["PSo8NSCoding", "appendFormat"]
+- !private ["PSo8NSCoding", "appendString"]
+- !private ["PSo8NSCoding", "characterAtIndex"]
+- !private ["PSo8NSCoding", "characters"]
+- !private ["PSo8NSCoding", "components"]
+- !private ["PSo8NSCoding", "componentsSeparatedByCharactersInSet"]
+- !private ["PSo8NSCoding", "componentsSeparatedByString"]
+- !private ["PSo8NSCoding", "currentCalendar"]
+- !private ["PSo8NSCoding", "dateFormat"]
+- !private ["PSo8NSCoding", "dateFromString"]
+- !private ["PSo8NSCoding", "decimalDigitCharacterSet"]
+- !private ["PSo8NSCoding", "delegate"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "invertedSet"]
+- !private ["PSo8NSCoding", "length"]
+- !private ["PSo8NSCoding", "locale"]
+- !private ["PSo8NSCoding", "panGestureRecognizer"]
+- !private ["PSo8NSCoding", "revealToggle"]
+- !private ["PSo8NSCoding", "revealViewController"]
+- !private ["PSo8NSCoding", "startIndex"]
+- !private ["PSo8NSCoding", "stringByReplacingCharactersInRange"]
+- !private ["PSo8NSCoding", "stringFromDate"]
+- !private ["PSo8NSCoding", "subscript"]
+- !private ["PSo8NSCoding", "substringFromIndex"]
+- !private ["PSo8NSCoding", "substringToIndex"]
+- !private ["PSo8NSCoding", "substringWithRange"]
+- !private ["PSo8NSCoding", "target"]
+- !private ["PSo8NSCoding", "view"]
+- !private ["PSo9NSCopying", "append"]
+- !private ["PSo9NSCopying", "appendFormat"]
+- !private ["PSo9NSCopying", "appendString"]
+- !private ["PSo9NSCopying", "characterAtIndex"]
+- !private ["PSo9NSCopying", "characters"]
+- !private ["PSo9NSCopying", "components"]
+- !private ["PSo9NSCopying", "componentsSeparatedByCharactersInSet"]
+- !private ["PSo9NSCopying", "componentsSeparatedByString"]
+- !private ["PSo9NSCopying", "currentCalendar"]
+- !private ["PSo9NSCopying", "dateFormat"]
+- !private ["PSo9NSCopying", "dateFromString"]
+- !private ["PSo9NSCopying", "decimalDigitCharacterSet"]
+- !private ["PSo9NSCopying", "deinit"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "invertedSet"]
+- !private ["PSo9NSCopying", "length"]
+- !private ["PSo9NSCopying", "locale"]
+- !private ["PSo9NSCopying", "startIndex"]
+- !private ["PSo9NSCopying", "stringByReplacingCharactersInRange"]
+- !private ["PSo9NSCopying", "stringFromDate"]
+- !private ["PSo9NSCopying", "subscript"]
+- !private ["PSo9NSCopying", "substringFromIndex"]
+- !private ["PSo9NSCopying", "substringToIndex"]
+- !private ["PSo9NSCopying", "substringWithRange"]
+- !private ["CSo6NSDate", "init"]
+- !private ["CSo15NSDateFormatter", "dateFormat"]
+- !private ["CSo15NSDateFormatter", "dateFromString"]
+- !private ["CSo15NSDateFormatter", "init"]
+- !private ["CSo15NSDateFormatter", "locale"]
+- !private ["CSo15NSDateFormatter", "stringFromDate"]
+- !private ["CSo12NSDictionary", "subscript"]
+- !private ["PSo26NSExtensionRequestHandling", "delegate"]
+- !private ["PSo26NSExtensionRequestHandling", "panGestureRecognizer"]
+- !private ["PSo26NSExtensionRequestHandling", "revealToggle"]
+- !private ["PSo26NSExtensionRequestHandling", "revealViewController"]
+- !private ["PSo26NSExtensionRequestHandling", "view"]
+- !private ["PSo17NSFastEnumeration", "subscript"]
+- !private ["CSo11NSFormatter", "dateFormat"]
+- !private ["CSo11NSFormatter", "dateFromString"]
+- !private ["CSo11NSFormatter", "init"]
+- !private ["CSo11NSFormatter", "locale"]
+- !private ["CSo11NSFormatter", "stringFromDate"]
+- !private ["CSo19NSJSONSerialization", "dataWithJSONObject"]
+- !private ["VSC20NSJSONWritingOptions", "PrettyPrinted"]
+- !private ["CSo15NSKeyedArchiver", "archivedDataWithRootObject"]
+- !private ["CSo17NSKeyedUnarchiver", "unarchiveObjectWithData"]
+- !private ["CSo8NSLocale", "init"]
+- !private ["PSo16NSMutableCopying", "append"]
+- !private ["PSo16NSMutableCopying", "appendFormat"]
+- !private ["PSo16NSMutableCopying", "appendString"]
+- !private ["PSo16NSMutableCopying", "characterAtIndex"]
+- !private ["PSo16NSMutableCopying", "characters"]
+- !private ["PSo16NSMutableCopying", "componentsSeparatedByCharactersInSet"]
+- !private ["PSo16NSMutableCopying", "componentsSeparatedByString"]
+- !private ["PSo16NSMutableCopying", "decimalDigitCharacterSet"]
+- !private ["PSo16NSMutableCopying", "init"]
+- !private ["PSo16NSMutableCopying", "invertedSet"]
+- !private ["PSo16NSMutableCopying", "length"]
+- !private ["PSo16NSMutableCopying", "startIndex"]
+- !private ["PSo16NSMutableCopying", "stringByReplacingCharactersInRange"]
+- !private ["PSo16NSMutableCopying", "subscript"]
+- !private ["PSo16NSMutableCopying", "substringFromIndex"]
+- !private ["PSo16NSMutableCopying", "substringToIndex"]
+- !private ["PSo16NSMutableCopying", "substringWithRange"]
+- !private ["CSo15NSMutableString", "appendFormat"]
+- !private ["CSo15NSMutableString", "appendString"]
+- !private ["CSo15NSMutableString", "deinit"]
+- !private ["CSo15NSMutableString", "init"]
+- !private ["CSo8NSObject", "action"]
+- !private ["CSo8NSObject", "addGestureRecognizer"]
+- !private ["CSo8NSObject", "append"]
+- !private ["CSo8NSObject", "appendFormat"]
+- !private ["CSo8NSObject", "appendString"]
+- !private ["CSo8NSObject", "archivedDataWithRootObject"]
+- !private ["CSo8NSObject", "characterAtIndex"]
+- !private ["CSo8NSObject", "characters"]
+- !private ["CSo8NSObject", "components"]
+- !private ["CSo8NSObject", "componentsSeparatedByCharactersInSet"]
+- !private ["CSo8NSObject", "componentsSeparatedByString"]
+- !private ["CSo8NSObject", "currentCalendar"]
+- !private ["CSo8NSObject", "dataWithJSONObject"]
+- !private ["CSo8NSObject", "dateFormat"]
+- !private ["CSo8NSObject", "dateFromString"]
+- !private ["CSo8NSObject", "decimalDigitCharacterSet"]
+- !private ["CSo8NSObject", "deinit"]
+- !private ["CSo8NSObject", "delegate"]
+- !private ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "invertedSet"]
+- !private ["CSo8NSObject", "length"]
+- !private ["CSo8NSObject", "locale"]
+- !private ["CSo8NSObject", "objectForKey"]
+- !private ["CSo8NSObject", "panGestureRecognizer"]
+- !private ["CSo8NSObject", "revealToggle"]
+- !private ["CSo8NSObject", "revealViewController"]
+- !private ["CSo8NSObject", "setObject"]
+- !private ["CSo8NSObject", "standardUserDefaults"]
+- !private ["CSo8NSObject", "startIndex"]
+- !private ["CSo8NSObject", "stringByReplacingCharactersInRange"]
+- !private ["CSo8NSObject", "stringFromDate"]
+- !private ["CSo8NSObject", "subscript"]
+- !private ["CSo8NSObject", "substringFromIndex"]
+- !private ["CSo8NSObject", "substringToIndex"]
+- !private ["CSo8NSObject", "substringWithRange"]
+- !private ["CSo8NSObject", "synchronize"]
+- !private ["CSo8NSObject", "target"]
+- !private ["CSo8NSObject", "unarchiveObjectWithData"]
+- !private ["CSo8NSObject", "view"]
+- !private ["PSo16NSObjectProtocol", "action"]
+- !private ["PSo16NSObjectProtocol", "addGestureRecognizer"]
+- !private ["PSo16NSObjectProtocol", "append"]
+- !private ["PSo16NSObjectProtocol", "appendFormat"]
+- !private ["PSo16NSObjectProtocol", "appendString"]
+- !private ["PSo16NSObjectProtocol", "archivedDataWithRootObject"]
+- !private ["PSo16NSObjectProtocol", "characterAtIndex"]
+- !private ["PSo16NSObjectProtocol", "characters"]
+- !private ["PSo16NSObjectProtocol", "components"]
+- !private ["PSo16NSObjectProtocol", "componentsSeparatedByCharactersInSet"]
+- !private ["PSo16NSObjectProtocol", "componentsSeparatedByString"]
+- !private ["PSo16NSObjectProtocol", "currentCalendar"]
+- !private ["PSo16NSObjectProtocol", "dataWithJSONObject"]
+- !private ["PSo16NSObjectProtocol", "dateFormat"]
+- !private ["PSo16NSObjectProtocol", "dateFromString"]
+- !private ["PSo16NSObjectProtocol", "decimalDigitCharacterSet"]
+- !private ["PSo16NSObjectProtocol", "delegate"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "invertedSet"]
+- !private ["PSo16NSObjectProtocol", "length"]
+- !private ["PSo16NSObjectProtocol", "locale"]
+- !private ["PSo16NSObjectProtocol", "objectForKey"]
+- !private ["PSo16NSObjectProtocol", "panGestureRecognizer"]
+- !private ["PSo16NSObjectProtocol", "revealToggle"]
+- !private ["PSo16NSObjectProtocol", "revealViewController"]
+- !private ["PSo16NSObjectProtocol", "setObject"]
+- !private ["PSo16NSObjectProtocol", "standardUserDefaults"]
+- !private ["PSo16NSObjectProtocol", "startIndex"]
+- !private ["PSo16NSObjectProtocol", "stringByReplacingCharactersInRange"]
+- !private ["PSo16NSObjectProtocol", "stringFromDate"]
+- !private ["PSo16NSObjectProtocol", "subscript"]
+- !private ["PSo16NSObjectProtocol", "substringFromIndex"]
+- !private ["PSo16NSObjectProtocol", "substringToIndex"]
+- !private ["PSo16NSObjectProtocol", "substringWithRange"]
+- !private ["PSo16NSObjectProtocol", "synchronize"]
+- !private ["PSo16NSObjectProtocol", "target"]
+- !private ["PSo16NSObjectProtocol", "unarchiveObjectWithData"]
+- !private ["PSo16NSObjectProtocol", "view"]
+- !private ["PSo14NSSecureCoding", "append"]
+- !private ["PSo14NSSecureCoding", "appendFormat"]
+- !private ["PSo14NSSecureCoding", "appendString"]
+- !private ["PSo14NSSecureCoding", "characterAtIndex"]
+- !private ["PSo14NSSecureCoding", "characters"]
+- !private ["PSo14NSSecureCoding", "components"]
+- !private ["PSo14NSSecureCoding", "componentsSeparatedByCharactersInSet"]
+- !private ["PSo14NSSecureCoding", "componentsSeparatedByString"]
+- !private ["PSo14NSSecureCoding", "currentCalendar"]
+- !private ["PSo14NSSecureCoding", "init"]
+- !private ["PSo14NSSecureCoding", "length"]
+- !private ["PSo14NSSecureCoding", "startIndex"]
+- !private ["PSo14NSSecureCoding", "stringByReplacingCharactersInRange"]
+- !private ["PSo14NSSecureCoding", "subscript"]
+- !private ["PSo14NSSecureCoding", "substringFromIndex"]
+- !private ["PSo14NSSecureCoding", "substringToIndex"]
+- !private ["PSo14NSSecureCoding", "substringWithRange"]
+- !private ["CSo8NSString", "append"]
+- !private ["CSo8NSString", "appendFormat"]
+- !private ["CSo8NSString", "appendString"]
+- !private ["CSo8NSString", "characterAtIndex"]
+- !private ["CSo8NSString", "characters"]
+- !private ["CSo8NSString", "componentsSeparatedByCharactersInSet"]
+- !private ["CSo8NSString", "componentsSeparatedByString"]
+- !private ["CSo8NSString", "deinit"]
+- !private ["CSo8NSString", "init"]
+- !private ["CSo8NSString", "length"]
+- !private ["CSo8NSString", "startIndex"]
+- !private ["CSo8NSString", "stringByReplacingCharactersInRange"]
+- !private ["CSo8NSString", "subscript"]
+- !private ["CSo8NSString", "substringFromIndex"]
+- !private ["CSo8NSString", "substringToIndex"]
+- !private ["CSo8NSString", "substringWithRange"]
+- !private ["CSo14NSUserDefaults", "objectForKey"]
+- !private ["CSo14NSUserDefaults", "setObject"]
+- !private ["CSo14NSUserDefaults", "standardUserDefaults"]
+- !private ["CSo14NSUserDefaults", "synchronize"]
+- ["Ps21NilLiteralConvertible", "Some"]
+- !private ["Ps13OptionSetType", "Day"]
+- !private ["Ps13OptionSetType", "Element"]
+- !private ["Ps13OptionSetType", "Hour"]
+- !private ["Ps13OptionSetType", "Minute"]
+- !private ["Ps13OptionSetType", "Month"]
+- !private ["Ps13OptionSetType", "PrettyPrinted"]
+- !private ["Ps13OptionSetType", "Year"]
+- ["Sq", "Some"]
+- !private ["Sq", "deinit"]
+- !private ["Ps16OutputStreamType", "append"]
+- !private ["Ps16OutputStreamType", "characters"]
+- !private ["Ps16OutputStreamType", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps16OutputStreamType", "componentsSeparatedByString"]
+- !private ["Ps16OutputStreamType", "startIndex"]
+- !private ["Ps16OutputStreamType", "subscript"]
+- !private ["Ps16OutputStreamType", "substringFromIndex"]
+- !private ["Ps16OutputStreamType", "substringToIndex"]
+- ["CC3Cru11GlobalUtils8PhoneRes", "deinit"]
+- ["CC3Cru11GlobalUtils8PhoneRes", "init"]
+- ["CC3Cru11GlobalUtils8PhoneRes", "newText"]
+- ["CC3Cru11GlobalUtils8PhoneRes", "shouldChange"]
+- !private ["Ps21RandomAccessIndexType", "Distance"]
+- !private ["Ps21RandomAccessIndexType", "IntegerLiteralType"]
+- !private ["Ps21RandomAccessIndexType", "_DisabledRangeIndex"]
+- !private ["Vs5Range", "Generator"]
+- !private ["Vs14RangeGenerator", "Element"]
+- !private ["Ps30RangeReplaceableCollectionType", "Generator"]
+- !private ["Ps30RangeReplaceableCollectionType", "Index"]
+- !private ["Ps30RangeReplaceableCollectionType", "SubSequence"]
+- !private ["Ps30RangeReplaceableCollectionType", "_Element"]
+- !private ["Ps30RangeReplaceableCollectionType", "count"]
+- !private ["Ps30RangeReplaceableCollectionType", "joinWithSeparator"]
+- !private ["Ps30RangeReplaceableCollectionType", "subscript"]
+- !private ["Ps16RawRepresentable", "Day"]
+- !private ["Ps16RawRepresentable", "Element"]
+- !private ["Ps16RawRepresentable", "Hour"]
+- !private ["Ps16RawRepresentable", "Minute"]
+- !private ["Ps16RawRepresentable", "Month"]
+- !private ["Ps16RawRepresentable", "PrettyPrinted"]
+- !private ["Ps16RawRepresentable", "Year"]
+- !private ["CSo22SWRevealViewController", "deinit"]
+- !private ["CSo22SWRevealViewController", "delegate"]
+- !private ["CSo22SWRevealViewController", "panGestureRecognizer"]
+- !private ["CSo22SWRevealViewController", "revealToggle"]
+- !private ["V10ObjectiveC8Selector", "deinit"]
+- !private ["Ps12SequenceType", "Element"]
+- !private ["Ps12SequenceType", "Generator"]
+- !private ["Ps12SequenceType", "Index"]
+- !private ["Ps12SequenceType", "SubSequence"]
+- !private ["Ps12SequenceType", "_Element"]
+- !private ["Ps12SequenceType", "count"]
+- !private ["Ps12SequenceType", "joinWithSeparator"]
+- !private ["Ps12SequenceType", "subscript"]
+- !private ["Ps14SetAlgebraType", "Day"]
+- !private ["Ps14SetAlgebraType", "Element"]
+- !private ["Ps14SetAlgebraType", "Hour"]
+- !private ["Ps14SetAlgebraType", "Minute"]
+- !private ["Ps14SetAlgebraType", "Month"]
+- !private ["Ps14SetAlgebraType", "PrettyPrinted"]
+- !private ["Ps14SetAlgebraType", "Year"]
+- !private ["Ps17SignedIntegerType", "Distance"]
+- !private ["Ps17SignedIntegerType", "IntegerLiteralType"]
+- !private ["Ps17SignedIntegerType", "_DisabledRangeIndex"]
+- !private ["Ps16SignedNumberType", "Distance"]
+- !private ["Ps16SignedNumberType", "IntegerLiteralType"]
+- !private ["Ps16SignedNumberType", "_DisabledRangeIndex"]
+- !private ["Vs5Slice", "Generator"]
+- !private ["Vs5Slice", "Index"]
+- !private ["Vs5Slice", "SubSequence"]
+- !private ["Vs5Slice", "_Element"]
+- !private ["Ps10Streamable", "append"]
+- !private ["Ps10Streamable", "characters"]
+- !private ["Ps10Streamable", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps10Streamable", "componentsSeparatedByString"]
+- !private ["Ps10Streamable", "startIndex"]
+- !private ["Ps10Streamable", "subscript"]
+- !private ["Ps10Streamable", "substringFromIndex"]
+- !private ["Ps10Streamable", "substringToIndex"]
+- !private ["Ps10Strideable", "Distance"]
+- !private ["Ps10Strideable", "IntegerLiteralType"]
+- !private ["Ps10Strideable", "_DisabledRangeIndex"]
+- !private ["SS", "append"]
+- !private ["SS", "characters"]
+- !private ["SS", "componentsSeparatedByCharactersInSet"]
+- !private ["SS", "componentsSeparatedByString"]
+- !private ["SS", "deinit"]
+- !private ["SS", "startIndex"]
+- !private ["SS", "subscript"]
+- !private ["SS", "substringFromIndex"]
+- !private ["SS", "substringToIndex"]
+- !private ["Ps30StringInterpolationConvertible", "append"]
+- !private ["Ps30StringInterpolationConvertible", "characters"]
+- !private ["Ps30StringInterpolationConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps30StringInterpolationConvertible", "componentsSeparatedByString"]
+- !private ["Ps30StringInterpolationConvertible", "startIndex"]
+- !private ["Ps30StringInterpolationConvertible", "subscript"]
+- !private ["Ps30StringInterpolationConvertible", "substringFromIndex"]
+- !private ["Ps30StringInterpolationConvertible", "substringToIndex"]
+- !private ["Ps24StringLiteralConvertible", "append"]
+- !private ["Ps24StringLiteralConvertible", "appendFormat"]
+- !private ["Ps24StringLiteralConvertible", "appendString"]
+- !private ["Ps24StringLiteralConvertible", "characterAtIndex"]
+- !private ["Ps24StringLiteralConvertible", "characters"]
+- !private ["Ps24StringLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps24StringLiteralConvertible", "componentsSeparatedByString"]
+- !private ["Ps24StringLiteralConvertible", "init"]
+- !private ["Ps24StringLiteralConvertible", "length"]
+- !private ["Ps24StringLiteralConvertible", "startIndex"]
+- !private ["Ps24StringLiteralConvertible", "stringByReplacingCharactersInRange"]
+- !private ["Ps24StringLiteralConvertible", "subscript"]
+- !private ["Ps24StringLiteralConvertible", "substringFromIndex"]
+- !private ["Ps24StringLiteralConvertible", "substringToIndex"]
+- !private ["Ps24StringLiteralConvertible", "substringWithRange"]
+- !private ["PSo29UIAccessibilityIdentification", "action"]
+- !private ["PSo29UIAccessibilityIdentification", "addGestureRecognizer"]
+- !private ["PSo29UIAccessibilityIdentification", "target"]
+- !private ["PSo12UIAppearance", "action"]
+- !private ["PSo12UIAppearance", "addGestureRecognizer"]
+- !private ["PSo12UIAppearance", "target"]
+- !private ["PSo21UIAppearanceContainer", "addGestureRecognizer"]
+- !private ["PSo21UIAppearanceContainer", "delegate"]
+- !private ["PSo21UIAppearanceContainer", "panGestureRecognizer"]
+- !private ["PSo21UIAppearanceContainer", "revealToggle"]
+- !private ["PSo21UIAppearanceContainer", "revealViewController"]
+- !private ["PSo21UIAppearanceContainer", "view"]
+- !private ["CSo15UIBarButtonItem", "action"]
+- !private ["CSo15UIBarButtonItem", "target"]
+- !private ["CSo9UIBarItem", "action"]
+- !private ["CSo9UIBarItem", "target"]
+- !private ["PSo18UIContentContainer", "delegate"]
+- !private ["PSo18UIContentContainer", "panGestureRecognizer"]
+- !private ["PSo18UIContentContainer", "revealToggle"]
+- !private ["PSo18UIContentContainer", "revealViewController"]
+- !private ["PSo18UIContentContainer", "view"]
+- !private ["PSo17UICoordinateSpace", "addGestureRecognizer"]
+- !private ["PSo13UIDynamicItem", "addGestureRecognizer"]
+- !private ["PSo18UIFocusEnvironment", "addGestureRecognizer"]
+- !private ["PSo18UIFocusEnvironment", "delegate"]
+- !private ["PSo18UIFocusEnvironment", "panGestureRecognizer"]
+- !private ["PSo18UIFocusEnvironment", "revealToggle"]
+- !private ["PSo18UIFocusEnvironment", "revealViewController"]
+- !private ["PSo18UIFocusEnvironment", "view"]
+- !private ["CSo11UIResponder", "addGestureRecognizer"]
+- !private ["CSo11UIResponder", "deinit"]
+- !private ["CSo11UIResponder", "delegate"]
+- !private ["CSo11UIResponder", "panGestureRecognizer"]
+- !private ["CSo11UIResponder", "revealToggle"]
+- !private ["CSo11UIResponder", "revealViewController"]
+- !private ["CSo11UIResponder", "view"]
+- !private ["PSo16UIStateRestoring", "delegate"]
+- !private ["PSo16UIStateRestoring", "panGestureRecognizer"]
+- !private ["PSo16UIStateRestoring", "revealToggle"]
+- !private ["PSo16UIStateRestoring", "revealViewController"]
+- !private ["PSo16UIStateRestoring", "view"]
+- !private ["PSo18UITraitEnvironment", "addGestureRecognizer"]
+- !private ["PSo18UITraitEnvironment", "delegate"]
+- !private ["PSo18UITraitEnvironment", "panGestureRecognizer"]
+- !private ["PSo18UITraitEnvironment", "revealToggle"]
+- !private ["PSo18UITraitEnvironment", "revealViewController"]
+- !private ["PSo18UITraitEnvironment", "view"]
+- !private ["CSo6UIView", "addGestureRecognizer"]
+- !private ["CSo16UIViewController", "deinit"]
+- !private ["CSo16UIViewController", "delegate"]
+- !private ["CSo16UIViewController", "panGestureRecognizer"]
+- !private ["CSo16UIViewController", "revealToggle"]
+- !private ["CSo16UIViewController", "revealViewController"]
+- !private ["CSo16UIViewController", "view"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "append"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "characters"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "componentsSeparatedByString"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "startIndex"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "subscript"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "substringFromIndex"]
+- !private ["P11ImageLoader21URLLiteralConvertible", "substringToIndex"]
+- !private ["P9Alamofire20URLStringConvertible", "append"]
+- !private ["P9Alamofire20URLStringConvertible", "characters"]
+- !private ["P9Alamofire20URLStringConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["P9Alamofire20URLStringConvertible", "componentsSeparatedByString"]
+- !private ["P9Alamofire20URLStringConvertible", "startIndex"]
+- !private ["P9Alamofire20URLStringConvertible", "subscript"]
+- !private ["P9Alamofire20URLStringConvertible", "substringFromIndex"]
+- !private ["P9Alamofire20URLStringConvertible", "substringToIndex"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "append"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "appendFormat"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "appendString"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "characterAtIndex"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "characters"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "componentsSeparatedByString"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "init"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "length"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "startIndex"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "stringByReplacingCharactersInRange"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "subscript"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "substringFromIndex"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "substringToIndex"]
+- !private ["Ps31UnicodeScalarLiteralConvertible", "substringWithRange"]
+- !private ["Ps10_ArrayType", "Generator"]
+- !private ["Ps10_ArrayType", "Index"]
+- !private ["Ps10_ArrayType", "_Element"]
+- !private ["Ps10_ArrayType", "joinWithSeparator"]
+- !private ["Ps10_ArrayType", "subscript"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "append"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "characters"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "componentsSeparatedByString"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "startIndex"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "subscript"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "substringFromIndex"]
+- !private ["Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible", "substringToIndex"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "Distance"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "_DisabledRangeIndex"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "append"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "characters"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "componentsSeparatedByString"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "startIndex"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "subscript"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "substringFromIndex"]
+- !private ["Ps32_BuiltinStringLiteralConvertible", "substringToIndex"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "append"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "characters"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "componentsSeparatedByString"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "startIndex"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "subscript"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "substringFromIndex"]
+- !private ["Ps37_BuiltinUTF16StringLiteralConvertible", "substringToIndex"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "append"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "characters"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "componentsSeparatedByString"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "startIndex"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "subscript"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "substringFromIndex"]
+- !private ["Ps39_BuiltinUnicodeScalarLiteralConvertible", "substringToIndex"]
+- !private ["Ps24_DestructorSafeContainer", "Generator"]
+- !private ["Ps24_DestructorSafeContainer", "Index"]
+- !private ["Ps24_DestructorSafeContainer", "_Element"]
+- !private ["Ps24_DestructorSafeContainer", "joinWithSeparator"]
+- !private ["Ps24_DestructorSafeContainer", "subscript"]
+- !private ["Ps14_Incrementable", "Distance"]
+- !private ["Ps14_Incrementable", "IntegerLiteralType"]
+- !private ["Ps14_Incrementable", "_DisabledRangeIndex"]
+- !private ["Ps14_Incrementable", "advancedBy"]
+- !private ["Ps22_IntegerArithmeticType", "Distance"]
+- !private ["Ps22_IntegerArithmeticType", "IntegerLiteralType"]
+- !private ["Ps22_IntegerArithmeticType", "_DisabledRangeIndex"]
+- !private ["Ps12_IntegerType", "Distance"]
+- !private ["Ps12_IntegerType", "IntegerLiteralType"]
+- !private ["Ps12_IntegerType", "_DisabledRangeIndex"]
+- !private ["VSC8_NSRange", "length"]
+- !private ["VSC8_NSRange", "location"]
+- !private ["Ps21_ObjectiveCBridgeable", "Distance"]
+- !private ["Ps21_ObjectiveCBridgeable", "Generator"]
+- !private ["Ps21_ObjectiveCBridgeable", "Index"]
+- !private ["Ps21_ObjectiveCBridgeable", "IntegerLiteralType"]
+- !private ["Ps21_ObjectiveCBridgeable", "_DisabledRangeIndex"]
+- !private ["Ps21_ObjectiveCBridgeable", "_Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps21_ObjectiveCBridgeable", "append"]
+- !private ["Ps21_ObjectiveCBridgeable", "characters"]
+- !private ["Ps21_ObjectiveCBridgeable", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps21_ObjectiveCBridgeable", "componentsSeparatedByString"]
+- !private ["Ps21_ObjectiveCBridgeable", "joinWithSeparator"]
+- !private ["Ps21_ObjectiveCBridgeable", "length"]
+- !private ["Ps21_ObjectiveCBridgeable", "location"]
+- !private ["Ps21_ObjectiveCBridgeable", "startIndex"]
+- !private ["Ps21_ObjectiveCBridgeable", "subscript"]
+- !private ["Ps21_ObjectiveCBridgeable", "substringFromIndex"]
+- !private ["Ps21_ObjectiveCBridgeable", "substringToIndex"]
+- !private ["Vs26_OptionalNilComparisonType", "deinit"]
+- !private ["Ps22_RandomAccessAmbiguity", "Distance"]
+- !private ["Ps22_RandomAccessAmbiguity", "IntegerLiteralType"]
+- !private ["Ps22_RandomAccessAmbiguity", "_DisabledRangeIndex"]
+- !private ["Ps12_Reflectable", "Distance"]
+- !private ["Ps12_Reflectable", "Generator"]
+- !private ["Ps12_Reflectable", "Index"]
+- !private ["Ps12_Reflectable", "IntegerLiteralType"]
+- ["Ps12_Reflectable", "Some"]
+- !private ["Ps12_Reflectable", "_DisabledRangeIndex"]
+- !private ["Ps12_Reflectable", "_Element"]
+- !private ["Ps12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["Ps12_Reflectable", "addGestureRecognizer"]
+- !private ["Ps12_Reflectable", "advancedBy"]
+- !private ["Ps12_Reflectable", "append"]
+- !private ["Ps12_Reflectable", "appendFormat"]
+- !private ["Ps12_Reflectable", "appendString"]
+- !private ["Ps12_Reflectable", "characterAtIndex"]
+- !private ["Ps12_Reflectable", "characters"]
+- !private ["Ps12_Reflectable", "componentsSeparatedByCharactersInSet"]
+- !private ["Ps12_Reflectable", "componentsSeparatedByString"]
+- !private ["Ps12_Reflectable", "init"]
+- !private ["Ps12_Reflectable", "joinWithSeparator"]
+- !private ["Ps12_Reflectable", "length"]
+- !private ["Ps12_Reflectable", "location"]
+- !private ["Ps12_Reflectable", "startIndex"]
+- !private ["Ps12_Reflectable", "stringByReplacingCharactersInRange"]
+- !private ["Ps12_Reflectable", "subscript"]
+- !private ["Ps12_Reflectable", "substringFromIndex"]
+- !private ["Ps12_Reflectable", "substringToIndex"]
+- !private ["Ps12_Reflectable", "substringWithRange"]
+- !private ["Ps18_SignedIntegerType", "Distance"]
+- !private ["Ps18_SignedIntegerType", "IntegerLiteralType"]
+- !private ["Ps18_SignedIntegerType", "_DisabledRangeIndex"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Sa"
+- !private "Ps23ArrayLiteralConvertible"
+- !private "Ps22BidirectionalIndexType"
+- !private "Ps21BitwiseOperationsType"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "Ps11CVarArgType"
+- !private "VSS13CharacterView"
+- !private "Ps14CollectionType"
+- !private "Ps10Comparable"
+- "Ps28CustomDebugStringConvertible"
+- !private "Ps23CustomStringConvertible"
+- !private "Ps28DictionaryLiteralConvertible"
+- !private "Ps9Equatable"
+- !private "Ps41ExtendedGraphemeClusterLiteralConvertible"
+- !private "Ps16ForwardIndexType"
+- !private "Ps13GeneratorType"
+- "C3Cru11GlobalUtils"
+- !private "Vs16HalfOpenInterval"
+- !private "Ps8Hashable"
+- !private "SQ"
+- !private "VVSS13CharacterView5Index"
+- !private "Ps9Indexable"
+- !private "Vs17IndexingGenerator"
+- !private "Si"
+- !private "Ps21IntegerArithmeticType"
+- !private "Ps25IntegerLiteralConvertible"
+- !private "Ps11IntegerType"
+- !private "Ps14MirrorPathType"
+- !private "Ps21MutableCollectionType"
+- !private "Ps16MutableIndexable"
+- !private "Ps16MutableSliceable"
+- !private "CSo10NSCalendar"
+- !private "VSC14NSCalendarUnit"
+- !private "CSo14NSCharacterSet"
+- !private "CSo7NSCoder"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "CSo6NSDate"
+- !private "CSo15NSDateFormatter"
+- !private "CSo12NSDictionary"
+- !private "PSo26NSExtensionRequestHandling"
+- !private "PSo17NSFastEnumeration"
+- !private "CSo11NSFormatter"
+- !private "CSo19NSJSONSerialization"
+- !private "VSC20NSJSONWritingOptions"
+- !private "CSo15NSKeyedArchiver"
+- !private "CSo17NSKeyedUnarchiver"
+- !private "CSo8NSLocale"
+- !private "PSo16NSMutableCopying"
+- !private "CSo15NSMutableString"
+- !private "CSo8NSObject"
+- !private "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "CSo8NSString"
+- !private "CSo14NSUserDefaults"
+- "Ps21NilLiteralConvertible"
+- !private "Ps13OptionSetType"
+- "Sq"
+- !private "Ps16OutputStreamType"
+- "CC3Cru11GlobalUtils8PhoneRes"
+- !private "Ps21RandomAccessIndexType"
+- !private "Vs5Range"
+- !private "Vs14RangeGenerator"
+- !private "Ps30RangeReplaceableCollectionType"
+- !private "Ps16RawRepresentable"
+- !private "CSo22SWRevealViewController"
+- !private "V10ObjectiveC8Selector"
+- !private "Ps12SequenceType"
+- !private "Ps14SetAlgebraType"
+- !private "Ps17SignedIntegerType"
+- !private "Ps16SignedNumberType"
+- !private "Vs5Slice"
+- !private "Ps10Streamable"
+- !private "Ps10Strideable"
+- !private "SS"
+- !private "Ps30StringInterpolationConvertible"
+- !private "Ps24StringLiteralConvertible"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- !private "PSo21UIAppearanceContainer"
+- !private "CSo15UIBarButtonItem"
+- !private "CSo9UIBarItem"
+- !private "PSo18UIContentContainer"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- !private "PSo18UIFocusEnvironment"
+- !private "CSo11UIResponder"
+- !private "PSo16UIStateRestoring"
+- !private "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- !private "CSo16UIViewController"
+- !private "P11ImageLoader21URLLiteralConvertible"
+- !private "P9Alamofire20URLStringConvertible"
+- !private "Ps31UnicodeScalarLiteralConvertible"
+- !private "Ps10_ArrayType"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps49_BuiltinExtendedGraphemeClusterLiteralConvertible"
+- !private "Ps33_BuiltinIntegerLiteralConvertible"
+- !private "Ps32_BuiltinStringLiteralConvertible"
+- !private "Ps37_BuiltinUTF16StringLiteralConvertible"
+- !private "Ps39_BuiltinUnicodeScalarLiteralConvertible"
+- !private "Ps24_DestructorSafeContainer"
+- !private "Ps14_Incrementable"
+- !private "Ps22_IntegerArithmeticType"
+- !private "Ps12_IntegerType"
+- !private "VSC8_NSRange"
+- !private "Ps21_ObjectiveCBridgeable"
+- !private "Vs26_OptionalNilComparisonType"
+- !private "Ps22_RandomAccessAmbiguity"
+- "Ps12_Reflectable"
+- !private "Ps18_SignedIntegerType"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/Cru-Bridging-Header.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/Core.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLErrorCode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GMRConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMPubSub.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMService.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext+CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDHeaders.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceID.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GoogleCloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMReceiverDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/SWRevealViewController.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressHelper.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/UIImage+MRImageEffects.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRBlurView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressOverlayView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRNavigationBarProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRIconView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRCircularProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopableView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRActivityIndicatorView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/UIScrollView+EmptyDataSet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/SwiftValidator.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/Alamofire.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/SignIn-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Core-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/CloudMessaging-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AppInvite-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Analytics-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AdMob-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/SideMenu.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreData.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/WildcardSDK.framework/Modules/WildcardSDK.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/WebKit.swiftmodule"
+- "./WildcardSDK.framework/Headers/WildcardSDK-Swift.h"
+- "./WildcardSDK.framework/Headers/YTVimeoExtractor.h"
+- "./WildcardSDK.framework/Headers/YTPlayerView.h"
+- "./WildcardSDK.framework/Headers/WCElementType.h"
+- "./WildcardSDK.framework/Headers/WCErrorCode.h"
+- "./WildcardSDK.framework/Headers/WCAnalytics.h"
+- "./WildcardSDK.framework/Headers/WCCardAction.h"
+- "./WildcardSDK.framework/Headers/WCCardType.h"
+- "./WildcardSDK.framework/Headers/WCCardLayout.h"
+- "./WildcardSDK.framework/Headers/WildcardSDK.h"
+- "./WildcardSDK.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/IQKeyboardManagerSwift.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/Fabric.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Answers.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Headers/Appsee.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTreeEnumerator.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizerState.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizer.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLString.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/NSString+HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTextNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSerialization.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSelector.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLPreprocessedInputStream.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLParser.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLOrderedDictionary.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEncoding.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLQuirksMode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLElement.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocumentType.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocument.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSupport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNamespace.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLComment.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/SWActionSheet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetMultipleStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetLocalePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/DistancePickerView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDistancePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDatePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPickerDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/AbstractActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker-3.0-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/LocationPicker.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/ImageLoader.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/EventKit.swiftmodule"
+interface-hash: "71b460d2c14148421127b31e9b21e5ab"

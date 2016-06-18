@@ -1,0 +1,5 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "89e73d4589090a668e97e7fd9167d6af"
+build_time: [519523828, 671075000]
+inputs:
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/DatePickerCell/Source/DatePickerCell.swift": [519434808, 0]

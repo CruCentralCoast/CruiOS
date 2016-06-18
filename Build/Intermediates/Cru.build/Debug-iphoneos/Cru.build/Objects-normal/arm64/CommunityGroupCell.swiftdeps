@@ -1,0 +1,527 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "CommunityGroupCell"
+provides-nominal:
+- "C3Cru18CommunityGroupCell"
+provides-member:
+- ["C3Cru18CommunityGroupCell", ""]
+provides-dynamic-lookup:
+- "meetingTime"
+- "name"
+- "setSignupCallback"
+- "signUpPressed"
+- "descript"
+depends-top-level:
+- !private "Config"
+- "UITextView"
+- "CommunityGroup"
+- !private "GlobalUtils"
+- "UITableViewCell"
+- "Void"
+- "CommunityGroupCell"
+- "AnyObject"
+- "UILabel"
+depends-member:
+- !private ["Ps9AnyObject", "Config"]
+- !private ["Ps9AnyObject", "GlobalUtils"]
+- ["Ps9AnyObject", "descript"]
+- !private ["Ps9AnyObject", "description"]
+- !private ["Ps9AnyObject", "getMeetingTime"]
+- ["Ps9AnyObject", "group"]
+- !private ["Ps9AnyObject", "id"]
+- ["Ps9AnyObject", "init"]
+- ["Ps9AnyObject", "meetingTime"]
+- ["Ps9AnyObject", "name"]
+- !private ["Ps9AnyObject", "saveString"]
+- ["Ps9AnyObject", "setGroup"]
+- ["Ps9AnyObject", "setSignupCallback"]
+- ["Ps9AnyObject", "signUpPressed"]
+- ["Ps9AnyObject", "signupCallback"]
+- !private ["Ps9AnyObject", "text"]
+- ["Ps9AnyObject", ""]
+- !private ["Ps11CVarArgType", "Config"]
+- !private ["Ps11CVarArgType", "GlobalUtils"]
+- ["Ps11CVarArgType", "descript"]
+- ["Ps11CVarArgType", "group"]
+- ["Ps11CVarArgType", "init"]
+- ["Ps11CVarArgType", "meetingTime"]
+- ["Ps11CVarArgType", "name"]
+- ["Ps11CVarArgType", "setGroup"]
+- ["Ps11CVarArgType", "setSignupCallback"]
+- ["Ps11CVarArgType", "signUpPressed"]
+- ["Ps11CVarArgType", "signupCallback"]
+- !private ["Ps11CVarArgType", "text"]
+- ["Ps11CVarArgType", ""]
+- !private ["C3Cru14CommunityGroup", "description"]
+- !private ["C3Cru14CommunityGroup", "getMeetingTime"]
+- !private ["C3Cru14CommunityGroup", "id"]
+- !private ["C3Cru14CommunityGroup", "name"]
+- ["C3Cru18CommunityGroupCell", "AnyObject"]
+- ["C3Cru18CommunityGroupCell", "CommunityGroup"]
+- !private ["C3Cru18CommunityGroupCell", "Config"]
+- !private ["C3Cru18CommunityGroupCell", "GlobalUtils"]
+- ["C3Cru18CommunityGroupCell", "UILabel"]
+- ["C3Cru18CommunityGroupCell", "UITextView"]
+- ["C3Cru18CommunityGroupCell", "Void"]
+- ["C3Cru18CommunityGroupCell", "deinit"]
+- ["C3Cru18CommunityGroupCell", "descript"]
+- !private ["C3Cru18CommunityGroupCell", "group"]
+- ["C3Cru18CommunityGroupCell", "init"]
+- ["C3Cru18CommunityGroupCell", "meetingTime"]
+- ["C3Cru18CommunityGroupCell", "name"]
+- ["C3Cru18CommunityGroupCell", "setGroup"]
+- ["C3Cru18CommunityGroupCell", "setSignupCallback"]
+- ["C3Cru18CommunityGroupCell", "signUpPressed"]
+- !private ["C3Cru18CommunityGroupCell", "signupCallback"]
+- !private ["V3Cru6Config", "communityGroupKey"]
+- !private ["Ps28CustomDebugStringConvertible", "Config"]
+- !private ["Ps28CustomDebugStringConvertible", "GlobalUtils"]
+- ["Ps28CustomDebugStringConvertible", "descript"]
+- ["Ps28CustomDebugStringConvertible", "group"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps28CustomDebugStringConvertible", "meetingTime"]
+- ["Ps28CustomDebugStringConvertible", "name"]
+- ["Ps28CustomDebugStringConvertible", "setGroup"]
+- ["Ps28CustomDebugStringConvertible", "setSignupCallback"]
+- ["Ps28CustomDebugStringConvertible", "signUpPressed"]
+- ["Ps28CustomDebugStringConvertible", "signupCallback"]
+- !private ["Ps28CustomDebugStringConvertible", "text"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps23CustomStringConvertible", "Config"]
+- !private ["Ps23CustomStringConvertible", "GlobalUtils"]
+- ["Ps23CustomStringConvertible", "descript"]
+- ["Ps23CustomStringConvertible", "group"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "meetingTime"]
+- ["Ps23CustomStringConvertible", "name"]
+- ["Ps23CustomStringConvertible", "setGroup"]
+- ["Ps23CustomStringConvertible", "setSignupCallback"]
+- ["Ps23CustomStringConvertible", "signUpPressed"]
+- ["Ps23CustomStringConvertible", "signupCallback"]
+- !private ["Ps23CustomStringConvertible", "text"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Ps9Equatable", "Config"]
+- !private ["Ps9Equatable", "GlobalUtils"]
+- ["Ps9Equatable", "descript"]
+- ["Ps9Equatable", "group"]
+- ["Ps9Equatable", "init"]
+- ["Ps9Equatable", "meetingTime"]
+- ["Ps9Equatable", "name"]
+- ["Ps9Equatable", "setGroup"]
+- ["Ps9Equatable", "setSignupCallback"]
+- ["Ps9Equatable", "signUpPressed"]
+- ["Ps9Equatable", "signupCallback"]
+- !private ["Ps9Equatable", "text"]
+- ["Ps9Equatable", ""]
+- !private ["C3Cru11GlobalUtils", "saveString"]
+- !private ["Ps8Hashable", "Config"]
+- !private ["Ps8Hashable", "GlobalUtils"]
+- ["Ps8Hashable", "descript"]
+- ["Ps8Hashable", "group"]
+- ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "meetingTime"]
+- ["Ps8Hashable", "name"]
+- ["Ps8Hashable", "setGroup"]
+- ["Ps8Hashable", "setSignupCallback"]
+- ["Ps8Hashable", "signUpPressed"]
+- ["Ps8Hashable", "signupCallback"]
+- !private ["Ps8Hashable", "text"]
+- ["Ps8Hashable", ""]
+- !private ["PSo8NSCoding", "Config"]
+- !private ["PSo8NSCoding", "GlobalUtils"]
+- ["PSo8NSCoding", "descript"]
+- ["PSo8NSCoding", "group"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "meetingTime"]
+- ["PSo8NSCoding", "name"]
+- ["PSo8NSCoding", "setGroup"]
+- ["PSo8NSCoding", "setSignupCallback"]
+- ["PSo8NSCoding", "signUpPressed"]
+- ["PSo8NSCoding", "signupCallback"]
+- !private ["PSo8NSCoding", "text"]
+- ["PSo8NSCoding", ""]
+- ["CSo8NSObject", "AnyObject"]
+- ["CSo8NSObject", "CommunityGroup"]
+- !private ["CSo8NSObject", "Config"]
+- !private ["CSo8NSObject", "GlobalUtils"]
+- ["CSo8NSObject", "UILabel"]
+- ["CSo8NSObject", "UITextView"]
+- ["CSo8NSObject", "Void"]
+- ["CSo8NSObject", "descript"]
+- ["CSo8NSObject", "group"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "meetingTime"]
+- ["CSo8NSObject", "name"]
+- ["CSo8NSObject", "setGroup"]
+- ["CSo8NSObject", "setSignupCallback"]
+- ["CSo8NSObject", "signUpPressed"]
+- ["CSo8NSObject", "signupCallback"]
+- !private ["CSo8NSObject", "text"]
+- !private ["PSo16NSObjectProtocol", "Config"]
+- !private ["PSo16NSObjectProtocol", "GlobalUtils"]
+- ["PSo16NSObjectProtocol", "descript"]
+- ["PSo16NSObjectProtocol", "group"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "meetingTime"]
+- ["PSo16NSObjectProtocol", "name"]
+- ["PSo16NSObjectProtocol", "setGroup"]
+- ["PSo16NSObjectProtocol", "setSignupCallback"]
+- ["PSo16NSObjectProtocol", "signUpPressed"]
+- ["PSo16NSObjectProtocol", "signupCallback"]
+- !private ["PSo16NSObjectProtocol", "text"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo29UIAccessibilityIdentification", "Config"]
+- !private ["PSo29UIAccessibilityIdentification", "GlobalUtils"]
+- ["PSo29UIAccessibilityIdentification", "descript"]
+- ["PSo29UIAccessibilityIdentification", "group"]
+- ["PSo29UIAccessibilityIdentification", "init"]
+- ["PSo29UIAccessibilityIdentification", "meetingTime"]
+- ["PSo29UIAccessibilityIdentification", "name"]
+- ["PSo29UIAccessibilityIdentification", "setGroup"]
+- ["PSo29UIAccessibilityIdentification", "setSignupCallback"]
+- ["PSo29UIAccessibilityIdentification", "signUpPressed"]
+- ["PSo29UIAccessibilityIdentification", "signupCallback"]
+- !private ["PSo29UIAccessibilityIdentification", "text"]
+- ["PSo29UIAccessibilityIdentification", ""]
+- !private ["PSo12UIAppearance", "Config"]
+- !private ["PSo12UIAppearance", "GlobalUtils"]
+- ["PSo12UIAppearance", "descript"]
+- ["PSo12UIAppearance", "group"]
+- ["PSo12UIAppearance", "init"]
+- ["PSo12UIAppearance", "meetingTime"]
+- ["PSo12UIAppearance", "name"]
+- ["PSo12UIAppearance", "setGroup"]
+- ["PSo12UIAppearance", "setSignupCallback"]
+- ["PSo12UIAppearance", "signUpPressed"]
+- ["PSo12UIAppearance", "signupCallback"]
+- !private ["PSo12UIAppearance", "text"]
+- ["PSo12UIAppearance", ""]
+- !private ["PSo21UIAppearanceContainer", "Config"]
+- !private ["PSo21UIAppearanceContainer", "GlobalUtils"]
+- ["PSo21UIAppearanceContainer", "descript"]
+- ["PSo21UIAppearanceContainer", "group"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "meetingTime"]
+- ["PSo21UIAppearanceContainer", "name"]
+- ["PSo21UIAppearanceContainer", "setGroup"]
+- ["PSo21UIAppearanceContainer", "setSignupCallback"]
+- ["PSo21UIAppearanceContainer", "signUpPressed"]
+- ["PSo21UIAppearanceContainer", "signupCallback"]
+- !private ["PSo21UIAppearanceContainer", "text"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["PSo17UICoordinateSpace", "Config"]
+- !private ["PSo17UICoordinateSpace", "GlobalUtils"]
+- ["PSo17UICoordinateSpace", "descript"]
+- ["PSo17UICoordinateSpace", "group"]
+- ["PSo17UICoordinateSpace", "init"]
+- ["PSo17UICoordinateSpace", "meetingTime"]
+- ["PSo17UICoordinateSpace", "name"]
+- ["PSo17UICoordinateSpace", "setGroup"]
+- ["PSo17UICoordinateSpace", "setSignupCallback"]
+- ["PSo17UICoordinateSpace", "signUpPressed"]
+- ["PSo17UICoordinateSpace", "signupCallback"]
+- !private ["PSo17UICoordinateSpace", "text"]
+- ["PSo17UICoordinateSpace", ""]
+- !private ["PSo13UIDynamicItem", "Config"]
+- !private ["PSo13UIDynamicItem", "GlobalUtils"]
+- ["PSo13UIDynamicItem", "descript"]
+- ["PSo13UIDynamicItem", "group"]
+- ["PSo13UIDynamicItem", "init"]
+- ["PSo13UIDynamicItem", "meetingTime"]
+- ["PSo13UIDynamicItem", "name"]
+- ["PSo13UIDynamicItem", "setGroup"]
+- ["PSo13UIDynamicItem", "setSignupCallback"]
+- ["PSo13UIDynamicItem", "signUpPressed"]
+- ["PSo13UIDynamicItem", "signupCallback"]
+- !private ["PSo13UIDynamicItem", "text"]
+- ["PSo13UIDynamicItem", ""]
+- !private ["PSo18UIFocusEnvironment", "Config"]
+- !private ["PSo18UIFocusEnvironment", "GlobalUtils"]
+- ["PSo18UIFocusEnvironment", "descript"]
+- ["PSo18UIFocusEnvironment", "group"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "meetingTime"]
+- ["PSo18UIFocusEnvironment", "name"]
+- ["PSo18UIFocusEnvironment", "setGroup"]
+- ["PSo18UIFocusEnvironment", "setSignupCallback"]
+- ["PSo18UIFocusEnvironment", "signUpPressed"]
+- ["PSo18UIFocusEnvironment", "signupCallback"]
+- !private ["PSo18UIFocusEnvironment", "text"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["PSo27UIGestureRecognizerDelegate", "Config"]
+- !private ["PSo27UIGestureRecognizerDelegate", "GlobalUtils"]
+- ["PSo27UIGestureRecognizerDelegate", "descript"]
+- ["PSo27UIGestureRecognizerDelegate", "group"]
+- ["PSo27UIGestureRecognizerDelegate", "init"]
+- ["PSo27UIGestureRecognizerDelegate", "meetingTime"]
+- ["PSo27UIGestureRecognizerDelegate", "name"]
+- ["PSo27UIGestureRecognizerDelegate", "setGroup"]
+- ["PSo27UIGestureRecognizerDelegate", "setSignupCallback"]
+- ["PSo27UIGestureRecognizerDelegate", "signUpPressed"]
+- ["PSo27UIGestureRecognizerDelegate", "signupCallback"]
+- ["PSo27UIGestureRecognizerDelegate", ""]
+- !private ["PSo10UIKeyInput", "text"]
+- !private ["CSo7UILabel", "text"]
+- ["CSo11UIResponder", "AnyObject"]
+- ["CSo11UIResponder", "CommunityGroup"]
+- !private ["CSo11UIResponder", "Config"]
+- !private ["CSo11UIResponder", "GlobalUtils"]
+- ["CSo11UIResponder", "UILabel"]
+- ["CSo11UIResponder", "UITextView"]
+- ["CSo11UIResponder", "Void"]
+- ["CSo11UIResponder", "descript"]
+- ["CSo11UIResponder", "group"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "meetingTime"]
+- ["CSo11UIResponder", "name"]
+- ["CSo11UIResponder", "setGroup"]
+- ["CSo11UIResponder", "setSignupCallback"]
+- ["CSo11UIResponder", "signUpPressed"]
+- ["CSo11UIResponder", "signupCallback"]
+- !private ["CSo11UIResponder", "text"]
+- !private ["CSo12UIScrollView", "text"]
+- ["CSo15UITableViewCell", "AnyObject"]
+- ["CSo15UITableViewCell", "CommunityGroup"]
+- !private ["CSo15UITableViewCell", "Config"]
+- !private ["CSo15UITableViewCell", "GlobalUtils"]
+- ["CSo15UITableViewCell", "UILabel"]
+- ["CSo15UITableViewCell", "UITextView"]
+- ["CSo15UITableViewCell", "Void"]
+- ["CSo15UITableViewCell", "descript"]
+- ["CSo15UITableViewCell", "group"]
+- ["CSo15UITableViewCell", "init"]
+- ["CSo15UITableViewCell", "meetingTime"]
+- ["CSo15UITableViewCell", "name"]
+- ["CSo15UITableViewCell", "setGroup"]
+- ["CSo15UITableViewCell", "setSignupCallback"]
+- ["CSo15UITableViewCell", "signUpPressed"]
+- ["CSo15UITableViewCell", "signupCallback"]
+- ["CSo15UITableViewCell", ""]
+- !private ["PSo11UITextInput", "text"]
+- !private ["PSo17UITextInputTraits", "text"]
+- !private ["CSo10UITextView", "text"]
+- !private ["PSo18UITraitEnvironment", "Config"]
+- !private ["PSo18UITraitEnvironment", "GlobalUtils"]
+- ["PSo18UITraitEnvironment", "descript"]
+- ["PSo18UITraitEnvironment", "group"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "meetingTime"]
+- ["PSo18UITraitEnvironment", "name"]
+- ["PSo18UITraitEnvironment", "setGroup"]
+- ["PSo18UITraitEnvironment", "setSignupCallback"]
+- ["PSo18UITraitEnvironment", "signUpPressed"]
+- ["PSo18UITraitEnvironment", "signupCallback"]
+- !private ["PSo18UITraitEnvironment", "text"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo6UIView", "AnyObject"]
+- ["CSo6UIView", "CommunityGroup"]
+- !private ["CSo6UIView", "Config"]
+- !private ["CSo6UIView", "GlobalUtils"]
+- ["CSo6UIView", "UILabel"]
+- ["CSo6UIView", "UITextView"]
+- ["CSo6UIView", "Void"]
+- ["CSo6UIView", "descript"]
+- ["CSo6UIView", "group"]
+- ["CSo6UIView", "init"]
+- ["CSo6UIView", "meetingTime"]
+- ["CSo6UIView", "name"]
+- ["CSo6UIView", "setGroup"]
+- ["CSo6UIView", "setSignupCallback"]
+- ["CSo6UIView", "signUpPressed"]
+- ["CSo6UIView", "signupCallback"]
+- !private ["CSo6UIView", "text"]
+- !private ["Ps12_Reflectable", "Config"]
+- !private ["Ps12_Reflectable", "GlobalUtils"]
+- ["Ps12_Reflectable", "descript"]
+- ["Ps12_Reflectable", "group"]
+- ["Ps12_Reflectable", "init"]
+- ["Ps12_Reflectable", "meetingTime"]
+- ["Ps12_Reflectable", "name"]
+- ["Ps12_Reflectable", "setGroup"]
+- ["Ps12_Reflectable", "setSignupCallback"]
+- ["Ps12_Reflectable", "signUpPressed"]
+- ["Ps12_Reflectable", "signupCallback"]
+- !private ["Ps12_Reflectable", "text"]
+- ["Ps12_Reflectable", ""]
+depends-nominal:
+- "Ps9AnyObject"
+- "Ps11CVarArgType"
+- !private "C3Cru14CommunityGroup"
+- "C3Cru18CommunityGroupCell"
+- !private "V3Cru6Config"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- "Ps9Equatable"
+- !private "C3Cru11GlobalUtils"
+- "Ps8Hashable"
+- "PSo8NSCoding"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo29UIAccessibilityIdentification"
+- "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- "PSo17UICoordinateSpace"
+- "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- "PSo27UIGestureRecognizerDelegate"
+- !private "PSo10UIKeyInput"
+- !private "CSo7UILabel"
+- "CSo11UIResponder"
+- !private "CSo12UIScrollView"
+- "CSo15UITableViewCell"
+- !private "PSo11UITextInput"
+- !private "PSo17UITextInputTraits"
+- !private "CSo10UITextView"
+- "PSo18UITraitEnvironment"
+- "CSo6UIView"
+- "Ps12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/Cru-Bridging-Header.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/Core.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLErrorCode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GMRConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMPubSub.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMService.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext+CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDHeaders.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceID.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GoogleCloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMReceiverDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/SWRevealViewController.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressHelper.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/UIImage+MRImageEffects.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRBlurView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressOverlayView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRNavigationBarProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRIconView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRCircularProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopableView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRActivityIndicatorView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/UIScrollView+EmptyDataSet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/SwiftValidator.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/Alamofire.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/SignIn-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Core-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/CloudMessaging-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AppInvite-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Analytics-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AdMob-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/SideMenu.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreData.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/WildcardSDK.framework/Modules/WildcardSDK.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/WebKit.swiftmodule"
+- "./WildcardSDK.framework/Headers/WildcardSDK-Swift.h"
+- "./WildcardSDK.framework/Headers/YTVimeoExtractor.h"
+- "./WildcardSDK.framework/Headers/YTPlayerView.h"
+- "./WildcardSDK.framework/Headers/WCElementType.h"
+- "./WildcardSDK.framework/Headers/WCErrorCode.h"
+- "./WildcardSDK.framework/Headers/WCAnalytics.h"
+- "./WildcardSDK.framework/Headers/WCCardAction.h"
+- "./WildcardSDK.framework/Headers/WCCardType.h"
+- "./WildcardSDK.framework/Headers/WCCardLayout.h"
+- "./WildcardSDK.framework/Headers/WildcardSDK.h"
+- "./WildcardSDK.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/IQKeyboardManagerSwift.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/Fabric.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Answers.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Headers/Appsee.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTreeEnumerator.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizerState.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizer.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLString.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/NSString+HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTextNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSerialization.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSelector.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLPreprocessedInputStream.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLParser.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLOrderedDictionary.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEncoding.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLQuirksMode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLElement.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocumentType.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocument.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSupport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNamespace.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLComment.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/SWActionSheet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetMultipleStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetLocalePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/DistancePickerView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDistancePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDatePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPickerDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/AbstractActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker-3.0-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/LocationPicker.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/ImageLoader.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/EventKit.swiftmodule"
+interface-hash: "a881e3097c03c95fd440c2941f6d936b"

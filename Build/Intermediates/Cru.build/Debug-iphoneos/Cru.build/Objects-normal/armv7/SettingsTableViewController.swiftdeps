@@ -1,0 +1,1175 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "SettingsTableViewController"
+provides-nominal:
+- "C3Cru27SettingsTableViewController"
+provides-member:
+- ["C3Cru27SettingsTableViewController", ""]
+provides-dynamic-lookup:
+- "viewWillAppear"
+- "revealController"
+- "loginLabel"
+- "didReceiveMemoryWarning"
+- "menuButton"
+- "tableView"
+- "tableView"
+- "viewDidLoad"
+- "numberOfSectionsInTableView"
+depends-top-level:
+- "UITableViewController"
+- "SettingsTableViewController"
+- "NSIndexPath"
+- "FrontViewPosition"
+- "SWRevealViewControllerDelegate"
+- "UITableView"
+- "SWRevealViewController"
+- !private "UIFont"
+- !private "BooleanLiteralType"
+- !private "NSForegroundColorAttributeName"
+- "UIBarButtonItem"
+- !private "GlobalUtils"
+- !private "NSFontAttributeName"
+- !private "=="
+- "Bool"
+- "Int"
+- !private "UIColor"
+- "UILabel"
+- !private "Config"
+- !private "Dictionary"
+- !private "StringLiteralType"
+depends-member:
+- !private ["Ps9AnyObject", "Config"]
+- !private ["Ps9AnyObject", "FrontViewPosition"]
+- !private ["Ps9AnyObject", "GlobalUtils"]
+- !private ["Ps9AnyObject", "NSFontAttributeName"]
+- !private ["Ps9AnyObject", "NSForegroundColorAttributeName"]
+- !private ["Ps9AnyObject", "UIColor"]
+- !private ["Ps9AnyObject", "UIFont"]
+- ["Ps9AnyObject", "didReceiveMemoryWarning"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "loadString"]
+- ["Ps9AnyObject", "loginLabel"]
+- ["Ps9AnyObject", "menuButton"]
+- !private ["Ps9AnyObject", "navigationBar"]
+- !private ["Ps9AnyObject", "navigationController"]
+- !private ["Ps9AnyObject", "navigationItem"]
+- ["Ps9AnyObject", "numberOfSectionsInTableView"]
+- !private ["Ps9AnyObject", "performSegueWithIdentifier"]
+- ["Ps9AnyObject", "revealController"]
+- ["Ps9AnyObject", "revealControllerPanGestureBegan"]
+- ["Ps9AnyObject", "revealControllerPanGestureEnded"]
+- ["Ps9AnyObject", "revealControllerPanGestureShouldBegin"]
+- ["Ps9AnyObject", "revealControllerTapGestureShouldBegin"]
+- !private ["Ps9AnyObject", "row"]
+- !private ["Ps9AnyObject", "setupViewForSideMenu"]
+- !private ["Ps9AnyObject", "subviews"]
+- ["Ps9AnyObject", "tableView"]
+- !private ["Ps9AnyObject", "text"]
+- !private ["Ps9AnyObject", "title"]
+- !private ["Ps9AnyObject", "titleTextAttributes"]
+- !private ["Ps9AnyObject", "userInteractionEnabled"]
+- !private ["Ps9AnyObject", "view"]
+- ["Ps9AnyObject", "viewDidLoad"]
+- ["Ps9AnyObject", "viewWillAppear"]
+- !private ["Ps9AnyObject", "whiteColor"]
+- ["Ps9AnyObject", ""]
+- !private ["Sa", "Generator"]
+- !private ["Sa", "Index"]
+- !private ["Sa", "SubSequence"]
+- !private ["Sa", "_Element"]
+- !private ["Ps23ArrayLiteralConvertible", "Generator"]
+- !private ["Ps23ArrayLiteralConvertible", "Index"]
+- !private ["Ps23ArrayLiteralConvertible", "SubSequence"]
+- !private ["Ps23ArrayLiteralConvertible", "_Element"]
+- !private ["Vs10ArraySlice", "Generator"]
+- !private ["Vs10ArraySlice", "Index"]
+- !private ["Ps22BidirectionalIndexType", "Distance"]
+- !private ["Ps22BidirectionalIndexType", "IntegerLiteralType"]
+- !private ["Ps21BitwiseOperationsType", "Distance"]
+- !private ["Ps21BitwiseOperationsType", "IntegerLiteralType"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["V12CoreGraphics7CGFloat", "deinit"]
+- !private ["Ps11CVarArgType", "Config"]
+- !private ["Ps11CVarArgType", "Distance"]
+- !private ["Ps11CVarArgType", "FrontViewPosition"]
+- !private ["Ps11CVarArgType", "GlobalUtils"]
+- !private ["Ps11CVarArgType", "IntegerLiteralType"]
+- !private ["Ps11CVarArgType", "NSFontAttributeName"]
+- !private ["Ps11CVarArgType", "NSForegroundColorAttributeName"]
+- !private ["Ps11CVarArgType", "UIColor"]
+- !private ["Ps11CVarArgType", "UIFont"]
+- ["Ps11CVarArgType", "didReceiveMemoryWarning"]
+- ["Ps11CVarArgType", "init"]
+- ["Ps11CVarArgType", "loginLabel"]
+- ["Ps11CVarArgType", "menuButton"]
+- !private ["Ps11CVarArgType", "navigationBar"]
+- !private ["Ps11CVarArgType", "navigationController"]
+- !private ["Ps11CVarArgType", "navigationItem"]
+- ["Ps11CVarArgType", "numberOfSectionsInTableView"]
+- !private ["Ps11CVarArgType", "performSegueWithIdentifier"]
+- ["Ps11CVarArgType", "revealController"]
+- ["Ps11CVarArgType", "revealControllerPanGestureBegan"]
+- ["Ps11CVarArgType", "revealControllerPanGestureEnded"]
+- ["Ps11CVarArgType", "revealControllerPanGestureShouldBegin"]
+- ["Ps11CVarArgType", "revealControllerTapGestureShouldBegin"]
+- !private ["Ps11CVarArgType", "row"]
+- !private ["Ps11CVarArgType", "subviews"]
+- ["Ps11CVarArgType", "tableView"]
+- !private ["Ps11CVarArgType", "text"]
+- !private ["Ps11CVarArgType", "title"]
+- !private ["Ps11CVarArgType", "titleTextAttributes"]
+- !private ["Ps11CVarArgType", "userInteractionEnabled"]
+- !private ["Ps11CVarArgType", "view"]
+- ["Ps11CVarArgType", "viewDidLoad"]
+- ["Ps11CVarArgType", "viewWillAppear"]
+- !private ["Ps11CVarArgType", "whiteColor"]
+- ["Ps11CVarArgType", ""]
+- !private ["Ps14CollectionType", "Generator"]
+- !private ["Ps14CollectionType", "Index"]
+- !private ["Ps14CollectionType", "Key"]
+- !private ["Ps14CollectionType", "SubSequence"]
+- !private ["Ps14CollectionType", "Value"]
+- !private ["Ps14CollectionType", "_Element"]
+- !private ["Ps10Comparable", "Distance"]
+- !private ["Ps10Comparable", "IntegerLiteralType"]
+- !private ["V3Cru6Config", "fontBold"]
+- !private ["V3Cru6Config", "leaderApiKey"]
+- !private ["Ps28CustomDebugStringConvertible", "Config"]
+- !private ["Ps28CustomDebugStringConvertible", "FrontViewPosition"]
+- !private ["Ps28CustomDebugStringConvertible", "Generator"]
+- !private ["Ps28CustomDebugStringConvertible", "GlobalUtils"]
+- !private ["Ps28CustomDebugStringConvertible", "Index"]
+- !private ["Ps28CustomDebugStringConvertible", "Key"]
+- !private ["Ps28CustomDebugStringConvertible", "NSFontAttributeName"]
+- !private ["Ps28CustomDebugStringConvertible", "NSForegroundColorAttributeName"]
+- !private ["Ps28CustomDebugStringConvertible", "SubSequence"]
+- !private ["Ps28CustomDebugStringConvertible", "UIColor"]
+- !private ["Ps28CustomDebugStringConvertible", "UIFont"]
+- !private ["Ps28CustomDebugStringConvertible", "Value"]
+- !private ["Ps28CustomDebugStringConvertible", "_Element"]
+- ["Ps28CustomDebugStringConvertible", "didReceiveMemoryWarning"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- ["Ps28CustomDebugStringConvertible", "loginLabel"]
+- ["Ps28CustomDebugStringConvertible", "menuButton"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationBar"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationController"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationItem"]
+- ["Ps28CustomDebugStringConvertible", "numberOfSectionsInTableView"]
+- !private ["Ps28CustomDebugStringConvertible", "performSegueWithIdentifier"]
+- ["Ps28CustomDebugStringConvertible", "revealController"]
+- ["Ps28CustomDebugStringConvertible", "revealControllerPanGestureBegan"]
+- ["Ps28CustomDebugStringConvertible", "revealControllerPanGestureEnded"]
+- ["Ps28CustomDebugStringConvertible", "revealControllerPanGestureShouldBegin"]
+- ["Ps28CustomDebugStringConvertible", "revealControllerTapGestureShouldBegin"]
+- !private ["Ps28CustomDebugStringConvertible", "row"]
+- !private ["Ps28CustomDebugStringConvertible", "subviews"]
+- ["Ps28CustomDebugStringConvertible", "tableView"]
+- !private ["Ps28CustomDebugStringConvertible", "text"]
+- !private ["Ps28CustomDebugStringConvertible", "title"]
+- !private ["Ps28CustomDebugStringConvertible", "titleTextAttributes"]
+- !private ["Ps28CustomDebugStringConvertible", "userInteractionEnabled"]
+- !private ["Ps28CustomDebugStringConvertible", "view"]
+- ["Ps28CustomDebugStringConvertible", "viewDidLoad"]
+- ["Ps28CustomDebugStringConvertible", "viewWillAppear"]
+- !private ["Ps28CustomDebugStringConvertible", "whiteColor"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps23CustomStringConvertible", "Config"]
+- !private ["Ps23CustomStringConvertible", "Distance"]
+- !private ["Ps23CustomStringConvertible", "FrontViewPosition"]
+- !private ["Ps23CustomStringConvertible", "Generator"]
+- !private ["Ps23CustomStringConvertible", "GlobalUtils"]
+- !private ["Ps23CustomStringConvertible", "Index"]
+- !private ["Ps23CustomStringConvertible", "IntegerLiteralType"]
+- !private ["Ps23CustomStringConvertible", "Key"]
+- !private ["Ps23CustomStringConvertible", "NSFontAttributeName"]
+- !private ["Ps23CustomStringConvertible", "NSForegroundColorAttributeName"]
+- !private ["Ps23CustomStringConvertible", "SubSequence"]
+- !private ["Ps23CustomStringConvertible", "UIColor"]
+- !private ["Ps23CustomStringConvertible", "UIFont"]
+- !private ["Ps23CustomStringConvertible", "Value"]
+- !private ["Ps23CustomStringConvertible", "_Element"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- ["Ps23CustomStringConvertible", "didReceiveMemoryWarning"]
+- ["Ps23CustomStringConvertible", "init"]
+- ["Ps23CustomStringConvertible", "loginLabel"]
+- ["Ps23CustomStringConvertible", "menuButton"]
+- !private ["Ps23CustomStringConvertible", "navigationBar"]
+- !private ["Ps23CustomStringConvertible", "navigationController"]
+- !private ["Ps23CustomStringConvertible", "navigationItem"]
+- ["Ps23CustomStringConvertible", "numberOfSectionsInTableView"]
+- !private ["Ps23CustomStringConvertible", "performSegueWithIdentifier"]
+- ["Ps23CustomStringConvertible", "revealController"]
+- ["Ps23CustomStringConvertible", "revealControllerPanGestureBegan"]
+- ["Ps23CustomStringConvertible", "revealControllerPanGestureEnded"]
+- ["Ps23CustomStringConvertible", "revealControllerPanGestureShouldBegin"]
+- ["Ps23CustomStringConvertible", "revealControllerTapGestureShouldBegin"]
+- !private ["Ps23CustomStringConvertible", "row"]
+- !private ["Ps23CustomStringConvertible", "subviews"]
+- ["Ps23CustomStringConvertible", "tableView"]
+- !private ["Ps23CustomStringConvertible", "text"]
+- !private ["Ps23CustomStringConvertible", "title"]
+- !private ["Ps23CustomStringConvertible", "titleTextAttributes"]
+- !private ["Ps23CustomStringConvertible", "userInteractionEnabled"]
+- !private ["Ps23CustomStringConvertible", "view"]
+- ["Ps23CustomStringConvertible", "viewDidLoad"]
+- ["Ps23CustomStringConvertible", "viewWillAppear"]
+- !private ["Ps23CustomStringConvertible", "whiteColor"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Vs10Dictionary", "Key"]
+- !private ["Vs10Dictionary", "Value"]
+- !private ["Ps28DictionaryLiteralConvertible", "Key"]
+- !private ["Ps28DictionaryLiteralConvertible", "Value"]
+- !private ["Ps9Equatable", "Config"]
+- !private ["Ps9Equatable", "Distance"]
+- !private ["Ps9Equatable", "FrontViewPosition"]
+- !private ["Ps9Equatable", "GlobalUtils"]
+- !private ["Ps9Equatable", "IntegerLiteralType"]
+- !private ["Ps9Equatable", "Left"]
+- !private ["Ps9Equatable", "NSFontAttributeName"]
+- !private ["Ps9Equatable", "NSForegroundColorAttributeName"]
+- !private ["Ps9Equatable", "RawValue"]
+- !private ["Ps9Equatable", "Right"]
+- !private ["Ps9Equatable", "UIColor"]
+- !private ["Ps9Equatable", "UIFont"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- ["Ps9Equatable", "didReceiveMemoryWarning"]
+- ["Ps9Equatable", "init"]
+- ["Ps9Equatable", "loginLabel"]
+- ["Ps9Equatable", "menuButton"]
+- !private ["Ps9Equatable", "navigationBar"]
+- !private ["Ps9Equatable", "navigationController"]
+- !private ["Ps9Equatable", "navigationItem"]
+- ["Ps9Equatable", "numberOfSectionsInTableView"]
+- !private ["Ps9Equatable", "performSegueWithIdentifier"]
+- ["Ps9Equatable", "revealController"]
+- ["Ps9Equatable", "revealControllerPanGestureBegan"]
+- ["Ps9Equatable", "revealControllerPanGestureEnded"]
+- ["Ps9Equatable", "revealControllerPanGestureShouldBegin"]
+- ["Ps9Equatable", "revealControllerTapGestureShouldBegin"]
+- !private ["Ps9Equatable", "row"]
+- !private ["Ps9Equatable", "subviews"]
+- ["Ps9Equatable", "tableView"]
+- !private ["Ps9Equatable", "text"]
+- !private ["Ps9Equatable", "title"]
+- !private ["Ps9Equatable", "titleTextAttributes"]
+- !private ["Ps9Equatable", "userInteractionEnabled"]
+- !private ["Ps9Equatable", "view"]
+- ["Ps9Equatable", "viewDidLoad"]
+- ["Ps9Equatable", "viewWillAppear"]
+- !private ["Ps9Equatable", "whiteColor"]
+- ["Ps9Equatable", ""]
+- !private ["Ps16ForwardIndexType", "Distance"]
+- !private ["Ps16ForwardIndexType", "IntegerLiteralType"]
+- !private ["OSC17FrontViewPosition", "Left"]
+- !private ["OSC17FrontViewPosition", "RawValue"]
+- !private ["OSC17FrontViewPosition", "Right"]
+- !private ["OSC17FrontViewPosition", "deinit"]
+- !private ["Ps13GeneratorType", "Element"]
+- !private ["C3Cru11GlobalUtils", "loadString"]
+- !private ["C3Cru11GlobalUtils", "setupViewForSideMenu"]
+- !private ["Ps8Hashable", "Config"]
+- !private ["Ps8Hashable", "Distance"]
+- !private ["Ps8Hashable", "FrontViewPosition"]
+- !private ["Ps8Hashable", "GlobalUtils"]
+- !private ["Ps8Hashable", "IntegerLiteralType"]
+- !private ["Ps8Hashable", "Left"]
+- !private ["Ps8Hashable", "NSFontAttributeName"]
+- !private ["Ps8Hashable", "NSForegroundColorAttributeName"]
+- !private ["Ps8Hashable", "RawValue"]
+- !private ["Ps8Hashable", "Right"]
+- !private ["Ps8Hashable", "UIColor"]
+- !private ["Ps8Hashable", "UIFont"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- ["Ps8Hashable", "didReceiveMemoryWarning"]
+- ["Ps8Hashable", "init"]
+- ["Ps8Hashable", "loginLabel"]
+- ["Ps8Hashable", "menuButton"]
+- !private ["Ps8Hashable", "navigationBar"]
+- !private ["Ps8Hashable", "navigationController"]
+- !private ["Ps8Hashable", "navigationItem"]
+- ["Ps8Hashable", "numberOfSectionsInTableView"]
+- !private ["Ps8Hashable", "performSegueWithIdentifier"]
+- ["Ps8Hashable", "revealController"]
+- ["Ps8Hashable", "revealControllerPanGestureBegan"]
+- ["Ps8Hashable", "revealControllerPanGestureEnded"]
+- ["Ps8Hashable", "revealControllerPanGestureShouldBegin"]
+- ["Ps8Hashable", "revealControllerTapGestureShouldBegin"]
+- !private ["Ps8Hashable", "row"]
+- !private ["Ps8Hashable", "subviews"]
+- ["Ps8Hashable", "tableView"]
+- !private ["Ps8Hashable", "text"]
+- !private ["Ps8Hashable", "title"]
+- !private ["Ps8Hashable", "titleTextAttributes"]
+- !private ["Ps8Hashable", "userInteractionEnabled"]
+- !private ["Ps8Hashable", "view"]
+- ["Ps8Hashable", "viewDidLoad"]
+- ["Ps8Hashable", "viewWillAppear"]
+- !private ["Ps8Hashable", "whiteColor"]
+- ["Ps8Hashable", ""]
+- !private ["Ps9Indexable", "Generator"]
+- !private ["Ps9Indexable", "Index"]
+- !private ["Ps9Indexable", "Key"]
+- !private ["Ps9Indexable", "SubSequence"]
+- !private ["Ps9Indexable", "Value"]
+- !private ["Ps9Indexable", "_Element"]
+- !private ["Vs17IndexingGenerator", "Element"]
+- !private ["Si", "Distance"]
+- !private ["Si", "IntegerLiteralType"]
+- !private ["Ps21IntegerArithmeticType", "Distance"]
+- !private ["Ps21IntegerArithmeticType", "IntegerLiteralType"]
+- !private ["Ps25IntegerLiteralConvertible", "Distance"]
+- !private ["Ps25IntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps11IntegerType", "Distance"]
+- !private ["Ps11IntegerType", "IntegerLiteralType"]
+- !private ["Ps14MirrorPathType", "Distance"]
+- !private ["Ps14MirrorPathType", "IntegerLiteralType"]
+- !private ["Ps21MutableCollectionType", "Generator"]
+- !private ["Ps21MutableCollectionType", "Index"]
+- !private ["Ps21MutableCollectionType", "SubSequence"]
+- !private ["Ps21MutableCollectionType", "_Element"]
+- !private ["Ps16MutableIndexable", "Generator"]
+- !private ["Ps16MutableIndexable", "Index"]
+- !private ["Ps16MutableIndexable", "SubSequence"]
+- !private ["Ps16MutableIndexable", "_Element"]
+- !private ["Ps16MutableSliceable", "Generator"]
+- !private ["Ps16MutableSliceable", "Index"]
+- !private ["Ps16MutableSliceable", "SubSequence"]
+- !private ["Ps16MutableSliceable", "_Element"]
+- !private ["PSo8NSCoding", "Config"]
+- !private ["PSo8NSCoding", "FrontViewPosition"]
+- !private ["PSo8NSCoding", "GlobalUtils"]
+- !private ["PSo8NSCoding", "NSFontAttributeName"]
+- !private ["PSo8NSCoding", "NSForegroundColorAttributeName"]
+- !private ["PSo8NSCoding", "UIColor"]
+- !private ["PSo8NSCoding", "UIFont"]
+- ["PSo8NSCoding", "didReceiveMemoryWarning"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "loginLabel"]
+- ["PSo8NSCoding", "menuButton"]
+- !private ["PSo8NSCoding", "navigationBar"]
+- !private ["PSo8NSCoding", "navigationController"]
+- !private ["PSo8NSCoding", "navigationItem"]
+- ["PSo8NSCoding", "numberOfSectionsInTableView"]
+- !private ["PSo8NSCoding", "performSegueWithIdentifier"]
+- ["PSo8NSCoding", "revealController"]
+- ["PSo8NSCoding", "revealControllerPanGestureBegan"]
+- ["PSo8NSCoding", "revealControllerPanGestureEnded"]
+- ["PSo8NSCoding", "revealControllerPanGestureShouldBegin"]
+- ["PSo8NSCoding", "revealControllerTapGestureShouldBegin"]
+- !private ["PSo8NSCoding", "row"]
+- !private ["PSo8NSCoding", "subviews"]
+- ["PSo8NSCoding", "tableView"]
+- !private ["PSo8NSCoding", "text"]
+- !private ["PSo8NSCoding", "title"]
+- !private ["PSo8NSCoding", "titleTextAttributes"]
+- !private ["PSo8NSCoding", "userInteractionEnabled"]
+- !private ["PSo8NSCoding", "view"]
+- ["PSo8NSCoding", "viewDidLoad"]
+- ["PSo8NSCoding", "viewWillAppear"]
+- !private ["PSo8NSCoding", "whiteColor"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "row"]
+- !private ["PSo9NSCopying", "whiteColor"]
+- !private ["PSo26NSExtensionRequestHandling", "Config"]
+- !private ["PSo26NSExtensionRequestHandling", "FrontViewPosition"]
+- !private ["PSo26NSExtensionRequestHandling", "GlobalUtils"]
+- !private ["PSo26NSExtensionRequestHandling", "NSFontAttributeName"]
+- !private ["PSo26NSExtensionRequestHandling", "NSForegroundColorAttributeName"]
+- !private ["PSo26NSExtensionRequestHandling", "UIColor"]
+- !private ["PSo26NSExtensionRequestHandling", "UIFont"]
+- ["PSo26NSExtensionRequestHandling", "didReceiveMemoryWarning"]
+- ["PSo26NSExtensionRequestHandling", "init"]
+- ["PSo26NSExtensionRequestHandling", "loginLabel"]
+- ["PSo26NSExtensionRequestHandling", "menuButton"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationBar"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationController"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationItem"]
+- ["PSo26NSExtensionRequestHandling", "numberOfSectionsInTableView"]
+- !private ["PSo26NSExtensionRequestHandling", "performSegueWithIdentifier"]
+- ["PSo26NSExtensionRequestHandling", "revealController"]
+- ["PSo26NSExtensionRequestHandling", "revealControllerPanGestureBegan"]
+- ["PSo26NSExtensionRequestHandling", "revealControllerPanGestureEnded"]
+- ["PSo26NSExtensionRequestHandling", "revealControllerPanGestureShouldBegin"]
+- ["PSo26NSExtensionRequestHandling", "revealControllerTapGestureShouldBegin"]
+- ["PSo26NSExtensionRequestHandling", "tableView"]
+- !private ["PSo26NSExtensionRequestHandling", "view"]
+- ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", "viewWillAppear"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- !private ["CSo11NSIndexPath", "row"]
+- ["CSo8NSObject", "Bool"]
+- !private ["CSo8NSObject", "Config"]
+- ["CSo8NSObject", "FrontViewPosition"]
+- !private ["CSo8NSObject", "GlobalUtils"]
+- ["CSo8NSObject", "Int"]
+- !private ["CSo8NSObject", "NSFontAttributeName"]
+- !private ["CSo8NSObject", "NSForegroundColorAttributeName"]
+- ["CSo8NSObject", "NSIndexPath"]
+- ["CSo8NSObject", "SWRevealViewController"]
+- ["CSo8NSObject", "UIBarButtonItem"]
+- !private ["CSo8NSObject", "UIColor"]
+- !private ["CSo8NSObject", "UIFont"]
+- ["CSo8NSObject", "UILabel"]
+- ["CSo8NSObject", "UITableView"]
+- ["CSo8NSObject", "didReceiveMemoryWarning"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "loginLabel"]
+- ["CSo8NSObject", "menuButton"]
+- !private ["CSo8NSObject", "navigationBar"]
+- !private ["CSo8NSObject", "navigationController"]
+- !private ["CSo8NSObject", "navigationItem"]
+- ["CSo8NSObject", "numberOfSectionsInTableView"]
+- !private ["CSo8NSObject", "performSegueWithIdentifier"]
+- ["CSo8NSObject", "revealController"]
+- ["CSo8NSObject", "revealControllerPanGestureBegan"]
+- ["CSo8NSObject", "revealControllerPanGestureEnded"]
+- ["CSo8NSObject", "revealControllerPanGestureShouldBegin"]
+- ["CSo8NSObject", "revealControllerTapGestureShouldBegin"]
+- !private ["CSo8NSObject", "row"]
+- !private ["CSo8NSObject", "subviews"]
+- ["CSo8NSObject", "tableView"]
+- !private ["CSo8NSObject", "text"]
+- !private ["CSo8NSObject", "title"]
+- !private ["CSo8NSObject", "titleTextAttributes"]
+- !private ["CSo8NSObject", "userInteractionEnabled"]
+- !private ["CSo8NSObject", "view"]
+- ["CSo8NSObject", "viewDidLoad"]
+- ["CSo8NSObject", "viewWillAppear"]
+- !private ["CSo8NSObject", "whiteColor"]
+- !private ["PSo16NSObjectProtocol", "Config"]
+- !private ["PSo16NSObjectProtocol", "FrontViewPosition"]
+- !private ["PSo16NSObjectProtocol", "GlobalUtils"]
+- !private ["PSo16NSObjectProtocol", "NSFontAttributeName"]
+- !private ["PSo16NSObjectProtocol", "NSForegroundColorAttributeName"]
+- !private ["PSo16NSObjectProtocol", "UIColor"]
+- !private ["PSo16NSObjectProtocol", "UIFont"]
+- ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "loginLabel"]
+- ["PSo16NSObjectProtocol", "menuButton"]
+- !private ["PSo16NSObjectProtocol", "navigationBar"]
+- !private ["PSo16NSObjectProtocol", "navigationController"]
+- !private ["PSo16NSObjectProtocol", "navigationItem"]
+- ["PSo16NSObjectProtocol", "numberOfSectionsInTableView"]
+- !private ["PSo16NSObjectProtocol", "performSegueWithIdentifier"]
+- ["PSo16NSObjectProtocol", "revealController"]
+- ["PSo16NSObjectProtocol", "revealControllerPanGestureBegan"]
+- ["PSo16NSObjectProtocol", "revealControllerPanGestureEnded"]
+- ["PSo16NSObjectProtocol", "revealControllerPanGestureShouldBegin"]
+- ["PSo16NSObjectProtocol", "revealControllerTapGestureShouldBegin"]
+- !private ["PSo16NSObjectProtocol", "row"]
+- !private ["PSo16NSObjectProtocol", "subviews"]
+- ["PSo16NSObjectProtocol", "tableView"]
+- !private ["PSo16NSObjectProtocol", "text"]
+- !private ["PSo16NSObjectProtocol", "title"]
+- !private ["PSo16NSObjectProtocol", "titleTextAttributes"]
+- !private ["PSo16NSObjectProtocol", "userInteractionEnabled"]
+- !private ["PSo16NSObjectProtocol", "view"]
+- ["PSo16NSObjectProtocol", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", "viewWillAppear"]
+- !private ["PSo16NSObjectProtocol", "whiteColor"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "row"]
+- !private ["PSo14NSSecureCoding", "whiteColor"]
+- !private ["Sq", "deinit"]
+- !private ["Ps21RandomAccessIndexType", "Distance"]
+- !private ["Ps21RandomAccessIndexType", "IntegerLiteralType"]
+- !private ["Ps30RangeReplaceableCollectionType", "Generator"]
+- !private ["Ps30RangeReplaceableCollectionType", "Index"]
+- !private ["Ps30RangeReplaceableCollectionType", "SubSequence"]
+- !private ["Ps30RangeReplaceableCollectionType", "_Element"]
+- !private ["Ps16RawRepresentable", "Left"]
+- !private ["Ps16RawRepresentable", "RawValue"]
+- !private ["Ps16RawRepresentable", "Right"]
+- !private ["PSo30SWRevealViewControllerDelegate", "Config"]
+- !private ["PSo30SWRevealViewControllerDelegate", "FrontViewPosition"]
+- !private ["PSo30SWRevealViewControllerDelegate", "GlobalUtils"]
+- !private ["PSo30SWRevealViewControllerDelegate", "NSFontAttributeName"]
+- !private ["PSo30SWRevealViewControllerDelegate", "NSForegroundColorAttributeName"]
+- !private ["PSo30SWRevealViewControllerDelegate", "UIColor"]
+- !private ["PSo30SWRevealViewControllerDelegate", "UIFont"]
+- !private ["PSo30SWRevealViewControllerDelegate", "loginLabel"]
+- !private ["PSo30SWRevealViewControllerDelegate", "menuButton"]
+- !private ["PSo30SWRevealViewControllerDelegate", "navigationController"]
+- !private ["PSo30SWRevealViewControllerDelegate", "navigationItem"]
+- !private ["PSo30SWRevealViewControllerDelegate", "performSegueWithIdentifier"]
+- ["PSo30SWRevealViewControllerDelegate", "revealController"]
+- ["PSo30SWRevealViewControllerDelegate", "revealControllerPanGestureBegan"]
+- ["PSo30SWRevealViewControllerDelegate", "revealControllerPanGestureEnded"]
+- ["PSo30SWRevealViewControllerDelegate", "revealControllerPanGestureShouldBegin"]
+- ["PSo30SWRevealViewControllerDelegate", "revealControllerTapGestureShouldBegin"]
+- !private ["PSo30SWRevealViewControllerDelegate", "view"]
+- ["PSo30SWRevealViewControllerDelegate", ""]
+- !private ["Ps12SequenceType", "Element"]
+- !private ["Ps12SequenceType", "Generator"]
+- !private ["Ps12SequenceType", "Index"]
+- !private ["Ps12SequenceType", "Key"]
+- !private ["Ps12SequenceType", "SubSequence"]
+- !private ["Ps12SequenceType", "Value"]
+- !private ["Ps12SequenceType", "_Element"]
+- ["C3Cru27SettingsTableViewController", "Bool"]
+- !private ["C3Cru27SettingsTableViewController", "Config"]
+- ["C3Cru27SettingsTableViewController", "FrontViewPosition"]
+- !private ["C3Cru27SettingsTableViewController", "GlobalUtils"]
+- ["C3Cru27SettingsTableViewController", "Int"]
+- !private ["C3Cru27SettingsTableViewController", "NSFontAttributeName"]
+- !private ["C3Cru27SettingsTableViewController", "NSForegroundColorAttributeName"]
+- ["C3Cru27SettingsTableViewController", "NSIndexPath"]
+- ["C3Cru27SettingsTableViewController", "SWRevealViewController"]
+- ["C3Cru27SettingsTableViewController", "UIBarButtonItem"]
+- !private ["C3Cru27SettingsTableViewController", "UIColor"]
+- !private ["C3Cru27SettingsTableViewController", "UIFont"]
+- ["C3Cru27SettingsTableViewController", "UILabel"]
+- ["C3Cru27SettingsTableViewController", "UITableView"]
+- ["C3Cru27SettingsTableViewController", "deinit"]
+- ["C3Cru27SettingsTableViewController", "didReceiveMemoryWarning"]
+- ["C3Cru27SettingsTableViewController", "init"]
+- ["C3Cru27SettingsTableViewController", "loginLabel"]
+- ["C3Cru27SettingsTableViewController", "menuButton"]
+- !private ["C3Cru27SettingsTableViewController", "navigationController"]
+- !private ["C3Cru27SettingsTableViewController", "navigationItem"]
+- ["C3Cru27SettingsTableViewController", "numberOfSectionsInTableView"]
+- !private ["C3Cru27SettingsTableViewController", "performSegueWithIdentifier"]
+- ["C3Cru27SettingsTableViewController", "revealController"]
+- ["C3Cru27SettingsTableViewController", "revealControllerPanGestureBegan"]
+- ["C3Cru27SettingsTableViewController", "revealControllerPanGestureEnded"]
+- ["C3Cru27SettingsTableViewController", "revealControllerPanGestureShouldBegin"]
+- ["C3Cru27SettingsTableViewController", "revealControllerTapGestureShouldBegin"]
+- ["C3Cru27SettingsTableViewController", "tableView"]
+- !private ["C3Cru27SettingsTableViewController", "view"]
+- ["C3Cru27SettingsTableViewController", "viewDidLoad"]
+- ["C3Cru27SettingsTableViewController", "viewWillAppear"]
+- !private ["Ps17SignedIntegerType", "Distance"]
+- !private ["Ps17SignedIntegerType", "IntegerLiteralType"]
+- !private ["Ps16SignedNumberType", "Distance"]
+- !private ["Ps16SignedNumberType", "IntegerLiteralType"]
+- !private ["Ps10Strideable", "Distance"]
+- !private ["Ps10Strideable", "IntegerLiteralType"]
+- !private ["PSo29UIAccessibilityIdentification", "subviews"]
+- !private ["PSo29UIAccessibilityIdentification", "text"]
+- !private ["PSo29UIAccessibilityIdentification", "titleTextAttributes"]
+- !private ["PSo29UIAccessibilityIdentification", "userInteractionEnabled"]
+- !private ["PSo12UIAppearance", "subviews"]
+- !private ["PSo12UIAppearance", "text"]
+- !private ["PSo12UIAppearance", "titleTextAttributes"]
+- !private ["PSo12UIAppearance", "userInteractionEnabled"]
+- !private ["PSo21UIAppearanceContainer", "Config"]
+- !private ["PSo21UIAppearanceContainer", "FrontViewPosition"]
+- !private ["PSo21UIAppearanceContainer", "GlobalUtils"]
+- !private ["PSo21UIAppearanceContainer", "NSFontAttributeName"]
+- !private ["PSo21UIAppearanceContainer", "NSForegroundColorAttributeName"]
+- !private ["PSo21UIAppearanceContainer", "UIColor"]
+- !private ["PSo21UIAppearanceContainer", "UIFont"]
+- ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "loginLabel"]
+- ["PSo21UIAppearanceContainer", "menuButton"]
+- !private ["PSo21UIAppearanceContainer", "navigationBar"]
+- !private ["PSo21UIAppearanceContainer", "navigationController"]
+- !private ["PSo21UIAppearanceContainer", "navigationItem"]
+- ["PSo21UIAppearanceContainer", "numberOfSectionsInTableView"]
+- !private ["PSo21UIAppearanceContainer", "performSegueWithIdentifier"]
+- ["PSo21UIAppearanceContainer", "revealController"]
+- ["PSo21UIAppearanceContainer", "revealControllerPanGestureBegan"]
+- ["PSo21UIAppearanceContainer", "revealControllerPanGestureEnded"]
+- ["PSo21UIAppearanceContainer", "revealControllerPanGestureShouldBegin"]
+- ["PSo21UIAppearanceContainer", "revealControllerTapGestureShouldBegin"]
+- !private ["PSo21UIAppearanceContainer", "subviews"]
+- ["PSo21UIAppearanceContainer", "tableView"]
+- !private ["PSo21UIAppearanceContainer", "text"]
+- !private ["PSo21UIAppearanceContainer", "titleTextAttributes"]
+- !private ["PSo21UIAppearanceContainer", "userInteractionEnabled"]
+- !private ["PSo21UIAppearanceContainer", "view"]
+- ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", "viewWillAppear"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["PSo16UIBarPositioning", "titleTextAttributes"]
+- !private ["CSo7UIColor", "whiteColor"]
+- !private ["PSo18UIContentContainer", "Config"]
+- !private ["PSo18UIContentContainer", "FrontViewPosition"]
+- !private ["PSo18UIContentContainer", "GlobalUtils"]
+- !private ["PSo18UIContentContainer", "NSFontAttributeName"]
+- !private ["PSo18UIContentContainer", "NSForegroundColorAttributeName"]
+- !private ["PSo18UIContentContainer", "UIColor"]
+- !private ["PSo18UIContentContainer", "UIFont"]
+- ["PSo18UIContentContainer", "didReceiveMemoryWarning"]
+- ["PSo18UIContentContainer", "init"]
+- ["PSo18UIContentContainer", "loginLabel"]
+- ["PSo18UIContentContainer", "menuButton"]
+- !private ["PSo18UIContentContainer", "navigationBar"]
+- !private ["PSo18UIContentContainer", "navigationController"]
+- !private ["PSo18UIContentContainer", "navigationItem"]
+- ["PSo18UIContentContainer", "numberOfSectionsInTableView"]
+- !private ["PSo18UIContentContainer", "performSegueWithIdentifier"]
+- ["PSo18UIContentContainer", "revealController"]
+- ["PSo18UIContentContainer", "revealControllerPanGestureBegan"]
+- ["PSo18UIContentContainer", "revealControllerPanGestureEnded"]
+- ["PSo18UIContentContainer", "revealControllerPanGestureShouldBegin"]
+- ["PSo18UIContentContainer", "revealControllerTapGestureShouldBegin"]
+- ["PSo18UIContentContainer", "tableView"]
+- !private ["PSo18UIContentContainer", "view"]
+- ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", "viewWillAppear"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo17UICoordinateSpace", "subviews"]
+- !private ["PSo17UICoordinateSpace", "text"]
+- !private ["PSo17UICoordinateSpace", "titleTextAttributes"]
+- !private ["PSo17UICoordinateSpace", "userInteractionEnabled"]
+- !private ["PSo13UIDynamicItem", "subviews"]
+- !private ["PSo13UIDynamicItem", "text"]
+- !private ["PSo13UIDynamicItem", "titleTextAttributes"]
+- !private ["PSo13UIDynamicItem", "userInteractionEnabled"]
+- !private ["PSo18UIFocusEnvironment", "Config"]
+- !private ["PSo18UIFocusEnvironment", "FrontViewPosition"]
+- !private ["PSo18UIFocusEnvironment", "GlobalUtils"]
+- !private ["PSo18UIFocusEnvironment", "NSFontAttributeName"]
+- !private ["PSo18UIFocusEnvironment", "NSForegroundColorAttributeName"]
+- !private ["PSo18UIFocusEnvironment", "UIColor"]
+- !private ["PSo18UIFocusEnvironment", "UIFont"]
+- ["PSo18UIFocusEnvironment", "didReceiveMemoryWarning"]
+- ["PSo18UIFocusEnvironment", "init"]
+- ["PSo18UIFocusEnvironment", "loginLabel"]
+- ["PSo18UIFocusEnvironment", "menuButton"]
+- !private ["PSo18UIFocusEnvironment", "navigationBar"]
+- !private ["PSo18UIFocusEnvironment", "navigationController"]
+- !private ["PSo18UIFocusEnvironment", "navigationItem"]
+- ["PSo18UIFocusEnvironment", "numberOfSectionsInTableView"]
+- !private ["PSo18UIFocusEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UIFocusEnvironment", "revealController"]
+- ["PSo18UIFocusEnvironment", "revealControllerPanGestureBegan"]
+- ["PSo18UIFocusEnvironment", "revealControllerPanGestureEnded"]
+- ["PSo18UIFocusEnvironment", "revealControllerPanGestureShouldBegin"]
+- ["PSo18UIFocusEnvironment", "revealControllerTapGestureShouldBegin"]
+- !private ["PSo18UIFocusEnvironment", "subviews"]
+- ["PSo18UIFocusEnvironment", "tableView"]
+- !private ["PSo18UIFocusEnvironment", "text"]
+- !private ["PSo18UIFocusEnvironment", "titleTextAttributes"]
+- !private ["PSo18UIFocusEnvironment", "userInteractionEnabled"]
+- !private ["PSo18UIFocusEnvironment", "view"]
+- ["PSo18UIFocusEnvironment", "viewDidLoad"]
+- ["PSo18UIFocusEnvironment", "viewWillAppear"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["CSo6UIFont", "init"]
+- !private ["CSo7UILabel", "text"]
+- !private ["CSo15UINavigationBar", "titleTextAttributes"]
+- !private ["CSo22UINavigationController", "navigationBar"]
+- !private ["CSo16UINavigationItem", "title"]
+- ["CSo11UIResponder", "Bool"]
+- !private ["CSo11UIResponder", "Config"]
+- ["CSo11UIResponder", "FrontViewPosition"]
+- !private ["CSo11UIResponder", "GlobalUtils"]
+- ["CSo11UIResponder", "Int"]
+- !private ["CSo11UIResponder", "NSFontAttributeName"]
+- !private ["CSo11UIResponder", "NSForegroundColorAttributeName"]
+- ["CSo11UIResponder", "NSIndexPath"]
+- ["CSo11UIResponder", "SWRevealViewController"]
+- ["CSo11UIResponder", "UIBarButtonItem"]
+- !private ["CSo11UIResponder", "UIColor"]
+- !private ["CSo11UIResponder", "UIFont"]
+- ["CSo11UIResponder", "UILabel"]
+- ["CSo11UIResponder", "UITableView"]
+- ["CSo11UIResponder", "didReceiveMemoryWarning"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "loginLabel"]
+- ["CSo11UIResponder", "menuButton"]
+- !private ["CSo11UIResponder", "navigationBar"]
+- !private ["CSo11UIResponder", "navigationController"]
+- !private ["CSo11UIResponder", "navigationItem"]
+- ["CSo11UIResponder", "numberOfSectionsInTableView"]
+- !private ["CSo11UIResponder", "performSegueWithIdentifier"]
+- ["CSo11UIResponder", "revealController"]
+- ["CSo11UIResponder", "revealControllerPanGestureBegan"]
+- ["CSo11UIResponder", "revealControllerPanGestureEnded"]
+- ["CSo11UIResponder", "revealControllerPanGestureShouldBegin"]
+- ["CSo11UIResponder", "revealControllerTapGestureShouldBegin"]
+- !private ["CSo11UIResponder", "subviews"]
+- ["CSo11UIResponder", "tableView"]
+- !private ["CSo11UIResponder", "text"]
+- !private ["CSo11UIResponder", "titleTextAttributes"]
+- !private ["CSo11UIResponder", "userInteractionEnabled"]
+- !private ["CSo11UIResponder", "view"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- ["CSo11UIResponder", "viewWillAppear"]
+- !private ["PSo20UIScrollViewDelegate", "Config"]
+- !private ["PSo20UIScrollViewDelegate", "FrontViewPosition"]
+- !private ["PSo20UIScrollViewDelegate", "GlobalUtils"]
+- !private ["PSo20UIScrollViewDelegate", "NSFontAttributeName"]
+- !private ["PSo20UIScrollViewDelegate", "NSForegroundColorAttributeName"]
+- !private ["PSo20UIScrollViewDelegate", "UIColor"]
+- !private ["PSo20UIScrollViewDelegate", "UIFont"]
+- ["PSo20UIScrollViewDelegate", "didReceiveMemoryWarning"]
+- ["PSo20UIScrollViewDelegate", "init"]
+- ["PSo20UIScrollViewDelegate", "loginLabel"]
+- ["PSo20UIScrollViewDelegate", "menuButton"]
+- !private ["PSo20UIScrollViewDelegate", "navigationController"]
+- !private ["PSo20UIScrollViewDelegate", "navigationItem"]
+- ["PSo20UIScrollViewDelegate", "numberOfSectionsInTableView"]
+- !private ["PSo20UIScrollViewDelegate", "performSegueWithIdentifier"]
+- ["PSo20UIScrollViewDelegate", "revealController"]
+- ["PSo20UIScrollViewDelegate", "revealControllerPanGestureBegan"]
+- ["PSo20UIScrollViewDelegate", "revealControllerPanGestureEnded"]
+- ["PSo20UIScrollViewDelegate", "revealControllerPanGestureShouldBegin"]
+- ["PSo20UIScrollViewDelegate", "revealControllerTapGestureShouldBegin"]
+- ["PSo20UIScrollViewDelegate", "tableView"]
+- !private ["PSo20UIScrollViewDelegate", "view"]
+- ["PSo20UIScrollViewDelegate", "viewDidLoad"]
+- ["PSo20UIScrollViewDelegate", "viewWillAppear"]
+- ["PSo20UIScrollViewDelegate", ""]
+- !private ["PSo16UIStateRestoring", "Config"]
+- !private ["PSo16UIStateRestoring", "FrontViewPosition"]
+- !private ["PSo16UIStateRestoring", "GlobalUtils"]
+- !private ["PSo16UIStateRestoring", "NSFontAttributeName"]
+- !private ["PSo16UIStateRestoring", "NSForegroundColorAttributeName"]
+- !private ["PSo16UIStateRestoring", "UIColor"]
+- !private ["PSo16UIStateRestoring", "UIFont"]
+- ["PSo16UIStateRestoring", "didReceiveMemoryWarning"]
+- ["PSo16UIStateRestoring", "init"]
+- ["PSo16UIStateRestoring", "loginLabel"]
+- ["PSo16UIStateRestoring", "menuButton"]
+- !private ["PSo16UIStateRestoring", "navigationBar"]
+- !private ["PSo16UIStateRestoring", "navigationController"]
+- !private ["PSo16UIStateRestoring", "navigationItem"]
+- ["PSo16UIStateRestoring", "numberOfSectionsInTableView"]
+- !private ["PSo16UIStateRestoring", "performSegueWithIdentifier"]
+- ["PSo16UIStateRestoring", "revealController"]
+- ["PSo16UIStateRestoring", "revealControllerPanGestureBegan"]
+- ["PSo16UIStateRestoring", "revealControllerPanGestureEnded"]
+- ["PSo16UIStateRestoring", "revealControllerPanGestureShouldBegin"]
+- ["PSo16UIStateRestoring", "revealControllerTapGestureShouldBegin"]
+- ["PSo16UIStateRestoring", "tableView"]
+- !private ["PSo16UIStateRestoring", "view"]
+- ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", "viewWillAppear"]
+- ["PSo16UIStateRestoring", ""]
+- ["CSo21UITableViewController", "Bool"]
+- !private ["CSo21UITableViewController", "Config"]
+- ["CSo21UITableViewController", "FrontViewPosition"]
+- !private ["CSo21UITableViewController", "GlobalUtils"]
+- ["CSo21UITableViewController", "Int"]
+- !private ["CSo21UITableViewController", "NSFontAttributeName"]
+- !private ["CSo21UITableViewController", "NSForegroundColorAttributeName"]
+- ["CSo21UITableViewController", "NSIndexPath"]
+- ["CSo21UITableViewController", "SWRevealViewController"]
+- ["CSo21UITableViewController", "UIBarButtonItem"]
+- !private ["CSo21UITableViewController", "UIColor"]
+- !private ["CSo21UITableViewController", "UIFont"]
+- ["CSo21UITableViewController", "UILabel"]
+- ["CSo21UITableViewController", "UITableView"]
+- ["CSo21UITableViewController", "didReceiveMemoryWarning"]
+- ["CSo21UITableViewController", "init"]
+- ["CSo21UITableViewController", "loginLabel"]
+- ["CSo21UITableViewController", "menuButton"]
+- !private ["CSo21UITableViewController", "navigationController"]
+- !private ["CSo21UITableViewController", "navigationItem"]
+- ["CSo21UITableViewController", "numberOfSectionsInTableView"]
+- !private ["CSo21UITableViewController", "performSegueWithIdentifier"]
+- ["CSo21UITableViewController", "revealController"]
+- ["CSo21UITableViewController", "revealControllerPanGestureBegan"]
+- ["CSo21UITableViewController", "revealControllerPanGestureEnded"]
+- ["CSo21UITableViewController", "revealControllerPanGestureShouldBegin"]
+- ["CSo21UITableViewController", "revealControllerTapGestureShouldBegin"]
+- ["CSo21UITableViewController", "tableView"]
+- !private ["CSo21UITableViewController", "view"]
+- ["CSo21UITableViewController", "viewDidLoad"]
+- ["CSo21UITableViewController", "viewWillAppear"]
+- ["CSo21UITableViewController", ""]
+- !private ["PSo21UITableViewDataSource", "Config"]
+- !private ["PSo21UITableViewDataSource", "FrontViewPosition"]
+- !private ["PSo21UITableViewDataSource", "GlobalUtils"]
+- !private ["PSo21UITableViewDataSource", "NSFontAttributeName"]
+- !private ["PSo21UITableViewDataSource", "NSForegroundColorAttributeName"]
+- !private ["PSo21UITableViewDataSource", "UIColor"]
+- !private ["PSo21UITableViewDataSource", "UIFont"]
+- ["PSo21UITableViewDataSource", "didReceiveMemoryWarning"]
+- ["PSo21UITableViewDataSource", "init"]
+- ["PSo21UITableViewDataSource", "loginLabel"]
+- ["PSo21UITableViewDataSource", "menuButton"]
+- !private ["PSo21UITableViewDataSource", "navigationController"]
+- !private ["PSo21UITableViewDataSource", "navigationItem"]
+- ["PSo21UITableViewDataSource", "numberOfSectionsInTableView"]
+- !private ["PSo21UITableViewDataSource", "performSegueWithIdentifier"]
+- ["PSo21UITableViewDataSource", "revealController"]
+- ["PSo21UITableViewDataSource", "revealControllerPanGestureBegan"]
+- ["PSo21UITableViewDataSource", "revealControllerPanGestureEnded"]
+- ["PSo21UITableViewDataSource", "revealControllerPanGestureShouldBegin"]
+- ["PSo21UITableViewDataSource", "revealControllerTapGestureShouldBegin"]
+- ["PSo21UITableViewDataSource", "tableView"]
+- !private ["PSo21UITableViewDataSource", "view"]
+- ["PSo21UITableViewDataSource", "viewDidLoad"]
+- ["PSo21UITableViewDataSource", "viewWillAppear"]
+- ["PSo21UITableViewDataSource", ""]
+- !private ["PSo19UITableViewDelegate", "Config"]
+- !private ["PSo19UITableViewDelegate", "FrontViewPosition"]
+- !private ["PSo19UITableViewDelegate", "GlobalUtils"]
+- !private ["PSo19UITableViewDelegate", "NSFontAttributeName"]
+- !private ["PSo19UITableViewDelegate", "NSForegroundColorAttributeName"]
+- !private ["PSo19UITableViewDelegate", "UIColor"]
+- !private ["PSo19UITableViewDelegate", "UIFont"]
+- ["PSo19UITableViewDelegate", "didReceiveMemoryWarning"]
+- ["PSo19UITableViewDelegate", "init"]
+- ["PSo19UITableViewDelegate", "loginLabel"]
+- ["PSo19UITableViewDelegate", "menuButton"]
+- !private ["PSo19UITableViewDelegate", "navigationController"]
+- !private ["PSo19UITableViewDelegate", "navigationItem"]
+- ["PSo19UITableViewDelegate", "numberOfSectionsInTableView"]
+- !private ["PSo19UITableViewDelegate", "performSegueWithIdentifier"]
+- ["PSo19UITableViewDelegate", "revealController"]
+- ["PSo19UITableViewDelegate", "revealControllerPanGestureBegan"]
+- ["PSo19UITableViewDelegate", "revealControllerPanGestureEnded"]
+- ["PSo19UITableViewDelegate", "revealControllerPanGestureShouldBegin"]
+- ["PSo19UITableViewDelegate", "revealControllerTapGestureShouldBegin"]
+- ["PSo19UITableViewDelegate", "tableView"]
+- !private ["PSo19UITableViewDelegate", "view"]
+- ["PSo19UITableViewDelegate", "viewDidLoad"]
+- ["PSo19UITableViewDelegate", "viewWillAppear"]
+- ["PSo19UITableViewDelegate", ""]
+- !private ["PSo18UITraitEnvironment", "Config"]
+- !private ["PSo18UITraitEnvironment", "FrontViewPosition"]
+- !private ["PSo18UITraitEnvironment", "GlobalUtils"]
+- !private ["PSo18UITraitEnvironment", "NSFontAttributeName"]
+- !private ["PSo18UITraitEnvironment", "NSForegroundColorAttributeName"]
+- !private ["PSo18UITraitEnvironment", "UIColor"]
+- !private ["PSo18UITraitEnvironment", "UIFont"]
+- ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "loginLabel"]
+- ["PSo18UITraitEnvironment", "menuButton"]
+- !private ["PSo18UITraitEnvironment", "navigationBar"]
+- !private ["PSo18UITraitEnvironment", "navigationController"]
+- !private ["PSo18UITraitEnvironment", "navigationItem"]
+- ["PSo18UITraitEnvironment", "numberOfSectionsInTableView"]
+- !private ["PSo18UITraitEnvironment", "performSegueWithIdentifier"]
+- ["PSo18UITraitEnvironment", "revealController"]
+- ["PSo18UITraitEnvironment", "revealControllerPanGestureBegan"]
+- ["PSo18UITraitEnvironment", "revealControllerPanGestureEnded"]
+- ["PSo18UITraitEnvironment", "revealControllerPanGestureShouldBegin"]
+- ["PSo18UITraitEnvironment", "revealControllerTapGestureShouldBegin"]
+- !private ["PSo18UITraitEnvironment", "subviews"]
+- ["PSo18UITraitEnvironment", "tableView"]
+- !private ["PSo18UITraitEnvironment", "text"]
+- !private ["PSo18UITraitEnvironment", "titleTextAttributes"]
+- !private ["PSo18UITraitEnvironment", "userInteractionEnabled"]
+- !private ["PSo18UITraitEnvironment", "view"]
+- ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", "viewWillAppear"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo6UIView", "subviews"]
+- !private ["CSo6UIView", "text"]
+- !private ["CSo6UIView", "titleTextAttributes"]
+- !private ["CSo6UIView", "userInteractionEnabled"]
+- ["CSo16UIViewController", "Bool"]
+- !private ["CSo16UIViewController", "Config"]
+- ["CSo16UIViewController", "FrontViewPosition"]
+- !private ["CSo16UIViewController", "GlobalUtils"]
+- ["CSo16UIViewController", "Int"]
+- !private ["CSo16UIViewController", "NSFontAttributeName"]
+- !private ["CSo16UIViewController", "NSForegroundColorAttributeName"]
+- ["CSo16UIViewController", "NSIndexPath"]
+- ["CSo16UIViewController", "SWRevealViewController"]
+- ["CSo16UIViewController", "UIBarButtonItem"]
+- !private ["CSo16UIViewController", "UIColor"]
+- !private ["CSo16UIViewController", "UIFont"]
+- ["CSo16UIViewController", "UILabel"]
+- ["CSo16UIViewController", "UITableView"]
+- ["CSo16UIViewController", "didReceiveMemoryWarning"]
+- ["CSo16UIViewController", "init"]
+- ["CSo16UIViewController", "loginLabel"]
+- ["CSo16UIViewController", "menuButton"]
+- !private ["CSo16UIViewController", "navigationBar"]
+- !private ["CSo16UIViewController", "navigationController"]
+- !private ["CSo16UIViewController", "navigationItem"]
+- ["CSo16UIViewController", "numberOfSectionsInTableView"]
+- !private ["CSo16UIViewController", "performSegueWithIdentifier"]
+- ["CSo16UIViewController", "revealController"]
+- ["CSo16UIViewController", "revealControllerPanGestureBegan"]
+- ["CSo16UIViewController", "revealControllerPanGestureEnded"]
+- ["CSo16UIViewController", "revealControllerPanGestureShouldBegin"]
+- ["CSo16UIViewController", "revealControllerTapGestureShouldBegin"]
+- ["CSo16UIViewController", "tableView"]
+- !private ["CSo16UIViewController", "view"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- ["CSo16UIViewController", "viewWillAppear"]
+- !private ["Ps10_ArrayType", "Generator"]
+- !private ["Ps10_ArrayType", "Index"]
+- !private ["Ps10_ArrayType", "SubSequence"]
+- !private ["Ps10_ArrayType", "_Element"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "Distance"]
+- !private ["Ps33_BuiltinIntegerLiteralConvertible", "IntegerLiteralType"]
+- !private ["Ps24_ColorLiteralConvertible", "whiteColor"]
+- !private ["Ps24_DestructorSafeContainer", "Generator"]
+- !private ["Ps24_DestructorSafeContainer", "Index"]
+- !private ["Ps24_DestructorSafeContainer", "SubSequence"]
+- !private ["Ps24_DestructorSafeContainer", "_Element"]
+- !private ["Ps14_Incrementable", "Distance"]
+- !private ["Ps14_Incrementable", "IntegerLiteralType"]
+- !private ["Ps22_IntegerArithmeticType", "Distance"]
+- !private ["Ps22_IntegerArithmeticType", "IntegerLiteralType"]
+- !private ["Ps12_IntegerType", "Distance"]
+- !private ["Ps12_IntegerType", "IntegerLiteralType"]
+- !private ["Ps21_ObjectiveCBridgeable", "Distance"]
+- !private ["Ps21_ObjectiveCBridgeable", "Generator"]
+- !private ["Ps21_ObjectiveCBridgeable", "Index"]
+- !private ["Ps21_ObjectiveCBridgeable", "IntegerLiteralType"]
+- !private ["Ps21_ObjectiveCBridgeable", "Key"]
+- !private ["Ps21_ObjectiveCBridgeable", "SubSequence"]
+- !private ["Ps21_ObjectiveCBridgeable", "Value"]
+- !private ["Ps21_ObjectiveCBridgeable", "_Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps22_RandomAccessAmbiguity", "Distance"]
+- !private ["Ps22_RandomAccessAmbiguity", "IntegerLiteralType"]
+- !private ["Ps12_Reflectable", "Distance"]
+- !private ["Ps12_Reflectable", "Generator"]
+- !private ["Ps12_Reflectable", "Index"]
+- !private ["Ps12_Reflectable", "IntegerLiteralType"]
+- !private ["Ps12_Reflectable", "Key"]
+- !private ["Ps12_Reflectable", "SubSequence"]
+- !private ["Ps12_Reflectable", "Value"]
+- !private ["Ps12_Reflectable", "_Element"]
+- !private ["Ps12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["Ps12_Reflectable", "subviews"]
+- !private ["Ps12_Reflectable", "text"]
+- !private ["Ps12_Reflectable", "titleTextAttributes"]
+- !private ["Ps12_Reflectable", "userInteractionEnabled"]
+- !private ["Ps18_SignedIntegerType", "Distance"]
+- !private ["Ps18_SignedIntegerType", "IntegerLiteralType"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Sa"
+- !private "Ps23ArrayLiteralConvertible"
+- !private "Vs10ArraySlice"
+- !private "Ps22BidirectionalIndexType"
+- !private "Ps21BitwiseOperationsType"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "V12CoreGraphics7CGFloat"
+- "Ps11CVarArgType"
+- !private "Ps14CollectionType"
+- !private "Ps10Comparable"
+- !private "V3Cru6Config"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- !private "Vs10Dictionary"
+- !private "Ps28DictionaryLiteralConvertible"
+- "Ps9Equatable"
+- !private "Ps16ForwardIndexType"
+- !private "OSC17FrontViewPosition"
+- !private "Ps13GeneratorType"
+- !private "C3Cru11GlobalUtils"
+- "Ps8Hashable"
+- !private "Ps9Indexable"
+- !private "Vs17IndexingGenerator"
+- !private "Si"
+- !private "Ps21IntegerArithmeticType"
+- !private "Ps25IntegerLiteralConvertible"
+- !private "Ps11IntegerType"
+- !private "Ps14MirrorPathType"
+- !private "Ps21MutableCollectionType"
+- !private "Ps16MutableIndexable"
+- !private "Ps16MutableSliceable"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- "PSo26NSExtensionRequestHandling"
+- !private "CSo11NSIndexPath"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "Sq"
+- !private "Ps21RandomAccessIndexType"
+- !private "Ps30RangeReplaceableCollectionType"
+- !private "Ps16RawRepresentable"
+- "PSo30SWRevealViewControllerDelegate"
+- !private "Ps12SequenceType"
+- "C3Cru27SettingsTableViewController"
+- !private "Ps17SignedIntegerType"
+- !private "Ps16SignedNumberType"
+- !private "Ps10Strideable"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- !private "PSo16UIBarPositioning"
+- !private "CSo7UIColor"
+- "PSo18UIContentContainer"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- !private "CSo6UIFont"
+- !private "CSo7UILabel"
+- !private "CSo15UINavigationBar"
+- !private "CSo22UINavigationController"
+- !private "CSo16UINavigationItem"
+- "CSo11UIResponder"
+- "PSo20UIScrollViewDelegate"
+- "PSo16UIStateRestoring"
+- "CSo21UITableViewController"
+- "PSo21UITableViewDataSource"
+- "PSo19UITableViewDelegate"
+- "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- "CSo16UIViewController"
+- !private "Ps10_ArrayType"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps33_BuiltinIntegerLiteralConvertible"
+- !private "Ps24_ColorLiteralConvertible"
+- !private "Ps24_DestructorSafeContainer"
+- !private "Ps14_Incrementable"
+- !private "Ps22_IntegerArithmeticType"
+- !private "Ps12_IntegerType"
+- !private "Ps21_ObjectiveCBridgeable"
+- !private "Ps22_RandomAccessAmbiguity"
+- !private "Ps12_Reflectable"
+- !private "Ps18_SignedIntegerType"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/Cru-Bridging-Header.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/Core.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreImage.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLErrorCode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GMRConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMPubSub.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMService.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext+CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDHeaders.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceID.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GoogleCloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMReceiverDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/SWRevealViewController.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressHelper.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/UIImage+MRImageEffects.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRBlurView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressOverlayView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRNavigationBarProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRIconView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRCircularProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopableView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRActivityIndicatorView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/UIScrollView+EmptyDataSet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/SwiftValidator.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/Alamofire.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/SignIn-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Core-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/CloudMessaging-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AppInvite-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Analytics-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AdMob-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/SideMenu.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreData.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/WildcardSDK.framework/Modules/WildcardSDK.swiftmodule/arm.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/WebKit.swiftmodule"
+- "./WildcardSDK.framework/Headers/WildcardSDK-Swift.h"
+- "./WildcardSDK.framework/Headers/YTVimeoExtractor.h"
+- "./WildcardSDK.framework/Headers/YTPlayerView.h"
+- "./WildcardSDK.framework/Headers/WCElementType.h"
+- "./WildcardSDK.framework/Headers/WCErrorCode.h"
+- "./WildcardSDK.framework/Headers/WCAnalytics.h"
+- "./WildcardSDK.framework/Headers/WCCardAction.h"
+- "./WildcardSDK.framework/Headers/WCCardType.h"
+- "./WildcardSDK.framework/Headers/WCCardLayout.h"
+- "./WildcardSDK.framework/Headers/WildcardSDK.h"
+- "./WildcardSDK.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/IQKeyboardManagerSwift.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/Fabric.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Answers.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Headers/Appsee.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTreeEnumerator.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizerState.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizer.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLString.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/NSString+HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTextNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSerialization.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSelector.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLPreprocessedInputStream.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLParser.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLOrderedDictionary.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEncoding.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLQuirksMode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLElement.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocumentType.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocument.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSupport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNamespace.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLComment.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/SWActionSheet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetMultipleStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetLocalePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/DistancePickerView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDistancePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDatePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPickerDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/AbstractActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker-3.0-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/LocationPicker.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/ImageLoader.swiftmodule/arm.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/EventKit.swiftmodule"
+interface-hash: "2901d82e7779fdad09201b42b77e740d"

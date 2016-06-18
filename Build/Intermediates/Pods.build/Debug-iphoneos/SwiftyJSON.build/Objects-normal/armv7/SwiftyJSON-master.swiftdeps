@@ -1,0 +1,5 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "392122c82153f4b8969a8175fe12acc3"
+build_time: [519523877, 567195000]
+inputs:
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftyJSON/Source/SwiftyJSON.swift": [519434809, 0]

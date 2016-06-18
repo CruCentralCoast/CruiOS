@@ -1,0 +1,8 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "9cb0a432b27f7b588fcbfec499bd5083"
+build_time: [519523845, 237515000]
+inputs:
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/LocationPicker/LocationPicker/Location.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/LocationPicker/LocationPicker/LocationPickerViewController.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/LocationPicker/LocationPicker/LocationSearchResultsViewController.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/LocationPicker/LocationPicker/SearchHistoryManager.swift": [519434809, 0]

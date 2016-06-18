@@ -1,0 +1,21 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "bf4febddd749cff4676278abfc02407e"
+build_time: [519523874, 257105000]
+inputs:
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/ConfirmRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/EmailRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/ExactLengthRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/FloatRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/FullNameRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/MaxLengthRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/MinLengthRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/PasswordRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/PhoneNumberRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/RegexRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/RequiredRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/Rule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Core/ValidationDelegate.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Core/ValidationError.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/ValidationRule.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Core/Validator.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SwiftValidator/SwiftValidator/Rules/ZipCodeRule.swift": [519434809, 0]

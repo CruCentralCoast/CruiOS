@@ -1,0 +1,1246 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "LoginViewController"
+provides-nominal:
+- "C3Cru19LoginViewController"
+provides-member:
+- ["C3Cru19LoginViewController", ""]
+provides-dynamic-lookup:
+- "viewDidLoad"
+- "passwordField"
+- "resetLabel"
+- "passwordError"
+- "loginPressed"
+- "usernameField"
+- "validationFailed"
+- "validationSuccessful"
+- "usernameError"
+depends-top-level:
+- !private "LoginUtils"
+- !private "CruColors"
+- "ValidationDelegate"
+- !private "Dictionary"
+- !private "EmailRule"
+- !private "GlobalUtils"
+- !private "UIFont"
+- !private "UIAlertControllerStyle"
+- !private "BooleanLiteralType"
+- "LoginViewController"
+- "Validator"
+- !private "RequiredRule"
+- "ValidationError"
+- !private "MRProgressOverlayView"
+- !private "UIAlertController"
+- !private "=="
+- "UIViewController"
+- !private "Config"
+- "UITextField"
+- !private "NSFontAttributeName"
+- !private "UIAlertAction"
+- "AnyObject"
+- !private "Bool"
+- !private "UIColor"
+- "UILabel"
+- !private "Array"
+- !private "NSForegroundColorAttributeName"
+- !private "StringLiteralType"
+depends-member:
+- !private ["Ps9AnyObject", "CGColor"]
+- !private ["Ps9AnyObject", "Config"]
+- !private ["Ps9AnyObject", "CruColors"]
+- !private ["Ps9AnyObject", "EmailRule"]
+- !private ["Ps9AnyObject", "GlobalUtils"]
+- !private ["Ps9AnyObject", "LoginUtils"]
+- !private ["Ps9AnyObject", "MRProgressOverlayView"]
+- !private ["Ps9AnyObject", "NSFontAttributeName"]
+- !private ["Ps9AnyObject", "NSForegroundColorAttributeName"]
+- !private ["Ps9AnyObject", "RequiredRule"]
+- !private ["Ps9AnyObject", "UIAlertAction"]
+- !private ["Ps9AnyObject", "UIAlertController"]
+- !private ["Ps9AnyObject", "UIAlertControllerStyle"]
+- !private ["Ps9AnyObject", "UIColor"]
+- !private ["Ps9AnyObject", "UIFont"]
+- ["Ps9AnyObject", "Validator"]
+- !private ["Ps9AnyObject", "addAction"]
+- !private ["Ps9AnyObject", "borderColor"]
+- !private ["Ps9AnyObject", "borderWidth"]
+- !private ["Ps9AnyObject", "clearColor"]
+- !private ["Ps9AnyObject", "dismissOverlayForView"]
+- !private ["Ps9AnyObject", "errorLabel"]
+- !private ["Ps9AnyObject", "errorMessage"]
+- !private ["Ps9AnyObject", "errors"]
+- !private ["Ps9AnyObject", "hidden"]
+- ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "layer"]
+- !private ["Ps9AnyObject", "loadString"]
+- !private ["Ps9AnyObject", "login"]
+- ["Ps9AnyObject", "loginPressed"]
+- !private ["Ps9AnyObject", "navigationBar"]
+- !private ["Ps9AnyObject", "navigationController"]
+- !private ["Ps9AnyObject", "navigationItem"]
+- ["Ps9AnyObject", "passwordError"]
+- ["Ps9AnyObject", "passwordField"]
+- !private ["Ps9AnyObject", "popViewControllerAnimated"]
+- !private ["Ps9AnyObject", "presentViewController"]
+- !private ["Ps9AnyObject", "registerField"]
+- ["Ps9AnyObject", "resetLabel"]
+- !private ["Ps9AnyObject", "showOverlayAddedTo"]
+- !private ["Ps9AnyObject", "text"]
+- !private ["Ps9AnyObject", "title"]
+- !private ["Ps9AnyObject", "titleTextAttributes"]
+- ["Ps9AnyObject", "usernameError"]
+- ["Ps9AnyObject", "usernameField"]
+- !private ["Ps9AnyObject", "validate"]
+- ["Ps9AnyObject", "validationFailed"]
+- ["Ps9AnyObject", "validationSuccessful"]
+- ["Ps9AnyObject", "validator"]
+- !private ["Ps9AnyObject", "view"]
+- ["Ps9AnyObject", "viewDidLoad"]
+- !private ["Ps9AnyObject", "whiteColor"]
+- !private ["Ps9AnyObject", "yellow"]
+- ["Ps9AnyObject", ""]
+- !private ["Sa", "Element"]
+- !private ["Ps23ArrayLiteralConvertible", "Element"]
+- !private ["Sb", "_getBuiltinLogicValue"]
+- !private ["Ps25BooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps11BooleanType", "_getBuiltinLogicValue"]
+- !private ["CSo7CALayer", "borderColor"]
+- !private ["CSo7CALayer", "borderWidth"]
+- !private ["PSo13CAMediaTiming", "borderColor"]
+- !private ["PSo13CAMediaTiming", "borderWidth"]
+- !private ["V12CoreGraphics7CGFloat", "deinit"]
+- !private ["Ps11CVarArgType", "CGColor"]
+- !private ["Ps11CVarArgType", "Config"]
+- !private ["Ps11CVarArgType", "CruColors"]
+- !private ["Ps11CVarArgType", "EmailRule"]
+- !private ["Ps11CVarArgType", "GlobalUtils"]
+- !private ["Ps11CVarArgType", "LoginUtils"]
+- !private ["Ps11CVarArgType", "MRProgressOverlayView"]
+- !private ["Ps11CVarArgType", "NSFontAttributeName"]
+- !private ["Ps11CVarArgType", "NSForegroundColorAttributeName"]
+- !private ["Ps11CVarArgType", "RequiredRule"]
+- !private ["Ps11CVarArgType", "UIAlertAction"]
+- !private ["Ps11CVarArgType", "UIAlertController"]
+- !private ["Ps11CVarArgType", "UIAlertControllerStyle"]
+- !private ["Ps11CVarArgType", "UIColor"]
+- !private ["Ps11CVarArgType", "UIFont"]
+- ["Ps11CVarArgType", "Validator"]
+- !private ["Ps11CVarArgType", "addAction"]
+- !private ["Ps11CVarArgType", "borderColor"]
+- !private ["Ps11CVarArgType", "borderWidth"]
+- !private ["Ps11CVarArgType", "clearColor"]
+- !private ["Ps11CVarArgType", "dismissOverlayForView"]
+- !private ["Ps11CVarArgType", "errorLabel"]
+- !private ["Ps11CVarArgType", "errorMessage"]
+- !private ["Ps11CVarArgType", "hidden"]
+- ["Ps11CVarArgType", "init"]
+- !private ["Ps11CVarArgType", "layer"]
+- ["Ps11CVarArgType", "loginPressed"]
+- !private ["Ps11CVarArgType", "navigationBar"]
+- !private ["Ps11CVarArgType", "navigationController"]
+- !private ["Ps11CVarArgType", "navigationItem"]
+- ["Ps11CVarArgType", "passwordError"]
+- ["Ps11CVarArgType", "passwordField"]
+- !private ["Ps11CVarArgType", "popViewControllerAnimated"]
+- !private ["Ps11CVarArgType", "presentViewController"]
+- ["Ps11CVarArgType", "resetLabel"]
+- !private ["Ps11CVarArgType", "showOverlayAddedTo"]
+- !private ["Ps11CVarArgType", "text"]
+- !private ["Ps11CVarArgType", "title"]
+- !private ["Ps11CVarArgType", "titleTextAttributes"]
+- ["Ps11CVarArgType", "usernameError"]
+- ["Ps11CVarArgType", "usernameField"]
+- ["Ps11CVarArgType", "validationFailed"]
+- ["Ps11CVarArgType", "validationSuccessful"]
+- ["Ps11CVarArgType", "validator"]
+- !private ["Ps11CVarArgType", "view"]
+- ["Ps11CVarArgType", "viewDidLoad"]
+- !private ["Ps11CVarArgType", "whiteColor"]
+- ["Ps11CVarArgType", ""]
+- !private ["Ps14CollectionType", "Element"]
+- !private ["Ps14CollectionType", "Generator"]
+- !private ["Ps14CollectionType", "Key"]
+- !private ["Ps14CollectionType", "Value"]
+- !private ["V3Cru6Config", "fontBold"]
+- !private ["V3Cru6Config", "username"]
+- !private ["C3Cru9CruColors", "yellow"]
+- !private ["Ps28CustomDebugStringConvertible", "CGColor"]
+- !private ["Ps28CustomDebugStringConvertible", "Config"]
+- !private ["Ps28CustomDebugStringConvertible", "CruColors"]
+- !private ["Ps28CustomDebugStringConvertible", "Element"]
+- !private ["Ps28CustomDebugStringConvertible", "EmailRule"]
+- !private ["Ps28CustomDebugStringConvertible", "Generator"]
+- !private ["Ps28CustomDebugStringConvertible", "GlobalUtils"]
+- !private ["Ps28CustomDebugStringConvertible", "Key"]
+- !private ["Ps28CustomDebugStringConvertible", "LoginUtils"]
+- !private ["Ps28CustomDebugStringConvertible", "MRProgressOverlayView"]
+- !private ["Ps28CustomDebugStringConvertible", "NSFontAttributeName"]
+- !private ["Ps28CustomDebugStringConvertible", "NSForegroundColorAttributeName"]
+- !private ["Ps28CustomDebugStringConvertible", "RequiredRule"]
+- !private ["Ps28CustomDebugStringConvertible", "Some"]
+- !private ["Ps28CustomDebugStringConvertible", "UIAlertAction"]
+- !private ["Ps28CustomDebugStringConvertible", "UIAlertController"]
+- !private ["Ps28CustomDebugStringConvertible", "UIAlertControllerStyle"]
+- !private ["Ps28CustomDebugStringConvertible", "UIColor"]
+- !private ["Ps28CustomDebugStringConvertible", "UIFont"]
+- ["Ps28CustomDebugStringConvertible", "Validator"]
+- !private ["Ps28CustomDebugStringConvertible", "Value"]
+- !private ["Ps28CustomDebugStringConvertible", "addAction"]
+- !private ["Ps28CustomDebugStringConvertible", "borderColor"]
+- !private ["Ps28CustomDebugStringConvertible", "borderWidth"]
+- !private ["Ps28CustomDebugStringConvertible", "clearColor"]
+- !private ["Ps28CustomDebugStringConvertible", "dismissOverlayForView"]
+- !private ["Ps28CustomDebugStringConvertible", "errorLabel"]
+- !private ["Ps28CustomDebugStringConvertible", "errorMessage"]
+- !private ["Ps28CustomDebugStringConvertible", "hidden"]
+- ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "layer"]
+- ["Ps28CustomDebugStringConvertible", "loginPressed"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationBar"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationController"]
+- !private ["Ps28CustomDebugStringConvertible", "navigationItem"]
+- ["Ps28CustomDebugStringConvertible", "passwordError"]
+- ["Ps28CustomDebugStringConvertible", "passwordField"]
+- !private ["Ps28CustomDebugStringConvertible", "popViewControllerAnimated"]
+- !private ["Ps28CustomDebugStringConvertible", "presentViewController"]
+- ["Ps28CustomDebugStringConvertible", "resetLabel"]
+- !private ["Ps28CustomDebugStringConvertible", "showOverlayAddedTo"]
+- !private ["Ps28CustomDebugStringConvertible", "text"]
+- !private ["Ps28CustomDebugStringConvertible", "title"]
+- !private ["Ps28CustomDebugStringConvertible", "titleTextAttributes"]
+- ["Ps28CustomDebugStringConvertible", "usernameError"]
+- ["Ps28CustomDebugStringConvertible", "usernameField"]
+- ["Ps28CustomDebugStringConvertible", "validationFailed"]
+- ["Ps28CustomDebugStringConvertible", "validationSuccessful"]
+- ["Ps28CustomDebugStringConvertible", "validator"]
+- !private ["Ps28CustomDebugStringConvertible", "view"]
+- ["Ps28CustomDebugStringConvertible", "viewDidLoad"]
+- !private ["Ps28CustomDebugStringConvertible", "whiteColor"]
+- ["Ps28CustomDebugStringConvertible", ""]
+- !private ["Ps23CustomStringConvertible", "CGColor"]
+- !private ["Ps23CustomStringConvertible", "Config"]
+- !private ["Ps23CustomStringConvertible", "CruColors"]
+- !private ["Ps23CustomStringConvertible", "Element"]
+- !private ["Ps23CustomStringConvertible", "EmailRule"]
+- !private ["Ps23CustomStringConvertible", "Generator"]
+- !private ["Ps23CustomStringConvertible", "GlobalUtils"]
+- !private ["Ps23CustomStringConvertible", "Key"]
+- !private ["Ps23CustomStringConvertible", "LoginUtils"]
+- !private ["Ps23CustomStringConvertible", "MRProgressOverlayView"]
+- !private ["Ps23CustomStringConvertible", "NSFontAttributeName"]
+- !private ["Ps23CustomStringConvertible", "NSForegroundColorAttributeName"]
+- !private ["Ps23CustomStringConvertible", "RequiredRule"]
+- !private ["Ps23CustomStringConvertible", "UIAlertAction"]
+- !private ["Ps23CustomStringConvertible", "UIAlertController"]
+- !private ["Ps23CustomStringConvertible", "UIAlertControllerStyle"]
+- !private ["Ps23CustomStringConvertible", "UIColor"]
+- !private ["Ps23CustomStringConvertible", "UIFont"]
+- ["Ps23CustomStringConvertible", "Validator"]
+- !private ["Ps23CustomStringConvertible", "Value"]
+- !private ["Ps23CustomStringConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps23CustomStringConvertible", "addAction"]
+- !private ["Ps23CustomStringConvertible", "borderColor"]
+- !private ["Ps23CustomStringConvertible", "borderWidth"]
+- !private ["Ps23CustomStringConvertible", "clearColor"]
+- !private ["Ps23CustomStringConvertible", "dismissOverlayForView"]
+- !private ["Ps23CustomStringConvertible", "errorLabel"]
+- !private ["Ps23CustomStringConvertible", "errorMessage"]
+- !private ["Ps23CustomStringConvertible", "hidden"]
+- ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "layer"]
+- ["Ps23CustomStringConvertible", "loginPressed"]
+- !private ["Ps23CustomStringConvertible", "navigationBar"]
+- !private ["Ps23CustomStringConvertible", "navigationController"]
+- !private ["Ps23CustomStringConvertible", "navigationItem"]
+- ["Ps23CustomStringConvertible", "passwordError"]
+- ["Ps23CustomStringConvertible", "passwordField"]
+- !private ["Ps23CustomStringConvertible", "popViewControllerAnimated"]
+- !private ["Ps23CustomStringConvertible", "presentViewController"]
+- ["Ps23CustomStringConvertible", "resetLabel"]
+- !private ["Ps23CustomStringConvertible", "showOverlayAddedTo"]
+- !private ["Ps23CustomStringConvertible", "text"]
+- !private ["Ps23CustomStringConvertible", "title"]
+- !private ["Ps23CustomStringConvertible", "titleTextAttributes"]
+- ["Ps23CustomStringConvertible", "usernameError"]
+- ["Ps23CustomStringConvertible", "usernameField"]
+- ["Ps23CustomStringConvertible", "validationFailed"]
+- ["Ps23CustomStringConvertible", "validationSuccessful"]
+- ["Ps23CustomStringConvertible", "validator"]
+- !private ["Ps23CustomStringConvertible", "view"]
+- ["Ps23CustomStringConvertible", "viewDidLoad"]
+- !private ["Ps23CustomStringConvertible", "whiteColor"]
+- ["Ps23CustomStringConvertible", ""]
+- !private ["Vs10Dictionary", "Generator"]
+- !private ["Vs10Dictionary", "Key"]
+- !private ["Vs10Dictionary", "Value"]
+- !private ["Vs19DictionaryGenerator", "Element"]
+- !private ["Ps28DictionaryLiteralConvertible", "Generator"]
+- !private ["Ps28DictionaryLiteralConvertible", "Key"]
+- !private ["Ps28DictionaryLiteralConvertible", "Value"]
+- !private ["C14SwiftValidator9EmailRule", "init"]
+- !private ["Ps9Equatable", "Alert"]
+- !private ["Ps9Equatable", "CGColor"]
+- !private ["Ps9Equatable", "Config"]
+- !private ["Ps9Equatable", "CruColors"]
+- !private ["Ps9Equatable", "Default"]
+- !private ["Ps9Equatable", "EmailRule"]
+- !private ["Ps9Equatable", "GlobalUtils"]
+- !private ["Ps9Equatable", "LoginUtils"]
+- !private ["Ps9Equatable", "MRProgressOverlayView"]
+- !private ["Ps9Equatable", "NSFontAttributeName"]
+- !private ["Ps9Equatable", "NSForegroundColorAttributeName"]
+- !private ["Ps9Equatable", "RequiredRule"]
+- !private ["Ps9Equatable", "UIAlertAction"]
+- !private ["Ps9Equatable", "UIAlertController"]
+- !private ["Ps9Equatable", "UIAlertControllerStyle"]
+- !private ["Ps9Equatable", "UIColor"]
+- !private ["Ps9Equatable", "UIFont"]
+- ["Ps9Equatable", "Validator"]
+- !private ["Ps9Equatable", "_getBuiltinLogicValue"]
+- !private ["Ps9Equatable", "addAction"]
+- !private ["Ps9Equatable", "borderColor"]
+- !private ["Ps9Equatable", "borderWidth"]
+- !private ["Ps9Equatable", "clearColor"]
+- !private ["Ps9Equatable", "dismissOverlayForView"]
+- !private ["Ps9Equatable", "errorLabel"]
+- !private ["Ps9Equatable", "errorMessage"]
+- !private ["Ps9Equatable", "hidden"]
+- ["Ps9Equatable", "init"]
+- !private ["Ps9Equatable", "layer"]
+- ["Ps9Equatable", "loginPressed"]
+- !private ["Ps9Equatable", "navigationBar"]
+- !private ["Ps9Equatable", "navigationController"]
+- !private ["Ps9Equatable", "navigationItem"]
+- ["Ps9Equatable", "passwordError"]
+- ["Ps9Equatable", "passwordField"]
+- !private ["Ps9Equatable", "popViewControllerAnimated"]
+- !private ["Ps9Equatable", "presentViewController"]
+- ["Ps9Equatable", "resetLabel"]
+- !private ["Ps9Equatable", "showOverlayAddedTo"]
+- !private ["Ps9Equatable", "text"]
+- !private ["Ps9Equatable", "title"]
+- !private ["Ps9Equatable", "titleTextAttributes"]
+- ["Ps9Equatable", "usernameError"]
+- ["Ps9Equatable", "usernameField"]
+- ["Ps9Equatable", "validationFailed"]
+- ["Ps9Equatable", "validationSuccessful"]
+- ["Ps9Equatable", "validator"]
+- !private ["Ps9Equatable", "view"]
+- ["Ps9Equatable", "viewDidLoad"]
+- !private ["Ps9Equatable", "whiteColor"]
+- ["Ps9Equatable", ""]
+- !private ["Ps13GeneratorType", "Element"]
+- !private ["C3Cru11GlobalUtils", "loadString"]
+- !private ["Ps8Hashable", "Alert"]
+- !private ["Ps8Hashable", "CGColor"]
+- !private ["Ps8Hashable", "Config"]
+- !private ["Ps8Hashable", "CruColors"]
+- !private ["Ps8Hashable", "Default"]
+- !private ["Ps8Hashable", "EmailRule"]
+- !private ["Ps8Hashable", "GlobalUtils"]
+- !private ["Ps8Hashable", "LoginUtils"]
+- !private ["Ps8Hashable", "MRProgressOverlayView"]
+- !private ["Ps8Hashable", "NSFontAttributeName"]
+- !private ["Ps8Hashable", "NSForegroundColorAttributeName"]
+- !private ["Ps8Hashable", "RequiredRule"]
+- !private ["Ps8Hashable", "UIAlertAction"]
+- !private ["Ps8Hashable", "UIAlertController"]
+- !private ["Ps8Hashable", "UIAlertControllerStyle"]
+- !private ["Ps8Hashable", "UIColor"]
+- !private ["Ps8Hashable", "UIFont"]
+- ["Ps8Hashable", "Validator"]
+- !private ["Ps8Hashable", "_getBuiltinLogicValue"]
+- !private ["Ps8Hashable", "addAction"]
+- !private ["Ps8Hashable", "borderColor"]
+- !private ["Ps8Hashable", "borderWidth"]
+- !private ["Ps8Hashable", "clearColor"]
+- !private ["Ps8Hashable", "dismissOverlayForView"]
+- !private ["Ps8Hashable", "errorLabel"]
+- !private ["Ps8Hashable", "errorMessage"]
+- !private ["Ps8Hashable", "hidden"]
+- ["Ps8Hashable", "init"]
+- !private ["Ps8Hashable", "layer"]
+- ["Ps8Hashable", "loginPressed"]
+- !private ["Ps8Hashable", "navigationBar"]
+- !private ["Ps8Hashable", "navigationController"]
+- !private ["Ps8Hashable", "navigationItem"]
+- ["Ps8Hashable", "passwordError"]
+- ["Ps8Hashable", "passwordField"]
+- !private ["Ps8Hashable", "popViewControllerAnimated"]
+- !private ["Ps8Hashable", "presentViewController"]
+- ["Ps8Hashable", "resetLabel"]
+- !private ["Ps8Hashable", "showOverlayAddedTo"]
+- !private ["Ps8Hashable", "text"]
+- !private ["Ps8Hashable", "title"]
+- !private ["Ps8Hashable", "titleTextAttributes"]
+- ["Ps8Hashable", "usernameError"]
+- ["Ps8Hashable", "usernameField"]
+- ["Ps8Hashable", "validationFailed"]
+- ["Ps8Hashable", "validationSuccessful"]
+- ["Ps8Hashable", "validator"]
+- !private ["Ps8Hashable", "view"]
+- ["Ps8Hashable", "viewDidLoad"]
+- !private ["Ps8Hashable", "whiteColor"]
+- ["Ps8Hashable", ""]
+- !private ["Ps9Indexable", "Element"]
+- !private ["Ps9Indexable", "Generator"]
+- !private ["Ps9Indexable", "Key"]
+- !private ["Ps9Indexable", "Value"]
+- !private ["C3Cru10LoginUtils", "login"]
+- ["C3Cru19LoginViewController", "AnyObject"]
+- !private ["C3Cru19LoginViewController", "Bool"]
+- !private ["C3Cru19LoginViewController", "Config"]
+- !private ["C3Cru19LoginViewController", "CruColors"]
+- !private ["C3Cru19LoginViewController", "EmailRule"]
+- !private ["C3Cru19LoginViewController", "GlobalUtils"]
+- !private ["C3Cru19LoginViewController", "LoginUtils"]
+- !private ["C3Cru19LoginViewController", "MRProgressOverlayView"]
+- !private ["C3Cru19LoginViewController", "NSFontAttributeName"]
+- !private ["C3Cru19LoginViewController", "NSForegroundColorAttributeName"]
+- !private ["C3Cru19LoginViewController", "RequiredRule"]
+- !private ["C3Cru19LoginViewController", "UIAlertAction"]
+- !private ["C3Cru19LoginViewController", "UIAlertController"]
+- !private ["C3Cru19LoginViewController", "UIAlertControllerStyle"]
+- !private ["C3Cru19LoginViewController", "UIColor"]
+- !private ["C3Cru19LoginViewController", "UIFont"]
+- ["C3Cru19LoginViewController", "UILabel"]
+- ["C3Cru19LoginViewController", "UITextField"]
+- ["C3Cru19LoginViewController", "ValidationError"]
+- ["C3Cru19LoginViewController", "Validator"]
+- ["C3Cru19LoginViewController", "deinit"]
+- ["C3Cru19LoginViewController", "init"]
+- ["C3Cru19LoginViewController", "loginPressed"]
+- !private ["C3Cru19LoginViewController", "navigationController"]
+- !private ["C3Cru19LoginViewController", "navigationItem"]
+- ["C3Cru19LoginViewController", "passwordError"]
+- ["C3Cru19LoginViewController", "passwordField"]
+- !private ["C3Cru19LoginViewController", "presentViewController"]
+- ["C3Cru19LoginViewController", "resetLabel"]
+- ["C3Cru19LoginViewController", "usernameError"]
+- ["C3Cru19LoginViewController", "usernameField"]
+- ["C3Cru19LoginViewController", "validationFailed"]
+- ["C3Cru19LoginViewController", "validationSuccessful"]
+- ["C3Cru19LoginViewController", "validator"]
+- !private ["C3Cru19LoginViewController", "view"]
+- ["C3Cru19LoginViewController", "viewDidLoad"]
+- !private ["CSo21MRProgressOverlayView", "dismissOverlayForView"]
+- !private ["CSo21MRProgressOverlayView", "showOverlayAddedTo"]
+- !private ["Ps21MutableCollectionType", "Element"]
+- !private ["Ps16MutableIndexable", "Element"]
+- !private ["Ps16MutableSliceable", "Element"]
+- !private ["PSo8NSCoding", "CGColor"]
+- !private ["PSo8NSCoding", "Config"]
+- !private ["PSo8NSCoding", "CruColors"]
+- !private ["PSo8NSCoding", "EmailRule"]
+- !private ["PSo8NSCoding", "GlobalUtils"]
+- !private ["PSo8NSCoding", "LoginUtils"]
+- !private ["PSo8NSCoding", "MRProgressOverlayView"]
+- !private ["PSo8NSCoding", "NSFontAttributeName"]
+- !private ["PSo8NSCoding", "NSForegroundColorAttributeName"]
+- !private ["PSo8NSCoding", "RequiredRule"]
+- !private ["PSo8NSCoding", "UIAlertAction"]
+- !private ["PSo8NSCoding", "UIAlertController"]
+- !private ["PSo8NSCoding", "UIAlertControllerStyle"]
+- !private ["PSo8NSCoding", "UIColor"]
+- !private ["PSo8NSCoding", "UIFont"]
+- ["PSo8NSCoding", "Validator"]
+- !private ["PSo8NSCoding", "addAction"]
+- !private ["PSo8NSCoding", "borderColor"]
+- !private ["PSo8NSCoding", "borderWidth"]
+- !private ["PSo8NSCoding", "clearColor"]
+- !private ["PSo8NSCoding", "dismissOverlayForView"]
+- !private ["PSo8NSCoding", "hidden"]
+- ["PSo8NSCoding", "init"]
+- !private ["PSo8NSCoding", "layer"]
+- ["PSo8NSCoding", "loginPressed"]
+- !private ["PSo8NSCoding", "navigationBar"]
+- !private ["PSo8NSCoding", "navigationController"]
+- !private ["PSo8NSCoding", "navigationItem"]
+- ["PSo8NSCoding", "passwordError"]
+- ["PSo8NSCoding", "passwordField"]
+- !private ["PSo8NSCoding", "popViewControllerAnimated"]
+- !private ["PSo8NSCoding", "presentViewController"]
+- ["PSo8NSCoding", "resetLabel"]
+- !private ["PSo8NSCoding", "showOverlayAddedTo"]
+- !private ["PSo8NSCoding", "text"]
+- !private ["PSo8NSCoding", "title"]
+- !private ["PSo8NSCoding", "titleTextAttributes"]
+- ["PSo8NSCoding", "usernameError"]
+- ["PSo8NSCoding", "usernameField"]
+- ["PSo8NSCoding", "validationFailed"]
+- ["PSo8NSCoding", "validationSuccessful"]
+- ["PSo8NSCoding", "validator"]
+- !private ["PSo8NSCoding", "view"]
+- ["PSo8NSCoding", "viewDidLoad"]
+- !private ["PSo8NSCoding", "whiteColor"]
+- ["PSo8NSCoding", ""]
+- !private ["PSo9NSCopying", "CGColor"]
+- !private ["PSo9NSCopying", "clearColor"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["PSo9NSCopying", "whiteColor"]
+- !private ["PSo26NSExtensionRequestHandling", "Config"]
+- !private ["PSo26NSExtensionRequestHandling", "CruColors"]
+- !private ["PSo26NSExtensionRequestHandling", "EmailRule"]
+- !private ["PSo26NSExtensionRequestHandling", "GlobalUtils"]
+- !private ["PSo26NSExtensionRequestHandling", "LoginUtils"]
+- !private ["PSo26NSExtensionRequestHandling", "MRProgressOverlayView"]
+- !private ["PSo26NSExtensionRequestHandling", "NSFontAttributeName"]
+- !private ["PSo26NSExtensionRequestHandling", "NSForegroundColorAttributeName"]
+- !private ["PSo26NSExtensionRequestHandling", "RequiredRule"]
+- !private ["PSo26NSExtensionRequestHandling", "UIAlertAction"]
+- !private ["PSo26NSExtensionRequestHandling", "UIAlertController"]
+- !private ["PSo26NSExtensionRequestHandling", "UIAlertControllerStyle"]
+- !private ["PSo26NSExtensionRequestHandling", "UIColor"]
+- !private ["PSo26NSExtensionRequestHandling", "UIFont"]
+- ["PSo26NSExtensionRequestHandling", "Validator"]
+- !private ["PSo26NSExtensionRequestHandling", "addAction"]
+- ["PSo26NSExtensionRequestHandling", "init"]
+- ["PSo26NSExtensionRequestHandling", "loginPressed"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationBar"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationController"]
+- !private ["PSo26NSExtensionRequestHandling", "navigationItem"]
+- ["PSo26NSExtensionRequestHandling", "passwordError"]
+- ["PSo26NSExtensionRequestHandling", "passwordField"]
+- !private ["PSo26NSExtensionRequestHandling", "popViewControllerAnimated"]
+- !private ["PSo26NSExtensionRequestHandling", "presentViewController"]
+- ["PSo26NSExtensionRequestHandling", "resetLabel"]
+- ["PSo26NSExtensionRequestHandling", "usernameError"]
+- ["PSo26NSExtensionRequestHandling", "usernameField"]
+- ["PSo26NSExtensionRequestHandling", "validationFailed"]
+- ["PSo26NSExtensionRequestHandling", "validationSuccessful"]
+- ["PSo26NSExtensionRequestHandling", "validator"]
+- !private ["PSo26NSExtensionRequestHandling", "view"]
+- ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- ["CSo8NSObject", "AnyObject"]
+- !private ["CSo8NSObject", "Bool"]
+- !private ["CSo8NSObject", "CGColor"]
+- !private ["CSo8NSObject", "Config"]
+- !private ["CSo8NSObject", "CruColors"]
+- !private ["CSo8NSObject", "EmailRule"]
+- !private ["CSo8NSObject", "GlobalUtils"]
+- !private ["CSo8NSObject", "LoginUtils"]
+- !private ["CSo8NSObject", "MRProgressOverlayView"]
+- !private ["CSo8NSObject", "NSFontAttributeName"]
+- !private ["CSo8NSObject", "NSForegroundColorAttributeName"]
+- !private ["CSo8NSObject", "RequiredRule"]
+- !private ["CSo8NSObject", "UIAlertAction"]
+- !private ["CSo8NSObject", "UIAlertController"]
+- !private ["CSo8NSObject", "UIAlertControllerStyle"]
+- !private ["CSo8NSObject", "UIColor"]
+- !private ["CSo8NSObject", "UIFont"]
+- ["CSo8NSObject", "UILabel"]
+- ["CSo8NSObject", "UITextField"]
+- ["CSo8NSObject", "ValidationError"]
+- ["CSo8NSObject", "Validator"]
+- !private ["CSo8NSObject", "addAction"]
+- !private ["CSo8NSObject", "borderColor"]
+- !private ["CSo8NSObject", "borderWidth"]
+- !private ["CSo8NSObject", "clearColor"]
+- !private ["CSo8NSObject", "dismissOverlayForView"]
+- !private ["CSo8NSObject", "errorLabel"]
+- !private ["CSo8NSObject", "errorMessage"]
+- !private ["CSo8NSObject", "hidden"]
+- ["CSo8NSObject", "init"]
+- !private ["CSo8NSObject", "layer"]
+- ["CSo8NSObject", "loginPressed"]
+- !private ["CSo8NSObject", "navigationBar"]
+- !private ["CSo8NSObject", "navigationController"]
+- !private ["CSo8NSObject", "navigationItem"]
+- ["CSo8NSObject", "passwordError"]
+- ["CSo8NSObject", "passwordField"]
+- !private ["CSo8NSObject", "popViewControllerAnimated"]
+- !private ["CSo8NSObject", "presentViewController"]
+- ["CSo8NSObject", "resetLabel"]
+- !private ["CSo8NSObject", "showOverlayAddedTo"]
+- !private ["CSo8NSObject", "text"]
+- !private ["CSo8NSObject", "title"]
+- !private ["CSo8NSObject", "titleTextAttributes"]
+- ["CSo8NSObject", "usernameError"]
+- ["CSo8NSObject", "usernameField"]
+- ["CSo8NSObject", "validationFailed"]
+- ["CSo8NSObject", "validationSuccessful"]
+- ["CSo8NSObject", "validator"]
+- !private ["CSo8NSObject", "view"]
+- ["CSo8NSObject", "viewDidLoad"]
+- !private ["CSo8NSObject", "whiteColor"]
+- !private ["PSo16NSObjectProtocol", "CGColor"]
+- !private ["PSo16NSObjectProtocol", "Config"]
+- !private ["PSo16NSObjectProtocol", "CruColors"]
+- !private ["PSo16NSObjectProtocol", "EmailRule"]
+- !private ["PSo16NSObjectProtocol", "GlobalUtils"]
+- !private ["PSo16NSObjectProtocol", "LoginUtils"]
+- !private ["PSo16NSObjectProtocol", "MRProgressOverlayView"]
+- !private ["PSo16NSObjectProtocol", "NSFontAttributeName"]
+- !private ["PSo16NSObjectProtocol", "NSForegroundColorAttributeName"]
+- !private ["PSo16NSObjectProtocol", "RequiredRule"]
+- !private ["PSo16NSObjectProtocol", "UIAlertAction"]
+- !private ["PSo16NSObjectProtocol", "UIAlertController"]
+- !private ["PSo16NSObjectProtocol", "UIAlertControllerStyle"]
+- !private ["PSo16NSObjectProtocol", "UIColor"]
+- !private ["PSo16NSObjectProtocol", "UIFont"]
+- ["PSo16NSObjectProtocol", "Validator"]
+- !private ["PSo16NSObjectProtocol", "addAction"]
+- !private ["PSo16NSObjectProtocol", "borderColor"]
+- !private ["PSo16NSObjectProtocol", "borderWidth"]
+- !private ["PSo16NSObjectProtocol", "clearColor"]
+- !private ["PSo16NSObjectProtocol", "dismissOverlayForView"]
+- !private ["PSo16NSObjectProtocol", "errorLabel"]
+- !private ["PSo16NSObjectProtocol", "errorMessage"]
+- !private ["PSo16NSObjectProtocol", "hidden"]
+- ["PSo16NSObjectProtocol", "init"]
+- !private ["PSo16NSObjectProtocol", "layer"]
+- ["PSo16NSObjectProtocol", "loginPressed"]
+- !private ["PSo16NSObjectProtocol", "navigationBar"]
+- !private ["PSo16NSObjectProtocol", "navigationController"]
+- !private ["PSo16NSObjectProtocol", "navigationItem"]
+- ["PSo16NSObjectProtocol", "passwordError"]
+- ["PSo16NSObjectProtocol", "passwordField"]
+- !private ["PSo16NSObjectProtocol", "popViewControllerAnimated"]
+- !private ["PSo16NSObjectProtocol", "presentViewController"]
+- ["PSo16NSObjectProtocol", "resetLabel"]
+- !private ["PSo16NSObjectProtocol", "showOverlayAddedTo"]
+- !private ["PSo16NSObjectProtocol", "text"]
+- !private ["PSo16NSObjectProtocol", "title"]
+- !private ["PSo16NSObjectProtocol", "titleTextAttributes"]
+- ["PSo16NSObjectProtocol", "usernameError"]
+- ["PSo16NSObjectProtocol", "usernameField"]
+- ["PSo16NSObjectProtocol", "validationFailed"]
+- ["PSo16NSObjectProtocol", "validationSuccessful"]
+- ["PSo16NSObjectProtocol", "validator"]
+- !private ["PSo16NSObjectProtocol", "view"]
+- ["PSo16NSObjectProtocol", "viewDidLoad"]
+- !private ["PSo16NSObjectProtocol", "whiteColor"]
+- ["PSo16NSObjectProtocol", ""]
+- !private ["PSo14NSSecureCoding", "CGColor"]
+- !private ["PSo14NSSecureCoding", "clearColor"]
+- !private ["PSo14NSSecureCoding", "whiteColor"]
+- !private ["Ps21NilLiteralConvertible", "Some"]
+- !private ["Sq", "Some"]
+- !private ["Sq", "deinit"]
+- !private ["Ps30RangeReplaceableCollectionType", "Element"]
+- !private ["Ps16RawRepresentable", "Alert"]
+- !private ["Ps16RawRepresentable", "Default"]
+- !private ["C14SwiftValidator9RegexRule", "init"]
+- !private ["C14SwiftValidator12RequiredRule", "init"]
+- !private ["P14SwiftValidator4Rule", "init"]
+- !private ["Ps12SequenceType", "Element"]
+- !private ["Ps12SequenceType", "Generator"]
+- !private ["Ps12SequenceType", "Key"]
+- !private ["Ps12SequenceType", "Value"]
+- !private ["PSo29UIAccessibilityIdentification", "dismissOverlayForView"]
+- !private ["PSo29UIAccessibilityIdentification", "hidden"]
+- !private ["PSo29UIAccessibilityIdentification", "layer"]
+- !private ["PSo29UIAccessibilityIdentification", "showOverlayAddedTo"]
+- !private ["PSo29UIAccessibilityIdentification", "text"]
+- !private ["PSo29UIAccessibilityIdentification", "titleTextAttributes"]
+- !private ["CSo13UIAlertAction", "init"]
+- !private ["OSC18UIAlertActionStyle", "Default"]
+- !private ["CSo17UIAlertController", "addAction"]
+- !private ["CSo17UIAlertController", "init"]
+- !private ["OSC22UIAlertControllerStyle", "Alert"]
+- !private ["PSo12UIAppearance", "dismissOverlayForView"]
+- !private ["PSo12UIAppearance", "hidden"]
+- !private ["PSo12UIAppearance", "layer"]
+- !private ["PSo12UIAppearance", "showOverlayAddedTo"]
+- !private ["PSo12UIAppearance", "text"]
+- !private ["PSo12UIAppearance", "titleTextAttributes"]
+- !private ["PSo21UIAppearanceContainer", "Config"]
+- !private ["PSo21UIAppearanceContainer", "CruColors"]
+- !private ["PSo21UIAppearanceContainer", "EmailRule"]
+- !private ["PSo21UIAppearanceContainer", "GlobalUtils"]
+- !private ["PSo21UIAppearanceContainer", "LoginUtils"]
+- !private ["PSo21UIAppearanceContainer", "MRProgressOverlayView"]
+- !private ["PSo21UIAppearanceContainer", "NSFontAttributeName"]
+- !private ["PSo21UIAppearanceContainer", "NSForegroundColorAttributeName"]
+- !private ["PSo21UIAppearanceContainer", "RequiredRule"]
+- !private ["PSo21UIAppearanceContainer", "UIAlertAction"]
+- !private ["PSo21UIAppearanceContainer", "UIAlertController"]
+- !private ["PSo21UIAppearanceContainer", "UIAlertControllerStyle"]
+- !private ["PSo21UIAppearanceContainer", "UIColor"]
+- !private ["PSo21UIAppearanceContainer", "UIFont"]
+- ["PSo21UIAppearanceContainer", "Validator"]
+- !private ["PSo21UIAppearanceContainer", "addAction"]
+- !private ["PSo21UIAppearanceContainer", "dismissOverlayForView"]
+- !private ["PSo21UIAppearanceContainer", "hidden"]
+- ["PSo21UIAppearanceContainer", "init"]
+- !private ["PSo21UIAppearanceContainer", "layer"]
+- ["PSo21UIAppearanceContainer", "loginPressed"]
+- !private ["PSo21UIAppearanceContainer", "navigationBar"]
+- !private ["PSo21UIAppearanceContainer", "navigationController"]
+- !private ["PSo21UIAppearanceContainer", "navigationItem"]
+- ["PSo21UIAppearanceContainer", "passwordError"]
+- ["PSo21UIAppearanceContainer", "passwordField"]
+- !private ["PSo21UIAppearanceContainer", "popViewControllerAnimated"]
+- !private ["PSo21UIAppearanceContainer", "presentViewController"]
+- ["PSo21UIAppearanceContainer", "resetLabel"]
+- !private ["PSo21UIAppearanceContainer", "showOverlayAddedTo"]
+- !private ["PSo21UIAppearanceContainer", "text"]
+- !private ["PSo21UIAppearanceContainer", "titleTextAttributes"]
+- ["PSo21UIAppearanceContainer", "usernameError"]
+- ["PSo21UIAppearanceContainer", "usernameField"]
+- ["PSo21UIAppearanceContainer", "validationFailed"]
+- ["PSo21UIAppearanceContainer", "validationSuccessful"]
+- ["PSo21UIAppearanceContainer", "validator"]
+- !private ["PSo21UIAppearanceContainer", "view"]
+- ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", ""]
+- !private ["PSo16UIBarPositioning", "titleTextAttributes"]
+- !private ["CSo7UIColor", "CGColor"]
+- !private ["CSo7UIColor", "clearColor"]
+- !private ["CSo7UIColor", "whiteColor"]
+- !private ["PSo18UIContentContainer", "Config"]
+- !private ["PSo18UIContentContainer", "CruColors"]
+- !private ["PSo18UIContentContainer", "EmailRule"]
+- !private ["PSo18UIContentContainer", "GlobalUtils"]
+- !private ["PSo18UIContentContainer", "LoginUtils"]
+- !private ["PSo18UIContentContainer", "MRProgressOverlayView"]
+- !private ["PSo18UIContentContainer", "NSFontAttributeName"]
+- !private ["PSo18UIContentContainer", "NSForegroundColorAttributeName"]
+- !private ["PSo18UIContentContainer", "RequiredRule"]
+- !private ["PSo18UIContentContainer", "UIAlertAction"]
+- !private ["PSo18UIContentContainer", "UIAlertController"]
+- !private ["PSo18UIContentContainer", "UIAlertControllerStyle"]
+- !private ["PSo18UIContentContainer", "UIColor"]
+- !private ["PSo18UIContentContainer", "UIFont"]
+- ["PSo18UIContentContainer", "Validator"]
+- !private ["PSo18UIContentContainer", "addAction"]
+- ["PSo18UIContentContainer", "init"]
+- ["PSo18UIContentContainer", "loginPressed"]
+- !private ["PSo18UIContentContainer", "navigationBar"]
+- !private ["PSo18UIContentContainer", "navigationController"]
+- !private ["PSo18UIContentContainer", "navigationItem"]
+- ["PSo18UIContentContainer", "passwordError"]
+- ["PSo18UIContentContainer", "passwordField"]
+- !private ["PSo18UIContentContainer", "popViewControllerAnimated"]
+- !private ["PSo18UIContentContainer", "presentViewController"]
+- ["PSo18UIContentContainer", "resetLabel"]
+- ["PSo18UIContentContainer", "usernameError"]
+- ["PSo18UIContentContainer", "usernameField"]
+- ["PSo18UIContentContainer", "validationFailed"]
+- ["PSo18UIContentContainer", "validationSuccessful"]
+- ["PSo18UIContentContainer", "validator"]
+- !private ["PSo18UIContentContainer", "view"]
+- ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", ""]
+- !private ["CSo9UIControl", "layer"]
+- !private ["CSo9UIControl", "text"]
+- !private ["PSo17UICoordinateSpace", "dismissOverlayForView"]
+- !private ["PSo17UICoordinateSpace", "hidden"]
+- !private ["PSo17UICoordinateSpace", "layer"]
+- !private ["PSo17UICoordinateSpace", "showOverlayAddedTo"]
+- !private ["PSo17UICoordinateSpace", "text"]
+- !private ["PSo17UICoordinateSpace", "titleTextAttributes"]
+- !private ["PSo13UIDynamicItem", "dismissOverlayForView"]
+- !private ["PSo13UIDynamicItem", "hidden"]
+- !private ["PSo13UIDynamicItem", "layer"]
+- !private ["PSo13UIDynamicItem", "showOverlayAddedTo"]
+- !private ["PSo13UIDynamicItem", "text"]
+- !private ["PSo13UIDynamicItem", "titleTextAttributes"]
+- !private ["PSo18UIFocusEnvironment", "Config"]
+- !private ["PSo18UIFocusEnvironment", "CruColors"]
+- !private ["PSo18UIFocusEnvironment", "EmailRule"]
+- !private ["PSo18UIFocusEnvironment", "GlobalUtils"]
+- !private ["PSo18UIFocusEnvironment", "LoginUtils"]
+- !private ["PSo18UIFocusEnvironment", "MRProgressOverlayView"]
+- !private ["PSo18UIFocusEnvironment", "NSFontAttributeName"]
+- !private ["PSo18UIFocusEnvironment", "NSForegroundColorAttributeName"]
+- !private ["PSo18UIFocusEnvironment", "RequiredRule"]
+- !private ["PSo18UIFocusEnvironment", "UIAlertAction"]
+- !private ["PSo18UIFocusEnvironment", "UIAlertController"]
+- !private ["PSo18UIFocusEnvironment", "UIAlertControllerStyle"]
+- !private ["PSo18UIFocusEnvironment", "UIColor"]
+- !private ["PSo18UIFocusEnvironment", "UIFont"]
+- ["PSo18UIFocusEnvironment", "Validator"]
+- !private ["PSo18UIFocusEnvironment", "addAction"]
+- !private ["PSo18UIFocusEnvironment", "dismissOverlayForView"]
+- !private ["PSo18UIFocusEnvironment", "hidden"]
+- ["PSo18UIFocusEnvironment", "init"]
+- !private ["PSo18UIFocusEnvironment", "layer"]
+- ["PSo18UIFocusEnvironment", "loginPressed"]
+- !private ["PSo18UIFocusEnvironment", "navigationBar"]
+- !private ["PSo18UIFocusEnvironment", "navigationController"]
+- !private ["PSo18UIFocusEnvironment", "navigationItem"]
+- ["PSo18UIFocusEnvironment", "passwordError"]
+- ["PSo18UIFocusEnvironment", "passwordField"]
+- !private ["PSo18UIFocusEnvironment", "popViewControllerAnimated"]
+- !private ["PSo18UIFocusEnvironment", "presentViewController"]
+- ["PSo18UIFocusEnvironment", "resetLabel"]
+- !private ["PSo18UIFocusEnvironment", "showOverlayAddedTo"]
+- !private ["PSo18UIFocusEnvironment", "text"]
+- !private ["PSo18UIFocusEnvironment", "titleTextAttributes"]
+- ["PSo18UIFocusEnvironment", "usernameError"]
+- ["PSo18UIFocusEnvironment", "usernameField"]
+- ["PSo18UIFocusEnvironment", "validationFailed"]
+- ["PSo18UIFocusEnvironment", "validationSuccessful"]
+- ["PSo18UIFocusEnvironment", "validator"]
+- !private ["PSo18UIFocusEnvironment", "view"]
+- ["PSo18UIFocusEnvironment", "viewDidLoad"]
+- ["PSo18UIFocusEnvironment", ""]
+- !private ["CSo6UIFont", "init"]
+- !private ["PSo10UIKeyInput", "layer"]
+- !private ["PSo10UIKeyInput", "text"]
+- !private ["CSo7UILabel", "hidden"]
+- !private ["CSo7UILabel", "text"]
+- !private ["CSo15UINavigationBar", "titleTextAttributes"]
+- !private ["CSo22UINavigationController", "navigationBar"]
+- !private ["CSo22UINavigationController", "popViewControllerAnimated"]
+- !private ["CSo16UINavigationItem", "title"]
+- ["CSo11UIResponder", "AnyObject"]
+- !private ["CSo11UIResponder", "Bool"]
+- !private ["CSo11UIResponder", "Config"]
+- !private ["CSo11UIResponder", "CruColors"]
+- !private ["CSo11UIResponder", "EmailRule"]
+- !private ["CSo11UIResponder", "GlobalUtils"]
+- !private ["CSo11UIResponder", "LoginUtils"]
+- !private ["CSo11UIResponder", "MRProgressOverlayView"]
+- !private ["CSo11UIResponder", "NSFontAttributeName"]
+- !private ["CSo11UIResponder", "NSForegroundColorAttributeName"]
+- !private ["CSo11UIResponder", "RequiredRule"]
+- !private ["CSo11UIResponder", "UIAlertAction"]
+- !private ["CSo11UIResponder", "UIAlertController"]
+- !private ["CSo11UIResponder", "UIAlertControllerStyle"]
+- !private ["CSo11UIResponder", "UIColor"]
+- !private ["CSo11UIResponder", "UIFont"]
+- ["CSo11UIResponder", "UILabel"]
+- ["CSo11UIResponder", "UITextField"]
+- ["CSo11UIResponder", "ValidationError"]
+- ["CSo11UIResponder", "Validator"]
+- !private ["CSo11UIResponder", "addAction"]
+- !private ["CSo11UIResponder", "dismissOverlayForView"]
+- !private ["CSo11UIResponder", "hidden"]
+- ["CSo11UIResponder", "init"]
+- !private ["CSo11UIResponder", "layer"]
+- ["CSo11UIResponder", "loginPressed"]
+- !private ["CSo11UIResponder", "navigationBar"]
+- !private ["CSo11UIResponder", "navigationController"]
+- !private ["CSo11UIResponder", "navigationItem"]
+- ["CSo11UIResponder", "passwordError"]
+- ["CSo11UIResponder", "passwordField"]
+- !private ["CSo11UIResponder", "popViewControllerAnimated"]
+- !private ["CSo11UIResponder", "presentViewController"]
+- ["CSo11UIResponder", "resetLabel"]
+- !private ["CSo11UIResponder", "showOverlayAddedTo"]
+- !private ["CSo11UIResponder", "text"]
+- !private ["CSo11UIResponder", "titleTextAttributes"]
+- ["CSo11UIResponder", "usernameError"]
+- ["CSo11UIResponder", "usernameField"]
+- ["CSo11UIResponder", "validationFailed"]
+- ["CSo11UIResponder", "validationSuccessful"]
+- ["CSo11UIResponder", "validator"]
+- !private ["CSo11UIResponder", "view"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- !private ["PSo16UIStateRestoring", "Config"]
+- !private ["PSo16UIStateRestoring", "CruColors"]
+- !private ["PSo16UIStateRestoring", "EmailRule"]
+- !private ["PSo16UIStateRestoring", "GlobalUtils"]
+- !private ["PSo16UIStateRestoring", "LoginUtils"]
+- !private ["PSo16UIStateRestoring", "MRProgressOverlayView"]
+- !private ["PSo16UIStateRestoring", "NSFontAttributeName"]
+- !private ["PSo16UIStateRestoring", "NSForegroundColorAttributeName"]
+- !private ["PSo16UIStateRestoring", "RequiredRule"]
+- !private ["PSo16UIStateRestoring", "UIAlertAction"]
+- !private ["PSo16UIStateRestoring", "UIAlertController"]
+- !private ["PSo16UIStateRestoring", "UIAlertControllerStyle"]
+- !private ["PSo16UIStateRestoring", "UIColor"]
+- !private ["PSo16UIStateRestoring", "UIFont"]
+- ["PSo16UIStateRestoring", "Validator"]
+- !private ["PSo16UIStateRestoring", "addAction"]
+- ["PSo16UIStateRestoring", "init"]
+- ["PSo16UIStateRestoring", "loginPressed"]
+- !private ["PSo16UIStateRestoring", "navigationBar"]
+- !private ["PSo16UIStateRestoring", "navigationController"]
+- !private ["PSo16UIStateRestoring", "navigationItem"]
+- ["PSo16UIStateRestoring", "passwordError"]
+- ["PSo16UIStateRestoring", "passwordField"]
+- !private ["PSo16UIStateRestoring", "popViewControllerAnimated"]
+- !private ["PSo16UIStateRestoring", "presentViewController"]
+- ["PSo16UIStateRestoring", "resetLabel"]
+- ["PSo16UIStateRestoring", "usernameError"]
+- ["PSo16UIStateRestoring", "usernameField"]
+- ["PSo16UIStateRestoring", "validationFailed"]
+- ["PSo16UIStateRestoring", "validationSuccessful"]
+- ["PSo16UIStateRestoring", "validator"]
+- !private ["PSo16UIStateRestoring", "view"]
+- ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", ""]
+- !private ["CSo11UITextField", "layer"]
+- !private ["CSo11UITextField", "text"]
+- !private ["PSo11UITextInput", "layer"]
+- !private ["PSo11UITextInput", "text"]
+- !private ["PSo17UITextInputTraits", "layer"]
+- !private ["PSo17UITextInputTraits", "text"]
+- !private ["PSo18UITraitEnvironment", "Config"]
+- !private ["PSo18UITraitEnvironment", "CruColors"]
+- !private ["PSo18UITraitEnvironment", "EmailRule"]
+- !private ["PSo18UITraitEnvironment", "GlobalUtils"]
+- !private ["PSo18UITraitEnvironment", "LoginUtils"]
+- !private ["PSo18UITraitEnvironment", "MRProgressOverlayView"]
+- !private ["PSo18UITraitEnvironment", "NSFontAttributeName"]
+- !private ["PSo18UITraitEnvironment", "NSForegroundColorAttributeName"]
+- !private ["PSo18UITraitEnvironment", "RequiredRule"]
+- !private ["PSo18UITraitEnvironment", "UIAlertAction"]
+- !private ["PSo18UITraitEnvironment", "UIAlertController"]
+- !private ["PSo18UITraitEnvironment", "UIAlertControllerStyle"]
+- !private ["PSo18UITraitEnvironment", "UIColor"]
+- !private ["PSo18UITraitEnvironment", "UIFont"]
+- ["PSo18UITraitEnvironment", "Validator"]
+- !private ["PSo18UITraitEnvironment", "addAction"]
+- !private ["PSo18UITraitEnvironment", "dismissOverlayForView"]
+- !private ["PSo18UITraitEnvironment", "hidden"]
+- ["PSo18UITraitEnvironment", "init"]
+- !private ["PSo18UITraitEnvironment", "layer"]
+- ["PSo18UITraitEnvironment", "loginPressed"]
+- !private ["PSo18UITraitEnvironment", "navigationBar"]
+- !private ["PSo18UITraitEnvironment", "navigationController"]
+- !private ["PSo18UITraitEnvironment", "navigationItem"]
+- ["PSo18UITraitEnvironment", "passwordError"]
+- ["PSo18UITraitEnvironment", "passwordField"]
+- !private ["PSo18UITraitEnvironment", "popViewControllerAnimated"]
+- !private ["PSo18UITraitEnvironment", "presentViewController"]
+- ["PSo18UITraitEnvironment", "resetLabel"]
+- !private ["PSo18UITraitEnvironment", "showOverlayAddedTo"]
+- !private ["PSo18UITraitEnvironment", "text"]
+- !private ["PSo18UITraitEnvironment", "titleTextAttributes"]
+- ["PSo18UITraitEnvironment", "usernameError"]
+- ["PSo18UITraitEnvironment", "usernameField"]
+- ["PSo18UITraitEnvironment", "validationFailed"]
+- ["PSo18UITraitEnvironment", "validationSuccessful"]
+- ["PSo18UITraitEnvironment", "validator"]
+- !private ["PSo18UITraitEnvironment", "view"]
+- ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", ""]
+- !private ["CSo6UIView", "dismissOverlayForView"]
+- !private ["CSo6UIView", "hidden"]
+- !private ["CSo6UIView", "layer"]
+- !private ["CSo6UIView", "showOverlayAddedTo"]
+- !private ["CSo6UIView", "text"]
+- !private ["CSo6UIView", "titleTextAttributes"]
+- ["CSo16UIViewController", "AnyObject"]
+- !private ["CSo16UIViewController", "Bool"]
+- !private ["CSo16UIViewController", "Config"]
+- !private ["CSo16UIViewController", "CruColors"]
+- !private ["CSo16UIViewController", "EmailRule"]
+- !private ["CSo16UIViewController", "GlobalUtils"]
+- !private ["CSo16UIViewController", "LoginUtils"]
+- !private ["CSo16UIViewController", "MRProgressOverlayView"]
+- !private ["CSo16UIViewController", "NSFontAttributeName"]
+- !private ["CSo16UIViewController", "NSForegroundColorAttributeName"]
+- !private ["CSo16UIViewController", "RequiredRule"]
+- !private ["CSo16UIViewController", "UIAlertAction"]
+- !private ["CSo16UIViewController", "UIAlertController"]
+- !private ["CSo16UIViewController", "UIAlertControllerStyle"]
+- !private ["CSo16UIViewController", "UIColor"]
+- !private ["CSo16UIViewController", "UIFont"]
+- ["CSo16UIViewController", "UILabel"]
+- ["CSo16UIViewController", "UITextField"]
+- ["CSo16UIViewController", "ValidationError"]
+- ["CSo16UIViewController", "Validator"]
+- !private ["CSo16UIViewController", "addAction"]
+- ["CSo16UIViewController", "init"]
+- ["CSo16UIViewController", "loginPressed"]
+- !private ["CSo16UIViewController", "navigationBar"]
+- !private ["CSo16UIViewController", "navigationController"]
+- !private ["CSo16UIViewController", "navigationItem"]
+- ["CSo16UIViewController", "passwordError"]
+- ["CSo16UIViewController", "passwordField"]
+- !private ["CSo16UIViewController", "popViewControllerAnimated"]
+- !private ["CSo16UIViewController", "presentViewController"]
+- ["CSo16UIViewController", "resetLabel"]
+- ["CSo16UIViewController", "usernameError"]
+- ["CSo16UIViewController", "usernameField"]
+- ["CSo16UIViewController", "validationFailed"]
+- ["CSo16UIViewController", "validationSuccessful"]
+- ["CSo16UIViewController", "validator"]
+- !private ["CSo16UIViewController", "view"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- ["CSo16UIViewController", ""]
+- !private ["P14SwiftValidator18ValidationDelegate", "Config"]
+- !private ["P14SwiftValidator18ValidationDelegate", "CruColors"]
+- !private ["P14SwiftValidator18ValidationDelegate", "EmailRule"]
+- !private ["P14SwiftValidator18ValidationDelegate", "GlobalUtils"]
+- !private ["P14SwiftValidator18ValidationDelegate", "LoginUtils"]
+- !private ["P14SwiftValidator18ValidationDelegate", "MRProgressOverlayView"]
+- !private ["P14SwiftValidator18ValidationDelegate", "NSFontAttributeName"]
+- !private ["P14SwiftValidator18ValidationDelegate", "NSForegroundColorAttributeName"]
+- !private ["P14SwiftValidator18ValidationDelegate", "RequiredRule"]
+- !private ["P14SwiftValidator18ValidationDelegate", "UIAlertAction"]
+- !private ["P14SwiftValidator18ValidationDelegate", "UIAlertController"]
+- !private ["P14SwiftValidator18ValidationDelegate", "UIAlertControllerStyle"]
+- !private ["P14SwiftValidator18ValidationDelegate", "UIColor"]
+- !private ["P14SwiftValidator18ValidationDelegate", "UIFont"]
+- ["P14SwiftValidator18ValidationDelegate", "Validator"]
+- !private ["P14SwiftValidator18ValidationDelegate", "navigationController"]
+- !private ["P14SwiftValidator18ValidationDelegate", "navigationItem"]
+- !private ["P14SwiftValidator18ValidationDelegate", "passwordError"]
+- !private ["P14SwiftValidator18ValidationDelegate", "passwordField"]
+- !private ["P14SwiftValidator18ValidationDelegate", "presentViewController"]
+- !private ["P14SwiftValidator18ValidationDelegate", "resetLabel"]
+- !private ["P14SwiftValidator18ValidationDelegate", "usernameError"]
+- !private ["P14SwiftValidator18ValidationDelegate", "usernameField"]
+- ["P14SwiftValidator18ValidationDelegate", "validationFailed"]
+- ["P14SwiftValidator18ValidationDelegate", "validationSuccessful"]
+- !private ["P14SwiftValidator18ValidationDelegate", "validator"]
+- !private ["P14SwiftValidator18ValidationDelegate", "view"]
+- ["P14SwiftValidator18ValidationDelegate", ""]
+- !private ["C14SwiftValidator15ValidationError", "errorLabel"]
+- !private ["C14SwiftValidator15ValidationError", "errorMessage"]
+- !private ["C14SwiftValidator9Validator", "errors"]
+- ["C14SwiftValidator9Validator", "init"]
+- !private ["C14SwiftValidator9Validator", "registerField"]
+- !private ["C14SwiftValidator9Validator", "validate"]
+- !private ["Ps10_ArrayType", "Element"]
+- !private ["Ps33_BuiltinBooleanLiteralConvertible", "_getBuiltinLogicValue"]
+- !private ["Ps24_ColorLiteralConvertible", "CGColor"]
+- !private ["Ps24_ColorLiteralConvertible", "clearColor"]
+- !private ["Ps24_ColorLiteralConvertible", "whiteColor"]
+- !private ["Ps24_DestructorSafeContainer", "Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "Element"]
+- !private ["Ps21_ObjectiveCBridgeable", "Generator"]
+- !private ["Ps21_ObjectiveCBridgeable", "Key"]
+- !private ["Ps21_ObjectiveCBridgeable", "Value"]
+- !private ["Ps21_ObjectiveCBridgeable", "_getBuiltinLogicValue"]
+- !private ["Ps12_Reflectable", "Element"]
+- !private ["Ps12_Reflectable", "Generator"]
+- !private ["Ps12_Reflectable", "Key"]
+- !private ["Ps12_Reflectable", "Some"]
+- !private ["Ps12_Reflectable", "Value"]
+- !private ["Ps12_Reflectable", "_getBuiltinLogicValue"]
+- !private ["Ps12_Reflectable", "dismissOverlayForView"]
+- !private ["Ps12_Reflectable", "hidden"]
+- !private ["Ps12_Reflectable", "layer"]
+- !private ["Ps12_Reflectable", "showOverlayAddedTo"]
+- !private ["Ps12_Reflectable", "text"]
+- !private ["Ps12_Reflectable", "titleTextAttributes"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Sa"
+- !private "Ps23ArrayLiteralConvertible"
+- !private "Sb"
+- !private "Ps25BooleanLiteralConvertible"
+- !private "Ps11BooleanType"
+- !private "CSo7CALayer"
+- !private "PSo13CAMediaTiming"
+- !private "V12CoreGraphics7CGFloat"
+- "Ps11CVarArgType"
+- !private "Ps14CollectionType"
+- !private "V3Cru6Config"
+- !private "C3Cru9CruColors"
+- "Ps28CustomDebugStringConvertible"
+- "Ps23CustomStringConvertible"
+- !private "Vs10Dictionary"
+- !private "Vs19DictionaryGenerator"
+- !private "Ps28DictionaryLiteralConvertible"
+- !private "C14SwiftValidator9EmailRule"
+- "Ps9Equatable"
+- !private "Ps13GeneratorType"
+- !private "C3Cru11GlobalUtils"
+- "Ps8Hashable"
+- !private "Ps9Indexable"
+- !private "C3Cru10LoginUtils"
+- "C3Cru19LoginViewController"
+- !private "CSo21MRProgressOverlayView"
+- !private "Ps21MutableCollectionType"
+- !private "Ps16MutableIndexable"
+- !private "Ps16MutableSliceable"
+- "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- !private "PSo14NSSecureCoding"
+- !private "Ps21NilLiteralConvertible"
+- !private "Sq"
+- !private "Ps30RangeReplaceableCollectionType"
+- !private "Ps16RawRepresentable"
+- !private "C14SwiftValidator9RegexRule"
+- !private "C14SwiftValidator12RequiredRule"
+- !private "P14SwiftValidator4Rule"
+- !private "Ps12SequenceType"
+- !private "PSo29UIAccessibilityIdentification"
+- !private "CSo13UIAlertAction"
+- !private "OSC18UIAlertActionStyle"
+- !private "CSo17UIAlertController"
+- !private "OSC22UIAlertControllerStyle"
+- !private "PSo12UIAppearance"
+- "PSo21UIAppearanceContainer"
+- !private "PSo16UIBarPositioning"
+- !private "CSo7UIColor"
+- "PSo18UIContentContainer"
+- !private "CSo9UIControl"
+- !private "PSo17UICoordinateSpace"
+- !private "PSo13UIDynamicItem"
+- "PSo18UIFocusEnvironment"
+- !private "CSo6UIFont"
+- !private "PSo10UIKeyInput"
+- !private "CSo7UILabel"
+- !private "CSo15UINavigationBar"
+- !private "CSo22UINavigationController"
+- !private "CSo16UINavigationItem"
+- "CSo11UIResponder"
+- "PSo16UIStateRestoring"
+- !private "CSo11UITextField"
+- !private "PSo11UITextInput"
+- !private "PSo17UITextInputTraits"
+- "PSo18UITraitEnvironment"
+- !private "CSo6UIView"
+- "CSo16UIViewController"
+- "P14SwiftValidator18ValidationDelegate"
+- !private "C14SwiftValidator15ValidationError"
+- "C14SwiftValidator9Validator"
+- !private "Ps10_ArrayType"
+- !private "Ps33_BuiltinBooleanLiteralConvertible"
+- !private "Ps24_ColorLiteralConvertible"
+- !private "Ps24_DestructorSafeContainer"
+- !private "Ps21_ObjectiveCBridgeable"
+- !private "Ps12_Reflectable"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/Cru-Bridging-Header.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/Core.h"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLErrorCode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GMRConfiguration.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMPubSub.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMService.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/Google/Google/GGLContext+CloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDHeaders.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceID.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDConfig.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GGLInstanceID/GGLInstanceIDDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GoogleCloudMessaging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Headers/Public/GoogleCloudMessaging/GCMReceiverDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Cru/SWRevealViewController.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressHelper.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/UIImage+MRImageEffects.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRBlurView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressOverlayView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRNavigationBarProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRIconView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRCircularProgressView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRStopableView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRActivityIndicatorView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/UIScrollView+EmptyDataSet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/SwiftValidator.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/Alamofire.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/SignIn-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Core-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/CloudMessaging-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AppInvite-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/Analytics-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Google/Headers/ModuleHeaders/AdMob-Module.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/SideMenu.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreLocation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreData.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/WildcardSDK.framework/Modules/WildcardSDK.swiftmodule/arm64.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/AVFoundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreMedia.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreAudio.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/WebKit.swiftmodule"
+- "./WildcardSDK.framework/Headers/WildcardSDK-Swift.h"
+- "./WildcardSDK.framework/Headers/YTVimeoExtractor.h"
+- "./WildcardSDK.framework/Headers/YTPlayerView.h"
+- "./WildcardSDK.framework/Headers/WCElementType.h"
+- "./WildcardSDK.framework/Headers/WCErrorCode.h"
+- "./WildcardSDK.framework/Headers/WCAnalytics.h"
+- "./WildcardSDK.framework/Headers/WCCardAction.h"
+- "./WildcardSDK.framework/Headers/WCCardType.h"
+- "./WildcardSDK.framework/Headers/WCCardLayout.h"
+- "./WildcardSDK.framework/Headers/WildcardSDK.h"
+- "./WildcardSDK.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/IQKeyboardManagerSwift.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/FABAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Headers/Fabric.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Fabric/iOS/Fabric.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/ANSCompatibility.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Answers.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSStackFrame.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSReport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSLogging.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/CLSAttributes.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Headers/Crashlytics.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Crashlytics/iOS/Crashlytics.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Headers/Appsee.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Appsee/Appsee/Appsee.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTreeEnumerator.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizerState.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTokenizer.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLString.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/NSString+HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLTextNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSerialization.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSelector.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLPreprocessedInputStream.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLParser.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLOrderedDictionary.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEntities.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLEncoding.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLQuirksMode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLElement.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocumentType.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLDocument.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLSupport.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNamespace.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLNode.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLComment.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/SWActionSheet.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetMultipleStringPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetLocalePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/DistancePickerView.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDistancePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetDatePicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPickerDelegate.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetCustomPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/AbstractActionSheetPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker-3.0-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/LocationPicker.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules/module.modulemap"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/ImageLoader.swiftmodule/arm64.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-Swift.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules/module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/EventKit.swiftmodule"
+interface-hash: "3bb47ab4bae3ce64c3eda2373b1a4b7c"

@@ -1,0 +1,9 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "670cc0c44a01d9d5ea8f035e8028f1f3"
+build_time: [519523854, 127139000]
+inputs:
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ImageLoader/ImageLoader/Diskcached.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ImageLoader/ImageLoader/ImageLoader.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ImageLoader/ImageLoader/Manager.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ImageLoader/ImageLoader/UIImage+ImageLoader.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/ImageLoader/ImageLoader/UIImageView+ImageLoader.swift": [519434809, 0]

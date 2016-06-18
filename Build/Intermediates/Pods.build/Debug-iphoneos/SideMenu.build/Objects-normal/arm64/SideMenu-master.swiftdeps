@@ -1,0 +1,8 @@
+version: "Apple Swift version 2.2 (swiftlang-703.0.18.8 clang-703.0.31)"
+options: "0bf22f19efec9af866898f8a6aabc06e"
+build_time: [519523868, 383694000]
+inputs:
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SideMenu/Pod/Classes/SideMenuManager.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SideMenu/Pod/Classes/SideMenuTransition.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SideMenu/Pod/Classes/UISideMenuNavigationController.swift": [519434809, 0]
+  "/Users/ericasolum/Documents/Cru/Cru-App/Pods/SideMenu/Pod/Classes/UITableViewVibrantCell.swift": [519434809, 0]

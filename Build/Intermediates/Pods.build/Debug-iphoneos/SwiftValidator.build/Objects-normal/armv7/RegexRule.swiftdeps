@@ -1,0 +1,91 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "RegexRule"
+provides-nominal:
+- "C14SwiftValidator9RegexRule"
+provides-member:
+- ["C14SwiftValidator9RegexRule", ""]
+provides-dynamic-lookup:
+depends-top-level:
+- !private "NSPredicate"
+- "RegexRule"
+- "String"
+- "Bool"
+- "Rule"
+- "StringLiteralType"
+depends-member:
+- !private ["Ps9AnyObject", "NSPredicate"]
+- !private ["Ps9AnyObject", "REGEX"]
+- ["Ps9AnyObject", "errorMessage"]
+- !private ["Ps9AnyObject", "evaluateWithObject"]
+- !private ["Ps9AnyObject", "init"]
+- !private ["Ps9AnyObject", "message"]
+- ["Ps9AnyObject", "validate"]
+- ["Ps9AnyObject", ""]
+- !private ["Ps11CVarArgType", "evaluateWithObject"]
+- !private ["Ps11CVarArgType", "init"]
+- !private ["Ps28CustomDebugStringConvertible", "evaluateWithObject"]
+- !private ["Ps28CustomDebugStringConvertible", "init"]
+- !private ["Ps23CustomStringConvertible", "evaluateWithObject"]
+- !private ["Ps23CustomStringConvertible", "init"]
+- !private ["Ps9Equatable", "evaluateWithObject"]
+- !private ["Ps9Equatable", "init"]
+- !private ["Ps8Hashable", "evaluateWithObject"]
+- !private ["Ps8Hashable", "init"]
+- !private ["PSo8NSCoding", "evaluateWithObject"]
+- !private ["PSo8NSCoding", "init"]
+- !private ["PSo9NSCopying", "evaluateWithObject"]
+- !private ["PSo9NSCopying", "init"]
+- !private ["CSo8NSObject", "evaluateWithObject"]
+- !private ["CSo8NSObject", "init"]
+- !private ["PSo16NSObjectProtocol", "evaluateWithObject"]
+- !private ["PSo16NSObjectProtocol", "init"]
+- !private ["CSo11NSPredicate", "evaluateWithObject"]
+- !private ["CSo11NSPredicate", "init"]
+- !private ["PSo14NSSecureCoding", "evaluateWithObject"]
+- !private ["PSo14NSSecureCoding", "init"]
+- ["C14SwiftValidator9RegexRule", "Bool"]
+- !private ["C14SwiftValidator9RegexRule", "NSPredicate"]
+- !private ["C14SwiftValidator9RegexRule", "REGEX"]
+- ["C14SwiftValidator9RegexRule", "String"]
+- ["C14SwiftValidator9RegexRule", "deinit"]
+- ["C14SwiftValidator9RegexRule", "errorMessage"]
+- ["C14SwiftValidator9RegexRule", "init"]
+- !private ["C14SwiftValidator9RegexRule", "message"]
+- ["C14SwiftValidator9RegexRule", "validate"]
+- !private ["P14SwiftValidator4Rule", "NSPredicate"]
+- !private ["P14SwiftValidator4Rule", "REGEX"]
+- ["P14SwiftValidator4Rule", "errorMessage"]
+- !private ["P14SwiftValidator4Rule", "message"]
+- ["P14SwiftValidator4Rule", "validate"]
+- ["P14SwiftValidator4Rule", ""]
+- !private ["SS", "deinit"]
+depends-nominal:
+- "Ps9AnyObject"
+- !private "Ps11CVarArgType"
+- !private "Ps28CustomDebugStringConvertible"
+- !private "Ps23CustomStringConvertible"
+- !private "Ps9Equatable"
+- !private "Ps8Hashable"
+- !private "PSo8NSCoding"
+- !private "PSo9NSCopying"
+- !private "CSo8NSObject"
+- !private "PSo16NSObjectProtocol"
+- !private "CSo11NSPredicate"
+- !private "PSo14NSSecureCoding"
+- "C14SwiftValidator9RegexRule"
+- "P14SwiftValidator4Rule"
+- !private "SS"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Swift.swiftmodule"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Pods/Target Support Files/SwiftValidator/SwiftValidator-umbrella.h"
+- "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/SwiftValidator.build/unextended-module.modulemap"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/armv7/CoreImage.swiftmodule"
+interface-hash: "9de77257a23b82baf936a2d36d1514b6"

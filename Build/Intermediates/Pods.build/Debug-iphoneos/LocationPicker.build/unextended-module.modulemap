@@ -1,0 +1,10 @@
+framework module LocationPicker {
+  umbrella header "LocationPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module LocationPicker.__Swift {
+    exclude header "LocationPicker-Swift.h"
+}
