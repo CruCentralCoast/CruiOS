@@ -4,7 +4,7 @@
   'roots': [
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/ActionSheetPicker_3_0.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -54,7 +54,7 @@
         {
           'type': 'file',
           'name': "ActionSheetPicker_3_0-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker_3_0-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/ActionSheetPicker_3_0.framework/Headers/ActionSheetPicker_3_0-Swift.h"
         },
         {
           'type': 'file',
@@ -75,23 +75,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ActionSheetPicker_3_0.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/ActionSheetPicker_3_0.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/ActionSheetPicker-3.0.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/ActionSheetPicker-3.0.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/Alamofire.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "Alamofire-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Headers/Alamofire-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/Alamofire.framework/Headers/Alamofire-Swift.h"
         },
         {
           'type': 'file',
@@ -102,23 +102,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Alamofire.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/Alamofire.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/Alamofire.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/Alamofire.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/DZNEmptyDataSet.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "DZNEmptyDataSet-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/DZNEmptyDataSet.framework/Headers/DZNEmptyDataSet-Swift.h"
         },
         {
           'type': 'file',
@@ -134,23 +134,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DZNEmptyDataSet.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/DZNEmptyDataSet.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/DZNEmptyDataSet.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/DZNEmptyDataSet.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DatePickerCell.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/DatePickerCell.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "DatePickerCell-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DatePickerCell.framework/Headers/DatePickerCell-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/DatePickerCell.framework/Headers/DatePickerCell-Swift.h"
         },
         {
           'type': 'file',
@@ -161,18 +161,18 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/DatePickerCell.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/DatePickerCell.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/DatePickerCell.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/DatePickerCell.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/HTMLReader.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -237,7 +237,7 @@
         {
           'type': 'file',
           'name': "HTMLReader-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Headers/HTMLReader-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/HTMLReader.framework/Headers/HTMLReader-Swift.h"
         },
         {
           'type': 'file',
@@ -298,23 +298,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/HTMLReader.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/HTMLReader.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/HTMLReader.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/HTMLReader.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "IQKeyboardManagerSwift-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift.framework/Headers/IQKeyboardManagerSwift-Swift.h"
         },
         {
           'type': 'file',
@@ -325,23 +325,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/IQKeyboardManagerSwift.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/IQKeyboardManagerSwift.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/IQKeyboardManagerSwift.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/IQKeyboardManagerSwift.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/ImageLoader.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "ImageLoader-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Headers/ImageLoader-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/ImageLoader.framework/Headers/ImageLoader-Swift.h"
         },
         {
           'type': 'file',
@@ -352,23 +352,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/ImageLoader.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/ImageLoader.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/ImageLoader.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/ImageLoader.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/LocationPicker.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "LocationPicker-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Headers/LocationPicker-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/LocationPicker.framework/Headers/LocationPicker-Swift.h"
         },
         {
           'type': 'file',
@@ -384,18 +384,18 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/LocationPicker.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/LocationPicker.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/LocationPicker.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/LocationPicker.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/MRProgress.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -425,7 +425,7 @@
         {
           'type': 'file',
           'name': "MRProgress-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Headers/MRProgress-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/MRProgress.framework/Headers/MRProgress-Swift.h"
         },
         {
           'type': 'file',
@@ -471,18 +471,18 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/MRProgress.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/MRProgress.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/MRProgress.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/MRProgress.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Pods_Cru.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/Pods_Cru.framework/Headers",
       'contents': [
         {
           'type': 'file',
@@ -492,29 +492,29 @@
         {
           'type': 'file',
           'name': "Pods_Cru-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Pods_Cru.framework/Headers/Pods_Cru-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/Pods_Cru.framework/Headers/Pods_Cru-Swift.h"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/Pods_Cru.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/Pods_Cru.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/Pods-Cru.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/Pods-Cru.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/RadioButton.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "RadioButton-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Headers/RadioButton-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/RadioButton.framework/Headers/RadioButton-Swift.h"
         },
         {
           'type': 'file',
@@ -530,23 +530,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/RadioButton.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/RadioButton.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/RadioButton.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/RadioButton.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SideMenu.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "SideMenu-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Headers/SideMenu-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SideMenu.framework/Headers/SideMenu-Swift.h"
         },
         {
           'type': 'file',
@@ -557,23 +557,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SideMenu.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SideMenu.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/SideMenu.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/SideMenu.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SwiftValidator.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "SwiftValidator-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SwiftValidator.framework/Headers/SwiftValidator-Swift.h"
         },
         {
           'type': 'file',
@@ -584,23 +584,23 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftValidator.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SwiftValidator.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/SwiftValidator.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/SwiftValidator.build/module.modulemap"
         }
       ]
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftyJSON.framework/Headers",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework/Headers",
       'contents': [
         {
           'type': 'file',
           'name': "SwiftyJSON-Swift.h",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftyJSON.framework/Headers/SwiftyJSON-Swift.h"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework/Headers/SwiftyJSON-Swift.h"
         },
         {
           'type': 'file',
@@ -611,12 +611,12 @@
     },
     {
       'type': 'directory',
-      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphoneos/SwiftyJSON.framework/Modules",
+      'name': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Products/Debug-iphonesimulator/SwiftyJSON.framework/Modules",
       'contents': [
         {
           'type': 'file',
           'name': "module.modulemap",
-          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphoneos/SwiftyJSON.build/module.modulemap"
+          'external-contents': "/Users/ericasolum/Documents/Cru/Cru-App/Build/Intermediates/Pods.build/Debug-iphonesimulator/SwiftyJSON.build/module.modulemap"
         }
       ]
     }

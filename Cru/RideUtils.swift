@@ -26,7 +26,13 @@ class RideUtils {
     init(serverProtocol: ServerProtocol) {
         serverClient = serverProtocol
     }
-
+    
+    //Return the list of events excluding those user is giving/getting a ride to
+    func getAvailableEvents(gcmid: String, insert: (NSDictionary) -> (), afterFnc : (Bool) -> ()) {
+        //Implement in the future?
+    }
+    
+    //Return the list of rides available
     func getRidesNotDriving(gcmid: String, insert : (NSDictionary) -> (),
         afterFunc : (Bool) -> ()) {
 

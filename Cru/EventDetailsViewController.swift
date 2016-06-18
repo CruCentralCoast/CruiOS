@@ -31,6 +31,7 @@ class EventDetailsViewController: UIViewController {
     var event: Event!
     var eventLocalStorageManager: MapLocalStorageManager!
     var calendarManager: CalendarManager!
+    var rides = [Ride]()
     
     //function called when view is loaded
     override func viewDidLoad() {
@@ -54,6 +55,41 @@ class EventDetailsViewController: UIViewController {
         //initialize the view
         initializeView()
         setButtonConstraints(UIScreen.mainScreen().bounds.width)
+        
+        //Disable the ride sharing buttons if user is already driving/is passenger
+        CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
+    }
+    
+    func insertRide(dict : NSDictionary) {
+        //create ride
+        let newRide = Ride(dict: dict)
+        
+        //insert into ride array
+        rides.insert(newRide!, atIndex: 0)
+    }
+    
+    func finishRideInsert(type: ResponseType){
+        
+        switch type{
+            
+            
+        case .NoConnection:
+            print("No Connection")
+            //self.ridesTableView.emptyDataSetSource = self
+            //self.ridesTableView.emptyDataSetDelegate = self
+            //noRideImage = UIImage(named: Config.noConnectionImageName)!
+            //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            
+        default:
+            //Look through rides for this event
+            for ride in rides {
+                if ride.eventId == event.id {
+                    disableRideSharing()
+                }
+            }
+        }
+        
+        rides.sortInPlace()
     }
     
     //UI view initializer
@@ -83,14 +119,18 @@ class EventDetailsViewController: UIViewController {
         
         //If ridesharing is not enabled, disable the buttons
         if !event.rideSharingEnabled {
-            findRideButton.enabled = false
-            offerRideButton.enabled = false
+            disableRideSharing()
         }
         
         //check if event is in calendar
         if let eventId = eventLocalStorageManager.getElement(event.id) {
             checkForChanges(eventId as! String)  
         }
+    }
+    
+    private func disableRideSharing() {
+        findRideButton.enabled = false
+        offerRideButton.enabled = false
     }
     
     //Checks for differences between the native event and the one being displayed

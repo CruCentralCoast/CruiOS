@@ -164,6 +164,7 @@ class RideJoinViewController: UIViewController, UITableViewDataSource, UITableVi
         
     }
     
+    //Go back to MyRides with new ride added to the list
     func unwindToRideList(action: UIAlertAction){
         if let navController = self.navigationController {
 

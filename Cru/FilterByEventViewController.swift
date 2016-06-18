@@ -21,9 +21,11 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     var events = [Event]()
     var filteredRides = [Ride]()
     var allRides = [Ride]()
+    var curRides = [Ride]()
     var wasLinkedFromEvents = false
     
-    //this is dumb we need to change this
+    //Filtering on the app side for now
+    //For future: filter server side
     var tempEvent: Event?
     var selectedEvent: Event? {
         didSet {
@@ -47,6 +49,8 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map View", style: .Plain, target: self, action: "mapView")
         
+        //Load current user's rides
+        loadCurRides()
         
         loadEvents()
         if tempEvent == nil {
@@ -72,6 +76,14 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     // MARK: - Table view data source
+    //Load the user's current rides
+    func loadCurRides() {
+        CruClients.getRideUtils().getMyRides(fillRides, afterFunc: { sucess in
+            //Don't need to do anything
+        })
+    }
+    
+    //Load the available events list
     func loadEvents(){
         CruClients.getServerClient().getData(.Event, insert: insertEvent, completionHandler:
             { sucess in
@@ -79,10 +91,34 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
         })
     }
     
+    //If user isn't driving/getting ride to event, insert it into the
+    //available events list
     func insertEvent(dict : NSDictionary) {
-        events.insert(Event(dict: dict)!, atIndex: 0)
-        //self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+        //For now, filter out events we already have rides to on the app side
+        //For future, filter events on the server side
+        let curEvent = Event(dict: dict)!
+        var matchFound = false
+        
+        for ride in curRides {
+            if ride.eventId == curEvent.id {
+                matchFound = true
+            }
+        }
+        
+        if !matchFound {
+            events.insert(Event(dict: dict)!, atIndex: 0)
+        }
     }
+    
+    //Insert user's current rides into rides array
+    func fillRides(dict : NSDictionary) {
+        //create ride
+        let newRide = Ride(dict: dict)
+        
+        //insert into ride array
+        curRides.insert(newRide!, atIndex: 0)
+    }
+    
     
     func loadRides(event: Event?) {
         tempEvent = event
