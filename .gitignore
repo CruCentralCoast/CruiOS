@@ -1,0 +1,29 @@
+# Xcode
+# Build
+.DS_Store
+build/
+
+# Settings
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+
+# Other
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+*.xcscmblueprint
+Cru.xcworkspace/xcuserdata/ericasolum.xcuserdatad/UserInterfaceState.xcuserstate
+
+# Swift specific
+*.hmap
+*.ipa
+
+# Swift package manager
+.build/
