@@ -20,6 +20,7 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var endTimeLabel: UILabel!
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var location2: UITextView!
     @IBOutlet weak var fbButton: UIButton!
     @IBOutlet weak var detailsScroller: UIScrollView!
     @IBOutlet weak var calendarButton: UIButton!
@@ -110,7 +111,7 @@ class EventDetailsViewController: UIViewController {
         if let _ = event.location {
             locationText = event.getLocationString()
         }
-        locationLabel.text = locationText
+        location2.text = locationText
         
         //If there's no Facebook event, disable the button
         if event.url == "" {
