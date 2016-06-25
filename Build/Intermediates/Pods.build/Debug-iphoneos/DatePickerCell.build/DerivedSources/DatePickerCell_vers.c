@@ -1,1 +1,0 @@
- const unsigned char DatePickerCellVersionString[] __attribute__ ((used)) = "@(#)PROGRAM:DatePickerCell  PROJECT:Pods-1" "\n"; const double DatePickerCellVersionNumber __attribute__ ((used)) = (double)1.;
