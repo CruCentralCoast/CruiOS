@@ -96,6 +96,8 @@ class EventDetailsViewController: UIViewController {
     //UI view initializer
     private func initializeView() {
         let dateFormat = "h:mma MMMM d, yyyy"
+        let dateFormatter = "MMM d, yyyy"
+        let timeFormatter = "h:mma"
         
         navigationItem.title = "Event Details"
         
@@ -104,6 +106,23 @@ class EventDetailsViewController: UIViewController {
         titleLabel.text = event.name
         startTimeLabel.text = GlobalUtils.stringFromDate(event.startNSDate, format: dateFormat)
         endTimeLabel.text = GlobalUtils.stringFromDate(event.endNSDate, format: dateFormat)
+        
+        let startDate = GlobalUtils.stringFromDate(event.startNSDate, format: dateFormatter)
+        let startTime = GlobalUtils.stringFromDate(event.startNSDate, format: timeFormatter)
+        let endDate = GlobalUtils.stringFromDate(event.endNSDate, format: dateFormatter)
+        let endTime = GlobalUtils.stringFromDate(event.endNSDate, format: timeFormatter)
+        
+        if startDate != endDate {
+            startTimeLabel.text = startDate + " - " + endDate
+        }
+        else {
+            startTimeLabel.text = startDate
+        }
+        
+        endTimeLabel.text = startTime + " - " + endTime
+        
+        
+        
         descriptionView.text = event.description
         
         //insert location if there is one defined
