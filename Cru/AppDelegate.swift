@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         Fabric.sharedSDK().debug = true
-        Fabric.with([Crashlytics.self, Appsee.self])
+        Fabric.with([Crashlytics.self, Appsee.self, Answers.self])
         // TODO: Move this to where you establish a user session
         self.logUser()
 

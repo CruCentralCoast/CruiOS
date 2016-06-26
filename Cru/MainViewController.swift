@@ -18,6 +18,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var rides = [Ride]()
     var events = [Event]()
     @IBOutlet weak var table: UITableView?
+    @IBOutlet weak var eventsTable: UITableView!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,8 +40,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //load upcoming items
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
+        
+        
     }
-    @IBOutlet weak var menuButton: UIBarButtonItem!
     
     /* This function acts after the view is loaded and appears on the phone. */
     override func viewDidAppear(animated: Bool) {
@@ -62,11 +65,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func insertEvent(dict : NSDictionary) {
-        //create event
-        let event = Event(dict: dict)
+        //Create event
+        let event = Event(dict: dict)!
         
-        //insert into event array
-        events.insert(event!, atIndex: 0)
+        //Insert event into the array
+        if(event.startNSDate.compare(NSDate()) != .OrderedAscending){
+            self.events.insert(event, atIndex: 0)
+        }
     }
     
     func finishRideInsert(type: ResponseType){
@@ -88,6 +93,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         rides.sortInPlace()
     }
     
+    //Function that inserts the rides and events only if we get all the rides first
     func finishInserting(success: Bool){
         
         //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)

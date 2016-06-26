@@ -982,7 +982,7 @@
 				TargetAttributes = {
 					0F8CEF1C1BEC0E13008FC70D = {
 						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = PY9957M84G;
+						DevelopmentTeam = 7F72R928UK;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1527,7 +1527,7 @@
 				INFOPLIST_FILE = Cru/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.calpoly.csc.2158.CruCentralCoast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.crucc.calpoly.beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cru/Cru-Bridging-Header.h";
@@ -1554,7 +1554,7 @@
 				INFOPLIST_FILE = Cru/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.calpoly.csc.2158.CruCentralCoast;
+				PRODUCT_BUNDLE_IDENTIFIER = com.crucc.calpoly.beta;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Cru/Cru-Bridging-Header.h";
