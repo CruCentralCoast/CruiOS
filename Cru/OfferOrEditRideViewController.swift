@@ -276,6 +276,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
                 pickupRadius = cell.contentTextField
                 pickupRadius.tag = EditTags.Radius.rawValue
                 pickupRadius.delegate = self
+                pickupRadius.editable = false
             
             case Labels.passengers:
                 passengerValue = cell.contentTextField
@@ -590,7 +591,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     
     func postRideOffer(success: Bool){
         if (success){
-            CruClients.getRideUtils().postRideOffer(ride.eventId, name: nameValue.text, phone: numberValue.text, seats: ride.seats, time: ride.getTimeInServerFormat(), location: location.getLocationAsDict(location), radius: 1, direction: ride.direction, handler:  handleRequestResult)
+            CruClients.getRideUtils().postRideOffer(ride.eventId, name: nameValue.text, phone: numberValue.text, seats: ride.seats, time: ride.getTimeInServerFormat(), location: location.getLocationAsDict(location), radius: ride.radius, direction: ride.direction, handler:  handleRequestResult)
         }else{
             MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
             showValidationError(ValidationErrors.phoneUnauthorized)

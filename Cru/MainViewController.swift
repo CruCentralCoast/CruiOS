@@ -21,6 +21,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var eventsTable: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var upcomingRidesHeight: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontName, size: 20)!], forState: .Normal)
@@ -40,7 +41,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //load upcoming items
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
-        
         
     }
     
@@ -103,6 +103,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             days.append(String(ride.day))
             items.append(ride.getDescription(getEventNameForEventId(ride.eventId)))
         }
+        upcomingRidesHeight.constant = (table?.rowHeight)!*CGFloat(rides.count)
         
         table?.reloadData()
     }
@@ -137,6 +138,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
+        if(tableView == self.table) {
+            return rides.count
+        }
+        else {
+            //Display the three soonest events
+            return 3
+        }
     }
     
     func getEventNameForEventId(id : String)->String{
@@ -151,17 +159,38 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UpcomingItemCell
+        if(tableView == self.table) {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UpcomingItemCell
+            
+            cell.month.text = months[indexPath.row]
+            cell.day.text = days[indexPath.row]
+            cell.summary.text = items[indexPath.row]
+            
+            return cell
+        }
         
-        cell.month.text = months[indexPath.row]
-        cell.day.text = days[indexPath.row]
-        cell.summary.text = items[indexPath.row]
-
-        return cell
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UpcomingEventCell
+            
+            cell.nameLabel.text = events[indexPath.row].name
+            
+            
+            return cell
+            
+        }
+        
+        
+        
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 70.0
+        if(tableView == self.table) {
+            return 70.0
+        }
+        else {
+           return 60.0
+        }
+        
     }
     
     //reveal controller function for disabling the current view
