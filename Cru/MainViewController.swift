@@ -10,22 +10,34 @@
 
 import UIKit
 import SideMenu
+import DZNEmptyDataSet
 
-class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SWRevealViewControllerDelegate {
+class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SWRevealViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
     var items = [String]()//["Church on Sunday!", "Fall Retreat", "Bowling lessons with Pete, or was it Peter? Find out at the Event", "Idk was it peter", "Futbol"]
     var months = [String]()
     var days = [String]()
     var rides = [Ride]()
     var events = [Event]()
     var ridesRowHeight = 100
-    @IBOutlet weak var table: UITableView?
+    @IBOutlet weak var table: UITableView!
     @IBOutlet weak var eventsTable: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     @IBOutlet weak var upcomingEventsSpacer: NSLayoutConstraint!
     @IBOutlet weak var upcomingRidesHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var eventsTableHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    var noRideString: NSAttributedString!{
+        didSet {
+            table!.reloadData()
+        }
+    }
+    var noEventsString: NSAttributedString!{
+        didSet {
+            eventsTable!.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +59,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //load upcoming items
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
         
+        //Display a message if either of the tables are empty
+        self.table!.emptyDataSetSource = self;
+        self.table!.emptyDataSetDelegate = self;
+        self.eventsTable!.emptyDataSetSource = self;
+        self.eventsTable!.emptyDataSetDelegate = self;
+        
+        self.table!.tableFooterView = UIView()
+        
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+        noRideString = NSAttributedString(string: "Currently no rides available", attributes: attributes)
+        
+        noEventsString = NSAttributedString(string: "No events this week", attributes: attributes)
+        
+        
     }
     
     /* This function acts after the view is loaded and appears on the phone. */
@@ -57,25 +83,46 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
+    //Set the image to be displayed when either table is empty
+//    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+//        
+//        return noRideImage
+//    }
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if scrollView == self.table {
+            return noRideString
+        }
+        else {
+            
+            return noEventsString
+        }
+        
+    }
+    
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return Colors.googleGray
+    }
+    
     func insertRide(dict : NSDictionary) {
         //create ride
-        print("\nInsertRide gets called!!\n")
         let newRide = Ride(dict: dict)
         
         //insert into ride array
         rides.insert(newRide!, atIndex: 0)
-        
         rides.sortInPlace()
         
     }
     
-    
+    //Asynchronous function that's called to insert an event into the table
     func insertEvent(dict : NSDictionary) {
         //Create event
         let event = Event(dict: dict)!
         
-        //Insert event into the array
-        if(event.startNSDate.compare(NSDate()) != .OrderedAscending){
+        //Insert event into the array only if it's within the next week
+        let curDate = NSDate()
+        let week = curDate.addDays(7)
+        
+        if(event.startNSDate.isLessThanDate(week) && event.startNSDate.compare(NSDate()) != .OrderedAscending){
             self.events.insert(event, atIndex: 0)
         }
     }
@@ -83,7 +130,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func finishRideInsert(type: ResponseType){
         
         switch type{
-
+        case .NoRides:
+            self.table!.emptyDataSetSource = self
+            self.table!.emptyDataSetDelegate = self
+            CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: finishInserting)
+            //noRideString = NSAttributedString(string: "Currently no rides available", attributes: [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.blackColor()])
             
         case .NoConnection:
             print("\nCould not finish inserting rides. No connection found.\n")
@@ -96,6 +147,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: finishInserting)
         }
         
+        
         rides.sortInPlace()
     }
     
@@ -104,19 +156,34 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
         for ride in rides{
-            
             months.append(ride.month)
             days.append(String(ride.day))
             items.append(ride.getDescription(getEventNameForEventId(ride.eventId)))
         }
         if rides.count == 0 {
-            upcomingEventsSpacer.constant = 25
+            upcomingRidesHeight.constant = CGFloat(50)
+            self.table!.emptyDataSetSource = self
+            self.table!.emptyDataSetDelegate = self
+        }
+        else {
+            
+            upcomingRidesHeight.constant = CGFloat(ridesRowHeight)*CGFloat(rides.count)
+            table?.reloadData()
         }
         
-        upcomingRidesHeight.constant = CGFloat(ridesRowHeight)*CGFloat(rides.count)
-        
-        table?.reloadData()
-        eventsTable?.reloadData()
+        if events.count == 0 {
+            self.eventsTable!.emptyDataSetSource = self
+            self.eventsTable!.emptyDataSetDelegate = self
+            eventsTableHeight.constant = CGFloat(50)
+        }
+        else {
+            eventsTableHeight.constant = CGFloat(100)*CGFloat(events.count)
+            eventsTable?.reloadData()
+        }
+
+        //disable scrolling
+        table.scrollEnabled = false
+        eventsTable.scrollEnabled = false
         
     }
     

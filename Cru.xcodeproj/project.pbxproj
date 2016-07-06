@@ -192,6 +192,8 @@
 		6D94BD051D24BBC00063CED8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D94BD041D24BBC00063CED8 /* GoogleService-Info.plist */; };
 		6D94BD061D24BBC00063CED8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D94BD041D24BBC00063CED8 /* GoogleService-Info.plist */; };
 		6DA330AB1CD95E1200FCC970 /* ResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */; };
+		6DAD2B751D2D8C6C001F8A1B /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */; };
+		6DAD2B761D2D8C6C001F8A1B /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */; };
 		6DB922821C07CE1400C7B120 /* FreigSanProBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DB922811C07CE1400C7B120 /* FreigSanProBook.otf */; };
 		6DBD7B8C1C756D1000D11FFA /* CruColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBD7B8B1C756D1000D11FFA /* CruColors.swift */; };
 		6DBD7B8D1C756D1000D11FFA /* CruColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBD7B8B1C756D1000D11FFA /* CruColors.swift */; };
@@ -410,6 +412,7 @@
 		6D94BD011D2451CA0063CED8 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		6D94BD041D24BBC00063CED8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTest.swift; sourceTree = "<group>"; };
+		6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		6DB922811C07CE1400C7B120 /* FreigSanProBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProBook.otf; sourceTree = "<group>"; };
 		6DBD7B8B1C756D1000D11FFA /* CruColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CruColors.swift; sourceTree = "<group>"; };
 		6DBD7B8F1C7573DC00D11FFA /* FreigSanProLigIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProLigIt.otf; sourceTree = "<group>"; };
@@ -871,6 +874,7 @@
 			children = (
 				0F17E3D71C9106B500713297 /* LocalStorage */,
 				C1DCEC451C7681E1009FACE0 /* RideUtils.swift */,
+				6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */,
 				C151D9B51C7D2D9A0067A29E /* LoginUtils.swift */,
 				0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */,
 				0F17E3D11C90F68300713297 /* CalendarManager.swift */,
@@ -1273,6 +1277,7 @@
 				0F17E3D21C90F68300713297 /* CalendarManager.swift in Sources */,
 				0FAEB97C1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift in Sources */,
 				0F5302751CD2B85D0097F9F2 /* EventTableViewCell.swift in Sources */,
+				6DAD2B751D2D8C6C001F8A1B /* DateUtils.swift in Sources */,
 				6DBD7B8C1C756D1000D11FFA /* CruColors.swift in Sources */,
 				0F1B8C291CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift in Sources */,
 				0FAAE91F1CE6A8480055770D /* MinistryTeamsTableViewCell.swift in Sources */,
@@ -1330,6 +1335,7 @@
 				5072B4231CB38E75001F5BF6 /* DriverRideDetailViewController.swift in Sources */,
 				5031E1541CE682F30005AAF6 /* MockTimeDetail.swift in Sources */,
 				508B2BD81CCF4C2C00CD130C /* VarietyItemCollectionViewCell.swift in Sources */,
+				6DAD2B761D2D8C6C001F8A1B /* DateUtils.swift in Sources */,
 				50697BC81CE0456600776CC5 /* PhoneFormatter.swift in Sources */,
 				5072B4221CB38E70001F5BF6 /* RideTableViewCell.swift in Sources */,
 				50D507871CBF7A7F00A07045 /* OfferRideViewController.swift in Sources */,

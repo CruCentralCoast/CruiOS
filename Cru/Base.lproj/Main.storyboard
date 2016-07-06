@@ -46,7 +46,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9t1-Fv-uyz">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="856"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="805"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crumountains" translatesAutoresizingMaskIntoConstraints="NO" id="QRK-Cz-pSs">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="269"/>
@@ -72,7 +72,7 @@
                                                 <rect key="frame" x="15" y="326" width="384" height="100"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" priority="750" constant="100" id="Jyk-3L-Tsw"/>
+                                                    <constraint firstAttribute="height" constant="100" id="Jyk-3L-Tsw"/>
                                                 </constraints>
                                                 <color key="separatorColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
@@ -119,8 +119,8 @@
                                                                         </mask>
                                                                     </variation>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Driving to Sophmore Social at 3:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-YY-p97">
-                                                                    <rect key="frame" x="103" y="22" width="263" height="46"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving to Sophmore Social at 3:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-YY-p97">
+                                                                    <rect key="frame" x="103" y="27" width="263" height="46"/>
                                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -158,13 +158,13 @@
                                                 </connections>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPx-Zh-K4y">
-                                                <rect key="frame" x="15" y="441" width="384" height="31"/>
+                                                <rect key="frame" x="15" y="436" width="384" height="31"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="24"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-uh-smX">
-                                                <rect key="frame" x="15" y="480" width="384" height="2"/>
+                                                <rect key="frame" x="15" y="475" width="384" height="2"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
@@ -172,7 +172,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="btd-49-F7H">
-                                                <rect key="frame" x="15" y="490" width="384" height="300"/>
+                                                <rect key="frame" x="15" y="485" width="384" height="300"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="300" id="Ujf-ah-qTB"/>
@@ -280,7 +280,7 @@
                                         <constraints>
                                             <constraint firstItem="btd-49-F7H" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" constant="15" id="0j5-VZ-ObQ"/>
                                             <constraint firstAttribute="trailing" secondItem="d0o-uh-smX" secondAttribute="trailing" constant="15" id="4O5-FX-gwL"/>
-                                            <constraint firstAttribute="bottom" secondItem="btd-49-F7H" secondAttribute="bottom" constant="66" id="BaO-GV-Gbh"/>
+                                            <constraint firstAttribute="bottom" secondItem="btd-49-F7H" secondAttribute="bottom" constant="20" id="BaO-GV-Gbh"/>
                                             <constraint firstItem="QRK-Cz-pSs" firstAttribute="top" secondItem="9t1-Fv-uyz" secondAttribute="top" id="DDb-GG-3Gx"/>
                                             <constraint firstItem="NPx-Zh-K4y" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" constant="15" id="EQg-jH-VaA"/>
                                             <constraint firstAttribute="trailing" secondItem="QRK-Cz-pSs" secondAttribute="trailing" id="IBx-Vg-XEu"/>
@@ -294,7 +294,7 @@
                                             <constraint firstItem="hc6-Bv-K6z" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" constant="15" id="nf5-9l-BgB"/>
                                             <constraint firstItem="btd-49-F7H" firstAttribute="top" secondItem="d0o-uh-smX" secondAttribute="bottom" constant="8" id="niN-jx-tW6"/>
                                             <constraint firstItem="d0o-uh-smX" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" constant="15" id="pAm-Nd-KCz"/>
-                                            <constraint firstItem="NPx-Zh-K4y" firstAttribute="top" secondItem="HfV-xA-ZtN" secondAttribute="bottom" constant="15" id="pm9-7S-AI1"/>
+                                            <constraint firstItem="NPx-Zh-K4y" firstAttribute="top" secondItem="HfV-xA-ZtN" secondAttribute="bottom" constant="10" id="pm9-7S-AI1"/>
                                             <constraint firstItem="QRK-Cz-pSs" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" id="s1N-a9-CxM"/>
                                             <constraint firstAttribute="trailing" secondItem="HfV-xA-ZtN" secondAttribute="trailing" constant="15" id="xFg-g6-y1w"/>
                                             <constraint firstItem="htN-QS-Ku8" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" constant="15" id="xT0-NY-cEw"/>
@@ -311,7 +311,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="4kP-5J-Cvs" secondAttribute="trailing" constant="-20" id="XQF-rC-U43"/>
                             <constraint firstItem="9t1-Fv-uyz" firstAttribute="width" secondItem="5bq-z4-v2i" secondAttribute="width" id="aRx-va-oAV"/>
@@ -336,6 +336,7 @@
                     <size key="freeformSize" width="414" height="800"/>
                     <connections>
                         <outlet property="eventsTable" destination="btd-49-F7H" id="Rej-3k-ghQ"/>
+                        <outlet property="eventsTableHeight" destination="Ujf-ah-qTB" id="3nA-2o-3Sj"/>
                         <outlet property="menuButton" destination="hvs-Wd-lEz" id="J8Q-gu-QbR"/>
                         <outlet property="scrollView" destination="4kP-5J-Cvs" id="swc-b6-OiG"/>
                         <outlet property="table" destination="HfV-xA-ZtN" id="6LM-au-AwD"/>
