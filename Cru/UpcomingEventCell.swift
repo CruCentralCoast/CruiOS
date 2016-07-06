@@ -11,4 +11,12 @@ import Foundation
 class UpcomingEventCell: UITableViewCell {
     
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var location: UITextView!
+    @IBOutlet weak var day: UILabel!
+    @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var AMorPM: UILabel!
+    @IBOutlet weak var dayAlignment: NSLayoutConstraint!
+    
+    @IBOutlet weak var nameSpacer: NSLayoutConstraint!
+    
 }

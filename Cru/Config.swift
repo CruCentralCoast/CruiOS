@@ -9,7 +9,7 @@
 import UIKit
 
 struct Config {
-    static let serverUrl = "http://ec2-52-32-197-212.us-west-2.compute.amazonaws.com:3001/"
+    static let serverUrl = "http://ec2-52-39-130-135.us-west-2.compute.amazonaws.com:3000/"
     static let serverEndpoint = serverUrl + "api/"
     static let name = "name"
     static let campusIds = "campuses"

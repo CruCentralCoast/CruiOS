@@ -17,11 +17,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var days = [String]()
     var rides = [Ride]()
     var events = [Event]()
+    var ridesRowHeight = 100
     @IBOutlet weak var table: UITableView?
     @IBOutlet weak var eventsTable: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
+    @IBOutlet weak var upcomingEventsSpacer: NSLayoutConstraint!
     @IBOutlet weak var upcomingRidesHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontName, size: 20)!], forState: .Normal)
@@ -54,6 +59,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func insertRide(dict : NSDictionary) {
         //create ride
+        print("\nInsertRide gets called!!\n")
         let newRide = Ride(dict: dict)
         
         //insert into ride array
@@ -80,7 +86,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
             
         case .NoConnection:
-            print("")
+            print("\nCould not finish inserting rides. No connection found.\n")
             //self.ridesTableView.emptyDataSetSource = self
             //self.ridesTableView.emptyDataSetDelegate = self
             //noRideImage = UIImage(named: Config.noConnectionImageName)!
@@ -103,9 +109,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             days.append(String(ride.day))
             items.append(ride.getDescription(getEventNameForEventId(ride.eventId)))
         }
-        upcomingRidesHeight.constant = (table?.rowHeight)!*CGFloat(rides.count)
+        if rides.count == 0 {
+            upcomingEventsSpacer.constant = 25
+        }
+        
+        upcomingRidesHeight.constant = CGFloat(ridesRowHeight)*CGFloat(rides.count)
         
         table?.reloadData()
+        eventsTable?.reloadData()
+        
     }
     
     // prepare for segue
@@ -137,13 +149,14 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        
         if(tableView == self.table) {
-            return rides.count
+            return items.count
         }
         else {
             //Display the three soonest events
-            return 3
+            return events.count
+            
         }
     }
     
@@ -170,10 +183,25 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UpcomingEventCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! UpcomingEventCell
             
             cell.nameLabel.text = events[indexPath.row].name
+            cell.location.text = events[indexPath.row].getLocationString()
+            cell.time.text = events[indexPath.row].getStartTime()
+            cell.AMorPM.text = events[indexPath.row].getAmOrPm()
+            cell.day.text = events[indexPath.row].getWeekday()
             
+            //Change the alignment so that the day is in the center of the time+am
+            let position = (cell.time.bounds.width + cell.AMorPM.bounds.width)/2
+            let newConstant = position - cell.time.bounds.width/2
+            cell.dayAlignment.constant = newConstant
+            
+            //If the address is only 1 line, add more space to the top of the name label
+            let length = cell.location.text.characters.count
+            
+            if length < 29 {
+                cell.nameSpacer.constant = 18
+            }
             
             return cell
             
@@ -185,10 +213,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if(tableView == self.table) {
-            return 70.0
+            return 100.0
         }
         else {
-           return 60.0
+           return 100
         }
         
     }

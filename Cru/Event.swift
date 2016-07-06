@@ -143,6 +143,18 @@ class Event: Equatable {
                GlobalUtils.stringFromDate(startNSDate, format: "h:mm a")
         
     }
+    func getStartTime()-> String{
+        return GlobalUtils.stringFromDate(startNSDate, format: "h:mm")
+    }
+    
+    func getAmOrPm()->String{
+        return GlobalUtils.stringFromDate(startNSDate, format: "a")
+    }
+    
+    func getWeekday() ->String{
+        let str = GlobalUtils.stringFromDate(startNSDate, format: "EE")
+        return str.uppercaseString
+    }
     
     static func eventsWithRideShare(eventList : [Event])->[Event]{
         var filteredList = [Event]()
