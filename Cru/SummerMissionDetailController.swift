@@ -56,6 +56,7 @@ class SummerMissionDetailController: UIViewController {
             datesLabel.text = dateText
             titleLabel.text = mission.name
             titleLabel.sizeToFit()
+            locationLabel.text = mission.getLocationString()
             
             
             descriptionView.text = mission.description

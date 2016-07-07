@@ -75,6 +75,11 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.event = event
         
+        cell.card.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.card.layer.shadowOpacity = 0.25
+        cell.card.layer.shadowRadius = 2
+        
         return cell
     }
     

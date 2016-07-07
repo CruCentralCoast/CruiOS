@@ -28,6 +28,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var eventsTableHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    
     var noRideString: NSAttributedString!{
         didSet {
             table!.reloadData()
@@ -83,11 +85,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    //Set the image to be displayed when either table is empty
-//    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-//        
-//        return noRideImage
-//    }
+    //Set the text to be displayed when either table is empty
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if scrollView == self.table {
             return noRideString
@@ -238,6 +236,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return ""
     }
     
+    //Adds the drop shadow to the ride and event cards
+    private func addDropShadow(rideCell: UpcomingItemCell?, eventCell: UpcomingEventCell?) {
+        rideCell?.card.layer.shadowColor = UIColor.blackColor().CGColor
+        rideCell?.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+        rideCell?.card.layer.shadowOpacity = 0.25
+        rideCell?.card.layer.shadowRadius = 2
+        
+        eventCell?.card.layer.shadowColor = UIColor.blackColor().CGColor
+        eventCell?.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+        eventCell?.card.layer.shadowOpacity = 0.25
+        eventCell?.card.layer.shadowRadius = 2
+        
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if(tableView == self.table) {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UpcomingItemCell
@@ -245,6 +257,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.month.text = months[indexPath.row]
             cell.day.text = days[indexPath.row]
             cell.summary.text = items[indexPath.row]
+            addDropShadow(cell, eventCell: nil)
             
             return cell
         }
@@ -257,6 +270,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.time.text = events[indexPath.row].getStartTime()
             cell.AMorPM.text = events[indexPath.row].getAmOrPm()
             cell.day.text = events[indexPath.row].getWeekday()
+            addDropShadow(nil, eventCell: cell)
             
             //Change the alignment so that the day is in the center of the time+am
             let position = (cell.time.bounds.width + cell.AMorPM.bounds.width)/2

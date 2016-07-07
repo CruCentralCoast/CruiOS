@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -48,7 +48,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPT-Cg-l3C">
-                                                    <rect key="frame" x="116" y="48" width="142" height="19.5"/>
+                                                    <rect key="frame" x="116" y="48" width="142" height="20"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -75,7 +75,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC4-aR-ERi">
-                                                    <rect key="frame" x="116" y="76" width="142" height="20.5"/>
+                                                    <rect key="frame" x="116" y="76" width="142" height="21"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -117,6 +117,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="card" destination="laG-Gv-F0y" id="6ZD-ty-meR"/>
                                     <outlet property="ministryNameLabel" destination="MC4-aR-ERi" id="C3c-8X-4ap"/>
                                     <outlet property="ministryTeamDescription" destination="Fqj-fo-mUz" id="U0k-jp-VxR"/>
                                     <outlet property="ministryTeamImage" destination="dwc-6t-M48" id="sBA-T3-lNA"/>
@@ -135,7 +136,7 @@
                                             <rect key="frame" x="16" y="8" width="170" height="257"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rcg-1u-Nwu">
-                                                    <rect key="frame" x="8" y="8" width="154" height="19.5"/>
+                                                    <rect key="frame" x="8" y="8" width="154" height="20"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -156,13 +157,13 @@
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Ministry Team description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eHY-R5-KDS">
-                                                    <rect key="frame" x="8" y="64" width="154" height="150"/>
+                                                    <rect key="frame" x="8" y="65" width="154" height="149"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ymT-eq-7f6">
-                                                    <rect key="frame" x="8" y="35.5" width="154" height="20.5"/>
+                                                    <rect key="frame" x="8" y="36" width="154" height="21"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -202,6 +203,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
+                                    <outlet property="card" destination="sHU-st-lki" id="sST-Ga-auW"/>
                                     <outlet property="ministryDescriptionLabel" destination="eHY-R5-KDS" id="egW-g2-kmT"/>
                                     <outlet property="ministryNameLabel" destination="ymT-eq-7f6" id="3Y0-lm-TTj"/>
                                     <outlet property="ministryTeamNameLabel" destination="Rcg-1u-Nwu" id="Ol7-t2-29C"/>
@@ -239,12 +241,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rk3-cF-QaY">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rk3-cF-QaY">
                                 <rect key="frame" x="20" y="124" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzR-pm-tMq">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mzR-pm-tMq">
                                 <rect key="frame" x="225" y="162" width="150" height="40"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -259,13 +261,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1X-Uq-Ng7">
-                                <rect key="frame" x="20" y="30" width="77" height="20.5"/>
+                                <rect key="frame" x="20" y="30" width="77" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VFP-MF-JTD">
-                                <rect key="frame" x="20" y="96" width="115" height="20.5"/>
+                                <rect key="frame" x="20" y="96" width="115" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

@@ -122,7 +122,7 @@
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving to Sophmore Social at 3:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-YY-p97">
                                                                     <rect key="frame" x="103" y="27" width="263" height="46"/>
                                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
-                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
@@ -146,6 +146,7 @@
                                                             </variation>
                                                         </tableViewCellContentView>
                                                         <connections>
+                                                            <outlet property="card" destination="Fdv-yc-nar" id="ABc-Vg-8eh"/>
                                                             <outlet property="day" destination="iTd-oK-gKy" id="sKi-15-9ql"/>
                                                             <outlet property="month" destination="hIx-3d-SZ9" id="TOf-K2-D1J"/>
                                                             <outlet property="summary" destination="qRb-YY-p97" id="IHe-sL-9Oh"/>
@@ -171,7 +172,7 @@
                                                     <constraint firstAttribute="height" constant="2" id="EMt-DQ-EOj"/>
                                                 </constraints>
                                             </view>
-                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="btd-49-F7H">
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="btd-49-F7H">
                                                 <rect key="frame" x="15" y="485" width="384" height="300"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -254,6 +255,7 @@
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="AMorPM" destination="CgD-LR-kcm" id="C6F-JP-5if"/>
+                                                            <outlet property="card" destination="Uwm-QX-ImF" id="DHn-au-YgB"/>
                                                             <outlet property="day" destination="1lY-f2-b8l" id="Fgh-jK-Wb5"/>
                                                             <outlet property="dayAlignment" destination="vHK-bW-kXG" id="b8N-Ry-Npp"/>
                                                             <outlet property="location" destination="75H-cU-hcX" id="5gC-mm-aer"/>

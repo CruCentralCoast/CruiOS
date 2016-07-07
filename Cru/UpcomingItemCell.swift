@@ -12,4 +12,5 @@ class UpcomingItemCell: UITableViewCell {
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var summary: UILabel!
     @IBOutlet weak var month: UILabel!
+    @IBOutlet weak var card: UIView!
 }

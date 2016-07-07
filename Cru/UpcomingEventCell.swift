@@ -19,4 +19,5 @@ class UpcomingEventCell: UITableViewCell {
     
     @IBOutlet weak var nameSpacer: NSLayoutConstraint!
     
+    @IBOutlet weak var card: UIView!
 }

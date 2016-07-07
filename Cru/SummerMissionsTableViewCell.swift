@@ -13,6 +13,7 @@ class SummerMissionsTableViewCell: UITableViewCell {
     @IBOutlet weak var missionName: UILabel!
     @IBOutlet weak var missionDateLabel: UILabel!
     @IBOutlet weak var missionLocation: UILabel!
+    @IBOutlet weak var card: UIView!
     
     var mission: SummerMission! {
         didSet {

@@ -65,7 +65,7 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
             return 150.0
         }
         else {
-            return 305.0
+            return 275.0
         }
     }
     
@@ -75,6 +75,11 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
         cell.mission = mission
+        
+        cell.card.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.card.layer.shadowOpacity = 0.25
+        cell.card.layer.shadowRadius = 2
 
         return cell
     }
