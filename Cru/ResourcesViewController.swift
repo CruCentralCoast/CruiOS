@@ -87,6 +87,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
     }
     
+    func doNothing(success: Bool) {
+        
+    }
+    
     //Code for the bar at the top of the view for filtering resources
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         var newType: ResourceType
@@ -149,25 +153,25 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         resources.insert(resource, atIndex: 0)
         
         if (resource.type == ResourceType.Article) {
-            insertArticle(resource, completionHandler: {error in })
+            insertArticle(resource, completionHandler: doNothing)
         }
             
         else if (resource.type == ResourceType.Video) {
             if(resource.url.rangeOfString("youtube") != nil) {
-                insertYoutube(resource, completionHandler: {error in })
+                insertYoutube(resource, completionHandler: completion)
             }
             else {
-                insertGeneric(resource, completionHandler: {error in })
+                insertGeneric(resource, completionHandler: doNothing)
             }
         }
             
         else if (resource.type == ResourceType.Audio) {
-            insertAudio(resource, completionHandler: {error in})
+            insertAudio(resource, completionHandler: completion)
         }
     }
     
     /* Implement when tools support is requested */
-    private func insertAudio(resource: Resource, completionHandler: (NSError?) -> Void) {
+    private func insertAudio(resource: Resource, completionHandler: (Bool) -> Void) {
     
         var cardView: CardView! = nil
         var card: SummaryCard!
@@ -191,22 +195,22 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
             }
         }
-        completionHandler(nil)
+        
         
     }
     
     /* Helper function to get and insert an article card */
-    private func insertArticle(resource: Resource,completionHandler: (NSError?) -> Void) {
+    private func insertArticle(resource: Resource,completionHandler: (Bool) -> Void) {
         Alamofire.request(.GET, resource.url)
             .responseString { responseString in
                 guard responseString.result.error == nil else {
-                    completionHandler(responseString.result.error!)
+                    //completionHandler(responseString.result.error!)
                     return
                     
                 }
                 guard let htmlAsString = responseString.result.value else {
                     let error = Error.errorWithCode(.StringSerializationFailed, failureReason: "Could not get HTML as String")
-                    completionHandler(error)
+                    //completionHandler(error)
                     return
                 }
                 
@@ -230,13 +234,44 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 if(resource.url.rangeOfString("cru") != nil) {
                     creator = cru
                     
+                    
                     let absContent = doc.nodesMatchingSelector("p")
                     
                     abstract = absContent[0].textContent
                     
-                    let content = doc.nodesMatchingSelector(".textImage")
                     
-                    filteredContent = content[0].textContent
+                    
+                    let shareIcons = doc.firstNodeMatchingSelector(".listInline")
+                    //doc.removeChild(deleteThis!)
+                    
+                    
+                    let content = doc.nodesMatchingSelector(".postContent")
+                    //let content = doc.nodesMatchingSelector(".textImage")
+                    
+                    
+                    
+                    //Removes the share icons on the top of Cru's articles
+                    filteredContent = content[0].innerHTML
+                    let listStart = "<ul class=\"listInline"
+                    let listEnd = "<!-- The component"
+ 
+                    let startIndex = filteredContent.rangeOfString(listStart)
+                    let start = startIndex?.startIndex
+                    
+                    let firstPart = filteredContent.substringToIndex(start!)
+                    
+                    let endIndex = filteredContent.rangeOfString(listEnd)
+                    let end = endIndex?.startIndex
+                    
+                    let lastPart = filteredContent.substringFromIndex(end!)
+                    
+                    let newContent = firstPart + lastPart
+                    
+                    //filteredContent.removeRange(Range<String.Index>(start: start!, end: end!))
+                    filteredContent = newContent
+                    
+                    //filteredContent = content[0].textContent
+                    
                     
                 }
                 else if(resource.url.rangeOfString("everystudent") != nil) {
@@ -291,24 +326,23 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
                     }
                 }
-                completionHandler(nil)
-                
+                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
                 
         }
     }
     
-    /* Inserts an article from a generic source */
-    private func insertGeneric(resource: Resource,completionHandler: (NSError?) -> Void) {
+    /* Inserts a video from a generic source */
+    private func insertGeneric(resource: Resource,completionHandler: (Bool) -> Void) {
         Alamofire.request(.GET, resource.url)
             .responseString { responseString in
                 guard responseString.result.error == nil else {
-                    completionHandler(responseString.result.error!)
+                    //completionHandler(responseString.result.error!)
                     return
                     
                 }
                 guard let htmlAsString = responseString.result.value else {
                     let error = Error.errorWithCode(.StringSerializationFailed, failureReason: "Could not get HTML as String")
-                    completionHandler(error)
+                    //completionHandler(error)
                     return
                 }
                 
@@ -361,7 +395,8 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
                     }
                 }
-                completionHandler(nil)
+                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+                
         }
         
     }
@@ -382,7 +417,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     
-    private func insertYoutube(resource: Resource,completionHandler: (NSError?) -> Void) {
+    private func insertYoutube(resource: Resource,completionHandler: (Bool) -> Void) {
         var videoCard:VideoCard!
         var cardView : CardView! = nil
         
@@ -414,7 +449,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
             }
         }
-        completionHandler(nil)
+        
     }
     
     

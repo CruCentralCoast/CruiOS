@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,21 +12,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Kicker" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gC4-RJ-dh4">
-                    <rect key="frame" x="15" y="15" width="540" height="14"/>
+                    <rect key="frame" x="15" y="15" width="525" height="14"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Title" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL9-2c-bsw">
-                    <rect key="frame" x="15" y="565" width="540" height="20"/>
+                    <rect key="frame" x="15" y="565" width="525" height="20"/>
                     <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rfn-Ef-UIw" customClass="WCImageView" customModule="WildcardSDK">
-                    <rect key="frame" x="565" y="8" width="25" height="25"/>
+                    <rect key="frame" x="550" y="8" width="40" height="25"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="25" id="Z3D-cN-Ls8"/>
+                        <constraint firstAttribute="width" constant="40" id="Z3D-cN-Ls8"/>
                         <constraint firstAttribute="height" constant="25" id="r4b-VD-hWo"/>
                     </constraints>
                 </imageView>
@@ -34,7 +35,7 @@
             <constraints>
                 <constraint firstItem="gC4-RJ-dh4" firstAttribute="leading" secondItem="yL9-2c-bsw" secondAttribute="leading" id="2YF-Gm-x5Q"/>
                 <constraint firstItem="yL9-2c-bsw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="8u6-cy-oGA"/>
-                <constraint firstAttribute="trailing" secondItem="gC4-RJ-dh4" secondAttribute="trailing" constant="45" id="9bs-6j-V47"/>
+                <constraint firstAttribute="trailing" secondItem="gC4-RJ-dh4" secondAttribute="trailing" constant="60" id="9bs-6j-V47"/>
                 <constraint firstItem="gC4-RJ-dh4" firstAttribute="trailing" secondItem="yL9-2c-bsw" secondAttribute="trailing" id="AhN-f6-oRZ"/>
                 <constraint firstItem="rfn-Ef-UIw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="Oes-F7-Zfy"/>
                 <constraint firstAttribute="trailing" secondItem="rfn-Ef-UIw" secondAttribute="trailing" constant="10" id="TXr-Y0-tkr"/>

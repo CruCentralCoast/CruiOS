@@ -70,7 +70,7 @@ public class FullCardHeader : CardViewElement
             kicker.text = articleCard.creator.name
             title.text = articleCard.title
             if let url = articleCard.creator.favicon{
-                logo.setImageWithURL(url,mode:.ScaleToFill)
+                logo.setImageWithURL(url,mode:.ScaleAspectFit)
             }
         case .Summary:
             let summaryCard = card as! SummaryCard
@@ -81,14 +81,14 @@ public class FullCardHeader : CardViewElement
             kicker.text = videoCard.webUrl.host
             title.text = videoCard.title
             if let url = videoCard.creator.favicon{
-                logo.setImageWithURL(url,mode:.ScaleToFill)
+                logo.setImageWithURL(url,mode:.ScaleAspectFit)
             }
         case .Image:
             let imageCard = card as! ImageCard
             kicker.text = imageCard.creator.name
             title.text = imageCard.title
             if let url = imageCard.creator.favicon{
-                logo.setImageWithURL(url,mode:.ScaleToFill)
+                logo.setImageWithURL(url,mode:.ScaleAspectFit)
             }
         case .Unknown:
             title.text = "Unknown Card Type"

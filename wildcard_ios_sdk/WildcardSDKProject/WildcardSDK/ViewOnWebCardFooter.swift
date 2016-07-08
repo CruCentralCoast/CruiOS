@@ -52,6 +52,9 @@ public class ViewOnWebCardFooter: CardViewElement {
         addConstraint(NSLayoutConstraint(item: shareButton, attribute: .CenterY, relatedBy: .Equal, toItem: viewOnWebButton, attribute: .CenterY, multiplier: 1.0, constant: 0))
         
         shareButton.addTarget(self, action: "shareButtonTapped", forControlEvents: .TouchUpInside)
+        
+        //Added 7-8-16 for Cru Central Coast by Erica Solum
+        shareButton.hidden = true
     }
     
     func shareButtonTapped(){

@@ -168,12 +168,14 @@
 		50FE4D471C50D37C00EA9042 /* Ministry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4D461C50D37C00EA9042 /* Ministry.swift */; };
 		6D0968E41CE6600700FA8638 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */; };
 		6D12525E1C0799EC0039D3C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */; };
+		6D1F08991D306002005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F08961D305F6D005B53EE /* WildcardSDK.framework */; };
+		6D1F089B1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
+		6D1F089C1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
+		6D1F089D1D306094005B53EE /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F08961D305F6D005B53EE /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D2798FA1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D2798FB1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B78B51C702FDF00F643CB /* Resource.swift */; };
 		6D4B78B71C702FDF00F643CB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B78B51C702FDF00F643CB /* Resource.swift */; };
-		6D4B78BE1C70EBD500F643CB /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4B78BD1C70EBD500F643CB /* WildcardSDK.framework */; };
-		6D4B78BF1C70EBD500F643CB /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D4B78BD1C70EBD500F643CB /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D59068F1CE3F0DC00464D57 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */; };
 		6D5AD04F1CF6230E0020D567 /* EventDetailsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */; };
 		6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */; };
@@ -282,7 +284,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6D4B78BF1C70EBD500F643CB /* WildcardSDK.framework in Embed Frameworks */,
+				6D1F089D1D306094005B53EE /* WildcardSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,9 +399,10 @@
 		51A90E0DC654B19B9DAAA708 /* Pods-CruUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruUITests/Pods-CruUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6D0968E01CE52E6300FA8638 /* ResourcesViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesViewControllerTest.swift; sourceTree = "<group>"; };
 		6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6D1F08961D305F6D005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
+		6D1F089A1D306039005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		6D2798F91CF26D78008E5906 /* EventStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		6D4B78B51C702FDF00F643CB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		6D4B78BD1C70EBD500F643CB /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTest.swift; sourceTree = "<group>"; };
 		6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Leitura-Roman 3.otf"; sourceTree = "<group>"; };
@@ -463,8 +466,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D1F08991D306002005B53EE /* WildcardSDK.framework in Frameworks */,
+				6D1F089B1D306039005B53EE /* WildcardSDK.framework in Frameworks */,
 				50D8B6DD1C0E323A001127D5 /* MapKit.framework in Frameworks */,
-				6D4B78BE1C70EBD500F643CB /* WildcardSDK.framework in Frameworks */,
 				CDECB16F9C5B582EB9A73650 /* Pods_Cru.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +478,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA244F33222A58BB52BB6DF /* Pods_CruTests.framework in Frameworks */,
+				6D1F089C1D306039005B53EE /* WildcardSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -548,8 +553,9 @@
 		0F8CEF141BEC0E13008FC70D = {
 			isa = PBXGroup;
 			children = (
+				6D1F089A1D306039005B53EE /* WildcardSDK.framework */,
+				6D1F08961D305F6D005B53EE /* WildcardSDK.framework */,
 				6D94BD041D24BBC00063CED8 /* GoogleService-Info.plist */,
-				6D4B78BD1C70EBD500F643CB /* WildcardSDK.framework */,
 				50D8B6DC1C0E323A001127D5 /* MapKit.framework */,
 				0F8CEF1F1BEC0E13008FC70D /* Cru */,
 				0F8CEF371BEC0E14008FC70D /* CruTests */,
