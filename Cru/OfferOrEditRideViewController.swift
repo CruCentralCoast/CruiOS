@@ -145,6 +145,9 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     
     
     func populateOptions(){
+        options.append(EditableItem(itemName: Labels.nameLabel, itemValue: ride.driverName, itemEditable: true, itemIsText: true))
+        options.append(EditableItem(itemName: Labels.phoneLabel, itemValue: "", itemEditable: true, itemIsText: true))
+        
         options.append(EditableItem(itemName: Labels.eventLabel, itemValue: ride.eventName, itemEditable: isOfferingRide, itemIsText: false))
         
        
@@ -166,8 +169,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             options.append(EditableItem(itemName: Labels.seatsOfferLabel, itemValue: String(ride.seats), itemEditable: true, itemIsText: true))
         }
         
-        options.append(EditableItem(itemName: Labels.nameLabel, itemValue: ride.driverName, itemEditable: true, itemIsText: true))
-        options.append(EditableItem(itemName: Labels.phoneLabel, itemValue: "", itemEditable: true, itemIsText: true))
+        
     }
     
     func updateOptions(){

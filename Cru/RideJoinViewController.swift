@@ -81,7 +81,7 @@ class RideJoinViewController: UIViewController, UITableViewDataSource, UITableVi
         tableCells.append(eventName)
         
         let eventDate = table.dequeueReusableCellWithIdentifier("detailCell") as! DriverDetailCell
-        eventDate.cellLabel.text = Labels.eventAddressLabel
+        eventDate.cellLabel.text = Labels.eventTimeLabel
         eventDate.value.text = event.getTime()
         tableCells.append(eventDate)
         
