@@ -17,8 +17,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var months = [String]()
     var days = [String]()
     var rides = [Ride]()
-    var events = [Event]()
+    var upcomingEvents = [Event]()
+    var allEvents = [Event]()
     var ridesRowHeight = 100
+    var offerVC: NewOfferRideViewController!
+    var instaURL = NSURL.init(string: "instagram://user?username=crucentralcoast")
+
+    @IBOutlet weak var offerRideButton: UIButton!
     @IBOutlet weak var table: UITableView!
     @IBOutlet weak var eventsTable: UITableView!
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -29,7 +34,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var eventsTableHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
-    
     var noRideString: NSAttributedString!{
         didSet {
             table!.reloadData()
@@ -39,6 +43,53 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         didSet {
             eventsTable!.reloadData()
         }
+    }
+    
+    // MARK: Actions
+
+    @IBAction func facebookTapped(sender: UIButton) {
+        
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.facebook.com/CruCalPolySLO")!)
+        
+    }
+    
+    @IBAction func instagramTapped(sender: UIButton) {
+        
+        let instagramHooks = "instagram://user?username=crucentralcoast"
+        let instagramUrl = NSURL(string: instagramHooks)
+        if UIApplication.sharedApplication().canOpenURL(instagramUrl!)
+        {
+            UIApplication.sharedApplication().openURL(instagramUrl!)
+            
+        } else {
+            //redirect to safari because the user doesn't have Instagram
+            UIApplication.sharedApplication().openURL(NSURL(string: "http://instagram.com/crucentralcoast")!)
+        }
+        
+        
+    }
+    
+    @IBAction func youtubeTapped(sender: UIButton) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.youtube.com/user/slocrusade")!)
+    }
+    
+    @IBAction func twitterTapped(sender: UIButton) {
+        let twitterHook = "twitter://user?screen_name=CruCentralCoast"
+        let twitterUrl = NSURL(string: twitterHook)
+        if UIApplication.sharedApplication().canOpenURL(twitterUrl!)
+        {
+            UIApplication.sharedApplication().openURL(twitterUrl!)
+            
+        } else {
+            //redirect to safari because the user doesn't have Instagram
+            UIApplication.sharedApplication().openURL(NSURL(string: "http://twitter.com/CruCentralCoast")!)
+        }
+    }
+    
+    
+    
+    @IBAction func openOfferRide(sender: UIButton) {
+        self.navigationController?.pushViewController(offerVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -74,7 +125,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         noEventsString = NSAttributedString(string: "No events this week", attributes: attributes)
         
-        
+        //Take this out eventually
+        offerVC = NewOfferRideViewController()
     }
     
     /* This function acts after the view is loaded and appears on the phone. */
@@ -121,8 +173,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let week = curDate.addDays(7)
         
         if(event.startNSDate.isLessThanDate(week) && event.startNSDate.compare(NSDate()) != .OrderedAscending){
-            self.events.insert(event, atIndex: 0)
+            
+            self.upcomingEvents.insert(event, atIndex: 0)
         }
+        self.allEvents.insert(event, atIndex: 0)
     }
     
     func finishRideInsert(type: ResponseType){
@@ -157,7 +211,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             months.append(ride.month)
             days.append(String(ride.day))
             items.append(ride.getDescription(getEventNameForEventId(ride.eventId)))
+            print("\nRide id: \(ride.eventId)\n")
         }
+        
         if rides.count == 0 {
             upcomingRidesHeight.constant = CGFloat(50)
             self.table!.emptyDataSetSource = self
@@ -169,13 +225,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             table?.reloadData()
         }
         
-        if events.count == 0 {
+        if upcomingEvents.count == 0 {
             self.eventsTable!.emptyDataSetSource = self
             self.eventsTable!.emptyDataSetDelegate = self
             eventsTableHeight.constant = CGFloat(50)
         }
         else {
-            eventsTableHeight.constant = CGFloat(100)*CGFloat(events.count)
+            eventsTableHeight.constant = CGFloat(100)*CGFloat(upcomingEvents.count)
             eventsTable?.reloadData()
         }
 
@@ -220,14 +276,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         else {
             //Display the three soonest events
-            return events.count
+            return upcomingEvents.count
             
         }
     }
     
     func getEventNameForEventId(id : String)->String{
         
-        for event in events{
+        for event in allEvents{
+            print("\nAccepted event names: ")
+            print("\(event.name)")
             if(event.id != "" && event.id == id){
                 return event.name
             }
@@ -265,11 +323,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         else {
             let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! UpcomingEventCell
             
-            cell.nameLabel.text = events[indexPath.row].name
-            cell.location.text = events[indexPath.row].getLocationString()
-            cell.time.text = events[indexPath.row].getStartTime()
-            cell.AMorPM.text = events[indexPath.row].getAmOrPm()
-            cell.day.text = events[indexPath.row].getWeekday()
+            cell.nameLabel.text = upcomingEvents[indexPath.row].name
+            cell.location.text = upcomingEvents[indexPath.row].getLocationString()
+            cell.time.text = upcomingEvents[indexPath.row].getStartTime()
+            cell.AMorPM.text = upcomingEvents[indexPath.row].getAmOrPm()
+            cell.day.text = upcomingEvents[indexPath.row].getWeekday()
             addDropShadow(nil, eventCell: cell)
             
             //Change the alignment so that the day is in the center of the time+am
@@ -315,6 +373,10 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 view.userInteractionEnabled = false
             }
         }
+    }
+    
+    @IBAction func closeNotifications(segue: UIStoryboardSegue) {
+        
     }
 }
 

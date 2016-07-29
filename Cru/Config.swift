@@ -9,7 +9,7 @@
 import UIKit
 
 struct Config {
-    static let serverUrl = "http://ec2-52-39-130-135.us-west-2.compute.amazonaws.com:3000/"
+    static let serverUrl = "http://ec2-52-39-130-135.us-west-2.compute.amazonaws.com:3001/"
     static let serverEndpoint = serverUrl + "api/"
     static let name = "name"
     static let campusIds = "campuses"
@@ -78,4 +78,6 @@ struct Config {
     static let noRidesForEvent = "no-rides-for-event"
     static let noCampusesImage = "no-subscribed-campuses"
     static let noPassengersImage = "no-passengers"
+    static let campusImage = "campusImage"
+    static let communityImage = "communityImage"
 }

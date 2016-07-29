@@ -147,8 +147,21 @@ class Event: Equatable {
         return GlobalUtils.stringFromDate(startNSDate, format: "h:mm")
     }
     
+    func getEndTime() -> String{
+        return GlobalUtils.stringFromDate(endNSDate, format: "h:mm")
+
+    }
+    
+    func getEndDate() -> String {
+        return GlobalUtils.stringFromDate(endNSDate, format: "MMM d, YYYY")
+    }
+    
     func getAmOrPm()->String{
         return GlobalUtils.stringFromDate(startNSDate, format: "a")
+    }
+    
+    func getEndAmOrPm() -> String {
+        return GlobalUtils.stringFromDate(endNSDate, format: "a")
     }
     
     func getWeekday() ->String{

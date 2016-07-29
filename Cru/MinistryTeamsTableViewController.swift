@@ -7,14 +7,16 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class MinistryTeamsTableViewController: UITableViewController {
+class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
 
     var ministryTeamsStorageManager: MapLocalStorageManager!
     var ministryTeams = [MinistryTeam]()
     var ministries = [Ministry]()
     var signedUpMinistryTeams = [NSDictionary]()
     var selectedMinistryTeam: MinistryTeam!
+    var campusImage: UIImage!
     private let reuseIdentifierPic = "ministryTeamCell"
     private let reuseIdentifierNoPic = "ministryTeamNoPicCell"
     
@@ -39,6 +41,33 @@ class MinistryTeamsTableViewController: UITableViewController {
         else {
             print("NO MINISTRIES!!!")
         }
+        
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
+        
+        campusImage = UIImage(named: Config.campusImage)!
+    }
+    
+    //Set the text to be displayed when the table is empty
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+        return NSAttributedString(string: "You are not subscribed to any campuses! Subscribe to a campus to join one of its ministry teams.", attributes: attributes)
+        
+    }
+    
+    //Set the spacer
+    func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return 30.0
+    }
+    
+    //Set the image displayed when the table is empty
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return campusImage
+    }
+    
+    //Set the background color to gray
+    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.whiteColor()
     }
     
     //inserts individual ministry teams into the table view

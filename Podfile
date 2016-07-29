@@ -8,9 +8,9 @@ use_frameworks!
 
 def cru_pods
     pod 'SideMenu', '~> 0.1'
-    pod 'Google/CloudMessaging'
+    pod 'Google/CloudMessaging', '1.3.2'
     pod 'DatePickerCell'
-    pod 'LocationPicker'
+    pod 'LocationPickerViewController', '~> 1.2'
     pod 'IQKeyboardManagerSwift', '3.3.4'
     pod 'SwiftValidator'
     pod 'MRProgress'

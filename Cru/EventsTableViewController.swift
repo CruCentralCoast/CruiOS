@@ -15,13 +15,13 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     
     var events = [Event]()
     let curDate = NSDate()
+    let searchController = UISearchController(searchResultsController: nil)
+    var filteredEvents = [Event]()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: Config.noConnectionImageName)
-    }
+    
     
     
     override func viewDidLoad() {
@@ -35,10 +35,32 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         navigationItem.title = "Events"
         
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        //Initialize search stuff
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        definesPresentationContext = true
+        tableView.tableHeaderView = searchController.searchBar
+        searchController.hidesNavigationBarDuringPresentation = false
+        
+    }
+    
+    //Empty data set functions
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: Config.noConnectionImageName)
     }
     
     func emptyDataSet(scrollView: UIScrollView!, didTapView view: UIView!) {
         CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: finishInserting)
+    }
+    
+    //Search function
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredEvents = events.filter { event in
+            return event.name.lowercaseString.containsString(searchText.lowercaseString)
+        }
+        
+        tableView.reloadData()
     }
 
     //insert helper function for inserting event data
@@ -65,11 +87,19 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.active && searchController.searchBar.text != "" {
+            return filteredEvents.count
+        }
         return events.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let event = events[indexPath.row]
+        var event: Event
+        if searchController.active && searchController.searchBar.text != "" {
+             event = filteredEvents[indexPath.row]
+        } else {
+            event = events[indexPath.row]
+        }
         let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventTableViewCell
         
         cell.selectionStyle = UITableViewCellSelectionStyle.None
@@ -104,7 +134,13 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
             let eventDetailViewController = segue.destinationViewController as! EventDetailsViewController
             let selectedEventCell = sender as! EventTableViewCell
             let indexPath = self.tableView!.indexPathForCell(selectedEventCell)!
-            let selectedEvent = events[indexPath.row]
+            
+            let selectedEvent: Event
+            if searchController.active && searchController.searchBar.text != "" {
+                selectedEvent = filteredEvents[indexPath.row]
+            } else {
+                selectedEvent = events[indexPath.row]
+            }
             
             eventDetailViewController.event = selectedEvent
         }
@@ -127,5 +163,11 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
                 view.userInteractionEnabled = false
             }
         }
+    }
+}
+
+extension EventsTableViewController: UISearchResultsUpdating {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
     }
 }

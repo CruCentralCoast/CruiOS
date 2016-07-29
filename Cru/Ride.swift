@@ -28,11 +28,11 @@ struct RideKeys {
 //used to parse location into map for keystone db
 struct LocationKeys {
     static let loc = "location"
-    static let postcode = "postcode"
-    static let street1 = "street1"
-    static let city = "city"
-    static let state = "state"
-    static let country = "country"
+    static let postcode = "ZIP"
+    static let street1 = "Street"
+    static let city = "City"
+    static let state = "State"
+    static let country = "CountryCode"
 }
 
 //Used for display on detail screens
@@ -379,11 +379,13 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
         
         if(direction == "to" || direction == "both"){
+            
             if theDate.compare(eventStartDate) == NSComparisonResult.OrderedDescending {
                 return ValidationErrors.badTimeBefore  + " " + GlobalUtils.stringFromDate(eventStartDate, format: "MM/dd/yy h:mm a")
             }
         }
         else{
+            print("\nDirection is: \(direction)\n")
             if theDate.compare(eventStartDate) == NSComparisonResult.OrderedAscending {
                 return ValidationErrors.badTimeBeforeStart + " " + GlobalUtils.stringFromDate(eventStartDate, format: "MM/dd/yy h:mm a")
             }

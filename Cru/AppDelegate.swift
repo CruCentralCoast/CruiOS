@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     var gcmSenderID: String?
     var registrationToken: String?
     var registrationOptions = [String: AnyObject]()
+    var notifications = [Notification]()
     var ridesPage : RidesViewController?
+    
     
     let registrationKey = "onRegistrationCompleted"
     let messageKey = "onMessageReceived"
@@ -134,6 +136,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
                 userInfo: userInfo)
     }
     
+    func saveNotifications() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(notifications, toFile: Notification.ArchiveURL.path!)
+        
+        if !isSuccessfulSave {
+            print("Failed to save notifications...")
+        }
+    }
+    
     func application( application: UIApplication,
         didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
         fetchCompletionHandler handler: (UIBackgroundFetchResult) -> Void) {
@@ -145,6 +155,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
                 if let alertDict = apsDict["alert"] as? [String : AnyObject]{
                     if let alert = alertDict["body"] as? String{
                         if let alertTitle = alertDict["title"] as? String{
+                            //Insert it into the notifications array
+                            notifications.append(Notification(title: alertTitle, content: alert, dateReceived: NSDate())!)
+                            
                             
                             let alertControl = UIAlertController(title: alert, message: "", preferredStyle: UIAlertControllerStyle.Alert)
                             alertControl.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
@@ -158,7 +171,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
                     }
                 }
             }
+        
             // Handle the received message
+            saveNotifications()
             // Invoke the completion handler passing the appropriate UIBackgroundFetchResult value
             NSNotificationCenter.defaultCenter().postNotificationName(messageKey, object: nil,
                 userInfo: userInfo)

@@ -15,7 +15,12 @@ class CardTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var cardView: UIView! */
+    @IBOutlet weak var sourceLabel: UILabel!
     
+    @IBOutlet weak var descView: UITextView!
+    @IBOutlet weak var sourceLogo: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var readMoreButton: UIButton!
     // MARK: Functions
     func cardSetup() {
         //Set up the shadows of the card and set the image boundaries

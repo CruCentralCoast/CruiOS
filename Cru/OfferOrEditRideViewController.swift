@@ -1,11 +1,11 @@
 //
 //  EditRideViewController.swift
 //  Cru
-//  
-//  This class represents the view and controller whereby a user can edit 
+//
+//  This class represents the view and controller whereby a user can edit
 //  all of the details of their ride or create a new ride. This page segues into
 //  a radius editor, address picker, and spawns popovers to allow the user
-//  to edit passengers and direction of the ride. Everything but the ride's 
+//  to edit passengers and direction of the ride. Everything but the ride's
 //  event is editable.
 //
 //  Created by Max Crane on 5/3/16.
@@ -145,15 +145,12 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     
     
     func populateOptions(){
-        options.append(EditableItem(itemName: Labels.nameLabel, itemValue: ride.driverName, itemEditable: true, itemIsText: true))
-        options.append(EditableItem(itemName: Labels.phoneLabel, itemValue: "", itemEditable: true, itemIsText: true))
-        
         options.append(EditableItem(itemName: Labels.eventLabel, itemValue: ride.eventName, itemEditable: isOfferingRide, itemIsText: false))
         
-       
+        
         options.append(EditableItem(itemName: Labels.departureTimeLabel, itemValue: ride.getDepartureTime(), itemEditable: true, itemIsText: false))
         options.append(EditableItem(itemName: Labels.departureDateLabel, itemValue: ride.getDepartureDay(), itemEditable: true, itemIsText: false))
-   
+        
         
         
         options.append(EditableItem(itemName: Labels.addressLabel, itemValue: ride.getCompleteAddress(), itemEditable: true, itemIsText: false))
@@ -169,41 +166,42 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             options.append(EditableItem(itemName: Labels.seatsOfferLabel, itemValue: String(ride.seats), itemEditable: true, itemIsText: true))
         }
         
-        
+        options.append(EditableItem(itemName: Labels.nameLabel, itemValue: ride.driverName, itemEditable: true, itemIsText: true))
+        options.append(EditableItem(itemName: Labels.phoneLabel, itemValue: "", itemEditable: true, itemIsText: true))
     }
     
     func updateOptions(){
         for option in options{
             switch option.itemName{
             case Labels.eventLabel:
-                    option.itemValue = ride.eventName
-                case Labels.nameLabel:
-                    option.itemValue = ride.driverName
-                case Labels.seatsLabel:
-                    option.itemValue = String(ride.seats)
-                case Labels.seatsOfferLabel:
-                    option.itemValue = String(ride.seats)
-                case Labels.pickupRadius:
-                    option.itemValue = ride.getRadius()
-                case Labels.directionLabel:
-                    option.itemValue = ride.getDirection()
-                case Labels.phoneLabel:
-                    option.itemValue = ride.driverNumber
-                case Labels.departureTimeLabel:
-                    option.itemValue = ride.getDepartureTime()
-                case Labels.departureDateLabel:
-                    option.itemValue = ride.getDepartureDay()
-                case Labels.addressLabel:
-                    option.itemValue = ride.getCompleteAddress()
-                case Labels.passengers:
-                    option.itemValue = String(ride.passengers.count)
-                default:
-                    print("")
+                option.itemValue = ride.eventName
+            case Labels.nameLabel:
+                option.itemValue = ride.driverName
+            case Labels.seatsLabel:
+                option.itemValue = String(ride.seats)
+            case Labels.seatsOfferLabel:
+                option.itemValue = String(ride.seats)
+            case Labels.pickupRadius:
+                option.itemValue = ride.getRadius()
+            case Labels.directionLabel:
+                option.itemValue = ride.getDirection()
+            case Labels.phoneLabel:
+                option.itemValue = ride.driverNumber
+            case Labels.departureTimeLabel:
+                option.itemValue = ride.getDepartureTime()
+            case Labels.departureDateLabel:
+                option.itemValue = ride.getDepartureDay()
+            case Labels.addressLabel:
+                option.itemValue = ride.getCompleteAddress()
+            case Labels.passengers:
+                option.itemValue = String(ride.passengers.count)
+            default:
+                print("")
             }
         }
         self.table?.reloadData()
     }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }
@@ -231,68 +229,69 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         }
         
         switch (cell.contentType.text!){
-            case Labels.eventLabel:
-                if(isOfferingRide){
-                    eventValue = cell.contentValue
-                }
-            case Labels.departureTimeLabel:
-                timeValue = cell.contentValue
+        case Labels.eventLabel:
+            if(isOfferingRide){
+                eventValue = cell.contentValue
+            }
+        case Labels.departureTimeLabel:
+            timeValue = cell.contentValue
             
-            case Labels.departureDateLabel:
-                dateValue = cell.contentValue
+        case Labels.departureDateLabel:
+            dateValue = cell.contentValue
             
-            case Labels.seatsLabel:
-                cell.contentTextField.keyboardType = .NumberPad
-                cell.contentTextField.tag = EditTags.Seats.rawValue
-                cell.contentTextField.delegate = self
-                seatsValue = cell.contentTextField
+        case Labels.seatsLabel:
+            cell.contentTextField.keyboardType = .NumberPad
+            cell.contentTextField.tag = EditTags.Seats.rawValue
+            cell.contentTextField.delegate = self
+            seatsValue = cell.contentTextField
             
-            case Labels.seatsOfferLabel:
-                cell.contentTextField.keyboardType = .NumberPad
-                cell.contentTextField.tag = EditTags.Seats.rawValue
-                cell.contentTextField.delegate = self
-                seatsValue = cell.contentTextField
+        case Labels.seatsOfferLabel:
+            cell.contentTextField.keyboardType = .NumberPad
+            cell.contentTextField.tag = EditTags.Seats.rawValue
+            cell.contentTextField.delegate = self
+            seatsValue = cell.contentTextField
             
-            case Labels.addressLabel:
-                addressValue = cell.contentValue
+        case Labels.addressLabel:
+            addressValue = cell.contentValue
             
-            case Labels.nameLabel:
-                nameValue = cell.contentTextField
-                nameValue.delegate = self
-                cell.contentTextField.tag = EditTags.Name.rawValue
-                nameValue.delegate = self
+        case Labels.nameLabel:
+            nameValue = cell.contentTextField
+            nameValue.delegate = self
+            cell.contentTextField.tag = EditTags.Name.rawValue
+            cell.contentTextField.keyboardType = .Default
+            nameValue.delegate = self
             
-            case Labels.phoneLabel:
-                cell.contentTextField.keyboardType = .NumberPad
-                cell.contentTextField.tag = EditTags.Number.rawValue
-                numberValue = cell.contentTextField
-                numberValue.delegate = self
-                numberValue.text = PhoneFormatter.unparsePhoneNumber(ride.driverNumber)
+        case Labels.phoneLabel:
+            cell.contentTextField.keyboardType = .NumberPad
+            cell.contentTextField.tag = EditTags.Number.rawValue
+            numberValue = cell.contentTextField
+            numberValue.delegate = self
+            numberValue.text = PhoneFormatter.unparsePhoneNumber(ride.driverNumber)
             
-            case Labels.directionLabel:
-                directionValue = cell.contentValue
-                directionCell = cell
-                directionCellPath = indexPath
+        case Labels.directionLabel:
+            directionValue = cell.contentValue
+            directionCell = cell
+            directionCellPath = indexPath
             
-            case Labels.pickupRadius:
-                pickupRadius = cell.contentTextField
-                pickupRadius.tag = EditTags.Radius.rawValue
-                pickupRadius.delegate = self
-                pickupRadius.editable = false
+        case Labels.pickupRadius:
+            pickupRadius = cell.contentTextField
+            pickupRadius.tag = EditTags.Radius.rawValue
+            pickupRadius.delegate = self
+            pickupRadius.editable = false
             
-            case Labels.passengers:
-                passengerValue = cell.contentTextField
+        case Labels.passengers:
+            passengerValue = cell.contentTextField
             
-            default:
-                print("error in switch statement on edit ride page")
+        default:
+            print("error in switch statement on edit ride page")
         }
         
         cell.editButton.hidden = !(option.itemEditable)
         table = tableView
-    
+        
         return cell
     }
-
+    
     @IBAction func editPressed(sender: UIButton) {
         let editChoice = sender.currentTitle
         hasUserEdited = true
@@ -332,7 +331,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         }
         
     }
-
+    
     //called when a date is chosen
     func chooseDateHandler(month : Int, day : Int, year : Int){
         let dateFormatter = NSDateFormatter()
@@ -391,7 +390,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         
         ride.eventStartDate = event.startNSDate
         ride.eventEndDate = event.endNSDate
-            
+        
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDay()){
             ride.day = (components.day)
             ride.monthNum = (components.month)
@@ -415,7 +414,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             return false
         }
     }
-
+    
     
     func extractLocationFromView()->Bool{
         if(location != nil){
@@ -512,7 +511,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     
     func extractDirectionFromView(){
         if(directionValue != nil){
-             ride.direction = ride.getServerDirectionValue(directionValue.text!)
+            ride.direction = ride.getServerDirectionValue(directionValue.text!)
         }
     }
     
@@ -520,25 +519,25 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         if (seatsValue != nil && seatsValue != ""){
             if let val = Int(seatsValue.text.stringByTrimmingCharactersInSet(
                 NSCharacterSet.whitespaceAndNewlineCharacterSet())){
-                    if(ride.isValidNumSeats(val) != ""){
-                        showValidationError(ride.isValidNumSeats(val))
-                        return false
-                    }
-                    else{
-                        ride.seats = val
-                        return true
-                    }
+                if(ride.isValidNumSeats(val) != ""){
+                    showValidationError(ride.isValidNumSeats(val))
+                    return false
+                }
+                else{
+                    ride.seats = val
+                    return true
+                }
             }
             else{
                 showValidationError(ValidationErrors.badSeats)
             }
         }
-
+        
         return true
     }
     
     
-    
+        
     
     @IBAction func savePressed(sender: AnyObject) {
         //extract seats, time, date, location, name, phone number (all if possible aka null checking)
@@ -551,7 +550,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         if(extractLocationFromView() == false){return}
         if (extractNameFromView() == false){return}
         if (extractNumberFromView() == false){return}
-
+        
         if(isOfferingRide){
             if (validateOffer()) {
                 MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
@@ -571,13 +570,13 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             else{
                 sendPatchRequest()
             }
-           
+            
         }
     }
     
     func validateOffer() -> Bool {
         if (location != nil) {
-            return true 
+            return true
         } else {
             showValidationError(ValidationErrors.noDeparture)
             return false
@@ -588,7 +587,10 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         CruClients.getRideUtils().patchRide(ride.id, params: [RideKeys.passengers: ride.passengers, RideKeys.radius: ride.radius, RideKeys.driverName: ride.driverName, RideKeys.direction: ride.direction, RideKeys.driverNumber: ride.driverNumber, RideKeys.time : ride.getTimeInServerFormat(), RideKeys.seats: ride.seats, LocationKeys.loc: [LocationKeys.postcode: ride.postcode, LocationKeys.state : ride.state, LocationKeys.street1 : ride.street, LocationKeys.city: ride.city, LocationKeys.country: ride.country]], handler: handlePostResult)
     }
     func sendRideOffer(){
-        CruClients.getServerClient().checkIfValidNum(Int(parsedNum!)!, handler: postRideOffer)
+        if parsedNum != nil {
+            CruClients.getServerClient().checkIfValidNum(Int(parsedNum!)!, handler: postRideOffer)
+        }
+        
     }
     
     func postRideOffer(success: Bool){
@@ -712,7 +714,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -815,24 +817,24 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         let senderId = textView.tag
         
         switch senderId{
-            case EditTags.Name.rawValue:
-                ride.driverName = nameValue.text
-            case EditTags.Number.rawValue:
-                ride.driverNumber = numberValue.text
-            case EditTags.Direction.rawValue:
-                ride.direction = ride.getServerDirectionValue(directionValue.text!)
-            case EditTags.Seats.rawValue:
-                if let val = Int(seatsValue.text.stringByTrimmingCharactersInSet(
-                    NSCharacterSet.whitespaceAndNewlineCharacterSet())){
-                    if (ride.numSeatsNeedToDrop(val) >= 1 && val > 0){
-                        needToDropPassenger(val, numToDrop: ride.numSeatsNeedToDrop(val))
-                    }
-                    else{
-                        ride.seats = val
-                    }
+        case EditTags.Name.rawValue:
+            ride.driverName = nameValue.text
+        case EditTags.Number.rawValue:
+            ride.driverNumber = numberValue.text
+        case EditTags.Direction.rawValue:
+            ride.direction = ride.getServerDirectionValue(directionValue.text!)
+        case EditTags.Seats.rawValue:
+            if let val = Int(seatsValue.text.stringByTrimmingCharactersInSet(
+                NSCharacterSet.whitespaceAndNewlineCharacterSet())){
+                if (ride.numSeatsNeedToDrop(val) >= 1 && val > 0){
+                    needToDropPassenger(val, numToDrop: ride.numSeatsNeedToDrop(val))
                 }
-            default:
-                print("Issue -1 on edit ride page")
+                else{
+                    ride.seats = val
+                }
+            }
+        default:
+            print("Issue -1 on edit ride page")
         }
         updateOptions()
     }

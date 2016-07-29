@@ -7,15 +7,40 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class ChooseMinistryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChooseMinistryVC: UIViewController, UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     let ministries = CruClients.getSubscriptionManager().loadMinistries()
     var selectedMinistry: Ministry!
+    var communityImage: UIImage!
     
+    @IBOutlet weak var table: UITableView!
     override func viewDidLoad() {
         self.navigationItem.title = "Choose Ministry"
+        //Set the empty set delegate and source
+        self.table.emptyDataSetSource = self
+        self.table.emptyDataSetDelegate = self
+        self.table.separatorColor = UIColor.clearColor()
+        
+        communityImage = UIImage(named: Config.communityImage)!
     }
     
+    //Set the text to be displayed when the table is empty
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+        return NSAttributedString(string: "You are not subscribed to any ministries! Subscribe to a ministry to join one of its community groups.", attributes: attributes)
+        
+    }
+    
+    //Set the spacer
+    func spaceHeightForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return 30.0
+    }
+    
+    //Set the image displayed when the table is empty
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return communityImage
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ministries.count

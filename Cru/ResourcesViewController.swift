@@ -24,15 +24,14 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var serverClient: ServerProtocol
     var resources = [Resource]()
     var cardViews = [CardView]()
-    
-    
+ 
     var currentType = ResourceType.Article
+    var filteredResources = [Resource]()
     var articleViews = [CardView]()
     var audioViews = [CardView]()
     var videoViews = [CardView]()
     var allViews = [CardView]()
     var audioPlayer:AVAudioPlayer!
-    
     
     
     //Call this constructor in testing with a fake serverProtocol
@@ -224,7 +223,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 let imgurUrl = NSURL(string: "https://unsplash.com/photos/rivAqXQNves")!
                 
-                let everyStudent = Creator(name:"everystudent.com", url:imgurUrl, favicon:NSURL(string:"http://1.everystudent.com/2013/logo4tm2.jpg"), iosStore:nil)
+                let everyStudent = Creator(name:"everystudent.com", url:imgurUrl, favicon:NSURL(string:"https://pbs.twimg.com/profile_images/471735874497941504/EjyLnH9D.jpeg"), iosStore:nil)
                 
                 let cru = Creator(name:"cru.org", url:imgurUrl, favicon:NSURL(string:"http://www.boomeranggmail.com/img/cru_logo.jpg"), iosStore:nil)
                 
@@ -437,8 +436,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         cardView = CardView.createCardView(videoCard!, layout: .VideoCardShort)!
-        
-        
         
         self.videoViews.insert(cardView, atIndex: 0)
         

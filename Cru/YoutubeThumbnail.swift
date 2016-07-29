@@ -36,7 +36,7 @@ enum ThumbnailQuailty : String {
     static let allValues = [Default, One, Two, Three,  Medium, High, Zero, Standard, High]
 }
 
-func thumbnailURLString(videoID:String, quailty: ThumbnailQuailty = .Default) -> String {
+func thumbnailURLString(videoID:String, quailty: ThumbnailQuailty = .Medium) -> String {
     //return "http://img.youtube.com/vi/\(videoID)/\(quailty.rawValue)"
     return "http://i1.ytimg.com/vi/\(videoID)/\(quailty.rawValue)"
 }

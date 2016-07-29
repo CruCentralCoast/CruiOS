@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MinistryTeamsCollectionViewController: UICollectionViewController {
+class MinistryTeamsCollectionViewController: UICollectionViewController{
 
     var ministryTeams = [MinistryTeam]()
     var ministryTeamsStorageManager: MapLocalStorageManager!
