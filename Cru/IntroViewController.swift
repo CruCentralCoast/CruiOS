@@ -81,7 +81,7 @@ class IntroViewController: UIViewController {
         button.setTitleColor(Config.textColor, forState: UIControlState.Normal)
         button.titleLabel!.font = UIFont(name: "Freight Sans Pro", size: 200)
         button.setTitle(buttonText, forState: UIControlState.Normal)
-        button.addTarget(self, action: "presentModal:", forControlEvents: UIControlEvents.TouchUpInside)
+        button.addTarget(self, action: #selector(IntroViewController.presentModal(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.backgroundModal.addSubview(button)
         self.modalButtons.append(button)
     }

@@ -588,7 +588,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     }
     func sendRideOffer(){
         if parsedNum != nil {
-            CruClients.getServerClient().checkIfValidNum(Int(parsedNum!)!, handler: postRideOffer)
+            CruClients.getServerClient().checkIfValidNum(Double(parsedNum!)!, handler: postRideOffer)
         }
         
     }

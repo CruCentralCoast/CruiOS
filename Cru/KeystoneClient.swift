@@ -140,8 +140,8 @@ class KeystoneClient: ServerProtocol {
         }
     }
     
-    func checkIfValidNum(num: Int, handler: (Bool)->()){
-        Alamofire.request(.GET, Config.serverEndpoint + "users/phone/" + String(num))
+    func checkIfValidNum(num: Double, handler: (Bool)->()){
+        Alamofire.request(.GET, Config.serverEndpoint + "users/phone/" + num.format(".0:"))
             .responseJSON{ response in
                 handler(!response.description.containsString("null"))
         }
@@ -172,5 +172,11 @@ class KeystoneClient: ServerProtocol {
             print("Failure!")
             completionHandler(false)
         }
+    }
+}
+
+extension Double {
+    func format(f: String) -> String {
+        return String(format: "%\(f)f", self)
     }
 }

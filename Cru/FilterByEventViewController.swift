@@ -47,7 +47,7 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
         
         navigationItem.title = "Find Ride"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map View", style: .Plain, target: self, action: "mapView")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map View", style: .Plain, target: self, action: #selector(FilterByEventViewController.mapView))
         
         //Load current user's rides
         loadCurRides()

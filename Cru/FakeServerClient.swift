@@ -177,7 +177,7 @@ class FakeServerClient: ServerProtocol {
         handler(true)
     }
     
-    func checkIfValidNum(num: Int, handler: (Bool)->()){
+    func checkIfValidNum(num: Double, handler: (Bool)->()){
         
     }
     

@@ -35,7 +35,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         navigationItem.title = "Ministry Subscriptions"
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "saveMinistriesToDevice")
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MinistryTableViewController.saveMinistriesToDevice))
         self.navigationItem.leftBarButtonItem = newBackButton
         if self.navigationController != nil{
             self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
