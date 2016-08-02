@@ -34,6 +34,7 @@ PODS:
   - HTMLReader (0.9.4)
   - ImageLoader (0.8.8)
   - IQKeyboardManagerSwift (3.3.4)
+  - LocationPicker (0.6.0)
   - LocationPickerViewController (1.2.0)
   - MRProgress (0.8.3):
     - MRProgress/ActivityIndicator (= 0.8.3)
@@ -63,6 +64,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
+  - PagedArray (0.3)
   - RadioButton (1.0)
   - SideMenu (0.1.6)
   - SwiftValidator (3.0.3)
@@ -80,8 +82,10 @@ DEPENDENCIES:
   - HTMLReader (~> 0.9)
   - ImageLoader
   - IQKeyboardManagerSwift (= 3.3.4)
+  - LocationPicker
   - LocationPickerViewController (~> 1.2)
   - MRProgress
+  - PagedArray (~> 0.2)
   - RadioButton
   - SideMenu (~> 0.1)
   - SwiftValidator
@@ -106,8 +110,10 @@ SPEC CHECKSUMS:
   HTMLReader: 03e9da607f2f9924f9cf4b5e5c4143932004257f
   ImageLoader: 6bc633e7d679136b742a609b832d2bb19e53f3a5
   IQKeyboardManagerSwift: 6f2290d093f5269dc07bdae8bc58e968cf9c4738
+  LocationPicker: 93ea916c48fef7b561fc4ecc2457cbb4ac58d7cf
   LocationPickerViewController: 68054f63b9fb4a9e77f99e6402d811c061f22ee7
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  PagedArray: f04f072d8bdbe1111f2d4635c87e3bf8d903bdb9
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
   SideMenu: 102bdf48ac5228b1a4a68bdd0b10232adbdbfdb0
   SwiftValidator: 0b6a48bf10364411b0d64c97f78665ff87ca9f8b

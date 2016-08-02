@@ -211,7 +211,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             months.append(ride.month)
             days.append(String(ride.day))
             items.append(ride.getDescription(getEventNameForEventId(ride.eventId)))
-            print("\nRide id: \(ride.eventId)\n")
         }
         
         if rides.count == 0 {
@@ -284,8 +283,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func getEventNameForEventId(id : String)->String{
         
         for event in allEvents{
-            print("\nAccepted event names: ")
-            print("\(event.name)")
             if(event.id != "" && event.id == id){
                 return event.name
             }

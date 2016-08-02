@@ -21,6 +21,8 @@ def cru_pods
     pod 'ImageLoader'
     pod 'HTMLReader', '~> 0.9'
     pod 'SwiftyJSON', '~> 2.3.0'
+    pod 'PagedArray', '~> 0.2'
+    pod 'LocationPicker'
 end
 
 def crash_monitor

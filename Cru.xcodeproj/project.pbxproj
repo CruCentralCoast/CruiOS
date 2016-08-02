@@ -180,6 +180,7 @@
 		6D434A231D42ABE200661CA8 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D434A211D42ABE200661CA8 /* LocationViewController.swift */; };
 		6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B78B51C702FDF00F643CB /* Resource.swift */; };
 		6D4B78B71C702FDF00F643CB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B78B51C702FDF00F643CB /* Resource.swift */; };
+		6D55426A1D4ED6D6004008A5 /* Pods_Cru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8F3C6936A22FC2B42E9A2F /* Pods_Cru.framework */; };
 		6D59068F1CE3F0DC00464D57 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */; };
 		6D5AD04F1CF6230E0020D567 /* EventDetailsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */; };
 		6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */; };
@@ -288,7 +289,6 @@
 		C1EF49081CDBF3AD009439FE /* communitygroups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1EF49061CDBF3AD009439FE /* communitygroups.storyboard */; };
 		C1EF490A1CDBF74E009439FE /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF49091CDBF74E009439FE /* SurveyViewController.swift */; };
 		C1EF490B1CDBF74E009439FE /* SurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1EF49091CDBF74E009439FE /* SurveyViewController.swift */; };
-		DF9F2224B94DD7AD62EF098E /* Pods_Cru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8F3C6936A22FC2B42E9A2F /* Pods_Cru.framework */; };
 		E9CB00341C8F7E04000F7E12 /* SummerMissionDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB002F1C8F7E04000F7E12 /* SummerMissionDetailController.swift */; };
 /* End PBXBuildFile section */
 
@@ -374,7 +374,6 @@
 		50697BC61CE0456600776CC5 /* PhoneFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhoneFormatter.swift; sourceTree = "<group>"; };
 		506EBF911CD9D3AB002E6F6A /* TimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePicker.swift; sourceTree = "<group>"; };
 		507086821C8F5F9D006C5215 /* RideTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RideTest.swift; sourceTree = "<group>"; };
-		5070868A1C8F6A0E006C5215 /* LocationPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocationPicker.framework; path = "Pods/../build/Debug-iphoneos/LocationPicker.framework"; sourceTree = "<group>"; };
 		507252E31CC07E8200DD4EFF /* EventsModalTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsModalTableViewController.swift; sourceTree = "<group>"; };
 		5072B4161CB38616001F5BF6 /* TimeDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeDetail.swift; sourceTree = "<group>"; };
 		5072B4191CB38B80001F5BF6 /* TestDriverRideDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestDriverRideDetail.swift; sourceTree = "<group>"; };
@@ -425,6 +424,7 @@
 		6D2798F91CF26D78008E5906 /* EventStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		6D434A211D42ABE200661CA8 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		6D4B78B51C702FDF00F643CB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		6D5542671D4ED52B004008A5 /* LocationPickerViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = LocationPickerViewController.framework; path = "/Users/ericasolum/Documents/Cru/CruiOS/Build/Products/Debug-iphoneos/LocationPickerViewController.framework"; sourceTree = "<absolute>"; };
 		6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTest.swift; sourceTree = "<group>"; };
 		6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Leitura-Roman 3.otf"; sourceTree = "<group>"; };
@@ -498,10 +498,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D55426A1D4ED6D6004008A5 /* Pods_Cru.framework in Frameworks */,
 				6D1F08991D306002005B53EE /* WildcardSDK.framework in Frameworks */,
 				6D1F089B1D306039005B53EE /* WildcardSDK.framework in Frameworks */,
 				50D8B6DD1C0E323A001127D5 /* MapKit.framework in Frameworks */,
-				DF9F2224B94DD7AD62EF098E /* Pods_Cru.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +585,7 @@
 		0F8CEF141BEC0E13008FC70D = {
 			isa = PBXGroup;
 			children = (
+				6D5542671D4ED52B004008A5 /* LocationPickerViewController.framework */,
 				6D1F089A1D306039005B53EE /* WildcardSDK.framework */,
 				6D1F08961D305F6D005B53EE /* WildcardSDK.framework */,
 				50D8B6DC1C0E323A001127D5 /* MapKit.framework */,
@@ -935,7 +936,6 @@
 		AD126AABCC946387D506699A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5070868A1C8F6A0E006C5215 /* LocationPicker.framework */,
 				6E8F3C6936A22FC2B42E9A2F /* Pods_Cru.framework */,
 				A95BECF8DACCC615D7195F23 /* Pods_CruTests.framework */,
 			);
@@ -1612,11 +1612,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Cru/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1639,11 +1640,12 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Build/Products/Debug-iphoneos",
 				);
 				INFOPLIST_FILE = Cru/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
