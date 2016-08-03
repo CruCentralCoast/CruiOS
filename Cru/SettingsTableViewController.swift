@@ -29,10 +29,10 @@ class SettingsTableViewController: UITableViewController, SWRevealViewController
     }
     override func viewWillAppear(animated: Bool) {
         if(GlobalUtils.loadString(Config.leaderApiKey) == ""){
-            loginLabel.text = "Log In"
+            loginLabel.text = "Log in"
         }
         else{
-            loginLabel.text = "Log Out"
+            loginLabel.text = "Log out"
         }
     }
 
@@ -61,6 +61,7 @@ class SettingsTableViewController: UITableViewController, SWRevealViewController
                 self.performSegueWithIdentifier("LogoutSegue", sender: self)
             }
         }
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     
     //reveal controller function for disabling the current view

@@ -19,9 +19,12 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     var emptyTableImage: UIImage!
     var hasConnection = true
     var loadedData = false
+    var onboarding = false
     @IBOutlet var table: UITableView!
     
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,6 +53,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         
         //setupSearchBar()
         self.tableView.reloadData()
+        
     }
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
@@ -187,7 +191,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         }
         
         //TODO - Make is so this doesn't have to be called everytime didSelectRowAtIndexPath is called
-        saveCampusSet()
+        //saveCampusSet()
     }
     
     
@@ -224,6 +228,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         }
     }
     
+    //Saves the campuses
     func saveCampusSet(){
         CruClients.getSubscriptionManager().saveCampuses(campusAsArray())
     }
@@ -282,5 +287,20 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         }
         
         self.tableView.reloadData()
+    }
+    
+    // MARK: Actions
+    
+    @IBAction func save(sender: UIBarButtonItem) {
+        saveCampusSet()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    /*@IBAction func saveToSettings(sender: UIBarButtonItem) {
+        saveCampusSet()
+        self.navigationController?.popViewControllerAnimated(true)
+    }*/
+    
+    @IBAction func exitToSettings(sender: UIBarButtonItem) {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 }

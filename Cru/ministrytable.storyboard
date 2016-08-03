@@ -62,18 +62,34 @@
                             <outlet property="delegate" destination="dqf-2e-9DN" id="Oc4-zs-iXN"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" id="vua-DI-DJu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="eaM-ab-PW5">
+                            <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="cancelToSettings:" destination="dqf-2e-9DN" id="skZ-Z4-yrC"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="7US-OK-nOG">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="saveToSettings:" destination="dqf-2e-9DN" id="xdG-T6-fep"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <fixedSimulatedSizeMetrics key="simulatedDestinationMetrics">
                         <size key="portraitSize" width="314" height="215"/>
                         <size key="landscapeSize" width="215" height="314"/>
                     </fixedSimulatedSizeMetrics>
                     <connections>
+                        <outlet property="cancelButton" destination="eaM-ab-PW5" id="umj-s2-9Ud"/>
+                        <outlet property="saveButton" destination="7US-OK-nOG" id="wyO-yO-5QL"/>
                         <outlet property="table" destination="GP9-yu-DsE" id="kMP-w1-kzP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unB-4n-Ppu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="113" y="-68.5"/>
+            <point key="canvasLocation" x="925" y="-68.5"/>
         </scene>
     </scenes>
 </document>

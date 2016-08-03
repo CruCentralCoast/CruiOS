@@ -44,7 +44,9 @@ class IntroViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Tell the controllers that this is during initial launch
         embeddedMinistryViewController.onboarding = true
+        embeddedCampusesViewController.onboarding = true
 
         // Do any additional setup after loading the view.
         initializeProperties()

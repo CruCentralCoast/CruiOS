@@ -22,6 +22,8 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     var onboarding = false
     @IBOutlet var table: UITableView!
     
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         if onboarding == false {
             return emptyTableImage
@@ -57,9 +59,9 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
 
         navigationItem.title = "Ministry Subscriptions"
         
-        self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MinistryTableViewController.saveMinistriesToDevice))
-        self.navigationItem.leftBarButtonItem = newBackButton
+        //self.navigationItem.hidesBackButton = true
+        //let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MinistryTableViewController.saveMinistriesToDevice))
+        //self.navigationItem.leftBarButtonItem = newBackButton
         if self.navigationController != nil{
             self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
         }
@@ -176,12 +178,13 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         let title = success ? "Success" : "Failure"
         let message = success ? "Successfully subscribed/unsubscribed!" : "Something may have gone wrong..."
         let updateAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        
-        updateAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(thing) in
-            self.navigationController?.popViewControllerAnimated(true)
-        }))
-        
-        presentViewController(updateAlert, animated: true, completion: nil)
+        if title == "Failure" {
+            updateAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(thing) in
+                self.navigationController?.popViewControllerAnimated(true)
+            }))
+            presentViewController(updateAlert, animated: true, completion: nil)
+        }
+        self.navigationController?.popViewControllerAnimated(true)
     }
     
     
@@ -311,6 +314,20 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         //print("resized image: from \(oldWidth) to \(newWidth)")
         return newImage
     }
+    
+    //MARK: Navigation
+    
+    @IBAction func saveToSettings(sender: UIBarButtonItem) {
+        saveMinistriesToDevice()
+        //dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func cancelToSettings(sender: UIBarButtonItem) {
+        
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    
     
     
     
