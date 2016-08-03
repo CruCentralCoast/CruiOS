@@ -19,21 +19,33 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     var totalMegsUsed = 0.0
     var hasConnection = true
     var emptyTableImage: UIImage!
+    var onboarding = false
     @IBOutlet var table: UITableView!
     
-    /*func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return emptyTableImage
-    }*/
-    
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
-        if hasConnection == false {
-            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
-            return NSAttributedString(string: "No connection found. Please try subscribing to ministries in Settings.", attributes: attributes)
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        if onboarding == false {
+            return emptyTableImage
         }
         else {
-            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
-            return NSAttributedString(string: "You must select a campus in order to subscribe to a ministry.", attributes: attributes)
+            return nil
         }
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if onboarding == true {
+            if hasConnection == false {
+                let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+                return NSAttributedString(string: "No connection found. Please try again later.", attributes: attributes)
+            }
+            else {
+                let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+                return NSAttributedString(string: "You must select a campus in order to subscribe to a ministry.", attributes: attributes)
+            }
+        }
+        else {
+            return nil
+        }
+        
     }
     
     override func viewDidLoad() {
@@ -225,7 +237,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: "FreightSans Pro", size: 20)!
+        header.textLabel?.font = UIFont(name: Config.fontName, size: 20)!
         header.textLabel?.textColor = UIColor.blackColor()
     }
     

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -28,48 +28,63 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Yq-mn-96w">
                                 <rect key="frame" x="35" y="136" width="530" height="327"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Cru Central Coast!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uc4-wf-PGc">
-                                        <rect key="frame" x="0.0" y="7" width="530" height="25.5"/>
-                                        <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Welcome to Cru Central Coast!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Uc4-wf-PGc">
+                                        <rect key="frame" x="0.0" y="7" width="530" height="26"/>
+                                        <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="22"/>
                                         <color key="textColor" red="0.18823529411764706" green="0.18823529411764706" blue="0.18823529411764706" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8I-tJ-ea3">
-                                        <rect key="frame" x="0.0" y="33" width="530" height="21.5"/>
-                                        <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Description:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8I-tJ-ea3">
+                                        <rect key="frame" x="0.0" y="33" width="530" height="22"/>
+                                        <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                         <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KEJ-m8-8vH">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KEJ-m8-8vH">
                                         <rect key="frame" x="0.0" y="58" width="530" height="1"/>
                                         <color key="backgroundColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="nNM-1o-5mb"/>
                                         </constraints>
                                     </view>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UjS-0t-nvN" userLabel="Description Modal">
+                                    <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UjS-0t-nvN" userLabel="Description Modal">
                                         <rect key="frame" x="0.0" y="59" width="530" height="215"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="215" id="A7N-M1-VRF"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="A7N-M1-VRF"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <segue destination="0Bg-Zy-WUu" kind="embed" id="gkJ-Jr-N3z"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Wv-Dj-n2d" userLabel="Campuses Modal">
+                                    <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Wv-Dj-n2d" userLabel="Campuses Modal">
                                         <rect key="frame" x="0.0" y="59" width="530" height="215"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="215" id="QUn-yj-R2A"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="QUn-yj-R2A"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <segue destination="0nA-tD-f49" kind="embed" identifier="campusSegue" id="cz9-av-l5j"/>
                                         </connections>
                                     </containerView>
-                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-E0-4pe" userLabel="Ministries View">
+                                    <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hQ5-E0-4pe" userLabel="Ministries View">
                                         <rect key="frame" x="0.0" y="59" width="530" height="215"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="215" id="yaF-Gl-xVn"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="yaF-Gl-xVn"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <segue destination="GRN-KH-Lj3" kind="embed" identifier="ministrySegue" id="34a-oS-cHC"/>
                                         </connections>
@@ -84,6 +99,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="ExK-JJ-493" firstAttribute="top" secondItem="hQ5-E0-4pe" secondAttribute="bottom" id="1zm-iu-IJm"/>
                                     <constraint firstItem="hQ5-E0-4pe" firstAttribute="width" secondItem="8Yq-mn-96w" secondAttribute="width" id="3Dn-a4-aIC"/>
                                     <constraint firstItem="ExK-JJ-493" firstAttribute="centerX" secondItem="8Yq-mn-96w" secondAttribute="centerX" id="3yH-2W-Fvg"/>
                                     <constraint firstItem="KEJ-m8-8vH" firstAttribute="width" secondItem="8Yq-mn-96w" secondAttribute="width" id="7N9-Qm-4Lk"/>
@@ -92,15 +108,18 @@
                                     <constraint firstItem="KEJ-m8-8vH" firstAttribute="centerX" secondItem="8Yq-mn-96w" secondAttribute="centerX" id="EBs-lf-n4L"/>
                                     <constraint firstItem="UjS-0t-nvN" firstAttribute="top" secondItem="KEJ-m8-8vH" secondAttribute="bottom" id="I1c-cZ-21M"/>
                                     <constraint firstItem="6Wv-Dj-n2d" firstAttribute="top" secondItem="KEJ-m8-8vH" secondAttribute="bottom" id="O1P-iF-h9L"/>
+                                    <constraint firstAttribute="bottom" secondItem="ExK-JJ-493" secondAttribute="bottom" constant="52" id="OWq-wH-28P"/>
                                     <constraint firstItem="KEJ-m8-8vH" firstAttribute="top" secondItem="c8I-tJ-ea3" secondAttribute="bottom" constant="4" id="OcX-EL-tvk"/>
                                     <constraint firstItem="Uc4-wf-PGc" firstAttribute="leading" secondItem="8Yq-mn-96w" secondAttribute="leading" id="SLS-jW-rUG"/>
                                     <constraint firstAttribute="trailing" secondItem="KEJ-m8-8vH" secondAttribute="trailing" id="WrH-Qb-nc9"/>
                                     <constraint firstItem="KEJ-m8-8vH" firstAttribute="leading" secondItem="8Yq-mn-96w" secondAttribute="leading" id="YFC-vT-ILC"/>
                                     <constraint firstItem="ExK-JJ-493" firstAttribute="width" secondItem="8Yq-mn-96w" secondAttribute="width" id="bOd-tc-z1u"/>
                                     <constraint firstItem="c8I-tJ-ea3" firstAttribute="width" secondItem="8Yq-mn-96w" secondAttribute="width" id="cVh-cE-nwo"/>
+                                    <constraint firstItem="ExK-JJ-493" firstAttribute="top" secondItem="6Wv-Dj-n2d" secondAttribute="bottom" id="cnH-Fa-uDc"/>
                                     <constraint firstItem="Uc4-wf-PGc" firstAttribute="centerX" secondItem="8Yq-mn-96w" secondAttribute="centerX" id="d1f-tK-OOX"/>
                                     <constraint firstAttribute="height" constant="327" id="dj8-pf-Up7"/>
                                     <constraint firstAttribute="trailing" secondItem="Uc4-wf-PGc" secondAttribute="trailing" id="f4C-pJ-6eA"/>
+                                    <constraint firstItem="ExK-JJ-493" firstAttribute="top" secondItem="UjS-0t-nvN" secondAttribute="bottom" id="gb8-8Y-FUa"/>
                                     <constraint firstItem="c8I-tJ-ea3" firstAttribute="leading" secondItem="8Yq-mn-96w" secondAttribute="leading" id="gpb-mh-Toi"/>
                                     <constraint firstAttribute="trailing" secondItem="c8I-tJ-ea3" secondAttribute="trailing" id="h9B-sf-tJI"/>
                                     <constraint firstItem="ExK-JJ-493" firstAttribute="top" secondItem="KEJ-m8-8vH" secondAttribute="bottom" constant="215" id="kk2-Hc-mDC"/>
@@ -113,6 +132,11 @@
                                     <constraint firstItem="c8I-tJ-ea3" firstAttribute="centerX" secondItem="8Yq-mn-96w" secondAttribute="centerX" id="xyA-Lv-DCM"/>
                                     <constraint firstItem="hQ5-E0-4pe" firstAttribute="centerX" secondItem="8Yq-mn-96w" secondAttribute="centerX" id="zJx-tI-y37"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="kk2-Hc-mDC"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -131,6 +155,7 @@
                         <outlet property="campusesModal" destination="6Wv-Dj-n2d" id="jwx-2Y-mwC"/>
                         <outlet property="descriptionModal" destination="UjS-0t-nvN" id="ceF-ub-Irv"/>
                         <outlet property="ministriesModal" destination="hQ5-E0-4pe" id="dmI-vz-Kxt"/>
+                        <outlet property="modalHeight" destination="dj8-pf-Up7" id="EIU-EJ-5BH"/>
                         <outlet property="titleLabel" destination="c8I-tJ-ea3" id="bFp-RL-Rp0"/>
                     </connections>
                 </viewController>
@@ -180,16 +205,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="530" height="215"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiH-EY-oVz">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fiH-EY-oVz">
                                 <rect key="frame" x="33" y="38" width="462" height="169"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">Thank you for choosing our application! We would like to welcome you to the Cru community! Please continue through the following pages to select which ministries you would like to subscribe to!</string>
+                                <string key="text">Thank you for choosing our application! We would like to welcome you to the Cru community! Please continue through the following pages to select which ministries you would like to subscribe to.</string>
                                 <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome To Cru!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EG0-t6-eob">
-                                <rect key="frame" x="35" y="13" width="460" height="25.5"/>
+                                <rect key="frame" x="35" y="13" width="460" height="26"/>
                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                 <color key="textColor" red="0.38039215686274508" green="0.38039215686274508" blue="0.38039215686274508" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

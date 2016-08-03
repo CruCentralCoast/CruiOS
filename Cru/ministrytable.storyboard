@@ -27,25 +27,26 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="xd2-hq-2hT">
-                                            <rect key="frame" x="106" y="21" width="194" height="44"/>
-                                            <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
+                                            <rect key="frame" x="118" y="21" width="182" height="44"/>
+                                            <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qhh-hA-6Vz">
-                                            <rect key="frame" x="8" y="4" width="83" height="78"/>
+                                            <rect key="frame" x="23" y="8" width="80" height="70"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="83" id="Qy3-1g-hab"/>
+                                                <constraint firstAttribute="width" constant="80" id="Qy3-1g-hab"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="xd2-hq-2hT" firstAttribute="leading" secondItem="Qhh-hA-6Vz" secondAttribute="trailing" constant="15" id="IKN-Gy-3Ep"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="xd2-hq-2hT" secondAttribute="trailing" constant="6" id="SCd-3D-mnw"/>
-                                        <constraint firstItem="Qhh-hA-6Vz" firstAttribute="top" secondItem="Fbc-h0-Ja6" secondAttribute="topMargin" constant="-4" id="TJe-uX-onw"/>
+                                        <constraint firstItem="Qhh-hA-6Vz" firstAttribute="top" secondItem="Fbc-h0-Ja6" secondAttribute="topMargin" id="TJe-uX-onw"/>
                                         <constraint firstItem="xd2-hq-2hT" firstAttribute="top" secondItem="Fbc-h0-Ja6" secondAttribute="topMargin" constant="13" id="ZCi-Zy-9Oa"/>
-                                        <constraint firstItem="Qhh-hA-6Vz" firstAttribute="leading" secondItem="Fbc-h0-Ja6" secondAttribute="leadingMargin" id="i9C-mT-9We"/>
+                                        <constraint firstItem="Qhh-hA-6Vz" firstAttribute="leading" secondItem="Fbc-h0-Ja6" secondAttribute="leadingMargin" constant="15" id="i9C-mT-9We"/>
                                         <constraint firstItem="xd2-hq-2hT" firstAttribute="centerY" secondItem="Fbc-h0-Ja6" secondAttribute="centerY" id="lF7-3h-4gI"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Qhh-hA-6Vz" secondAttribute="bottom" id="rgv-gW-SB3"/>
                                         <constraint firstItem="xd2-hq-2hT" firstAttribute="centerY" secondItem="Qhh-hA-6Vz" secondAttribute="centerY" id="uAh-c2-USo"/>
                                     </constraints>
                                 </tableViewCellContentView>

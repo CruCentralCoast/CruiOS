@@ -29,6 +29,7 @@ class IntroViewController: UIViewController {
     // reference to title label
     @IBOutlet weak var titleLabel: UILabel!
     
+    @IBOutlet weak var modalHeight: NSLayoutConstraint!
     // reference to buttons on a modal
     var modalButtons = [UIButton]()
     
@@ -42,6 +43,8 @@ class IntroViewController: UIViewController {
     // MARK: Overriden UIViewController Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        embeddedMinistryViewController.onboarding = true
 
         // Do any additional setup after loading the view.
         initializeProperties()
@@ -69,6 +72,9 @@ class IntroViewController: UIViewController {
     private func initializeBackgroundViewProperties() {
         self.view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(Config.backgroundViewOpacity)
         backgroundModal.layer.cornerRadius = Config.modalBackgroundRadius
+        
+        let screenSize: CGRect = UIScreen.mainScreen().bounds
+        modalHeight.constant = screenSize.height * 0.75
     }
     
     // function for initializing programmatically a button for next or back
@@ -79,7 +85,7 @@ class IntroViewController: UIViewController {
         button.frame = CGRectMake(buttonX, buttonY, buttonWidth, buttonHeight)
         button.backgroundColor = UIColor.clearColor()
         button.setTitleColor(Config.textColor, forState: UIControlState.Normal)
-        button.titleLabel!.font = UIFont(name: "Freight Sans Pro", size: 200)
+        button.titleLabel!.font = UIFont(name: Config.fontBold, size: 18)
         button.setTitle(buttonText, forState: UIControlState.Normal)
         button.addTarget(self, action: #selector(IntroViewController.presentModal(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         self.backgroundModal.addSubview(button)
@@ -112,7 +118,7 @@ class IntroViewController: UIViewController {
             let nextButtonX = (backgroundModal.frame.size.width * (3 / 4)) - (nextButtonWidth / 2)
             initializeButton("Next", buttonWidth: nextButtonWidth, buttonX: nextButtonX)
             
-            titleLabel.text = "Pick your campus(es):"
+            titleLabel.text = "Pick your campuses:"
         }
         else {
             let backButtonWidth = currentModal.frame.size.width / 2

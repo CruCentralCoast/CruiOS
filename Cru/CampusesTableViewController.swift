@@ -152,8 +152,9 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
             cell.textLabel?.text = thisCampus.name
             
             //display add-ons
-            cell.textLabel?.font = UIFont(name: "FreightSans Pro", size: 20)
-            cell.textLabel?.textColor = Config.introModalContentTextColor
+            cell.textLabel?.font = UIFont(name: Config.fontName, size: 20)
+            //cell.textLabel?.textColor = Config.introModalContentTextColor
+            cell.textLabel?.textColor = UIColor.blackColor()
             
             if(thisCampus.feedEnabled == true){
                 cell.accessoryType = .Checkmark
