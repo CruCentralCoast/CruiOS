@@ -11,7 +11,9 @@
             <string>FreightSansProBook-Regular</string>
             <string>FreightSansProBook-Regular</string>
             <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
+        </mutableArray>
+        <mutableArray key="FreigSanProMed.otf">
+            <string>FreightSansProMedium-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -38,14 +40,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-PG-hf8">
-                                                    <rect key="frame" x="16" y="8" width="43" height="21"/>
-                                                    <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jif-PG-hf8">
+                                                    <rect key="frame" x="20" y="8" width="33" height="25"/>
+                                                    <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bcO-Ph-osh">
-                                                    <rect key="frame" x="76" y="23" width="82" height="28"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bcO-Ph-osh">
+                                                    <rect key="frame" x="73" y="23" width="82" height="28"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="22"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -63,9 +65,12 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72L-Mg-bVG">
-                                                    <rect key="frame" x="23" y="24" width="29" height="40"/>
-                                                    <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="32"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72L-Mg-bVG">
+                                                    <rect key="frame" x="18" y="33" width="37" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="37" id="8dV-JC-mX3"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="22"/>
                                                     <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -74,23 +79,28 @@
                                                 <constraint firstItem="J0t-LQ-QHg" firstAttribute="top" secondItem="mvs-SF-YKy" secondAttribute="bottom" constant="-3" id="7BF-6T-eD4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mvs-SF-YKy" secondAttribute="trailing" constant="12" id="INS-F3-S6G"/>
                                                 <constraint firstItem="mvs-SF-YKy" firstAttribute="top" secondItem="S3r-4c-ciT" secondAttribute="topMargin" constant="-5" id="JUX-hk-4Yo"/>
-                                                <constraint firstItem="bcO-Ph-osh" firstAttribute="leading" secondItem="Jif-PG-hf8" secondAttribute="trailing" constant="17.5" id="KfA-L8-AW5"/>
+                                                <constraint firstItem="bcO-Ph-osh" firstAttribute="leading" secondItem="Jif-PG-hf8" secondAttribute="trailing" constant="20" id="KfA-L8-AW5"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="72L-Mg-bVG" secondAttribute="bottom" constant="2" id="NNP-eN-aG2"/>
                                                 <constraint firstItem="72L-Mg-bVG" firstAttribute="leading" secondItem="S3r-4c-ciT" secondAttribute="leadingMargin" constant="8" id="P48-3Y-ZfD"/>
                                                 <constraint firstItem="72L-Mg-bVG" firstAttribute="centerX" secondItem="Jif-PG-hf8" secondAttribute="centerX" id="SU4-fs-JC3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="72L-Mg-bVG" secondAttribute="bottom" constant="10" id="TDI-ol-jSX"/>
                                                 <constraint firstItem="72L-Mg-bVG" firstAttribute="centerX" secondItem="Jif-PG-hf8" secondAttribute="centerX" id="VmH-97-vSp"/>
                                                 <constraint firstItem="bcO-Ph-osh" firstAttribute="centerY" secondItem="S3r-4c-ciT" secondAttribute="centerY" id="Z7B-kk-9nk"/>
-                                                <constraint firstItem="72L-Mg-bVG" firstAttribute="top" secondItem="Jif-PG-hf8" secondAttribute="bottom" constant="-5" id="aAX-QL-1uM"/>
-                                                <constraint firstAttribute="leadingMargin" secondItem="Jif-PG-hf8" secondAttribute="leading" constant="-8" id="cX0-ze-h9d"/>
+                                                <constraint firstItem="72L-Mg-bVG" firstAttribute="top" secondItem="Jif-PG-hf8" secondAttribute="bottom" id="aAX-QL-1uM"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="Jif-PG-hf8" secondAttribute="leading" constant="8" id="cX0-ze-h9d"/>
                                                 <constraint firstAttribute="topMargin" secondItem="Jif-PG-hf8" secondAttribute="top" id="epE-Pe-vq1"/>
+                                                <constraint firstItem="Jif-PG-hf8" firstAttribute="leading" secondItem="S3r-4c-ciT" secondAttribute="leadingMargin" constant="12" id="iWa-bj-ani"/>
                                                 <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="bcO-Ph-osh" secondAttribute="trailing" constant="68" id="ma8-bp-2p9"/>
                                                 <constraint firstItem="72L-Mg-bVG" firstAttribute="top" secondItem="S3r-4c-ciT" secondAttribute="topMargin" constant="16" id="pVR-eX-B3B"/>
                                                 <constraint firstItem="J0t-LQ-QHg" firstAttribute="centerX" secondItem="mvs-SF-YKy" secondAttribute="centerX" id="u9u-un-rr4"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
+                                                    <exclude reference="cX0-ze-h9d"/>
+                                                    <exclude reference="NNP-eN-aG2"/>
                                                     <exclude reference="P48-3Y-ZfD"/>
                                                     <exclude reference="VmH-97-vSp"/>
+                                                    <exclude reference="pVR-eX-B3B"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>

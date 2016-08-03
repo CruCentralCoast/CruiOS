@@ -21,8 +21,19 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     var emptyTableImage: UIImage!
     @IBOutlet var table: UITableView!
     
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    /*func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         return emptyTableImage
+    }*/
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if hasConnection == false {
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+            return NSAttributedString(string: "No connection found. Please try subscribing to ministries in Settings.", attributes: attributes)
+        }
+        else {
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+            return NSAttributedString(string: "You must select a campus in order to subscribe to a ministry.", attributes: attributes)
+        }
     }
     
     override func viewDidLoad() {
@@ -59,6 +70,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         }
         else{
             self.emptyTableImage = UIImage(named: Config.noCampusesImage)
+            
             hasConnection = true
         }
         self.table.emptyDataSetDelegate = self

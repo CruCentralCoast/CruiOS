@@ -50,11 +50,11 @@
                         <viewControllerLayoutGuide type="bottom" id="xWF-zG-gFR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5bq-z4-v2i">
-                        <rect key="frame" x="0.0" y="64" width="414" height="936"/>
+                        <rect key="frame" x="0.0" y="64" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kP-5J-Cvs">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="936"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9t1-Fv-uyz">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="895"/>
@@ -358,6 +358,7 @@
                                             <constraint firstItem="QRK-Cz-pSs" firstAttribute="top" secondItem="9t1-Fv-uyz" secondAttribute="top" id="DDb-GG-3Gx"/>
                                             <constraint firstItem="NPx-Zh-K4y" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" constant="15" id="EQg-jH-VaA"/>
                                             <constraint firstAttribute="trailing" secondItem="QRK-Cz-pSs" secondAttribute="trailing" id="IBx-Vg-XEu"/>
+                                            <constraint firstAttribute="bottom" secondItem="1Rv-hs-7WV" secondAttribute="bottom" id="Ib8-6H-6Rv"/>
                                             <constraint firstAttribute="trailing" secondItem="1Rv-hs-7WV" secondAttribute="trailing" constant="-5" id="JdG-nc-DRb"/>
                                             <constraint firstItem="HfV-xA-ZtN" firstAttribute="top" secondItem="htN-QS-Ku8" secondAttribute="bottom" constant="8" id="LPZ-MN-zI2"/>
                                             <constraint firstItem="hc6-Bv-K6z" firstAttribute="top" secondItem="QRK-Cz-pSs" secondAttribute="bottom" constant="8" id="OYO-aj-4dQ"/>
@@ -367,6 +368,7 @@
                                             <constraint firstItem="d0o-uh-smX" firstAttribute="top" secondItem="NPx-Zh-K4y" secondAttribute="bottom" constant="8" id="YR4-Pb-Xhc"/>
                                             <constraint firstItem="1Rv-hs-7WV" firstAttribute="top" secondItem="btd-49-F7H" secondAttribute="bottom" constant="40" id="eBJ-ek-Fd4"/>
                                             <constraint firstAttribute="trailing" secondItem="hc6-Bv-K6z" secondAttribute="trailing" constant="15" id="eMU-zg-Uv8"/>
+                                            <constraint firstItem="1Rv-hs-7WV" firstAttribute="top" secondItem="btd-49-F7H" secondAttribute="bottom" constant="40" id="fCf-3f-Efy"/>
                                             <constraint firstAttribute="trailing" secondItem="htN-QS-Ku8" secondAttribute="trailing" constant="15" id="fDT-6w-wH8"/>
                                             <constraint firstAttribute="trailing" secondItem="btd-49-F7H" secondAttribute="trailing" constant="15" id="naP-EO-6OZ"/>
                                             <constraint firstItem="hc6-Bv-K6z" firstAttribute="leading" secondItem="9t1-Fv-uyz" secondAttribute="leading" constant="15" id="nf5-9l-BgB"/>
@@ -382,6 +384,8 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="BaO-GV-Gbh"/>
+                                                <exclude reference="Ode-OG-0Vg"/>
+                                                <exclude reference="eBJ-ek-Fd4"/>
                                             </mask>
                                         </variation>
                                     </view>
@@ -415,14 +419,14 @@
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="notifications" id="2oh-Sz-sRJ">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="uyv-RA-mLw" kind="presentation" modalPresentationStyle="formSheet" id="kSa-rQ-se3"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="414" height="1000"/>
+                    <size key="freeformSize" width="414" height="960"/>
                     <connections>
                         <outlet property="eventsTable" destination="btd-49-F7H" id="Rej-3k-ghQ"/>
                         <outlet property="eventsTableHeight" destination="Ujf-ah-qTB" id="3nA-2o-3Sj"/>
@@ -502,7 +506,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Notifications" id="J2E-pS-PAj">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="U4a-jB-4Ed">
-                            <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="Ihf-vK-FSH" kind="unwind" unwindAction="closeNotifications:" id="aNF-Ws-kv9"/>
                             </connections>

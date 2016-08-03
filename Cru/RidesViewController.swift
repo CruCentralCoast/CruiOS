@@ -49,7 +49,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.ridesTableView.addSubview(self.refreshControl)
         
         MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
@@ -62,6 +62,8 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         
         self.ridesTableView.tableFooterView = UIView()
+        ridesTableView.rowHeight = UITableViewAutomaticDimension
+        ridesTableView.estimatedRowHeight = 75
     }
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {

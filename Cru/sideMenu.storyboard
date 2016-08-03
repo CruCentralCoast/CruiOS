@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tfd-D4-51v">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tfd-D4-51v">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -23,7 +23,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="57" sectionHeaderHeight="18" sectionFooterHeight="18" id="R0O-PJ-6i6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.447636217948718" green="0.447636217948718" blue="0.447636217948718" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,14 +40,12 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MJ-Ri-qZZ">
                                                     <rect key="frame" x="79" y="23" width="47" height="24"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Home" translatesAutoresizingMaskIntoConstraints="NO" id="37I-h6-Q7Z">
                                                     <rect key="frame" x="19" y="15" width="40" height="40"/>
-                                                    <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="NYO-w2-Qir"/>
@@ -56,7 +53,7 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <animations/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="2MJ-Ri-qZZ" firstAttribute="centerX" secondItem="70i-33-HfU" secondAttribute="centerX" id="2er-4U-rtV"/>
                                                 <constraint firstItem="2MJ-Ri-qZZ" firstAttribute="leading" secondItem="70i-33-HfU" secondAttribute="leadingMargin" constant="37" id="HKi-OU-T4W"/>
@@ -88,7 +85,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="qqc-Cd-TUE" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="gIK-Gn-804"/>
@@ -103,21 +99,19 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNG-XR-5eB">
                                                     <rect key="frame" x="79" y="23" width="50" height="24"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Events" translatesAutoresizingMaskIntoConstraints="NO" id="Fvv-g4-29B">
                                                     <rect key="frame" x="19" y="15" width="40" height="40"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="I0E-Ro-mKb"/>
                                                         <constraint firstAttribute="width" constant="40" id="j4T-zC-UeE"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <animations/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Fvv-g4-29B" firstAttribute="centerX" secondItem="Mba-Gc-PSX" secondAttribute="centerX" id="4MB-Nu-vfS"/>
                                                 <constraint firstItem="Fvv-g4-29B" firstAttribute="leading" secondItem="Mba-Gc-PSX" secondAttribute="leadingMargin" constant="43" id="6fa-M2-73B"/>
@@ -141,7 +135,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="fNG-XR-5eB" firstAttribute="centerY" secondItem="Xtl-hg-YSz" secondAttribute="centerY" id="u0g-9Y-5PA"/>
@@ -164,7 +157,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Resources" translatesAutoresizingMaskIntoConstraints="NO" id="GQ0-sg-VMr">
                                                     <rect key="frame" x="19" y="15" width="40" height="40"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="6l9-mk-fgQ"/>
                                                         <constraint firstAttribute="width" constant="40" id="Vg9-Fa-2hX"/>
@@ -172,13 +164,12 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Resources" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ek6-Dq-QBz">
                                                     <rect key="frame" x="79" y="23" width="78" height="24"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="GQ0-sg-VMr" firstAttribute="top" secondItem="1Jx-33-gEV" secondAttribute="topMargin" constant="-2" id="0XX-2G-CAG"/>
                                                 <constraint firstItem="GQ0-sg-VMr" firstAttribute="centerX" secondItem="1Jx-33-gEV" secondAttribute="centerX" id="17N-aZ-dde"/>
@@ -202,7 +193,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="qrP-j6-Ygg" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="FxL-fI-1If"/>
@@ -217,7 +207,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RideSharing" translatesAutoresizingMaskIntoConstraints="NO" id="4EF-Mn-YoG">
                                                     <rect key="frame" x="19" y="15" width="40" height="40"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="fcq-Kr-Ivv"/>
                                                         <constraint firstAttribute="width" constant="40" id="nuC-zJ-13j"/>
@@ -225,13 +214,12 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RideSharing" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="32o-RX-Lnb">
                                                     <rect key="frame" x="79" y="23" width="90" height="24"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="32o-RX-Lnb" firstAttribute="leading" secondItem="YMD-uy-FH2" secondAttribute="leadingMargin" constant="21" id="1rk-wa-1xu"/>
                                                 <constraint firstItem="4EF-Mn-YoG" firstAttribute="top" secondItem="YMD-uy-FH2" secondAttribute="topMargin" constant="1" id="DP0-Mj-nbv"/>
@@ -255,7 +243,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="5BN-Zn-eGs" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="xZc-se-Ayq"/>
@@ -270,7 +257,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Get Involved" translatesAutoresizingMaskIntoConstraints="NO" id="Pw4-Yn-bxV">
                                                     <rect key="frame" x="19" y="14" width="40" height="40"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="2v0-gQ-qN8"/>
                                                         <constraint firstAttribute="width" constant="40" id="EOF-cX-wsU"/>
@@ -278,13 +264,12 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Involved" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sLD-jC-IC0">
                                                     <rect key="frame" x="79" y="23" width="94" height="24"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Pw4-Yn-bxV" firstAttribute="centerX" secondItem="UQL-Zu-DIg" secondAttribute="centerX" id="1fZ-Pi-gSi"/>
                                                 <constraint firstItem="Pw4-Yn-bxV" firstAttribute="leading" secondItem="UQL-Zu-DIg" secondAttribute="leadingMargin" constant="11" id="7ot-RN-R8R"/>
@@ -308,7 +293,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="ZQn-Wd-N3J" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="dCd-P6-FqM"/>
@@ -323,7 +307,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Summer Missions" translatesAutoresizingMaskIntoConstraints="NO" id="pLZ-kw-hNj">
                                                     <rect key="frame" x="19" y="15" width="40" height="40"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="CC0-Va-FrR"/>
                                                         <constraint firstAttribute="height" constant="40" id="nc4-am-gBX"/>
@@ -331,13 +314,12 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer Missions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5g-Fg-IVG">
                                                     <rect key="frame" x="79" y="23" width="133" height="24"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="R5g-Fg-IVG" firstAttribute="centerX" secondItem="1do-HL-Wse" secondAttribute="centerX" id="5qr-Qw-SDF"/>
                                                 <constraint firstItem="pLZ-kw-hNj" firstAttribute="centerX" secondItem="1do-HL-Wse" secondAttribute="centerX" id="8TU-hb-uKM"/>
@@ -361,7 +343,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="FyY-u7-6s3" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="epK-ZX-LcY"/>
@@ -376,7 +357,6 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Settings" translatesAutoresizingMaskIntoConstraints="NO" id="Bny-Br-0CM">
                                                     <rect key="frame" x="19" y="15" width="40" height="40"/>
-                                                    <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="JbX-YM-3mA"/>
                                                         <constraint firstAttribute="width" constant="40" id="krI-Ao-CzW"/>
@@ -384,13 +364,12 @@
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yqu-4X-ZSL">
                                                     <rect key="frame" x="79" y="23" width="61" height="24"/>
-                                                    <animations/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <animations/>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="Bny-Br-0CM" firstAttribute="centerX" secondItem="tgg-p4-fvh" secondAttribute="centerX" id="54h-vj-hHE"/>
                                                 <constraint firstItem="yqu-4X-ZSL" firstAttribute="top" secondItem="Bny-Br-0CM" secondAttribute="bottom" constant="3" id="G4u-3B-wA7"/>
@@ -418,7 +397,6 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
-                                        <animations/>
                                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <segue destination="dz8-4B-V3A" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="cAF-H2-fEj"/>
