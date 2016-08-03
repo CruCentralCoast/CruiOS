@@ -80,7 +80,7 @@ class IntroViewController: UIViewController {
     }
     
     // function for initializing programmatically a button for next or back
-    private func initializeButton(buttonText: String, buttonWidth: CGFloat, buttonX: CGFloat) {
+    private func initializeButton(buttonText: String, buttonWidth: CGFloat, buttonX: CGFloat, buttonID: String) {
         let buttonHeight: CGFloat = 50.0
         let buttonY = (backgroundModal.frame.size.height) - buttonHeight
         let button = UIButton(type: UIButtonType.System) as UIButton
@@ -90,6 +90,8 @@ class IntroViewController: UIViewController {
         button.titleLabel!.font = UIFont(name: Config.fontBold, size: 18)
         button.setTitle(buttonText, forState: UIControlState.Normal)
         button.addTarget(self, action: #selector(IntroViewController.presentModal(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        
         self.backgroundModal.addSubview(button)
         self.modalButtons.append(button)
     }
@@ -107,29 +109,29 @@ class IntroViewController: UIViewController {
         if (currentModal == descriptionModal) {
             let nextButtonWidth = currentModal.frame.size.width
             let nextButtonX = (backgroundModal.frame.size.width / 2) - (nextButtonWidth / 2)
-            initializeButton("Next", buttonWidth: nextButtonWidth, buttonX: nextButtonX)
+            initializeButton("Next", buttonWidth: nextButtonWidth, buttonX: nextButtonX, buttonID: "nextToCampuses")
             
             titleLabel.text = " "
         }
         else if (currentModal == campusesModal) {
             let backButtonWidth = currentModal.frame.size.width / 2
             let backButtonX = (backgroundModal.frame.size.width / 4) - (backButtonWidth / 2)
-            initializeButton("Back", buttonWidth: backButtonWidth, buttonX: backButtonX)
+            initializeButton("Back", buttonWidth: backButtonWidth, buttonX: backButtonX, buttonID: "backToDescription")
             
             let nextButtonWidth = backButtonWidth
             let nextButtonX = (backgroundModal.frame.size.width * (3 / 4)) - (nextButtonWidth / 2)
-            initializeButton("Next", buttonWidth: nextButtonWidth, buttonX: nextButtonX)
+            initializeButton("Next", buttonWidth: nextButtonWidth, buttonX: nextButtonX, buttonID: "nextToMinistries")
             
             titleLabel.text = "Pick your campuses:"
         }
         else {
             let backButtonWidth = currentModal.frame.size.width / 2
             let backButtonX = (backgroundModal.frame.size.width / 4) - (backButtonWidth / 2)
-            initializeButton("Back", buttonWidth: backButtonWidth, buttonX: backButtonX)
+            initializeButton("Back", buttonWidth: backButtonWidth, buttonX: backButtonX, buttonID: "backToCampuses")
             
             let nextButtonWidth = backButtonWidth
             let nextButtonX = (backgroundModal.frame.size.width * (3 / 4)) - (nextButtonWidth / 2)
-            initializeButton("Done", buttonWidth: nextButtonWidth, buttonX: nextButtonX)
+            initializeButton("Done", buttonWidth: nextButtonWidth, buttonX: nextButtonX, buttonID: "done")
             
             titleLabel.text = "Pick your ministries:"
         }
@@ -185,11 +187,13 @@ class IntroViewController: UIViewController {
         }
         else {
             //close modals completely
+            embeddedMinistryViewController.saveMinistriesToDevice()
             self.mainViewController.navigationItem.leftBarButtonItem?.enabled = true
             self.dismissViewControllerAnimated(true, completion: nil)
         }
         
         if(introModals[nextNdx] == ministriesModal){
+            embeddedCampusesViewController.saveCampusSet()
             embeddedMinistryViewController.reloadData()
         }
         else if(introModals[nextNdx] == campusesModal){
