@@ -135,8 +135,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.performSegueWithIdentifier("introSegue", sender: self)
             self.navigationItem.leftBarButtonItem?.enabled = false
         }
-        self.performSegueWithIdentifier("introSegue", sender: self)
-        self.navigationItem.leftBarButtonItem?.enabled = false
     }
     
     //Set the text to be displayed when either table is empty
