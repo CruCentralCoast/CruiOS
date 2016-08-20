@@ -185,6 +185,10 @@
 		6D55426A1D4ED6D6004008A5 /* Pods_Cru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8F3C6936A22FC2B42E9A2F /* Pods_Cru.framework */; };
 		6D59068F1CE3F0DC00464D57 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */; };
 		6D5AD04F1CF6230E0020D567 /* EventDetailsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */; };
+		6D5C10331D5CE246007AC44E /* FindRideFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */; };
+		6D5C10341D5CE246007AC44E /* FindRideFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */; };
+		6D5C10361D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
+		6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
 		6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */; };
 		6D76CA771C06A41900F8B007 /* FreigSanProLig.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */; };
 		6D76CA7B1C06AB6900F8B007 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7A1C06AB6900F8B007 /* Event.swift */; };
@@ -232,6 +236,8 @@
 		6DC46F7E1D3D73D8008BB70A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7C1D3D73D8008BB70A /* Notification.swift */; };
 		6DC46F801D3D75DE008BB70A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */; };
 		6DC46F811D3D75DE008BB70A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */; };
+		6DC538261D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
+		6DC538271D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
 		85EAB81A1C0ECC8A005C7658 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EAB8191C0ECC8A005C7658 /* Config.swift */; };
 		93FBAE979FCDEA226FAC8EFC /* Pods_CruTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95BECF8DACCC615D7195F23 /* Pods_CruTests.framework */; };
 		C1015CD21C9429D0005B559E /* ResourcesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1015CD11C9429D0005B559E /* ResourcesTest.swift */; };
@@ -430,6 +436,8 @@
 		6D5542671D4ED52B004008A5 /* LocationPickerViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = LocationPickerViewController.framework; path = "/Users/ericasolum/Documents/Cru/CruiOS/Build/Products/Debug-iphoneos/LocationPickerViewController.framework"; sourceTree = "<absolute>"; };
 		6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTest.swift; sourceTree = "<group>"; };
+		6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRideFormViewController.swift; sourceTree = "<group>"; };
+		6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDriverRideDetailViewController.swift; sourceTree = "<group>"; };
 		6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Leitura-Roman 3.otf"; sourceTree = "<group>"; };
 		6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProLig.otf; sourceTree = "<group>"; };
 		6D76CA7A1C06AB6900F8B007 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -458,6 +466,7 @@
 		6DC46F791D3D7212008BB70A /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		6DC46F7C1D3D73D8008BB70A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerViewController.swift; sourceTree = "<group>"; };
 		6DFE267EAB4A20B9728E2CF5 /* Pods-Cru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cru.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cru/Pods-Cru.release.xcconfig"; sourceTree = "<group>"; };
 		6E8F3C6936A22FC2B42E9A2F /* Pods_Cru.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cru.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EAB8191C0ECC8A005C7658 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -746,8 +755,10 @@
 				50AC224F1CDB016800427C08 /* EditCell.swift */,
 				50AC22521CDB033D00427C08 /* EditableItem.swift */,
 				5094897C1C64000200A67697 /* DriverRideDetailViewController.swift */,
+				6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */,
 				501038B11CD9655F00CCD7DC /* OfferOrEditRideViewController.swift */,
 				6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */,
+				6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */,
 				6DA8154F1D413E7E0087F05B /* EventsPopoverViewController.swift */,
 				6D434A211D42ABE200661CA8 /* LocationViewController.swift */,
 				6DA815491D3FFA060087F05B /* newofferride.storyboard */,
@@ -893,6 +904,7 @@
 				50A9B02B1CFBFA1900E759E2 /* MapOfRidesViewController.swift */,
 				50A9B02E1CFCD74400E759E2 /* RideAnnotation.swift */,
 				50FAC03E1CFBD68000E93E89 /* RideJoinViewController.swift */,
+				6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */,
 				50A9B0281CFBE04A00E759E2 /* RiderEditTableViewCell.swift */,
 				504742451C759823003F276E /* OfferedRideTableViewCell.swift */,
 				50EF26E21C7592EF0055F480 /* FilterByEventViewController.swift */,
@@ -1305,6 +1317,7 @@
 				C1E9DC111CF6A2B200066C5F /* CGQuestionAnswer.swift in Sources */,
 				0F17E3D91C91076D00713297 /* MapLocalStorageManager.swift in Sources */,
 				C151D9B41C7D2D870067A29E /* LoginViewController.swift in Sources */,
+				6D5C10331D5CE246007AC44E /* FindRideFormViewController.swift in Sources */,
 				6DA8154D1D4019E70087F05B /* SegmentedControl.swift in Sources */,
 				0F83D56E1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift in Sources */,
 				0FAAE91C1CE6A83A0055770D /* MinistryTeamsTableViewController.swift in Sources */,
@@ -1361,6 +1374,8 @@
 				50B172601CEBBE7F007CDD44 /* SearchableOptionsVC.swift in Sources */,
 				6DA815501D413E7E0087F05B /* EventsPopoverViewController.swift in Sources */,
 				50B1D3C81CED76910014EE1B /* SelectCGVC.swift in Sources */,
+				6DC538261D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */,
+				6D5C10361D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */,
 				6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */,
 				50DC2D2D1CEEBE690015C574 /* OfferOrEditRideViewController.swift in Sources */,
 				C13F7DE81CE277E30057D0F5 /* CGQuestion.swift in Sources */,
@@ -1411,6 +1426,7 @@
 				5072B41C1CB38DF4001F5BF6 /* EventDetailsViewController.swift in Sources */,
 				C13F7DF51CE28D2F0057D0F5 /* OptionQuestionCell.swift in Sources */,
 				C1D99C821CD4011B00128CA9 /* RideUtilsTest.swift in Sources */,
+				6DC538271D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */,
 				6D2798FB1CF26D79008E5906 /* EventStatus.swift in Sources */,
 				5072B41B1CB38BF8001F5BF6 /* RiderRideDetailViewController.swift in Sources */,
 				6DC46F6F1D3D593C008BB70A /* ArticleTableViewCell.swift in Sources */,
@@ -1427,6 +1443,7 @@
 				C1536D621CFD3CEE00730281 /* SummerMission.swift in Sources */,
 				0F1959B61C8E59DE00A783BA /* Cancler.swift in Sources */,
 				5031E1531CE682F30005AAF6 /* TestDriverRideDetail.swift in Sources */,
+				6D5C10341D5CE246007AC44E /* FindRideFormViewController.swift in Sources */,
 				C1DCEC471C7681E1009FACE0 /* RideUtils.swift in Sources */,
 				50D316701CFED8990050692B /* CruPhoneNoRule.swift in Sources */,
 				505722A51CE095A800F87BE4 /* PickRadiusViewController.swift in Sources */,
@@ -1486,6 +1503,7 @@
 				6DA330AB1CD95E1200FCC970 /* ResourceTest.swift in Sources */,
 				0F6862221CE65D4A00138377 /* SummerMissionsTableViewController.swift in Sources */,
 				5072B4181CB38616001F5BF6 /* TimeDetail.swift in Sources */,
+				6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */,
 				6DC46F691D3D5456008BB70A /* Video.swift in Sources */,
 				0F52709C1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */,
 				C1015CD31C942C0E005B559E /* DBCollection.swift in Sources */,

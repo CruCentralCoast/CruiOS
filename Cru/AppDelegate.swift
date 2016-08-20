@@ -11,9 +11,12 @@ import CoreData
 import WildcardSDK
 import IQKeyboardManagerSwift
 import Google
+import GoogleMaps
+import GooglePlaces
 import Fabric
 import Crashlytics
 import Appsee
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GCMReceiverDelegate {
@@ -54,6 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
         let gcmConfig = GCMConfig.defaultConfig()
         gcmConfig.receiverDelegate = self
         GCMService.sharedInstance().startWithConfig(gcmConfig)
+        
+        //Initialize Google Places
+        GMSPlacesClient.provideAPIKey(Config.googleAPIKey)
+        GMSServices.provideAPIKey(Config.googleAPIKey)
+        
         
         //Initialize WildcardSDK with Cru API key for Resources and change font
         WildcardSDK.initializeWithApiKey("4f154853-1955-4422-9aa3-f1fbd89d3403")

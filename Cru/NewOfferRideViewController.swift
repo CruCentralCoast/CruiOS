@@ -11,6 +11,8 @@ import MapKit
 import LocationPicker
 import LocationPickerViewController
 import MRProgress
+import GooglePlaces
+import GooglePlacePicker
 
 class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
 
@@ -47,6 +49,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     var events = [Event]()
     var event: Event!
     var rideVC: RidesViewController!
+    var placesClient: GMSPlacesClient?
+    var placePicker: GMSPlacePicker?
     var parsedNum: String!
     var CLocation: CLLocation?
     var convertedDict = NSDictionary()
@@ -57,29 +61,24 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         static let chooseEventSegue = "chooseEvent"
         static let editRadiusSegue = "radiusPicker"
     }
-    var location: Location! {
+    var pickedLocation: GMSPlace! {
         didSet {
-            addressField?.text = location.address
-            validateLocation()
+            addressField?.text = pickedLocation.formattedAddress
+            let delimiter = ", "
+           
+            let parts = pickedLocation.formattedAddress!.componentsSeparatedByString(delimiter)
             
-        }
-    }
-    
-    var loc: LocationItem! {
-        didSet {
-            let dict = loc.addressDictionary as! NSDictionary
-            //let convertedDict = NSDictionary()
-            let country = dict["CountryCode"] as! String
-            let state = dict["State"] as! String
-            let street = dict["Street"] as! String
-            let postcode = dict["ZIP"] as! String
-            let city = dict["City"] as! String
             
-            convertedDict = ["country": country, "state": state, "street1": street, "postcode": postcode]
+            let newDel = " "
+            let components = parts[2].componentsSeparatedByString(newDel)
+            let state = components[0]
+            let postalcode = components[1]
+            let address = parts[0]
+            let city = parts[1]
+            let country = parts[3]
             
-            let formatted = String("\(street), \(city) \(postcode)")
-            //print("\n\(street), \(city) \(postcode)\n")
-            addressField?.text = formatted
+            convertedDict = ["country": country, "state": state, "street1": address, "postcode": postalcode, "suburb": city]
+            CLocation = CLLocation(coordinate: pickedLocation.coordinate, altitude: 0.0, horizontalAccuracy: 1.0, verticalAccuracy: 1.0, timestamp: NSDate())
             
         }
     }
@@ -124,6 +123,9 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         //Hide the time hint until an event is selected
         timeHint?.hidden = true
         endDateHint?.hidden = true
+        
+        //Setup for the Google Place Picker
+        placesClient = GMSPlacesClient.sharedClient()
         
     }
     
@@ -183,28 +185,30 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             TimePicker.pickDate(self, handler: chooseDateHandler)
         case timeField!:
             highlightField(timeLine)
-            //timeLine?.backgroundColor = CruColors.lightBlue
             timeField?.resignFirstResponder()
             TimePicker.pickTime(self)
         case addressField!:
             highlightField(addressLine)
             addressField?.resignFirstResponder()
-            choosePickupLocation(self)
-            //addressLine?.backgroundColor = CruColors.lightBlue
+            //choosePickupLocation(self)
+            //googlePlacePicker()
+            //presentCustomPicker()
+            let vc = PlacePickerViewController()
+            vc.offerRideVC = self
+            self.navigationController!.pushViewController(vc, animated: true)
+            
         case pickupRadiusField!:
             highlightField(pickupLine)
             pickupRadiusField?.resignFirstResponder()
             
-            if(self.loc != nil){
-                //self.performSegueWithIdentifier(OfferRideConstants.editRadiusSegue, sender: self)
-            }
-            else{
+            if self.pickedLocation == nil {
                 showValidationError("Please pick a location before picking a radius.")
             }
-            //pickupLine?.backgroundColor = CruColors.lightBlue
+            
+            
         case seatsField!:
             highlightField(seatsLine)
-            //seatsLine?.backgroundColor = CruColors.lightBlue
+            
         default:
             print("Text field not recognized")
         }
@@ -303,7 +307,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         if validateNumber() == false {return}
         if validateEvent() == false {return}
         if validateTime() == false {return}
-        if validateLocation() == false {return}
+        if validateLoc() == false {return}
         if validateSeats() == false {return}
         if validateDirection() == false {return}
         
@@ -392,7 +396,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         ride.eventStartDate = event.startNSDate
         ride.eventEndDate = event.endNSDate
         
-        if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDay()){
+        
+        if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDate()){
             ride.day = (components.day)
             ride.monthNum = (components.month)
             ride.year = (components.year)
@@ -416,8 +421,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         }
     }
     func validateLoc() -> Bool {
-        if(loc != nil){
-            let map = loc.addressDictionary!
+        if(convertedDict.count > 0){
+            let map = convertedDict
             
             ride.clearAddress()
             
@@ -445,40 +450,6 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             else{
                 showValidationError(ride.isValidAddress())
                 addTextFieldError(addressLine!)
-                return false
-            }
-            
-        }
-        return true
-    }
-    
-    func validateLocation() -> Bool {
-        if(location != nil){
-            let map = location.getLocationAsDict(location)
-            
-            ride.clearAddress()
-            
-            if(map[LocationKeys.city] != nil){
-                ride.city = map[LocationKeys.city] as! String
-            }
-            if(map[LocationKeys.state] != nil){
-                ride.state = map[LocationKeys.state] as! String
-            }
-            if(map[LocationKeys.street1] != nil){
-                ride.street = map[LocationKeys.street1] as! String
-            }
-            if(map[LocationKeys.country] != nil){
-                ride.country = map[LocationKeys.country] as! String
-            }
-            if(map[LocationKeys.postcode] != nil){
-                ride.postcode = map[LocationKeys.postcode] as! String
-            }
-            
-            if(ride.isValidAddress() == ""){
-                return true
-            }
-            else{
-                showValidationError(ride.isValidAddress())
                 return false
             }
             
@@ -658,7 +629,48 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     
     // MARK: Pickup Location Function
     //Called when the pickup location text field becomes active
-    func choosePickupLocation(sender: AnyObject) {
+    func presentCustomPicker() {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        self.presentViewController(autocompleteController, animated: true, completion: nil)
+    }
+    
+    func googlePlacePicker() {
+        // Create a place picker.
+        let config = GMSPlacePickerConfig(viewport: nil)
+        let placePicker = GMSPlacePicker(config: config)
+        
+        
+        // Present it fullscreen.
+        placePicker.pickPlaceWithCallback { (place, error) in
+            
+            // Handle the selection if it was successful.
+            if let place = place {
+                // Create the next view controller we are going to display and present it.
+                //let nextScreen = PlaceDetailViewController(place: place)
+                //self.splitPaneViewController?.pushViewController(nextScreen, animated: false)
+                //self.mapViewController?.coordinate = place.coordinate
+                print("Place name \(place.name)")
+                print("Place address \(place.formattedAddress)")
+                print("Place attributions \(place.attributions)")
+            } else if error != nil {
+                // In your own app you should handle this better, but for the demo we are just going to log
+                // a message.
+                NSLog("An error occurred while picking a place: \(error)")
+            } else {
+                NSLog("Looks like the place picker was canceled by the user")
+            }
+            
+            // Release the reference to the place picker, we don't need it anymore and it can be freed.
+            self.placePicker = nil
+        }
+        
+        // Store a reference to the place picker until it's finished picking. As specified in the docs
+        // we have to hold onto it otherwise it will be deallocated before it can return us a result.
+        self.placePicker = placePicker
+    }
+    
+    /*func choosePickupLocation(sender: AnyObject) {
         
         
         
@@ -703,7 +715,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         }*/
         navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         navigationController!.pushViewController(locationPicker, animated: true)
-    }
+    }*/
     
     // MARK: Changing UI
     
@@ -751,7 +763,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "radiusPicker" {
-            if self.loc == nil {
+            if self.pickedLocation == nil {
                 showValidationError("Please pick a location before picking a radius.")
                 
                 return false
@@ -788,6 +800,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             vc.ride = self.ride
             vc.setRadius = setRadius
             vc.numMiles = ride.radius
+            //vc.pickedLocation = self.pickedLocation
             vc.location = CLocation
         }
         /*else if segue.identifier == "LocationPicker" {
@@ -807,4 +820,33 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
 
+}
+//Extension for the Google Places picker
+extension NewOfferRideViewController: GMSAutocompleteViewControllerDelegate {
+    // Handle the user's selection.
+    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+        // TODO: handle the error.
+        print("Error: ", error.description)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(viewController: GMSAutocompleteViewController) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    }
 }

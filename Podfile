@@ -23,6 +23,9 @@ def cru_pods
     pod 'SwiftyJSON', '~> 2.3.0'
     pod 'PagedArray', '~> 0.2'
     pod 'LocationPicker'
+    pod 'GooglePlaces'
+    pod 'GooglePlacePicker'
+    pod 'GoogleMaps'
 end
 
 def crash_monitor

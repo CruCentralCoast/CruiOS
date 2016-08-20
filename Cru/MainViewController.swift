@@ -34,6 +34,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var eventsTableHeight: NSLayoutConstraint!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var socialBarSpace: NSLayoutConstraint!
     var noRideString: NSAttributedString!{
         didSet {
             table!.reloadData()
@@ -127,6 +128,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //Take this out eventually
         offerVC = NewOfferRideViewController()
+        
+        //Change the spacing between the events table and the social bar
+        let screenSize = UIScreen.mainScreen().bounds
+        
+        if scrollView.frame.height <= screenSize.height {
+            let totalSpace = screenSize.height - eventsTable.frame.maxY
+            socialBarSpace.constant = totalSpace - 65
+            print("\nTotal space available: \(totalSpace)\n")
+        }
+        
+        
+
+        
+        print("\nHeight of screen: \(screenSize.height)\n")
+        print("\nHeight of scroll: \(scrollView.frame.height)\n")
+        
     }
     
     /* This function acts after the view is loaded and appears on the phone. */

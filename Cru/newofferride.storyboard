@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -597,12 +598,6 @@
                                     <action selector="radiusValChanged:" destination="bh3-gc-jbd" eventType="valueChanged" id="9ZK-p3-K1N"/>
                                 </connections>
                             </slider>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZM0-yi-WF8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bh3-gc-jbd" id="oIR-eQ-HLv"/>
-                                </connections>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius: 1 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoj-eE-aOn">
                                 <rect key="frame" x="20" y="576" width="560" height="28"/>
                                 <constraints>
@@ -612,33 +607,36 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FXe-yp-BCS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="trailing" secondItem="msu-HE-L4l" secondAttribute="trailing" id="3CH-9C-g5J"/>
-                            <constraint firstItem="uoj-eE-aOn" firstAttribute="top" secondItem="ZM0-yi-WF8" secondAttribute="bottom" constant="8" symbolic="YES" id="4ND-tB-hAL"/>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="centerX" secondItem="kqR-LE-W91" secondAttribute="centerX" id="5TG-Pz-xiX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kqR-LE-W91" secondAttribute="trailing" constant="-20" id="8Ca-7i-ukT"/>
-                            <constraint firstItem="ZM0-yi-WF8" firstAttribute="leading" secondItem="kqR-LE-W91" secondAttribute="leading" id="GkW-fA-E8o"/>
+                            <constraint firstItem="uoj-eE-aOn" firstAttribute="top" secondItem="FXe-yp-BCS" secondAttribute="bottom" constant="8" id="9Ly-mZ-XoT"/>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="leading" secondItem="msu-HE-L4l" secondAttribute="leading" id="KNu-MI-Vge"/>
+                            <constraint firstItem="FXe-yp-BCS" firstAttribute="top" secondItem="zQA-ZP-0LQ" secondAttribute="top" id="N1m-jx-Jv2"/>
                             <constraint firstItem="LTK-wD-atb" firstAttribute="top" secondItem="kqR-LE-W91" secondAttribute="bottom" id="ORX-ih-iuW"/>
-                            <constraint firstItem="ZM0-yi-WF8" firstAttribute="top" secondItem="zQA-ZP-0LQ" secondAttribute="top" id="OcH-5V-O9n"/>
                             <constraint firstItem="kqR-LE-W91" firstAttribute="leading" secondItem="zQA-ZP-0LQ" secondAttribute="leadingMargin" constant="-20" id="V0z-bM-gVj"/>
                             <constraint firstItem="msu-HE-L4l" firstAttribute="top" secondItem="uoj-eE-aOn" secondAttribute="bottom" constant="35" id="XCN-WW-oz1"/>
+                            <constraint firstAttribute="trailing" secondItem="FXe-yp-BCS" secondAttribute="trailing" id="ayi-hW-b8i"/>
+                            <constraint firstItem="FXe-yp-BCS" firstAttribute="leading" secondItem="zQA-ZP-0LQ" secondAttribute="leading" id="c3i-j4-Uga"/>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="leading" secondItem="zQA-ZP-0LQ" secondAttribute="leadingMargin" id="pPm-x9-FTc"/>
                             <constraint firstAttribute="bottom" secondItem="uoj-eE-aOn" secondAttribute="bottom" constant="145" id="vLE-3o-e9M"/>
-                            <constraint firstItem="ZM0-yi-WF8" firstAttribute="trailing" secondItem="kqR-LE-W91" secondAttribute="trailing" id="zFF-iS-Lld"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="map" destination="ZM0-yi-WF8" id="Khe-Gg-Ec3"/>
+                        <outlet property="map" destination="FXe-yp-BCS" id="E9f-ZU-kdZ"/>
                         <outlet property="radiusLabel" destination="uoj-eE-aOn" id="pgK-ln-wVq"/>
                         <outlet property="radiusSlider" destination="msu-HE-L4l" id="oPr-O8-bKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwt-fq-7cy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2182" y="614"/>
+            <point key="canvasLocation" x="2182" y="613.5"/>
         </scene>
     </scenes>
 </document>

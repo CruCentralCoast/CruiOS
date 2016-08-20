@@ -31,6 +31,7 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
         numMiles = (ride?.radius)!
         numMilesFloat = Float((ride?.radius)!)
         radiusSlider.value = Float(numMiles)
+        self.map.delegate = self
         if(numMiles == 1){
             radiusLabel.text = String(numMiles) + " mile"
         }
@@ -40,6 +41,7 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
       
         while(location == nil){}
         setupMap()
+        
         
     }
     
@@ -97,9 +99,8 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
 //            }
 //        }
     }
-    
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        
+        print("Rendering now!")
         let circleRenderer = MKCircleRenderer(overlay: overlay)
         circleRenderer.fillColor = CruColors.lightBlue.colorWithAlphaComponent(0.1)//UIColor.blueColor().colorWithAlphaComponent(0.1)
         circleRenderer.strokeColor = CruColors.darkBlue//UIColor.blueColor()
@@ -126,6 +127,7 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
         let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         //2
         let circle = MKCircle(centerCoordinate: coordinates, radius: (Double(numMilesFloat!) * metersInMile))
+        
         //3
         //self.map.setRegion(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7)), animated: true)
         //4
@@ -139,6 +141,7 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
         curOverlay = circle
         
         if(map != nil){
+            print("Map isn't nil anymore!")
             self.map.addOverlay(circle)
         }
         
