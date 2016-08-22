@@ -140,6 +140,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
             // This works only if the app started the GCM service
             GCMService.sharedInstance().appDidReceiveMessage(userInfo);
             // Handle the received message
+        if let apsDict = userInfo["aps"] as? [String : AnyObject]{
+            if let alertDict = apsDict["alert"] as? [String : AnyObject]{
+                if let alert = alertDict["body"] as? String{
+                    if let alertTitle = alertDict["title"] as? String{
+                        //Insert it into the notifications array
+                        notifications.append(Notification(title: alertTitle, content: alert, dateReceived: NSDate())!)
+                        
+                        
+                        let alertControl = UIAlertController(title: alert, message: "", preferredStyle: UIAlertControllerStyle.Alert)
+                        alertControl.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+                        self.window?.rootViewController!.presentViewController(alertControl, animated: true, completion: {
+                            
+                            if (alertTitle == "Cru Ride Sharing" && self.ridesPage != nil){
+                                self.ridesPage?.refresh()
+                            }
+                        })
+                    }
+                }
+            }
+        }
+        
+        // Handle the received message
+        saveNotifications()
             NSNotificationCenter.defaultCenter().postNotificationName(messageKey, object: nil,
                 userInfo: userInfo)
     }
@@ -155,30 +178,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     func application( application: UIApplication,
         didReceiveRemoteNotification userInfo: [NSObject : AnyObject],
         fetchCompletionHandler handler: (UIBackgroundFetchResult) -> Void) {
-            print("Notification received: \(userInfo)")
+            print("Notification received from fetcher: \(userInfo)")
             // This works only if the app started the GCM service
             GCMService.sharedInstance().appDidReceiveMessage(userInfo);
+            let title = userInfo["title"] as! String
+            let body = userInfo["body"] as! String
+        
+            //Insert it into the notifications array
+            notifications.append(Notification(title: title, content: body, dateReceived: NSDate())!)
+        
+        // create a corresponding local notification
+        let notification = UILocalNotification()
+        notification.alertBody = body // text that will be displayed in the notification
+        notification.alertAction = "open" // text that is displayed after "slide to..." on the lock screen - defaults to "slide to view"
+        notification.soundName = UILocalNotificationDefaultSoundName // play default sound
+        notification.userInfo = userInfo
+        
+        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        if (self.ridesPage != nil){
+            self.ridesPage?.refresh()
+        }
+        
+            /*let alertControl = UIAlertController(title: title, message: body, preferredStyle: UIAlertControllerStyle.Alert)
+            alertControl.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
+            self.window?.rootViewController!.presentViewController(alertControl, animated: true, completion: {
             
-            if let apsDict = userInfo["aps"] as? [String : AnyObject]{
-                if let alertDict = apsDict["alert"] as? [String : AnyObject]{
-                    if let alert = alertDict["body"] as? String{
-                        if let alertTitle = alertDict["title"] as? String{
-                            //Insert it into the notifications array
-                            notifications.append(Notification(title: alertTitle, content: alert, dateReceived: NSDate())!)
-                            
-                            
-                            let alertControl = UIAlertController(title: alert, message: "", preferredStyle: UIAlertControllerStyle.Alert)
-                            alertControl.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-                            self.window?.rootViewController!.presentViewController(alertControl, animated: true, completion: {
-                                
-                                if (alertTitle == "Cru Ride Sharing" && self.ridesPage != nil){
-                                    self.ridesPage?.refresh()
-                                }
-                            })
-                        }
-                    }
+                if (self.ridesPage != nil){
+                    self.ridesPage?.refresh()
                 }
-            }
+            })*/
         
             // Handle the received message
             saveNotifications()
