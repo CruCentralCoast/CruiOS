@@ -107,7 +107,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             ride.eventEndDate = event.endNSDate
         }
         else {
-            CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: {error in})
+            //CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: {error in})
         }
         
         //Navbar buttons
@@ -321,7 +321,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
     @IBAction func cancelAction(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController!.popViewControllerAnimated(true)
     }
     
     // MARK: Validators
@@ -547,6 +547,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         ride.eventEndDate = event.endNSDate
         ride.departureDay = event.startNSDate
         ride.departureTime = event.startNSDate.addHours(-1)
+        ride.departureDate = event.startNSDate.addHours(-1)
         
         //Set the text in the fields
         dateField!.text = ride.getDepartureDay()
@@ -838,7 +839,8 @@ extension NewOfferRideViewController: GMSAutocompleteViewControllerDelegate {
     
     // User canceled the operation.
     func wasCancelled(viewController: GMSAutocompleteViewController) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        //self.dismissViewControllerAnimated(true, completion: nil)
+        self.navigationController!.popViewControllerAnimated(true)
     }
     
     // Turn the network activity indicator on and off again.

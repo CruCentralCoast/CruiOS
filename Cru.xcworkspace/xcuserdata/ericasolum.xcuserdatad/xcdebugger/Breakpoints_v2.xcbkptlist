@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Cru/NewDriverRideDetailViewController.swift"
-            timestampString = "493411788.122773"
+            timestampString = "493583460.125967"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "274"
+            endingLineNumber = "274"
             landmarkName = "saveRide()"
             landmarkType = "5">
          </BreakpointContent>

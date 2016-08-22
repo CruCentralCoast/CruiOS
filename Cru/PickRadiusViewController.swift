@@ -100,7 +100,6 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
 //        }
     }
     func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
-        print("Rendering now!")
         let circleRenderer = MKCircleRenderer(overlay: overlay)
         circleRenderer.fillColor = CruColors.lightBlue.colorWithAlphaComponent(0.1)//UIColor.blueColor().colorWithAlphaComponent(0.1)
         circleRenderer.strokeColor = CruColors.darkBlue//UIColor.blueColor()
@@ -141,7 +140,6 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
         curOverlay = circle
         
         if(map != nil){
-            print("Map isn't nil anymore!")
             self.map.addOverlay(circle)
         }
         

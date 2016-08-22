@@ -148,6 +148,17 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        //Set up the gradient background after the constraints are set
+        
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.frame = illustrationView.frame
+        
+        
+        gradient.colors = [gradientGray.CGColor, UIColor.whiteColor().CGColor]
+        illustrationView.layer.insertSublayer(gradient, atIndex: 0)
+    }
+    
     //Called for every passenger returned from the database query
     func insertPassenger(newPassenger: NSDictionary){
         let newPassenger = Passenger(dict: newPassenger)
@@ -185,13 +196,6 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         default:
             carImage.image = UIImage(named: IllustrationConstants.fullCar)
         }
-        
-        //Set up the gradient background
-        
-        let gradient: CAGradientLayer = CAGradientLayer()
-        gradient.frame = illustrationView.bounds
-        gradient.colors = [gradientGray.CGColor, UIColor.whiteColor().CGColor]
-        illustrationView.layer.insertSublayer(gradient, atIndex: 0)
         
         
     }

@@ -217,13 +217,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GGLInstanceIDDelegate, GC
     func willSendDataMessageWithID(messageID: String!, error: NSError!) {
         if (error != nil) {
             // Failed to send the message.
+            print("\(error)")
         } else {
             // Will send message, you can save the messageID to track the message
+            print("Will send message with no errors?")
         }
     }
     
     func didSendDataMessageWithID(messageID: String!) {
         // Did successfully send message identified by messageID
+        print("Successfully sent message.")
     }
     
     func didDeleteMessagesOnServer() {

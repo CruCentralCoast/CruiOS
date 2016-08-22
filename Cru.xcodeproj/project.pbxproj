@@ -172,8 +172,6 @@
 		6D1F089B1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
 		6D1F089C1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
 		6D1F089D1D306094005B53EE /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F08961D305F6D005B53EE /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6D2543921D4BDE2400980185 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D2543911D4BDE2400980185 /* GoogleService-Info.plist */; };
-		6D2543931D4BDE2400980185 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D2543911D4BDE2400980185 /* GoogleService-Info.plist */; };
 		6D2798FA1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D2798FB1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
@@ -194,6 +192,8 @@
 		6D76CA7B1C06AB6900F8B007 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7A1C06AB6900F8B007 /* Event.swift */; };
 		6D76CA7C1C06AB6900F8B007 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7A1C06AB6900F8B007 /* Event.swift */; };
 		6D76CA801C06C1D200F8B007 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7F1C06C1D200F8B007 /* EventDetailsViewController.swift */; };
+		6D8DB4771D6906AF00276378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */; };
+		6D8DB4781D6906AF00276378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */; };
 		6D8F423C1CD80C8D0013BB13 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423B1CD80C8D0013BB13 /* Article.swift */; };
 		6D8F423D1CD80C8D0013BB13 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423B1CD80C8D0013BB13 /* Article.swift */; };
 		6D8F423F1CD80CF60013BB13 /* YoutubeThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */; };
@@ -428,7 +428,6 @@
 		6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D1F08961D305F6D005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		6D1F089A1D306039005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
-		6D2543911D4BDE2400980185 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D2798F91CF26D78008E5906 /* EventStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
 		6D434A211D42ABE200661CA8 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
@@ -442,6 +441,7 @@
 		6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProLig.otf; sourceTree = "<group>"; };
 		6D76CA7A1C06AB6900F8B007 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6D76CA7F1C06C1D200F8B007 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D8F423B1CD80C8D0013BB13 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeThumbnail.swift; sourceTree = "<group>"; };
 		6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
@@ -622,7 +622,7 @@
 		0F8CEF1F1BEC0E13008FC70D /* Cru */ = {
 			isa = PBXGroup;
 			children = (
-				6D2543911D4BDE2400980185 /* GoogleService-Info.plist */,
+				6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */,
 				C12940E41CCD829E004DACB1 /* Clients */,
 				50C6CC791CBF3A0300EF5EFB /* SWRevealController */,
 				0FC8E3A01C45E99E007A7208 /* Introduction */,
@@ -1114,7 +1114,7 @@
 				C13F7DE61CE2713A0057D0F5 /* getinvolved.storyboard in Resources */,
 				503A06CC1C5F08CC00DAD10E /* offerride.storyboard in Resources */,
 				501D0ABF1C68588700BF243A /* events.storyboard in Resources */,
-				6D2543921D4BDE2400980185 /* GoogleService-Info.plist in Resources */,
+				6D8DB4771D6906AF00276378 /* GoogleService-Info.plist in Resources */,
 				6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */,
 				0F8CEF2B1BEC0E13008FC70D /* Assets.xcassets in Resources */,
 				6DBD7B971C75746300D11FFA /* FreigSanProMedIt.otf in Resources */,
@@ -1148,7 +1148,7 @@
 				5072B4371CB39022001F5BF6 /* offerride.storyboard in Resources */,
 				5072B4381CB39022001F5BF6 /* ridesharing.storyboard in Resources */,
 				5072B4391CB39022001F5BF6 /* Main.storyboard in Resources */,
-				6D2543931D4BDE2400980185 /* GoogleService-Info.plist in Resources */,
+				6D8DB4781D6906AF00276378 /* GoogleService-Info.plist in Resources */,
 				5072B42C1CB38FFE001F5BF6 /* sideMenu.storyboard in Resources */,
 				5072B42B1CB38FEB001F5BF6 /* events.storyboard in Resources */,
 				C1EF49081CDBF3AD009439FE /* communitygroups.storyboard in Resources */,
