@@ -65,11 +65,15 @@ class NotificationsViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("notificationCell", forIndexPath: indexPath) as! NotificationTableViewCell
+        
+        let not = notifications[indexPath.row]
 
         // Configure the cell...
-        cell.title.text = notifications[indexPath.row].title
-        cell.content.text = notifications[indexPath.row].content
-        cell.timeSince.text = "3 days ago"
+        cell.title.text = not.title
+        cell.content.text = not.content
+        cell.timeSince.text = not.dateReceived.offsetFrom(NSDate())
+        
+        
         
         return cell
     }

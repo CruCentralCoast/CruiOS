@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -16,19 +17,19 @@
             <string>FreightSansProBook-Regular</string>
             <string>FreightSansProBook-Regular</string>
             <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
-            <string>FreightSansProBook-Regular</string>
         </mutableArray>
         <mutableArray key="FreigSanProMed.otf">
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
+            <string>FreightSansProMedium-Regular</string>
             <string>FreightSansProMedium-Regular</string>
             <string>FreightSansProMedium-Regular</string>
         </mutableArray>
@@ -49,7 +50,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6xK-jZ-FaB">
                                 <rect key="frame" x="0.0" y="20" width="600" height="729"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qq7-1I-fCI">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qq7-1I-fCI">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="729"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnI-7g-Yjc">
@@ -66,13 +67,13 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZb-Uf-XhP">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KZb-Uf-XhP">
                                                 <rect key="frame" x="15" y="61" width="64" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="yQa-DV-Nhv"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -80,9 +81,10 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="newOfferBoard" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Last" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4S-4b-Ag0">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" restorationIdentifier="newOfferBoard" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Last" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4S-4b-Ag0">
                                                 <rect key="frame" x="15" y="90" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="WLf-bL-wSG" id="zUv-ze-2NU"/>
@@ -95,13 +97,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="2VA-AU-wP2"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TV0-XH-dPm">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TV0-XH-dPm">
                                                 <rect key="frame" x="15" y="128" width="570" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="7j7-9C-RKk"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -109,9 +111,10 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(123) 456-7890" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTn-Xe-Ruw">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(123) 456-7890" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTn-Xe-Ruw">
                                                 <rect key="frame" x="15" y="157" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCK-ZB-Lgb">
@@ -135,13 +138,13 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZO-OB-sTU">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZO-OB-sTU">
                                                 <rect key="frame" x="15" y="253" width="570" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="3OK-ga-sSK"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -149,9 +152,10 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fall Retreat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kR-1L-BPq">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fall Retreat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2kR-1L-BPq">
                                                 <rect key="frame" x="15" y="282" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <segue destination="j0z-ay-OPV" kind="popoverPresentation" identifier="chooseEvent" popoverAnchorView="2kR-1L-BPq" id="pSL-B6-rnk">
@@ -166,14 +170,14 @@
                                                     <constraint firstAttribute="height" constant="1" id="3IK-2X-Sah"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeV-Dz-Q70">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Departure Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NeV-Dz-Q70">
                                                 <rect key="frame" x="15" y="320" width="120" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="Qou-Mx-dEg"/>
                                                     <constraint firstAttribute="width" constant="120" id="SoJ-bE-YGT"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -181,15 +185,16 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(event ends on June 5th, 2017)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktR-9t-UPp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(event ends on June 5th, 2017)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktR-9t-UPp">
                                                 <rect key="frame" x="140" y="322" width="445" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="13"/>
                                                 <color key="textColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="June 5th, 2017" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QqI-GM-Sf0">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="June 5th, 2017" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QqI-GM-Sf0">
                                                 <rect key="frame" x="15" y="349" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="647-o4-8T4">
@@ -199,14 +204,14 @@
                                                     <constraint firstAttribute="height" constant="1" id="FWa-yL-lih"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BQ-qX-JvJ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Departure Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8BQ-qX-JvJ">
                                                 <rect key="frame" x="15" y="387" width="120" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="120" id="I6y-aJ-OiR"/>
                                                     <constraint firstAttribute="height" constant="21" id="hoh-KP-rlZ"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -214,15 +219,16 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(event starts at 11:00 am)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuB-dd-ESI">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="(event starts at 11:00 am)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GuB-dd-ESI">
                                                 <rect key="frame" x="140" y="389" width="445" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="13"/>
                                                 <color key="textColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="11:00 am" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qEz-Kk-0j7">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="11:00 am" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qEz-Kk-0j7">
                                                 <rect key="frame" x="15" y="416" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFS-29-gUo">
@@ -232,13 +238,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="XO4-qS-nsf"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Departure Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXu-9D-0Zu">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Departure Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXu-9D-0Zu">
                                                 <rect key="frame" x="15" y="454" width="570" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="9tL-kn-iPl"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -246,9 +252,10 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 Grand Ave, San Luis Obispo 93407" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Met-WV-FlO">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 Grand Ave, San Luis Obispo 93407" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Met-WV-FlO">
                                                 <rect key="frame" x="15" y="483" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FMn-nz-Vld">
@@ -258,13 +265,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="Xo0-Xt-cMW"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pickup Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCT-hc-QOp">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Pickup Radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCT-hc-QOp">
                                                 <rect key="frame" x="15" y="521" width="570" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="erX-eG-VeA"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -272,9 +279,10 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 mile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAd-Dk-s8a">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1 mile" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAd-Dk-s8a">
                                                 <rect key="frame" x="15" y="550" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <segue destination="bh3-gc-jbd" kind="show" identifier="radiusPicker" id="b2A-we-Zh5"/>
@@ -287,13 +295,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="h9d-pL-Beg"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available Seats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjO-O3-lJb">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Available Seats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gjO-O3-lJb">
                                                 <rect key="frame" x="15" y="588" width="570" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="EZp-Yg-REI"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -301,9 +309,10 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUr-rA-fSL">
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bUr-rA-fSL">
                                                 <rect key="frame" x="15" y="617" width="570" height="18"/>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                             </textField>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9G-y2-qOE">
@@ -313,13 +322,13 @@
                                                     <constraint firstAttribute="height" constant="1" id="BvG-2e-euJ"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKR-nJ-G4E">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Direction" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KKR-nJ-G4E">
                                                 <rect key="frame" x="15" y="655" width="570" height="21"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="21" id="G7C-7W-e7b"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
-                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="14"/>
+                                                <color key="textColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
@@ -327,7 +336,7 @@
                                                     </mask>
                                                 </variation>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PaW-DS-qCn" customClass="SegmentedControl" customModule="Cru" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PaW-DS-qCn" customClass="SegmentedControl" customModule="Cru" customModuleProvider="target">
                                                 <rect key="frame" x="15" y="684" width="570" height="30"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="30" id="nhj-gK-baK"/>
@@ -597,12 +606,6 @@
                                     <action selector="radiusValChanged:" destination="bh3-gc-jbd" eventType="valueChanged" id="9ZK-p3-K1N"/>
                                 </connections>
                             </slider>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ZM0-yi-WF8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
-                                <connections>
-                                    <outlet property="delegate" destination="bh3-gc-jbd" id="oIR-eQ-HLv"/>
-                                </connections>
-                            </mapView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Radius: 1 mi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoj-eE-aOn">
                                 <rect key="frame" x="20" y="576" width="560" height="28"/>
                                 <constraints>
@@ -612,33 +615,36 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FXe-yp-BCS">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="568"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="trailing" secondItem="msu-HE-L4l" secondAttribute="trailing" id="3CH-9C-g5J"/>
-                            <constraint firstItem="uoj-eE-aOn" firstAttribute="top" secondItem="ZM0-yi-WF8" secondAttribute="bottom" constant="8" symbolic="YES" id="4ND-tB-hAL"/>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="centerX" secondItem="kqR-LE-W91" secondAttribute="centerX" id="5TG-Pz-xiX"/>
                             <constraint firstAttribute="trailingMargin" secondItem="kqR-LE-W91" secondAttribute="trailing" constant="-20" id="8Ca-7i-ukT"/>
-                            <constraint firstItem="ZM0-yi-WF8" firstAttribute="leading" secondItem="kqR-LE-W91" secondAttribute="leading" id="GkW-fA-E8o"/>
+                            <constraint firstItem="uoj-eE-aOn" firstAttribute="top" secondItem="FXe-yp-BCS" secondAttribute="bottom" constant="8" id="9Ly-mZ-XoT"/>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="leading" secondItem="msu-HE-L4l" secondAttribute="leading" id="KNu-MI-Vge"/>
+                            <constraint firstItem="FXe-yp-BCS" firstAttribute="top" secondItem="zQA-ZP-0LQ" secondAttribute="top" id="N1m-jx-Jv2"/>
                             <constraint firstItem="LTK-wD-atb" firstAttribute="top" secondItem="kqR-LE-W91" secondAttribute="bottom" id="ORX-ih-iuW"/>
-                            <constraint firstItem="ZM0-yi-WF8" firstAttribute="top" secondItem="zQA-ZP-0LQ" secondAttribute="top" id="OcH-5V-O9n"/>
                             <constraint firstItem="kqR-LE-W91" firstAttribute="leading" secondItem="zQA-ZP-0LQ" secondAttribute="leadingMargin" constant="-20" id="V0z-bM-gVj"/>
                             <constraint firstItem="msu-HE-L4l" firstAttribute="top" secondItem="uoj-eE-aOn" secondAttribute="bottom" constant="35" id="XCN-WW-oz1"/>
+                            <constraint firstAttribute="trailing" secondItem="FXe-yp-BCS" secondAttribute="trailing" id="ayi-hW-b8i"/>
+                            <constraint firstItem="FXe-yp-BCS" firstAttribute="leading" secondItem="zQA-ZP-0LQ" secondAttribute="leading" id="c3i-j4-Uga"/>
                             <constraint firstItem="uoj-eE-aOn" firstAttribute="leading" secondItem="zQA-ZP-0LQ" secondAttribute="leadingMargin" id="pPm-x9-FTc"/>
                             <constraint firstAttribute="bottom" secondItem="uoj-eE-aOn" secondAttribute="bottom" constant="145" id="vLE-3o-e9M"/>
-                            <constraint firstItem="ZM0-yi-WF8" firstAttribute="trailing" secondItem="kqR-LE-W91" secondAttribute="trailing" id="zFF-iS-Lld"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="map" destination="ZM0-yi-WF8" id="Khe-Gg-Ec3"/>
+                        <outlet property="map" destination="FXe-yp-BCS" id="E9f-ZU-kdZ"/>
                         <outlet property="radiusLabel" destination="uoj-eE-aOn" id="pgK-ln-wVq"/>
                         <outlet property="radiusSlider" destination="msu-HE-L4l" id="oPr-O8-bKy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iwt-fq-7cy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2182" y="614"/>
+            <point key="canvasLocation" x="2182" y="613.5"/>
         </scene>
     </scenes>
 </document>

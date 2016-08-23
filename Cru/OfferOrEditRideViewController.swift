@@ -391,7 +391,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         ride.eventStartDate = event.startNSDate
         ride.eventEndDate = event.endNSDate
         
-        if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDay()){
+        if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDate()){
             ride.day = (components.day)
             ride.monthNum = (components.month)
             ride.year = (components.year)
@@ -760,7 +760,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             vc.ride = self.ride
             vc.setRadius = setRadius
             vc.numMiles = ride.radius
-            vc.location = CLocation
+            //vc.location = CLocation
         }
         else if(segue.identifier == EditRideConstants.editPassengersSegue){
             let popoverVC = segue.destinationViewController

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="azP-Hk-ALJ">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -32,14 +33,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FKH-dP-JQM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1387.5" y="610"/>
-        </scene>
-        <!--newOfferRide-->
-        <scene sceneID="bpt-nh-8xE">
-            <objects>
-                <viewControllerPlaceholder storyboardIdentifier="newOfferRide" storyboardName="newofferride" referencedIdentifier="newOfferRide" id="itF-eX-EVf" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KFl-nY-f0Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2223.5" y="1506"/>
         </scene>
         <!--Home-->
         <scene sceneID="Pmt-Nq-gRG">
@@ -432,6 +425,7 @@
                         <outlet property="eventsTableHeight" destination="Ujf-ah-qTB" id="3nA-2o-3Sj"/>
                         <outlet property="menuButton" destination="hvs-Wd-lEz" id="J8Q-gu-QbR"/>
                         <outlet property="scrollView" destination="4kP-5J-Cvs" id="swc-b6-OiG"/>
+                        <outlet property="socialBarSpace" destination="fCf-3f-Efy" id="qIK-FM-9ja"/>
                         <outlet property="table" destination="HfV-xA-ZtN" id="6LM-au-AwD"/>
                         <outlet property="upcomingEventsSpacer" destination="pm9-7S-AI1" id="gAu-7F-Bqm"/>
                         <outlet property="upcomingRidesHeight" destination="Jyk-3L-Tsw" id="BcZ-Aj-98M"/>
@@ -446,7 +440,7 @@
         <scene sceneID="trU-XR-d1D">
             <objects>
                 <tableViewController title="Notifications" id="YNu-1D-JSb" customClass="NotificationsViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="IiE-T0-dLx">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" id="IiE-T0-dLx">
                         <rect key="frame" x="0.0" y="44" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

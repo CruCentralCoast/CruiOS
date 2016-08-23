@@ -86,12 +86,11 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "offerridesegue"{
-            let destVC = segue.destinationViewController as! OfferOrEditRideViewController
-            //let templateRide = Ride()
-            //destVC.ride = templateRide
+            //let destVC = segue.destinationViewController as! OfferOrEditRideViewController
+            let destVC = segue.destinationViewController as! NewOfferRideViewController
             destVC.events = self.events
             destVC.rideVC = self
-            destVC.isOfferingRide = true
+            
         }
         if segue.identifier == "findridesegue"{
             let destVC = segue.destinationViewController as? FilterByEventViewController
@@ -109,7 +108,9 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         if(segue.identifier == "driverdetailsegue") {
             
-            let yourNextViewController = (segue.destinationViewController as! DriverRideDetailViewController)
+            //let yourNextViewController = (segue.destinationViewController as! DriverRideDetailViewController)
+            
+            let yourNextViewController = (segue.destinationViewController as! NewDriverRideDetailViewController)
             
             yourNextViewController.ride = tappedRide
             yourNextViewController.event = tappedEvent

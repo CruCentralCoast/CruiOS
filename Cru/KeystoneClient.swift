@@ -16,7 +16,7 @@ class KeystoneClient: ServerProtocol {
     func sendHttpGetRequest(reqUrl : String, completionHandler : (AnyObject?) -> Void) {
         sendHttpRequest(.GET, reqUrl: reqUrl, params: nil, completionHandler: completionHandler)
     }
-
+    
     func sendHttpPostRequest(reqUrl : String, params : [String : AnyObject], completionHandler : (AnyObject?) -> Void) {
         sendHttpRequest(.POST, reqUrl: reqUrl, params: params, completionHandler: completionHandler)
     }
@@ -36,7 +36,7 @@ class KeystoneClient: ServerProtocol {
         
         Alamofire.request(.POST, url, parameters: params).responseJSON {
             response in
-
+            
             callback(response.result.value as? NSArray)
         }
     }
@@ -97,20 +97,20 @@ class KeystoneClient: ServerProtocol {
     }
     
     func postDataIn(parent: DBCollection, parentId: String, child: DBCollection, params: [String:AnyObject],
-        insert: (NSDictionary)->(), completionHandler: Bool->Void) {
-
+                    insert: (NSDictionary)->(), completionHandler: Bool->Void) {
+        
         let requestUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name()
         
         requestData(requestUrl, method: .POST, params: params, insert: insert, completionHandler: completionHandler)
     }
-
+    
     // gets data from server using get endpoint
     func getData(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void) {
         let reqUrl = Config.serverEndpoint + collection.name()
         print ("Get data from \(reqUrl)")
         requestData(reqUrl, method: .GET, params: nil, insert: insert, completionHandler: completionHandler)
     }
-
+    
     // gets data from server using find endpoint
     func getData(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void, params: [String:AnyObject]) {
         let reqUrl = Config.serverEndpoint + collection.name() + "/find"
@@ -119,7 +119,7 @@ class KeystoneClient: ServerProtocol {
     }
     
     func getDataIn(parent: DBCollection, parentId: String, child: DBCollection, insert: (NSDictionary) -> (),
-        completionHandler: (Bool)->Void) {
+                   completionHandler: (Bool)->Void) {
         let reqUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name()
         requestData(reqUrl, method: .GET, params: nil, insert: insert, completionHandler: completionHandler)
     }
@@ -158,7 +158,7 @@ class KeystoneClient: ServerProtocol {
                 self.insertResources(response.result.value, insert: insert, completionHandler: completionHandler)
         }
     }
-
+    
     private func insertResources(value: AnyObject?, insert : (NSDictionary) -> (), completionHandler : (Bool) -> ()) {
         if let items = value as? NSArray {
             for item in items {

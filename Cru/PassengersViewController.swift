@@ -15,6 +15,7 @@ class PassengersViewController: UIViewController, UITableViewDataSource, UITable
     var passengersToDrop = [Passenger]()
     var editable = false
     var parentEditVC: OfferOrEditRideViewController!
+    var editVC: NewDriverRideDetailViewController!
     @IBOutlet weak var table: UITableView!
     
     override func viewDidAppear(animated: Bool) {
@@ -37,13 +38,18 @@ class PassengersViewController: UIViewController, UITableViewDataSource, UITable
                 }
             }
             
-            parentEditVC.passengers = remainingPassengers
-            parentEditVC.ride.passengers = remainingPassString
+            //parentEditVC.passengers = remainingPassengers
+            //parentEditVC.ride.passengers = remainingPassString
+            
+            editVC.passengers = remainingPassengers
+            editVC.ride.passengers = remainingPassString
             
             for pass in self.passengersToDrop{
-                parentEditVC.passengersToDrop.append(pass)
+                //parentEditVC.passengersToDrop.append(pass)
+                editVC.passengersToDrop.append(pass)
             }
-            parentEditVC.updateOptions()
+            //parentEditVC.updateOptions()
+            editVC.fillRideInfo()
         }
     }
     

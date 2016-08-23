@@ -15,6 +15,7 @@ struct Config {
     static let campusIds = "campuses"
     static let globalTopic = "/topics/global"
     static let gcmIdField = "gcmId"
+    static let googleAPIKey = "AIzaSyBxo_oBsj-cNhzynsF65sHjMBEdIhgJr_Q"
     static func gcmId()->String{
         return CruClients.getSubscriptionManager().loadGCMToken()
     }

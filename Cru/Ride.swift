@@ -28,6 +28,15 @@ struct RideKeys {
 //used to parse location into map for keystone db
 struct LocationKeys {
     static let loc = "location"
+    static let postcode = "postcode"
+    static let street1 = "street1"
+    static let city = "suburb"
+    static let state = "state"
+    static let country = "country"
+}
+
+struct LocKeys {
+    static let loc = "location"
     static let postcode = "ZIP"
     static let street1 = "Street"
     static let city = "City"
@@ -316,8 +325,18 @@ class Ride: Comparable, Equatable, TimeDetail {
         
     }
     
+    func getFormatedDay() -> String {
+        if(day == -1){
+            return ""
+        }
+        else{
+            let dFormat = "MMMM d, yyyy"
+            return GlobalUtils.stringFromDate(self.date, format: dFormat)
+        }
+    }
+    
     func getDepartureDay()->NSDate{
-        return self.departureDay!
+        return self.departureDate!
     }
     
     func getDepartureTime()->String{
@@ -331,7 +350,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     }
     
     func getDepartureTime()->NSDate{
-        return self.departureTime!
+        return self.departureDate!
     }
         
     func hasSeats()->Bool{

@@ -172,12 +172,12 @@
 		6D1F089B1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
 		6D1F089C1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
 		6D1F089D1D306094005B53EE /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F08961D305F6D005B53EE /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		6D2543921D4BDE2400980185 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D2543911D4BDE2400980185 /* GoogleService-Info.plist */; };
-		6D2543931D4BDE2400980185 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D2543911D4BDE2400980185 /* GoogleService-Info.plist */; };
 		6D2798FA1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D2798FB1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
 		6D3675731D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
+		6D4119851D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */; };
+		6D4119861D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */; };
 		6D434A221D42ABE200661CA8 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D434A211D42ABE200661CA8 /* LocationViewController.swift */; };
 		6D434A231D42ABE200661CA8 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D434A211D42ABE200661CA8 /* LocationViewController.swift */; };
 		6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B78B51C702FDF00F643CB /* Resource.swift */; };
@@ -185,11 +185,17 @@
 		6D55426A1D4ED6D6004008A5 /* Pods_Cru.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E8F3C6936A22FC2B42E9A2F /* Pods_Cru.framework */; };
 		6D59068F1CE3F0DC00464D57 /* CardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */; };
 		6D5AD04F1CF6230E0020D567 /* EventDetailsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */; };
+		6D5C10331D5CE246007AC44E /* FindRideFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */; };
+		6D5C10341D5CE246007AC44E /* FindRideFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */; };
+		6D5C10361D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
+		6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
 		6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */; };
 		6D76CA771C06A41900F8B007 /* FreigSanProLig.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */; };
 		6D76CA7B1C06AB6900F8B007 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7A1C06AB6900F8B007 /* Event.swift */; };
 		6D76CA7C1C06AB6900F8B007 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7A1C06AB6900F8B007 /* Event.swift */; };
 		6D76CA801C06C1D200F8B007 /* EventDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7F1C06C1D200F8B007 /* EventDetailsViewController.swift */; };
+		6D8DB4771D6906AF00276378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */; };
+		6D8DB4781D6906AF00276378 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */; };
 		6D8F423C1CD80C8D0013BB13 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423B1CD80C8D0013BB13 /* Article.swift */; };
 		6D8F423D1CD80C8D0013BB13 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423B1CD80C8D0013BB13 /* Article.swift */; };
 		6D8F423F1CD80CF60013BB13 /* YoutubeThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */; };
@@ -232,6 +238,8 @@
 		6DC46F7E1D3D73D8008BB70A /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7C1D3D73D8008BB70A /* Notification.swift */; };
 		6DC46F801D3D75DE008BB70A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */; };
 		6DC46F811D3D75DE008BB70A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */; };
+		6DC538261D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
+		6DC538271D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
 		85EAB81A1C0ECC8A005C7658 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EAB8191C0ECC8A005C7658 /* Config.swift */; };
 		93FBAE979FCDEA226FAC8EFC /* Pods_CruTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A95BECF8DACCC615D7195F23 /* Pods_CruTests.framework */; };
 		C1015CD21C9429D0005B559E /* ResourcesTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1015CD11C9429D0005B559E /* ResourcesTest.swift */; };
@@ -247,8 +255,6 @@
 		C12940E71CCD82D4004DACB1 /* CruClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E51CCD82D4004DACB1 /* CruClients.swift */; };
 		C12940E91CCD833E004DACB1 /* ServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E81CCD833E004DACB1 /* ServerProtocol.swift */; };
 		C12940EA1CCD833E004DACB1 /* ServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E81CCD833E004DACB1 /* ServerProtocol.swift */; };
-		C12940EC1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */; };
-		C12940ED1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */; };
 		C12C0A871C941E9C005751A0 /* DBCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12C0A861C941E9C005751A0 /* DBCollection.swift */; };
 		C13F7DE61CE2713A0057D0F5 /* getinvolved.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13F7DE51CE2713A0057D0F5 /* getinvolved.storyboard */; };
 		C13F7DE81CE277E30057D0F5 /* CGQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */; };
@@ -422,18 +428,21 @@
 		6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D1F08961D305F6D005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		6D1F089A1D306039005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
-		6D2543911D4BDE2400980185 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D2798F91CF26D78008E5906 /* EventStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
+		6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
 		6D434A211D42ABE200661CA8 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		6D4B78B51C702FDF00F643CB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		6D5542671D4ED52B004008A5 /* LocationPickerViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = LocationPickerViewController.framework; path = "/Users/ericasolum/Documents/Cru/CruiOS/Build/Products/Debug-iphoneos/LocationPickerViewController.framework"; sourceTree = "<absolute>"; };
 		6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTableViewCell.swift; sourceTree = "<group>"; };
 		6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTest.swift; sourceTree = "<group>"; };
+		6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRideFormViewController.swift; sourceTree = "<group>"; };
+		6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDriverRideDetailViewController.swift; sourceTree = "<group>"; };
 		6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Leitura-Roman 3.otf"; sourceTree = "<group>"; };
 		6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProLig.otf; sourceTree = "<group>"; };
 		6D76CA7A1C06AB6900F8B007 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		6D76CA7F1C06C1D200F8B007 /* EventDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsViewController.swift; sourceTree = "<group>"; };
+		6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D8F423B1CD80C8D0013BB13 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeThumbnail.swift; sourceTree = "<group>"; };
 		6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
@@ -458,6 +467,7 @@
 		6DC46F791D3D7212008BB70A /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		6DC46F7C1D3D73D8008BB70A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
+		6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerViewController.swift; sourceTree = "<group>"; };
 		6DFE267EAB4A20B9728E2CF5 /* Pods-Cru.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cru.release.xcconfig"; path = "Pods/Target Support Files/Pods-Cru/Pods-Cru.release.xcconfig"; sourceTree = "<group>"; };
 		6E8F3C6936A22FC2B42E9A2F /* Pods_Cru.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cru.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85EAB8191C0ECC8A005C7658 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -469,7 +479,6 @@
 		C1214DCA1CEA668300E7D25F /* EventUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventUtilsTest.swift; sourceTree = "<group>"; };
 		C12940E51CCD82D4004DACB1 /* CruClients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CruClients.swift; sourceTree = "<group>"; };
 		C12940E81CCD833E004DACB1 /* ServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerProtocol.swift; sourceTree = "<group>"; };
-		C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
 		C12C0A861C941E9C005751A0 /* DBCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBCollection.swift; sourceTree = "<group>"; };
 		C13F7DE51CE2713A0057D0F5 /* getinvolved.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = getinvolved.storyboard; sourceTree = "<group>"; };
 		C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGQuestion.swift; sourceTree = "<group>"; };
@@ -613,7 +622,7 @@
 		0F8CEF1F1BEC0E13008FC70D /* Cru */ = {
 			isa = PBXGroup;
 			children = (
-				6D2543911D4BDE2400980185 /* GoogleService-Info.plist */,
+				6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */,
 				C12940E41CCD829E004DACB1 /* Clients */,
 				50C6CC791CBF3A0300EF5EFB /* SWRevealController */,
 				0FC8E3A01C45E99E007A7208 /* Introduction */,
@@ -746,8 +755,10 @@
 				50AC224F1CDB016800427C08 /* EditCell.swift */,
 				50AC22521CDB033D00427C08 /* EditableItem.swift */,
 				5094897C1C64000200A67697 /* DriverRideDetailViewController.swift */,
+				6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */,
 				501038B11CD9655F00CCD7DC /* OfferOrEditRideViewController.swift */,
 				6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */,
+				6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */,
 				6DA8154F1D413E7E0087F05B /* EventsPopoverViewController.swift */,
 				6D434A211D42ABE200661CA8 /* LocationViewController.swift */,
 				6DA815491D3FFA060087F05B /* newofferride.storyboard */,
@@ -893,6 +904,7 @@
 				50A9B02B1CFBFA1900E759E2 /* MapOfRidesViewController.swift */,
 				50A9B02E1CFCD74400E759E2 /* RideAnnotation.swift */,
 				50FAC03E1CFBD68000E93E89 /* RideJoinViewController.swift */,
+				6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */,
 				50A9B0281CFBE04A00E759E2 /* RiderEditTableViewCell.swift */,
 				504742451C759823003F276E /* OfferedRideTableViewCell.swift */,
 				50EF26E21C7592EF0055F480 /* FilterByEventViewController.swift */,
@@ -950,7 +962,7 @@
 			children = (
 				C12940E51CCD82D4004DACB1 /* CruClients.swift */,
 				C12940E81CCD833E004DACB1 /* ServerProtocol.swift */,
-				C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */,
+				6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */,
 				C185BB381CD2904F00787153 /* FakeServerClient.swift */,
 			);
 			name = Clients;
@@ -1102,7 +1114,7 @@
 				C13F7DE61CE2713A0057D0F5 /* getinvolved.storyboard in Resources */,
 				503A06CC1C5F08CC00DAD10E /* offerride.storyboard in Resources */,
 				501D0ABF1C68588700BF243A /* events.storyboard in Resources */,
-				6D2543921D4BDE2400980185 /* GoogleService-Info.plist in Resources */,
+				6D8DB4771D6906AF00276378 /* GoogleService-Info.plist in Resources */,
 				6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */,
 				0F8CEF2B1BEC0E13008FC70D /* Assets.xcassets in Resources */,
 				6DBD7B971C75746300D11FFA /* FreigSanProMedIt.otf in Resources */,
@@ -1136,7 +1148,7 @@
 				5072B4371CB39022001F5BF6 /* offerride.storyboard in Resources */,
 				5072B4381CB39022001F5BF6 /* ridesharing.storyboard in Resources */,
 				5072B4391CB39022001F5BF6 /* Main.storyboard in Resources */,
-				6D2543931D4BDE2400980185 /* GoogleService-Info.plist in Resources */,
+				6D8DB4781D6906AF00276378 /* GoogleService-Info.plist in Resources */,
 				5072B42C1CB38FFE001F5BF6 /* sideMenu.storyboard in Resources */,
 				5072B42B1CB38FEB001F5BF6 /* events.storyboard in Resources */,
 				C1EF49081CDBF3AD009439FE /* communitygroups.storyboard in Resources */,
@@ -1296,7 +1308,6 @@
 				50A9B02C1CFBFA1900E759E2 /* MapOfRidesViewController.swift in Sources */,
 				6D434A221D42ABE200661CA8 /* LocationViewController.swift in Sources */,
 				C13F7DF41CE28D2F0057D0F5 /* OptionQuestionCell.swift in Sources */,
-				C12940EC1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */,
 				0F10F0221CC03F7000F478ED /* RidesViewController.swift in Sources */,
 				50B1D3C51CED6BB10014EE1B /* ChooseMinistryVC.swift in Sources */,
 				C1D9078E1C88F8C800FDC096 /* SettingsTableViewController.swift in Sources */,
@@ -1305,6 +1316,7 @@
 				C1E9DC111CF6A2B200066C5F /* CGQuestionAnswer.swift in Sources */,
 				0F17E3D91C91076D00713297 /* MapLocalStorageManager.swift in Sources */,
 				C151D9B41C7D2D870067A29E /* LoginViewController.swift in Sources */,
+				6D5C10331D5CE246007AC44E /* FindRideFormViewController.swift in Sources */,
 				6DA8154D1D4019E70087F05B /* SegmentedControl.swift in Sources */,
 				0F83D56E1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift in Sources */,
 				0FAAE91C1CE6A83A0055770D /* MinistryTeamsTableViewController.swift in Sources */,
@@ -1337,6 +1349,7 @@
 				0FAEB97C1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift in Sources */,
 				6DC46F681D3D5456008BB70A /* Video.swift in Sources */,
 				0F5302751CD2B85D0097F9F2 /* EventTableViewCell.swift in Sources */,
+				6D4119851D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */,
 				6DAD2B751D2D8C6C001F8A1B /* DateUtils.swift in Sources */,
 				6DBD7B8C1C756D1000D11FFA /* CruColors.swift in Sources */,
 				0F1B8C291CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift in Sources */,
@@ -1361,6 +1374,8 @@
 				50B172601CEBBE7F007CDD44 /* SearchableOptionsVC.swift in Sources */,
 				6DA815501D413E7E0087F05B /* EventsPopoverViewController.swift in Sources */,
 				50B1D3C81CED76910014EE1B /* SelectCGVC.swift in Sources */,
+				6DC538261D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */,
+				6D5C10361D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */,
 				6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */,
 				50DC2D2D1CEEBE690015C574 /* OfferOrEditRideViewController.swift in Sources */,
 				C13F7DE81CE277E30057D0F5 /* CGQuestion.swift in Sources */,
@@ -1411,6 +1426,7 @@
 				5072B41C1CB38DF4001F5BF6 /* EventDetailsViewController.swift in Sources */,
 				C13F7DF51CE28D2F0057D0F5 /* OptionQuestionCell.swift in Sources */,
 				C1D99C821CD4011B00128CA9 /* RideUtilsTest.swift in Sources */,
+				6DC538271D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */,
 				6D2798FB1CF26D79008E5906 /* EventStatus.swift in Sources */,
 				5072B41B1CB38BF8001F5BF6 /* RiderRideDetailViewController.swift in Sources */,
 				6DC46F6F1D3D593C008BB70A /* ArticleTableViewCell.swift in Sources */,
@@ -1427,6 +1443,7 @@
 				C1536D621CFD3CEE00730281 /* SummerMission.swift in Sources */,
 				0F1959B61C8E59DE00A783BA /* Cancler.swift in Sources */,
 				5031E1531CE682F30005AAF6 /* TestDriverRideDetail.swift in Sources */,
+				6D5C10341D5CE246007AC44E /* FindRideFormViewController.swift in Sources */,
 				C1DCEC471C7681E1009FACE0 /* RideUtils.swift in Sources */,
 				50D316701CFED8990050692B /* CruPhoneNoRule.swift in Sources */,
 				505722A51CE095A800F87BE4 /* PickRadiusViewController.swift in Sources */,
@@ -1458,7 +1475,6 @@
 				509DA91E1C6172FC0050CE26 /* Ride.swift in Sources */,
 				50A9B02A1CFBE04A00E759E2 /* RiderEditTableViewCell.swift in Sources */,
 				0F17E3DA1C91076D00713297 /* MapLocalStorageManager.swift in Sources */,
-				C12940ED1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */,
 				C13F7DE91CE277E30057D0F5 /* CGQuestion.swift in Sources */,
 				0F1959CD1C8E5B0C00A783BA /* LoginUtils.swift in Sources */,
 				50D3166F1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
@@ -1486,6 +1502,8 @@
 				6DA330AB1CD95E1200FCC970 /* ResourceTest.swift in Sources */,
 				0F6862221CE65D4A00138377 /* SummerMissionsTableViewController.swift in Sources */,
 				5072B4181CB38616001F5BF6 /* TimeDetail.swift in Sources */,
+				6D4119861D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */,
+				6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */,
 				6DC46F691D3D5456008BB70A /* Video.swift in Sources */,
 				0F52709C1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */,
 				C1015CD31C942C0E005B559E /* DBCollection.swift in Sources */,
