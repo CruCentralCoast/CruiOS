@@ -176,6 +176,8 @@
 		6D2798FB1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
 		6D3675731D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
+		6D4119851D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */; };
+		6D4119861D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */; };
 		6D434A221D42ABE200661CA8 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D434A211D42ABE200661CA8 /* LocationViewController.swift */; };
 		6D434A231D42ABE200661CA8 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D434A211D42ABE200661CA8 /* LocationViewController.swift */; };
 		6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4B78B51C702FDF00F643CB /* Resource.swift */; };
@@ -253,8 +255,6 @@
 		C12940E71CCD82D4004DACB1 /* CruClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E51CCD82D4004DACB1 /* CruClients.swift */; };
 		C12940E91CCD833E004DACB1 /* ServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E81CCD833E004DACB1 /* ServerProtocol.swift */; };
 		C12940EA1CCD833E004DACB1 /* ServerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E81CCD833E004DACB1 /* ServerProtocol.swift */; };
-		C12940EC1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */; };
-		C12940ED1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */; };
 		C12C0A871C941E9C005751A0 /* DBCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12C0A861C941E9C005751A0 /* DBCollection.swift */; };
 		C13F7DE61CE2713A0057D0F5 /* getinvolved.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C13F7DE51CE2713A0057D0F5 /* getinvolved.storyboard */; };
 		C13F7DE81CE277E30057D0F5 /* CGQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */; };
@@ -430,6 +430,7 @@
 		6D1F089A1D306039005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		6D2798F91CF26D78008E5906 /* EventStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
+		6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
 		6D434A211D42ABE200661CA8 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		6D4B78B51C702FDF00F643CB /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		6D5542671D4ED52B004008A5 /* LocationPickerViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = LocationPickerViewController.framework; path = "/Users/ericasolum/Documents/Cru/CruiOS/Build/Products/Debug-iphoneos/LocationPickerViewController.framework"; sourceTree = "<absolute>"; };
@@ -478,7 +479,6 @@
 		C1214DCA1CEA668300E7D25F /* EventUtilsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventUtilsTest.swift; sourceTree = "<group>"; };
 		C12940E51CCD82D4004DACB1 /* CruClients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CruClients.swift; sourceTree = "<group>"; };
 		C12940E81CCD833E004DACB1 /* ServerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerProtocol.swift; sourceTree = "<group>"; };
-		C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
 		C12C0A861C941E9C005751A0 /* DBCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBCollection.swift; sourceTree = "<group>"; };
 		C13F7DE51CE2713A0057D0F5 /* getinvolved.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = getinvolved.storyboard; sourceTree = "<group>"; };
 		C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGQuestion.swift; sourceTree = "<group>"; };
@@ -962,7 +962,7 @@
 			children = (
 				C12940E51CCD82D4004DACB1 /* CruClients.swift */,
 				C12940E81CCD833E004DACB1 /* ServerProtocol.swift */,
-				C12940EB1CCD85E0004DACB1 /* KeystoneClient.swift */,
+				6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */,
 				C185BB381CD2904F00787153 /* FakeServerClient.swift */,
 			);
 			name = Clients;
@@ -1308,7 +1308,6 @@
 				50A9B02C1CFBFA1900E759E2 /* MapOfRidesViewController.swift in Sources */,
 				6D434A221D42ABE200661CA8 /* LocationViewController.swift in Sources */,
 				C13F7DF41CE28D2F0057D0F5 /* OptionQuestionCell.swift in Sources */,
-				C12940EC1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */,
 				0F10F0221CC03F7000F478ED /* RidesViewController.swift in Sources */,
 				50B1D3C51CED6BB10014EE1B /* ChooseMinistryVC.swift in Sources */,
 				C1D9078E1C88F8C800FDC096 /* SettingsTableViewController.swift in Sources */,
@@ -1350,6 +1349,7 @@
 				0FAEB97C1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift in Sources */,
 				6DC46F681D3D5456008BB70A /* Video.swift in Sources */,
 				0F5302751CD2B85D0097F9F2 /* EventTableViewCell.swift in Sources */,
+				6D4119851D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */,
 				6DAD2B751D2D8C6C001F8A1B /* DateUtils.swift in Sources */,
 				6DBD7B8C1C756D1000D11FFA /* CruColors.swift in Sources */,
 				0F1B8C291CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift in Sources */,
@@ -1475,7 +1475,6 @@
 				509DA91E1C6172FC0050CE26 /* Ride.swift in Sources */,
 				50A9B02A1CFBE04A00E759E2 /* RiderEditTableViewCell.swift in Sources */,
 				0F17E3DA1C91076D00713297 /* MapLocalStorageManager.swift in Sources */,
-				C12940ED1CCD85E0004DACB1 /* KeystoneClient.swift in Sources */,
 				C13F7DE91CE277E30057D0F5 /* CGQuestion.swift in Sources */,
 				0F1959CD1C8E5B0C00A783BA /* LoginUtils.swift in Sources */,
 				50D3166F1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
@@ -1503,6 +1502,7 @@
 				6DA330AB1CD95E1200FCC970 /* ResourceTest.swift in Sources */,
 				0F6862221CE65D4A00138377 /* SummerMissionsTableViewController.swift in Sources */,
 				5072B4181CB38616001F5BF6 /* TimeDetail.swift in Sources */,
+				6D4119861D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */,
 				6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */,
 				6DC46F691D3D5456008BB70A /* Video.swift in Sources */,
 				0F52709C1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */,
