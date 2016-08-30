@@ -109,7 +109,7 @@ class IntroViewController: UIViewController {
         if (currentModal == descriptionModal) {
             let nextButtonWidth = currentModal.frame.size.width
             let nextButtonX = (backgroundModal.frame.size.width / 2) - (nextButtonWidth / 2)
-            initializeButton("Next", buttonWidth: nextButtonWidth, buttonX: nextButtonX, buttonID: "nextToCampuses")
+            initializeButton("Agree", buttonWidth: nextButtonWidth, buttonX: nextButtonX, buttonID: "nextToCampuses")
             
             titleLabel.text = " "
         }
@@ -178,7 +178,7 @@ class IntroViewController: UIViewController {
         var nextNdx = 0
         
         //we're going forward one modal
-        if (sender.titleLabel!.text == "Next") {
+        if (sender.titleLabel!.text == "Next" || sender.titleLabel!.text == "Agree") {
             nextNdx = currentNdx! + 1
         }
         //we're going backwards one modal
