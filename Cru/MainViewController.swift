@@ -124,7 +124,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.blackColor()]
         noRideString = NSAttributedString(string: "Currently no rides available", attributes: attributes)
         
-        noEventsString = NSAttributedString(string: "No events this week", attributes: attributes)
+        noEventsString = NSAttributedString(string: "No events for the next two weeks", attributes: attributes)
         
         //Take this out eventually
         offerVC = NewOfferRideViewController()
@@ -187,7 +187,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         //Insert event into the array only if it's within the next week
         let curDate = NSDate()
-        let week = curDate.addDays(7)
+        let week = curDate.addDays(14)
         
         if(event.startNSDate.isLessThanDate(week) && event.startNSDate.compare(NSDate()) != .OrderedAscending){
             
