@@ -21,7 +21,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var allEvents = [Event]()
     var ridesRowHeight = 100
     var offerVC: NewOfferRideViewController!
-    var instaURL = NSURL.init(string: "instagram://user?username=crucentralcoast")
 
     @IBOutlet weak var offerRideButton: UIButton!
     @IBOutlet weak var table: UITableView!
@@ -56,7 +55,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBAction func instagramTapped(sender: UIButton) {
         
-        let instagramHooks = "instagram://user?username=crucentralcoast"
+        let instagramHooks = "instagram://user?username=\(Config.instagramUsername)"
         let instagramUrl = NSURL(string: instagramHooks)
         if UIApplication.sharedApplication().canOpenURL(instagramUrl!)
         {

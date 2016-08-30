@@ -16,6 +16,7 @@ struct Config {
     static let globalTopic = "/topics/global"
     static let gcmIdField = "gcmId"
     static let googleAPIKey = "AIzaSyBxo_oBsj-cNhzynsF65sHjMBEdIhgJr_Q"
+    static let instagramUsername = "crucentralcoast"
     static func gcmId()->String{
         return CruClients.getSubscriptionManager().loadGCMToken()
     }
