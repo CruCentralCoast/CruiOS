@@ -41,7 +41,7 @@ PODS:
   - GoogleSymbolUtilities (1.1.1)
   - GoogleUtilities (1.3.1):
     - GoogleSymbolUtilities (~> 1.0)
-  - HTMLReader (0.9.4)
+  - HTMLReader (1.0.1)
   - ImageLoader (0.8.8)
   - IQKeyboardManagerSwift (3.3.4)
   - LocationPicker (0.6.0)
@@ -74,6 +74,7 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
+  - NVActivityIndicatorView (2.11)
   - PagedArray (0.3)
   - RadioButton (1.0)
   - SideMenu (0.1.6)
@@ -92,12 +93,13 @@ DEPENDENCIES:
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
-  - HTMLReader (~> 0.9)
+  - HTMLReader (~> 1.0)
   - ImageLoader
   - IQKeyboardManagerSwift (= 3.3.4)
   - LocationPicker
   - LocationPickerViewController (~> 1.2)
   - MRProgress
+  - NVActivityIndicatorView (~> 2.11)
   - PagedArray (~> 0.2)
   - RadioButton
   - SideMenu (~> 0.1)
@@ -123,16 +125,19 @@ SPEC CHECKSUMS:
   GooglePlaces: 72fab1d1651c6df0322f2aad245ffb15b80d3c56
   GoogleSymbolUtilities: 33117db1b5f290c6fbf259585e4885b4c84b98d7
   GoogleUtilities: 56c5ac05b7aa5dc417a1bb85221a9516e04d7032
-  HTMLReader: 03e9da607f2f9924f9cf4b5e5c4143932004257f
+  HTMLReader: 9c9a018b11d7e9884a52ab97ce1bd23bdca7fddb
   ImageLoader: 6bc633e7d679136b742a609b832d2bb19e53f3a5
   IQKeyboardManagerSwift: 6f2290d093f5269dc07bdae8bc58e968cf9c4738
   LocationPicker: 93ea916c48fef7b561fc4ecc2457cbb4ac58d7cf
   LocationPickerViewController: 68054f63b9fb4a9e77f99e6402d811c061f22ee7
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  NVActivityIndicatorView: 6a2bca6dab5c88ad72c28f50676acc6cca450c0d
   PagedArray: f04f072d8bdbe1111f2d4635c87e3bf8d903bdb9
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
   SideMenu: 102bdf48ac5228b1a4a68bdd0b10232adbdbfdb0
   SwiftValidator: 0b6a48bf10364411b0d64c97f78665ff87ca9f8b
   SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
 
-COCOAPODS: 0.39.0
+PODFILE CHECKSUM: b4f940393809789fcb72f7b1f3df5bf3c753f543
+
+COCOAPODS: 1.0.1
