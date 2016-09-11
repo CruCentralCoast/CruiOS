@@ -19,13 +19,14 @@ def cru_pods
     pod 'ActionSheetPicker-3.0'
     pod 'DZNEmptyDataSet'
     pod 'ImageLoader'
-    pod 'HTMLReader', '~> 0.9'
+    pod 'HTMLReader', '~> 1.0'
     pod 'SwiftyJSON', '~> 2.3.0'
     pod 'PagedArray', '~> 0.2'
     pod 'LocationPicker'
     pod 'GooglePlaces'
     pod 'GooglePlacePicker'
     pod 'GoogleMaps'
+    pod 'NVActivityIndicatorView', '~> 2.11'
 end
 
 def crash_monitor

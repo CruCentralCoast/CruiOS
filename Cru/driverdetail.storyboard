@@ -703,8 +703,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E3d-b4-9Xw">
                                 <rect key="frame" x="0.0" y="20" width="600" height="816"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dg8-pZ-ZDS">
-                                        <rect key="frame" x="0.0" y="0.0" width="605" height="832"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Dg8-pZ-ZDS">
+                                        <rect key="frame" x="-20" y="-20" width="645" height="847"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZJb-bx-9NQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="605" height="165"/>

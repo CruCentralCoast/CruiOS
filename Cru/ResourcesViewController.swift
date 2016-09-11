@@ -14,20 +14,22 @@ import Alamofire
 import HTMLReader
 import MRProgress
 import PagedArray
+import DZNEmptyDataSet
+import NVActivityIndicatorView
 
 let InitialCount = 20
 let PageSize = 5
 
-class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, CardViewDelegate, SWRevealViewControllerDelegate {
+class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, CardViewDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, NVActivityIndicatorViewable {
     //MARK: Properties
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var selectorBar: UITabBar!
-    
     var serverClient: ServerProtocol
     var resources = [Resource]()
     var cardViews = [CardView]()
- 
+    var tags = [ResourceTag]()
+    var overlayRunning = false
     var currentType = ResourceType.Article
     var filteredResources = [Resource]()
     var articleViews = [CardView]()
@@ -42,18 +44,26 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var videosArray: Array<Dictionary<NSObject, AnyObject>> = []
     var nextPageToken = ""
     var pageNum = 1
-    
+    let dimLevel: CGFloat = 0.5
+    let dimSpeed: Double = 0.5
+    var searchActivated = false
+    var activityIndicatorView: NVActivityIndicatorView
+    var isLeader = false
+    var filteredTags = [ResourceTag]()
+    var searchPhrase = ""
     
     //Call this constructor in testing with a fake serverProtocol
     init?(serverProtocol: ServerProtocol, _ coder: NSCoder? = nil) {
         //super.init(coder: NSCoder)
         self.serverClient = serverProtocol
+        activityIndicatorView = NVActivityIndicatorView(frame: UIScreen.mainScreen().bounds, type: NVActivityIndicatorType.AudioEqualizer, color: CruColors.yellow)
         if let coder = coder {
             super.init(coder: coder)
         }
         else {
             super.init()
         }
+        
     }
 
     required convenience init?(coder aDecoder: NSCoder) {
@@ -74,8 +84,28 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
        
         //If the user is logged in, view special resources. Otherwise load non-restricted resources.
+        
         MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        overlayRunning = true
+        /*var actIndView = UIView(frame: self.view.frame)
+        actIndView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        activityIndicatorView = NVActivityIndicatorView(frame: actIndView.frame, type: NVActivityIndicatorType.BallRotateChase, color: CruColors.yellow)
+        actIndView.addSubview(activityIndicatorView)
+        self.view.addSubview(actIndView)
+        
+        activityIndicatorView.startAnimating()*/
+        
         serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
+        
+        //Also get resource tags and store them
+        serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
+            //Hide the community leader tag if the user isn't logged in
+            if GlobalUtils.loadString(Config.leaderApiKey) == "" {
+                let index = self.tags.indexOf({$0.title == "Leader (password needed)"})
+                self.tags.removeAtIndex(index!)
+                
+            }
+        })
         
         tableView.backgroundColor = Colors.googleGray
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -87,21 +117,20 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         selectorBar.tintColor = UIColor.whiteColor()
-        
-        //Set up the fluent pagination
 
-    }
-    
-    func completion(success: Bool) {
-        if( success) {
-            
-        }
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
     }
     
     func doNothing(success: Bool) {
         
     }
+    
+    func insertResourceTag(dict : NSDictionary) {
+        let tag = ResourceTag(dict: dict)!
+        tags.insert(tag, atIndex: 0)
+        
+        
+    }
+    
     
     //Code for the bar at the top of the view for filtering resources
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
@@ -202,7 +231,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if (cardView != nil) {
             cardView.delegate = self
-            self.resources.insert(resource, atIndex: 0)
+            //self.resources.insert(resource, atIndex: 0)
             if(self.currentType == .Audio){
                 self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
             }
@@ -333,7 +362,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 if (cardView != nil) {
                     cardView.delegate = self
-                    self.resources.insert(resource, atIndex: 0)
+                    //self.resources.insert(resource, atIndex: 0)
                     if(self.currentType == .Article){
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
                     }
@@ -393,7 +422,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 if (cardView != nil) {
                     cardView.delegate = self
-                    self.resources.insert(resource, atIndex: 0)
+                    //self.resources.insert(resource, atIndex: 0)
                     if(self.currentType == .Video){
                         self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
                     }
@@ -442,7 +471,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if (cardView != nil) {
             cardView.delegate = self
-            self.resources.insert(resource, atIndex: 0)
+            //self.resources.insert(resource, atIndex: 0)
             if(self.currentType == .Video){
                 self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
             }
@@ -491,6 +520,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Cru CC Youtube Video Retrieval
     //Get the data from Cru Central Coast's youtube channel
     func getVideosForChannel(success: Bool) {
+        if !overlayRunning {
+            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        }
+        
         // Get the selected channel's playlistID value from the channelsDataArray array and use it for fetching the proper video playlst.
         
         // Form the request URL string.
@@ -551,11 +584,17 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             
             MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            self.overlayRunning = false
+            //self.activityIndicatorView.stopAnimating()
         })
     }
     
     func finished(success: Bool) {
-        print("\nFinsihed!\n")
+        if overlayRunning {
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            overlayRunning = false
+        }
+        
     }
     
     func performGetRequest(targetURL: NSURL!, completion: (data: NSData?, HTTPStatusCode: Int, error: NSError?) -> Void) {
@@ -581,9 +620,9 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,forRowAtIndexPath indexPath: NSIndexPath) {
-        if currentType == .Video && indexPath.row > pageNum * 4 {
-            var success = true
-            getVideosForChannel(success)
+        if currentType == .Video && searchActivated != true && indexPath.row > pageNum * 4 {
+            
+            getVideosForChannel(true)
             pageNum = pageNum + 1
         }
         
@@ -591,6 +630,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //Return the number of cards depending on the type of resource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
         switch (currentType){
         case .Article:
             return articleViews.count
@@ -599,6 +639,8 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         case .Video:
             return videoViews.count
         }
+        
+        
     }
     
     //Configures each cell in the table view as a card and sets the UI elements to match with the Resource data
@@ -638,6 +680,86 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     // MARK: Actions
+    
+    @IBAction func presentSearchModal(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("searchModal", sender: self)
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.OverCurrentContext
+    }
+    
+    //Search modal calls this when "Apply" is tapped
+    func applyFilters(tags: [ResourceTag], searchText: String?) {
+        searchActivated = true
+        filteredTags = tags
+        
+        if searchText != nil {
+            self.searchPhrase = searchText!
+            filterContent(tags, searchText: searchText!)
+        }
+        else if filteredTags.count != tags.count{
+            filterContent(tags, searchText: nil)
+        }
+        
+    }
+    //Checks if a filtered Resource has a tag the user selected
+    func resourceHasTag(tags: [String], filteredTags: [ResourceTag]) -> Bool{
+        for tag in tags {
+            if filteredTags.indexOf({$0.id == tag}) != nil {
+                print("Resource has propper tag")
+                return true
+            }
+        }
+        print("Resource does not have propper tag")
+        return false
+    }
+    
+    func filterContent(tags: [ResourceTag], searchText: String?) {
+        filteredResources = resources.filter { res in
+            //Search through the title if user entered a search phrase, otherwise
+            // only filter out resources without the right tags
+            //Also don't search through youtube videos that are coming from the
+            //cru feed because they aren't tagged
+            if !res.url.containsString("youtube") {
+                if searchText != nil {
+                    return res.title.lowercaseString.containsString(searchText!.lowercaseString) && resourceHasTag(res.tags, filteredTags: tags)
+                }
+                else {
+                    return resourceHasTag(res.tags, filteredTags: tags)
+                }
+            }
+            return false
+        }
+        
+        //Reset all the view arrays
+        articleViews = [CardView]()
+        audioViews = [CardView]()
+        videoViews = [CardView]()
+        allViews = [CardView]()
+        
+        for resource in filteredResources {
+            if (resource.type == ResourceType.Article) {
+                insertArticle(resource, completionHandler: doNothing)
+            }
+                
+            else if (resource.type == ResourceType.Video) {
+                if(resource.url.rangeOfString("youtube") != nil) {
+                    insertYoutube(resource, completionHandler: doNothing)
+                }
+                else {
+                    insertGeneric(resource, completionHandler: doNothing)
+                }
+            }
+                
+            else if (resource.type == ResourceType.Audio) {
+                insertAudio(resource, completionHandler: doNothing)
+            }
+        }
+        
+        tableView.reloadData()
+    }
+    
     func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
         
         handleCardAction(cardView, action: action)
@@ -655,6 +777,72 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             for view in self.view.subviews {
                 view.userInteractionEnabled = false
             }
+        }
+    }
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "searchModal" {
+            
+            let modalVC = segue.destinationViewController as! SearchModalViewController
+            modalVC.transitioningDelegate = self
+            modalVC.preferredContentSize = CGSizeMake(UIScreen.mainScreen().bounds.width * 0.7, UIScreen.mainScreen().bounds.height * 0.7)
+            modalVC.parentVC = self
+            
+            
+            
+            
+            modalVC.tags = self.tags
+            if !searchActivated {
+                modalVC.resetFilters()
+            }
+            else {
+                modalVC.filteredTags = self.filteredTags
+                modalVC.prevSearchPhrase = self.searchPhrase
+            }
+            dim(.In, alpha: dimLevel, speed: dimSpeed)
+            
+        }
+    }
+    
+    @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
+        dim(.Out, speed: dimSpeed)
+        
+    }
+}
+
+//Code that makes the resources screen go dim when Search modal appears
+enum Direction { case In, Out }
+
+protocol Dimmable { }
+
+extension Dimmable where Self: UIViewController {
+    
+    func dim(direction: Direction, color: UIColor = UIColor.blackColor(), alpha: CGFloat = 0.0, speed: Double = 0.0) {
+        
+        switch direction {
+        case .In:
+            
+            // Create and add a dim view
+            let dimView = UIView(frame: view.frame)
+            dimView.backgroundColor = color
+            dimView.alpha = 0.0
+            view.addSubview(dimView)
+            
+            // Deal with Auto Layout
+            dimView.translatesAutoresizingMaskIntoConstraints = false
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
+            view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
+            
+            // Animate alpha (the actual "dimming" effect)
+            UIView.animateWithDuration(speed) { () -> Void in
+                dimView.alpha = alpha
+            }
+            
+        case .Out:
+            UIView.animateWithDuration(speed, animations: { () -> Void in
+                self.view.subviews.last?.alpha = alpha ?? 0
+                }, completion: { (complete) -> Void in
+                    self.view.subviews.last?.removeFromSuperview()
+            })
         }
     }
 }

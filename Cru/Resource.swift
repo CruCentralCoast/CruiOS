@@ -70,7 +70,8 @@ class Resource {
             self.date = GlobalUtils.dateComponentsFromDate(GlobalUtils.dateFromString(date))
         }
         
-        if let tags = dict["url"]  {
+        if let tags = dict["tags"]  {
+            
             self.tags = tags as? [String]
         }
         
