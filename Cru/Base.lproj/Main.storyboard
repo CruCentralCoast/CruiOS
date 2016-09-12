@@ -130,7 +130,7 @@
                                                                     </variation>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving to Sophmore Social at 3:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-YY-p97">
-                                                                    <rect key="frame" x="103" y="27" width="263" height="46"/>
+                                                                    <rect key="frame" x="83" y="39" width="283" height="23"/>
                                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -140,7 +140,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="qRb-YY-p97" firstAttribute="trailing" secondItem="RU1-Xf-tCK" secondAttribute="trailingMargin" constant="10" id="0Y3-if-Ut4"/>
                                                                 <constraint firstItem="qRb-YY-p97" firstAttribute="centerY" secondItem="RU1-Xf-tCK" secondAttribute="centerY" id="80q-NK-r99"/>
-                                                                <constraint firstItem="qRb-YY-p97" firstAttribute="leading" secondItem="hIx-3d-SZ9" secondAttribute="trailing" constant="40" id="Aau-Hj-3xK"/>
+                                                                <constraint firstItem="qRb-YY-p97" firstAttribute="leading" secondItem="hIx-3d-SZ9" secondAttribute="trailing" constant="20" id="Aau-Hj-3xK"/>
                                                                 <constraint firstItem="qRb-YY-p97" firstAttribute="centerY" secondItem="Fdv-yc-nar" secondAttribute="centerY" id="Mvo-mg-x8l"/>
                                                                 <constraint firstAttribute="leadingMargin" secondItem="Fdv-yc-nar" secondAttribute="leading" id="Rmx-Lj-she"/>
                                                                 <constraint firstAttribute="trailingMargin" secondItem="qRb-YY-p97" secondAttribute="trailing" constant="10" id="SDD-hU-P0o"/>
@@ -220,13 +220,13 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name here" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="IzF-nk-iH7">
-                                                                            <rect key="frame" x="102" y="10" width="256" height="26"/>
+                                                                            <rect key="frame" x="92" y="10" width="266" height="26"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="75H-cU-hcX">
-                                                                            <rect key="frame" x="98" y="28" width="260" height="55"/>
+                                                                            <rect key="frame" x="88" y="28" width="270" height="55"/>
                                                                             <color key="textColor" red="0.40000000000000002" green="0.3803921569" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="15"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -245,7 +245,7 @@
                                                                         <constraint firstItem="Sx0-Za-h7o" firstAttribute="top" secondItem="1lY-f2-b8l" secondAttribute="bottom" constant="2" id="iYV-tL-coy"/>
                                                                         <constraint firstItem="75H-cU-hcX" firstAttribute="width" secondItem="IzF-nk-iH7" secondAttribute="width" constant="4" id="uDW-Bb-y4T"/>
                                                                         <constraint firstItem="1lY-f2-b8l" firstAttribute="centerX" secondItem="Sx0-Za-h7o" secondAttribute="centerX" id="vHK-bW-kXG"/>
-                                                                        <constraint firstItem="IzF-nk-iH7" firstAttribute="leading" secondItem="1lY-f2-b8l" secondAttribute="trailing" constant="40" id="vfG-BS-SF4"/>
+                                                                        <constraint firstItem="IzF-nk-iH7" firstAttribute="leading" secondItem="1lY-f2-b8l" secondAttribute="trailing" constant="30" id="vfG-BS-SF4"/>
                                                                         <constraint firstItem="Sx0-Za-h7o" firstAttribute="leading" secondItem="Uwm-QX-ImF" secondAttribute="leading" constant="20" id="xPf-yU-hjs"/>
                                                                     </constraints>
                                                                     <variation key="default">
