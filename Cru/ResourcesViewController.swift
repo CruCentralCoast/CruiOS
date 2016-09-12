@@ -51,6 +51,8 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var isLeader = false
     var filteredTags = [ResourceTag]()
     var searchPhrase = ""
+    var hasConnection = true
+    var emptyTableImage: UIImage!
     
     //Call this constructor in testing with a fake serverProtocol
     init?(serverProtocol: ServerProtocol, _ coder: NSCoder? = nil) {
@@ -85,8 +87,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
        
         //If the user is logged in, view special resources. Otherwise load non-restricted resources.
         
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
-        overlayRunning = true
+        
         /*var actIndView = UIView(frame: self.view.frame)
         actIndView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
         activityIndicatorView = NVActivityIndicatorView(frame: actIndView.frame, type: NVActivityIndicatorType.BallRotateChase, color: CruColors.yellow)
@@ -94,18 +95,9 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.view.addSubview(actIndView)
         
         activityIndicatorView.startAnimating()*/
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         
-        serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
         
-        //Also get resource tags and store them
-        serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
-            //Hide the community leader tag if the user isn't logged in
-            if GlobalUtils.loadString(Config.leaderApiKey) == "" {
-                let index = self.tags.indexOf({$0.title == "Leader (password needed)"})
-                self.tags.removeAtIndex(index!)
-                
-            }
-        })
         
         tableView.backgroundColor = Colors.googleGray
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -117,10 +109,46 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         selectorBar.tintColor = UIColor.whiteColor()
+        
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
 
     }
     
     func doNothing(success: Bool) {
+        
+    }
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return emptyTableImage
+    }
+    
+    //Test to make sure there is a connection then load resources
+    func finishConnectionCheck(connected: Bool){
+        if(!connected){
+            hasConnection = false
+            self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
+            self.tableView.emptyDataSetDelegate = self
+            self.tableView.emptyDataSetSource = self
+            self.tableView.reloadData()
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            
+            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+            overlayRunning = true
+            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
+            
+            //Also get resource tags and store them
+            serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
+                //Hide the community leader tag if the user isn't logged in
+                if GlobalUtils.loadString(Config.leaderApiKey) == "" {
+                    let index = self.tags.indexOf({$0.title == "Leader (password needed)"})
+                    self.tags.removeAtIndex(index!)
+                    
+                }
+            })
+        }
         
     }
     

@@ -11,6 +11,7 @@
 import UIKit
 import SideMenu
 import DZNEmptyDataSet
+import MRProgress
 
 class MainViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, SWRevealViewControllerDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
     var items = [String]()//["Church on Sunday!", "Fall Retreat", "Bowling lessons with Pete, or was it Peter? Find out at the Event", "Idk was it peter", "Futbol"]
@@ -21,6 +22,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var allEvents = [Event]()
     var ridesRowHeight = 100
     var offerVC: NewOfferRideViewController!
+    var hasConnection = true
 
     @IBOutlet weak var offerRideButton: UIButton!
     @IBOutlet weak var table: UITableView!
@@ -44,6 +46,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             eventsTable!.reloadData()
         }
     }
+    var noConnectionRidesString: NSAttributedString!
+    var noConnectionEventsString: NSAttributedString!
     
     // MARK: Actions
 
@@ -109,14 +113,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         
-        //load upcoming items
-        CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
+        //Check for connection then load rides and events in the completion function
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         
-        //Display a message if either of the tables are empty
-        self.table!.emptyDataSetSource = self;
-        self.table!.emptyDataSetDelegate = self;
-        self.eventsTable!.emptyDataSetSource = self;
-        self.eventsTable!.emptyDataSetDelegate = self;
         
         self.table!.tableFooterView = UIView()
         
@@ -124,6 +123,15 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         noRideString = NSAttributedString(string: "Currently no rides available", attributes: attributes)
         
         noEventsString = NSAttributedString(string: "No events for the next two weeks", attributes: attributes)
+        
+        noConnectionRidesString = NSAttributedString(string: "Currently no rides available. Check your internet connection.", attributes: attributes)
+        
+        noConnectionEventsString = NSAttributedString(string: "No events for the next two weeks. Check your internet connection.", attributes: attributes)
+        
+        self.table!.emptyDataSetSource = self;
+        self.table!.emptyDataSetDelegate = self;
+        self.eventsTable!.emptyDataSetSource = self;
+        self.eventsTable!.emptyDataSetDelegate = self;
         
         //Take this out eventually
         offerVC = NewOfferRideViewController()
@@ -152,15 +160,41 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.navigationItem.leftBarButtonItem?.enabled = false
         }
     }
+    //Test to make sure there is a connection then load resources
+    func finishConnectionCheck(connected: Bool){
+        if(!connected){
+            hasConnection = false
+            //Display a message if either of the tables are empty
+            
+            self.table!.reloadData()
+            self.eventsTable!.reloadData()
+            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            
+            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+            //load upcoming items
+            CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
+            
+            
+        }
+        
+    }
     
     //Set the text to be displayed when either table is empty
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
         if scrollView == self.table {
-            return noRideString
+            if hasConnection {
+                return noRideString
+            }
+            return noConnectionRidesString
         }
         else {
-            
-            return noEventsString
+            if hasConnection {
+                return noEventsString
+            }
+            return noConnectionEventsString
         }
         
     }
@@ -244,6 +278,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.eventsTable!.emptyDataSetSource = self
             self.eventsTable!.emptyDataSetDelegate = self
             eventsTableHeight.constant = CGFloat(50)
+            self.eventsTable!.reloadData()
         }
         else {
             eventsTableHeight.constant = CGFloat(100)*CGFloat(upcomingEvents.count)
@@ -253,6 +288,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //disable scrolling
         table.scrollEnabled = false
         eventsTable.scrollEnabled = false
+        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
         
     }
     
