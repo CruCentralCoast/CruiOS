@@ -874,6 +874,11 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 return card.title.lowercaseString.containsString(searchText!.lowercaseString)
             }
         }
+        else {
+            filteredArticleCards = taggedArticles
+            filteredAudioCards = taggedAudio
+            filteredVideoCards = taggedVideos
+        }
         
         tableView.reloadData()
     }

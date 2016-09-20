@@ -30,8 +30,6 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         
         //Set the text field's delegate so we can do stuff to it
         searchField?.delegate = self
-        self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
-        self.preferredContentSize = CGSizeMake(UIScreen.mainScreen().bounds.width * 0.7, UIScreen.mainScreen().bounds.height * 0.7)
         //Set the corner radius of the modal
         contentView?.layer.cornerRadius = 10
         
@@ -45,11 +43,9 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         if prevSearchPhrase == "" {
             resetButton?.hidden = true
         }
+        
+        self.view.backgroundColor = UIColor.clearColor()
        
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        self.preferredContentSize = CGSizeMake(UIScreen.mainScreen().bounds.width * 0.7, UIScreen.mainScreen().bounds.height * 0.7)
     }
 
     override func didReceiveMemoryWarning() {
