@@ -133,6 +133,7 @@ SWIFT_CLASS("_TtC11WildcardSDK11ArticleCard")
 @property (nonatomic, readonly, copy) NSString * _Nonnull title;
 @property (nonatomic, readonly, copy) NSString * _Nullable abstractContent;
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nullable keywords;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nullable tags;
 @property (nonatomic, readonly, copy) NSString * _Nullable html;
 @property (nonatomic, readonly, strong) NSDate * _Nullable publicationDate;
 @property (nonatomic, readonly, copy) NSString * _Nullable source;
@@ -538,6 +539,7 @@ SWIFT_CLASS("_TtC11WildcardSDK11SummaryCard")
 @property (nonatomic, readonly, strong) NSDictionary * _Nullable media;
 @property (nonatomic, readonly, strong) NSURL * _Nullable primaryImageURL;
 @property (nonatomic, readonly, strong) NSURL * _Nullable appLinkIos;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nullable tags;
 - (nonnull instancetype)initWithUrl:(NSURL * _Nonnull)url description:(NSString * _Nonnull)description title:(NSString * _Nonnull)title media:(NSDictionary * _Nullable)media data:(NSDictionary * _Nullable)data OBJC_DESIGNATED_INITIALIZER;
 - (BOOL)supportsLayout:(WCCardLayout)layout;
 @end
@@ -660,6 +662,7 @@ SWIFT_CLASS("_TtC11WildcardSDK9VideoCard")
 @property (nonatomic, readonly, strong) NSURL * _Nonnull embedUrl;
 @property (nonatomic, readonly, copy) NSString * _Nullable abstractContent;
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nullable keywords;
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nullable tags;
 @property (nonatomic, readonly, strong) NSURL * _Nullable appLinkIos;
 @property (nonatomic, readonly, strong) NSURL * _Nullable streamUrl;
 @property (nonatomic, readonly, copy) NSString * _Nullable streamContentType;

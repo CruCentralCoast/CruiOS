@@ -3,7 +3,7 @@
 //  WildcardSDKProject
 //
 //  Created by David Xiang on 12/8/14.
-//
+//  Updated by Erica Solum on 9/17/16.
 //
 
 /**
@@ -18,6 +18,7 @@ public class SummaryCard : Card {
     public let media:NSDictionary?
     public let primaryImageURL:NSURL?
     public let appLinkIos:NSURL?
+    public let tags:[String]?
     
     public init(url:NSURL, description:String, title:String, media:NSDictionary?, data:NSDictionary?){
         self.title = title
@@ -27,6 +28,7 @@ public class SummaryCard : Card {
         var cardPrimaryImageURL:NSURL?
         var cardAppLinkIos:NSURL?
         var subtitle:String?
+        var tags: [String]?
         
         if let dataDict = data{
             if let url = dataDict["appLinkIos"] as? String{
@@ -35,6 +37,11 @@ public class SummaryCard : Card {
             if let summary = dataDict["summary"] as? NSDictionary{
                 subtitle = summary["subtitle"] as? String
             }
+            if let tags = dataDict["tags"] as? [String] {
+                
+            }
+                
+            
         }
         
         if self.media != nil {
@@ -47,6 +54,7 @@ public class SummaryCard : Card {
         self.primaryImageURL = cardPrimaryImageURL
         self.appLinkIos = cardAppLinkIos
         self.subtitle = subtitle
+        self.tags = tags
         
         super.init(webUrl: url, cardType: "summary")
     }

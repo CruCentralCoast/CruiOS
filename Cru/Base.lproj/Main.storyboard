@@ -46,7 +46,7 @@
                         <rect key="frame" x="0.0" y="64" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kP-5J-Cvs">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4kP-5J-Cvs">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9t1-Fv-uyz">
@@ -84,7 +84,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Jyk-3L-Tsw"/>
                                                 </constraints>
-                                                <color key="separatorColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="sectionIndexBackgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="mwf-ml-SeO" customClass="UpcomingItemCell" customModule="Cru" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="384" height="100"/>
@@ -190,6 +190,7 @@
                                                     <constraint firstAttribute="height" constant="150" id="Wvp-sz-uuv"/>
                                                     <constraint firstAttribute="height" priority="250" constant="100" id="enm-k6-B1W"/>
                                                 </constraints>
+                                                <color key="sectionIndexBackgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                                                 <prototypes>
                                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="eventCell" id="0sL-Br-quk" customClass="UpcomingEventCell" customModule="Cru" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="28" width="384" height="100"/>
@@ -397,7 +398,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" red="0.87450980389999999" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="4kP-5J-Cvs" secondAttribute="trailing" constant="-20" id="XQF-rC-U43"/>
                             <constraint firstItem="9t1-Fv-uyz" firstAttribute="width" secondItem="5bq-z4-v2i" secondAttribute="width" id="aRx-va-oAV"/>

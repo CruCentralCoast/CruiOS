@@ -80,12 +80,12 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         navigationItem.title = "Offer a Ride"
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: "handleCancelRide:")
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(handleCancelRide(_:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         
         
         eventName.userInteractionEnabled = true // Remember to do this
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "chooseEvent:")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(chooseEvent(_:)))
         eventName.addGestureRecognizer(tap)
         tap.delegate = self
         
