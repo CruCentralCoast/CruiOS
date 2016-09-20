@@ -3,7 +3,7 @@
 //  WildcardSDKProject
 //
 //  Created by David Xiang on 3/9/15.
-//
+//  Updated by Erica Solum on 9/17/16.
 //
 
 import Foundation
@@ -20,6 +20,7 @@ public class VideoCard : Card{
     
     public let abstractContent:String?
     public let keywords:[String]?
+    public let tags:[String]?
     public let appLinkIos:NSURL?
     public let streamUrl:NSURL?
     public let streamContentType:String?
@@ -31,6 +32,7 @@ public class VideoCard : Card{
         self.creator = creator
         self.embedUrl = embedUrl
         self.keywords = data["keywords"] as? [String]
+        self.tags = data["tags"] as? [String]
         
         if let url = data["appLinkIos"] as? String{
             self.appLinkIos = NSURL(string: url)

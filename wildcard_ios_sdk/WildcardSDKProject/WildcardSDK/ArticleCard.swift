@@ -3,7 +3,7 @@
 //  WildcardSDKProject
 //
 //  Created by David Xiang on 12/3/14.
-//
+//  Updated by Erica Solum on 9/17/16.
 //
 
 import Foundation
@@ -19,6 +19,7 @@ public class ArticleCard : Card{
     public let abstractContent:String?
     
     public let keywords:[String]?
+    public let tags:[String]?
     public let html:String?
     public let publicationDate:NSDate?
     public let isBreaking:Bool?
@@ -34,6 +35,7 @@ public class ArticleCard : Card{
         self.abstractContent = abstractContent
         self.creator = creator
         self.keywords = data["keywords"] as? [String]
+        self.tags = data["tags"] as? [String]
         
         if let url = data["appLinkIos"] as? String{
             self.appLinkIos = NSURL(string: url)

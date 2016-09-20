@@ -71,6 +71,7 @@ public class FullCardHeader : CardViewElement
             title.text = articleCard.title
             if let url = articleCard.creator.favicon{
                 logo.setImageWithURL(url,mode:.ScaleAspectFit)
+                logo.backgroundColor = UIColor.clearColor()
             }
         case .Summary:
             let summaryCard = card as! SummaryCard
@@ -82,6 +83,7 @@ public class FullCardHeader : CardViewElement
             title.text = videoCard.title
             if let url = videoCard.creator.favicon{
                 logo.setImageWithURL(url,mode:.ScaleAspectFit)
+                logo.backgroundColor = UIColor.clearColor()
             }
         case .Image:
             let imageCard = card as! ImageCard
@@ -89,6 +91,7 @@ public class FullCardHeader : CardViewElement
             title.text = imageCard.title
             if let url = imageCard.creator.favicon{
                 logo.setImageWithURL(url,mode:.ScaleAspectFit)
+                logo.backgroundColor = UIColor.clearColor()
             }
         case .Unknown:
             title.text = "Unknown Card Type"

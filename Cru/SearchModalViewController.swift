@@ -14,11 +14,12 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     let inactiveGray = UIColor(red: 149/225, green: 147/225, blue: 145/225, alpha: 1.0)
     var parentVC: ResourcesViewController?
     
-    @IBOutlet weak var searchField: UITextField!
-    @IBOutlet weak var searchLine: UIView!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var searchField: UITextField?
+    @IBOutlet weak var searchLine: UIView?
+    @IBOutlet weak var contentView: UIView?
     
-    @IBOutlet weak var resourceTagTable: ResourceTagTableView!
+    @IBOutlet weak var resetButton: UIButton?
+    @IBOutlet weak var resourceTagTable: ResourceTagTableView?
     var tags = [ResourceTag]()
     var filteredTags = [ResourceTag]()
     var prevSearchPhrase = ""
@@ -28,24 +29,23 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         
         
         //Set the text field's delegate so we can do stuff to it
-        searchField.delegate = self
+        searchField?.delegate = self
         self.modalPresentationStyle = UIModalPresentationStyle.OverCurrentContext
         self.preferredContentSize = CGSizeMake(UIScreen.mainScreen().bounds.width * 0.7, UIScreen.mainScreen().bounds.height * 0.7)
         //Set the corner radius of the modal
-        contentView.layer.cornerRadius = 10
+        contentView?.layer.cornerRadius = 10
         
         //Set the tag table delegate
-        resourceTagTable.delegate = self
-        resourceTagTable.dataSource = self
+        resourceTagTable?.delegate = self
+        resourceTagTable?.dataSource = self
         
         //If a search query is still active, set the text field text to match
-        searchField.text = prevSearchPhrase
+        searchField?.text = prevSearchPhrase
+        
+        if prevSearchPhrase == "" {
+            resetButton?.hidden = true
+        }
        
-    }
-    
-    func resetFilters() {
-        filteredTags = tags
-        prevSearchPhrase = ""
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -58,11 +58,23 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     //MARK: Actions
+    @IBAction func resetSearch(sender: UIButton) {
+        resetButton?.hidden = true
+        filteredTags = tags
+        prevSearchPhrase = ""
+        searchField?.text = ""
+        resourceTagTable?.reloadData()
+        
+        parentVC?.searchActivated = false
+        parentVC?.searchPhrase = ""
+        parentVC?.tableView.reloadData()
+    }
+    
     
     @IBAction func applyFilters(sender: UIButton) {
         //Get chosen tags
         filteredTags = [ResourceTag]()
-        let cells = resourceTagTable.visibleCells as! [ResourceTagTableViewCell]
+        let cells = resourceTagTable?.visibleCells as! [ResourceTagTableViewCell]
         
         for cell in cells {
             
@@ -71,8 +83,8 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
             }
         }
         
-        if searchField.hasText() {
-            parentVC?.applyFilters(filteredTags, searchText: searchField.text)
+        if searchField != nil && searchField!.hasText() {
+            parentVC?.applyFilters(filteredTags, searchText: searchField!.text)
         }
         else {
             parentVC?.applyFilters(filteredTags, searchText: nil)
@@ -85,14 +97,14 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     
     func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
         UIView.animateWithDuration(0.5, animations: {
-            self.searchLine.backgroundColor = CruColors.lightBlue
+            self.searchLine?.backgroundColor = CruColors.lightBlue
         })
         return true
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         UIView.animateWithDuration(0.5, animations: {
-            self.searchLine.backgroundColor = self.inactiveGray
+            self.searchLine?.backgroundColor = self.inactiveGray
         })
         return true
     }
@@ -128,6 +140,10 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
                 cell.checkbox.isChecked = false
                 cell.setUnchecked()
             }
+        }
+        else {
+            cell.setChecked()
+            cell.checkbox.isChecked = true
         }
         return cell
     }

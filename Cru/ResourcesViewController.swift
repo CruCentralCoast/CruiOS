@@ -18,24 +18,34 @@ import DZNEmptyDataSet
 import NVActivityIndicatorView
 
 let InitialCount = 20
-let PageSize = 5
+let PageSize = 8
 
-class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, CardViewDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, NVActivityIndicatorViewable {
+class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, CardViewDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, NVActivityIndicatorViewable, UIPopoverPresentationControllerDelegate {
     //MARK: Properties
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var selectorBar: UITabBar!
+    @IBOutlet weak var searchButton: UIBarButtonItem!
+    
     var serverClient: ServerProtocol
     var resources = [Resource]()
     var cardViews = [CardView]()
     var tags = [ResourceTag]()
     var overlayRunning = false
     var currentType = ResourceType.Article
+    
     var filteredResources = [Resource]()
     var articleViews = [CardView]()
     var audioViews = [CardView]()
     var videoViews = [CardView]()
     var allViews = [CardView]()
+    var filteredArticleCards = [ArticleCard]()
+    var filteredAudioCards = [SummaryCard]()
+    var filteredVideoCards = [VideoCard]()
+    var articleCards = [ArticleCard]()
+    var audioCards = [SummaryCard]()
+    var videoCards = [VideoCard]()
+    
     var pagedArray = PagedArray<Resource>(count: InitialCount, pageSize: PageSize)
     var audioPlayer:AVAudioPlayer!
     var apiKey = "AIzaSyDW_36-r4zQNHYBk3Z8eg99yB0s2jx3kpc"
@@ -47,12 +57,28 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     let dimLevel: CGFloat = 0.5
     let dimSpeed: Double = 0.5
     var searchActivated = false
+    var modalActive = false {
+        didSet {
+            if modalActive == true {
+                searchButton.enabled = false
+            }
+            else {
+                searchButton.enabled = true
+            }
+        }
+    }
     var activityIndicatorView: NVActivityIndicatorView
     var isLeader = false
     var filteredTags = [ResourceTag]()
     var searchPhrase = ""
     var hasConnection = true
     var emptyTableImage: UIImage!
+    var numUploads: Int!
+    var urlString: String!
+    var noResultsString: NSAttributedString!
+    var verticalContentOffset: CGFloat!
+    var videoCardHeight: CGFloat!
+    var memoryWarning = false
     
     //Call this constructor in testing with a fake serverProtocol
     init?(serverProtocol: ServerProtocol, _ coder: NSCoder? = nil) {
@@ -84,24 +110,15 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         //Make the line between cells invisible
         tableView.separatorColor = UIColor.clearColor()
         
-       
-        //If the user is logged in, view special resources. Otherwise load non-restricted resources.
-        
-        
-        /*var actIndView = UIView(frame: self.view.frame)
-        actIndView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
-        activityIndicatorView = NVActivityIndicatorView(frame: actIndView.frame, type: NVActivityIndicatorType.BallRotateChase, color: CruColors.yellow)
-        actIndView.addSubview(activityIndicatorView)
-        self.view.addSubview(actIndView)
-        
-        activityIndicatorView.startAnimating()*/
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+        
         
         
         
         tableView.backgroundColor = Colors.googleGray
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
+        videoCardHeight = 0
         
         //Set the nav title
         navigationItem.title = "Resources"
@@ -110,17 +127,68 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         selectorBar.tintColor = UIColor.whiteColor()
         
-        self.tableView.emptyDataSetSource = self
-        self.tableView.emptyDataSetDelegate = self
-        self.tableView.tableFooterView = UIView()
+        
+        
+        /* Uncomment this for a later release*/
+        //addLeaderTab()
 
+    }
+    
+    /* Don't load anymore youtube resources */
+    override func didReceiveMemoryWarning() {
+        memoryWarning = true
     }
     
     func doNothing(success: Bool) {
         
     }
+    
+    func addLeaderTab() {
+        let articleTab = UITabBarItem(title: "Articles", image: UIImage(named: "article"), tag: 0)
+        let videoTab = UITabBarItem(title: "Video", image: UIImage(named: "video"), tag: 1)
+        let audioTab = UITabBarItem(title: "Audio", image: UIImage(named: "audio"), tag: 2)
+        
+        let leaderTab = UITabBarItem(title: "Leader", image: UIImage(named: "community-group-icon"), tag: 3)
+        selectorBar.setItems([articleTab, videoTab, audioTab, leaderTab], animated: true)
+    }
+    
+    /* Function for the empty data set */
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         return emptyTableImage
+    }
+    
+    /* Text for the empty search results data set*/
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        //Set up attribute string for empty search results
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+        
+        if hasConnection {
+            if searchActivated && searchPhrase != ""{
+                switch (currentType){
+                case .Article:
+                    noResultsString = NSAttributedString(string: "No articles found with the phrase \(searchPhrase)", attributes: attributes)
+                case .Audio:
+                    noResultsString = NSAttributedString(string: "No audio resources found with the phrase \(searchPhrase)", attributes: attributes)
+                case .Video:
+                    noResultsString = NSAttributedString(string: "No videos found with the phrase \(searchPhrase)", attributes: attributes)
+                }
+                
+            }
+            else {
+                switch (currentType){
+                case .Article:
+                    noResultsString = NSAttributedString(string: "No article resources found", attributes: attributes)
+                case .Audio:
+                    noResultsString = NSAttributedString(string: "No audio resources found", attributes: attributes)
+                case .Video:
+                    noResultsString = NSAttributedString(string: "No video resources found", attributes: attributes)
+                }
+            }
+            
+            
+        }
+        
+        return noResultsString
     }
     
     //Test to make sure there is a connection then load resources
@@ -166,28 +234,30 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         var oldTypeCount = 0
         var newTypeCount = 0
         
+        //print("Selecting item: \(item.title)")
+        
         switch (item.title!){
         case "Articles":
             newType = ResourceType.Article
-            newTypeCount = articleViews.count
+            newTypeCount = articleCards.count
         case "Audio":
             newType = ResourceType.Audio
-            newTypeCount = audioViews.count
+            newTypeCount = audioCards.count
         case "Videos":
             newType = ResourceType.Video
-            newTypeCount = videoViews.count
+            newTypeCount = videoCards.count
         default :
             newType = ResourceType.Article
-            newTypeCount = articleViews.count
+            newTypeCount = articleCards.count
         }
         
         switch (currentType){
         case .Article:
-            oldTypeCount = articleViews.count
+            oldTypeCount = articleCards.count
         case .Audio:
-            oldTypeCount = audioViews.count
+            oldTypeCount = audioCards.count
         case .Video:
-            oldTypeCount = videoViews.count
+            oldTypeCount = videoCards.count
         }
         
         
@@ -197,22 +267,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             currentType = newType
         }
-        
-        let numNewCells = newTypeCount - oldTypeCount
-        
-        self.tableView.beginUpdates()
-        if(numNewCells < 0){
-            let numCellsToRemove = -numNewCells
-            for i in 0...(numCellsToRemove - 1){
-                self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forItem: i, inSection: 0)], withRowAnimation: .Automatic)
-            }
-        }
-        else if(numNewCells > 0){
-            for i in 0...(numNewCells - 1){
-                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: i, inSection: 0)], withRowAnimation: .Automatic)
-            }
-        }
-        self.tableView.endUpdates()
         self.tableView.reloadData()
     }
     
@@ -222,7 +276,9 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         resources.insert(resource, atIndex: 0)
         
         if (resource.type == ResourceType.Article) {
-            insertArticle(resource, completionHandler: doNothing)
+            insertArticle(resource, completionHandler: {_ in 
+                print("done inserting articles")
+            })
         }
             
         else if (resource.type == ResourceType.Video) {
@@ -242,30 +298,17 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     /* Implement when tools support is requested */
     private func insertAudio(resource: Resource, completionHandler: (Bool) -> Void) {
     
-        var cardView: CardView! = nil
         var card: SummaryCard!
        
         let media:NSMutableDictionary = NSMutableDictionary()
+        let data:NSMutableDictionary = NSMutableDictionary()
         media["type"] = "audio"
+        data["tags"] = resource.tags
         
         let audioUrl = NSURL(string: resource.url)!
-        card = SummaryCard(url:audioUrl, description: "This is where a description would go.", title: resource.title, media:media, data:nil)
+        card = SummaryCard(url:audioUrl, description: "This is where a description would go.", title: resource.title, media:media, data: data)
         
-        // Make the view that is put into the table
-        cardView = CardView.createCardView(card!, layout: .SummaryCardNoImage)!
-        
-        
-        self.audioViews.insert(cardView, atIndex: 0)
-        
-        if (cardView != nil) {
-            cardView.delegate = self
-            //self.resources.insert(resource, atIndex: 0)
-            if(self.currentType == .Audio){
-                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
-            }
-        }
-        
-        
+        self.audioCards.append(card)
     }
     
     /* Helper function to get and insert an article card */
@@ -329,15 +372,23 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                     let firstPart = filteredContent.substringToIndex(start!)
                     
-                    let endIndex = filteredContent.rangeOfString(listEnd)
-                    let end = endIndex?.startIndex
+                    var endIndex = filteredContent.rangeOfString(listEnd)
+                    var end = endIndex?.startIndex
                     
-                    let lastPart = filteredContent.substringFromIndex(end!)
+                    if end == nil {
+                        endIndex = filteredContent.rangeOfString("<div class=\"parsys post-body-parsys\"")
+                        end = endIndex?.startIndex
+                    }
                     
-                    let newContent = firstPart + lastPart
+                    if end != nil {
+                        let lastPart = filteredContent.substringFromIndex(end!)
+                        
+                        let newContent = firstPart + lastPart
+                        filteredContent = newContent
+                    }
                     
                     //filteredContent.removeRange(Range<String.Index>(start: start!, end: end!))
-                    filteredContent = newContent
+                    
                     
                     //filteredContent = content[0].textContent
                     
@@ -377,24 +428,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 articleMedia["type"] = "image"
                 articleData["media"] = articleMedia
                 articleBaseData["article"] = articleData
-                
+                articleBaseData["tags"] = resource.tags
                 
                 
                 articleCard = ArticleCard(title: resource.title, abstractContent: abstract, url: NSURL(string: resource.url)!, creator: creator, data: articleBaseData)
                 
-                var cardView : CardView! = nil
-                cardView = CardView.createCardView(articleCard!, layout: .ArticleCardNoImage)!
-                
-                
-                self.articleViews.insert(cardView, atIndex: 0)
-                
-                if (cardView != nil) {
-                    cardView.delegate = self
-                    //self.resources.insert(resource, atIndex: 0)
-                    if(self.currentType == .Article){
-                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
-                    }
-                }
+                self.articleCards.append(articleCard)
+                self.tableView.reloadData()
         }
     }
     
@@ -426,7 +466,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 
                 var videoCard: VideoCard!
-                var cardView: CardView! = nil
                 
                 let creator = Creator(name:"", url: NSURL(string:"")!, favicon:NSURL(string:"http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png"), iosStore:nil)
               
@@ -441,20 +480,11 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 videoMedia["posterImageUrl"] = "http://i1.ytimg.com/vi/\(youtubeID)/mqdefault.jpg"
                 
                 videoData["media"] = videoMedia
+                videoData["tags"] = resource.tags
+                
                 videoCard = VideoCard(title: resource.title, embedUrl: embedUrl, url: vidwebUrl, creator: creator, data: videoData)
+                self.videoCards.append(videoCard)
                 
-                
-                cardView = CardView.createCardView(videoCard!, layout: .VideoCardShortFull)!
-                
-                self.videoViews.insert(cardView, atIndex: 0)
-                
-                if (cardView != nil) {
-                    cardView.delegate = self
-                    //self.resources.insert(resource, atIndex: 0)
-                    if(self.currentType == .Video){
-                        self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
-                    }
-                }
         }
     }
     
@@ -474,7 +504,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     private func insertYoutube(resource: Resource,completionHandler: (Bool) -> Void) {
         var videoCard:VideoCard!
-        var cardView : CardView! = nil
         
         let newUrl = NSURL(string: "http://www.youtube.com")!
         let embedUrl = NSURL(string: resource.url)!
@@ -490,26 +519,16 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         videoMedia["posterImageUrl"] = "http://i1.ytimg.com/vi/\(getYoutubeID(resource.url))/mqdefault.jpg"
         
         videoData["media"] = videoMedia
+        videoData["tags"] = resource.tags
         videoCard = VideoCard(title: resource.title, embedUrl: embedUrl, url: vidwebUrl, creator: youtube, data: videoData)
         
+        self.videoCards.append(videoCard)
         
-        cardView = CardView.createCardView(videoCard!, layout: .VideoCardShortFull)!
-        
-        self.videoViews.insert(cardView, atIndex: 0)
-        
-        if (cardView != nil) {
-            cardView.delegate = self
-            //self.resources.insert(resource, atIndex: 0)
-            if(self.currentType == .Video){
-                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
-            }
-        }
         
     }
     
     private func insertYoutubeFromChannel(resource: Resource, description: String, completionHandler: (Bool) -> Void) {
         var videoCard:VideoCard!
-        var cardView : CardView! = nil
         
         let newUrl = NSURL(string: "http://www.youtube.com")!
         
@@ -527,22 +546,11 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         videoData["media"] = videoMedia
+        videoData["tags"] = []
         videoCard = VideoCard(title: resource.title, embedUrl: embedUrl, url: vidwebUrl, creator: youtube, data: videoData)
         
-        
-        cardView = CardView.createCardView(videoCard!, layout: .VideoCardShortFull)!
-        
-        //self.videoViews.insert(cardView, atIndex: 0)
-        self.videoViews.append(cardView)
-        
-        if (cardView != nil) {
-            cardView.delegate = self
-            //self.resources.insert(resource, atIndex: 0)
-            self.resources.append(resource)
-            if(self.currentType == .Video){
-                self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: videoViews.count-1, inSection: 0)], withRowAnimation: .Automatic)
-            }
-        }
+        self.videoCards.append(videoCard)
+        self.resources.append(resource)
     }
     
     // MARK: Cru CC Youtube Video Retrieval
@@ -550,29 +558,30 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     func getVideosForChannel(success: Bool) {
         if !overlayRunning {
             MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+            overlayRunning = true
         }
         
         // Get the selected channel's playlistID value from the channelsDataArray array and use it for fetching the proper video playlst.
         
         // Form the request URL string.
-        var urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&playlistId=\(cruUploadsID)&key=\(apiKey)"
+        self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&playlistId=\(cruUploadsID)&key=\(apiKey)"
         
         if nextPageToken != "" {
-            urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&pageToken=\(nextPageToken)&playlistId=\(cruUploadsID)&key=\(apiKey)"
+            self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&pageToken=\(nextPageToken)&playlistId=\(cruUploadsID)&key=\(apiKey)"
+            
         }
         
-        // Create a NSURL object based on the above string.
-        let targetURL = NSURL(string: urlString)
-        
         // Fetch the playlist from Google.
-        performGetRequest(targetURL, completion: { (data, HTTPStatusCode, error) -> Void in
+        performGetRequest(NSURL(string: self.urlString), completion: { (data, HTTPStatusCode, error) -> Void in
             if HTTPStatusCode == 200 && error == nil {
                 // Convert the JSON data into a dictionary.
                 do {
                     let resultsDict = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! Dictionary<NSObject, AnyObject>
                     
+                    
                     //Get next page token
                     self.nextPageToken = resultsDict["nextPageToken"] as! String
+                    self.numUploads = (resultsDict["pageInfo"] as! Dictionary<NSObject, AnyObject>)["totalResults"] as! Int
                     
                     // Get all playlist items ("items" array).
                     
@@ -598,7 +607,24 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                         // Reload the tableview.
                         //self.tblVideos.reloadData()
                         self.insertYoutubeFromChannel(resource!, description: desiredPlaylistItemDataDict["description"] as! String, completionHandler: self.finished)
+                        
+                        
+                        
                     }
+                    self.pageNum = self.pageNum + 1
+                    self.tableView.reloadData()
+                    
+                    
+                    
+                    if self.overlayRunning {
+                        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+                        self.overlayRunning = false
+                        
+                    }
+                    
+                    self.tableView.emptyDataSetSource = self
+                    self.tableView.emptyDataSetDelegate = self
+                    self.tableView.tableFooterView = UIView()
                 }
                 catch {
                     print("Error loading videos")
@@ -611,16 +637,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 print("Error while loading channel videos: \(error)\n")
             }
             
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
-            self.overlayRunning = false
-            //self.activityIndicatorView.stopAnimating()
+            
         })
     }
     
     func finished(success: Bool) {
-        if overlayRunning {
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
-            overlayRunning = false
+        if success == false {
+            print("Could not finish loading videos")
         }
         
     }
@@ -648,25 +671,55 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
    
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell,forRowAtIndexPath indexPath: NSIndexPath) {
-        if currentType == .Video && searchActivated != true && indexPath.row > pageNum * 4 {
-            
+        
+        //print("Number of videoViews: \(videoViews.count)")
+        
+        /*let visiblePaths = tableView.indexPathsForVisibleRows
+        let lastVisPath = visiblePaths![visiblePaths!.count - 1]
+        print("Last visible row: \(lastVisPath.row)")*/
+        
+        /*verticalContentOffset = tableView.contentOffset.y
+        print("Vertical Content offset: \(verticalContentOffset)")*/
+        
+        
+        //Set the height if videoCardHeight hasn't been set yet or there's a smaller card
+        if (videoCardHeight - cell.bounds.height > 0 || videoCardHeight == 0) && currentType == .Video{
+            videoCardHeight = cell.bounds.height
+        }
+        
+        if !memoryWarning && currentType == .Video && searchActivated == false
+            && (videosArray.count < numUploads)
+            && tableView.contentOffset.y > (((CGFloat)(videoCards.count-3))*videoCardHeight - videoCardHeight) {
+            //verticalContentOffset = tableView.contentOffset.y
+            print("Should get videos for channel")
             getVideosForChannel(true)
-            pageNum = pageNum + 1
         }
         
     }
     
     //Return the number of cards depending on the type of resource
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        switch (currentType){
-        case .Article:
-            return articleViews.count
-        case .Audio:
-            return audioViews.count
-        case .Video:
-            return videoViews.count
+        if searchActivated {
+            switch (currentType){
+            case .Article:
+                return filteredArticleCards.count
+            case .Audio:
+                return filteredAudioCards.count
+            case .Video:
+                return filteredVideoCards.count
+            }
         }
+        else {
+            switch (currentType){
+            case .Article:
+                return articleCards.count
+            case .Audio:
+                return audioCards.count
+            case .Video:
+                return videoCards.count
+            }
+        }
+        
         
         
     }
@@ -677,16 +730,37 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! CardTableViewCell
         let cardView: CardView?
         
-        switch (currentType){
-        case .Article:
-            cardView = articleViews[indexPath.row]
-        case .Audio:
-            cardView = audioViews[indexPath.row]
-        case .Video:
-            cardView = videoViews[indexPath.row]
+        if searchActivated {
+            switch (currentType){
+            case .Article:
+                cardView = CardView.createCardView(filteredArticleCards[indexPath.row], layout: .ArticleCardNoImage)!
+            //cardView = articleViews[indexPath.row]
+            case .Audio:
+                cardView = CardView.createCardView(filteredAudioCards[indexPath.row], layout: .SummaryCardNoImage)!
+            //cardView = audioViews[indexPath.row]
+            case .Video:
+                cardView = CardView.createCardView(filteredVideoCards[indexPath.row], layout: .VideoCardShortFull)!
+                //cardView = videoViews[indexPath.row]
+            }
+        }
+        else {
+            switch (currentType){
+            case .Article:
+                cardView = CardView.createCardView(articleCards[indexPath.row], layout: .ArticleCardNoImage)!
+            //cardView = articleViews[indexPath.row]
+            case .Audio:
+                cardView = CardView.createCardView(audioCards[indexPath.row], layout: .SummaryCardNoImage)!
+            //cardView = audioViews[indexPath.row]
+            case .Video:
+                cardView = CardView.createCardView(videoCards[indexPath.row], layout: .VideoCardShortFull)!
+                //cardView = videoViews[indexPath.row]
+            }
         }
         
+        cardView?.delegate = self
+        
         //Add the newl card view to the cell
+        cell.contentView.subviews.forEach({ $0.removeFromSuperview() }) // this gets things done
         cell.contentView.addSubview(cardView!)
         cell.contentView.backgroundColor = Colors.googleGray
         
@@ -710,7 +784,20 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     // MARK: Actions
     
     @IBAction func presentSearchModal(sender: UIBarButtonItem) {
+        
+        /*let searchModal = SearchModalViewController()
+        searchModal.modalPresentationStyle = UIModalPresentationStyle.Popover
+        //self.performSegueWithIdentifier("searchModal", sender: self)
+        let popoverMenuViewController = searchModal.popoverPresentationController
+        popoverMenuViewController!.permittedArrowDirections = .Unknown
+        popoverMenuViewController!.delegate = self
+        popoverMenuViewController!.sourceView = self.view
+        presentViewController(searchModal,
+            animated: true,
+            completion: nil)*/
         self.performSegueWithIdentifier("searchModal", sender: self)
+        modalActive = true
+        
     }
     
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -721,12 +808,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     func applyFilters(tags: [ResourceTag], searchText: String?) {
         searchActivated = true
         filteredTags = tags
+        modalActive = false
         
         if searchText != nil {
             self.searchPhrase = searchText!
             filterContent(tags, searchText: searchText!)
         }
-        else if filteredTags.count != tags.count{
+        else {
             filterContent(tags, searchText: nil)
         }
         
@@ -735,53 +823,55 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     func resourceHasTag(tags: [String], filteredTags: [ResourceTag]) -> Bool{
         for tag in tags {
             if filteredTags.indexOf({$0.id == tag}) != nil {
-                print("Resource has propper tag")
                 return true
             }
         }
-        print("Resource does not have propper tag")
+        return false
+    }
+    
+    func resetContent() {
+        
+    }
+    
+    func checkTags(resTags: [String], filteredTags: [ResourceTag]) -> Bool{
+        for tag in resTags {
+            for filtTag in filteredTags {
+                print("comparing \(tag) to \(filtTag.id)")
+                if tag == filtTag.id {
+                    return true
+                }
+            }
+        }
         return false
     }
     
     func filterContent(tags: [ResourceTag], searchText: String?) {
-        filteredResources = resources.filter { res in
-            //Search through the title if user entered a search phrase, otherwise
-            // only filter out resources without the right tags
-            //Also don't search through youtube videos that are coming from the
-            //cru feed because they aren't tagged
-            if !res.url.containsString("youtube") {
-                if searchText != nil {
-                    return res.title.lowercaseString.containsString(searchText!.lowercaseString) && resourceHasTag(res.tags, filteredTags: tags)
-                }
-                else {
-                    return resourceHasTag(res.tags, filteredTags: tags)
-                }
+        
+        //Filter by tags first
+        let taggedAudio = audioCards.filter { card in
+            return checkTags(card.tags!, filteredTags: tags)
+        }
+        
+        let taggedArticles = articleCards.filter { card in
+            return checkTags(card.tags!, filteredTags: tags)
+        }
+        let taggedVideos = videoCards.filter { card in
+            if !(card.tags?.isEmpty)! {
+                return checkTags(card.tags!, filteredTags: tags)
             }
             return false
         }
         
-        //Reset all the view arrays
-        articleViews = [CardView]()
-        audioViews = [CardView]()
-        videoViews = [CardView]()
-        allViews = [CardView]()
-        
-        for resource in filteredResources {
-            if (resource.type == ResourceType.Article) {
-                insertArticle(resource, completionHandler: doNothing)
+        if searchText != nil {
+            filteredAudioCards = taggedAudio.filter { card in
+                return card.title.lowercaseString.containsString(searchText!.lowercaseString)
             }
-                
-            else if (resource.type == ResourceType.Video) {
-                if(resource.url.rangeOfString("youtube") != nil) {
-                    insertYoutube(resource, completionHandler: doNothing)
-                }
-                else {
-                    insertGeneric(resource, completionHandler: doNothing)
-                }
+            
+            filteredArticleCards = taggedArticles.filter { card in
+                return card.title.lowercaseString.containsString(searchText!.lowercaseString)
             }
-                
-            else if (resource.type == ResourceType.Audio) {
-                insertAudio(resource, completionHandler: doNothing)
+            filteredVideoCards = taggedVideos.filter { card in
+                return card.title.lowercaseString.containsString(searchText!.lowercaseString)
             }
         }
         
@@ -819,12 +909,11 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             
             modalVC.tags = self.tags
-            if !searchActivated {
-                modalVC.resetFilters()
-            }
-            else {
+            modalVC.filteredTags = self.tags
+            if searchActivated {
                 modalVC.filteredTags = self.filteredTags
                 modalVC.prevSearchPhrase = self.searchPhrase
+                
             }
             dim(.In, alpha: dimLevel, speed: dimSpeed)
             
@@ -833,7 +922,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func unwindFromSecondary(segue: UIStoryboardSegue) {
         dim(.Out, speed: dimSpeed)
-        
+        modalActive = false
     }
 }
 
