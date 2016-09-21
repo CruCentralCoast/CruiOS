@@ -24,11 +24,11 @@ public class SummaryCard : Card {
         self.title = title
         self.abstractContent = description
         self.media = media
+        self.tags = data!["tags"] as? [String]
         
         var cardPrimaryImageURL:NSURL?
         var cardAppLinkIos:NSURL?
         var subtitle:String?
-        var tags: [String]?
         
         if let dataDict = data{
             if let url = dataDict["appLinkIos"] as? String{
@@ -37,11 +37,6 @@ public class SummaryCard : Card {
             if let summary = dataDict["summary"] as? NSDictionary{
                 subtitle = summary["subtitle"] as? String
             }
-            if let tags = dataDict["tags"] as? [String] {
-                
-            }
-                
-            
         }
         
         if self.media != nil {
@@ -54,7 +49,6 @@ public class SummaryCard : Card {
         self.primaryImageURL = cardPrimaryImageURL
         self.appLinkIos = cardAppLinkIos
         self.subtitle = subtitle
-        self.tags = tags
         
         super.init(webUrl: url, cardType: "summary")
     }

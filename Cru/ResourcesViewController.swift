@@ -302,6 +302,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
        
         let media:NSMutableDictionary = NSMutableDictionary()
         let data:NSMutableDictionary = NSMutableDictionary()
+        
         media["type"] = "audio"
         data["tags"] = resource.tags
         
