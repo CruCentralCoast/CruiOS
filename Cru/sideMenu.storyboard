@@ -14,6 +14,7 @@
             <string>FreightSansProBook-Regular</string>
             <string>FreightSansProBook-Regular</string>
             <string>FreightSansProBook-Regular</string>
+            <string>FreightSansProBook-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -403,6 +404,60 @@
                                             <segue destination="dz8-4B-V3A" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="cAF-H2-fEj"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="JFM-qU-fqJ" customClass="UITableViewVibrantCell" customModule="SideMenu">
+                                        <rect key="frame" x="0.0" y="525" width="600" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JFM-qU-fqJ" id="rFw-t9-p8m">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="About" translatesAutoresizingMaskIntoConstraints="NO" id="FHX-Fm-kik">
+                                                    <rect key="frame" x="19" y="15" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="3Rk-cl-F6i"/>
+                                                        <constraint firstAttribute="height" constant="40" id="foL-Ad-q9K"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1vb-3s-5yk">
+                                                    <rect key="frame" x="93" y="23" width="47" height="24"/>
+                                                    <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="19"/>
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstItem="FHX-Fm-kik" firstAttribute="leading" secondItem="rFw-t9-p8m" secondAttribute="leadingMargin" constant="43" id="1Y2-qi-bhZ"/>
+                                                <constraint firstItem="FHX-Fm-kik" firstAttribute="leading" secondItem="rFw-t9-p8m" secondAttribute="leadingMargin" constant="11" id="4bg-fp-KMP"/>
+                                                <constraint firstItem="1vb-3s-5yk" firstAttribute="leading" secondItem="FHX-Fm-kik" secondAttribute="trailing" constant="20" id="5Ly-XG-x6h"/>
+                                                <constraint firstItem="FHX-Fm-kik" firstAttribute="centerY" secondItem="rFw-t9-p8m" secondAttribute="centerY" id="KIC-4c-Z2m"/>
+                                                <constraint firstItem="1vb-3s-5yk" firstAttribute="centerY" secondItem="rFw-t9-p8m" secondAttribute="centerY" id="PsQ-oJ-nEl"/>
+                                                <constraint firstItem="1vb-3s-5yk" firstAttribute="centerY" secondItem="rFw-t9-p8m" secondAttribute="centerY" id="Qn7-VZ-wwf"/>
+                                                <constraint firstItem="FHX-Fm-kik" firstAttribute="centerX" secondItem="rFw-t9-p8m" secondAttribute="centerX" id="RwH-LI-hy3"/>
+                                                <constraint firstItem="1vb-3s-5yk" firstAttribute="top" secondItem="FHX-Fm-kik" secondAttribute="bottom" constant="3" id="Uuc-rZ-gKn"/>
+                                                <constraint firstItem="1vb-3s-5yk" firstAttribute="centerX" secondItem="rFw-t9-p8m" secondAttribute="centerX" id="XUg-P6-2YJ"/>
+                                                <constraint firstItem="FHX-Fm-kik" firstAttribute="top" secondItem="rFw-t9-p8m" secondAttribute="topMargin" constant="-3" id="Xqn-AV-7dh"/>
+                                                <constraint firstAttribute="leadingMargin" secondItem="1vb-3s-5yk" secondAttribute="leading" id="dBH-iI-uIl"/>
+                                                <constraint firstItem="1vb-3s-5yk" firstAttribute="leading" secondItem="rFw-t9-p8m" secondAttribute="leadingMargin" constant="31" id="gj4-do-2Tk"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="RwH-LI-hy3"/>
+                                                    <exclude reference="Xqn-AV-7dh"/>
+                                                    <exclude reference="1Y2-qi-bhZ"/>
+                                                    <exclude reference="Uuc-rZ-gKn"/>
+                                                    <exclude reference="dBH-iI-uIl"/>
+                                                    <exclude reference="gj4-do-2Tk"/>
+                                                    <exclude reference="XUg-P6-2YJ"/>
+                                                    <exclude reference="PsQ-oJ-nEl"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="grZ-KB-dQE" kind="custom" customClass="SWRevealViewControllerSeguePushController" id="YIB-Ne-SZC"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -476,8 +531,17 @@
             </objects>
             <point key="canvasLocation" x="1117" y="383"/>
         </scene>
+        <!--about-->
+        <scene sceneID="Hmy-3e-2JO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="about" id="grZ-KB-dQE" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IqD-yg-Lgg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1065.5" y="465"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="About" width="150" height="150"/>
         <image name="Events" width="150" height="150"/>
         <image name="Get Involved" width="150" height="150"/>
         <image name="Home" width="150" height="150"/>
