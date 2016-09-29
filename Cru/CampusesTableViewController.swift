@@ -20,6 +20,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     var hasConnection = true
     var loadedData = false
     var onboarding = false
+    
     @IBOutlet var table: UITableView!
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -34,8 +35,6 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         if self.navigationController != nil{
             self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
         }
-        
-        
         
         
         CruClients.getServerClient().getData(.Campus, insert: insertCampus, completionHandler: {success in
@@ -57,7 +56,20 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return emptyTableImage
+        if !onboarding {
+            return emptyTableImage
+        }
+        return nil
+    }
+    
+    //Set the text to be displayed when either table is empty
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        if onboarding {
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+            return NSAttributedString(string: "No connection found. Please try again later.", attributes: attributes)
+        }
+        return nil
+        
     }
     
     func emptyDataSet(scrollView: UIScrollView!, didTapView view: UIView!) {
@@ -76,8 +88,8 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         if(!connected){
             hasConnection = false
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
-            self.table.emptyDataSetDelegate = self
-            self.table.emptyDataSetSource = self
+            self.tableView.emptyDataSetDelegate = self
+            self.tableView.emptyDataSetSource = self
             self.tableView.reloadData()
             //hasConnection = false
         }else{

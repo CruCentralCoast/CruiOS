@@ -1,6 +1,0 @@
-framework module PagedArray {
-  umbrella header "PagedArray-umbrella.h"
-
-  export *
-  module * { export * }
-}

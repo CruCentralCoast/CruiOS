@@ -267,6 +267,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             upcomingRidesHeight.constant = CGFloat(50)
             self.table!.emptyDataSetSource = self
             self.table!.emptyDataSetDelegate = self
+            self.table!.reloadData()
         }
         else {
             
