@@ -13,14 +13,12 @@ import AVFoundation
 import Alamofire
 import HTMLReader
 import MRProgress
-import PagedArray
 import DZNEmptyDataSet
-import NVActivityIndicatorView
 
 let InitialCount = 20
 let PageSize = 8
 
-class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, CardViewDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, NVActivityIndicatorViewable, UIPopoverPresentationControllerDelegate {
+class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, CardViewDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UIPopoverPresentationControllerDelegate {
     //MARK: Properties
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -46,7 +44,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var audioCards = [SummaryCard]()
     var videoCards = [VideoCard]()
     
-    var pagedArray = PagedArray<Resource>(count: InitialCount, pageSize: PageSize)
     var audioPlayer:AVAudioPlayer!
     var apiKey = "AIzaSyDW_36-r4zQNHYBk3Z8eg99yB0s2jx3kpc"
     var cruChannelID = "UCe-RJ-3Q3tUqJciItiZmjdg"
@@ -67,7 +64,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
-    var activityIndicatorView: NVActivityIndicatorView
     var isLeader = false
     var filteredTags = [ResourceTag]()
     var searchPhrase = ""
@@ -84,7 +80,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     init?(serverProtocol: ServerProtocol, _ coder: NSCoder? = nil) {
         //super.init(coder: NSCoder)
         self.serverClient = serverProtocol
-        activityIndicatorView = NVActivityIndicatorView(frame: UIScreen.mainScreen().bounds, type: NVActivityIndicatorType.AudioEqualizer, color: CruColors.yellow)
+    
         if let coder = coder {
             super.init(coder: coder)
         }
