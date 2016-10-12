@@ -54,6 +54,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     var parsedNum: String!
     var CLocation: CLLocation?
     var convertedDict = NSDictionary()
+    var fromEventDetails = false
     
     struct OfferRideConstants{
         static let pageTitle = "Offer Ride"
@@ -127,6 +128,14 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         //Setup for the Google Place Picker
         placesClient = GMSPlacesClient.sharedClient()
         
+        //Sync the ride with the event if it's coming from event details
+        if fromEventDetails {
+            syncRideToEvent()
+            eventField?.text = event.name
+            eventField?.enabled = false
+            
+        }
+        
     }
     
     //Asynchronous function that's called to insert an event into the table
@@ -139,6 +148,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             self.events.insert(event, atIndex: 0)
         }
     }
+    
     
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -189,13 +199,17 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             TimePicker.pickTime(self)
         case addressField!:
             highlightField(addressLine)
-            addressField?.resignFirstResponder()
-            //choosePickupLocation(self)
-            //googlePlacePicker()
-            //presentCustomPicker()
-            let vc = PlacePickerViewController()
-            vc.offerRideVC = self
-            self.navigationController!.pushViewController(vc, animated: true)
+            
+            if !fromEventDetails {
+                addressField?.resignFirstResponder()
+                //choosePickupLocation(self)
+                //googlePlacePicker()
+                //presentCustomPicker()
+                let vc = PlacePickerViewController()
+                vc.offerRideVC = self
+                self.navigationController!.pushViewController(vc, animated: true)
+            }
+            
             
         case pickupRadiusField!:
             highlightField(pickupLine)
@@ -223,25 +237,18 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         case phoneField!:
             makeFieldInactive(phoneLine)
             phoneField!.text = PhoneFormatter.unparsePhoneNumber(phoneField!.text!)
-            //phoneLine?.backgroundColor = inactiveGray
         case eventField!:
             makeFieldInactive(eventLine)
-            //eventLine?.backgroundColor = inactiveGray
         case dateField!:
             makeFieldInactive(dateLine)
-            //dateLine?.backgroundColor = inactiveGray
         case timeField!:
             makeFieldInactive(timeLine)
-            //timeLine?.backgroundColor = inactiveGray
         case addressField!:
             makeFieldInactive(addressLine)
-            //addressLine?.backgroundColor = inactiveGray
         case pickupRadiusField!:
             makeFieldInactive(pickupLine)
-            //pickupLine?.backgroundColor = inactiveGray
         case seatsField!:
             makeFieldInactive(seatsLine)
-            //seatsLine?.backgroundColor = inactiveGray
         default:
             print("Text field not recognized")
         }
@@ -454,6 +461,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             }
             
         }
+        
         return true
     }
     

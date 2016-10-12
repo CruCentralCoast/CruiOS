@@ -67,9 +67,22 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
+        let _ = self.searchController!.view
+        
+        
+        /*let subView = UIView(frame: CGRectMake(0, 65.0, 350.0, 45.0))
+        
+        subView.addSubview((searchController?.searchBar)!)
+        self.view.addSubview(subView)
+        searchController?.searchBar.sizeToFit()*/
+        
         // Put the search bar in the navigation bar.
-        searchController?.searchBar.sizeToFit()
+        
         self.navigationItem.titleView = searchController?.searchBar
+        self.navigationItem.titleView?.userInteractionEnabled = true
+        searchController?.searchBar.sizeToFit()
+        
+        
         resultsViewController?.primaryTextHighlightColor = CruColors.lightBlue
         resultsViewController?.tableCellBackgroundColor = UIColor(red: 76/225, green: 72/255, blue: 73/255, alpha: 1.0)
         resultsViewController?.primaryTextColor = UIColor.whiteColor().colorWithAlphaComponent(0.7)
@@ -86,9 +99,16 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
         searchController?.searchBar.barStyle = .BlackTranslucent
         searchController?.searchBar.tintColor = UIColor.whiteColor()
     }
+    
+    deinit {
+        let _ = self.searchController!.view          // iOS 8
+    }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
+        
+
     }
     
     
@@ -218,6 +238,7 @@ extension PlacePickerViewController: GMSAutocompleteResultsViewControllerDelegat
         marker.map = mapView
         marker.appearAnimation = kGMSMarkerAnimationPop
         marker.icon = UIImage(named: "marker-icon")
+        
     }
     
     func resultsController(resultsController: GMSAutocompleteResultsViewController,
