@@ -301,10 +301,13 @@ class EventDetailsViewController: UIViewController {
         
         if let button = sender as? UIButton{
             if(button.currentTitle == "offer ride"){
-                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("createARide") as! OfferOrEditRideViewController
+                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("newOfferRide") as! NewOfferRideViewController
                 self.navigationController?.pushViewController(vc, animated: true)
                 vc.event = event
-                vc.isOfferingRide = true
+                //vc.isOfferingRide = true
+                vc.fromEventDetails = true
+                
+                
             }
             else{
                 let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ridesByEvent") as! FilterByEventViewController
@@ -313,6 +316,16 @@ class EventDetailsViewController: UIViewController {
                 vc.eventVC = self
                 vc.wasLinkedFromEvents = true
             }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "offerRide"{
+            //let destVC = segue.destinationViewController as! OfferOrEditRideViewController
+            let vc = segue.destinationViewController as! NewOfferRideViewController
+            vc.event = event
+            vc.fromEventDetails = true
+            
         }
     }
     

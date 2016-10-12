@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -28,11 +29,11 @@
                         <viewControllerLayoutGuide type="bottom" id="y2c-A1-M5Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yUa-OG-x5d">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="600" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xck-zL-c1n">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9Z-Ze-51u">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="647"/>
@@ -299,6 +300,8 @@
                             <constraint firstAttribute="trailingMargin" secondItem="xck-zL-c1n" secondAttribute="trailing" constant="-20" id="tX8-T4-Gej"/>
                         </constraints>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="calendarButton" destination="pwr-il-7OQ" id="1PI-K0-6bT"/>
                         <outlet property="descriptionView" destination="WYR-HW-5q5" id="okn-dY-wvY"/>
@@ -329,10 +332,10 @@
             </objects>
             <point key="canvasLocation" x="3264" y="2017"/>
         </scene>
-        <!--createARide-->
+        <!--newOfferRide-->
         <scene sceneID="ljg-EL-q5p">
             <objects>
-                <viewControllerPlaceholder storyboardName="driverdetail" referencedIdentifier="createARide" id="Nc2-8J-TOU" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="newofferride" referencedIdentifier="newOfferRide" id="Nc2-8J-TOU" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JW2-D7-tZm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3264" y="2099"/>

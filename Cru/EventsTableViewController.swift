@@ -31,6 +31,8 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
 
         CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: finishInserting)
         
+        //CruClients.getEventUtils().loadEventsWithoutMinistries(insertEventWithoutMinistries, completionHandler: done)
+        
         //Set the nav title & font
         navigationItem.title = "Events"
         
@@ -62,15 +64,22 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         
         tableView.reloadData()
     }
+    
+    private func insertEventWithoutMinistries(dict: NSDictionary) {
+        print("Got here so yah")
+    }
 
     //insert helper function for inserting event data
     private func insertEvent(dict: NSDictionary) {
         let event = Event(dict: dict)!
-        
         if(event.startNSDate.compare(NSDate()) != .OrderedAscending){
             self.events.insert(event, atIndex: 0)
         }
         
+    }
+    
+    private func done(success: Bool) {
+        print("Done!")
     }
     
     //helper function for finishing off inserting event data

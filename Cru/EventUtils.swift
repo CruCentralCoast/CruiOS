@@ -24,12 +24,22 @@ class EventUtils {
         //Will load all events if you belong to no ministries
         var ministryIds = []
         let ministries = CruClients.getSubscriptionManager().loadMinistries()
+        
+        print(ministries)
         ministryIds = ministries.map({min in min.id})
+        
         
         let curDate = GlobalUtils.stringFromDate(NSDate())
         
         let params: [String:AnyObject] = [Event.ministriesField:["$in":ministryIds], Event.endDateField:["$gte": curDate]]
         
+        
+        
         CruClients.getServerClient().getData(.Event, insert: inserter, completionHandler: completionHandler, params: params)
+    }
+    
+    func loadEventsWithoutMinistries(inserter: (NSDictionary)->Void, completionHandler: (Bool)->Void) {
+        let params2: [String: AnyObject] = [Event.ministriesField: NSNull()]
+        CruClients.getServerClient().getData(.Event, insert: inserter, completionHandler: completionHandler, params: params2)
     }
 }
