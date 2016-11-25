@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommunityGroup{
+class CommunityGroup: Comparable, Equatable{
 
     var id: String!
     var name : String!
@@ -59,4 +59,20 @@ class CommunityGroup{
             return ""
         }
     }
+    
+}
+
+/* Function for the Comparable & Equatable protocols */
+func  < (lGroup: CommunityGroup, rGroup: CommunityGroup) -> Bool{
+    if(lGroup.name < rGroup.name){
+        return true
+    }
+    else if(lGroup.name > rGroup.name){
+        return false
+    }
+    return false
+}
+
+func  ==(lGroup: CommunityGroup, rGroup: CommunityGroup) -> Bool{
+    return lGroup.id == rGroup.id
 }

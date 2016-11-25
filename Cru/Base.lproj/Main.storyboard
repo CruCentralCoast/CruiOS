@@ -93,8 +93,8 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="389" height="100"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fdv-yc-nar">
-                                                                    <rect key="frame" x="8" y="8" width="368" height="84"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fdv-yc-nar">
+                                                                    <rect key="frame" x="8" y="8" width="373" height="84"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIx-3d-SZ9">
                                                                             <rect key="frame" x="22" y="17" width="33" height="21"/>
@@ -129,8 +129,8 @@
                                                                         </mask>
                                                                     </variation>
                                                                 </view>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Driving to Sophmore Social at 3:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-YY-p97">
-                                                                    <rect key="frame" x="83" y="39" width="283" height="23"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving to Sophmore Social at 3:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-YY-p97">
+                                                                    <rect key="frame" x="83" y="39" width="288" height="23"/>
                                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -199,8 +199,8 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="389" height="99"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
-                                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uwm-QX-ImF">
-                                                                    <rect key="frame" x="8" y="8" width="368" height="83"/>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwm-QX-ImF">
+                                                                    <rect key="frame" x="8" y="8" width="373" height="83"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lY-f2-b8l">
                                                                             <rect key="frame" x="25" y="17" width="37" height="23"/>
@@ -220,14 +220,14 @@
                                                                             <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Name here" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="IzF-nk-iH7">
-                                                                            <rect key="frame" x="92" y="10" width="266" height="26"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name here" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="IzF-nk-iH7">
+                                                                            <rect key="frame" x="92" y="10" width="271" height="26"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="75H-cU-hcX">
-                                                                            <rect key="frame" x="88" y="28" width="270" height="55"/>
+                                                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="75H-cU-hcX">
+                                                                            <rect key="frame" x="88" y="28" width="275" height="55"/>
                                                                             <color key="textColor" red="0.40000000000000002" green="0.3803921569" blue="0.38431372549999998" alpha="1" colorSpace="calibratedRGB"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="15"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -394,12 +394,18 @@
                                     <constraint firstItem="9t1-Fv-uyz" firstAttribute="leading" secondItem="4kP-5J-Cvs" secondAttribute="leading" id="Dsd-sx-QCL"/>
                                     <constraint firstAttribute="bottom" secondItem="9t1-Fv-uyz" secondAttribute="bottom" id="Xu4-X2-cQ7"/>
                                     <constraint firstItem="9t1-Fv-uyz" firstAttribute="top" secondItem="4kP-5J-Cvs" secondAttribute="top" id="k35-i1-gIf"/>
-                                    <constraint firstAttribute="trailing" secondItem="9t1-Fv-uyz" secondAttribute="trailing" constant="5" id="tPZ-ON-dDR"/>
+                                    <constraint firstAttribute="trailing" secondItem="9t1-Fv-uyz" secondAttribute="trailing" id="tPZ-ON-dDR"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Dsd-sx-QCL"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="9t1-Fv-uyz" firstAttribute="leading" secondItem="5bq-z4-v2i" secondAttribute="leadingMargin" constant="-20" id="0El-pO-z55"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4kP-5J-Cvs" secondAttribute="trailing" constant="-20" id="XQF-rC-U43"/>
                             <constraint firstItem="9t1-Fv-uyz" firstAttribute="width" secondItem="5bq-z4-v2i" secondAttribute="width" id="aRx-va-oAV"/>
                             <constraint firstItem="9t1-Fv-uyz" firstAttribute="width" secondItem="5bq-z4-v2i" secondAttribute="width" constant="5" id="f0Z-JN-Tqq"/>

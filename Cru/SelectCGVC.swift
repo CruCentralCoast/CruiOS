@@ -10,6 +10,7 @@ import UIKit
 
 class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var cgs = [CommunityGroupCell]()
+    var groups = [CommunityGroup]()
     private var ministry: String!
     private var answers = [[String:String]]()
     
@@ -37,17 +38,16 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     private func finishInserting(success: Bool) {
+        groups.sortInPlace()
         table.reloadData()
         MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
     }
     
     private func insertGroup(dict: NSDictionary) {
         let cell = self.table.dequeueReusableCellWithIdentifier("cell")!
-        let groupCell = cell as! CommunityGroupCell
-        groupCell.setGroup(CommunityGroup(dict: dict))
-        groupCell.setSignupCallback(jumpBackToGetInvolved)
-        cgs.append(groupCell)
-        table.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+        let group = CommunityGroup(dict: dict)
+        groups.append(group)
+        
     }
     
     func setAnswers(answers: [[String:String]]) {
@@ -59,11 +59,23 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cgs.count
+        return groups.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return cgs[indexPath.row]
+        
+        //load cell and ride associated with that cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CommunityGroupCell
+        let group = groups[indexPath.row]
+        
+        
+        
+        cell.setGroup(group)
+        cell.setSignupCallback(jumpBackToGetInvolved)
+        cgs.append(cell)
+        
+        return cell
+        
     }
     
     func jumpBackToGetInvolved() {
