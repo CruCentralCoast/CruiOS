@@ -31,10 +31,10 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         
         //load all community groups until the submit answers endpoint is added
         
-//        let params = ["answers":answers]
-//        CruClients.getServerClient().postDataIn(DBCollection.Ministry, parentId: ministry,
-//            child: DBCollection.CommunityGroup, params: params, insert: insertGroup, completionHandler: finishInserting)
-        CruClients.getServerClient().getData(.CommunityGroup, insert: insertGroup, completionHandler: finishInserting)
+        let params = ["answers":answers]
+        CruClients.getServerClient().postDataIn(DBCollection.Ministry, parentId: ministry,
+            child: DBCollection.CommunityGroup, params: params, insert: insertGroup, completionHandler: finishInserting)
+        //CruClients.getServerClient().getData(.CommunityGroup, insert: insertGroup, completionHandler: finishInserting)
     }
     
     private func finishInserting(success: Bool) {

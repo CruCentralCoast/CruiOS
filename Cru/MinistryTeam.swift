@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MinistryTeam {
+class MinistryTeam: Comparable, Equatable{
     var id: String
     var parentMinistry: String
     var description: String
@@ -18,6 +18,7 @@ class MinistryTeam {
     var teamImage: UIImage!
     var teamImageUrl: String
     var leaders: [User]
+    var parentMinName: String
     
     init?(dict: NSDictionary) {
         //required initialization of variables
@@ -30,6 +31,7 @@ class MinistryTeam {
         self.teamImage = UIImage(named: "event1")
         self.teamImageUrl = ""
         self.leaders = [User]()
+        self.parentMinName = ""
         
         //grabbing dictionary values
         let dId = dict.objectForKey("_id")
@@ -81,4 +83,30 @@ class MinistryTeam {
             "teamImageUrl": self.teamImageUrl
         ]
     }
+}
+
+/* Function for the Comparable & Equatable protocols */
+func  < (lTeam: MinistryTeam, rTeam: MinistryTeam) -> Bool{
+    if lTeam.parentMinName < rTeam.parentMinName {
+        return true
+    }
+    else if lTeam.parentMinName > rTeam.parentMinName {
+        return false
+    }
+    else if lTeam.parentMinName == rTeam.parentMinName {
+        
+        if lTeam.ministryName < rTeam.ministryName {
+            return true
+        }
+        
+        else {
+            return false
+        }
+        
+    }
+    return false
+}
+
+func  ==(lTeam: MinistryTeam, rTeam: MinistryTeam) -> Bool{
+    return lTeam.id == rTeam.id
 }

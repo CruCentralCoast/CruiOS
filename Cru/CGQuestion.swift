@@ -27,13 +27,14 @@ class CGQuestion {
     let question: String
     let type: CGQuestionType
     let options: [String]
+    let required: Bool
 
     init(dict: NSDictionary) {
         id = dict["_id"] as! String
         ministry = CGQuestion.getString(dict, key: CGQuestion.ministryField)
         question = CGQuestion.getString(dict, key: "question")
         type = CGQuestionType(rawValue: dict["type"] as! String)!
-        
+        required = dict["required"] as! Bool
         let optionStructs = dict["selectOptions"] as! [NSDictionary]
         
         
