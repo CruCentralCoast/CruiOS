@@ -82,6 +82,13 @@ class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSo
     //reload the collection view data and store whether or not the user is in the repsective ministries
     private func finishInserting(success: Bool) {
         //TODO: handle failure
+        
+        for minTeam in ministryTeams {
+            minTeam.parentMinName = ministries.filter{$0.id == minTeam.parentMinistry}.first!.name
+        }
+        
+        ministryTeams.sortInPlace()
+        
         self.tableView.reloadData()
     }
 

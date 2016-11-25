@@ -107,8 +107,8 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     private func validateAnswers() -> Bool {
         let optionCells = questions.filter{ $0 is OptionQuestionCell } as! [OptionQuestionCell]
-        optionCells.forEach { $0.validate() }
-        return optionCells.reduce(true) {(result, cur) in result && cur.isAnswered()}
+        //optionCells.forEach { $0.validate() }
+        return optionCells.reduce(true) {(result, cur) in result && cur.validate()}
     }
     
     func showOptions(options: [String], optionHandler: ((String)->()), theCell: OptionQuestionCell){

@@ -13,7 +13,7 @@ class SearchableOptionsVC: UIViewController, UITableViewDataSource, UITableViewD
     var optionHandler: ((String)->())!
     
     override func viewDidLoad() {
-        print("lol")
+        
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

@@ -18,6 +18,7 @@ class OptionQuestionCell: UITableViewCell {
     var cgQuestion: CGQuestion!
     
     func isAnswered() -> Bool {
+        
         return optionButton.currentTitle != OptionQuestionCell.selectOption
     }
     
@@ -26,7 +27,7 @@ class OptionQuestionCell: UITableViewCell {
     }
     
     func validate() -> Bool {
-        if (!isAnswered()) {
+        if (!isAnswered() && cgQuestion.required) {
             error.text = "Required Question"
             return false
         } else {
