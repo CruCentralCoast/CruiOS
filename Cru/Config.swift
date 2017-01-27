@@ -82,4 +82,5 @@ struct Config {
     static let noPassengersImage = "no-passengers"
     static let campusImage = "campusImage"
     static let communityImage = "communityImage"
+    static let noEventsImage = "no-events"
 }

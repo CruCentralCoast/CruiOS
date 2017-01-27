@@ -17,6 +17,7 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     let curDate = NSDate()
     let searchController = UISearchController(searchResultsController: nil)
     var filteredEvents = [Event]()
+    var hasConnection = true
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -28,11 +29,10 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         super.viewDidLoad()
         
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
+        
+        //Check for connection then load events in the completion function
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
 
-        CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: finishInserting)
-        
-        //CruClients.getEventUtils().loadEventsWithoutMinistries(insertEventWithoutMinistries, completionHandler: done)
-        
         //Set the nav title & font
         navigationItem.title = "Events"
         
@@ -49,11 +49,40 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     
     //Empty data set functions
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: Config.noConnectionImageName)
+        if hasConnection == false {
+            return UIImage(named: Config.noConnectionImageName)
+        }
+        else {
+            return UIImage(named: Config.noEventsImage)
+
+        }
+        
     }
+
     
     func emptyDataSet(scrollView: UIScrollView!, didTapView view: UIView!) {
-        CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: finishInserting)
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+    }
+    
+    //Test to make sure there is a connection then load resources
+    func finishConnectionCheck(connected: Bool){
+        
+        if(!connected){
+            hasConnection = false
+            //Display a message if either of the tables are empty
+
+            self.tableView!.reloadData()
+            //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            
+            //MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+            //load upcoming items
+            CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: loadEventsWithoutMinistries)
+            
+        }
+        
     }
     
     //Search function
@@ -65,9 +94,13 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         tableView.reloadData()
     }
     
-    private func insertEventWithoutMinistries(dict: NSDictionary) {
-        print("Got here so yah")
+    private func loadEventsWithoutMinistries(success: Bool) {
+        CruClients.getEventUtils().loadEventsWithoutMinistries(insertEvent, completionHandler: finishInserting)
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView!.reloadData()
     }
+    
 
     //insert helper function for inserting event data
     private func insertEvent(dict: NSDictionary) {
