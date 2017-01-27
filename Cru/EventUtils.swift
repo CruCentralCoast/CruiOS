@@ -39,7 +39,8 @@ class EventUtils {
     }
     
     func loadEventsWithoutMinistries(inserter: (NSDictionary)->Void, completionHandler: (Bool)->Void) {
-        let params2: [String: AnyObject] = [Event.ministriesField: NSNull()]
+        let params2: [String: AnyObject] = [Event.ministriesField: ["$size": 0]]
+        
         CruClients.getServerClient().getData(.Event, insert: inserter, completionHandler: completionHandler, params: params2)
     }
 }
