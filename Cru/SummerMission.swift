@@ -74,16 +74,17 @@ class SummerMission {
         var retLoc = ""
         
         if location != "" {
-            if let dSuburb = location!.objectForKey("suburb") {
-                retLoc += dSuburb as! String
+            if let dSuburb = location!["suburb"] as? String {
+                retLoc += dSuburb
             }
-            if let dCountry = location!.objectForKey("country") {
+            
+            if let dCountry = location!["country"] as? String {
                 if retLoc != "" {
                     retLoc += ", "
                 }
-                
-                retLoc += dCountry as! String
+                retLoc += dCountry
             }
+            
         }
         
         return retLoc
