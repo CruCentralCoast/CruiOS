@@ -10,55 +10,55 @@ import Foundation
 
 /// Card base class
 @objc
-public class Card : NSObject, PlatformObject {
+open class Card : NSObject, PlatformObject {
     
     /// Associated web url for this card
-    public let webUrl:NSURL
+    open let webUrl:URL
     
-    public let cardType:String
-    public let type:WCCardType
+    open let cardType:String
+    open let type:WCCardType
     
-    init(webUrl:NSURL, cardType:String){
+    init(webUrl:URL, cardType:String){
         self.webUrl = webUrl
         self.cardType = cardType
         self.type = Card.cardTypeFromString(cardType)
     }
     
-    public class func cardTypeFromString(name:String!) -> WCCardType{
+    open class func cardTypeFromString(_ name:String!) -> WCCardType{
         if let name = name{
             if(name == "article"){
-                return .Article
+                return .article
             }else if(name == "summary"){
-                return .Summary
+                return .summary
             }else if(name == "video"){
-                return .Video
+                return .video
             }else if(name == "image"){
-                return .Image
+                return .image
             }else{
-                return .Unknown
+                return .unknown
             }
         }else{
-            return .Unknown
+            return .unknown
         }
     }
     
-    public class func stringFromCardType(type:WCCardType)->String{
+    open class func stringFromCardType(_ type:WCCardType)->String{
         switch(type){
-        case .Article:
+        case .article:
             return "article"
-        case .Summary:
+        case .summary:
             return "summary"
-        case .Video:
+        case .video:
             return "video"
-        case .Image:
+        case .image:
             return "image"
-        case .Unknown:
+        case .unknown:
             return "unknown"
         }
     }
 
     /// Gets a card from the specified URL
-    public class func getFromUrl(url:NSURL!, completion: ((card:Card?, error:NSError?)->Void)?) -> Void{
+    open class func getFromUrl(_ url:URL!, completion: ((_ card:Card?, _ error:NSError?)->Void)?) -> Void{
         if let url = url{
             Platform.sharedInstance.getFromUrl(url, completion:completion)
         }else{
@@ -66,7 +66,7 @@ public class Card : NSObject, PlatformObject {
         }
     }
     
-    class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+    class func deserializeFromData(_ data: NSDictionary) -> AnyObject? {
         if let cardType = data["cardType"] as? String{
             switch(cardType){
             case "article":
@@ -84,7 +84,7 @@ public class Card : NSObject, PlatformObject {
         return nil
     }
     
-    public func supportsLayout(layout:WCCardLayout)->Bool{
+    open func supportsLayout(_ layout:WCCardLayout)->Bool{
         return false;
     }
     

@@ -16,7 +16,7 @@
             startingLineNumber = "274"
             endingLineNumber = "274"
             landmarkName = "saveRide()"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -31,8 +31,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "695"
             endingLineNumber = "695"
-            landmarkName = "tableView(_:willDisplayCell:forRowAtIndexPath:)"
-            landmarkType = "5">
+            landmarkName = "ResourcesViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -47,8 +47,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "691"
             endingLineNumber = "691"
-            landmarkName = "tableView(_:willDisplayCell:forRowAtIndexPath:)"
-            landmarkType = "5">
+            landmarkName = "tableView(_:willDisplay:forRowAt:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -64,7 +64,7 @@
             startingLineNumber = "644"
             endingLineNumber = "644"
             landmarkName = "finished(_:)"
-            landmarkType = "5">
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -176,7 +176,7 @@
             startingLineNumber = "836"
             endingLineNumber = "836"
             landmarkName = "checkTags(_:filteredTags:)"
-            landmarkType = "5">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -192,6 +192,70 @@
             startingLineNumber = "865"
             endingLineNumber = "865"
             landmarkName = "filterContent(_:searchText:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cru.ResourcesViewController.filterContent (Swift.Array&lt;Cru.ResourceTag&gt;, searchText : Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "Cru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ericasolum/Documents/Cru/CruiOS/Cru/ResourcesViewController.swift"
+                  timestampString = "508535959.75742"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "865"
+                  endingLineNumber = "865"
+                  offsetFromSymbolStart = "1651">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Cru.ResourcesViewController.(filterContent (Swift.Array&lt;Cru.ResourceTag&gt;, searchText : Swift.Optional&lt;Swift.String&gt;) -&gt; ()).(closure #5)"
+                  moduleName = "Cru"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ericasolum/Documents/Cru/CruiOS/Cru/ResourcesViewController.swift"
+                  timestampString = "508535959.760168"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "866"
+                  endingLineNumber = "866"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cru/SubscriptionProtocol.swift"
+            timestampString = "508336916.737165"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "SubscriptionProtocol"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cru/SubscriptionProtocol.swift"
+            timestampString = "508336934.179376"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "SubscriptionProtocol"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

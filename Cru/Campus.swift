@@ -14,15 +14,15 @@ class Campus: NSObject, NSCoding, Comparable {
     var feedEnabled: Bool!
     
     required init?(coder aDecoder: NSCoder) {
-        name = aDecoder.decodeObjectForKey("name") as! String
-        id = aDecoder.decodeObjectForKey("id") as! String
-        feedEnabled = aDecoder.decodeObjectForKey("feedEnabled") as! Bool
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        id = aDecoder.decodeObject(forKey: "id") as! String
+        feedEnabled = aDecoder.decodeObject(forKey: "feedEnabled") as! Bool
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeObject(id, forKey: "id")
-        aCoder.encodeObject(feedEnabled, forKey: "feedEnabled")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(feedEnabled, forKey: "feedEnabled")
     }
 
     init(name: String, id: String, feedEnabled: Bool){
@@ -37,7 +37,7 @@ class Campus: NSObject, NSCoding, Comparable {
         self.feedEnabled = false
     }
     
-    override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(_ object: Any?) -> Bool {
         if let obj = object as? Campus{
             return obj.name == self.name
         }

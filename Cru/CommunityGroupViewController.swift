@@ -21,8 +21,8 @@ class CommunityGroupViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func onTouchSeeMore(sender: AnyObject) {
-        self.performSegueWithIdentifier("cGroupSurvey", sender: self)
+    @IBAction func onTouchSeeMore(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "cGroupSurvey", sender: self)
     }
 
     /*

@@ -14,8 +14,8 @@ class LandscapeEdge : LayoutDecisionEdge {
         super.init(description: "landscape")
     }
     
-    override func evaluation(input:AnyObject)->Bool{
-        let bounds = UIScreen.mainScreen().bounds
+    override func evaluation(_ input:AnyObject)->Bool{
+        let bounds = UIScreen.main.bounds
         return bounds.width > bounds.height
     }
 }

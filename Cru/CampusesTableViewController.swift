@@ -33,7 +33,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         navigationItem.title = "Campus Subscriptions"
         
         if self.navigationController != nil{
-            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         }
         
         
@@ -55,7 +55,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         
     }
     
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         if !onboarding {
             return emptyTableImage
         }
@@ -63,16 +63,16 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     //Set the text to be displayed when either table is empty
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if onboarding {
-            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
             return NSAttributedString(string: "No connection found. Please try again later.", attributes: attributes)
         }
         return nil
         
     }
     
-    func emptyDataSet(scrollView: UIScrollView!, didTapView view: UIView!) {
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
         if(hasConnection == false){
             CruClients.getServerClient().getData(.Campus, insert: insertCampus, completionHandler: {success in
 
@@ -84,7 +84,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         }
     }
     
-    func finishConnectionCheck(connected: Bool){
+    func finishConnectionCheck(_ connected: Bool){
         if(!connected){
             hasConnection = false
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
@@ -104,7 +104,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     
     
     
-    func insertCampus(dict : NSDictionary) {
+    func insertCampus(_ dict : NSDictionary) {
         self.tableView.beginUpdates()
         
         let campusName = dict["name"] as! String
@@ -122,14 +122,14 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         //campuses.insert(curCamp, atIndex: 0)
         //campuses.sortInPlace()
         if(countChanged){
-            self.tableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+            self.tableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
         
         self.tableView.reloadData()
         self.tableView.endUpdates()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         var temp = [Campus]()
         for camp in campuses{
             temp.append(camp)
@@ -145,12 +145,12 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        if (self.resultSearchController != nil && self.resultSearchController.active){
 //            return self.filteredCampuses.count
 //        }
@@ -160,45 +160,45 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("campusCell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "campusCell", for: indexPath)
 
-            let thisCampus = campuses[campuses.startIndex.advancedBy(indexPath.row)]
+            let thisCampus = campuses[campuses.index(campuses.startIndex, offsetBy: indexPath.row)]
             
             cell.textLabel?.text = thisCampus.name
             
             //display add-ons
             cell.textLabel?.font = UIFont(name: Config.fontName, size: 20)
             //cell.textLabel?.textColor = Config.introModalContentTextColor
-            cell.textLabel?.textColor = UIColor.blackColor()
+            cell.textLabel?.textColor = UIColor.black
             
             if(thisCampus.feedEnabled == true){
-                cell.accessoryType = .Checkmark
+                cell.accessoryType = .checkmark
             }
             else{
-                cell.accessoryType = .None
+                cell.accessoryType = .none
             }
         
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath){
-            if(cell.accessoryType == .Checkmark){
-                let theCampus = campuses[campuses.startIndex.advancedBy(indexPath.row)]
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath){
+            if(cell.accessoryType == .checkmark){
+                let theCampus = campuses[campuses.index(campuses.startIndex, offsetBy: indexPath.row)]
                 
                 if(!willAffectMinistrySubscription(theCampus, indexPath: indexPath, cell: cell)){
-                    cell.accessoryType = .None
+                    cell.accessoryType = .none
                     theCampus.feedEnabled = false
                 }
             }
             else{
-                cell.accessoryType = .Checkmark
-                campuses[campuses.startIndex.advancedBy(indexPath.row)].feedEnabled = true
+                cell.accessoryType = .checkmark
+                campuses[campuses.index(campuses.startIndex, offsetBy: indexPath.row)].feedEnabled = true
             }
             
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
             //tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         }
         
@@ -207,7 +207,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     }
     
     
-    func willAffectMinistrySubscription(campus: Campus, indexPath: NSIndexPath, cell: UITableViewCell)->Bool{
+    func willAffectMinistrySubscription(_ campus: Campus, indexPath: IndexPath, cell: UITableViewCell)->Bool{
         var associatedMinistries = [Ministry]()
         
         for ministry in subbedMinistries{
@@ -223,15 +223,15 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
                 alertMessage += ministry.name + ", "
             }
             
-            let index: String.Index = alertMessage.startIndex.advancedBy(alertMessage.characters.count - 2)
-            alertMessage = alertMessage.substringToIndex(index)
+            let index: String.Index = alertMessage.characters.index(alertMessage.startIndex, offsetBy: alertMessage.characters.count - 2)
+            alertMessage = alertMessage.substring(to: index)
             
-            let alert = UIAlertController(title: "Are you sure?", message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-            alert.addAction(UIAlertAction(title: "Confirm", style: .Destructive, handler:{ action in
+            let alert = UIAlertController(title: "Are you sure?", message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler:{ action in
                 self.handleConfirmUnsubscribe(action, associatedMinistries: associatedMinistries, campus: campus, cell: cell)
             }))
-            presentViewController(alert, animated: true, completion: nil)
+            present(alert, animated: true, completion: nil)
             
             return true
         }
@@ -258,9 +258,9 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     
     
     
-    func handleConfirmUnsubscribe(action: UIAlertAction, associatedMinistries: [Ministry], campus: Campus, cell: UITableViewCell){
+    func handleConfirmUnsubscribe(_ action: UIAlertAction, associatedMinistries: [Ministry], campus: Campus, cell: UITableViewCell){
         campus.feedEnabled = false
-        cell.accessoryType = .None
+        cell.accessoryType = .none
         
         //Actually unsubscribes the user from the associated ministries
         //subbedMinistries = subbedMinistries.filter{ (minist) in !associatedMinistries.contains(minist)}
@@ -284,12 +284,12 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         self.tableView.tableHeaderView = self.resultSearchController.searchBar
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
-        self.filteredCampuses.removeAll(keepCapacity: false)
-        let query = searchController.searchBar.text!.lowercaseString
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filteredCampuses.removeAll(keepingCapacity: false)
+        let query = searchController.searchBar.text!.lowercased()
         
         for campy in campuses{
-            if(campy.name.lowercaseString.containsString(query)){
+            if(campy.name.lowercased().contains(query)){
                 filteredCampuses.append(campy)
             }
         }
@@ -303,16 +303,16 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     
     // MARK: Actions
     
-    @IBAction func save(sender: UIBarButtonItem) {
+    @IBAction func save(_ sender: UIBarButtonItem) {
         saveCampusSet()
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     /*@IBAction func saveToSettings(sender: UIBarButtonItem) {
         saveCampusSet()
         self.navigationController?.popViewControllerAnimated(true)
     }*/
     
-    @IBAction func exitToSettings(sender: UIBarButtonItem) {
-        self.navigationController?.popViewControllerAnimated(true)
+    @IBAction func exitToSettings(_ sender: UIBarButtonItem) {
+        self.navigationController?.popViewController(animated: true)
     }
 }

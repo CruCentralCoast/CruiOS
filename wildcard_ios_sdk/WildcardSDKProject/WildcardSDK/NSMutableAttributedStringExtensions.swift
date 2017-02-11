@@ -10,7 +10,7 @@ import Foundation
 
 extension NSMutableAttributedString{
     
-    func setLineHeight(height:CGFloat){
+    func setLineHeight(_ height:CGFloat){
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.minimumLineHeight =  height
         paragraphStyle.maximumLineHeight =  height
@@ -20,25 +20,25 @@ extension NSMutableAttributedString{
             range: NSMakeRange(0, self.string.characters.count))
     }
     
-    func setFont(font:UIFont){
+    func setFont(_ font:UIFont){
         self.addAttribute(NSFontAttributeName,
             value: font,
             range: NSMakeRange(0, self.string.characters.count))
     }
     
-    func setColor(color:UIColor){
+    func setColor(_ color:UIColor){
         self.addAttribute(NSForegroundColorAttributeName,
             value: color,
             range: NSMakeRange(0, self.string.characters.count))
     }
     
-    func setKerning(kerning:Float){
-        self.addAttribute(NSKernAttributeName, value: NSNumber(float:kerning), range: NSMakeRange(0, self.string.characters.count))
+    func setKerning(_ kerning:Float){
+        self.addAttribute(NSKernAttributeName, value: NSNumber(value: kerning as Float), range: NSMakeRange(0, self.string.characters.count))
         
     }
     
-    func setUnderline(style:NSUnderlineStyle){
-        self.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(long:style.rawValue), range: NSMakeRange(0,self.string.characters.count))
+    func setUnderline(_ style:NSUnderlineStyle){
+        self.addAttribute(NSUnderlineStyleAttributeName, value: NSNumber(value: style.rawValue as Int), range: NSMakeRange(0,self.string.characters.count))
     }
 }
 

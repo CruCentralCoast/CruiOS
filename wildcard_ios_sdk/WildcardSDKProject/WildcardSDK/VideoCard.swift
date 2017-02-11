@@ -12,21 +12,21 @@ import Foundation
 Video Card
 */
 @objc
-public class VideoCard : Card{
+open class VideoCard : Card{
     
-    public let title:String
-    public let creator:Creator
-    public let embedUrl:NSURL
+    open let title:String
+    open let creator:Creator
+    open let embedUrl:URL
     
-    public let abstractContent:String?
-    public let keywords:[String]?
-    public let tags:[String]?
-    public let appLinkIos:NSURL?
-    public let streamUrl:NSURL?
-    public let streamContentType:String?
-    public let posterImageUrl:NSURL?
+    open let abstractContent:String?
+    open let keywords:[String]?
+    open let tags:[String]?
+    open let appLinkIos:URL?
+    open let streamUrl:URL?
+    open let streamContentType:String?
+    open let posterImageUrl:URL?
     
-    public init(title:String, embedUrl:NSURL, url:NSURL,creator:Creator, data:NSDictionary){
+    public init(title:String, embedUrl:URL, url:URL,creator:Creator, data:NSDictionary){
         
         self.title = title
         self.creator = creator
@@ -35,15 +35,15 @@ public class VideoCard : Card{
         self.tags = data["tags"] as? [String]
         
         if let url = data["appLinkIos"] as? String{
-            self.appLinkIos = NSURL(string: url)
+            self.appLinkIos = URL(string: url)
         }else{
             self.appLinkIos = nil
         }
         
         var cardAbstractContent:String?
-        var cardPosterImageUrl:NSURL?
+        var cardPosterImageUrl:URL?
         var cardStreamContentType:String?
-        var cardStreamUrl:NSURL?
+        var cardStreamUrl:URL?
         
         if let media = data["media"] as? NSDictionary{
             
@@ -52,7 +52,7 @@ public class VideoCard : Card{
             }
             
             if let imageUrl = media["posterImageUrl"] as? String{
-                cardPosterImageUrl = NSURL(string:imageUrl);
+                cardPosterImageUrl = URL(string:imageUrl);
             }
             
             if let contentType = media["streamContentType"] as? String{
@@ -60,7 +60,7 @@ public class VideoCard : Card{
             }
             
             if let streamUrlString = media["streamUrl"] as? String{
-                cardStreamUrl = NSURL(string: streamUrlString)
+                cardStreamUrl = URL(string: streamUrlString)
             }
         }
         
@@ -72,17 +72,17 @@ public class VideoCard : Card{
         super.init(webUrl: url, cardType: "video")
     }
     
-    override class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+    override class func deserializeFromData(_ data: NSDictionary) -> AnyObject? {
         
         var videoCard:VideoCard?
         
-        var startURL:NSURL?
+        var startURL:URL?
         var title:String?
         var creator:Creator?
-        var embeddedURL:NSURL?
+        var embeddedURL:URL?
         
         if let urlString = data["webUrl"] as? String{
-            startURL = NSURL(string:urlString)
+            startURL = URL(string:urlString)
         }
         
         if let creatorData = data["creator"] as? NSDictionary{
@@ -93,7 +93,7 @@ public class VideoCard : Card{
             title = media["title"] as? String
             
             if let urlString = media["embeddedUrl"] as? String{
-                embeddedURL = NSURL(string:urlString)
+                embeddedURL = URL(string:urlString)
             }
             
             if(title != nil && startURL != nil && creator != nil && embeddedURL != nil){
@@ -104,20 +104,20 @@ public class VideoCard : Card{
         
     }
     
-    public func isYoutube()->Bool{
+    open func isYoutube()->Bool{
         return creator.name == "Youtube"
     }
     
-    public func isVimeo()->Bool{
+    open func isVimeo()->Bool{
         return creator.name == "Vimeo"
     }
     
-    public func getYoutubeId()->String?{
+    open func getYoutubeId()->String?{
         let ytEmbedRegex = "^http(s)://(www.)youtube.com/embed/(.*)$"
-        let regex = try? NSRegularExpression(pattern: ytEmbedRegex, options: NSRegularExpressionOptions.CaseInsensitive)
+        let regex = try? NSRegularExpression(pattern: ytEmbedRegex, options: NSRegularExpression.Options.caseInsensitive)
         
-        let length:Int = embedUrl.absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-        let ytMatch = regex?.firstMatchInString(embedUrl.absoluteString, options: NSMatchingOptions(), range: NSMakeRange(0, length))
+        let length:Int = embedUrl.absoluteString.lengthOfBytes(using: String.Encoding.utf8)
+        let ytMatch = regex?.firstMatch(in: embedUrl.absoluteString, options: NSRegularExpression.MatchingOptions(), range: NSMakeRange(0, length))
         if(ytMatch != nil){
             return embedUrl.lastPathComponent
         }else{
@@ -125,10 +125,10 @@ public class VideoCard : Card{
         }
     }
 
-    public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return layout == .VideoCardShort ||
-               layout == .VideoCardThumbnail ||
-                layout == .VideoCardShortFull
+    open override func supportsLayout(_ layout: WCCardLayout) -> Bool {
+        return layout == .videoCardShort ||
+               layout == .videoCardThumbnail ||
+                layout == .videoCardShortFull
     }
 
 }

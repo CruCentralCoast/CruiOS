@@ -11,57 +11,57 @@ import Foundation
 class CardViewVisualSourceFactory {
     
     /// Returns a stock visual source from a given card layout.
-    class func visualSourceFromLayout(layout:WCCardLayout, card:Card)->CardViewVisualSource{
+    class func visualSourceFromLayout(_ layout:WCCardLayout, card:Card)->CardViewVisualSource{
         switch(layout){
-        case .SummaryCardNoImage:
+        case .summaryCardNoImage:
             let source = SummaryCardNoImageVisualSource(card:card)
             return source
-        case .SummaryCardShort:
+        case .summaryCardShort:
             let source = SummaryCardShortVisualSource(card:card)
             return source
-        case .SummaryCardShortLeft:
+        case .summaryCardShortLeft:
             let source = SummaryCardShortLeftVisualSource(card:card)
             return source
-        case .SummaryCardTall:
+        case .summaryCardTall:
             let source = SummaryCardTallVisualSource(card:card,aspectRatio:0.75)
             return source
-        case .SummaryCardImageOnly:
+        case .summaryCardImageOnly:
             let source = SummaryCardImageOnlyVisualSource(card:card,aspectRatio:0.5625)
             return source
-        case .ArticleCardNoImage:
+        case .articleCardNoImage:
             let source = ArticleCardNoImageVisualSource(card:card)
             return source
-        case .ArticleCardTall:
+        case .articleCardTall:
             let source = ArticleCardTallVisualSource(card:card, aspectRatio: 0.75)
             return source
-        case .ArticleCardShort:
+        case .articleCardShort:
             let source = ArticleCardShortVisualSource(card:card)
             return source
-        case .VideoCardShort:
+        case .videoCardShort:
             let source = VideoCardShortImageSource(card:card)
             return source
-        case .VideoCardThumbnail:
+        case .videoCardThumbnail:
             let source = VideoCardThumbnailImageSource(card:card)
             return source
-        case .VideoCardShortFull:
+        case .videoCardShortFull:
             let source = VideoCardShortFullVisualSource(card:card)
             return source
-        case .ImageCard4x3:
+        case .imageCard4x3:
             let source = ImageCardTallVisualSource(card:card, aspectRatio:0.75)
             return source
-        case .ImageCardAspectFit:
+        case .imageCardAspectFit:
             let source = ImageCardTallVisualSource(card:card)
             return source
-        case .ImageCardImageOnly:
+        case .imageCardImageOnly:
             let source = ImageCardImageOnlyVisualSource(card:card, aspectRatio:0.75)
             return source
-        case .SummaryCardTwitterProfile:
+        case .summaryCardTwitterProfile:
             let source = SummaryCardTwitterProfileVisualSource(card:card)
             return source
-        case .SummaryCardTwitterTweet:
+        case .summaryCardTwitterTweet:
             let source = SummaryCardTwitterTweetVisualSource(card:card)
             return source
-        case .Unknown:
+        case .unknown:
             // shouldn't happen
             let source = SummaryCardNoImageVisualSource(card:card)
             return source

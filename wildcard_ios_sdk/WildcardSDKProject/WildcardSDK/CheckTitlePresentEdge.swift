@@ -15,10 +15,10 @@ class CheckTitlePresentEdge : LayoutDecisionEdge
         super.init(description:"Title available")
     }
     
-    override func evaluation(input: AnyObject) -> Bool {
+    override func evaluation(_ input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
-            case .Image:
+            case .image:
                 let imageCard = card as! ImageCard
                 if imageCard.title != nil{
                     return true

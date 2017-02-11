@@ -19,22 +19,22 @@ class AboutViewController: UIViewController, SWRevealViewControllerDelegate {
         
         navigationItem.title = "About"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
     
     //reveal controller function for disabling the current view
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
         
-        if position == FrontViewPosition.Left {
+        if position == FrontViewPosition.left {
             for view in self.view.subviews {
                 print("Pisition is left")
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
+        else if position == FrontViewPosition.right {
             for view in self.view.subviews {
                 print("Pisition is right")
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }

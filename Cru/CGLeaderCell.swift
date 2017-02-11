@@ -13,7 +13,7 @@ class CGLeaderCell: UITableViewCell {
     @IBOutlet weak var email: UITextView!
     @IBOutlet weak var phone: UITextView!
     
-    func setUser(user: User) {
+    func setUser(_ user: User) {
         name.text = user.name
         let number = user.phone
         phone.text = number

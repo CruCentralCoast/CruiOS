@@ -4,7 +4,7 @@ import Foundation
 import Alamofire
 
 class LoginUtils {
-    class func login(username: String, password :String, completionHandler : (success : Bool) -> Void) {
+    class func login(_ username: String, password :String, completionHandler : @escaping (_ success : Bool) -> Void) {
         
         var params = ["username":username, "password":password]
         let gcmId = CruClients.getSubscriptionManager().loadGCMToken()
@@ -12,7 +12,8 @@ class LoginUtils {
             params[Config.gcmIdField] = gcmId
         }
         let url = Config.serverUrl + "api/signin"
-        Alamofire.request(.POST, url, parameters: params)
+        
+        Alamofire.request(url, method: .post, parameters: params)
             .responseJSON { response in
                 var success : Bool = false
                 if let body = response.result.value as! NSDictionary? {
@@ -23,7 +24,7 @@ class LoginUtils {
                     }
                 }
                 
-                completionHandler(success: success)
+                completionHandler(success)
         }
     }
 
@@ -31,8 +32,9 @@ class LoginUtils {
         let url = Config.serverUrl + "api/signout"
         GlobalUtils.saveString(Config.leaderApiKey, value: "")
         
-        Alamofire.request(.POST, url, parameters: nil)
-            .responseJSON { response in }
+        Alamofire.request(url, method: .post)
+            .responseJSON { response in
+        }
     }
     
     class func isLoggedIn() -> Bool {

@@ -20,26 +20,27 @@ class EventUtils {
         serverClient = serverProtocol
     }
     
-    func loadEvents(inserter: (NSDictionary)->Void, completionHandler: (Bool)->Void) {
+    func loadEvents(_ inserter: @escaping (NSDictionary)->Void, completionHandler:
+        @escaping (Bool)->Void) {
         //Will load all events if you belong to no ministries
-        var ministryIds = []
+        var ministryIds = [String]()
         let ministries = CruClients.getSubscriptionManager().loadMinistries()
         
         print(ministries)
         ministryIds = ministries.map({min in min.id})
         
         
-        let curDate = GlobalUtils.stringFromDate(NSDate())
+        let curDate = GlobalUtils.stringFromDate(Date())
         
-        let params: [String:AnyObject] = [Event.ministriesField:["$in":ministryIds], Event.endDateField:["$gte": curDate]]
+        let params: [String:Any] = [Event.ministriesField:["$in":ministryIds], Event.endDateField:["$gte": curDate]]
         
         
         
         CruClients.getServerClient().getData(.Event, insert: inserter, completionHandler: completionHandler, params: params)
     }
     
-    func loadEventsWithoutMinistries(inserter: (NSDictionary)->Void, completionHandler: (Bool)->Void) {
-        let params2: [String: AnyObject] = [Event.ministriesField: ["$size": 0]]
+    func loadEventsWithoutMinistries(_ inserter: @escaping (NSDictionary)->Void, completionHandler: @escaping (Bool)->Void) {
+        let params2: [String: Any] = [Event.ministriesField: ["$size": 0]]
         
         CruClients.getServerClient().getData(.Event, insert: inserter, completionHandler: completionHandler, params: params2)
     }

@@ -29,17 +29,17 @@ class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITable
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(MinistryTeamViewController.refresh(_:)), for: UIControlEvents.valueChanged)
         self.ministryTeamTableView.addSubview(self.refreshControl)
     }
     
     //if the view did appear refresh it
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         refresh(self)
     }
     
     //function for refreshing the ministry team list
-    func refresh(sender: AnyObject) {
+    func refresh(_ sender: AnyObject) {
         self.ministryTeams.removeAll()
         populateJoinedMinistryTeams()
         showCorrectMinistryTeamsView()
@@ -64,7 +64,7 @@ class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITable
             
             ministryTeam["id"] = id
             ministryTeam["name"] = (ministryTeamsStorageManager.getElement(id) as! String)
-            self.ministryTeams.append(ministryTeam)
+            self.ministryTeams.append(ministryTeam as NSDictionary)
         }
     }
     
@@ -80,49 +80,49 @@ class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     //toggle table view
-    private func hideMinistryTableView(isHidden: Bool) {
+    fileprivate func hideMinistryTableView(_ isHidden: Bool) {
         if isHidden {
-            joinMTeamView.hidden = false
-            ministryTeamView.hidden = true
+            joinMTeamView.isHidden = false
+            ministryTeamView.isHidden = true
         }
         else {
-            ministryTeamView.hidden = false
-            joinMTeamView.hidden = true
+            ministryTeamView.isHidden = false
+            joinMTeamView.isHidden = true
         }
     }
     
     //navigates to the ministry teams list
-    @IBAction func onTouchSeeMore(sender: AnyObject) {
+    @IBAction func onTouchSeeMore(_ sender: AnyObject) {
         let storyboard = UIStoryboard(name: "ministryteam", bundle: nil)
-        let viewController = storyboard.instantiateViewControllerWithIdentifier("MinistryTeamsCollectionViewController")
+        let viewController = storyboard.instantiateViewController(withIdentifier: "MinistryTeamsCollectionViewController")
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
     /* Table View Delegate code */
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ministryTeams.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // your cell coding
-        let cell = tableView.dequeueReusableCellWithIdentifier("ministryTeam") as! JoinedTeamsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ministryTeam") as! JoinedTeamsTableViewCell
         let ministryTeam = ministryTeams[indexPath.item]
         cell.ministryTeam = ministryTeam
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let ministryTeam = ministryTeams[indexPath.item]
         
-        let viewController = self.storyboard!.instantiateViewControllerWithIdentifier("MinistryTeamDetailViewController") as! MinistryTeamDetailViewController
+        let viewController = self.storyboard!.instantiateViewController(withIdentifier: "MinistryTeamDetailViewController") as! MinistryTeamDetailViewController
         viewController.ministryTeamDict = ministryTeam
         viewController.listVC = self
         
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    @IBAction func unwindToMinistryTeamsList(segue: UIStoryboardSegue) {
+    @IBAction func unwindToMinistryTeamsList(_ segue: UIStoryboardSegue) {
         refresh(self)
     }
 }

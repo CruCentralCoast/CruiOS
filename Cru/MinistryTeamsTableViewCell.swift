@@ -18,7 +18,8 @@ class MinistryTeamsTableViewCell: UITableViewCell {
     
     var ministryTeam: MinistryTeam! {
         didSet {
-            ministryTeamImage.load(ministryTeam.imageUrl)
+            ministryTeamImage.load.request(with: ministryTeam.imageUrl)
+            //ministryTeamImage.load(ministryTeam.imageUrl)
             ministryTeamName.text = ministryTeam.ministryName
             ministryTeamDescription.text = ministryTeam.description
         }

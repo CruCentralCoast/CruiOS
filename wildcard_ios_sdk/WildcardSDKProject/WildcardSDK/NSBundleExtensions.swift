@@ -8,10 +8,10 @@
 
 import Foundation
 
-public extension NSBundle{
+public extension Bundle{
     /// Gets a reference to the WildcardSDK Bundle
-    public class func wildcardSDKBundle()->NSBundle{
-        let bundle = NSBundle(identifier: "com.trywildcard.WildcardSDK")
+    public class func wildcardSDKBundle()->Bundle{
+        let bundle = Bundle(identifier: "com.trywildcard.WildcardSDK")
         return bundle!
     }
 }

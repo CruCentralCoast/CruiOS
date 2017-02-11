@@ -10,17 +10,17 @@ import Foundation
 
 /// The basic subcomponent of a CardView
 @objc
-public class CardViewElement : UIView {
+open class CardViewElement : UIView {
     
     /// Reference to the parent CardView of the CardViewElement. Nil if this element has not been added to any CardView yet.
-    public var cardView:CardView?
+    open var cardView:CardView?
     
     /**
     Preferred width for the CardViewElement. Returns UIViewNoIntrinsicMetric if no preferred width is set.
     
     Similar to UILabel.preferredMaxLayoutWidth, this width and is used in conjunction with optimizedHeight() to determine the intrinsic size of the CardViewElement
     */
-    public var preferredWidth:CGFloat{
+    open var preferredWidth:CGFloat{
         get{
             return __preferredWidth
         }set{
@@ -35,8 +35,8 @@ public class CardViewElement : UIView {
     
     This function should be overriden to provide a proper intrinsic size for this CardViewElement. This height also affects the intrinsic size of a CardView if this element has been added to one
     */
-    public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
-        return CGFloat.min
+    open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
+        return CGFloat.leastNormalMagnitude
     }
     
     /**
@@ -44,7 +44,7 @@ public class CardViewElement : UIView {
 
     This always happens before a final layout pass so you should not make any assumptions about frames or sizes during this call.
     */
-    public func update(card:Card){
+    open func update(_ card:Card){
     }
     
     /**
@@ -52,16 +52,16 @@ public class CardViewElement : UIView {
 
     e.g. Resassign a UILabel's preferredMaxLayoutWidth if it depends on the CardViewElement's preferredWidth
     */
-    public func adjustForPreferredWidth(cardWidth:CGFloat){
+    open func adjustForPreferredWidth(_ cardWidth:CGFloat){
         // override
     }
     
-    public override func intrinsicContentSize() -> CGSize {
-        return CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
+    open override var intrinsicContentSize : CGSize {
+        return CGSize(width: preferredWidth, height: optimizedHeight(preferredWidth))
     }
     
     /// Called automatically on init() or awakeFromNib()
-    public func initialize(){
+    open func initialize(){
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -73,10 +73,10 @@ public class CardViewElement : UIView {
         initialize()
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         initialize()
     }
     
-    private var __preferredWidth:CGFloat = UIViewNoIntrinsicMetric
+    fileprivate var __preferredWidth:CGFloat = UIViewNoIntrinsicMetric
 }

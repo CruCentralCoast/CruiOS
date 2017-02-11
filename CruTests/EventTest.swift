@@ -9,7 +9,7 @@
 import XCTest
 
 class EventTest: XCTestCase {
-    let eventDict1 = ["_id": "blah", "url": "www.whocares.com", "description": "This is a description", "name": "Event Name", "notificationDate": "2015-03-05T16:09:41.000Z", "parentMinistry": "1", "notifications": ["hello", "there"], "parentMinistries": ["min1", "min2"], "ridesharingEnabled": true, "endDate": "2015-03-05T16:09:41.000Z", "startDate": "2015-03-05T16:09:41.000Z"]
+    let eventDict1 = ["_id": "blah", "url": "www.whocares.com", "description": "This is a description", "name": "Event Name", "notificationDate": "2015-03-05T16:09:41.000Z", "parentMinistry": "1", "notifications": ["hello", "there"], "parentMinistries": ["min1", "min2"], "ridesharingEnabled": true, "endDate": "2015-03-05T16:09:41.000Z", "startDate": "2015-03-05T16:09:41.000Z"] as [String : Any]
 
     func testEventCreation1() {
         let event = Event()!
@@ -18,7 +18,7 @@ class EventTest: XCTestCase {
     }
 
     func testEventCreationDict() {
-        let event = Event(dict: eventDict1)!
+        let event = Event(dict: eventDict1 as NSDictionary)!
     
         XCTAssertEqual(event.id, "blah")
         XCTAssertEqual(event.url, "www.whocares.com")

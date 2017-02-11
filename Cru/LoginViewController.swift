@@ -27,57 +27,62 @@ class LoginViewController: UIViewController, ValidationDelegate {
         
         navigationItem.title = "Log In"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
     
     func validationSuccessful() {
         let username = usernameField.text
         let password = passwordField.text
         
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         LoginUtils.login(username!, password: password!, completionHandler : {(success : Bool) in
             
             let title = success ? "Login Successful" : "Login Failed"
             
-            let alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(alertAction) in
+            let alert = UIAlertController(title: title, message: "", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(alertAction) in
                 if (success) {
                     if let navController = self.navigationController {
-                        navController.popViewControllerAnimated(true)
+                        navController.popViewController(animated: true)
                     }
                 }
             }))
             
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true, completion: {
-                self.presentViewController(alert, animated: true, completion: nil)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true, completion: {
+                self.present(alert, animated: true, completion: nil)
                 
             })
         })
     }
     
-    func resetLabel(field: UITextField, error: UILabel){
-        field.layer.borderColor = UIColor.clearColor().CGColor
+    func resetLabel(_ field: UITextField, error: UILabel){
+        field.layer.borderColor = UIColor.clear.cgColor
         field.layer.borderWidth = 0.0
         error.text = ""
     }
     
-    func validationFailed(errors: [UITextField : ValidationError]) {
+    func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
+        
         var userValid = true
         var pwdValid = true
         
         // turn the fields to red
-        for (field, error) in validator.errors {
-            field.layer.borderColor = CruColors.yellow.CGColor
-            field.layer.borderWidth = 1.0
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.layer.borderColor = CruColors.yellow.cgColor
+                field.layer.borderWidth = 1.0
+                
+                if(field == usernameField){
+                    userValid = false
+                }
+                if(field == passwordField){
+                    pwdValid = false
+                }
+            }
             error.errorLabel?.text = error.errorMessage // works if you added labels
-            error.errorLabel?.hidden = false
+            error.errorLabel?.isHidden = false
             
-            if(field == usernameField){
-                userValid = false
-            }
-            if(field == passwordField){
-                pwdValid = false
-            }
+            
         }
         
         if(userValid){
@@ -88,7 +93,7 @@ class LoginViewController: UIViewController, ValidationDelegate {
         }
     }
     
-    @IBAction func loginPressed(sender: AnyObject) {
+    @IBAction func loginPressed(_ sender: AnyObject) {
         validator.validate(self)
     }
 }

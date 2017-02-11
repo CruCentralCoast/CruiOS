@@ -19,7 +19,7 @@ class EventsPopoverViewController: UITableViewController {
         
         
         
-        events.sortInPlace({$0.name < $1.name})
+        events.sort(by: {$0.name < $1.name})
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,18 +28,18 @@ class EventsPopoverViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return events.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         cell.textLabel!.text = events[indexPath.row].name
         cell.textLabel!.font = UIFont(name: Config.fontName, size: 18.0)
@@ -47,9 +47,9 @@ class EventsPopoverViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if fvc != nil{
-            fvc!.eventNameLabel.text = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+            fvc!.eventNameLabel.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
             fvc!.selectedEvent = events[indexPath.row]
         }
         else if offerRide != nil{
@@ -63,7 +63,7 @@ class EventsPopoverViewController: UITableViewController {
             offerRide!.syncRideToEvent()
         }
         
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: {})
+        self.presentingViewController?.dismiss(animated: true, completion: {})
         
     }
 

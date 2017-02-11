@@ -19,7 +19,7 @@ class ResourceTagTableViewCell: UITableViewCell {
     
     //MARK: Actions
     
-    @IBAction func buttonTapped(sender: CheckboxButton) {
+    @IBAction func buttonTapped(_ sender: CheckboxButton) {
         if sender.isChecked == true{
             setUnchecked()
         }
@@ -33,7 +33,7 @@ class ResourceTagTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -41,7 +41,7 @@ class ResourceTagTableViewCell: UITableViewCell {
     
     //Sets the text color of the label to light blue
     func setChecked() {
-        UIView.transitionWithView(title, duration: 0.25, options: .TransitionCrossDissolve, animations: {
+        UIView.transition(with: title, duration: 0.25, options: .transitionCrossDissolve, animations: {
             self.title.textColor = CruColors.lightBlue
             }, completion: nil)
         
@@ -49,7 +49,7 @@ class ResourceTagTableViewCell: UITableViewCell {
     
     //Sets the text color of the label to gray
     func setUnchecked() {
-        UIView.transitionWithView(title, duration: 0.25, options: .TransitionCrossDissolve, animations: {
+        UIView.transition(with: title, duration: 0.25, options: .transitionCrossDissolve, animations: {
             self.title.textColor = CruColors.gray
             }, completion: nil)
     }

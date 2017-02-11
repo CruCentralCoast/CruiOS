@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class ImageCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSource
+open class ImageCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var body:ImageOnlyBody!
     var aspectRatio:CGFloat
@@ -19,9 +19,9 @@ public class ImageCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSo
         super.init(card:card)
     }
     
-    @objc public func viewForCardBody()->CardViewElement{
+    @objc open func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(.ImageOnly) as! ImageOnlyBody
+            body = CardViewElementFactory.createCardViewElement(.imageOnly) as! ImageOnlyBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0)
             body.imageAspectRatio = aspectRatio
         }

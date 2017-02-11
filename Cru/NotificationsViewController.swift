@@ -26,7 +26,7 @@ class NotificationsViewController: UITableViewController {
         
         tableView.reloadData()
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         
         
@@ -52,26 +52,26 @@ class NotificationsViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return notifications.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("notificationCell", forIndexPath: indexPath) as! NotificationTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
         
         let not = notifications[indexPath.row]
 
         // Configure the cell...
         cell.title.text = not.title
         cell.content.text = not.content
-        cell.timeSince.text = not.dateReceived.offsetFrom(NSDate())
+        cell.timeSince.text = not.dateReceived.offsetFrom(Date())
         
         
         
@@ -80,7 +80,7 @@ class NotificationsViewController: UITableViewController {
     
     // MARK: NSCoding
     func saveNotifications() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(notifications, toFile: Notification.ArchiveURL.path!)
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(notifications, toFile: Notification.ArchiveURL.path)
         
         if !isSuccessfulSave {
             print("Failed to save notifications...")
@@ -89,7 +89,7 @@ class NotificationsViewController: UITableViewController {
     
     func loadNotifications() -> [Notification]? {
         
-        return NSKeyedUnarchiver.unarchiveObjectWithFile(Notification.ArchiveURL.path!) as? [Notification]
+        return NSKeyedUnarchiver.unarchiveObject(withFile: Notification.ArchiveURL.path) as? [Notification]
 
     }
     

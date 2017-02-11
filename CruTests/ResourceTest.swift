@@ -18,7 +18,7 @@ class ResourceTest: XCTestCase {
         "date": "2016-03-02T00:00:00.000Z",
         "tags": [
             "56d79219e73872030083a90e"
-        ]]
+        ]] as [String : Any]
     
     let resourceDict2 = ["_id": "56d793afe73872030083a913",
         "slug": "is-there-a-god",
@@ -31,7 +31,7 @@ class ResourceTest: XCTestCase {
         "restricted": false,
         "tags": [
             "56d79219e73872030083a90e"
-        ]]
+        ]] as [String : Any]
     let resourceDict3 = ["_id": "56a8689d2a55a7030050f23e",
         "slug": "the-purpose-of-prayer",
         "title": "The Purpose of Prayer",
@@ -43,14 +43,14 @@ class ResourceTest: XCTestCase {
         "restricted": true,
         "tags": [
             "56a868b72a55a7030050f23f"
-        ]]
+        ]] as [String : Any]
     
     
     //Testing creating a resource with optional data fields like author and restricted
     func testResourceCreationDict() {
-        let res1 = Resource(dict: resourceDict1)!
-        let res2 = Resource(dict: resourceDict2)!
-        let res3 = Resource(dict: resourceDict3)!
+        let res1 = Resource(dict: resourceDict1 as NSDictionary)!
+        let res2 = Resource(dict: resourceDict2 as NSDictionary)!
+        let res3 = Resource(dict: resourceDict3 as NSDictionary)!
         
         XCTAssertEqual(res1.author, "")
         XCTAssertEqual(res1.restricted, false)

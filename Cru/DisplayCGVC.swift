@@ -14,10 +14,10 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     var group: CommunityGroup!
     var cells = [UITableViewCell]()
     @IBOutlet weak var table: UITableView!
-    var leaveCallback: (Void->Void)!
+    var leaveCallback: ((Void)->Void)!
     var ministryNameCell: UITextView!
 
-    @IBAction func leaveGroup(sender: AnyObject) {
+    @IBAction func leaveGroup(_ sender: AnyObject) {
         cells.removeAll()
         self.table.reloadData()
         GlobalUtils.saveString(Config.communityGroupKey, value: "")
@@ -26,7 +26,7 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     
   
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         let groupId = GlobalUtils.loadString(Config.communityGroupKey)
         if (groupId != "") {
             loadCommunityGroup(groupId)
@@ -37,7 +37,7 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         table.rowHeight = UITableViewAutomaticDimension
     }
 
-    private func loadCommunityGroup(id: String) {
+    fileprivate func loadCommunityGroup(_ id: String) {
         CruClients.getServerClient().getById(DBCollection.CommunityGroup, insert: insertGroup, completionHandler: { success in
             
                 self.table.reloadData()
@@ -47,12 +47,12 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             
             }, id: id)
     }
-    private func insertMinistry(dict: NSDictionary){
+    fileprivate func insertMinistry(_ dict: NSDictionary){
         let minist = Ministry(dict: dict)
         ministryNameCell.text = minist.name
     }
 
-    private func insertGroup(dict: NSDictionary) {
+    fileprivate func insertGroup(_ dict: NSDictionary) {
         group = CommunityGroup(dict: dict)
         
         if(group.parentMinistry != nil){
@@ -62,40 +62,40 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         }
         
         
-        if let cell = table.dequeueReusableCellWithIdentifier("cell")! as? CGDetailTableViewCell{
+        if let cell = table.dequeueReusableCell(withIdentifier: "cell")! as? CGDetailTableViewCell{
             cell.cellTitle.text = "Meeting Time:"
             cell.cellValue.text = group.getMeetingTime()
             cells.append(cell)
-            table.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+            table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
         
-        if let cell = table.dequeueReusableCellWithIdentifier("cell")! as? CGDetailTableViewCell{
+        if let cell = table.dequeueReusableCell(withIdentifier: "cell")! as? CGDetailTableViewCell{
             cell.cellTitle.text = "Name:"
             cell.cellValue.text = group.name
             cells.append(cell)
-            table.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+            table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
         
-        if let cell = table.dequeueReusableCellWithIdentifier("cell")! as? CGDetailTableViewCell{
+        if let cell = table.dequeueReusableCell(withIdentifier: "cell")! as? CGDetailTableViewCell{
             cell.cellTitle.text = "Description:"
             cell.cellValue.text = group.description
             cells.append(cell)
-            table.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+            table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
         
-        if let cell = table.dequeueReusableCellWithIdentifier("cell")! as? CGDetailTableViewCell{
+        if let cell = table.dequeueReusableCell(withIdentifier: "cell")! as? CGDetailTableViewCell{
             cell.cellTitle.text = "Ministry:"
             ministryNameCell = cell.cellValue
             cell.cellValue.text = ""
             cells.append(cell)
-            table.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+            table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
         
         for lead in group.leaders{
-            if let cell = self.table.dequeueReusableCellWithIdentifier("leaderCell")! as? CGLeaderCell{
+            if let cell = self.table.dequeueReusableCell(withIdentifier: "leaderCell")! as? CGLeaderCell{
                 cell.setUser(lead)
                 cells.append(cell)
-                table.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+                table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
             }
         }
         
@@ -103,16 +103,16 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         self.table.reloadData()
     }
     
-    private func finishInserting(success: Bool) {
+    fileprivate func finishInserting(_ success: Bool) {
         table.reloadData()
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cells.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return cells[indexPath.row]
     }
     

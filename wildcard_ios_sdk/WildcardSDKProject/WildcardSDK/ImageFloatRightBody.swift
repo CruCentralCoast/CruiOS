@@ -9,13 +9,13 @@
 import Foundation
 
 @objc
-public class ImageFloatRightBody : CardViewElement, WCImageViewDelegate
+open class ImageFloatRightBody : CardViewElement, WCImageViewDelegate
 {
-    @IBOutlet weak public var imageView: WCImageView!
-    @IBOutlet weak public var descriptionLabel: UILabel!
+    @IBOutlet weak open var imageView: WCImageView!
+    @IBOutlet weak open var descriptionLabel: UILabel!
     
     /// Content inset for all content of card body
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(imageTopConstraint.constant, imageLeadingConstraint.constant, bottomPadding, imageTrailingConstraint.constant)
         }
@@ -29,9 +29,9 @@ public class ImageFloatRightBody : CardViewElement, WCImageViewDelegate
     }
     
     /// Set this variable to control the image size. Do not attempt to reframe or relayout the imageView itself
-    public var imageViewSize:CGSize{
+    open var imageViewSize:CGSize{
         get{
-            return CGSizeMake(imageWidthConstraint.constant, imageHeightConstraint.constant)
+            return CGSize(width: imageWidthConstraint.constant, height: imageHeightConstraint.constant)
         }
         set{
             imageWidthConstraint.constant = newValue.width
@@ -40,47 +40,47 @@ public class ImageFloatRightBody : CardViewElement, WCImageViewDelegate
         }
     }
     
-    @IBOutlet weak private var descriptionImageHorizontalSpacing: NSLayoutConstraint!
-    @IBOutlet weak private var imageLeadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageTrailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageHeightConstraint: NSLayoutConstraint!
-    private var bottomPadding:CGFloat = 10.0
+    @IBOutlet weak fileprivate var descriptionImageHorizontalSpacing: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageLeadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageHeightConstraint: NSLayoutConstraint!
+    fileprivate var bottomPadding:CGFloat = 10.0
     
-    override public func initialize() {
+    override open func initialize() {
         descriptionLabel.setDefaultDescriptionStyling()
-        imageViewSize = CGSizeMake(120,90)
+        imageViewSize = CGSize(width: 120,height: 90)
         imageView.delegate = self
     }
     
-    override public func update(card:Card) {
+    override open func update(_ card:Card) {
         if let summaryCard = card as? SummaryCard{
             descriptionLabel.text = summaryCard.abstractContent
             
             // download image
             if let imageUrl = summaryCard.primaryImageURL{
-                imageView.setImageWithURL(imageUrl, mode:.ScaleAspectFill)
+                imageView.setImageWithURL(imageUrl, mode:.scaleAspectFill)
             }
         }else if let articleCard = card as? ArticleCard{
             descriptionLabel.text = articleCard.abstractContent
             
             if let imageUrl = articleCard.primaryImageURL{
-                imageView.setImageWithURL(imageUrl, mode: .ScaleAspectFill)
+                imageView.setImageWithURL(imageUrl, mode: .scaleAspectFill)
             }
         }
         updateDescriptionAttributes()
     }
     
-    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
         return imageHeightConstraint.constant + imageTopConstraint.constant + bottomPadding;
     }
     
-    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+    override open func adjustForPreferredWidth(_ cardWidth: CGFloat) {
         updateDescriptionAttributes()
     }
     
-    private func updateDescriptionAttributes(){
+    fileprivate func updateDescriptionAttributes(){
         // description label preferred width + number of lines re calculation
         descriptionLabel.preferredMaxLayoutWidth = preferredWidth - imageLeadingConstraint.constant - descriptionImageHorizontalSpacing.constant - imageViewSize.width - imageTrailingConstraint.constant
         descriptionLabel.setRequiredNumberOfLines(descriptionLabel.preferredMaxLayoutWidth, maxHeight: imageHeightConstraint.constant)
@@ -88,13 +88,13 @@ public class ImageFloatRightBody : CardViewElement, WCImageViewDelegate
     }
     
     // MARK: WCImageViewDelegate
-    public func imageViewTapped(imageView: WCImageView) {
-        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], withCard:cardView?.backingCard)
+    open func imageViewTapped(_ imageView: WCImageView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], with:cardView?.backingCard)
         
         if(cardView != nil){
             let parameters = NSMutableDictionary()
             parameters["tappedImageView"] = imageView
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .ImageTapped, parameters: parameters))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .imageTapped, parameters: parameters))
         }
     }
 }

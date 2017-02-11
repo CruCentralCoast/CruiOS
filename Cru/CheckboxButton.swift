@@ -24,14 +24,14 @@ class CheckboxButton: UIButton {
     var isChecked = true {
         didSet {
             if isChecked {
-                UIView.animateWithDuration(0.25, animations: {
-                    self.setImage(self.checkedImage, forState: .Normal)
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.setImage(self.checkedImage, for: UIControlState())
                 })
                 
             }
             else {
-                UIView.animateWithDuration(0.25, animations: {
-                    self.setImage(self.uncheckedImage, forState: .Normal)
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.setImage(self.uncheckedImage, for: UIControlState())
                 })
                 
             }
@@ -39,11 +39,11 @@ class CheckboxButton: UIButton {
     }
     
     override func awakeFromNib() {
-        self.addTarget(self, action: #selector(buttonClicked(_:)), forControlEvents: .TouchUpInside)
+        self.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
         isChecked = true
     }
     
-    func buttonClicked(sender: UIButton) {
+    func buttonClicked(_ sender: UIButton) {
         if sender == self {
             if isChecked {
                 isChecked = false

@@ -32,15 +32,15 @@ class GetInvolvedViewController: UIViewController, UITabBarDelegate, SWRevealVie
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
 
         selectorBar.selectedItem = selectorBar.items![0]
-        selectorBar.tintColor = UIColor.whiteColor()
+        selectorBar.tintColor = UIColor.white
 
         //Set the nav title & font
         navigationItem.title = "Get Involved"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //showCGContainer()
         chosenSection = selectorBar.selectedItem!.title!
         showCorrectContainers()
@@ -48,7 +48,7 @@ class GetInvolvedViewController: UIViewController, UITabBarDelegate, SWRevealVie
     
     //tab bar function 
     //TODO figure out how to call this in viewDidLoad
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         chosenSection = item.title!
         showCorrectContainers()
     }
@@ -59,45 +59,45 @@ class GetInvolvedViewController: UIViewController, UITabBarDelegate, SWRevealVie
                 showCGContainer()
                 //cgController.
             case "Ministry Teams":
-                ministryTeamContainer.hidden = false
-                communityGroupContainer.hidden = true
-                inCommunityGroupContainer.hidden = true
+                ministryTeamContainer.isHidden = false
+                communityGroupContainer.isHidden = true
+                inCommunityGroupContainer.isHidden = true
             default :
                 print("")
         }
     }
     
-    private func showCGContainer() {
+    fileprivate func showCGContainer() {
         if (GlobalUtils.loadString(Config.communityGroupKey) == "") {
-            communityGroupContainer.hidden = false
-            ministryTeamContainer.hidden = true
-            inCommunityGroupContainer.hidden = true
+            communityGroupContainer.isHidden = false
+            ministryTeamContainer.isHidden = true
+            inCommunityGroupContainer.isHidden = true
         } else {
-            ministryTeamContainer.hidden = true
-            communityGroupContainer.hidden = true
-            inCommunityGroupContainer.hidden = false
+            ministryTeamContainer.isHidden = true
+            communityGroupContainer.isHidden = true
+            inCommunityGroupContainer.isHidden = false
         }
     }
     
     //reveal controller function for disabling the current view
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
         
-        if position == FrontViewPosition.Left {
+        if position == FrontViewPosition.left {
             for view in self.view.subviews {
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
+        else if position == FrontViewPosition.right {
             for view in self.view.subviews {
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "cgDetailSegue"){
-            if let cg = segue.destinationViewController as? DisplayCGVC{
+            if let cg = segue.destination as? DisplayCGVC{
                 cgController = cg
                 cgController!.leaveCallback = showCGContainer
             }

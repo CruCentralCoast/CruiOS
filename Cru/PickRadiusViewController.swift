@@ -45,12 +45,12 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
         
     }
     
-    @IBAction func okPressed(sender: AnyObject) {
+    @IBAction func okPressed(_ sender: AnyObject) {
         setRadius!(numMiles)
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func radiusValChanged(sender: AnyObject) {
+    @IBAction func radiusValChanged(_ sender: AnyObject) {
         
         if let slider = sender as? UISlider{
             numMiles = (Int(slider.value))
@@ -99,15 +99,15 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
 //            }
 //        }
     }
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let circleRenderer = MKCircleRenderer(overlay: overlay)
-        circleRenderer.fillColor = CruColors.lightBlue.colorWithAlphaComponent(0.1)//UIColor.blueColor().colorWithAlphaComponent(0.1)
+        circleRenderer.fillColor = CruColors.lightBlue.withAlphaComponent(0.1)//UIColor.blueColor().colorWithAlphaComponent(0.1)
         circleRenderer.strokeColor = CruColors.darkBlue//UIColor.blueColor()
         circleRenderer.lineWidth = 1
         return circleRenderer
     }
     
-    func centerMapOnLocation(location: CLLocation) {
+    func centerMapOnLocation(_ location: CLLocation) {
         var regionRadius: CLLocationDistance = 500
         
         if(ride!.radius != 0){
@@ -120,19 +120,19 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
         map.reloadInputViews()
     }
     
-    func loadOverlayForRegionWithLatitude(latitude: Double, andLongitude longitude: Double) {
+    func loadOverlayForRegionWithLatitude(_ latitude: Double, andLongitude longitude: Double) {
         
         //1
         let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         //2
-        let circle = MKCircle(centerCoordinate: coordinates, radius: (Double(numMilesFloat!) * metersInMile))
+        let circle = MKCircle(center: coordinates, radius: (Double(numMilesFloat!) * metersInMile))
         
         //3
         //self.map.setRegion(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7)), animated: true)
         //4
         
         if(curOverlay != nil){
-            self.map.removeOverlay(curOverlay!)
+            self.map.remove(curOverlay!)
             
         }
         
@@ -140,7 +140,7 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
         curOverlay = circle
         
         if(map != nil){
-            self.map.addOverlay(circle)
+            self.map.add(circle)
         }
         
         self.centerMapOnLocation(location!)

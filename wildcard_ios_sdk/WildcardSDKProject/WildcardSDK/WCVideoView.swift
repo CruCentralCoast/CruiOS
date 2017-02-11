@@ -13,51 +13,51 @@ import WebKit
 @objc
 public protocol WCVideoViewDelegate{
     
-    optional func videoViewDidStartPlaying(videoView:WCVideoView)
-    optional func videoViewWillEndPlaying(videoView:WCVideoView)
-    optional func videoViewTapped(videoView:WCVideoView)
+    @objc optional func videoViewDidStartPlaying(_ videoView:WCVideoView)
+    @objc optional func videoViewWillEndPlaying(_ videoView:WCVideoView)
+    @objc optional func videoViewTapped(_ videoView:WCVideoView)
 }
 
 /// Plays content from a Video Card
 @objc
-public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDelegate, WKScriptMessageHandler, YTPlayerViewDelegate  {
+open class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDelegate, WKScriptMessageHandler, YTPlayerViewDelegate  {
     
-    public var videoCard:VideoCard?
-    public var delegate:WCVideoViewDelegate?
+    open var videoCard:VideoCard?
+    open var delegate:WCVideoViewDelegate?
     
-    private var videoWKView:WKWebView!
-    private var ytPlayer:YTPlayerView!
-    private var posterView:WCImageView!
-    private var tapGestureRecognizer:UITapGestureRecognizer!
-    private var ytTapGestureRecognizer:UITapGestureRecognizer!
-    private var passthroughView:PassthroughView!
-    private var videoActionImage:UIImageView!
-    private var tintOverlay:UIView!
-    private var spinner:UIActivityIndicatorView!
-    private var moviePlayer:MPMoviePlayerViewController?
-    private var streamUrl:NSURL?
-    private var inError:Bool = false
+    fileprivate var videoWKView:WKWebView!
+    fileprivate var ytPlayer:YTPlayerView!
+    fileprivate var posterView:WCImageView!
+    fileprivate var tapGestureRecognizer:UITapGestureRecognizer!
+    fileprivate var ytTapGestureRecognizer:UITapGestureRecognizer!
+    fileprivate var passthroughView:PassthroughView!
+    fileprivate var videoActionImage:UIImageView!
+    fileprivate var tintOverlay:UIView!
+    fileprivate var spinner:UIActivityIndicatorView!
+    fileprivate var moviePlayer:MPMoviePlayerViewController?
+    fileprivate var streamUrl:URL?
+    fileprivate var inError:Bool = false
     
     func initialize(){
         
-        backgroundColor = UIColor.blackColor()
-        userInteractionEnabled = true
+        backgroundColor = UIColor.black
+        isUserInteractionEnabled = true
         
         // initializes the video wkwebview
         let controller = WKUserContentController()
-        controller.addScriptMessageHandler(self, name: "observe")
+        controller.add(self, name: "observe")
         let configuration = WKWebViewConfiguration()
         configuration.allowsInlineMediaPlayback = false
         configuration.mediaPlaybackRequiresUserAction = true
         configuration.userContentController = controller
         
-        videoWKView = WKWebView(frame: CGRectZero, configuration: configuration)
-        videoWKView.backgroundColor = UIColor.blackColor()
-        videoWKView.scrollView.scrollEnabled = false
+        videoWKView = WKWebView(frame: CGRect.zero, configuration: configuration)
+        videoWKView.backgroundColor = UIColor.black
+        videoWKView.scrollView.isScrollEnabled = false
         videoWKView.scrollView.bounces = false
         videoWKView.navigationDelegate = self
-        videoWKView.userInteractionEnabled = true
-        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "videoTapped:");
+        videoWKView.isUserInteractionEnabled = true
+        tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WCVideoView.videoTapped(_:)));
         tapGestureRecognizer.delegate = self
         videoWKView.addGestureRecognizer(tapGestureRecognizer)
         
@@ -66,66 +66,66 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         videoWKView.constrainToSuperViewEdges()
 
         // youtube has its own player for callbacks. put this under the wkwebview and only show if we're using Youtube
-        ytPlayer = YTPlayerView(frame: CGRectZero)
+        ytPlayer = YTPlayerView(frame: CGRect.zero)
         ytPlayer.delegate = self
-        ytPlayer.backgroundColor = UIColor.blackColor()
-        ytPlayer.userInteractionEnabled = true
-        ytTapGestureRecognizer = UITapGestureRecognizer(target: self, action: "videoTapped:");
+        ytPlayer.backgroundColor = UIColor.black
+        ytPlayer.isUserInteractionEnabled = true
+        ytTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(WCVideoView.videoTapped(_:)));
         ytTapGestureRecognizer.delegate = self
         ytPlayer.addGestureRecognizer(ytTapGestureRecognizer)
         insertSubview(ytPlayer, belowSubview: videoWKView)
         ytPlayer.constrainExactlyToView(videoWKView)
         
         // pass through view on top of webview for a poster image
-        passthroughView = PassthroughView(frame:CGRectZero)
-        passthroughView.userInteractionEnabled = false
+        passthroughView = PassthroughView(frame:CGRect.zero)
+        passthroughView.isUserInteractionEnabled = false
         insertSubview(passthroughView, aboveSubview: videoWKView)
         passthroughView.constrainExactlyToView(videoWKView)
-        passthroughView.backgroundColor = UIColor.blackColor()
+        passthroughView.backgroundColor = UIColor.black
         
-        posterView = WCImageView(frame:CGRectZero)
+        posterView = WCImageView(frame:CGRect.zero)
         posterView.clipsToBounds = true
         passthroughView.addSubview(posterView)
         posterView.constrainToSuperViewEdges()
-        posterView.backgroundColor = UIColor.blackColor()
+        posterView.backgroundColor = UIColor.black
         
         // black tint overlay on the poster image
-        tintOverlay = PassthroughView(frame:CGRectZero)
-        tintOverlay.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
+        tintOverlay = PassthroughView(frame:CGRect.zero)
+        tintOverlay.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         passthroughView.addSubview(tintOverlay)
         tintOverlay.constrainToSuperViewEdges()
         
-        videoActionImage = UIImageView(frame:CGRectZero)
-        videoActionImage.tintColor = UIColor.whiteColor()
+        videoActionImage = UIImageView(frame:CGRect.zero)
+        videoActionImage.tintColor = UIColor.white
         videoActionImage.translatesAutoresizingMaskIntoConstraints = false
         videoActionImage.image = UIImage.loadFrameworkImage("playIcon")
-        videoActionImage.hidden = true
+        videoActionImage.isHidden = true
         passthroughView.insertSubview(videoActionImage, aboveSubview: posterView)
         passthroughView.addSubview(videoActionImage)
-        addConstraint(NSLayoutConstraint(item: videoActionImage, attribute: .CenterX, relatedBy: .Equal, toItem: passthroughView, attribute: .CenterX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: videoActionImage, attribute: .CenterY, relatedBy: .Equal, toItem: passthroughView, attribute: .CenterY, multiplier: 1.0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: videoActionImage, attribute: .centerX, relatedBy: .equal, toItem: passthroughView, attribute: .centerX, multiplier: 1.0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: videoActionImage, attribute: .centerY, relatedBy: .equal, toItem: passthroughView, attribute: .centerY, multiplier: 1.0, constant: 0))
         
         // spinner above poster image
-        spinner = UIActivityIndicatorView(activityIndicatorStyle: .White)
+        spinner = UIActivityIndicatorView(activityIndicatorStyle: .white)
         spinner.hidesWhenStopped = true
         spinner.translatesAutoresizingMaskIntoConstraints = false
         insertSubview(spinner, aboveSubview: passthroughView)
-        addConstraint(NSLayoutConstraint(item: spinner, attribute: .CenterX, relatedBy: .Equal, toItem: videoWKView, attribute: .CenterX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: spinner, attribute: .CenterY, relatedBy: .Equal, toItem: videoWKView, attribute: .CenterY, multiplier: 1.0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: spinner, attribute: .centerX, relatedBy: .equal, toItem: videoWKView, attribute: .centerX, multiplier: 1.0, constant: 0))
+        addConstraint(NSLayoutConstraint(item: spinner, attribute: .centerY, relatedBy: .equal, toItem: videoWKView, attribute: .centerY, multiplier: 1.0, constant: 0))
         
     }
     
-    func loadVideoCard(videoCard:VideoCard){
+    func loadVideoCard(_ videoCard:VideoCard){
         inError = false
         self.videoCard = videoCard
 
         // poster image if available
         if let posterImageUrl = videoCard.posterImageUrl {
             posterView.image = nil;
-            posterView.setImageWithURL(posterImageUrl, mode: .ScaleAspectFill, completion: { (image, error) -> Void in
+            posterView.setImageWithURL(posterImageUrl, mode: .scaleAspectFill, completion: { (image, error) -> Void in
                 if(self.inError == false){
                     if(image != nil && error == nil){
-                        self.posterView.setImage(image!, mode:.ScaleAspectFill)
+                        self.posterView.setImage(image!, mode:.scaleAspectFill)
                     }else{
                         self.posterView.setNoImage()
                     }
@@ -140,11 +140,11 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         if(videoCard.isYoutube()){
             // youtube special treatment
             streamUrl = nil
-            videoWKView.hidden = true
-            ytPlayer.hidden = false
+            videoWKView.isHidden = true
+            ytPlayer.isHidden = false
             if let ytId = videoCard.getYoutubeId() {
                 setLoading(true)
-                ytPlayer.loadWithVideoId(ytId)
+                ytPlayer.load(withVideoId: ytId)
             }else{
                 print("Shouldn't happen -- Video Card with Youtube creator is malformed.")
                 setError()
@@ -153,7 +153,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         }else if(videoCard.isVimeo()){
             // vimeo special treatment
             self.setLoading(true)
-            YTVimeoExtractor.fetchVideoURLFromURL(videoCard.embedUrl.absoluteString, quality: YTVimeoVideoQualityMedium, completionHandler: { (url, error, quality) -> Void in
+            YTVimeoExtractor.fetchVideoURL(fromURL: videoCard.embedUrl.absoluteString, quality: YTVimeoVideoQualityMedium, completionHandler: { (url, error, quality) -> Void in
                 if(url != nil && error == nil){
                     self.streamUrl = url
                     self.setLoading(false)
@@ -163,21 +163,21 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
             })
         }else if(videoCard.streamUrl != nil){
             // direct stream available
-            streamUrl = videoCard.streamUrl
-            videoActionImage.hidden = false
+            streamUrl = videoCard.streamUrl as URL?
+            videoActionImage.isHidden = false
             setLoading(false)
         }else{
             // most general case we load embedded URL into webview
             streamUrl = nil
-            videoWKView.hidden = false
-            ytPlayer.hidden = true
+            videoWKView.isHidden = false
+            ytPlayer.isHidden = true
             setLoading(true)
-            videoWKView.loadRequest(NSURLRequest(URL: videoCard.embedUrl))
+            videoWKView.load(URLRequest(url: videoCard.embedUrl as URL))
         }
     }
     
     // MARK: UIGestureRecognizerDelegate
-    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool{
+    open func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool{
         if(gestureRecognizer == tapGestureRecognizer || gestureRecognizer == ytTapGestureRecognizer || otherGestureRecognizer == tapGestureRecognizer || otherGestureRecognizer == ytTapGestureRecognizer){
             // we want our tap gesture to be recognized alongside the WKWebView's default one
             return true;
@@ -187,7 +187,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     }
     
     // MARK: Notification Handling
-    func moviePlayerDidFinish(notification:NSNotification){
+    func moviePlayerDidFinish(_ notification:Notification){
         delegate?.videoViewWillEndPlaying?(self)
        
         if let vc = parentViewController(){
@@ -195,11 +195,11 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         }
         
         // remove notifications
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.MPMoviePlayerPlaybackDidFinish, object: moviePlayer?.moviePlayer)
     }
     
     // MARK: Action
-    func videoTapped(recognizer:UITapGestureRecognizer!){
+    func videoTapped(_ recognizer:UITapGestureRecognizer!){
         
         delegate?.videoViewTapped?(self)
         
@@ -212,9 +212,9 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
             if(streamUrl != nil){
                 // have a stream url, can show a movie player automatically
                 moviePlayer = MPMoviePlayerViewController(contentURL: streamUrl!)
-                NSNotificationCenter.defaultCenter().removeObserver(moviePlayer!, name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: "moviePlayerDidFinish:", name: MPMoviePlayerPlaybackDidFinishNotification, object: moviePlayer?.moviePlayer)
-                moviePlayer!.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                NotificationCenter.default.removeObserver(moviePlayer!, name: NSNotification.Name.MPMoviePlayerPlaybackDidFinish, object: moviePlayer?.moviePlayer)
+                NotificationCenter.default.addObserver(self, selector: #selector(WCVideoView.moviePlayerDidFinish(_:)), name: NSNotification.Name.MPMoviePlayerPlaybackDidFinish, object: moviePlayer?.moviePlayer)
+                moviePlayer!.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
                 moviePlayer!.moviePlayer.play()
                 
                 if let vc = parentViewController(){
@@ -223,32 +223,32 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
                 }
             }else{
                 // using a webview, hide the poster image
-                passthroughView.hidden = true
+                passthroughView.isHidden = true
             }
         }
     }
     
     // MARK: WKNavigationDelegate
-    public func webView(webView: WKWebView, didCommitNavigation navigation: WKNavigation!){
+    open func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!){
     }
     
-    public func webView(webView: WKWebView, didFinishNavigation navigation: WKNavigation!){
+    open func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
         setLoading(false)
         
         // add some listeners to html5 video tag to get call backs for full screen
         videoWKView.evaluateJavaScript(getHtml5ListenerJS(), completionHandler: nil)
     }
     
-    public func webView(webView: WKWebView, didFailNavigation navigation: WKNavigation!, withError error: NSError) {
+    open func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         setError()
     }
     
-    public func webView(webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: NSError) {
+    open func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
         setError()
     }
     
     // MARK: WKScriptMessageHandler
-    public func userContentController(userContentController: WKUserContentController, didReceiveScriptMessage message: WKScriptMessage){
+    open func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage){
         if let body = message.body as? String{
             if(body == "webkitbeginfullscreen"){
                 delegate?.videoViewDidStartPlaying?(self)
@@ -259,15 +259,15 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     }
     
     // MARK: YTPlayerViewDelegate
-    public func playerView(playerView: YTPlayerView!, receivedError error: YTPlayerError) {
+    open func playerView(_ playerView: YTPlayerView!, receivedError error: YTPlayerError) {
         setError()
     }
     
-    public func playerViewDidBecomeReady(playerView: YTPlayerView!) {
+    open func playerViewDidBecomeReady(_ playerView: YTPlayerView!) {
         setLoading(false)
     }
     
-    public func playerView(playerView: YTPlayerView!, didChangeToState state: YTPlayerState) {
+    open func playerView(_ playerView: YTPlayerView!, didChangeTo state: YTPlayerState) {
         if(state.rawValue == kYTPlayerStatePlaying.rawValue){
             delegate?.videoViewDidStartPlaying?(self)
         }else if(state.rawValue == kYTPlayerStatePaused.rawValue){
@@ -276,30 +276,30 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
     }
     
     // MARK: Private
-    private func setError(){
-        passthroughView.hidden = false
+    fileprivate func setError(){
+        passthroughView.isHidden = false
         spinner.stopAnimating()
         posterView.cancelRequest()
         posterView.image = nil
-        videoActionImage.hidden = false
+        videoActionImage.isHidden = false
         videoActionImage.image = UIImage.loadFrameworkImage("noVideoFound")
         inError = true
     }
     
-    private func getHtml5ListenerJS()->String{
+    fileprivate func getHtml5ListenerJS()->String{
         var script:String?
-        if let file = NSBundle.wildcardSDKBundle().pathForResource("html5VideoListeners", ofType: "js"){
-            script = try? String(contentsOfFile: file, encoding: NSUTF8StringEncoding)
+        if let file = Bundle.wildcardSDKBundle().path(forResource: "html5VideoListeners", ofType: "js"){
+            script = try? String(contentsOfFile: file, encoding: String.Encoding.utf8)
         }
         return script!
     }
     
-    private func setLoading(loading:Bool){
+    fileprivate func setLoading(_ loading:Bool){
         if(loading){
-            videoActionImage.hidden = true
+            videoActionImage.isHidden = true
             spinner.startAnimating()
         }else{
-            videoActionImage.hidden = false
+            videoActionImage.isHidden = false
             spinner.stopAnimating()
         }
     }
@@ -313,7 +313,7 @@ public class WCVideoView : UIView, WKNavigationDelegate, UIGestureRecognizerDele
         initialize()
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         initialize()
     }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
+open class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
     
     var card:Card
     var body:MediaTextFullWebView!
@@ -18,13 +18,13 @@ public class MaximizedArticleVisualSource : MaximizedCardViewVisualSource {
         self.card = card
     }
     
-    @objc public func applicationFrameEdgeInsets() -> UIEdgeInsets {
+    @objc open func applicationFrameEdgeInsets() -> UIEdgeInsets {
         return UIEdgeInsetsMake(10, 10, 10, 10)
     }
     
-    @objc public func viewForCardBody()->CardViewElement{
+    @objc open func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(WCElementType.MediaTextFullWebView) as! MediaTextFullWebView
+            body = CardViewElementFactory.createCardViewElement(WCElementType.mediaTextFullWebView) as! MediaTextFullWebView
         }
         return body
     }

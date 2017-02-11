@@ -14,7 +14,7 @@ class CheckTwitterProfileEdge : LayoutDecisionEdge
         super.init(description: "Twitter Profile?")
     }
     
-    override func evaluation(input: AnyObject) -> Bool {
+    override func evaluation(_ input: AnyObject) -> Bool {
         if let card = input as? SummaryCard{
             return card.webUrl.isTwitterProfileURL()
         }else{

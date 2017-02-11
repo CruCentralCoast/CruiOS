@@ -10,9 +10,9 @@ import Foundation
 import Alamofire
 
 enum ResponseType{
-    case Success
-    case NoRides
-    case NoConnection
+    case success
+    case noRides
+    case noConnection
 }
 
 class RideUtils {
@@ -28,25 +28,25 @@ class RideUtils {
     }
     
     //Return the list of events excluding those user is giving/getting a ride to
-    func getAvailableEvents(gcmid: String, insert: (NSDictionary) -> (), afterFnc : (Bool) -> ()) {
+    func getAvailableEvents(_ gcmid: String, insert: (NSDictionary) -> (), afterFnc : (Bool) -> ()) {
         //Implement in the future?
     }
     
     //Return the list of rides available
-    func getRidesNotDriving(gcmid: String, insert : (NSDictionary) -> (),
-        afterFunc : (Bool) -> ()) {
+    func getRidesNotDriving(_ gcmid: String, insert : @escaping (NSDictionary) -> (),
+        afterFunc : @escaping (Bool) -> ()) {
 
         let gcmArray: [String] = [gcmid]
-        let params: [String: AnyObject] =  ["gcm_id": ["$nin" : gcmArray]]
+        let params: [String: Any] =  ["gcm_id": ["$nin" : gcmArray]]
         
         serverClient.getData(DBCollection.Ride, insert: insert, completionHandler: afterFunc, params: params)
     }
 
-    func getPassengerById(id: String, insert: (AnyObject)->(), afterFunc: (Bool)->Void){
+    func getPassengerById(_ id: String, insert: @escaping (AnyObject)->(), afterFunc: @escaping (Bool)->Void){
         serverClient.getById(DBCollection.Passenger, insert: insert, completionHandler: afterFunc, id: id)
     }
 
-    func getMyRides(insert: (NSDictionary) -> (), afterFunc: (ResponseType)->Void) {
+    func getMyRides(_ insert: @escaping (NSDictionary) -> (), afterFunc: @escaping (ResponseType)->Void) {
         //gets rides you are receiving
         
         
@@ -62,26 +62,26 @@ class RideUtils {
             serverClient.getData(DBCollection.Ride, insert: insert, completionHandler:
                 { success in
                     if (success) {
-                        afterFunc(.Success)
+                        afterFunc(.success)
                     } else {
-                        afterFunc(.NoConnection)
+                        afterFunc(.noConnection)
                     }
-                }, params: params)
+                }, params: params as [String : AnyObject])
         }
         else{
             //TODO: add something new to serverClient for pinging
             serverClient.getData(DBCollection.Ride, insert: {elem in }, completionHandler:
                 {success in
                     if (success) {
-                        afterFunc(.NoRides)
+                        afterFunc(.noRides)
                     } else {
-                        afterFunc(.NoConnection)
+                        afterFunc(.noConnection)
                     }
             })
         }
     }
     
-    private func getMyRideIds() -> [String] {
+    fileprivate func getMyRideIds() -> [String] {
         let alsm = ArrayLocalStorageManager(key: Config.ridesOffering)
         var rideIds = alsm.getArray()
         
@@ -96,13 +96,13 @@ class RideUtils {
         return mlsm
     }
 
-    func postRideOffer(eventId : String, name : String , phone : String, seats : Int, time: String,
-        location: NSDictionary, radius: Int, direction: String, handler: (Ride?)->()) {
+    func postRideOffer(_ eventId : String, name : String , phone : String, seats : Int, time: String,
+        location: NSDictionary, radius: Int, direction: String, handler: @escaping (Ride?)->()) {
             let body = ["event":eventId, "driverName":name, "driverNumber":phone, "seats":seats, "time": time,
-                "gcm_id": Config.gcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0]
+                "gcm_id": Config.gcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0] as [String : Any]
             
             
-            serverClient.postData(DBCollection.Ride, params: body, completionHandler:
+            serverClient.postData(DBCollection.Ride, params: body as [String : AnyObject], completionHandler:
                 { ride in
                     if (ride != nil) {
                         self.saveRideOffering(ride!["_id"] as! String)
@@ -114,17 +114,17 @@ class RideUtils {
     }
     
     
-    private func saveRideOffering(rideId: String) {
+    fileprivate func saveRideOffering(_ rideId: String) {
         let alsm = ArrayLocalStorageManager(key: Config.ridesOffering)
         alsm.addElement(rideId)
     }
     
     // adds a passenger to a ride by first adding the passenger to the database, then associating
     // the passenger with the ride
-    func joinRide(name: String, phone: String, direction: String,  rideId: String, handler: (Bool)->Void){
+    func joinRide(_ name: String, phone: String, direction: String,  rideId: String, handler: @escaping (Bool)->Void){
         let gcmToken = Config.gcmId()
         let body: [String : AnyObject]
-        body = ["name": name, "phone": phone, "direction":direction, "gcm_id":gcmToken, "gender": 0]
+        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "gcm_id":gcmToken as AnyObject, "gender": 0 as AnyObject]
         
         serverClient.postData(DBCollection.Passenger, params: body, completionHandler:
             { passenger in
@@ -138,7 +138,7 @@ class RideUtils {
         })
     }
     
-    private func addPassengerToRide(rideId: String, passengerId: String, handler : (Bool)->Void){
+    fileprivate func addPassengerToRide(_ rideId: String, passengerId: String, handler : @escaping (Bool)->Void){
         let body = ["passenger_id": passengerId]
         
         serverClient.postDataIn(DBCollection.Ride, parentId: rideId, child: DBCollection.Passenger, params: body, completionHandler:
@@ -152,17 +152,17 @@ class RideUtils {
         })
     }
     
-    private func saveRideReceiving(rideId: String, passengerId: String) {
+    fileprivate func saveRideReceiving(_ rideId: String, passengerId: String) {
         let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
         mlsm.addElement(rideId, elem: passengerId)
     }
     
-    func dropPassenger(rideId: String, passengerId: String, handler: (Bool)->Void){
+    func dropPassenger(_ rideId: String, passengerId: String, handler: @escaping (Bool)->Void){
         serverClient.deleteByIdIn(DBCollection.Ride, parentId: rideId, child: DBCollection.Passenger, childId: passengerId, completionHandler: handler)
     }
     
     
-    func leaveRidePassenger(ride: Ride, handler: (Bool)->()){
+    func leaveRidePassenger(_ ride: Ride, handler: @escaping (Bool)->()){
         let rideId = ride.id
         let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
         let passId = mlsm.getElement(rideId) as! String
@@ -178,7 +178,7 @@ class RideUtils {
         })
     }
     
-    func leaveRideDriver(rideid: String, handler: (Bool)->()){
+    func leaveRideDriver(_ rideid: String, handler: @escaping (Bool)->()){
         
         serverClient.deleteById(DBCollection.Ride, id: rideid, completionHandler: { success in
             if (success) {
@@ -191,7 +191,7 @@ class RideUtils {
         })
     }
     
-    func getPassengersByIds(ids : [String], inserter : (NSDictionary) -> (), afterFunc: (Bool)->Void){
+    func getPassengersByIds(_ ids : [String], inserter : @escaping (NSDictionary) -> (), afterFunc: @escaping (Bool)->Void){
         
         if (ids.count > 0) {
             let params = ["_id":["$in":ids]]
@@ -199,7 +199,7 @@ class RideUtils {
         }
     }
     
-    func patchRide(id: String, params: [String:AnyObject], handler: (Ride?)->Void) {
+    func patchRide(_ id: String, params: [String:Any], handler: @escaping (Ride?)->Void) {
         serverClient.patch(DBCollection.Ride, params: params, completionHandler: { dict in
             if dict == nil {
                 handler(nil)
@@ -209,7 +209,7 @@ class RideUtils {
             }, id: id)
     }
 
-    func patchPassenger(id: String, params: [String:AnyObject], handler: (Passenger?)->Void) {
+    func patchPassenger(_ id: String, params: [String:Any], handler: @escaping (Passenger?)->Void) {
         serverClient.patch(DBCollection.Passenger, params: params, completionHandler: { dict in
             if dict == nil {
                 handler(nil)

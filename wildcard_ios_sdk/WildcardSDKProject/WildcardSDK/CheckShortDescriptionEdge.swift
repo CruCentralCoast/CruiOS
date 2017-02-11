@@ -16,29 +16,29 @@ class CheckShortDescriptionEdge : LayoutDecisionEdge
     
     let DESCRIPTION_THRESHOLD = 100
     
-    override func evaluation(input: AnyObject) -> Bool {
+    override func evaluation(_ input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
-            case .Unknown:
+            case .unknown:
                 return false
-            case .Article:
+            case .article:
                 let articleCard = card as! ArticleCard
                 if articleCard.abstractContent != nil{
                     return (articleCard.abstractContent!).characters.count < DESCRIPTION_THRESHOLD
                 }else{
                     return false
                 }
-            case .Summary:
+            case .summary:
                 let summaryCard = card as! SummaryCard
                 return summaryCard.description.characters.count < DESCRIPTION_THRESHOLD
-            case .Video:
+            case .video:
                 let videoCard = card as! VideoCard
                 if videoCard.abstractContent != nil{
                     return (videoCard.abstractContent!).characters.count < DESCRIPTION_THRESHOLD
                 }else{
                     return false
                 }
-            case .Image:
+            case .image:
                 let imageCard = card as! ImageCard
                 if imageCard.imageCaption != nil{
                     return (imageCard.imageCaption!).characters.count < DESCRIPTION_THRESHOLD

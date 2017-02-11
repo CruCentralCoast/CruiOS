@@ -17,7 +17,7 @@ class LayoutDecisionNode
     
     init(description:String){
         self.description = description
-        self.cardLayout = WCCardLayout.Unknown
+        self.cardLayout = WCCardLayout.unknown
     }
     
     init(description:String, layout:WCCardLayout){
@@ -25,7 +25,7 @@ class LayoutDecisionNode
         self.cardLayout = layout
     }
     
-    func addEdge(edge: LayoutDecisionEdge, destination:LayoutDecisionNode){
+    func addEdge(_ edge: LayoutDecisionEdge, destination:LayoutDecisionNode){
         edge.pre = self
         edge.post = destination
         edges.append(edge)
@@ -40,7 +40,7 @@ class LayoutDecisionNode
     }
     
     // Determine which edge to follow, if nothing evalutes return nil (addEdge order matters)
-    func edgeToFollow(input:AnyObject)->LayoutDecisionEdge?{
+    func edgeToFollow(_ input:AnyObject)->LayoutDecisionEdge?{
         for edge in edges{
             if edge.evaluation(input) == true{
                 return edge

@@ -9,12 +9,12 @@
 import Foundation
 
 @objc
-public class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
+open class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
     
-    public var imageView:WCImageView!
+    open var imageView:WCImageView!
     
     /// Adjusts the aspect ratio of the image view.
-    public var imageAspectRatio:CGFloat{
+    open var imageAspectRatio:CGFloat{
         get{
             return __imageAspectRatio
         }
@@ -26,7 +26,7 @@ public class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
     }
     
     /// Content insets
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
         }
@@ -41,17 +41,17 @@ public class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
         }
     }
     
-    private var topConstraint:NSLayoutConstraint!
-    private var leftConstraint:NSLayoutConstraint!
-    private var rightConstraint:NSLayoutConstraint!
-    private var bottomConstraint:NSLayoutConstraint!
-    private var imageHeightConstraint:NSLayoutConstraint!
-    private var imageWidthConstraint:NSLayoutConstraint!
-    private var __imageAspectRatio:CGFloat = 0.75
+    fileprivate var topConstraint:NSLayoutConstraint!
+    fileprivate var leftConstraint:NSLayoutConstraint!
+    fileprivate var rightConstraint:NSLayoutConstraint!
+    fileprivate var bottomConstraint:NSLayoutConstraint!
+    fileprivate var imageHeightConstraint:NSLayoutConstraint!
+    fileprivate var imageWidthConstraint:NSLayoutConstraint!
+    fileprivate var __imageAspectRatio:CGFloat = 0.75
     
-    override public func initialize(){
+    override open func initialize(){
         
-        imageView = WCImageView(frame: CGRectZero)
+        imageView = WCImageView(frame: CGRect.zero)
         imageView.delegate = self
         addSubview(imageView)
         
@@ -66,37 +66,37 @@ public class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
         imageHeightConstraint.priority = 999
     }
     
-    public override func adjustForPreferredWidth(cardWidth: CGFloat) {
+    open override func adjustForPreferredWidth(_ cardWidth: CGFloat) {
         imageWidthConstraint.constant = cardWidth - leftConstraint.constant - rightConstraint.constant
         imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
         invalidateIntrinsicContentSize()
     }
     
-    override public func update(card:Card) {
+    override open func update(_ card:Card) {
         
-        var imageUrl:NSURL?
+        var imageUrl:URL?
         
         switch(card.type){
-        case .Article:
+        case .article:
             let articleCard = card as! ArticleCard
-            imageUrl = articleCard.primaryImageURL
-        case .Summary:
+            imageUrl = articleCard.primaryImageURL as URL?
+        case .summary:
             let webLinkCard = card as! SummaryCard
-            imageUrl = webLinkCard.primaryImageURL
-        case .Image:
+            imageUrl = webLinkCard.primaryImageURL as URL?
+        case .image:
             let imageCard = card as! ImageCard
-            imageUrl = imageCard.imageUrl
-        case .Unknown, .Video:
+            imageUrl = imageCard.imageUrl as URL
+        case .unknown, .video:
             imageUrl = nil
         }
         
         // download image
         if let url = imageUrl {
-            imageView.setImageWithURL(url, mode: .ScaleAspectFill)
+            imageView.setImageWithURL(url, mode: .scaleAspectFill)
         }
     }
     
-    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0.0
         height += topConstraint.constant
         height += imageHeightConstraint.constant
@@ -105,13 +105,13 @@ public class ImageOnlyBody : CardViewElement, WCImageViewDelegate{
     }
     
     // MARK: WCImageViewDelegate
-    public func imageViewTapped(imageView: WCImageView) {
-        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], withCard:cardView?.backingCard)
+    open func imageViewTapped(_ imageView: WCImageView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], with:cardView?.backingCard)
         
         if(cardView != nil){
             let parameters = NSMutableDictionary()
             parameters["tappedImageView"] = imageView
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .ImageTapped, parameters: parameters))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .imageTapped, parameters: parameters))
         }
     }
     

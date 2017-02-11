@@ -22,8 +22,8 @@ class StockModalCardViewController: UIViewController, UIViewControllerTransition
     var initialOrientation: UIInterfaceOrientation!
     
     override func viewDidLoad() {
-        backgroundView = UIView(frame:CGRectZero)
-        let tap = UITapGestureRecognizer(target: self, action: "dismiss")
+        backgroundView = UIView(frame:CGRect.zero)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(StockModalCardViewController.dismiss as (StockModalCardViewController) -> () -> ()))
         backgroundView.addGestureRecognizer(tap)
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(backgroundView)
@@ -35,56 +35,56 @@ class StockModalCardViewController: UIViewController, UIViewControllerTransition
         cardView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(cardView)
         
-        cardViewVerticalConstraint = NSLayoutConstraint(item: cardView, attribute: .CenterY, relatedBy: .Equal, toItem: self.view, attribute: .CenterY, multiplier: 1, constant: 0)
+        cardViewVerticalConstraint = NSLayoutConstraint(item: cardView, attribute: .centerY, relatedBy: .equal, toItem: self.view, attribute: .centerY, multiplier: 1, constant: 0)
         self.view.addConstraint(cardViewVerticalConstraint)
-        cardViewHorizontalConstraint = NSLayoutConstraint(item: cardView, attribute: .CenterX, relatedBy: .Equal, toItem: self.view, attribute: .CenterX, multiplier: 1, constant: 0)
+        cardViewHorizontalConstraint = NSLayoutConstraint(item: cardView, attribute: .centerX, relatedBy: .equal, toItem: self.view, attribute: .centerX, multiplier: 1, constant: 0)
         self.view.addConstraint(cardViewHorizontalConstraint)
         
-        closeButton = UIButton(type: .Custom)
-        closeButton.setImage(UIImage.loadFrameworkImage("closeIcon"), forState: UIControlState.Normal)
-        closeButton.tintColor = UIColor.whiteColor()
+        closeButton = UIButton(type: .custom)
+        closeButton.setImage(UIImage.loadFrameworkImage("closeIcon"), for: UIControlState())
+        closeButton.tintColor = UIColor.white
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(closeButton)
         
-        closeButtonTopConstraint = NSLayoutConstraint(item: closeButton, attribute: .Top, relatedBy: .Equal, toItem: self.view, attribute: .Top, multiplier: 1, constant: 0)
+        closeButtonTopConstraint = NSLayoutConstraint(item: closeButton, attribute: .top, relatedBy: .equal, toItem: self.view, attribute: .top, multiplier: 1, constant: 0)
         self.view.addConstraint(closeButtonTopConstraint)
         
-        closeButton.addTarget(self, action: "dismiss", forControlEvents: .TouchUpInside)
+        closeButton.addTarget(self, action: #selector(StockModalCardViewController.dismiss as (StockModalCardViewController) -> () -> ()), for: .touchUpInside)
         
-        self.handleOrientationChange(NSNotification(name: "", object: nil))
+        self.handleOrientationChange(Notification(name: Notification.Name(rawValue: ""), object: nil))
         initialOrientation = currentOrientation
         
         let metrics = ["margin": 10];
         
         let views = ["cardView": cardView, "backgroundView": backgroundView];
         
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|[backgroundView]|", options: [], metrics: metrics, views: views))
-        self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[backgroundView]|", options: [], metrics: metrics, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[backgroundView]|", options: [], metrics: metrics, views: views))
+        self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[backgroundView]|", options: [], metrics: metrics, views: views))
         
-        self.view.addConstraint(NSLayoutConstraint(item: closeButton, attribute: .Leading, relatedBy: .Equal, toItem: self.view, attribute: .Leading, multiplier: 1.0, constant: 0))
-        self.view.addConstraint(NSLayoutConstraint(item: closeButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: 50))
-        self.view.addConstraint(NSLayoutConstraint(item: closeButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: 50))
+        self.view.addConstraint(NSLayoutConstraint(item: closeButton, attribute: .leading, relatedBy: .equal, toItem: self.view, attribute: .leading, multiplier: 1.0, constant: 0))
+        self.view.addConstraint(NSLayoutConstraint(item: closeButton, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 50))
+        self.view.addConstraint(NSLayoutConstraint(item: closeButton, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: 50))
     }
     
     func dismiss() {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        self.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleOrientationChange:", name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(StockModalCardViewController.handleOrientationChange(_:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIDeviceOrientationDidChangeNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
-    func handleOrientationChange(notification:NSNotification){
-        if(UIApplication.sharedApplication().statusBarOrientation != currentOrientation){
-            currentOrientation = UIApplication.sharedApplication().statusBarOrientation
+    func handleOrientationChange(_ notification:Notification){
+        if(UIApplication.shared.statusBarOrientation != currentOrientation){
+            currentOrientation = UIApplication.shared.statusBarOrientation
             
-            if(UIApplication.sharedApplication().statusBarHidden){
+            if(UIApplication.shared.isStatusBarHidden){
                 closeButtonTopConstraint.constant = 0
             }else{
                 closeButtonTopConstraint.constant = 15
@@ -92,20 +92,20 @@ class StockModalCardViewController: UIViewController, UIViewControllerTransition
         }
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
     }
     
-    func presentationControllerForPresentedViewController(presented: UIViewController, presentingViewController presenting: UIViewController, sourceViewController source: UIViewController) -> UIPresentationController? {
+    func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         
         if presented == self {
-            return StockModalCardPresentationController(presentedViewController: presented, presentingViewController: presenting)
+            return StockModalCardPresentationController(presentedViewController: presented, presenting: presenting)
         }else{
             return nil
         }
     }
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if presented == self {
             return StockModalCardAnimationController(isPresenting: true)
         }else {
@@ -113,7 +113,7 @@ class StockModalCardViewController: UIViewController, UIViewControllerTransition
         }
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         if dismissed == self {
             return StockModalCardAnimationController(isPresenting: false)
         }else {
@@ -121,11 +121,11 @@ class StockModalCardViewController: UIViewController, UIViewControllerTransition
         }
     }
     
-    func cardViewRequestedAction(cardView: CardView, action: CardViewAction) {
+    func cardViewRequestedAction(_ cardView: CardView, action: CardViewAction) {
         handleCardAction(cardView, action: action)
     }
     
-    func cardViewDropped(cardView: CardView, position: CGPoint) {
+    func cardViewDropped(_ cardView: CardView, position: CGPoint) {
         // check if the card view has been dragged "out of bounds" in the view controller view(10% of edges)
         let viewBounds = view.bounds
         
@@ -134,44 +134,44 @@ class StockModalCardViewController: UIViewController, UIViewControllerTransition
         
         // move left, right, up, or down
         if(position.x < horizontalThreshold){
-            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3, delay: 0.05, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
                 if let constraint =  self.cardViewHorizontalConstraint {
                     constraint.constant = constraint.constant - viewBounds.width
                     self.view.layoutIfNeeded()
                 }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }else if(position.x > (view.bounds.width - horizontalThreshold)){
-            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3, delay: 0.05, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
                 if let constraint = self.cardViewHorizontalConstraint {
                     constraint.constant = constraint.constant + viewBounds.width
                     self.view.layoutIfNeeded()
                 }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }else if(position.y < verticalThreshold){
-            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3, delay: 0.05, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
                 if let constraint =  self.cardViewVerticalConstraint{
                     constraint.constant = constraint.constant - viewBounds.height
                     self.view.layoutIfNeeded()
                 }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }else if(position.y > (view.bounds.height - verticalThreshold)){
-            UIView.animateWithDuration(0.3, delay: 0.05, options: UIViewAnimationOptions.CurveEaseIn, animations: { () -> Void in
+            UIView.animate(withDuration: 0.3, delay: 0.05, options: UIViewAnimationOptions.curveEaseIn, animations: { () -> Void in
                 if let constraint = self.cardViewVerticalConstraint{
                     constraint.constant = constraint.constant + viewBounds.height
                     self.view.layoutIfNeeded()
                 }
                 }) { (bool:Bool) -> Void in
                     cardView.removeFromSuperview()
-                    self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+                    self.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }else{
             cardView.physics?.panGestureReset()

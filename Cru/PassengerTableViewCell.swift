@@ -21,24 +21,24 @@ class PassengerTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    @IBAction func dropPassengerSelected(sender: AnyObject) {
+    @IBAction func dropPassengerSelected(_ sender: AnyObject) {
         if (dropButton.titleLabel?.text == "drop"){
-            dropButton.setTitle("will drop", forState: .Normal)
+            dropButton.setTitle("will drop", for: UIControlState())
             someColor = dropButton.backgroundColor
-            dropButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-            dropButton.backgroundColor = UIColor.redColor()
+            dropButton.setTitleColor(UIColor.black, for: UIControlState())
+            dropButton.backgroundColor = UIColor.red
             parentTable.removePass(passenger)
             
         }
         else{
-            dropButton.setTitle("drop", forState: .Normal)
-            dropButton.setTitleColor(UIColor.redColor(), forState: .Normal)
+            dropButton.setTitle("drop", for: UIControlState())
+            dropButton.setTitleColor(UIColor.red, for: UIControlState())
             dropButton.backgroundColor = someColor
             parentTable.reAddPass(passenger)
         }
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

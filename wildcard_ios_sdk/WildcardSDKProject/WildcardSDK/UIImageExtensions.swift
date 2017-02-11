@@ -9,8 +9,8 @@
 import Foundation
 
 extension UIImage{
-    class func loadFrameworkImage(name:String)->UIImage?{
-        let image = UIImage(named: name, inBundle: NSBundle.wildcardSDKBundle(), compatibleWithTraitCollection: nil)
+    class func loadFrameworkImage(_ name:String)->UIImage?{
+        let image = UIImage(named: name, in: Bundle.wildcardSDKBundle(), compatibleWith: nil)
         return image
     }
 }

@@ -11,29 +11,29 @@ import Foundation
 protocol SubscriptionProtocol {
  
     
-    func saveGCMToken(token: String)
+    func saveGCMToken(_ token: String)
     
     func loadGCMToken()->String
     
     func loadCampuses() -> [Campus]
     
-    func saveCampuses(campuses:[Campus])
+    func saveCampuses(_ campuses:[Campus])
     
     func loadMinistries() -> [Ministry]
     
-    func saveMinistries(ministrys:[Ministry], updateGCM: Bool)
+    func saveMinistries(_ ministrys:[Ministry], updateGCM: Bool)
     
-    func saveMinistries(ministries:[Ministry], updateGCM: Bool, handler: [String:Bool]->Void)
+    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool, handler: @escaping ([String:Bool])->Void)
     
-    func didMinistriesChange(ministries:[Ministry]) -> Bool
+    func didMinistriesChange(_ ministries:[Ministry]) -> Bool
     
-    func campusContainsMinistry(campus: Campus, ministry: Ministry)->Bool
+    func campusContainsMinistry(_ campus: Campus, ministry: Ministry)->Bool
     
-    func subscribeToTopic(topic: String)
+    func subscribeToTopic(_ topic: String)
     
-    func subscribeToTopic(topic: String, handler: (Bool) -> Void)
+    func subscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void)
     
-    func unsubscribeToTopic(topic: String)
+    func unsubscribeToTopic(_ topic: String)
     
-    func unsubscribeToTopic(topic: String, handler: (Bool) -> Void)
+    func unsubscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void)
 }

@@ -24,8 +24,8 @@ class GlobalUtilsTest: XCTestCase {
         let dateStr = "2001-01-02T20:19:18.123Z"
         let date = GlobalUtils.dateFromString(dateStr)
         
-        let unitFlags: NSCalendarUnit = [.Nanosecond, .Second, .Minute, .Hour, .Day, .Month, .Year]
-        let comps = NSCalendar.currentCalendar().components(unitFlags, fromDate: date)
+        let unitFlags: NSCalendar.Unit = [.nanosecond, .second, .minute, .hour, .day, .month, .year]
+        let comps = (Calendar.current as NSCalendar).components(unitFlags, from: date)
         
         XCTAssertEqual(2001, comps.year)
         XCTAssertEqual(1, comps.month)

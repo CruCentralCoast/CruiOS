@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class SummaryCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSource
+open class SummaryCardImageOnlyVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:ImageOnlyBody!
     var body:FullCardHeader!
@@ -21,29 +21,29 @@ public class SummaryCardImageOnlyVisualSource : BaseVisualSource, CardViewVisual
         super.init(card: card)
     }
     
-    @objc public func viewForCardHeader()->CardViewElement?{
+    @objc open func viewForCardHeader()->CardViewElement?{
         if(header == nil){
-            header = CardViewElementFactory.createCardViewElement(.ImageOnly) as! ImageOnlyBody
+            header = CardViewElementFactory.createCardViewElement(.imageOnly) as! ImageOnlyBody
             header.contentEdgeInset = UIEdgeInsetsMake(0, 0, 0, 0)
             header.imageAspectRatio = aspectRatio
         }
         return header
     }
     
-    @objc public func viewForCardBody()->CardViewElement{
+    @objc open func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(.FullHeader) as! FullCardHeader
+            body = CardViewElementFactory.createCardViewElement(.fullHeader) as! FullCardHeader
             body.contentEdgeInset = UIEdgeInsetsMake(15, 15, 0, 15)
-            body.logo.hidden = true
-            body.hairline.hidden = true
+            body.logo.isHidden = true
+            body.hairline.isHidden = true
         }
         return body
     }
     
-    @objc public func viewForCardFooter() -> CardViewElement? {
+    @objc open func viewForCardFooter() -> CardViewElement? {
         if(footer == nil){
-            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as! ViewOnWebCardFooter
-            footer.hairline.hidden = true
+            footer = CardViewElementFactory.createCardViewElement(WCElementType.viewOnWebFooter) as! ViewOnWebCardFooter
+            footer.hairline.isHidden = true
             footer.contentEdgeInset = UIEdgeInsetsMake(15, 15, 10, 15)
         }
         return footer

@@ -11,8 +11,8 @@ import UIKit
 class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var cgs = [CommunityGroupCell]()
     var groups = [CommunityGroup]()
-    private var ministry: String!
-    private var answers = [[String:String]]()
+    fileprivate var ministry: String!
+    fileprivate var answers = [[String:String]]()
     
     
     @IBOutlet weak var table: UITableView!
@@ -24,8 +24,8 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         loadCommunityGroups()
     }
     
-    private func loadCommunityGroups() {
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+    fileprivate func loadCommunityGroups() {
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         
         
         
@@ -37,35 +37,35 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         //CruClients.getServerClient().getData(.CommunityGroup, insert: insertGroup, completionHandler: finishInserting)
     }
     
-    private func finishInserting(success: Bool) {
-        groups.sortInPlace()
+    fileprivate func finishInserting(_ success: Bool) {
+        groups.sort()
         table.reloadData()
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
     
-    private func insertGroup(dict: NSDictionary) {
-        let cell = self.table.dequeueReusableCellWithIdentifier("cell")!
+    fileprivate func insertGroup(_ dict: NSDictionary) {
+        let cell = self.table.dequeueReusableCell(withIdentifier: "cell")!
         let group = CommunityGroup(dict: dict)
         groups.append(group)
         
     }
     
-    func setAnswers(answers: [[String:String]]) {
+    func setAnswers(_ answers: [[String:String]]) {
         self.answers = answers
     }
     
-    func setMinistry(ministryId: String) {
+    func setMinistry(_ ministryId: String) {
         self.ministry = ministryId
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return groups.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         //load cell and ride associated with that cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CommunityGroupCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CommunityGroupCell
         let group = groups[indexPath.row]
         
         
@@ -80,7 +80,7 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func jumpBackToGetInvolved() {
         for controller in (self.navigationController?.viewControllers)! {
-            if controller.isKindOfClass(GetInvolvedViewController) {
+            if controller.isKind(of: GetInvolvedViewController.self) {
                 self.navigationController?.popToViewController(controller, animated: true)
             }
         }

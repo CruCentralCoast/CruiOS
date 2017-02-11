@@ -41,7 +41,7 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         map.delegate = self
         navigationItem.title = "Offered Rides"
-        bottomLabel.setTitle("ride " + String(index + 1) + " of " + String(rides.count), forState: .Normal)
+        bottomLabel.setTitle("ride " + String(index + 1) + " of " + String(rides.count), for: UIControlState())
         getQueryLocation(event.getLocationString(), handler: setEvent)
         
         for ride in rides{
@@ -67,7 +67,7 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
     }
 
     
-    func mapViewDidFinishRenderingMap(mapView: MKMapView, fullyRendered: Bool) {
+    func mapViewDidFinishRenderingMap(_ mapView: MKMapView, fullyRendered: Bool) {
         if (rides.count >= 1 && !showedFirstRide && rideLocs[rides[0].id] != nil){
             let ride = rides[0]
             centerMapOnLocation(rideLocs[ride.id]!, loadOverlay: true, radius: ride.radius)
@@ -76,14 +76,14 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func getRideQueryLocation(rideId: String, query: String){
+    func getRideQueryLocation(_ rideId: String, query: String){
         var initialLocation = CLLocation()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = query
         
         
         let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) in
+        search.start { (response, error) in
             guard let response = response else {
                 return
             }
@@ -96,10 +96,10 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         
         let circleRenderer = MKCircleRenderer(overlay: overlay)
-        circleRenderer.fillColor = CruColors.lightBlue.colorWithAlphaComponent(0.1)//UIColor.blueColor().colorWithAlphaComponent(0.1)
+        circleRenderer.fillColor = CruColors.lightBlue.withAlphaComponent(0.1)//UIColor.blueColor().colorWithAlphaComponent(0.1)
         circleRenderer.strokeColor = CruColors.darkBlue//UIColor.blueColor()
         circleRenderer.lineWidth = 1
         return circleRenderer
@@ -107,14 +107,14 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
     
     
     
-    func getQueryLocation(query: String, handler: (CLLocation)->()){
+    func getQueryLocation(_ query: String, handler: @escaping (CLLocation)->()){
         var initialLocation = CLLocation()
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = query
         
         
         let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) in
+        search.start { (response, error) in
             guard let response = response else {
                 return
             }
@@ -128,7 +128,7 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
     }
     
     
-    func centerMapOnLocation(location: CLLocation, loadOverlay: Bool, radius: Int) {
+    func centerMapOnLocation(_ location: CLLocation, loadOverlay: Bool, radius: Int) {
         var regionRadius: CLLocationDistance = 500
         
         if(radius != 0){
@@ -151,14 +151,14 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         var northEast : CLLocationCoordinate2D!
         var southWest : CLLocationCoordinate2D!
         
-        northEast = map.convertPoint(CGPointMake(map.frame.size.width, 0), toCoordinateFromView: map)
-        southWest = map.convertPoint(CGPointMake(0, map.frame.size.height), toCoordinateFromView: map)
+        northEast = map.convert(CGPoint(x: map.frame.size.width, y: 0), toCoordinateFrom: map)
+        southWest = map.convert(CGPoint(x: 0, y: map.frame.size.height), toCoordinateFrom: map)
         
         return Float( 69.172 * (northEast.latitude - southWest.latitude)) - 0.5
     }
     
-    func dropPinAtLocation(location: CLLocation, title: String, subtitle: String, rideId: String){
-        let dropPin = RideAnnotation(title: title, subtitle: subtitle, coordinate: location.coordinate, color: .Green, rideId: rideId)
+    func dropPinAtLocation(_ location: CLLocation, title: String, subtitle: String, rideId: String){
+        let dropPin = RideAnnotation(title: title, subtitle: subtitle, coordinate: location.coordinate, color: .green, rideId: rideId)
         self.map.addAnnotation(dropPin)
         
         selectedTitle = title
@@ -170,19 +170,19 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         map.selectAnnotation(dropPin, animated: true)
     }
     
-    func setEvent(loc : CLLocation){
+    func setEvent(_ loc : CLLocation){
         eventLoc = loc
     }
 
     func selectRideButton() -> UIButton {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 70, height: 30))
-        button.setTitle("Select", forState: .Normal)
+        button.setTitle("Select", for: UIControlState())
         button.titleLabel?.font = UIFont(name: Config.fontBold, size: 18)
-        button.setTitleColor(view.tintColor, forState: .Normal)
+        button.setTitleColor(view.tintColor, for: UIControlState())
         return button
     }
     
-    func findRideForAnnotation(ann : MKAnnotation)->Ride?{
+    func findRideForAnnotation(_ ann : MKAnnotation)->Ride?{
         if let rAnn = ann as? RideAnnotation{
             for ride in rides{
                 if (ride.id == rAnn.rideId){
@@ -194,9 +194,9 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
-    @IBAction func bottomButtonPressed(sender: UIButton) {
+    @IBAction func bottomButtonPressed(_ sender: UIButton) {
         
-        if (sender.titleForState(.Normal) == "Next"){
+        if (sender.title(for: UIControlState()) == "Next"){
             index = index + 1
             if(index == rides.count){
                 index = 0
@@ -209,7 +209,7 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
             }
         }
         
-        bottomLabel.setTitle("ride " + String(index + 1) + " of " + String(rides.count), forState: .Normal)
+        bottomLabel.setTitle("ride " + String(index + 1) + " of " + String(rides.count), for: UIControlState())
         let ride = rides[index]
         
         if(rideLocs[ride.id] != nil){
@@ -219,21 +219,21 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
             dropPinAtLocation(rideLocs[ride.id]!, title: ride.getCompleteAddress(), subtitle: ride.getMapSubtitle(), rideId:  ride.id)
             
             for an in map.annotations{
-                self.mapView(map, viewForAnnotation: an)
+                self.mapView(map, viewFor: an)
             }
         }
         
         
     }
     
-    func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         //completion?(location)
         
         
         
         if let ride = findRideForAnnotation(view.annotation!){
             self.selectedRide = ride
-            self.performSegueWithIdentifier("joinRide", sender: self)
+            self.performSegue(withIdentifier: "joinRide", sender: self)
 //            if let navigation = navigationController where navigation.viewControllers.count > 1 {
 //                navigation.popViewControllerAnimated(true)
 //            } else {
@@ -246,23 +246,23 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
     
   
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let ann = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
-        ann.userInteractionEnabled = true
+        ann.isUserInteractionEnabled = true
         ann.canShowCallout = true
         
         
         switch annotation.title!!{
         case event.name:
-            ann.pinColor = .Red
+            ann.pinColor = .red
         case selectedTitle:
             ann.rightCalloutAccessoryView = selectRideButton()
-            ann.rightCalloutAccessoryView?.userInteractionEnabled = true
-            ann.pinColor = .Green
+            ann.rightCalloutAccessoryView?.isUserInteractionEnabled = true
+            ann.pinColor = .green
         default:
             ann.rightCalloutAccessoryView = selectRideButton()
-            ann.rightCalloutAccessoryView?.userInteractionEnabled = true
-            ann.pinColor = .Purple
+            ann.rightCalloutAccessoryView?.isUserInteractionEnabled = true
+            ann.pinColor = .purple
         }
         
         
@@ -270,33 +270,33 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         return ann
     }
     
-    func loadOverlayForRegionWithLatitude(radius: Int, latitude: Double, andLongitude longitude: Double) {
+    func loadOverlayForRegionWithLatitude(_ radius: Int, latitude: Double, andLongitude longitude: Double) {
         
         //1
         let coordinates = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         //2
-        let circle = MKCircle(centerCoordinate: coordinates, radius: (Double(radius) * metersInMile))
+        let circle = MKCircle(center: coordinates, radius: (Double(radius) * metersInMile))
         //3
         //self.map.setRegion(MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 7, longitudeDelta: 7)), animated: true)
         //4
         
         if(curOverlay != nil){
-            self.map.removeOverlay(curOverlay!)
+            self.map.remove(curOverlay!)
         }
         
         curOverlay = circle
         
         if(map != nil){
-            self.map.addOverlay(circle)
+            self.map.add(circle)
         }
         
         
     }
 
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "joinRide" {
-            if let vc = segue.destinationViewController as? RideJoinViewController{
+            if let vc = segue.destination as? RideJoinViewController{
                 vc.ride = self.selectedRide
                 vc.event = self.event
                 vc.rideVC = self.rideTVC

@@ -8,15 +8,15 @@
 
 import Foundation
 
-public extension NSURL{
+public extension URL{
     
     func isTwitterProfileURL()->Bool{
-        let length:Int = absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        let length:Int = absoluteString.lengthOfBytes(using: String.Encoding.utf8)
         if (length > 0) {
             let pattern = "^http(s)://(www.)?twitter.com/(\\w*)\\/?$"
-            let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive)
-            let length:Int = absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
-            let ytMatch = regex?.firstMatchInString(absoluteString, options: NSMatchingOptions(), range: NSMakeRange(0, length))
+            let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
+            let length:Int = absoluteString.lengthOfBytes(using: String.Encoding.utf8)
+            let ytMatch = regex?.firstMatch(in: absoluteString, options: NSRegularExpression.MatchingOptions(), range: NSMakeRange(0, length))
             if(ytMatch != nil){
                 return true
             }else{
@@ -28,11 +28,11 @@ public extension NSURL{
     }
     
     func isTwitterTweetURL()->Bool{
-        let length:Int = absoluteString.lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
+        let length:Int = absoluteString.lengthOfBytes(using: String.Encoding.utf8)
         if (length > 0) {
             let pattern = "^http(s)://(www.)?twitter.com/(\\w*)/status/(\\d*)\\/?$"
-            let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions.CaseInsensitive)
-            let ytMatch = regex?.firstMatchInString(absoluteString, options: NSMatchingOptions(), range: NSMakeRange(0, length))
+            let regex = try? NSRegularExpression(pattern: pattern, options: NSRegularExpression.Options.caseInsensitive)
+            let ytMatch = regex?.firstMatch(in: absoluteString, options: NSRegularExpression.MatchingOptions(), range: NSMakeRange(0, length))
             if(ytMatch != nil){
                 return true
             }else{
