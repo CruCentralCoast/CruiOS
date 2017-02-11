@@ -101,8 +101,8 @@ class Ride: Comparable, Equatable, TimeDetail {
     var driverName: String = ""
     var eventId: String = ""
     var eventName: String = ""
-    var eventStartDate : NSDate!
-    var eventEndDate : NSDate!
+    var eventStartDate : Date!
+    var eventEndDate : Date!
     var time: String = ""
     var passengers = [String]()
     var day = -1
@@ -111,7 +111,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     var hour = -1
     var minute = -1
     var year = -1
-    var date : NSDate!
+    var date : Date!
     var postcode: String = ""
     var state: String = ""
     var city: String = ""
@@ -121,9 +121,9 @@ class Ride: Comparable, Equatable, TimeDetail {
     var timeStr = ""
     
     //user for offering rides primarily
-    var departureDate : NSDate? //both time and date
-    var departureTime: NSDate? //only time component h:mm a
-    var departureDay : NSDate?  //only date component d/m/y
+    var departureDate : Date? //both time and date
+    var departureTime: Date? //only time component h:mm a
+    var departureDay : Date?  //only date component d/m/y
     
     
     init(){
@@ -134,8 +134,8 @@ class Ride: Comparable, Equatable, TimeDetail {
 
     init?(dict: NSDictionary){
 
-        if (dict.objectForKey(LocationKeys.loc) != nil){
-            let loc = dict.objectForKey(LocationKeys.loc) as! NSDictionary
+        if (dict.object(forKey: LocationKeys.loc) != nil){
+            let loc = dict.object(forKey: LocationKeys.loc) as! NSDictionary
             
             if (loc[LocationKeys.postcode] != nil && !(loc[LocationKeys.postcode] is NSNull)){
                 postcode = loc[LocationKeys.postcode] as! String
@@ -153,32 +153,32 @@ class Ride: Comparable, Equatable, TimeDetail {
                 country = loc[LocationKeys.country] as! String
             }
         }
-        if (dict.objectForKey(RideKeys.id) != nil){
-            id = dict.objectForKey(RideKeys.id) as! String
+        if (dict.object(forKey: RideKeys.id) != nil){
+            id = dict.object(forKey: RideKeys.id) as! String
         }
-        if (dict.objectForKey(RideKeys.direction) != nil){
-            direction = dict.objectForKey(RideKeys.direction) as! String
+        if (dict.object(forKey: RideKeys.direction) != nil){
+            direction = dict.object(forKey: RideKeys.direction) as! String
         }
-        if (dict.objectForKey(RideKeys.seats) != nil){
-            seats = dict.objectForKey(RideKeys.seats) as! Int
+        if (dict.object(forKey: RideKeys.seats) != nil){
+            seats = dict.object(forKey: RideKeys.seats) as! Int
         }
-        if (dict.objectForKey(RideKeys.radius) != nil){
-            radius = dict.objectForKey(RideKeys.radius) as! Int
+        if (dict.object(forKey: RideKeys.radius) != nil){
+            radius = dict.object(forKey: RideKeys.radius) as! Int
         }
-        if (dict.objectForKey(RideKeys.gcm_id) != nil){
-            gcmId = dict.objectForKey(RideKeys.gcm_id) as! String
+        if (dict.object(forKey: RideKeys.gcm_id) != nil){
+            gcmId = dict.object(forKey: RideKeys.gcm_id) as! String
         }
-        if (dict.objectForKey(RideKeys.driverNumber) != nil){
-            driverNumber = dict.objectForKey(RideKeys.driverNumber) as! String
+        if (dict.object(forKey: RideKeys.driverNumber) != nil){
+            driverNumber = dict.object(forKey: RideKeys.driverNumber) as! String
         }
-        if (dict.objectForKey(RideKeys.driverName) != nil){
-            driverName = dict.objectForKey(RideKeys.driverName) as! String
+        if (dict.object(forKey: RideKeys.driverName) != nil){
+            driverName = dict.object(forKey: RideKeys.driverName) as! String
         }
-        if (dict.objectForKey(RideKeys.event) != nil){
-            eventId = dict.objectForKey(RideKeys.event) as! String
+        if (dict.object(forKey: RideKeys.event) != nil){
+            eventId = dict.object(forKey: RideKeys.event) as! String
         }
-        if (dict.objectForKey(RideKeys.time) != nil){
-            time = dict.objectForKey(RideKeys.time) as! String
+        if (dict.object(forKey: RideKeys.time) != nil){
+            time = dict.object(forKey: RideKeys.time) as! String
             self.date = GlobalUtils.dateFromString(time)
             self.departureDate = self.date
             //self.departureTime = self.date
@@ -187,21 +187,21 @@ class Ride: Comparable, Equatable, TimeDetail {
 
             
             let components = GlobalUtils.dateComponentsFromDate(GlobalUtils.dateFromString(time))!
-            self.day = components.day
-            let monthNumber = components.month
-            self.hour = components.hour
-            self.minute = components.minute
-            self.year = components.year
+            self.day = components.day!
+            let monthNumber = components.month!
+            self.hour = components.hour!
+            self.minute = components.minute!
+            self.year = components.year!
             self.time = getTime()//Ride.createTime(self.hour, minute: self.minute)
             
             //get month symbol from number
-            let dateFormatter: NSDateFormatter = NSDateFormatter()
+            let dateFormatter: DateFormatter = DateFormatter()
             let months = dateFormatter.shortMonthSymbols
-            self.month = months[monthNumber - 1].uppercaseString
+            self.month = (months?[monthNumber - 1].uppercased())!
             self.monthNum = monthNumber
         }
-        if (dict.objectForKey(RideKeys.passengers) != nil){
-            passengers = dict.objectForKey(RideKeys.passengers) as! [String]
+        if (dict.object(forKey: RideKeys.passengers) != nil){
+            passengers = dict.object(forKey: RideKeys.passengers) as! [String]
         }
 
     }
@@ -216,7 +216,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
     }
     
-    func isPassengerInRide(passId: String)->Bool{
+    func isPassengerInRide(_ passId: String)->Bool{
         for pass in passengers{
             if pass == passId{
                 return true
@@ -226,7 +226,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     }
     
     
-    func getDescription(eventName: String)->String{
+    func getDescription(_ eventName: String)->String{
         if (self.gcmId == Config.gcmId()){
             return "Driving to " + eventName + " at " + self.getTime()
          }
@@ -310,7 +310,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
     }
     
-    func getDepartureDate()->NSDate{
+    func getDepartureDate()->Date{
         return self.departureDate!
     }
     
@@ -335,7 +335,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
     }
     
-    func getDepartureDay()->NSDate{
+    func getDepartureDay()->Date{
         return self.departureDate!
     }
     
@@ -349,7 +349,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
     }
     
-    func getDepartureTime()->NSDate{
+    func getDepartureTime()->Date{
         return self.departureDate!
     }
         
@@ -357,7 +357,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         return (self.seats - passengers.count)  != 0
     }
     
-    func seatsLeft()->String{
+    func seatsLeftAsString()->String{
         return String(self.seats - self.passengers.count)
     }
     
@@ -365,7 +365,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         return self.seats - self.passengers.count
     }
     
-    func numSeatsNeedToDrop(proposedNumSeats: Int)->Int{
+    func numSeatsNeedToDrop(_ proposedNumSeats: Int)->Int{
         return passengers.count - proposedNumSeats
     }
     
@@ -399,13 +399,13 @@ class Ride: Comparable, Equatable, TimeDetail {
         
         if(direction == "to" || direction == "both"){
             
-            if theDate.compare(eventStartDate) == NSComparisonResult.OrderedDescending {
+            if theDate.compare(eventStartDate) == ComparisonResult.orderedDescending {
                 return ValidationErrors.badTimeBefore  + " " + GlobalUtils.stringFromDate(eventStartDate, format: "MM/dd/yy h:mm a")
             }
         }
         else{
             print("\nDirection is: \(direction)\n")
-            if theDate.compare(eventStartDate) == NSComparisonResult.OrderedAscending {
+            if theDate.compare(eventStartDate) == ComparisonResult.orderedAscending {
                 return ValidationErrors.badTimeBeforeStart + " " + GlobalUtils.stringFromDate(eventStartDate, format: "MM/dd/yy h:mm a")
             }
         }
@@ -413,7 +413,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         return ValidationErrors.none
     }
     
-    func isValidNumSeats(num: Int) -> String{
+    func isValidNumSeats(_ num: Int) -> String{
         if (num < RideConstants.minSeats || num > RideConstants.maxSeats){
             return ValidationErrors.badNumSeats
         }
@@ -441,7 +441,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     }
     
     //Accepts a phone number as a string and returns a String indicating any errors
-    func isValidPhoneNum(num: String) -> String{
+    func isValidPhoneNum(_ num: String) -> String{
         if(num.characters.count == 10){
             for c in num.characters{
                 if let _ = Int(String(c)){
@@ -463,8 +463,8 @@ class Ride: Comparable, Equatable, TimeDetail {
     }
     
     //Accepts a name and returns a String indicating any errors
-    func isValidName(name: String) -> String{
-        let fullNameArr = name.componentsSeparatedByString(" ")
+    func isValidName(_ name: String) -> String{
+        let fullNameArr = name.components(separatedBy: " ")
         
         if(fullNameArr.count == 2){
             if let _ = Int(fullNameArr[0]){
@@ -483,7 +483,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     
     //converts our direction value to a server value
-    func getServerDirectionValue(dir : String)->String{
+    func getServerDirectionValue(_ dir : String)->String{
         switch (dir){
             case Directions.from:
                 return "from"
@@ -499,17 +499,17 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     func getRiderDetails() -> [EditableItem]{
         var details = [EditableItem]()
-        details.appendContentsOf(getEventInfo())
-        details.appendContentsOf(getDriverInfo())
-        details.appendContentsOf(getDepartureInfo())
+        details.append(contentsOf: getEventInfo())
+        details.append(contentsOf: getDriverInfo())
+        details.append(contentsOf: getDepartureInfo())
         return details
     }
     
     func getDriverDetails() -> [EditableItem]{
         var details = [EditableItem]()
-        details.appendContentsOf(getEventInfo())
-        details.appendContentsOf(getDepartureInfo())
-        details.appendContentsOf(getSeatsInfo())
+        details.append(contentsOf: getEventInfo())
+        details.append(contentsOf: getDepartureInfo())
+        details.append(contentsOf: getSeatsInfo())
         return details
     }
     
@@ -543,17 +543,17 @@ class Ride: Comparable, Equatable, TimeDetail {
     }
     
     func getMapSubtitle()->String{
-        return self.seatsLeft()  + " seats left"
+        return self.seatsLeftAsString()  + " seats left"
     }
     
     func getRideAsDict()->[String:AnyObject]{
-        var map: [String:AnyObject] = [RideKeys.id : self.id,
-            RideKeys.direction: self.direction, RideKeys.driverName: self.driverName,
-            RideKeys.driverNumber: self.driverNumber, RideKeys.radius: self.radius,
-            RideKeys.seats: self.seats, RideKeys.time: self.time,
-            RideKeys.location: self.getLocationAsDict(), RideKeys.passengers: self.passengers]
-        map.updateValue(self.direction, forKey: RideKeys.direction)
-        map[RideKeys.direction] = self.direction
+        var map: [String:AnyObject] = [RideKeys.id : self.id as AnyObject,
+            RideKeys.direction: self.direction as AnyObject, RideKeys.driverName: self.driverName as AnyObject,
+            RideKeys.driverNumber: self.driverNumber as AnyObject, RideKeys.radius: self.radius as AnyObject,
+            RideKeys.seats: self.seats as AnyObject, RideKeys.time: self.time as AnyObject,
+            RideKeys.location: self.getLocationAsDict() as AnyObject, RideKeys.passengers: self.passengers as AnyObject]
+        map.updateValue(self.direction as AnyObject, forKey: RideKeys.direction)
+        map[RideKeys.direction] = self.direction as AnyObject?
         return map
     }
     
@@ -567,7 +567,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         locMap[LocationKeys.country] = self.country
         locMap[LocationKeys.city] = self.city
         
-        map[LocationKeys.loc] = locMap
+        map[LocationKeys.loc] = locMap as AnyObject?
         
         return map
     }

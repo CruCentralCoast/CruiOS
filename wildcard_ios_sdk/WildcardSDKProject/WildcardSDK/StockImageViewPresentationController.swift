@@ -11,8 +11,8 @@ import Foundation
 class StockImageViewPresentationController: UIPresentationController {
     
     lazy var backgroundView :UIView = {
-        let view = UIView(frame: CGRectZero)
-        view.backgroundColor = UIColor.blackColor()
+        let view = UIView(frame: CGRect.zero)
+        view.backgroundColor = UIColor.black
         view.alpha = 0.0
         return view
         }()
@@ -21,28 +21,28 @@ class StockImageViewPresentationController: UIPresentationController {
         containerView!.addSubview(self.backgroundView)
         backgroundView.constrainToSuperViewEdges()
         
-        if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {
-            transitionCoordinator.animateAlongsideTransition({(context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+        if let transitionCoordinator = self.presentingViewController.transitionCoordinator {
+            transitionCoordinator.animate(alongsideTransition: {(context: UIViewControllerTransitionCoordinatorContext!) -> Void in
                 self.backgroundView.alpha = 1.0
                 }, completion:nil)
         }
     }
     
-    override func presentationTransitionDidEnd(completed: Bool)  {
+    override func presentationTransitionDidEnd(_ completed: Bool)  {
         if !completed {
             backgroundView.removeFromSuperview()
         }
     }
     
     override func dismissalTransitionWillBegin()  {
-        if let transitionCoordinator = self.presentingViewController.transitionCoordinator() {
-            transitionCoordinator.animateAlongsideTransition({(context: UIViewControllerTransitionCoordinatorContext!) -> Void in
+        if let transitionCoordinator = self.presentingViewController.transitionCoordinator {
+            transitionCoordinator.animate(alongsideTransition: {(context: UIViewControllerTransitionCoordinatorContext!) -> Void in
                 self.backgroundView.alpha  = 0.0
                 }, completion:nil)
         }
     }
     
-    override func dismissalTransitionDidEnd(completed: Bool) {
+    override func dismissalTransitionDidEnd(_ completed: Bool) {
         if completed {
             backgroundView.removeFromSuperview()
         }

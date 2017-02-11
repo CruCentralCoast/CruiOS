@@ -9,14 +9,14 @@
 import Foundation
 
 @objc
-public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
+open class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
     
-    public var videoView:WCVideoView!
-    public var title:UILabel!
-    public var kicker:UILabel!
+    open var videoView:WCVideoView!
+    open var title:UILabel!
+    open var kicker:UILabel!
     
     /// Content insets
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
         }
@@ -32,7 +32,7 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
     }
     
     /// Use this to change the vertical spacing between the kicker and title
-    public var kickerSpacing:CGFloat{
+    open var kickerSpacing:CGFloat{
         get{
             return kickerToTitleSpacing.constant
         }
@@ -42,7 +42,7 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
     }
     
     /// Use this to change the horizontal padding between the label and the video view
-    public var labelToVideoPadding:CGFloat{
+    open var labelToVideoPadding:CGFloat{
         get{
             return labelToVideoViewPadding.constant
         }
@@ -52,19 +52,19 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
         }
     }
     
-    private var topConstraint:NSLayoutConstraint!
-    private var leftConstraint:NSLayoutConstraint!
-    private var rightConstraint:NSLayoutConstraint!
-    private var bottomConstraint:NSLayoutConstraint!
-    private var videoHeightConstraint:NSLayoutConstraint!
-    private var videoWidthConstraint:NSLayoutConstraint!
-    private var kickerToTitleSpacing: NSLayoutConstraint!
-    private var labelToVideoViewPadding:NSLayoutConstraint!
+    fileprivate var topConstraint:NSLayoutConstraint!
+    fileprivate var leftConstraint:NSLayoutConstraint!
+    fileprivate var rightConstraint:NSLayoutConstraint!
+    fileprivate var bottomConstraint:NSLayoutConstraint!
+    fileprivate var videoHeightConstraint:NSLayoutConstraint!
+    fileprivate var videoWidthConstraint:NSLayoutConstraint!
+    fileprivate var kickerToTitleSpacing: NSLayoutConstraint!
+    fileprivate var labelToVideoViewPadding:NSLayoutConstraint!
     
-    override public func initialize() {
+    override open func initialize() {
         
         // wildcard video view
-        videoView = WCVideoView(frame:CGRectZero)
+        videoView = WCVideoView(frame:CGRect.zero)
         videoView.delegate = self
         addSubview(videoView)
         rightConstraint = videoView.constrainRightToSuperView(15)
@@ -75,24 +75,24 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
         videoHeightConstraint = videoView.constrainHeight(90)
         videoHeightConstraint.priority = 999
         
-        kicker = UILabel(frame: CGRectZero)
+        kicker = UILabel(frame: CGRect.zero)
         kicker.setDefaultKickerStyling()
         addSubview(kicker)
         leftConstraint = kicker.constrainLeftToSuperView(15)
         kicker.alignTopToView(videoView)
-        labelToVideoViewPadding = NSLayoutConstraint(item: videoView, attribute: .Left, relatedBy: .Equal, toItem: kicker, attribute: .Right, multiplier: 1.0, constant: 15)
+        labelToVideoViewPadding = NSLayoutConstraint(item: videoView, attribute: .left, relatedBy: .equal, toItem: kicker, attribute: .right, multiplier: 1.0, constant: 15)
         addConstraint(labelToVideoViewPadding)
         
-        title = UILabel(frame:CGRectZero)
+        title = UILabel(frame:CGRect.zero)
         title.setDefaultTitleStyling()
         addSubview(title)
-        kickerToTitleSpacing = NSLayoutConstraint(item: title, attribute: .Top, relatedBy: .Equal, toItem: kicker, attribute: .Bottom, multiplier: 1.0, constant: 3)
+        kickerToTitleSpacing = NSLayoutConstraint(item: title, attribute: .top, relatedBy: .equal, toItem: kicker, attribute: .bottom, multiplier: 1.0, constant: 3)
         addConstraint(kickerToTitleSpacing)
         title.alignLeftToView(kicker)
         title.alignRightToView(kicker)
     }
     
-    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0.0
         height += topConstraint.constant
         height += videoHeightConstraint.constant
@@ -100,7 +100,7 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
         return height
     }
     
-    override public func update(card:Card) {
+    override open func update(_ card:Card) {
         if let videoCard = card as? VideoCard{
             videoView.loadVideoCard(videoCard)
             kicker.text = videoCard.creator.name
@@ -111,7 +111,7 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
         }
     }
     
-    private func updateLabelAttributes(){
+    fileprivate func updateLabelAttributes(){
         
         // the space available for the labels in this element
         let labelPreferredWidth = preferredWidth -
@@ -126,24 +126,24 @@ public class VideoCardThumbnail : CardViewElement, WCVideoViewDelegate {
         invalidateIntrinsicContentSize()
     }
     
-    public override func adjustForPreferredWidth(cardWidth: CGFloat) {
+    open override func adjustForPreferredWidth(_ cardWidth: CGFloat) {
         updateLabelAttributes()
     }
     
     // MARK: WCVideoViewDelegate
-    public func videoViewTapped(videoView: WCVideoView) {
-        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"videoTapped"], withCard:cardView?.backingCard)
+    open func videoViewTapped(_ videoView: WCVideoView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"videoTapped"], with:cardView?.backingCard)
     }
     
-    public func videoViewDidStartPlaying(videoView: WCVideoView) {
+    open func videoViewDidStartPlaying(_ videoView: WCVideoView) {
         if(cardView != nil){
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoDidStartPlaying, parameters:nil))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .videoDidStartPlaying, parameters:nil))
         }
     }
     
-    public func videoViewWillEndPlaying(videoView: WCVideoView) {
+    open func videoViewWillEndPlaying(_ videoView: WCVideoView) {
         if(cardView != nil){
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoWillEndPlaying, parameters:nil))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .videoWillEndPlaying, parameters:nil))
         }
     }
 }

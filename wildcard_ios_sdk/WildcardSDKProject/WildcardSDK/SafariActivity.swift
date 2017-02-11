@@ -14,39 +14,40 @@ class SafariActivity : UIActivity
     
     var activityItems:[AnyObject]?
     
-    override func activityType() -> String? {
-        return "wildcard.openInSafari"
+    override var activityType : UIActivityType? {
+        return UIActivityType.init("wildcard.openInSafari")
     }
     
-    override func activityTitle() -> String? {
+    
+    override var activityTitle : String? {
         return "Open in Safari"
     }
     
-    override func activityImage() -> UIImage? {
+    override var activityImage : UIImage? {
         return UIImage.loadFrameworkImage("safariIcon")
     }
     
-    override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
+    override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
         for object in activityItems{
-            if object is NSURL {
+            if object is URL {
                 return true
             }
         }
         return false
     }
     
-    override func prepareWithActivityItems(activityItems: [AnyObject]) {
-        self.activityItems = activityItems
+    override func prepare(withActivityItems activityItems: [Any]) {
+        self.activityItems = activityItems as [AnyObject]?
     }
     
-    override func performActivity() {
+    override func perform() {
         var opened = false
         
         if let items = activityItems{
             for object in items{
-                if let url = object as? NSURL{
-                    if(UIApplication.sharedApplication().canOpenURL(url)){
-                        opened = UIApplication.sharedApplication().openURL(url)
+                if let url = object as? URL{
+                    if(UIApplication.shared.canOpenURL(url)){
+                        opened = UIApplication.shared.openURL(url)
                     }else{
                         opened = false
                     }

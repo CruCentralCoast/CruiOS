@@ -10,9 +10,10 @@ import Foundation
 
 class FakeSubscriptionManager: SubscriptionProtocol {
 
-    private var gcmToken = "emulator-id-hey-whats-up-hello"
+
+    fileprivate var gcmToken = "emulator-id-hey-whats-up-hello"
     
-    private let storageManager: LocalStorageManager
+    fileprivate let storageManager: LocalStorageManager
     
     init() {
         storageManager = LocalStorageManager()
@@ -22,7 +23,7 @@ class FakeSubscriptionManager: SubscriptionProtocol {
         self.storageManager = storageManager
     }
     
-    func saveGCMToken(token: String) {
+    func saveGCMToken(_ token: String) {
         gcmToken = token
     }
     
@@ -31,45 +32,45 @@ class FakeSubscriptionManager: SubscriptionProtocol {
     }
     
     func loadCampuses() -> [Campus] {
-        if let unarchivedObject = storageManager.getObject(Config.campusKey) as? NSData {
-            if let campuses = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Campus]{
+        if let unarchivedObject = storageManager.getObject(Config.campusKey) as? Data {
+            if let campuses = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Campus]{
                 return campuses
             }
         }
         return [Campus]()
     }
     
-    func saveCampuses(campuses:[Campus]) {
+    func saveCampuses(_ campuses:[Campus]) {
         let enabled = campuses.filter{ $0.feedEnabled }
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(enabled as NSArray)
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
         storageManager.putObject(Config.campusKey, object: archivedObject)
     }
     
     func loadMinistries() -> [Ministry] {
-        if let unarchivedObject = storageManager.getObject(Config.ministryKey) as? NSData {
-            if let ministries = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Ministry]{
+        if let unarchivedObject = storageManager.getObject(Config.ministryKey) as? Data {
+            if let ministries = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Ministry]{
                 return ministries
             }
         }
         return [Ministry]()
     }
     
-    func saveMinistries(ministries:[Ministry], updateGCM: Bool) {
+    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool) {
         let enabled = ministries.filter{ $0.feedEnabled }
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(enabled as NSArray)
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
         storageManager.putObject(Config.ministryKey, object: archivedObject)
     }
     
-    func saveMinistries(ministries:[Ministry], updateGCM: Bool, handler: [String:Bool]->Void) {
+    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool, handler: @escaping ([String:Bool])->Void) {
         let enabled = ministries.filter{ $0.feedEnabled }
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(enabled as NSArray)
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
         storageManager.putObject(Config.ministryKey, object: archivedObject)
         var minMap = [String:Bool]()
         enabled.forEach{ minMap[$0.id] = true }
         handler(minMap)
     }
     
-    func didMinistriesChange(ministries:[Ministry]) -> Bool {
+    func didMinistriesChange(_ ministries:[Ministry]) -> Bool {
         var enabledMinistries = [Ministry]()
         
         for min in ministries {
@@ -93,23 +94,23 @@ class FakeSubscriptionManager: SubscriptionProtocol {
         return false
     }
     
-    func campusContainsMinistry(campus: Campus, ministry: Ministry)->Bool {
+    func campusContainsMinistry(_ campus: Campus, ministry: Ministry)->Bool {
         return ministry.campusId == campus.id
     }
     
-    func subscribeToTopic(topic: String) {
+    func subscribeToTopic(_ topic: String) {
         //doesn't need to do anything
     }
     
-    func subscribeToTopic(topic: String, handler: (Bool) -> Void) {
+    func subscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
         handler(true)
     }
     
-    func unsubscribeToTopic(topic: String) {
+    func unsubscribeToTopic(_ topic: String) {
         //doesn't need to do anything
     }
     
-    func unsubscribeToTopic(topic: String, handler: (Bool) -> Void) {
+    func unsubscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
         handler(true)
     }
 }

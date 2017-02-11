@@ -12,30 +12,30 @@ import Foundation
 Image Card
 */
 @objc
-public class ImageCard : Card{
+open class ImageCard : Card{
     
-    public let creator:Creator
-    public let imageUrl:NSURL
+    open let creator:Creator
+    open let imageUrl:URL
     
     /// optional size for the image. will be (-1,-1) if size is unavailable
-    public let imageSize:CGSize
+    open let imageSize:CGSize
     
-    public let title:String?
-    public let imageCaption:String?
-    public let keywords:[String]?
-    public let appLinkIos:NSURL?
+    open let title:String?
+    open let imageCaption:String?
+    open let keywords:[String]?
+    open let appLinkIos:URL?
     
-    public init(imageUrl:NSURL, url:NSURL,creator:Creator, data:NSDictionary){
+    public init(imageUrl:URL, url:URL,creator:Creator, data:NSDictionary){
         
         self.creator = creator
         self.keywords = data["keywords"] as? [String]
         self.imageUrl = imageUrl
-        var imageSize = CGSizeMake(-1.0,-1.0)
+        var imageSize = CGSize(width: -1.0,height: -1.0)
         var cardTitle:String?
         var cardImageCaption:String?
         
         if let url = data["appLinkIos"] as? String{
-            self.appLinkIos = NSURL(string: url)
+            self.appLinkIos = URL(string: url)
         }else{
             self.appLinkIos = nil
         }
@@ -48,7 +48,7 @@ public class ImageCard : Card{
             
             if let width = media["width"] as? CGFloat {
                 if let height = media["height"] as? CGFloat {
-                    imageSize = CGSizeMake(width, height)
+                    imageSize = CGSize(width: width, height: height)
                 }
             }
         }
@@ -60,16 +60,16 @@ public class ImageCard : Card{
         super.init(webUrl: url, cardType: "image")
     }
     
-    override class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+    override class func deserializeFromData(_ data: NSDictionary) -> AnyObject? {
         
         var imageCard:ImageCard?
         
-        var startURL:NSURL?
+        var startURL:URL?
         var creator:Creator?
-        var imageUrl:NSURL?
+        var imageUrl:URL?
         
         if let urlString = data["webUrl"] as? String{
-            startURL = NSURL(string:urlString)
+            startURL = URL(string:urlString)
         }
         
         if let creatorData = data["creator"] as? NSDictionary{
@@ -79,7 +79,7 @@ public class ImageCard : Card{
         if let media = data["media"] as? NSDictionary{
             
             if let urlString = media["imageUrl"] as? String{
-                imageUrl = NSURL(string:urlString)
+                imageUrl = URL(string:urlString)
             }
             
             if(startURL != nil && creator != nil && imageUrl != nil){
@@ -90,9 +90,9 @@ public class ImageCard : Card{
         
     }
     
-    public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return  layout == .ImageCard4x3 ||
-                layout == .ImageCardAspectFit ||
-                layout == .ImageCardImageOnly
+    open override func supportsLayout(_ layout: WCCardLayout) -> Bool {
+        return  layout == .imageCard4x3 ||
+                layout == .imageCardAspectFit ||
+                layout == .imageCardImageOnly
     }
 }

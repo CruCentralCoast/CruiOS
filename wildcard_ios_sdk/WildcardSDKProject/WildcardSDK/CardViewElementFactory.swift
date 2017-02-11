@@ -9,42 +9,42 @@
 import Foundation
 
 
-public class CardViewElementFactory{
+open class CardViewElementFactory{
     
     /** 
     Creates a CardViewElement from WCElementType. You may not make any assumptions about the size after this call.
     
     Use only for initialization
     */
-    public class func createCardViewElement(type:WCElementType)->CardViewElement{
+    open class func createCardViewElement(_ type:WCElementType)->CardViewElement{
         
         var cardViewElement:CardViewElement!
         
         switch(type){
-        case .FullHeader:
+        case .fullHeader:
             cardViewElement = UIView.loadFromNibNamed("FullCardHeader") as! FullCardHeader
-        case .TwitterHeader:
+        case .twitterHeader:
             cardViewElement = UIView.loadFromNibNamed("TwitterHeader") as! TwitterHeader
-        case .ImageAndCaption:
+        case .imageAndCaption:
             cardViewElement = UIView.loadFromNibNamed("ImageAndCaptionBody") as! ImageAndCaptionBody
-        case .ImageOnly:
-            cardViewElement = ImageOnlyBody(frame:CGRectZero);
-        case .MediaTextFullWebView:
+        case .imageOnly:
+            cardViewElement = ImageOnlyBody(frame:CGRect.zero);
+        case .mediaTextFullWebView:
             cardViewElement = UIView.loadFromNibNamed("MediaTextFullWebView") as! MediaTextFullWebView
-        case .ImageFloatRight:
+        case .imageFloatRight:
             cardViewElement = UIView.loadFromNibNamed("ImageFloatRightBody") as! ImageFloatRightBody
-        case .ImageFloatLeft:
+        case .imageFloatLeft:
             cardViewElement = UIView.loadFromNibNamed("ImageFloatLeftBody") as! ImageFloatLeftBody
-        case .ReadMoreFooter:
-            cardViewElement = ReadMoreFooter(frame:CGRectZero);
-        case .ViewOnWebFooter:
-            cardViewElement = ViewOnWebCardFooter(frame:CGRectZero);
-        case .SimpleParagraph:
-            cardViewElement = SingleParagraphCardBody(frame:CGRectZero);
-        case .VideoBody:
-            cardViewElement = VideoCardBody(frame:CGRectZero);
-        case .VideoThumbnailBody:
-            cardViewElement = VideoCardThumbnail(frame:CGRectZero);
+        case .readMoreFooter:
+            cardViewElement = ReadMoreFooter(frame:CGRect.zero);
+        case .viewOnWebFooter:
+            cardViewElement = ViewOnWebCardFooter(frame:CGRect.zero);
+        case .simpleParagraph:
+            cardViewElement = SingleParagraphCardBody(frame:CGRect.zero);
+        case .videoBody:
+            cardViewElement = VideoCardBody(frame:CGRect.zero);
+        case .videoThumbnailBody:
+            cardViewElement = VideoCardThumbnail(frame:CGRect.zero);
         }
         return cardViewElement
     }

@@ -31,16 +31,16 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
     var radius: UITextView?
     @IBOutlet weak var detailsTable: UITableView!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
       
-        self.navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!], forState: .Normal)
+        self.navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!], for: UIControlState())
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         populateDetails()
-        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 15)!], forState: .Normal)
-        detailsTable.separatorStyle = .None
+        self.navigationItem.leftBarButtonItem?.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 15)!], for: UIControlState())
+        detailsTable.separatorStyle = .none
         
         detailsTable.estimatedRowHeight = 50.0 // Replace with your actual estimation
         detailsTable.rowHeight = UITableViewAutomaticDimension
@@ -50,7 +50,7 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
         })
         
         
-        let editButton = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: "goToEditPage")
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(DriverRideDetailViewController.goToEditPage))
         self.navigationItem.rightBarButtonItem = editButton
     }
     
@@ -76,10 +76,10 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
     
     
     func goToEditPage(){
-        self.performSegueWithIdentifier("editSegue", sender: self)
+        self.performSegue(withIdentifier: "editSegue", sender: self)
     }
     
-    func insertPassenger(newPassenger: NSDictionary){
+    func insertPassenger(_ newPassenger: NSDictionary){
         let newPassenger = Passenger(dict: newPassenger)
         passengers.append(newPassenger)
     }
@@ -91,11 +91,11 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
     }
     
     // UITableView functions for the passenger list
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(_ tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
   
         
         if (tableView.isEqual(detailsTable)){
@@ -106,14 +106,14 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
         return 0
     }
     //Set up the cell
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
         
         var chosenCell: UITableViewCell?
         
         
         if(tableView.isEqual(detailsTable)){
             let cellIdentifier = "smallCell"
-            let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! DriverDetailCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! DriverDetailCell
             
             cell.cellLabel.text = details[indexPath.row].itemName
             //cell.label.text = details[indexPath.row].itemName
@@ -131,8 +131,8 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
             
             
             if (details[indexPath.row].itemName == Labels.addressLabel){
-                cell.value.dataDetectorTypes = .Address
-                cell.value.textContainer.lineBreakMode = NSLineBreakMode.ByWordWrapping
+                cell.value.dataDetectorTypes = .address
+                cell.value.textContainer.lineBreakMode = NSLineBreakMode.byWordWrapping
                 //cell.textViewValue.text = details[indexPath.row].itemValue
                 addressView = cell.value
             }
@@ -164,31 +164,31 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
     
     
     // Reload the data every time we come back to this view controller
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         //passengerTable.reloadData()
         self.navigationItem.title = "Ride Details"
     }
     
     // MARK: - Navigation
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
         
     }
     
-    @IBAction func cancelPressed(sender: AnyObject) {
+    @IBAction func cancelPressed(_ sender: AnyObject) {
         Cancler.confirmCancel(self, handler: cancelConfirmed)
     }
     
-    func cancelConfirmed(action: UIAlertAction){
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+    func cancelConfirmed(_ action: UIAlertAction){
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         CruClients.getRideUtils().leaveRideDriver(ride.id, handler: handleCancelResult)
     }
     
-    func handleCancelResult(success: Bool){
+    func handleCancelResult(_ success: Bool){
         if(success){
             Cancler.showCancelSuccess(self, handler: { action in
                 if let navController = self.navigationController {
-                    navController.popViewControllerAnimated(true)
+                    navController.popViewController(animated: true)
                     self.rideVC?.refresh(self)
                 }
                 
@@ -197,13 +197,13 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
         else{
             Cancler.showCancelFailure(self)
         }
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editSegue"{
-            if let destVC = segue.destinationViewController as? OfferOrEditRideViewController{
+            if let destVC = segue.destination as? OfferOrEditRideViewController{
                 print("this hapepned")
                 destVC.ride = ride
                 destVC.event = event
@@ -214,9 +214,9 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
             
         }
         else if(segue.identifier == "passengerSegue"){
-            let popoverVC = segue.destinationViewController
+            let popoverVC = segue.destination
             popoverVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.8, height: self.view.frame.height * 0.77)
-            popoverVC.popoverPresentationController!.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), (addressView?.frame.origin.y)! - 50.0,0,0)
+            popoverVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.bounds.midX, y: (addressView?.frame.origin.y)! - 50.0,width: 0,height: 0)
 
             let controller = popoverVC.popoverPresentationController
             
@@ -232,7 +232,7 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
         
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }

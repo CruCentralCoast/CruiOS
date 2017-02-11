@@ -7,6 +7,30 @@
 //
 
 import UIKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 class CommunityGroup: Comparable, Equatable{
 
@@ -30,7 +54,7 @@ class CommunityGroup: Comparable, Equatable{
         }
         if let leadersDict  = dict["leaders"] as? [[String: AnyObject]]{
             for lead in leadersDict{
-                leaders.append(User(dict: lead))
+                leaders.append(User(dict: lead as NSDictionary))
             }
         }
         parentMinistry = dict["parentMinistry"] as? String
@@ -45,11 +69,11 @@ class CommunityGroup: Comparable, Equatable{
         
         if (meetingTime != nil && meetingTime.characters.count > 15){
             //let parsedMeetingTime = meetingTime.substringWithRange(Range<String.Index>(start: meetingTime.startIndex, end: meetingTime.endIndex.advancedBy(-14)))
-            let meetingTimeAsDate = formatter.dateFromString(meetingTime)
+            let meetingTimeAsDate = formatter.date(from: meetingTime)
             formatter.dateFormat = format
             
             if (meetingTimeAsDate != nil){
-                return formatter.stringFromDate(meetingTimeAsDate!)
+                return formatter.string(from: meetingTimeAsDate!)
             }
             else{
                 return ""

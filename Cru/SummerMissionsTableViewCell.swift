@@ -22,7 +22,7 @@ class SummerMissionsTableViewCell: UITableViewCell {
             let endDate = GlobalUtils.stringFromDate(mission.endNSDate, format: dateFormat)
             let date = startDate + " - " + endDate
             
-            missionImage.load(mission.imageLink)
+            missionImage.load.request(with: mission.imageLink)
             missionName.text = mission.name
             missionDateLabel.text = date
             missionLocation.text = mission.getLocationString()

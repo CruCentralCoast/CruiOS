@@ -24,13 +24,13 @@ public protocol CardViewVisualSource{
     func viewForCardBody()->CardViewElement
     
     /// Optional CardViewElement for header
-    optional func viewForCardHeader()->CardViewElement?
+    @objc optional func viewForCardHeader()->CardViewElement?
     
     /// Optional CardViewElement for footer
-    optional func viewForCardFooter()->CardViewElement?
+    @objc optional func viewForCardFooter()->CardViewElement?
     
     /// Optional CardViewElement for the back of the card. Spans the full card, shown on double tap
-    optional func viewForBackOfCard()->CardViewElement?
+    @objc optional func viewForBackOfCard()->CardViewElement?
 }
 
 /**
@@ -57,48 +57,48 @@ public protocol CardViewDelegate{
     /**
     Simply just a hook into UIView.layoutSubviews() for the CardView
     */
-    optional func cardViewLayoutSubviews(cardView:CardView)
+    @objc optional func cardViewLayoutSubviews(_ cardView:CardView)
     
     /**
     CardView has been requested to perform a specific action.
     */
-    optional func cardViewRequestedAction(cardView:CardView, action:CardViewAction)
+    @objc optional func cardViewRequestedAction(_ cardView:CardView, action:CardViewAction)
     
     /**
     CardView is about to be reloaded.
     */
-    optional func cardViewWillReload(cardView:CardView)
+    @objc optional func cardViewWillReload(_ cardView:CardView)
     
     /**
     CardView has reloaded.
     */
-    optional func cardViewDidReload(cardView:CardView)
+    @objc optional func cardViewDidReload(_ cardView:CardView)
     
 }
 
 @objc
-public class CardView : UIView
+open class CardView : UIView
 {
     // MARK: Public
     
     /// See CardPhysics
-    public var physics:CardPhysics?
+    open var physics:CardPhysics?
     
     /// See CardViewDelegate
-    public var delegate:CardViewDelegate?
+    open var delegate:CardViewDelegate?
     
     /// The visual source associated with this CardView
-    public var visualSource:CardViewVisualSource!
+    open var visualSource:CardViewVisualSource!
     
     /// The backing card for this CardView
-    public var backingCard:Card!
+    open var backingCard:Card!
     
     /**
     Preferred width for the CardView. When a CardView lays out its subcomponents from a visual source, each subcomponent will also be assigned this preferred width.
     
     Changing the preferredWidth for the CardView will affect the intrinsic size of the subcomponents and the CardView itself.
     */
-    public var preferredWidth:CGFloat{
+    open var preferredWidth:CGFloat{
         get{
             return __preferredWidth
         }set{
@@ -111,7 +111,7 @@ public class CardView : UIView
     }
     
     /// Creates a CardView from a card. A layout will be chosen and the CardView will be returned with a default size.
-    public class func createCardView(card:Card!)->CardView?{
+    open class func createCardView(_ card:Card!)->CardView?{
         if let card = card {
             let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
             return CardView.createCardView(card, layout: layoutToUse, preferredWidth:UIViewNoIntrinsicMetric)
@@ -122,7 +122,7 @@ public class CardView : UIView
     }
     
     /// Creates a CardView from a card with a prechosen layout. The CardView will be returned with a default size.
-    public class func createCardView(card:Card!, layout:WCCardLayout)->CardView?{
+    open class func createCardView(_ card:Card!, layout:WCCardLayout)->CardView?{
         if let card = card {
             if(!card.supportsLayout(layout)){
                 print("Unsupported layout for this card type, returning nil.")
@@ -141,7 +141,7 @@ public class CardView : UIView
     
     The card's size will be calculated optimally from the preferredWidth. You may choose various layouts and widths to a get a height that is suitable.
     */
-    public class func createCardView(card:Card!, layout:WCCardLayout, preferredWidth:CGFloat)->CardView?{
+    open class func createCardView(_ card:Card!, layout:WCCardLayout, preferredWidth:CGFloat)->CardView?{
         if let card = card {
             if(!card.supportsLayout(layout)){
                 print("Unsupported layout for this card type, returning nil.")
@@ -160,7 +160,7 @@ public class CardView : UIView
     
     Passing in UIViewNoIntrinsicMetric for the width will result in a default width calculation based on screen size
     */
-    public class func createCardView(card:Card!, visualSource:CardViewVisualSource!, preferredWidth:CGFloat)->CardView?{
+    open class func createCardView(_ card:Card!, visualSource:CardViewVisualSource!, preferredWidth:CGFloat)->CardView?{
         
         if(card == nil){
             print("Card is nil -- can't create CardView.")
@@ -173,9 +173,9 @@ public class CardView : UIView
             return nil
         }
         
-        WildcardSDK.analytics?.trackEvent("CardViewCreated", withProperties: nil, withCard: card)
+        WildcardSDK.analytics?.trackEvent("CardViewCreated", withProperties: nil, with: card)
         
-        let newCardView = CardView(frame: CGRectZero)
+        let newCardView = CardView(frame: CGRect.zero)
         
         // default width if necessary
         if(preferredWidth == UIViewNoIntrinsicMetric){
@@ -190,8 +190,8 @@ public class CardView : UIView
         newCardView.initializeCardComponents()
         
         // set frame to default at intrinsic size
-        let size = newCardView.intrinsicContentSize()
-        newCardView.frame = CGRectMake(0, 0, size.width, size.height)
+        let size = newCardView.intrinsicContentSize
+        newCardView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         
         // lays out card components
         newCardView.layoutCardComponents()
@@ -200,7 +200,7 @@ public class CardView : UIView
     }
     
     /// ALPHA: Reloads the CardView with a new card. Autogenerates a layout
-    public func reloadWithCard(newCard:Card!){
+    open func reloadWithCard(_ newCard:Card!){
         if let card = newCard {
             let layoutToUse = CardLayoutEngine.sharedInstance.matchLayout(card)
             return reloadWithCard(card, layout: layoutToUse)
@@ -210,7 +210,7 @@ public class CardView : UIView
     }
     
     /// ALPHA: Reloads the CardView with a new card and specified layout.
-    public func reloadWithCard(newCard:Card!, layout:WCCardLayout){
+    open func reloadWithCard(_ newCard:Card!, layout:WCCardLayout){
         if let card = newCard {
             if(!card.supportsLayout(layout)){
                 print("Unsupported layout for this card type, nothing reloaded.")
@@ -224,7 +224,7 @@ public class CardView : UIView
     }
     
     /// ALPHA: Reloads the CardView with a new card, specified layout, and preferredWidth.
-    public func reloadWithCard(newCard:Card!, layout:WCCardLayout, preferredWidth:CGFloat){
+    open func reloadWithCard(_ newCard:Card!, layout:WCCardLayout, preferredWidth:CGFloat){
         if let card = newCard {
             if(!card.supportsLayout(layout)){
                 print("Unsupported layout for this card type, nothing reloaded.")
@@ -238,7 +238,7 @@ public class CardView : UIView
     }
     
     /// ALPHA: Reloads the CardView with a new card, custom visual source, and preferredWidth
-    public func reloadWithCard(newCard:Card!, visualSource:CardViewVisualSource, preferredWidth:CGFloat){
+    open func reloadWithCard(_ newCard:Card!, visualSource:CardViewVisualSource, preferredWidth:CGFloat){
         if let card = newCard {
             delegate?.cardViewWillReload?(self)
             
@@ -268,26 +268,26 @@ public class CardView : UIView
         }
     }
     
-    public func fadeOut(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
-        UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    open func fadeOut(_ duration:TimeInterval, delay:TimeInterval, completion:((_ bool:Bool) -> Void)?){
+        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions(), animations: { () -> Void in
             self.header?.alpha = 0
             self.body?.alpha = 0
             self.footer?.alpha = 0
             self.back?.alpha = 0
             }) { (bool:Bool) -> Void in
-                completion?(bool: bool)
+                completion?(bool)
                 return
         }
     }
     
-    public func fadeIn(duration:NSTimeInterval, delay:NSTimeInterval, completion:((bool:Bool) -> Void)?){
-        UIView.animateWithDuration(duration, delay: delay, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+    open func fadeIn(_ duration:TimeInterval, delay:TimeInterval, completion:((_ bool:Bool) -> Void)?){
+        UIView.animate(withDuration: duration, delay: delay, options: UIViewAnimationOptions(), animations: { () -> Void in
             self.header?.alpha = 1
             self.body?.alpha = 1
             self.footer?.alpha = 1
             self.back?.alpha = 1
             }) { (bool:Bool) -> Void in
-                completion?(bool: bool)
+                completion?(bool)
                 return
         }
     }
@@ -298,7 +298,7 @@ public class CardView : UIView
     var header:CardViewElement?
     var body:CardViewElement!
     var footer:CardViewElement?
-    private var __preferredWidth:CGFloat = UIViewNoIntrinsicMetric
+    fileprivate var __preferredWidth:CGFloat = UIViewNoIntrinsicMetric
     
     // MARK: UIView
     override init(frame: CGRect) {
@@ -311,56 +311,56 @@ public class CardView : UIView
         convenienceInitialize()
     }
     
-    override public func didMoveToSuperview() {
+    override open func didMoveToSuperview() {
         super.didMoveToSuperview()
         
         if(hasSuperview()){
-            WildcardSDK.analytics?.trackEvent("CardViewDisplayed", withProperties: nil, withCard: backingCard)
+            WildcardSDK.analytics?.trackEvent("CardViewDisplayed", withProperties: nil, with: backingCard)
         }
     }
     
-    override public func awakeFromNib() {
+    override open func awakeFromNib() {
         super.awakeFromNib()
         convenienceInitialize()
     }
     
-    override public func layoutSubviews(){
+    override open func layoutSubviews(){
         super.layoutSubviews()
         
         delegate?.cardViewLayoutSubviews?(self)
         
         // reset shadow path to whatever bounds card is taking up
         let path = UIBezierPath(roundedRect: bounds, cornerRadius: WildcardSDK.cardCornerRadius)
-        layer.shadowPath = path.CGPath
+        layer.shadowPath = path.cgPath
     }
     
     // MARK: Instance
     func handleShare(){
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Platform.sharedInstance.createWildcardShortLink(backingCard.webUrl, completion: { (url:NSURL?, error:NSError?) -> Void in
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        Platform.sharedInstance.createWildcardShortLink(backingCard.webUrl, completion: { (url:URL?, error:NSError?) -> Void in
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
             if let shareUrl = url {
                 let params:NSDictionary = ["url":shareUrl]
-                let cardAction = CardViewAction(type: WCCardAction.Share, parameters: params)
+                let cardAction = CardViewAction(type: WCCardAction.share, parameters: params)
                 self.delegate?.cardViewRequestedAction?(self, action: cardAction)
             }
         })
     }
     
-    func handleViewOnWeb(url:NSURL){
+    func handleViewOnWeb(_ url:URL){
         let params:NSDictionary = ["url":url]
-        let cardAction = CardViewAction(type: WCCardAction.ViewOnWeb, parameters: params)
+        let cardAction = CardViewAction(type: WCCardAction.viewOnWeb, parameters: params)
         delegate?.cardViewRequestedAction?(self, action: cardAction)
     }
     
     func handleDownloadApp(){
         if let articleCard = backingCard as? ArticleCard{
             if let url = articleCard.creator.iosAppStoreUrl {
-                let lastComponent:NSString = url.lastPathComponent!
-                let id = lastComponent.substringFromIndex(2) as NSString
+                let lastComponent:NSString = url.lastPathComponent as NSString
+                let id = lastComponent.substring(from: 2) as NSString
                 let params:NSDictionary = ["id":id]
                 
-                let cardAction = CardViewAction(type: WCCardAction.DownloadApp, parameters: params)
+                let cardAction = CardViewAction(type: WCCardAction.downloadApp, parameters: params)
                 delegate?.cardViewRequestedAction?(self, action: cardAction)
             }
         }
@@ -368,8 +368,8 @@ public class CardView : UIView
     
     // MARK: Private
     
-    private class func defaultWidth()->CGFloat{
-        let screenBounds = UIScreen.mainScreen().bounds
+    fileprivate class func defaultWidth()->CGFloat{
+        let screenBounds = UIScreen.main.bounds
         if(screenBounds.width > screenBounds.height){
             return screenBounds.height - (2 * WildcardSDK.defaultScreenMargin)
         }else{
@@ -378,7 +378,7 @@ public class CardView : UIView
         
     }
     
-    private func initializeCardComponents(){
+    fileprivate func initializeCardComponents(){
         header = visualSource.viewForCardHeader?()
         header?.preferredWidth = preferredWidth
         body = visualSource.viewForCardBody()
@@ -399,7 +399,7 @@ public class CardView : UIView
         }
     }
     
-    override public func intrinsicContentSize() -> CGSize {
+    override open var intrinsicContentSize : CGSize {
         var height:CGFloat = 0
         
         if(header != nil){
@@ -412,11 +412,11 @@ public class CardView : UIView
             height += footer!.optimizedHeight(preferredWidth)
         }
         
-        let size = CGSizeMake(preferredWidth, height)
+        let size = CGSize(width: preferredWidth, height: height)
         return size
     }
     
-    private func layoutCardComponents(){
+    fileprivate func layoutCardComponents(){
         // header and footer always stick to top and bottom
         if(header != nil){
             containerView.addSubview(header!)
@@ -438,26 +438,26 @@ public class CardView : UIView
         
         // card body layout has 4 vertical layout possibilities
         if(header == nil && footer == nil){
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: containerView, attribute: .Top, multiplier: 1.0, constant: 0))
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: containerView, attribute: .Bottom, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0))
         }else if(header != nil && footer == nil){
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: header!, attribute: .Bottom, multiplier: 1.0, constant: 0))
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: containerView, attribute: .Bottom, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .top, relatedBy: .equal, toItem: header!, attribute: .bottom, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .bottom, relatedBy: .equal, toItem: containerView, attribute: .bottom, multiplier: 1.0, constant: 0))
         }else if(header == nil && footer != nil){
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: containerView, attribute: .Top, multiplier: 1.0, constant: 0))
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: footer!, attribute: .Top, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .top, relatedBy: .equal, toItem: containerView, attribute: .top, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .bottom, relatedBy: .equal, toItem: footer!, attribute: .top, multiplier: 1.0, constant: 0))
         }else{
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Top, relatedBy: .Equal, toItem: header!, attribute: .Bottom, multiplier: 1.0, constant: 0))
-            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .Bottom, relatedBy: .Equal, toItem: footer!, attribute: .Top, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .top, relatedBy: .equal, toItem: header!, attribute: .bottom, multiplier: 1.0, constant: 0))
+            containerView.addConstraint(NSLayoutConstraint(item: body, attribute: .bottom, relatedBy: .equal, toItem: footer!, attribute: .top, multiplier: 1.0, constant: 0))
         }
     }
     
-    private func convenienceInitialize(){
+    fileprivate func convenienceInitialize(){
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
         
         // container view holds card view elements
-        containerView = UIView(frame: CGRectZero)
+        containerView = UIView(frame: CGRect.zero)
         containerView.backgroundColor = WildcardSDK.cardBackgroundColor
         containerView.layer.cornerRadius = WildcardSDK.cardCornerRadius
         containerView.layer.masksToBounds = true
@@ -466,9 +466,9 @@ public class CardView : UIView
         
         // drop shadow if enabled
         if(WildcardSDK.cardDropShadow){
-            layer.shadowColor = UIColor.wildcardMediumGray().CGColor
+            layer.shadowColor = UIColor.wildcardMediumGray().cgColor
             layer.shadowOpacity = 0.8
-            layer.shadowOffset = CGSizeMake(0.0, 1.0)
+            layer.shadowOffset = CGSize(width: 0.0, height: 1.0)
             layer.shadowRadius = 1.0
         }
         
@@ -476,7 +476,7 @@ public class CardView : UIView
         physics?.setup()
     }
     
-    private func removeCardSubviews(){
+    fileprivate func removeCardSubviews(){
         let cardViews:[UIView?] = [header, body, footer, back]
         for view in cardViews{
             view?.removeFromSuperview()

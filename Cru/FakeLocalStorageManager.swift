@@ -10,17 +10,17 @@ import Foundation
 
 class FakeLocalStorageManager: LocalStorageManager {
     
-    var store = [String:AnyObject]()
+    var store = [String:Any]()
     
-    override func getObject(key: String) -> AnyObject? {
+    override func getObject(_ key: String) -> Any? {
         return store[key]
     }
     
-    override func putObject(key: String, object: AnyObject) {
+    override func putObject(_ key: String, object: Any) {
         store[key] = object
     }
     
-    override func removeObject(key: String) {
+    override func removeObject(_ key: String) {
         store[key] = nil
     }
 }

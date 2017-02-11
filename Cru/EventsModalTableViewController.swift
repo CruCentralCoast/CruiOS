@@ -16,7 +16,7 @@ class EventsModalTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        events.sortInPlace({$0.name < $1.name})
+        events.sort(by: {$0.name < $1.name})
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,17 +25,17 @@ class EventsModalTableViewController: UITableViewController {
 
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return events.count
     }
 
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
          cell.textLabel!.text = events[indexPath.row].name
          cell.textLabel!.font = UIFont(name: Config.fontName, size: 18.0)
@@ -43,17 +43,17 @@ class EventsModalTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
         if vc != nil{
-            vc!.eventName.text = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+            vc!.eventName.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
             vc!.chosenEvent = events[indexPath.row]
             vc!.formHasBeenEdited = true
             
         }
         else if fvc != nil{
-            fvc!.eventNameLabel.text = tableView.cellForRowAtIndexPath(indexPath)?.textLabel?.text
+            fvc!.eventNameLabel.text = tableView.cellForRow(at: indexPath)?.textLabel?.text
             fvc!.selectedEvent = events[indexPath.row]
         }
         else if offerRide != nil{
@@ -64,7 +64,7 @@ class EventsModalTableViewController: UITableViewController {
             offerRide!.event = events[indexPath.row]
             offerRide!.updateOptions()
         }
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: {})
+        self.presentingViewController?.dismiss(animated: true, completion: {})
     }
     
 }

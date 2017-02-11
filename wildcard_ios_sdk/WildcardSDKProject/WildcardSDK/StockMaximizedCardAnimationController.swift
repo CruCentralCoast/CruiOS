@@ -12,7 +12,7 @@ import UIKit
 class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTransitioning {
     
     let isPresenting :Bool
-    let duration :NSTimeInterval = 0.4
+    let duration :TimeInterval = 0.4
     
     init(isPresenting: Bool) {
         self.isPresenting = isPresenting
@@ -20,11 +20,11 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
     }
     
     // MARK: UIViewControllerAnimatedTransitioning
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning)  {
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning)  {
         if isPresenting {
             animatePresentationWithTransitionContext(transitionContext)
         }else{
@@ -32,19 +32,19 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         }
     }
     
-    func animatePresentationWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
-        let maximizedController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)! as! StockMaximizedCardViewController
-        let presentedControllerView = transitionContext.viewForKey(UITransitionContextToViewKey)!
-        let containerView = transitionContext.containerView()
+    func animatePresentationWithTransitionContext(_ transitionContext: UIViewControllerContextTransitioning) {
+        let maximizedController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)! as! StockMaximizedCardViewController
+        let presentedControllerView = transitionContext.view(forKey: UITransitionContextViewKey.to)!
+        let containerView = transitionContext.containerView
         
         let rectConvert = maximizedController.calculateMaximizedFrame()
     
-        containerView!.addSubview(presentedControllerView)
+        containerView.addSubview(presentedControllerView)
   
         maximizedController.view.layoutIfNeeded()
         let originalShadowOpacity = maximizedController.maximizedCardView.layer.shadowOpacity
         maximizedController.maximizedCardView.layer.shadowOpacity = 0
-        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
     
             // move card to maximized constraints
             maximizedController.updateInternalCardConstraints(rectConvert)
@@ -55,11 +55,11 @@ class StockMaximizedCardAnimationController: NSObject,UIViewControllerAnimatedTr
         })
     }
     
-    func animateDismissalWithTransitionContext(transitionContext: UIViewControllerContextTransitioning) {
-        let maximizedController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)! as! StockMaximizedCardViewController
+    func animateDismissalWithTransitionContext(_ transitionContext: UIViewControllerContextTransitioning) {
+        let maximizedController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)! as! StockMaximizedCardViewController
 
         maximizedController.maximizedCardView?.fadeOut(duration/2, delay: 0, completion: nil)
-        UIView.animateWithDuration(duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: { () -> Void in
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: { () -> Void in
             
             // move card back to initial constraints
             maximizedController.updateInternalCardConstraints(maximizedController.initialCardFrame)

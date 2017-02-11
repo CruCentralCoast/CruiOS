@@ -13,42 +13,55 @@ class KeystoneClient: ServerProtocol {
     
     //The following "sendHttp" functions use Alamofire to send http requests to the specified url
     
-    func sendHttpGetRequest(reqUrl : String, completionHandler : (AnyObject?) -> Void) {
-        sendHttpRequest(.GET, reqUrl: reqUrl, params: nil, completionHandler: completionHandler)
+    func sendHttpGetRequest(_ reqUrl : String, completionHandler : @escaping (AnyObject?) -> Void) {
+        sendHttpRequest(method: .get, reqUrl: reqUrl, params: nil, completionHandler: completionHandler)
     }
     
-    func sendHttpPostRequest(reqUrl : String, params : [String : AnyObject], completionHandler : (AnyObject?) -> Void) {
-        sendHttpRequest(.POST, reqUrl: reqUrl, params: params, completionHandler: completionHandler)
+    func sendHttpPostRequest(_ reqUrl : String, params : [String : AnyObject], completionHandler : @escaping (AnyObject?) -> Void) {
+        sendHttpRequest(method: .post, reqUrl: reqUrl, params: params, completionHandler: completionHandler)
     }
     
-    private func sendHttpRequest(method : Alamofire.Method, reqUrl : String, params : [String : AnyObject]?, completionHandler : (AnyObject?) -> Void) {
-        Alamofire.request(method, reqUrl, parameters: params)
+    fileprivate func sendHttpRequest(method : Alamofire.HTTPMethod, reqUrl : String, params : [String : AnyObject]?, completionHandler : @escaping (AnyObject?) -> Void) {
+        // Alamofire 4
+        
+        Alamofire.request(reqUrl, method: method, parameters: params)
+            .responseJSON { response in
+                completionHandler(response.result.value as AnyObject?)
+        }
+        
+        //Alamofire 3 - old request
+        /*Alamofire.request(method, reqUrl, parameters: params)
             .responseJSON { response in
                 completionHandler(response.result.value)
-        }
+        }*/
     }
     
     // Send a request to the server with the users name, phonenumber and the id of the team they want to join.
     // The server should return a list containing the contact info for each team leader
-    func joinMinistryTeam(ministryTeamId: String, fullName: String, phone: String, callback: (NSArray?) -> Void) {
+    func joinMinistryTeam(_ ministryTeamId: String, fullName: String, phone: String, callback: @escaping (NSArray?) -> Void) {
         let url = Config.serverEndpoint + DBCollection.MinistryTeam.name() + "/" + ministryTeamId + "/join"
-        let params: [String: AnyObject] = ["name": fullName, "phone": phone]
+        let params: [String: AnyObject] = ["name": fullName as AnyObject, "phone": phone as AnyObject]
         
-        Alamofire.request(.POST, url, parameters: params).responseJSON {
+        Alamofire.request(url, method: .post, parameters: params)
+            .responseJSON { response in
+                callback(response.result.value as? NSArray)
+        }
+        
+        /*Alamofire.request(.POST, url, parameters: params).responseJSON {
             response in
             
             callback(response.result.value as? NSArray)
-        }
+        }*/
     }
     
-    func getById(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void, id: String) {
+    func getById(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void, id: String) {
         var reqUrl = Config.serverEndpoint + collection.name() + "/" + id
         print ("Get data by id from \(reqUrl)")
         if (LoginUtils.isLoggedIn()) {
             reqUrl += "?" + Config.leaderApiKey + "=" + GlobalUtils.loadString(Config.leaderApiKey)
         }
         
-        Alamofire.request(.GET, reqUrl)
+        Alamofire.request(reqUrl, method: .get)
             .responseJSON { response in
                 if let dict = response.result.value as? NSDictionary {
                     insert(dict)
@@ -57,113 +70,165 @@ class KeystoneClient: ServerProtocol {
                     completionHandler(false)
                 }
         }
+        
+        /*Alamofire.request(.GET, reqUrl)
+            .responseJSON { response in
+                if let dict = response.result.value as? NSDictionary {
+                    insert(dict)
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
+        }*/
     }
     
-    func deleteById(collection: DBCollection, id: String, completionHandler: (Bool)->Void) {
+    func deleteById(_ collection: DBCollection, id: String, completionHandler: @escaping (Bool)->Void) {
         let reqUrl = Config.serverEndpoint + collection.name() + "/" + id
-        
-        Alamofire.request(.DELETE, reqUrl)
+        Alamofire.request(reqUrl, method: .delete)
             .responseJSON { response in
                 completionHandler(response.result.isSuccess)
         }
+        
+        //Alamofire 3
+        /*
+        Alamofire.request(.DELETE, reqUrl)
+            .responseJSON { response in
+                completionHandler(response.result.isSuccess)
+        }*/
     }
     
-    func deleteByIdIn(parent: DBCollection, parentId: String, child: DBCollection, childId: String, completionHandler: (Bool)->Void) {
+    func deleteByIdIn(_ parent: DBCollection, parentId: String, child: DBCollection, childId: String, completionHandler: @escaping (Bool)->Void) {
         let reqUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name() + "/" + childId
-        
-        Alamofire.request(.DELETE, reqUrl)
+        Alamofire.request(reqUrl, method: .delete)
             .responseJSON { response in
                 completionHandler(response.result.isSuccess)
         }
+        
+        /*
+        Alamofire.request(.DELETE, reqUrl)
+            .responseJSON { response in
+                completionHandler(response.result.isSuccess)
+        }*/
     }
     
-    func postData(collection: DBCollection, params: [String:AnyObject], completionHandler: (NSDictionary?)->Void) {
+    func postData(_ collection: DBCollection, params: [String:AnyObject], completionHandler: @escaping (NSDictionary?)->Void) {
         let requestUrl = Config.serverEndpoint + collection.name()
         
-        Alamofire.request(.POST, requestUrl, parameters: params)
+        Alamofire.request(requestUrl, method: .post, parameters: params)
             .responseJSON { response in
                 completionHandler(response.result.value as? NSDictionary)
         }
-    }
-    
-    func postDataIn(parent: DBCollection, parentId: String, child: DBCollection, params: [String:AnyObject], completionHandler: (NSDictionary?)->Void) {
         
-        let requestUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name()
-        
+        /*
         Alamofire.request(.POST, requestUrl, parameters: params)
             .responseJSON { response in
                 completionHandler(response.result.value as? NSDictionary)
-        }
+        }*/
     }
     
-    func postDataIn(parent: DBCollection, parentId: String, child: DBCollection, params: [String:AnyObject],
-                    insert: (NSDictionary)->(), completionHandler: Bool->Void) {
+    func postDataIn(_ parent: DBCollection, parentId: String, child: DBCollection, params: [String:Any], completionHandler: @escaping (NSDictionary?)->Void) {
         
         let requestUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name()
         
-        requestData(requestUrl, method: .POST, params: params, insert: insert, completionHandler: completionHandler)
+        Alamofire.request(requestUrl, method: .post, parameters: params)
+            .responseJSON { response in
+                completionHandler(response.result.value as? NSDictionary)
+        }
+        /*
+        Alamofire.request(.POST, requestUrl, parameters: params)
+            .responseJSON { response in
+                completionHandler(response.result.value as? NSDictionary)
+        }*/
+    }
+    
+    func postDataIn(_ parent: DBCollection, parentId: String, child: DBCollection, params: [String:Any],
+                    insert: @escaping (NSDictionary)->(), completionHandler: @escaping (Bool)->Void) {
+        
+        let requestUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name()
+        
+        requestData(requestUrl, method: .post, params: params, insert: insert, completionHandler: completionHandler)
     }
     
     // gets data from server using get endpoint
-    func getData(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void) {
+    func getData(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void) {
         let reqUrl = Config.serverEndpoint + collection.name()
         print ("Get data from \(reqUrl)")
-        requestData(reqUrl, method: .GET, params: nil, insert: insert, completionHandler: completionHandler)
+        requestData(reqUrl, method: .get, params: nil, insert: insert, completionHandler: completionHandler)
     }
     
     // gets data from server using find endpoint
-    func getData(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void, params: [String:AnyObject]) {
+    func getData(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void, params: [String:Any]) {
         let reqUrl = Config.serverEndpoint + collection.name() + "/find"
         print ("Find data from \(reqUrl)")
-        requestData(reqUrl, method: .POST, params: params, insert: insert, completionHandler: completionHandler)
+        requestData(reqUrl, method: .post, params: params, insert: insert, completionHandler: completionHandler)
     }
     
-    func getDataIn(parent: DBCollection, parentId: String, child: DBCollection, insert: (NSDictionary) -> (),
-                   completionHandler: (Bool)->Void) {
+    func getDataIn(_ parent: DBCollection, parentId: String, child: DBCollection, insert: @escaping (NSDictionary) -> (),
+                   completionHandler: @escaping (Bool)->Void) {
         let reqUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name()
-        requestData(reqUrl, method: .GET, params: nil, insert: insert, completionHandler: completionHandler)
+        requestData(reqUrl, method: .get, params: nil, insert: insert, completionHandler: completionHandler)
     }
     
-    func patch(collection: DBCollection, params: [String:AnyObject], completionHandler: (NSDictionary?)->Void, id: String) {
+    func patch(_ collection: DBCollection, params: [String:Any], completionHandler: @escaping (NSDictionary?)->Void, id: String) {
         let reqUrl = Config.serverEndpoint + collection.name() + "/" + id
         
-        Alamofire.request(.PATCH, reqUrl, parameters: params)
+        Alamofire.request(reqUrl, method: .patch, parameters: params)
             .responseJSON { response in
                 completionHandler(response.result.value as? NSDictionary)
         }
+        /*
+        Alamofire.request(.PATCH, reqUrl, parameters: params)
+            .responseJSON { response in
+                completionHandler(response.result.value as? NSDictionary)
+        }*/
     }
     
-    func checkConnection(handler: (Bool)->()){
-        Alamofire.request(.GET, Config.serverEndpoint + "users/phone/1234567890")
-            .responseJSON{ response in
+    func checkConnection(_ handler: @escaping (Bool)->()){
+        Alamofire.request(Config.serverEndpoint + "users/phone/1234567890", method: .get)
+            .responseJSON { response in
                 handler(response.result.isSuccess)
         }
+        
+        /*Alamofire.request(.GET, Config.serverEndpoint + "users/phone/1234567890")
+            .responseJSON{ response in
+                handler(response.result.isSuccess)
+        }*/
     }
     
-    func checkIfValidNum(num: Double, handler: (Bool)->()){
+    func checkIfValidNum(_ num: Double, handler: @escaping (Bool)->()){
+        Alamofire.request(Config.serverEndpoint + "users/phone/" + num.format(".0:"), method: .get)
+            .responseJSON { response in
+                handler(!response.description.contains("null"))
+        }
+        /*
         Alamofire.request(.GET, Config.serverEndpoint + "users/phone/" + num.format(".0:"))
             .responseJSON{ response in
-                handler(!response.description.containsString("null"))
-        }
+                handler(!response.description.contains("null"))
+        }*/
     }
     
-    private func requestData(url: String, method: Alamofire.Method, params: [String:AnyObject]?, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void) {
+    fileprivate func requestData(_ url: String, method: Alamofire.HTTPMethod, params: [String:Any]?, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void) {
         var reqUrl = url
         if (LoginUtils.isLoggedIn()) {
             reqUrl += "?" + Config.leaderApiKey + "=" + GlobalUtils.loadString(Config.leaderApiKey)
         }
         
-        Alamofire.request(method, reqUrl, parameters: params)
+        Alamofire.request(reqUrl, method: method, parameters: params)
+            .responseJSON { response in
+                self.insertResources(response.result.value as AnyObject?, insert: insert, completionHandler: completionHandler)
+        }
+        
+        /*Alamofire.request(method, reqUrl, parameters: params)
             .responseJSON { response in
                 self.insertResources(response.result.value, insert: insert, completionHandler: completionHandler)
-        }
+        }*/
     }
     
-    private func insertResources(value: AnyObject?, insert : (NSDictionary) -> (), completionHandler : (Bool) -> ()) {
+    fileprivate func insertResources(_ value: AnyObject?, insert : (NSDictionary) -> (), completionHandler : (Bool) -> ()) {
         if let items = value as? NSArray {
             for item in items {
                 if let dict = item as? [String: AnyObject]{
-                    insert(dict)
+                    insert(dict as NSDictionary)
                 }
             }
             print("Success!")
@@ -176,7 +241,7 @@ class KeystoneClient: ServerProtocol {
 }
 
 extension Double {
-    func format(f: String) -> String {
+    func format(_ f: String) -> String {
         return String(format: "%\(f)f", self)
     }
 }

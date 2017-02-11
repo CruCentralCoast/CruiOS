@@ -22,8 +22,8 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var rides = [Ride]()
     var ridesDroppedFrom = [Ride]()
     var events = [Event]()
-    var tappedRide = Ride?()
-    var tappedEvent = Event?()
+    var tappedRide: Ride?
+    var tappedEvent: Event?
     var noRideImage: UIImage?{
         didSet{
             ridesTableView.reloadData()
@@ -39,20 +39,20 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.ridesPage = self
         
-        ridesTableView.separatorStyle = .None
+        ridesTableView.separatorStyle = .none
         
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
 
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
-        self.refreshControl.addTarget(self, action: #selector(refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControlEvents.valueChanged)
         self.ridesTableView.addSubview(self.refreshControl)
         
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
         
         noRideImage = UIImage(named: Config.noRidesImageName)!
@@ -66,7 +66,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         ridesTableView.estimatedRowHeight = 75
     }
     
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return noRideImage
     }
 
@@ -75,30 +75,30 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func handleOfferRide(sender: AnyObject){
-        self.performSegueWithIdentifier("offerridesegue", sender: self)
+    @IBAction func handleOfferRide(_ sender: AnyObject){
+        self.performSegue(withIdentifier: "offerridesegue", sender: self)
         
     }
     
-    @IBAction func handleFindRide(sender: AnyObject){
-        self.performSegueWithIdentifier("findridesegue", sender: self)
+    @IBAction func handleFindRide(_ sender: AnyObject){
+        self.performSegue(withIdentifier: "findridesegue", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "offerridesegue"{
             //let destVC = segue.destinationViewController as! OfferOrEditRideViewController
-            let destVC = segue.destinationViewController as! NewOfferRideViewController
+            let destVC = segue.destination as! NewOfferRideViewController
             destVC.events = self.events
             destVC.rideVC = self
             
         }
         if segue.identifier == "findridesegue"{
-            let destVC = segue.destinationViewController as? FilterByEventViewController
+            let destVC = segue.destination as? FilterByEventViewController
             destVC?.rideVC = self
         }
         if(segue.identifier == "riderdetailsegue") {
             
-            let yourNextViewController = (segue.destinationViewController as! RiderRideDetailViewController)
+            let yourNextViewController = (segue.destination as! RiderRideDetailViewController)
             
             yourNextViewController.ride = tappedRide
             yourNextViewController.event = tappedEvent
@@ -110,7 +110,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             
             //let yourNextViewController = (segue.destinationViewController as! DriverRideDetailViewController)
             
-            let yourNextViewController = (segue.destinationViewController as! NewDriverRideDetailViewController)
+            let yourNextViewController = (segue.destination as! NewDriverRideDetailViewController)
             
             yourNextViewController.ride = tappedRide
             yourNextViewController.event = tappedEvent
@@ -122,7 +122,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.refresh(self)
     }
     
-    func refresh(sender:AnyObject)
+    func refresh(_ sender:AnyObject)
     {
         rides.removeAll()
         ridesTableView.emptyDataSetDelegate = nil
@@ -132,26 +132,26 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         passMap = RideUtils.getMyPassengerMaps()
     }
     
-    func finishRideInsert(type: ResponseType){
-        if(self.refreshControl.refreshing){
+    func finishRideInsert(_ type: ResponseType){
+        if(self.refreshControl.isRefreshing){
             self.refreshControl?.endRefreshing()
         }
         
         switch type{
-            case .NoRides:
+            case .noRides:
                 self.ridesTableView.emptyDataSetSource = self
                 self.ridesTableView.emptyDataSetDelegate = self
                 noRideImage = UIImage(named: Config.noRidesImageName)!
                 CruClients.getServerClient().getData(.Event, insert: insertEvent, completionHandler: finishInserting)
-                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             
-            case .NoConnection:
+            case .noConnection:
                 self.ridesTableView.emptyDataSetSource = self
                 self.ridesTableView.emptyDataSetDelegate = self
                 noRideImage = UIImage(named: Config.noConnectionImageName)!
-                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
-                offerRideButton.userInteractionEnabled = false
-                findRideButton.userInteractionEnabled = false
+                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+                offerRideButton.isUserInteractionEnabled = false
+                findRideButton.isUserInteractionEnabled = false
             
             default:
                 self.ridesTableView.emptyDataSetSource = nil
@@ -159,12 +159,12 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 CruClients.getServerClient().getData(.Event, insert: insertEvent, completionHandler: finishInserting)
         }
         
-        rides.sortInPlace()
+        rides.sort()
         self.ridesTableView.reloadData()
     }
     
     
-    func insertRide(dict : NSDictionary) {
+    func insertRide(_ dict : NSDictionary) {
         let newRide = Ride(dict: dict)
         
         if let pMap = passMap as? MapLocalStorageManager{
@@ -180,28 +180,28 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         
                     //if passenger in ride
                     else{
-                        rides.insert(newRide!, atIndex: 0)
-                        self.ridesTableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Middle)
+                        rides.insert(newRide!, at: 0)
+                        self.ridesTableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .middle)
                     }
                 }
             }
             else{
                 
                 //if driving a ride
-                rides.insert(newRide!, atIndex: 0)
-                self.ridesTableView.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Middle)
+                rides.insert(newRide!, at: 0)
+                self.ridesTableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .middle)
             }
         }
         
-        rides.sortInPlace()
+        rides.sort()
     }
     
     
-    func finishInserting(success: Bool){
+    func finishInserting(_ success: Bool){
         showDroppedRides()
         
         self.ridesTableView.beginUpdates()
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)        
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)        
         self.ridesTableView.reloadData()
         self.ridesTableView.endUpdates()
     }
@@ -221,9 +221,9 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             }
             ridesDroppedFrom.removeAll()
             
-            let droppedAlert = UIAlertController(title: droppedMsg, message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            droppedAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            self.presentViewController(droppedAlert, animated: true, completion: nil)
+            let droppedAlert = UIAlertController(title: droppedMsg, message: "", preferredStyle: UIAlertControllerStyle.alert)
+            droppedAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(droppedAlert, animated: true, completion: nil)
             
         }
         
@@ -232,17 +232,17 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         noRideImage = UIImage(named: Config.noRidesImageName)!
     }
     
-    func insertEvent(dict : NSDictionary) {
+    func insertEvent(_ dict : NSDictionary) {
         //create event
         let event = Event(dict: dict)
         
         //insert into event array
         if(event?.rideSharingEnabled == true){
-            events.insert(event!, atIndex: 0)
+            events.insert(event!, at: 0)
         }
     }
     
-    func getEventNameForEventId(id : String)->String{
+    func getEventNameForEventId(_ id : String)->String{
         
         for event in events{
             if(event.id != "" && event.id == id){
@@ -253,7 +253,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return ""
     }
     
-    func getEventForEventId(id : String)->Event{
+    func getEventForEventId(_ id : String)->Event{
         
         for event in events{
             if(event.id != "" && event.id == id){
@@ -264,25 +264,25 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return Event()!
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         navigationItem.title = " My Rides"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rides.count
     }
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //load cell and ride associated with that cell
-        let cell = tableView.dequeueReusableCellWithIdentifier("ride", forIndexPath: indexPath) as! RideTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ride", for: indexPath) as! RideTableViewCell
         let ride = rides[indexPath.row]
         
         
@@ -308,33 +308,33 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tappedRide = rides[indexPath.row]
         tappedEvent = getEventForEventId((tappedRide?.eventId)!)
         tappedRide!.eventName = (tappedEvent?.name)!
         
         if(tappedRide?.gcmId == Config.gcmId()){
-            self.performSegueWithIdentifier("driverdetailsegue", sender: self)
+            self.performSegue(withIdentifier: "driverdetailsegue", sender: self)
         }
         else{
-            self.performSegueWithIdentifier("riderdetailsegue", sender: self)
+            self.performSegue(withIdentifier: "riderdetailsegue", sender: self)
         }
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
     }
     
     //reveal controller function for disabling the current view
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
         
-        if position == FrontViewPosition.Left {
+        if position == FrontViewPosition.left {
             for view in self.view.subviews {
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
+        else if position == FrontViewPosition.right {
             for view in self.view.subviews {
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }

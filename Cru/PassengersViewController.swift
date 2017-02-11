@@ -18,15 +18,15 @@ class PassengersViewController: UIViewController, UITableViewDataSource, UITable
     var editVC: NewDriverRideDetailViewController!
     @IBOutlet weak var table: UITableView!
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         table.emptyDataSetDelegate = self
         table.emptyDataSetSource = self
     }
     
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: Config.noPassengersImage)
     }
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         var remainingPassengers = [Passenger]()
         var remainingPassString = [String]()
         
@@ -53,32 +53,32 @@ class PassengersViewController: UIViewController, UITableViewDataSource, UITable
         }
     }
     
-    func removePass(pass: Passenger){
+    func removePass(_ pass: Passenger){
         passengersToDrop.append(pass)
     }
     
-    func reAddPass(pass: Passenger){
-        if let index = passengersToDrop.indexOf(pass) {
-            passengersToDrop.removeAtIndex(index)
+    func reAddPass(_ pass: Passenger){
+        if let index = passengersToDrop.index(of: pass) {
+            passengersToDrop.remove(at: index)
         }
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return passengers.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: PassengerTableViewCell!
         
         
         if editable{
-            cell = tableView.dequeueReusableCellWithIdentifier("updatePassengerCell") as? PassengerTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: "updatePassengerCell") as? PassengerTableViewCell
             cell.dropButton.layer.cornerRadius = 10
             cell.dropButton.layer.borderWidth = 1
-            cell.dropButton.layer.borderColor = UIColor.blackColor().CGColor
+            cell.dropButton.layer.borderColor = UIColor.black.cgColor
         }
         else{
-            cell = tableView.dequeueReusableCellWithIdentifier("cell") as? PassengerTableViewCell
+            cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? PassengerTableViewCell
         }
         
         cell.parentTable = self
@@ -110,7 +110,7 @@ class PassengersViewController: UIViewController, UITableViewDataSource, UITable
         
         return cell!
     }
-    @IBAction func okPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+    @IBAction func okPressed(_ sender: AnyObject) {
+        self.dismiss(animated: true, completion: nil)
     }
 }

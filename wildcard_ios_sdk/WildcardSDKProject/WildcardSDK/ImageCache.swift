@@ -4,51 +4,73 @@
 //
 //  Created by David Xiang on 12/10/14.
 //
+//  Edited by Erica Solum on 2/8/17 for Swift 3
 //
 
 import Foundation
 import NotificationCenter
 
-class ImageCache: NSCache {
-    
+class ImageCache: NSCache<AnyObject, AnyObject> {
     // swift doesn't support class constant variables yet, but you can do it in a struct
-    class var sharedInstance : ImageCache{
+    static let sharedInstance = ImageCache()
+    static var onceToken = 0
+    
+    public static var StaticInstance : ImageCache {
+        get { return sharedInstance }
+    }
+    
+    /*class var sharedInstance : ImageCache{
         struct Static{
-            static var onceToken : dispatch_once_t = 0
+            static var onceToken : Int = 0
             static var instance : ImageCache? = nil
         }
         
-        dispatch_once(&Static.onceToken, { () -> Void in
-            Static.instance = ImageCache()
-            NSNotificationCenter.defaultCenter().addObserver(
-                Static.instance!,
-                selector: "memoryWarningReceived",
-                name: UIApplicationDidReceiveMemoryWarningNotification,
-                object: nil)
-        })
+        _ = ImageCache.__once
         return Static.instance!
     }
+     
+    
+    
+    private static var __once: () = { () -> Void in
+            Static.instance = ImageCache()
+            NotificationCenter.default.addObserver(
+                Static.instance!,
+                selector: "memoryWarningReceived",
+                name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning,
+                object: nil)
+        }()*/
+    
+    
+    private override init() {
+        NotificationCenter.default.addObserver(
+            ImageCache.sharedInstance,
+            selector: "memoryWarningReceived",
+            name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning,
+            object: nil)
+    }
+    
+    
     
     func memoryWarningReceived(){
         ImageCache.sharedInstance.removeAllObjects()
     }
     
-    class func cacheKeyFromRequest(request:NSURLRequest)->String{
-        return request.URL!.absoluteString
+    class func cacheKeyFromRequest(_ request:URLRequest)->String{
+        return request.url!.absoluteString
     }
     
-    func cachedImageForRequest(request:NSURLRequest)->UIImage?{
+    func cachedImageForRequest(_ request:URLRequest)->UIImage?{
         switch request.cachePolicy{
-        case NSURLRequestCachePolicy.ReloadIgnoringLocalCacheData,
-        NSURLRequestCachePolicy.ReloadIgnoringLocalAndRemoteCacheData:
+        case NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData,
+        NSURLRequest.CachePolicy.reloadIgnoringLocalAndRemoteCacheData:
             return nil
         default:
             break
         }
-        return objectForKey(ImageCache.cacheKeyFromRequest(request)) as? UIImage
+        return object(forKey: ImageCache.cacheKeyFromRequest(request) as AnyObject) as? UIImage
     }
     
-    func cacheImageForRequest(image:UIImage,request:NSURLRequest){
-        setObject(image, forKey: ImageCache.cacheKeyFromRequest(request))
+    func cacheImageForRequest(_ image:UIImage,request:URLRequest){
+        setObject(image, forKey: ImageCache.cacheKeyFromRequest(request) as AnyObject)
     }
 }

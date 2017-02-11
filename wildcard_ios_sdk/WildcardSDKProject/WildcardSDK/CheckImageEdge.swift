@@ -14,21 +14,21 @@ class CheckImageEdge : LayoutDecisionEdge
         super.init(description:"Is image available?")
     }
     
-    override func evaluation(input: AnyObject) -> Bool {
+    override func evaluation(_ input: AnyObject) -> Bool {
         if let card = input as? Card{
             switch card.type{
-            case .Unknown:
+            case .unknown:
                 return false
-            case .Article:
+            case .article:
                 let articleCard = card as! ArticleCard
                 return articleCard.primaryImageURL != nil
-            case .Summary:
+            case .summary:
                 let summaryCard = card as! SummaryCard
                 return summaryCard.primaryImageURL != nil
-            case .Video:
+            case .video:
                 let videoCard = card as! VideoCard
                 return videoCard.posterImageUrl != nil
-            case .Image:
+            case .image:
                 return true
             }
         }

@@ -15,9 +15,9 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
     var missions = [SummerMission]()
-    private let reuseIdentifier = "missionCell"
+    fileprivate let reuseIdentifier = "missionCell"
 
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: Config.noConnectionImageName)
     }
     
@@ -30,35 +30,35 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
         
         navigationItem.title = "Summer Missions"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
 
     // Creates and inserts a SummerMission into this collection view from the given dictionary.
-    func insertMission(dict : NSDictionary) {
+    func insertMission(_ dict : NSDictionary) {
         self.missions.append(SummerMission(dict: dict)!)
     }
     
     // Signals the collection view to reload data.
-    func reload(success: Bool) {
+    func reload(_ success: Bool) {
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         self.tableView.reloadData()
     }
     
-    func emptyDataSet(scrollView: UIScrollView!, didTapView view: UIView!) {
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
         CruClients.getServerClient().getData(DBCollection.SummerMission, insert: insertMission, completionHandler: reload)
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return missions.count
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let mission = missions[indexPath.row]
         
         if mission.imageLink == "" {
@@ -69,14 +69,14 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
         }
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(self.reuseIdentifier, forIndexPath: indexPath) as! SummerMissionsTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier, for: indexPath) as! SummerMissionsTableViewCell
         let mission = missions[indexPath.row]
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.mission = mission
         
-        cell.card.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.card.layer.shadowColor = UIColor.black.cgColor
         cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
         cell.card.layer.shadowOpacity = 0.25
         cell.card.layer.shadowRadius = 2
@@ -85,12 +85,12 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "missionDetails" {
-            self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.Plain, target:nil, action:nil)
-            let missionDetailViewController = segue.destinationViewController as! SummerMissionDetailController
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+            let missionDetailViewController = segue.destination as! SummerMissionDetailController
             let selectedMissionCell = sender as! SummerMissionsTableViewCell
-            let indexPath = self.tableView!.indexPathForCell(selectedMissionCell)!
+            let indexPath = self.tableView!.indexPath(for: selectedMissionCell)!
             let selectedMission = missions[indexPath.row]
             
             missionDetailViewController.uiImage = selectedMissionCell.missionImage?.image
@@ -100,20 +100,20 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
     }
     
     //reveal controller function for disabling the current view
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
         
-        if position == FrontViewPosition.Left {
-            self.tableView.scrollEnabled = true
+        if position == FrontViewPosition.left {
+            self.tableView.isScrollEnabled = true
             
             for view in self.tableView.subviews {
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
-            self.tableView.scrollEnabled = false
+        else if position == FrontViewPosition.right {
+            self.tableView.isScrollEnabled = false
             
             for view in self.tableView.subviews {
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }

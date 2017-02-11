@@ -9,34 +9,34 @@
 import Foundation
 
 
-public class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSource{
+open class SummaryCardNoImageVisualSource : BaseVisualSource, CardViewVisualSource{
     
     var header:FullCardHeader!
     var body:SingleParagraphCardBody!
     var footer:ViewOnWebCardFooter!
     
-    @objc public func viewForCardBody()->CardViewElement{
+    @objc open func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(WCElementType.SimpleParagraph) as! SingleParagraphCardBody
+            body = CardViewElementFactory.createCardViewElement(WCElementType.simpleParagraph) as! SingleParagraphCardBody
             body.contentEdgeInset = UIEdgeInsetsMake(0, 15, 5, 15)
         }
         return body;
     }
     
-    @objc public func viewForCardHeader()->CardViewElement?{
+    @objc open func viewForCardHeader()->CardViewElement?{
         if(header == nil){
-            header = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
-            header.hairline.hidden = true
-            header.logo.hidden = true
+            header = CardViewElementFactory.createCardViewElement(WCElementType.fullHeader) as! FullCardHeader
+            header.hairline.isHidden = true
+            header.logo.isHidden = true
             header.contentEdgeInset = UIEdgeInsetsMake(10, 15, 10, 15)
         }
         return header
     }
     
-    @objc public func viewForCardFooter()->CardViewElement?{
+    @objc open func viewForCardFooter()->CardViewElement?{
         if(footer == nil){
-            footer = CardViewElementFactory.createCardViewElement(WCElementType.ViewOnWebFooter) as! ViewOnWebCardFooter
-            footer.hairline.hidden = true
+            footer = CardViewElementFactory.createCardViewElement(WCElementType.viewOnWebFooter) as! ViewOnWebCardFooter
+            footer.hairline.isHidden = true
         }
         return footer
     }

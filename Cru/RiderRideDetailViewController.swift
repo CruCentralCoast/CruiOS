@@ -26,7 +26,7 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Ride Details"
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         populateDetails()
         
@@ -35,7 +35,7 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return details.count
     }
     
@@ -43,10 +43,10 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
         details = ride!.getRiderDetails()
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell: DetailCell!
-        cell = tableView.dequeueReusableCellWithIdentifier("smallerCell") as! DetailCell
+        cell = tableView.dequeueReusableCell(withIdentifier: "smallerCell") as! DetailCell
         
         cell.textViewValue.text = details[indexPath.row].itemValue
         cell.title.text = details[indexPath.row].itemName
@@ -54,29 +54,29 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
         
         if(details[indexPath.row].itemName == Labels.driverNumber){
             cell.textViewValue.text = PhoneFormatter.unparsePhoneNumber(details[indexPath.row].itemValue)
-            cell.textViewValue.dataDetectorTypes = .PhoneNumber
-            cell.textViewValue.userInteractionEnabled = true
+            cell.textViewValue.dataDetectorTypes = .phoneNumber
+            cell.textViewValue.isUserInteractionEnabled = true
         }
         else if(details[indexPath.row].itemName == Labels.addressLabel){
-            cell.textViewValue.dataDetectorTypes = .Address
-            cell.textViewValue.userInteractionEnabled = true
+            cell.textViewValue.dataDetectorTypes = .address
+            cell.textViewValue.isUserInteractionEnabled = true
         }
 
         return cell
     }
     
 
-    func setTime(td : TimeDetail){
+    func setTime(_ td : TimeDetail){
         //date.text = td.getTime()
     }
     
-    @IBAction func eventLabelPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("eventDetailSegue", sender: self)
+    @IBAction func eventLabelPressed(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "eventDetailSegue", sender: self)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "eventDetailSegue"){
-            let vc = segue.destinationViewController as! EventDetailsViewController
+            let vc = segue.destination as! EventDetailsViewController
             vc.event = self.event
         }
     }
@@ -94,7 +94,7 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
         //request.region = pickupMap.region
         
         let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) in
+        search.start { (response, error) in
             guard let response = response else {
                 print("Search error: \(error)")
                 return
@@ -115,7 +115,7 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
     
     
     
-    func centerMapOnLocation(location: CLLocation) {
+    func centerMapOnLocation(_ location: CLLocation) {
         //let regionRadius: CLLocationDistance = 1000
         //let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,
            // regionRadius * 2.0, regionRadius * 2.0)
@@ -127,20 +127,20 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func cancelPressed(sender: AnyObject) {
+    @IBAction func cancelPressed(_ sender: AnyObject) {
         Cancler.confirmCancel(self, handler: cancelConfirmed)
     }
     
-    func cancelConfirmed(action: UIAlertAction){
+    func cancelConfirmed(_ action: UIAlertAction){
         CruClients.getRideUtils().leaveRidePassenger(ride!, handler: { success in
             if let navController = self.navigationController {
-                navController.popViewControllerAnimated(true)
+                navController.popViewController(animated: true)
                 self.rideVC?.refresh(self)
             }
         })
     }
     
-    func leaveRide(passid: String, rideid: String){
+    func leaveRide(_ passid: String, rideid: String){
         
     }
     

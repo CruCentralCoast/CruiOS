@@ -14,7 +14,7 @@ class PassThroughEdge : LayoutDecisionEdge {
         super.init(description: "passthrough")
     }
     
-    override func evaluation(input:AnyObject)->Bool{
+    override func evaluation(_ input:AnyObject)->Bool{
         return true
     }
 }

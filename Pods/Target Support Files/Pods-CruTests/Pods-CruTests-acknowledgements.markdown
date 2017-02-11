@@ -31,7 +31,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ## Alamofire
 
-Copyright (c) 2014–2016 Alamofire Software Foundation (http://alamofire.org/)
+Copyright (c) 2014-2016 Alamofire Software Foundation (http://alamofire.org/)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -90,7 +90,7 @@ Fabric: Copyright 2016 Twitter, Inc. All Rights Reserved. Use of this software i
 
 The MIT License (MIT)
 
-Copyright (c) 2015 Ignacio Romero Zurbuchen iromero@dzen.cl
+Copyright (c) 2016 Ignacio Romero Zurbuchen iromero@dzen.cl
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -126,7 +126,7 @@ THE SOFTWARE.
 
 ## Fabric
 
-Fabric: Copyright 2015 Twitter, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
+Fabric: Copyright 2016 Twitter, Inc. All Rights Reserved. Use of this software is subject to the terms and conditions of the Fabric Software and Services Agreement located at https://fabric.io/terms. OSS: http://get.fabric.io/terms/opensource.txt
 
 ## GGLInstanceID
 
@@ -146,52 +146,31 @@ Copyright 2015 Google Inc.
 
 ## GoogleInterchangeUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GoogleMaps
 
-If you use the Google Maps SDK for iOS in your application, you must
-include the attribution text as part of a legal notices section in your
-application. Including legal notices as an independent menu item, or as
-part of an "About" menu item, is recommended.
-
-You can get the attribution text by making a call to
-GMSServices.openSourceLicenseInfo().
-
+Copyright 2016 Google
 
 ## GoogleNetworkingUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GooglePlacePicker
 
-If you use the Google Places API for iOS in your application, you must
-include the attribution text as part of a legal notices section in your
-application. Including legal notices as an independent menu item, or as
-part of an "About" menu item, is recommended.
-
-You can get the attribution text by making calls to
-GMSPlacesClient.openSourceLicenseInfo() and GMSServices.openSourceLicenseInfo().
-
+Copyright 2016 Google
 
 ## GooglePlaces
 
-If you use the Google Places API for iOS in your application, you must
-include the attribution text as part of a legal notices section in your
-application. Including legal notices as an independent menu item, or as
-part of an "About" menu item, is recommended.
-
-You can get the attribution text by making a call to
-GMSPlacesClient.openSourceLicenseInfo().
-
+Copyright 2016 Google
 
 ## GoogleSymbolUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## GoogleUtilities
 
-Copyright 2015 Google Inc.
+Copyright 2016 Google
 
 ## HTMLReader
 
@@ -205,7 +184,7 @@ IQKeyboardManager license
 
 The MIT License (MIT)
 
-Copyright (c) 2013-14 Iftekhar Qurashi
+Copyright (c) 2013-16 Iftekhar Qurashi
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
@@ -336,7 +315,7 @@ THE SOFTWARE.
 
 ## SideMenu
 
-Copyright (c) 2015 jonkykong <jpkent@gmail.com>
+Copyright (c) 2015 Jonathan Kent <contact@jonkent.me>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -386,7 +365,7 @@ THE SOFTWARE.
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Ruoyu Fu
+Copyright (c) 2016 Ruoyu Fu
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

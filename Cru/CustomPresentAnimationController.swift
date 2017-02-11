@@ -9,35 +9,35 @@
 import UIKit
 
 class CustomPresentAnimationController: NSObject, UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return 0.5
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        let fromViewController = transitionContext.viewControllerForKey(UITransitionContextFromViewControllerKey)!
-        let toViewController = transitionContext.viewControllerForKey(UITransitionContextToViewControllerKey)!
-        let containerView = transitionContext.containerView()
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let fromViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from)!
+        let toViewController = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.to)!
+        let containerView = transitionContext.containerView
         
-        let animationDuration = self .transitionDuration(transitionContext)
+        let animationDuration = self .transitionDuration(using: transitionContext)
         
-        let snapshotView = fromViewController.view.resizableSnapshotViewFromRect(fromViewController.view.frame, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
-        snapshotView.center = toViewController.view.center
-        containerView!.addSubview(snapshotView)
+        let snapshotView = fromViewController.view.resizableSnapshotView(from: fromViewController.view.frame, afterScreenUpdates: true, withCapInsets: UIEdgeInsets.zero)
+        snapshotView?.center = toViewController.view.center
+        containerView.addSubview(snapshotView!)
         
         fromViewController.view.alpha = 0.0
         
-        let toViewControllerSnapshotView = toViewController.view.resizableSnapshotViewFromRect(toViewController.view.frame, afterScreenUpdates: true, withCapInsets: UIEdgeInsetsZero)
-        containerView!.insertSubview(toViewControllerSnapshotView, belowSubview: snapshotView)
+        let toViewControllerSnapshotView = toViewController.view.resizableSnapshotView(from: toViewController.view.frame, afterScreenUpdates: true, withCapInsets: UIEdgeInsets.zero)
+        containerView.insertSubview(toViewControllerSnapshotView!, belowSubview: snapshotView!)
         
-        UIView.animateWithDuration(animationDuration, animations: { () -> Void in
+        UIView.animate(withDuration: animationDuration, animations: { () -> Void in
             //snapshotView.transform = CGAffineTransformMakeScale(0.1, 0.1)
             //snapshotView.alpha = 0.0
-            snapshotView.transform = CGAffineTransformMakeTranslation(-UIScreen.mainScreen().bounds.width/2 - 200, 0)
-        }) { (finished) -> Void in
-            toViewControllerSnapshotView.removeFromSuperview()
-            snapshotView.removeFromSuperview()
+            snapshotView?.transform = CGAffineTransform(translationX: -UIScreen.main.bounds.width/2 - 200, y: 0)
+        }, completion: { (finished) -> Void in
+            toViewControllerSnapshotView?.removeFromSuperview()
+            snapshotView?.removeFromSuperview()
             fromViewController.view.removeFromSuperview()
-            transitionContext.completeTransition(!transitionContext.transitionWasCancelled())
-        }
+            transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+        }) 
     }
 }

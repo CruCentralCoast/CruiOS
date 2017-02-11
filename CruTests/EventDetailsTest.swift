@@ -15,9 +15,9 @@ class EventDetailsTest: XCTestCase {
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let storyboard = UIStoryboard(name: "events", bundle: bundle)
-        viewController = storyboard.instantiateViewControllerWithIdentifier("eventDetail") as!
+        viewController = storyboard.instantiateViewController(withIdentifier: "eventDetail") as!
        EventDetailsViewController
         
         

@@ -51,54 +51,54 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: Actions
 
-    @IBAction func facebookTapped(sender: UIButton) {
+    @IBAction func facebookTapped(_ sender: UIButton) {
         
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.facebook.com/CruCalPolySLO")!)
+        UIApplication.shared.openURL(URL(string: "http://www.facebook.com/CruCalPolySLO")!)
         
     }
     
-    @IBAction func instagramTapped(sender: UIButton) {
+    @IBAction func instagramTapped(_ sender: UIButton) {
         
         let instagramHooks = "instagram://user?username=\(Config.instagramUsername)"
-        let instagramUrl = NSURL(string: instagramHooks)
-        if UIApplication.sharedApplication().canOpenURL(instagramUrl!)
+        let instagramUrl = URL(string: instagramHooks)
+        if UIApplication.shared.canOpenURL(instagramUrl!)
         {
-            UIApplication.sharedApplication().openURL(instagramUrl!)
+            UIApplication.shared.openURL(instagramUrl!)
             
         } else {
             //redirect to safari because the user doesn't have Instagram
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://instagram.com/crucentralcoast")!)
+            UIApplication.shared.openURL(URL(string: "http://instagram.com/crucentralcoast")!)
         }
         
         
     }
     
-    @IBAction func youtubeTapped(sender: UIButton) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://www.youtube.com/user/slocrusade")!)
+    @IBAction func youtubeTapped(_ sender: UIButton) {
+        UIApplication.shared.openURL(URL(string: "http://www.youtube.com/user/slocrusade")!)
     }
     
-    @IBAction func twitterTapped(sender: UIButton) {
+    @IBAction func twitterTapped(_ sender: UIButton) {
         let twitterHook = "twitter://user?screen_name=CruCentralCoast"
-        let twitterUrl = NSURL(string: twitterHook)
-        if UIApplication.sharedApplication().canOpenURL(twitterUrl!)
+        let twitterUrl = URL(string: twitterHook)
+        if UIApplication.shared.canOpenURL(twitterUrl!)
         {
-            UIApplication.sharedApplication().openURL(twitterUrl!)
+            UIApplication.shared.openURL(twitterUrl!)
             
         } else {
             //redirect to safari because the user doesn't have Instagram
-            UIApplication.sharedApplication().openURL(NSURL(string: "http://twitter.com/CruCentralCoast")!)
+            UIApplication.shared.openURL(URL(string: "http://twitter.com/CruCentralCoast")!)
         }
     }
     
     
     
-    @IBAction func openOfferRide(sender: UIButton) {
+    @IBAction func openOfferRide(_ sender: UIButton) {
         self.navigationController?.pushViewController(offerVC, animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontName, size: 20)!], forState: .Normal)
+        self.navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontName, size: 20)!], for: UIControlState())
         
         if self.revealViewController() != nil{
             menuButton.target = self.revealViewController()
@@ -110,7 +110,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //Change nav title font
         navigationItem.title = "Home"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         
         //Check for connection then load rides and events in the completion function
@@ -119,7 +119,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         self.table!.tableFooterView = UIView()
         
-        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.black]
         noRideString = NSAttributedString(string: "Currently no rides available", attributes: attributes)
         
         noEventsString = NSAttributedString(string: "No events for the next two weeks", attributes: attributes)
@@ -137,7 +137,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         offerVC = NewOfferRideViewController()
         
         //Change the spacing between the events table and the social bar
-        let screenSize = UIScreen.mainScreen().bounds
+        let screenSize = UIScreen.main.bounds
         
         if scrollView.frame.height <= screenSize.height {
             let totalSpace = screenSize.height - eventsTable.frame.maxY
@@ -154,26 +154,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     /* This function acts after the view is loaded and appears on the phone. */
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         if !hasAppLaunchedBefore() {
-            self.performSegueWithIdentifier("introSegue", sender: self)
-            self.navigationItem.leftBarButtonItem?.enabled = false
+            self.performSegue(withIdentifier: "introSegue", sender: self)
+            self.navigationItem.leftBarButtonItem?.isEnabled = false
         }
     }
     //Test to make sure there is a connection then load resources
-    func finishConnectionCheck(connected: Bool){
+    func finishConnectionCheck(_ connected: Bool){
         if(!connected){
             hasConnection = false
             //Display a message if either of the tables are empty
             
             self.table!.reloadData()
             self.eventsTable!.reloadData()
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             //hasConnection = false
         }else{
             hasConnection = true
             
-            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+            MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             //load upcoming items
             CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
             
@@ -183,7 +183,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //Set the text to be displayed when either table is empty
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if scrollView == self.table {
             if hasConnection {
                 return noRideString
@@ -199,46 +199,46 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func backgroundColorForEmptyDataSet(scrollView: UIScrollView!) -> UIColor! {
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
         return Colors.googleGray
     }
     
-    func insertRide(dict : NSDictionary) {
+    func insertRide(_ dict : NSDictionary) {
         //create ride
         let newRide = Ride(dict: dict)
         
         //insert into ride array
-        rides.insert(newRide!, atIndex: 0)
-        rides.sortInPlace()
+        rides.insert(newRide!, at: 0)
+        rides.sort()
         
     }
     
     //Asynchronous function that's called to insert an event into the table
-    func insertEvent(dict : NSDictionary) {
+    func insertEvent(_ dict : NSDictionary) {
         //Create event
         let event = Event(dict: dict)!
         
         //Insert event into the array only if it's within the next week
-        let curDate = NSDate()
+        let curDate = Date()
         let week = curDate.addDays(14)
         
-        if(event.startNSDate.isLessThanDate(week) && event.startNSDate.compare(NSDate()) != .OrderedAscending){
+        if(event.startNSDate.isLessThanDate(week) && event.startNSDate.compare(Date()) != .orderedAscending){
             
-            self.upcomingEvents.insert(event, atIndex: 0)
+            self.upcomingEvents.insert(event, at: 0)
         }
-        self.allEvents.insert(event, atIndex: 0)
+        self.allEvents.insert(event, at: 0)
     }
     
-    func finishRideInsert(type: ResponseType){
+    func finishRideInsert(_ type: ResponseType){
         
         switch type{
-        case .NoRides:
+        case .noRides:
             self.table!.emptyDataSetSource = self
             self.table!.emptyDataSetDelegate = self
             CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: finishInserting)
             //noRideString = NSAttributedString(string: "Currently no rides available", attributes: [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.blackColor()])
             
-        case .NoConnection:
+        case .noConnection:
             print("\nCould not finish inserting rides. No connection found.\n")
             //self.ridesTableView.emptyDataSetSource = self
             //self.ridesTableView.emptyDataSetDelegate = self
@@ -250,11 +250,11 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         
-        rides.sortInPlace()
+        rides.sort()
     }
     
     //Function that inserts the rides and events only if we get all the rides first
-    func finishInserting(success: Bool){
+    func finishInserting(_ success: Bool){
         
         //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
         for ride in rides{
@@ -287,16 +287,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         //disable scrolling
-        table.scrollEnabled = false
-        eventsTable.scrollEnabled = false
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+        table.isScrollEnabled = false
+        eventsTable.isScrollEnabled = false
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         
     }
     
     // prepare for segue
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "introSegue" {
-            if let introViewController = segue.destinationViewController as? IntroViewController {
+            if let introViewController = segue.destination as? IntroViewController {
                 introViewController.mainViewController = sender as? MainViewController
             }
         }
@@ -308,20 +308,20 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //Helper function for determining if the application has been launched before
-    private func hasAppLaunchedBefore() -> Bool {
-        let defaultSettings = NSUserDefaults.standardUserDefaults()
+    fileprivate func hasAppLaunchedBefore() -> Bool {
+        let defaultSettings = UserDefaults.standard
         
-        if let _ = defaultSettings.stringForKey("hasLaunchedBefore") {
+        if let _ = defaultSettings.string(forKey: "hasLaunchedBefore") {
             return true
         }
         else {
-            defaultSettings.setBool(true, forKey: "hasLaunchedBefore")
+            defaultSettings.set(true, forKey: "hasLaunchedBefore")
             return false
         }
     }
 
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if(tableView == self.table) {
             return items.count
@@ -333,7 +333,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func getEventNameForEventId(id : String)->String{
+    func getEventNameForEventId(_ id : String)->String{
         
         for event in allEvents{
             if(event.id != "" && event.id == id){
@@ -345,22 +345,22 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //Adds the drop shadow to the ride and event cards
-    private func addDropShadow(rideCell: UpcomingItemCell?, eventCell: UpcomingEventCell?) {
-        rideCell?.card.layer.shadowColor = UIColor.blackColor().CGColor
+    fileprivate func addDropShadow(_ rideCell: UpcomingItemCell?, eventCell: UpcomingEventCell?) {
+        rideCell?.card.layer.shadowColor = UIColor.black.cgColor
         rideCell?.card.layer.shadowOffset = CGSize(width: 0, height: 1)
         rideCell?.card.layer.shadowOpacity = 0.25
         rideCell?.card.layer.shadowRadius = 2
         
-        eventCell?.card.layer.shadowColor = UIColor.blackColor().CGColor
+        eventCell?.card.layer.shadowColor = UIColor.black.cgColor
         eventCell?.card.layer.shadowOffset = CGSize(width: 0, height: 1)
         eventCell?.card.layer.shadowOpacity = 0.25
         eventCell?.card.layer.shadowRadius = 2
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(tableView == self.table) {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! UpcomingItemCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UpcomingItemCell
             
             cell.month.text = months[indexPath.row]
             cell.day.text = days[indexPath.row]
@@ -371,7 +371,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! UpcomingEventCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! UpcomingEventCell
             
             cell.nameLabel.text = upcomingEvents[indexPath.row].name
             cell.location.text = upcomingEvents[indexPath.row].getLocationString()
@@ -400,7 +400,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(tableView == self.table) {
             return 100.0
         }
@@ -411,21 +411,21 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     //reveal controller function for disabling the current view
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
         
-        if position == FrontViewPosition.Left {
+        if position == FrontViewPosition.left {
             for view in self.view.subviews {
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
+        else if position == FrontViewPosition.right {
             for view in self.view.subviews {
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }
     
-    @IBAction func closeNotifications(segue: UIStoryboardSegue) {
+    @IBAction func closeNotifications(_ segue: UIStoryboardSegue) {
         
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 
-public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
+open class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
 {
     var header:ImageOnlyBody!
     var body:FullCardHeader!
@@ -26,7 +26,7 @@ public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
         
         // assign aspect ratio if we have it
         if let videoCard = card as? ImageCard{
-            if (videoCard.imageSize != CGSizeMake(-1, -1)){
+            if (videoCard.imageSize != CGSize(width: -1, height: -1)){
                 aspectRatio = videoCard.imageSize.height / videoCard.imageSize.width
             }
         }
@@ -34,21 +34,21 @@ public class ImageCardTallVisualSource : BaseVisualSource, CardViewVisualSource
         super.init(card: card)
     }
     
-    @objc public func viewForCardHeader()->CardViewElement?{
+    @objc open func viewForCardHeader()->CardViewElement?{
         if(header == nil){
-            header = CardViewElementFactory.createCardViewElement(WCElementType.ImageOnly) as! ImageOnlyBody
+            header = CardViewElementFactory.createCardViewElement(WCElementType.imageOnly) as! ImageOnlyBody
             header.contentEdgeInset = UIEdgeInsetsMake(0,0,0,0)
             header.imageAspectRatio = aspectRatio
         }
         return header
     }
     
-    @objc public func viewForCardBody()->CardViewElement{
+    @objc open func viewForCardBody()->CardViewElement{
         if(body == nil){
-            body = CardViewElementFactory.createCardViewElement(WCElementType.FullHeader) as! FullCardHeader
+            body = CardViewElementFactory.createCardViewElement(WCElementType.fullHeader) as! FullCardHeader
             body.contentEdgeInset = UIEdgeInsetsMake(15, 15, 15, 15)
-            body.logo.hidden = true
-            body.hairline.hidden = true
+            body.logo.isHidden = true
+            body.hairline.isHidden = true
         }
         return body
     }

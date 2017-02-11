@@ -14,7 +14,7 @@ import DZNEmptyDataSet
 class EventsTableViewController: UITableViewController, SWRevealViewControllerDelegate, DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     
     var events = [Event]()
-    let curDate = NSDate()
+    let curDate = Date()
     let searchController = UISearchController(searchResultsController: nil)
     var filteredEvents = [Event]()
     var hasConnection = true
@@ -36,7 +36,7 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         //Set the nav title & font
         navigationItem.title = "Events"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         //Initialize search stuff
         searchController.searchResultsUpdater = self
@@ -48,7 +48,7 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     }
     
     //Empty data set functions
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         if hasConnection == false {
             return UIImage(named: Config.noConnectionImageName)
         }
@@ -60,12 +60,12 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     }
 
     
-    func emptyDataSet(scrollView: UIScrollView!, didTapView view: UIView!) {
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
     }
     
     //Test to make sure there is a connection then load resources
-    func finishConnectionCheck(connected: Bool){
+    func finishConnectionCheck(_ connected: Bool){
         
         if(!connected){
             hasConnection = false
@@ -86,15 +86,15 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     }
     
     //Search function
-    func filterContentForSearchText(searchText: String, scope: String = "All") {
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         filteredEvents = events.filter { event in
-            return event.name.lowercaseString.containsString(searchText.lowercaseString)
+            return event.name.lowercased().contains(searchText.lowercased())
         }
         
         tableView.reloadData()
     }
     
-    private func loadEventsWithoutMinistries(success: Bool) {
+    fileprivate func loadEventsWithoutMinistries(_ success: Bool) {
         CruClients.getEventUtils().loadEventsWithoutMinistries(insertEvent, completionHandler: finishInserting)
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
@@ -103,51 +103,51 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     
 
     //insert helper function for inserting event data
-    private func insertEvent(dict: NSDictionary) {
+    fileprivate func insertEvent(_ dict: NSDictionary) {
         let event = Event(dict: dict)!
-        if(event.startNSDate.compare(NSDate()) != .OrderedAscending){
-            self.events.insert(event, atIndex: 0)
+        if(event.startNSDate.compare(Date()) != .orderedAscending){
+            self.events.insert(event, at: 0)
         }
         
     }
     
-    private func done(success: Bool) {
+    fileprivate func done(_ success: Bool) {
         print("Done!")
     }
     
     //helper function for finishing off inserting event data
-    private func finishInserting(success: Bool) {
-        self.events.sortInPlace({$0.startNSDate.compare($1.startNSDate) == .OrderedAscending})
+    fileprivate func finishInserting(_ success: Bool) {
+        self.events.sort(by: {$0.startNSDate.compare($1.startNSDate as Date) == .orderedAscending})
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         self.tableView!.reloadData()
         
     }
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.active && searchController.searchBar.text != "" {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive && searchController.searchBar.text != "" {
             return filteredEvents.count
         }
         return events.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var event: Event
-        if searchController.active && searchController.searchBar.text != "" {
+        if searchController.isActive && searchController.searchBar.text != "" {
              event = filteredEvents[indexPath.row]
         } else {
             event = events[indexPath.row]
         }
-        let cell = tableView.dequeueReusableCellWithIdentifier("eventCell", forIndexPath: indexPath) as! EventTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
-        cell.selectionStyle = UITableViewCellSelectionStyle.None
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
         cell.event = event
         
-        cell.card.layer.shadowColor = UIColor.blackColor().CGColor
+        cell.card.layer.shadowColor = UIColor.black.cgColor
         cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
         cell.card.layer.shadowOpacity = 0.25
         cell.card.layer.shadowRadius = 2
@@ -155,11 +155,11 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.tableView!.deselectRowAtIndexPath(indexPath, animated: true)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView!.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let event = events[indexPath.row]
         
         if event.imageUrl == "" {
@@ -171,14 +171,14 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "eventDetails" {
-            let eventDetailViewController = segue.destinationViewController as! EventDetailsViewController
+            let eventDetailViewController = segue.destination as! EventDetailsViewController
             let selectedEventCell = sender as! EventTableViewCell
-            let indexPath = self.tableView!.indexPathForCell(selectedEventCell)!
+            let indexPath = self.tableView!.indexPath(for: selectedEventCell)!
             
             let selectedEvent: Event
-            if searchController.active && searchController.searchBar.text != "" {
+            if searchController.isActive && searchController.searchBar.text != "" {
                 selectedEvent = filteredEvents[indexPath.row]
             } else {
                 selectedEvent = events[indexPath.row]
@@ -189,27 +189,27 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     }
     
     //reveal controller function for disabling the current view
-    func revealController(revealController: SWRevealViewController!, willMoveToPosition position: FrontViewPosition) {
+    func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
         
-        if position == FrontViewPosition.Left {
-            self.tableView.scrollEnabled = true
+        if position == FrontViewPosition.left {
+            self.tableView.isScrollEnabled = true
             
             for view in self.tableView.subviews {
-                view.userInteractionEnabled = true
+                view.isUserInteractionEnabled = true
             }
         }
-        else if position == FrontViewPosition.Right {
-            self.tableView.scrollEnabled = false
+        else if position == FrontViewPosition.right {
+            self.tableView.isScrollEnabled = false
             
             for view in self.tableView.subviews {
-                view.userInteractionEnabled = false
+                view.isUserInteractionEnabled = false
             }
         }
     }
 }
 
 extension EventsTableViewController: UISearchResultsUpdating {
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearchText(searchController.searchBar.text!)
     }
 }

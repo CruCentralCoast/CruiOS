@@ -9,55 +9,55 @@
 import Foundation
 
 /// Public Bag of Tricks
-public class Utilities{
+open class Utilities{
     
     // MARK: Public
-    public class var IS_IPAD: Bool {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Pad
+    open class var IS_IPAD: Bool {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad
     }
-    public class var IS_IPHONE: Bool {
-        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.Phone
+    open class var IS_IPHONE: Bool {
+        return UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone
     }
-    public class var IS_RETINA: Bool {
-        return UIScreen.mainScreen().scale >= 2.0
+    open class var IS_RETINA: Bool {
+        return UIScreen.main.scale >= 2.0
     }
-    public class var SCREEN_WIDTH:CGFloat{
-        return UIScreen.mainScreen().bounds.size.width;
+    open class var SCREEN_WIDTH:CGFloat{
+        return UIScreen.main.bounds.size.width;
     }
-    public class var SCREEN_HEIGHT:CGFloat{
-        return UIScreen.mainScreen().bounds.size.height;
+    open class var SCREEN_HEIGHT:CGFloat{
+        return UIScreen.main.bounds.size.height;
     }
-    public class var SCREEN_MAX_LENGTH:CGFloat{
+    open class var SCREEN_MAX_LENGTH:CGFloat{
         return max(SCREEN_HEIGHT, SCREEN_WIDTH)
     }
-    public class var SCREEN_MAIN_LENGTH:CGFloat{
+    open class var SCREEN_MAIN_LENGTH:CGFloat{
         return min(SCREEN_HEIGHT, SCREEN_WIDTH)
     }
-    public class var IS_IPHONE_4_OR_LESS:Bool{
+    open class var IS_IPHONE_4_OR_LESS:Bool{
         return IS_IPHONE && SCREEN_MAX_LENGTH < 568.0
     }
-    public class var IS_IPHONE_5:Bool{
+    open class var IS_IPHONE_5:Bool{
         return IS_IPHONE && SCREEN_MAX_LENGTH == 568.0
     }
-    public class var IS_IPHONE_6:Bool{
+    open class var IS_IPHONE_6:Bool{
         return IS_IPHONE && SCREEN_MAX_LENGTH == 667.0
     }
-    public class var IS_IPHONE_6P:Bool{
+    open class var IS_IPHONE_6P:Bool{
         return IS_IPHONE && SCREEN_MAX_LENGTH == 736.0
     }
     
     /// Prints the font families available
-    public class func printFontFamilies(){
-        for name in UIFont.familyNames()
+    open class func printFontFamilies(){
+        for name in UIFont.familyNames
         {
             print("Font family: \(name)")
-            let names = UIFont.fontNamesForFamilyName(name)
+            let names = UIFont.fontNames(forFamilyName: name)
             print(names)
         }
     }
     
     /// Get the height required for a specific text string, with a max height
-    public class func heightRequiredForText(text:String?, lineHeight:CGFloat, font:UIFont, width:CGFloat, maxHeight:CGFloat)->CGFloat{
+    open class func heightRequiredForText(_ text:String?, lineHeight:CGFloat, font:UIFont, width:CGFloat, maxHeight:CGFloat)->CGFloat{
         if(text == nil){
             return 0
         }else{
@@ -71,9 +71,9 @@ public class Utilities{
                 NSFontAttributeName:font]
             
             let bounds =
-            nsStr.boundingRectWithSize(CGSizeMake(width,
-                maxHeight),
-                options: NSStringDrawingOptions.UsesLineFragmentOrigin,
+            nsStr.boundingRect(with: CGSize(width: width,
+                height: maxHeight),
+                options: NSStringDrawingOptions.usesLineFragmentOrigin,
                 attributes: attributesDictionary,
                 context: nil)
             return bounds.size.height;
@@ -81,12 +81,12 @@ public class Utilities{
     }
     
     /// Get the height required for a specific text string with unbounded height
-    public class func heightRequiredForText(text:String?, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
-        return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.max)
+    open class func heightRequiredForText(_ text:String?, lineHeight:CGFloat, font:UIFont, width:CGFloat)->CGFloat{
+        return Utilities.heightRequiredForText(text, lineHeight: lineHeight, font: font, width: width, maxHeight: CGFloat.greatestFiniteMagnitude)
     }
     
     /// Gets the fitted height for a label given a specific width
-    public class func fittedHeightForLabel(label:UILabel, labelWidth:CGFloat)->CGFloat{
+    open class func fittedHeightForLabel(_ label:UILabel, labelWidth:CGFloat)->CGFloat{
         
         var titleHeight:CGFloat = 0
         if(label.numberOfLines == 0){

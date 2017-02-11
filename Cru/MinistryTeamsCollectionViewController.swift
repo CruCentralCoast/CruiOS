@@ -23,35 +23,35 @@ class MinistryTeamsCollectionViewController: UICollectionViewController{
         CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting)
 
         //set background color of page and accelleration of cells
-        collectionView!.backgroundColor = UIColor.blackColor()
+        collectionView!.backgroundColor = UIColor.black
         collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
     }
     
     //inserts individual ministry teams into the collection view
-    private func insertMinistryTeam(dict : NSDictionary) {
-        self.ministryTeams.insert(MinistryTeam(dict: dict)!, atIndex: 0)
+    fileprivate func insertMinistryTeam(_ dict : NSDictionary) {
+        self.ministryTeams.insert(MinistryTeam(dict: dict)!, at: 0)
     }
     
     //reload the collection view data and store whether or not the user is in the repsective ministries
-    private func finishInserting(success: Bool) {
+    fileprivate func finishInserting(_ success: Bool) {
         //TODO: handle failure
         self.collectionView!.reloadData()
     }
 
     // MARK: UICollectionViewDataSource
     //tells the collection view how many sections there are
-    override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
     //tells the collection view how many cells there are
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ministryTeams.count
     }
 
     //function for adding scrolling functionality for cells
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Config.ministryTeamReuseIdentifier, forIndexPath: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Config.ministryTeamReuseIdentifier, for: indexPath)
         
         //let ministryTeam = ministryTeams[indexPath.item]
 //        cell.ministryTeam = ministryTeam
@@ -63,8 +63,8 @@ class MinistryTeamsCollectionViewController: UICollectionViewController{
     }
     
     //target action on ministry
-    func joinMinistryTeam(sender: UIButton) {
-        let index = sender.layer.valueForKey("index") as! Int
+    func joinMinistryTeam(_ sender: UIButton) {
+        let index = sender.layer.value(forKey: "index") as! Int
         let ministry = ministryTeams[index]
         var user = ministryTeamsStorageManager.getObject(Config.userStorageKey)
         
@@ -86,7 +86,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController{
 //    }
     
     //completion handler for ministry team response from the server after joining
-    private func joinMinistryTeamCompletionHandler(ministryTeam: MinistryTeam, sender: UIButton) -> (NSArray? -> Void) {
+    fileprivate func joinMinistryTeamCompletionHandler(_ ministryTeam: MinistryTeam, sender: UIButton) -> ((NSArray?) -> Void) {
         //add ministry team to local storage
 //        var leaderInfo = "Leader(s) Info: "
         
@@ -111,12 +111,12 @@ class MinistryTeamsCollectionViewController: UICollectionViewController{
 //            }
 //            
 //            self.ministryTeamsStorageManager.addElement(ministryTeam.id, elem: leaderInfo)
-            self.performSegueWithIdentifier("unwindToMList", sender: self)
+            self.performSegue(withIdentifier: "unwindToMList", sender: self)
         }
     }
     
     //function for adding functionality for clicing of cells
-    override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        let layout = collectionViewLayout as! UltravisualLayout
 //        let offset = layout.dragOffset * CGFloat(indexPath.item)
 //        if collectionView.contentOffset.y != offset {

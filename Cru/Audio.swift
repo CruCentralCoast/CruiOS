@@ -10,9 +10,9 @@ import Foundation
 
 class Audio {
     let title: String
-    let url: NSURL
+    let url: URL
     
-    required init(title: String, url: NSURL) {
+    required init(title: String, url: URL) {
         self.title = title
         self.url = url
     }

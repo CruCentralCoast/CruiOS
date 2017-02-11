@@ -19,7 +19,7 @@ class LayoutDecisionEdge{
     }
     
     /* All derived edge classes should override */
-    func evaluation(input:AnyObject)->Bool{
+    func evaluation(_ input:AnyObject)->Bool{
         return false
     }
 }

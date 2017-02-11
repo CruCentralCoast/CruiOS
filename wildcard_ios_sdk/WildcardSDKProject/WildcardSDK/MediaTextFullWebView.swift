@@ -9,73 +9,100 @@
 import Foundation
 
 @objc
-public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
+open class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
 {
+    static var onceToken: Int = 0
+    static var instance: String? = nil
+    
+    /*fileprivate class var webViewReadingCss : String{
+        struct Static{
+            static var onceToken : Int = 0
+            static var instance : String? = nil
+        }
+        
+        _ = MediaTextFullWebView.__once
+        return Static.instance!
+    }*/
+    
+    func getWebViewReadingCss() -> String {
+        if MediaTextFullWebView.instance == nil {
+            let file = Bundle.wildcardSDKBundle().path(forResource: "MediaReadingCss", ofType: "css")
+            let contents = try? NSString(contentsOfFile: file!, encoding: String.Encoding.utf8.rawValue)
+            MediaTextFullWebView.instance = contents as? String
+        }
+        return MediaTextFullWebView.instance!
+    }
+    
+    /*private static var __once: () = { () -> Void in
+            let file = Bundle.wildcardSDKBundle().path(forResource: "MediaReadingCss", ofType: "css")
+            let contents = try? NSString(contentsOfFile: file!, encoding: String.Encoding.utf8.rawValue)
+            Static.instance = contents as? String
+        }()*/
     @IBOutlet weak var bottomToolbar: UIToolbar!
     @IBOutlet weak var webview: UIWebView!
     
     // MARK: CardViewElement
-    override public func initialize() {
+    override open func initialize() {
         webview.delegate = self
         bottomToolbar.tintColor = UIColor.wildcardLightBlue()
     }
     
-    override public func update(card:Card) {
+    override open func update(_ card:Card) {
         if let articleCard = card as? ArticleCard{
-            webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: card.webUrl)
+            webview?.loadHTMLString(constructFinalHtml(articleCard), baseURL: card.webUrl as URL)
             updateToolbar(articleCard)
         }
     }
     
     // MARK: Action
-    func closeButtonTapped(sender: AnyObject) {
+    func closeButtonTapped(_ sender: AnyObject) {
         if(cardView != nil){
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .Collapse, parameters: nil))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .collapse, parameters: nil))
         }
     }
     
-    func actionButtonTapped(sender:AnyObject){
+    func actionButtonTapped(_ sender:AnyObject){
         if(cardView != nil){
-            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], withCard: cardView!.backingCard)
+            WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"shareAction"], with: cardView!.backingCard)
             cardView!.handleShare()
         }
     }
     
     // MARK: Private
-    func updateToolbar(card:Card){
+    func updateToolbar(_ card:Card){
         
         var barButtonItems:[UIBarButtonItem] = []
         
-        let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Stop, target: self, action: "closeButtonTapped:")
+        let closeButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.stop, target: self, action: #selector(MediaTextFullWebView.closeButtonTapped(_:)))
         barButtonItems.append(closeButton)
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         barButtonItems.append(flexSpace)
         
-        let actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Action, target: self, action: "actionButtonTapped:")
+        let actionButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(MediaTextFullWebView.actionButtonTapped(_:)))
         barButtonItems.append(actionButton)
         
         bottomToolbar.setItems(barButtonItems, animated: false)
     }
     
-    func constructFinalHtml(articleCard:ArticleCard)->String{
+    func constructFinalHtml(_ articleCard:ArticleCard)->String{
         var finalHtml:String = ""
         finalHtml += "<html>"
         finalHtml += "<head>"
-        finalHtml += MediaTextFullWebView.webViewReadingCss
+        finalHtml += getWebViewReadingCss()
         finalHtml += "</head>"
         
         finalHtml += "<body>"
         
-        finalHtml +=  "<div id=\"customWildcardKicker\">\(articleCard.creator.name.uppercaseString)</div>"
+        finalHtml +=  "<div id=\"customWildcardKicker\">\(articleCard.creator.name.uppercased())</div>"
         finalHtml +=  "<div id=\"customHairline\"></div>"
         finalHtml +=  "<div id=\"customWildcardHeader\">\(articleCard.title)</div>"
         
-        let publishedDateFormatter = NSDateFormatter()
+        let publishedDateFormatter = DateFormatter()
         publishedDateFormatter.dateFormat = "MMM dd, YYYY"
         var dateDisplayString:String?
         if let date = articleCard.publicationDate{
-            dateDisplayString = publishedDateFormatter.stringFromDate(date)
+            dateDisplayString = publishedDateFormatter.string(from: date as Date)
         }
         
         var bylineDisplay:String?
@@ -106,26 +133,14 @@ public class MediaTextFullWebView : CardViewElement, UIWebViewDelegate
         return finalHtml
     }
     
-    private class var webViewReadingCss : String{
-        struct Static{
-            static var onceToken : dispatch_once_t = 0
-            static var instance : String? = nil
-        }
-        
-        dispatch_once(&Static.onceToken, { () -> Void in
-            let file = NSBundle.wildcardSDKBundle().pathForResource("MediaReadingCss", ofType: "css")
-            let contents = try? NSString(contentsOfFile: file!, encoding: NSUTF8StringEncoding)
-            Static.instance = contents as? String
-        })
-        return Static.instance!
-    }
+    
     
     // MARK: UIWebViewDelegate
-    public func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if(navigationType == .LinkClicked){
+    open func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        if(navigationType == .linkClicked){
             if(cardView != nil){
-                WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"linkClicked"], withCard: cardView!.backingCard)
-                cardView!.handleViewOnWeb(request.URL!)
+                WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"linkClicked"], with: cardView!.backingCard)
+                cardView!.handleViewOnWeb(request.url!)
             }
             return false
         }else{

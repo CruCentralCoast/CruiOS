@@ -12,11 +12,11 @@ import Foundation
 Most basic card body consisting of just a paragraph label
 */
 @objc
-public class SingleParagraphCardBody : CardViewElement {
+open class SingleParagraphCardBody : CardViewElement {
     
-    public var paragraphLabel:UILabel!
+    open var paragraphLabel:UILabel!
     
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
         }
@@ -30,17 +30,17 @@ public class SingleParagraphCardBody : CardViewElement {
         }
     }
     
-    private var topConstraint:NSLayoutConstraint!
-    private var leftConstraint:NSLayoutConstraint!
-    private var rightConstraint:NSLayoutConstraint!
-    private var bottomConstraint:NSLayoutConstraint!
+    fileprivate var topConstraint:NSLayoutConstraint!
+    fileprivate var leftConstraint:NSLayoutConstraint!
+    fileprivate var rightConstraint:NSLayoutConstraint!
+    fileprivate var bottomConstraint:NSLayoutConstraint!
     
-    override public func initialize() {
-        backgroundColor = UIColor.whiteColor()
+    override open func initialize() {
+        backgroundColor = UIColor.white
         
-        paragraphLabel = UILabel(frame: CGRectZero)
+        paragraphLabel = UILabel(frame: CGRect.zero)
         paragraphLabel.setDefaultDescriptionStyling()
-        paragraphLabel.textAlignment = NSTextAlignment.Left
+        paragraphLabel.textAlignment = NSTextAlignment.left
         paragraphLabel.numberOfLines = 0
         addSubview(paragraphLabel)
         leftConstraint = paragraphLabel.constrainLeftToSuperView(10)
@@ -50,32 +50,32 @@ public class SingleParagraphCardBody : CardViewElement {
         
     }
     
-    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+    override open func adjustForPreferredWidth(_ cardWidth: CGFloat) {
         paragraphLabel.preferredMaxLayoutWidth = cardWidth - leftConstraint.constant - rightConstraint.constant
         invalidateIntrinsicContentSize()
     }
     
-    override public func update(card:Card) {
+    override open func update(_ card:Card) {
         
         switch(card.type){
-        case .Article:
+        case .article:
             let articleCard = card as! ArticleCard
             paragraphLabel.text = articleCard.abstractContent
-        case .Summary:
+        case .summary:
             let webLinkCard = card as! SummaryCard
             paragraphLabel.text = webLinkCard.abstractContent
-        case .Video:
+        case .video:
             let videoCard = card as! VideoCard
             paragraphLabel.text = videoCard.abstractContent
-        case .Image:
+        case .image:
             let imageCard = card as! ImageCard
             paragraphLabel.text = imageCard.imageCaption
-        case .Unknown:
+        case .unknown:
             paragraphLabel.text = "Unknown Card Type"
         }
     }
     
-    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0
         height += topConstraint.constant
         

@@ -27,7 +27,7 @@ class RideUtilsTest: XCTestCase {
 
     func testPostAndRemoveRideOffer() {
         //test post
-        var readyExpectation = self.expectationWithDescription("post a ride")
+        var readyExpectation = self.expectation(description: "post a ride")
         var postedRide: Ride!
         
         rideUtils.postRideOffer("some-event-id", name: "Joe Schmo", phone: "1234567890", seats: 5, time: "2017-05-26T10:47:00.000Z", location: ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."], radius: 3, direction: "both", handler :{ result in
@@ -36,7 +36,7 @@ class RideUtilsTest: XCTestCase {
             readyExpectation.fulfill()
         })
         
-        waitForExpectationsWithTimeout(2) {error in
+        waitForExpectations(timeout: 2) {error in
             XCTAssertNil(error, "Error")
         }
         
@@ -49,20 +49,20 @@ class RideUtilsTest: XCTestCase {
         XCTAssert("both" == postedRide.direction)
 
         //test drop
-        readyExpectation = self.expectationWithDescription("drop a ride")
+        readyExpectation = self.expectation(description: "drop a ride")
 
         rideUtils.leaveRideDriver(postedRide.id, handler: { success in
             XCTAssert(success)
             readyExpectation.fulfill()
         })
         
-        waitForExpectationsWithTimeout(2) {error in
+        waitForExpectations(timeout: 2) {error in
             XCTAssertNil(error, "Error")
         }
     }
     
     func testPatch() {
-        var readyExpectation = self.expectationWithDescription("post a ride")
+        var readyExpectation = self.expectation(description: "post a ride")
         var id: String!
         
         rideUtils.postRideOffer("test-event-id", name: "Joe Schmo", phone: "1234567890", seats: 5, time: "2017-05-26T10:47:00.000Z", location: ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."], radius: 3, direction: "both", handler :{ result in
@@ -71,12 +71,12 @@ class RideUtilsTest: XCTestCase {
             readyExpectation.fulfill()
         })
         
-        waitForExpectationsWithTimeout(2) {error in
+        waitForExpectations(timeout: 2) {error in
             XCTAssertNil(error, "Error")
         }
         
         
-        readyExpectation = self.expectationWithDescription("patch a ride")
+        readyExpectation = self.expectation(description: "patch a ride")
         
         rideUtils.patchRide(id, params: ["seats": 17], handler :{ result in
             XCTAssert(result != nil)
@@ -84,7 +84,7 @@ class RideUtilsTest: XCTestCase {
             readyExpectation.fulfill()
         })
         
-        waitForExpectationsWithTimeout(2) {error in
+        waitForExpectations(timeout: 2) {error in
             XCTAssertNil(error, "Error")
         }
     }
@@ -144,7 +144,7 @@ class RideUtilsTest: XCTestCase {
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }

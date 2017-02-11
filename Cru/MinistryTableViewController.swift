@@ -24,7 +24,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
-    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         if onboarding == false {
             return emptyTableImage
         }
@@ -33,14 +33,14 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         }
     }
     
-    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         if onboarding == true {
             if hasConnection == false {
-                let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+                let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
                 return NSAttributedString(string: "No connection found. Please try again later.", attributes: attributes)
             }
             else {
-                let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.blackColor()]
+                let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
                 return NSAttributedString(string: "You must select a campus in order to subscribe to a ministry.", attributes: attributes)
             }
         }
@@ -63,7 +63,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         //let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MinistryTableViewController.saveMinistriesToDevice))
         //self.navigationItem.leftBarButtonItem = newBackButton
         if self.navigationController != nil{
-            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         }
         
         
@@ -75,9 +75,9 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         self.tableView.reloadData()	
     }
     
-    func insertRide(dict: NSDictionary){}
+    func insertRide(_ dict: NSDictionary){}
     
-    func finishConnectionCheck(connected: Bool){
+    func finishConnectionCheck(_ connected: Bool){
         if(!connected){
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
             hasConnection = false
@@ -103,7 +103,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         self.tableView.reloadData()
     }
     
-    func emptyDataSet(scrollView: UIScrollView!, didTapView view: UIView!) {
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
         if(hasConnection == false){
             CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         }
@@ -127,7 +127,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
                         ministryMap[campus] = [ministry]
                     }
                     else{
-                        ministryMap[campus]!.insert(ministry, atIndex: 0)
+                        ministryMap[campus]!.insert(ministry, at: 0)
                     }
                     
                 }
@@ -136,14 +136,14 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     }
     
     
-    func insertMinistry(dict : NSDictionary) {
+    func insertMinistry(_ dict : NSDictionary) {
         let newMinistry = Ministry(dict: dict)
         
         if(prevMinistries.contains(newMinistry)){
             newMinistry.feedEnabled = true
         }
         
-        ministries.insert(newMinistry, atIndex: 0)
+        ministries.insert(newMinistry, at: 0)
     }
     
     func saveMinistriesToDevice(){
@@ -161,90 +161,90 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         let update = CruClients.getSubscriptionManager().didMinistriesChange(subscribedMinistries)
         
         if (update) {
-            MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+            MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             CruClients.getSubscriptionManager().saveMinistries(subscribedMinistries, updateGCM: true, handler: { (responses) in
-                MRProgressOverlayView.dismissOverlayForView(self.view, animated: true, completion: {
+                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true, completion: {
                     let success = responses.reduce(true) {(result, cur) in result && cur.1 == true}
                     print("Was actually a success: \(success)")
                     self.leavePage(success)
                 })
             })
         } else {
-            self.navigationController?.popViewControllerAnimated(true)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
-    func leavePage(success: Bool) {
+    func leavePage(_ success: Bool) {
         let title = success ? "Success" : "Failure"
         let message = success ? "Successfully subscribed/unsubscribed!" : "Something may have gone wrong..."
-        let updateAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.Alert)
+        let updateAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         if title == "Failure" {
-            updateAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: {(thing) in
-                self.navigationController?.popViewControllerAnimated(true)
+            updateAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(thing) in
+                self.navigationController?.popViewController(animated: true)
             }))
-            presentViewController(updateAlert, animated: true, completion: nil)
+            present(updateAlert, animated: true, completion: nil)
         }
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return subscribedCampuses.count
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return subscribedCampuses[section].name
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let campus = subscribedCampuses[section]
         return ministryMap[campus] == nil ? 0 : ministryMap[campus]!.count
     }
     
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("ministryCell", forIndexPath: indexPath) as! MinistryTableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ministryCell", for: indexPath) as! MinistryTableViewCell
         
             let ministry = getMinistryAtIndexPath(indexPath)
             cell.ministry = ministry
         
             if(ministry.feedEnabled == true){
-                cell.accessoryType = .Checkmark
+                cell.accessoryType = .checkmark
             }
             else{
-                cell.accessoryType = .None
+                cell.accessoryType = .none
             }
         
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath){
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath){
             let ministry = getMinistryAtIndexPath(indexPath)
             
-            if(cell.accessoryType == .Checkmark){
-                cell.accessoryType = .None
+            if(cell.accessoryType == .checkmark){
+                cell.accessoryType = .none
                 ministry.feedEnabled = false
             }
             else{
-                cell.accessoryType = .Checkmark
+                cell.accessoryType = .checkmark
                 ministry.feedEnabled = true
             }
             
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            tableView.deselectRow(at: indexPath, animated: true)
         }
         
     }
     
-    override func tableView(tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
+    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
         let header = view as! UITableViewHeaderFooterView
         header.textLabel?.font = UIFont(name: Config.fontName, size: 20)!
-        header.textLabel?.textColor = UIColor.blackColor()
+        header.textLabel?.textColor = UIColor.black
     }
     
-    func getMinistryAtIndexPath(indexPath: NSIndexPath)->Ministry{
+    func getMinistryAtIndexPath(_ indexPath: IndexPath)->Ministry{
         let row = indexPath.row
         let section = indexPath.section
         return ministryMap[subscribedCampuses[section]]![row]
@@ -252,16 +252,16 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     
     
     
-    func asyncLoadMinistryImage(min: Ministry, imageView: UIImageView){
+    func asyncLoadMinistryImage(_ min: Ministry, imageView: UIImageView){
         //let downloadQueue = dispatch_queue_create("com.cru.downloadImage", nil)
         
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             if(min.imageData == nil){
                 //let stream = NSInputStream(URL: NSURL(string: min.imageUrl)!)
                 
-                let data = NSData(contentsOfURL: NSURL(string: min.imageUrl)!)
+                let data = try? Data(contentsOf: URL(string: min.imageUrl)!)
                 //self.totalMegsUsed += Double(data!.length)/1024.0/1024.0
                 //    print("got it .... yiiissss \(Double(data!.length)/1024.0/1024.0)")
                 //print("total: \(self.totalMegsUsed)")
@@ -272,8 +272,8 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
                     image = UIImage(data: data!)!
                 }
                 
-                dispatch_async(dispatch_get_main_queue(), {
-                    imageView.contentMode = .ScaleAspectFit
+                DispatchQueue.main.async(execute: {
+                    imageView.contentMode = .scaleAspectFit
                     
                     //alternate method of setting the image
                     //imageView.image = self.smallerImage(image!)
@@ -288,43 +288,43 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     }
 
     
-    func smallerImage(image: UIImage)->UIImage{
-        let size = CGSizeApplyAffineTransform(image.size, CGAffineTransformMakeScale(0.1, 0.1))
+    func smallerImage(_ image: UIImage)->UIImage{
+        let size = image.size.applying(CGAffineTransform(scaleX: 0.1, y: 0.1))
         let hasAlpha = false
         let scale: CGFloat = 0.0 // Automatically use scale factor of main screen
         
         UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
-        image.drawInRect(CGRect(origin: CGPointZero, size: size))
+        image.draw(in: CGRect(origin: CGPoint.zero, size: size))
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return scaledImage
+        return scaledImage!
     }
     
     
-    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+    func resizeImage(_ image: UIImage, newWidth: CGFloat) -> UIImage {
         
         let scale = newWidth / image.size.width
         let newHeight = image.size.height * scale
-        UIGraphicsBeginImageContext(CGSizeMake(newWidth, newHeight))
-        image.drawInRect(CGRectMake(0, 0, newWidth, newHeight))
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         //print("resized image: from \(oldWidth) to \(newWidth)")
-        return newImage
+        return newImage!
     }
     
     //MARK: Navigation
     
-    @IBAction func saveToSettings(sender: UIBarButtonItem) {
+    @IBAction func saveToSettings(_ sender: UIBarButtonItem) {
         saveMinistriesToDevice()
         //dismissViewControllerAnimated(true, completion: nil)
     }
     
-    @IBAction func cancelToSettings(sender: UIBarButtonItem) {
+    @IBAction func cancelToSettings(_ sender: UIBarButtonItem) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

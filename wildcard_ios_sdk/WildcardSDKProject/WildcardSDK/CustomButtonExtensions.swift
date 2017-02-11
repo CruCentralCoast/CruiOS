@@ -10,32 +10,32 @@ import Foundation
 
 extension UIButton {
     class func defaultViewOnWebButton() -> UIButton{
-        let viewOnWebButton = UIButton(type: UIButtonType.Custom)
+        let viewOnWebButton = UIButton(type: UIButtonType.custom)
         viewOnWebButton.styleAsExternalLink("VIEW ON WEB")
         return viewOnWebButton
     }
     
-    func styleAsExternalLink(text:String){
+    func styleAsExternalLink(_ text:String){
         
         let buttonTitle = NSMutableAttributedString(string: text)
         buttonTitle.setKerning(0.3)
         buttonTitle.setFont(WildcardSDK.cardActionButtonFont)
         buttonTitle.setColor(UIColor.wildcardLightBlue())
-        buttonTitle.setUnderline(NSUnderlineStyle.StyleSingle)
+        buttonTitle.setUnderline(NSUnderlineStyle.styleSingle)
         
         let highlightTitle = NSMutableAttributedString(attributedString: buttonTitle)
         highlightTitle.setColor(UIColor.wildcardDarkBlue())
         
-        setAttributedTitle(buttonTitle, forState: .Normal)
-        setAttributedTitle(highlightTitle, forState: .Highlighted)
+        setAttributedTitle(buttonTitle, for: UIControlState())
+        setAttributedTitle(highlightTitle, for: .highlighted)
     }
     
     class func defaultReadMoreButton()->UIButton{
         
-        let readMoreButton = UIButton(type: UIButtonType.Custom)
-        readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackground"), forState: UIControlState.Normal)
-        readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackgroundTapped"), forState: UIControlState.Highlighted)
-        readMoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        let readMoreButton = UIButton(type: UIButtonType.custom)
+        readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackground"), for: UIControlState())
+        readMoreButton.setBackgroundImage(UIImage.loadFrameworkImage("borderedButtonBackgroundTapped"), for: UIControlState.highlighted)
+        readMoreButton.contentHorizontalAlignment = UIControlContentHorizontalAlignment.center
         let buttonTitle = NSMutableAttributedString(string: "READ MORE")
         buttonTitle.setFont(WildcardSDK.cardActionButtonFont)
         buttonTitle.setColor(UIColor.wildcardLightBlue())
@@ -44,8 +44,8 @@ extension UIButton {
         let highlightedTitle = NSMutableAttributedString(attributedString: buttonTitle)
         highlightedTitle.setColor(UIColor.wildcardDarkBlue())
         
-        readMoreButton.setAttributedTitle(buttonTitle, forState: .Normal)
-        readMoreButton.setAttributedTitle(highlightedTitle, forState: .Highlighted)
+        readMoreButton.setAttributedTitle(buttonTitle, for: UIControlState())
+        readMoreButton.setAttributedTitle(highlightedTitle, for: .highlighted)
         readMoreButton.contentEdgeInsets = UIEdgeInsetsMake(5, 10, 5, 10)
         
         return readMoreButton

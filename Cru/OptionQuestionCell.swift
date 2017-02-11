@@ -36,18 +36,18 @@ class OptionQuestionCell: UITableViewCell {
         }
     }
     
-    func setQuestion(cgq: CGQuestion) {
+    func setQuestion(_ cgq: CGQuestion) {
         cgQuestion = cgq
         error.text = ""
         question.text = cgQuestion.question
-        optionButton.setTitle(OptionQuestionCell.selectOption, forState: .Normal)
+        optionButton.setTitle(OptionQuestionCell.selectOption, for: UIControlState())
     }
     
-    func setOptionButtonText(text : String){
-        optionButton.setTitle(text, forState: .Normal)
+    func setOptionButtonText(_ text : String){
+        optionButton.setTitle(text, for: UIControlState())
     }
     
-    @IBAction func showOptions(sender: AnyObject) {
+    @IBAction func showOptions(_ sender: AnyObject) {
         presentingVC.showOptions(cgQuestion.options, optionHandler: setOptionButtonText, theCell: self)
         //presentingVC.performSegueWithIdentifier("showOptions", sender: presentingVC)
     }

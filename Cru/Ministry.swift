@@ -14,22 +14,22 @@ class Ministry: NSObject, NSCoding, Comparable{
     var campusId: String
     var feedEnabled: Bool!
     var imageUrl: String!
-    var imageData: NSData?
+    var imageData: Data?
     
     required init?(coder aDecoder: NSCoder) {
-        name = aDecoder.decodeObjectForKey("name") as! String
-        id = aDecoder.decodeObjectForKey("id") as! String
-        campusId = aDecoder.decodeObjectForKey("campusId") as! String
-        feedEnabled = aDecoder.decodeObjectForKey("feedEnabled") as! Bool
-        imageUrl = aDecoder.decodeObjectForKey("imgUrl") as! String
+        name = aDecoder.decodeObject(forKey: "name") as! String
+        id = aDecoder.decodeObject(forKey: "id") as! String
+        campusId = aDecoder.decodeObject(forKey: "campusId") as! String
+        feedEnabled = aDecoder.decodeObject(forKey: "feedEnabled") as! Bool
+        imageUrl = aDecoder.decodeObject(forKey: "imgUrl") as! String
     }
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(name, forKey: "name")
-        aCoder.encodeObject(id, forKey: "id")
-        aCoder.encodeObject(campusId, forKey: "campusId")
-        aCoder.encodeObject(feedEnabled, forKey: "feedEnabled")
-        aCoder.encodeObject(imageUrl, forKey: "imgUrl")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(campusId, forKey: "campusId")
+        aCoder.encode(feedEnabled, forKey: "feedEnabled")
+        aCoder.encode(imageUrl, forKey: "imgUrl")
     }
     
     init(dict: NSDictionary) {
@@ -41,7 +41,7 @@ class Ministry: NSObject, NSCoding, Comparable{
         if dict["imageLink"] != nil {
             self.imageUrl = dict["imageLink"] as! String
         
-            if imageUrl.rangeOfString("https:") == nil{
+            if imageUrl.range(of: "https:") == nil{
                 self.imageUrl = "https:" + imageUrl
             }
         }
@@ -68,7 +68,7 @@ class Ministry: NSObject, NSCoding, Comparable{
         self.imageUrl = imgUrl
     }
     
-    override func isEqual(object: AnyObject?) -> Bool {
+    override func isEqual(_ object: Any?) -> Bool {
         if let obj = object as? Ministry{
             //return obj.name == self.name
             return obj.id == self.id
