@@ -10,6 +10,8 @@ import UIKit
 import SwiftValidator
 
 class MinistryTeamSignUpViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
+    
+
     //reference to fields we will use
     @IBOutlet weak var fullNameField: UITextField!
     @IBOutlet weak var phoneNoField: UITextField!
@@ -17,8 +19,8 @@ class MinistryTeamSignUpViewController: UIViewController, ValidationDelegate, UI
     @IBOutlet weak var phoneNoError: UILabel!
     
     //constants: should move later to config file
-    private let fullNameKey = "fullName"
-    private let phoneNoKey = "phoneNo"
+    fileprivate let fullNameKey = "fullName"
+    fileprivate let phoneNoKey = "phoneNo"
 
     var ministryTeamStorageManager: MapLocalStorageManager!
     var ministryTeam: MinistryTeam!
@@ -49,7 +51,7 @@ class MinistryTeamSignUpViewController: UIViewController, ValidationDelegate, UI
     }
     
     //action for submitting information from the sign up process
-    @IBAction func submitInformation(sender: UIButton) {
+    @IBAction func submitInformation(_ sender: UIButton) {
         
         validator.validate(self)
     }
@@ -62,27 +64,27 @@ class MinistryTeamSignUpViewController: UIViewController, ValidationDelegate, UI
         user[phoneNoKey] = phoneNoField.text
         
         //update the user information in the local storage
-        updateUserInformation(user)
+        updateUserInformation(user as NSDictionary)
         
         //join ministry team
         CruClients.getServerClient().joinMinistryTeam(ministryTeam.id, fullName: user[fullNameKey]!, phone: user[phoneNoKey]!, callback: completeJoinTeam)
     }
     
     //completion handler for joining a ministry team
-    func completeJoinTeam(leaderInfo: NSArray?) {
+    func completeJoinTeam(_ leaderInfo: NSArray?) {
         //add ministry team to list of ministry teams we're a part of
         ministryTeamStorageManager.addElement(ministryTeam.id, elem: ministryTeam.ministryName)
         
         //navigate back to get involved
         for controller in (self.navigationController?.viewControllers)! {
-            if controller.isKindOfClass(GetInvolvedViewController) {
+            if controller.isKind(of: GetInvolvedViewController.self) {
                 self.navigationController?.popToViewController(controller, animated: true)
             }
         }
     }
     
     //used to update the user's information on the sign up page
-    func updateUserInformation(user: NSDictionary) {
+    func updateUserInformation(_ user: NSDictionary) {
         let storedUser = ministryTeamStorageManager.getObject(Config.userStorageKey)
         
         //if there is no information stored about the user yet
@@ -107,17 +109,21 @@ class MinistryTeamSignUpViewController: UIViewController, ValidationDelegate, UI
     }
     
     //function to call if the validation is not successful
-    func validationFailed(errors: [UITextField : ValidationError]) {
-        for (field, error) in validator.errors {
-            field.layer.borderColor = UIColor.redColor().CGColor
-            field.layer.borderWidth = 1.0
+    func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
+        
+        // turn the fields to red
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.layer.borderColor = UIColor.red.cgColor
+                field.layer.borderWidth = 1.0
+            }
             error.errorLabel?.text = error.errorMessage // works if you added labels
-            error.errorLabel?.hidden = false
+            error.errorLabel?.isHidden = false
         }
     }
     
     //text field delegate method for parsing and formatting the phone number
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if(textField == fullNameField){
             return GlobalUtils.shouldChangeNameTextInRange(textField.text!, range: range, text: string)
         }

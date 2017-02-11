@@ -29,9 +29,9 @@ class Event: Equatable {
     var parentMinistries: [String]
     var rideSharingEnabled: Bool
     var endDate: String
-    var endNSDate: NSDate
+    var endNSDate: Date
     var startDate: String
-    var startNSDate: NSDate
+    var startNSDate: Date
     var location: NSDictionary?
     var image: UIImage!
     var imageUrl: String
@@ -50,9 +50,9 @@ class Event: Equatable {
         self.parentMinistries = [String]()
         self.rideSharingEnabled = true
         self.endDate = ""
-        self.endNSDate = NSDate()
+        self.endNSDate = Date()
         self.startDate = ""
-        self.startNSDate = NSDate()
+        self.startNSDate = Date()
         self.image = UIImage(named: "event1")
         self.imageUrl = ""
         self.location = NSDictionary()
@@ -87,7 +87,7 @@ class Event: Equatable {
             self.parentMinistry = dParentMinistry as! String
         }
         if let dImageSquare = dict["imageSquare"] {
-            if let imageUrl = dImageSquare.objectForKey("url") {
+            if let imageUrl = (dImageSquare as AnyObject).object(forKey: "url") {
                 self.imageSquareUrl = imageUrl as! String
 //                print("SQUARE IMAGE: " + (imageUrl as! String))
             }
@@ -128,9 +128,9 @@ class Event: Equatable {
     
     //return the location as a string
     func getLocationString() -> String {
-        if location != "" {
-            let street = location!.objectForKey("street1") as! String
-            let suburb = location!.objectForKey("suburb") as! String
+        if location != nil {
+            let street = location!.object(forKey: "street1") as! String
+            let suburb = location!.object(forKey: "suburb") as! String
             
             return  street + ", " + suburb
         }
@@ -166,10 +166,10 @@ class Event: Equatable {
     
     func getWeekday() ->String{
         let str = GlobalUtils.stringFromDate(startNSDate, format: "EE")
-        return str.uppercaseString
+        return str.uppercased()
     }
     
-    static func eventsWithRideShare(eventList : [Event])->[Event]{
+    static func eventsWithRideShare(_ eventList : [Event])->[Event]{
         var filteredList = [Event]()
         
         for event in eventList{

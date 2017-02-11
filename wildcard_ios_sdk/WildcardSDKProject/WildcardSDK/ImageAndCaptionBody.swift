@@ -12,13 +12,13 @@ import Foundation
 Card Body with an image and a caption under it.
 */
 @objc
-public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
+open class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
     
-    @IBOutlet weak public var imageView: WCImageView!
-    @IBOutlet weak public var caption: UILabel!
+    @IBOutlet weak open var imageView: WCImageView!
+    @IBOutlet weak open var caption: UILabel!
     
     /// Adjusts the aspect ratio of the image view.
-    public var imageAspectRatio:CGFloat{
+    open var imageAspectRatio:CGFloat{
         get{
             return __imageAspectRatio
         }
@@ -30,7 +30,7 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
     }
     
     /// Content inset for image view and caption
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(imageTopConstraint.constant, imageLeftConstraint.constant, captionBottomConstraint.constant, imageRightConstraint.constant)
         }
@@ -48,7 +48,7 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
     }
     
     /// Controls the spacing between the caption and the image
-    public var captionSpacing:CGFloat{
+    open var captionSpacing:CGFloat{
         get{
             return captionTopConstraint.constant
         }
@@ -58,16 +58,16 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
         }
     }
     
-    @IBOutlet weak private var imageWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var captionBottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var captionTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageRightConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var imageLeftConstraint: NSLayoutConstraint!
-    private var __imageAspectRatio:CGFloat = 0.75
+    @IBOutlet weak fileprivate var imageWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var captionBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var captionTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageRightConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var imageLeftConstraint: NSLayoutConstraint!
+    fileprivate var __imageAspectRatio:CGFloat = 0.75
     
-    override public func initialize(){
+    override open func initialize(){
         caption.setDefaultDescriptionStyling()
         
         // not ready to constrain height yet, set to 0 to get rid of
@@ -75,42 +75,42 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
         imageView.delegate = self
     }
     
-    override public func update(card:Card) {
+    override open func update(_ card:Card) {
         
-        var imageUrl:NSURL?
+        var imageUrl:URL?
         
         switch(card.type){
-        case .Article:
+        case .article:
             let articleCard = card as! ArticleCard
-            imageUrl = articleCard.primaryImageURL
+            imageUrl = articleCard.primaryImageURL as URL?
             caption.text = articleCard.abstractContent
-        case .Summary:
+        case .summary:
             let summaryCard = card as! SummaryCard
-            imageUrl = summaryCard.primaryImageURL
+            imageUrl = summaryCard.primaryImageURL as URL?
             caption.text = summaryCard.abstractContent
-        case .Unknown, .Video, .Image:
+        case .unknown, .video, .image:
             imageUrl = nil
         }
         
         // download image
         if imageUrl != nil {
-            imageView.setImageWithURL(imageUrl!, mode:.ScaleAspectFill)
+            imageView.setImageWithURL(imageUrl!, mode:.scaleAspectFill)
         }
     }
     
-    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+    override open func adjustForPreferredWidth(_ cardWidth: CGFloat) {
         imageWidthConstraint.constant = cardWidth - imageLeftConstraint.constant - imageRightConstraint.constant
         imageHeightConstraint.constant = round(imageWidthConstraint.constant * imageAspectRatio)
         caption.preferredMaxLayoutWidth = imageWidthConstraint.constant
         invalidateIntrinsicContentSize()
     }
     
-    override public func intrinsicContentSize() -> CGSize {
-        let size =  CGSizeMake(preferredWidth, optimizedHeight(preferredWidth))
+    override open var intrinsicContentSize : CGSize {
+        let size =  CGSize(width: preferredWidth, height: optimizedHeight(preferredWidth))
         return size
     }
     
-    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0.0
         
         height += imageTopConstraint.constant
@@ -124,13 +124,13 @@ public class ImageAndCaptionBody : CardViewElement, WCImageViewDelegate{
     }
     
     // MARK: WCImageViewDelegate
-    public func imageViewTapped(imageView: WCImageView) {
-        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], withCard:cardView?.backingCard)
+    open func imageViewTapped(_ imageView: WCImageView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"imageTapped"], with:cardView?.backingCard)
         
         if(cardView != nil){
             let parameters = NSMutableDictionary()
             parameters["tappedImageView"] = imageView
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .ImageTapped, parameters: parameters))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .imageTapped, parameters: parameters))
         }
     }
 }

@@ -22,9 +22,9 @@ class ScrollViewController: UIViewController {
         imageView = UIImageView(image: UIImage(named: "image.png"))
         
         scrollView = UIScrollView(frame: view.bounds)
-        scrollView.backgroundColor = UIColor.blackColor()
+        scrollView.backgroundColor = UIColor.black
         scrollView.contentSize = imageView.bounds.size
-        scrollView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        scrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         scrollView.addSubview(imageView)
         view.addSubview(scrollView)
     }

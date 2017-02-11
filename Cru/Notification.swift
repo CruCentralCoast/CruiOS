@@ -11,9 +11,9 @@ import Foundation
 class Notification: NSObject, NSCoding {
     var content: String
     var title: String
-    var dateReceived: NSDate
+    var dateReceived: Date
     
-    init?(title: String, content: String, dateReceived: NSDate) {
+    init?(title: String, content: String, dateReceived: Date) {
         self.title = title
         self.content = content
         self.dateReceived = dateReceived
@@ -26,8 +26,8 @@ class Notification: NSObject, NSCoding {
     }
     
     // MARK: Archiving Paths
-    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("notifications")
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("notifications")
     
     // Mark: Types
     struct PropertyKey {
@@ -37,16 +37,16 @@ class Notification: NSObject, NSCoding {
     }
     
     // Mark: NSCoding
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(title, forKey: PropertyKey.titleKey)
-        aCoder.encodeObject(content, forKey: PropertyKey.contentKey)
-        aCoder.encodeObject(dateReceived, forKey: PropertyKey.dateKey)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(title, forKey: PropertyKey.titleKey)
+        aCoder.encode(content, forKey: PropertyKey.contentKey)
+        aCoder.encode(dateReceived, forKey: PropertyKey.dateKey)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
-        let title = aDecoder.decodeObjectForKey(PropertyKey.titleKey) as! String
-        let content = aDecoder.decodeObjectForKey(PropertyKey.contentKey) as! String
-        let dateReceived = aDecoder.decodeObjectForKey(PropertyKey.dateKey) as! NSDate
+        let title = aDecoder.decodeObject(forKey: PropertyKey.titleKey) as! String
+        let content = aDecoder.decodeObject(forKey: PropertyKey.contentKey) as! String
+        let dateReceived = aDecoder.decodeObject(forKey: PropertyKey.dateKey) as! Date
         
         self.init(title: title, content: content, dateReceived: dateReceived)
     }

@@ -11,35 +11,35 @@ import QuartzCore
 
 @objc
 public protocol WCImageViewDelegate{
-    optional func imageViewTapped(imageView:WCImageView)
+    @objc optional func imageViewTapped(_ imageView:WCImageView)
 }
 
 /// Wildcard Extension of UIImageView with a few extra functions
 @objc
-public class WCImageView : UIImageView
+open class WCImageView : UIImageView
 {
     /// Default cross fade animation duration when setting an image
-    public var crossFadeDuration:NSTimeInterval = 0.8
+    open var crossFadeDuration:TimeInterval = 0.8
     
     /// Set image to URL and automatically set the image
-    public func setImageWithURL(url:NSURL, mode:UIViewContentMode){
+    open func setImageWithURL(_ url:URL, mode:UIViewContentMode){
         setImageWithURL(url, mode:mode, completion: nil)
     }
     
     /// See WCImageViewDelegate
-    public var delegate:WCImageViewDelegate?
+    open var delegate:WCImageViewDelegate?
     
     /// Set image to URL with a completion block. If the completion block is nil, this function will automatically set the image for the WCAImageView. If the completion block is not nil, this function will not assign the image directly and use the callback -- more suitable for re-use scenarios. This should be called on the main thread.
-    public func setImageWithURL(url:NSURL, mode:UIViewContentMode, completion: ((UIImage?, NSError?)->Void)?) -> Void
+    open func setImageWithURL(_ url:URL, mode:UIViewContentMode, completion: ((UIImage?, NSError?)->Void)?) -> Void
     {
-        let imageRequest = NSMutableURLRequest(URL: url)
+        var imageRequest = URLRequest(url: url)
         imageRequest.addValue("image/*", forHTTPHeaderField: "Accept")
         
         cancelRequest()
         
-        if let cachedImage = ImageCache.sharedInstance.cachedImageForRequest(imageRequest){
+        if let cachedImage = ImageCache.sharedInstance.cachedImageForRequest(imageRequest as URLRequest){
             if let cb = completion{
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     cb(cachedImage,nil)
                 })
             }else{
@@ -47,46 +47,46 @@ public class WCImageView : UIImageView
             }
         }else{
             startPulsing()
-            let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: nil, delegateQueue: WildcardSDK.networkDelegateQueue)
+            let session = URLSession(configuration: URLSessionConfiguration.default, delegate: nil, delegateQueue: WildcardSDK.networkDelegateQueue)
             
             _downloadTask =
-                session.downloadTaskWithRequest(imageRequest,
-                    completionHandler: { (location:NSURL?, resp:NSURLResponse?, error:NSError?) -> Void in
+                session.downloadTask(with: imageRequest,
+                    completionHandler: { (location:URL?, resp:URLResponse?, error:NSError?) -> Void in
                         self.stopPulsing()
                         
                         var error = error
                         guard let imageLocation = location else {
-                            error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.MalformedResponse.rawValue, userInfo: nil)
+                            error = NSError(domain: Bundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.malformedResponse.rawValue, userInfo: nil)
                             return
                         }
                         
                         guard let underlyingQueue = WildcardSDK.networkDelegateQueue.underlyingQueue else {
-                            error = NSError(domain: NSBundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.MalformedResponse.rawValue, userInfo: nil)
+                            error = NSError(domain: Bundle.wildcardSDKBundle().bundleIdentifier!, code: WCErrorCode.malformedResponse.rawValue, userInfo: nil)
                             return
                         }
                         
                         if(error == nil){
-                            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
-                                let data:NSData? = NSData(contentsOfURL: imageLocation)
+                            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.high).async(execute: { () -> Void in
+                                let data:Data? = try? Data(contentsOf: imageLocation)
                                 if let newImage = UIImage(data: data!){
                                     ImageCache.sharedInstance.cacheImageForRequest(newImage, request: imageRequest)
                                     if let cb = completion{
-                                        dispatch_async(underlyingQueue, { () -> Void in
+                                        underlyingQueue.async(execute: { () -> Void in
                                             cb(newImage,nil)
                                         })
                                     }else{
-                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        DispatchQueue.main.async(execute: { () -> Void in
                                             self.setImage(newImage, mode: mode)
                                         })
                                     }
                                 }else{
                                     let error = NSError(domain: "Couldn't create image from data", code: 0, userInfo: nil)
                                     if let cb = completion{
-                                        dispatch_async(underlyingQueue, { () -> Void in
+                                        underlyingQueue.async(execute: { () -> Void in
                                             cb(nil,error)
                                         })
                                     }else{
-                                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                        DispatchQueue.main.async(execute: { () -> Void in
                                             self.setNoImage()
                                         })
                                     }
@@ -99,62 +99,62 @@ public class WCImageView : UIImageView
                                 self.setNoImage()
                             }
                         }
-                })
+                } as! (URL?, URLResponse?, Error?) -> Void)
             _downloadTask?.resume()
         }
     }
     
     /// Set the default place holder image, use this when there was a problem downloading or loading an image
-    public func setNoImage(){
-        tintColor = UIColor.whiteColor()
-        setImage(UIImage.loadFrameworkImage("noImage")!, mode: .Center)
+    open func setNoImage(){
+        tintColor = UIColor.white
+        setImage(UIImage.loadFrameworkImage("noImage")!, mode: .center)
     }
     
     /// Cancel any pending image requests
-    public func cancelRequest(){
+    open func cancelRequest(){
         _downloadTask?.cancel()
         _downloadTask = nil;
     }
     
     /// Set image with a content mode. Does a cross fade animation by default
-    public func setImage(image:UIImage, mode:UIViewContentMode){
+    open func setImage(_ image:UIImage, mode:UIViewContentMode){
         contentMode = mode
-        UIView.transitionWithView(self,
+        UIView.transition(with: self,
             duration:crossFadeDuration,
-            options: UIViewAnimationOptions.TransitionCrossDissolve,
+            options: UIViewAnimationOptions.transitionCrossDissolve,
             animations: { self.image = image },
             completion: nil)
     }
     
-    private var _downloadTask:NSURLSessionDownloadTask?
-    private var _tapGesture:UITapGestureRecognizer!
+    fileprivate var _downloadTask:URLSessionDownloadTask?
+    fileprivate var _tapGesture:UITapGestureRecognizer!
     
     func startPulsing(){
         let pulseAnimation:CABasicAnimation = CABasicAnimation(keyPath: "opacity")
         pulseAnimation.duration = 0.75
-        pulseAnimation.toValue = NSNumber(float: 1.0)
-        pulseAnimation.fromValue = NSNumber(float: 0.6)
+        pulseAnimation.toValue = NSNumber(value: 1.0 as Float)
+        pulseAnimation.fromValue = NSNumber(value: 0.6 as Float)
         pulseAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut);
         pulseAnimation.autoreverses = true;
         pulseAnimation.repeatCount = FLT_MAX;
-        layer.addAnimation(pulseAnimation, forKey: nil)
+        layer.add(pulseAnimation, forKey: nil)
     }
 
     func stopPulsing(){
         layer.removeAllAnimations()
     }
     
-    func imageViewTapped(recognizer:UITapGestureRecognizer!){
+    func imageViewTapped(_ recognizer:UITapGestureRecognizer!){
         delegate?.imageViewTapped?(self)
     }
     
-    public func setup(){
+    open func setup(){
         backgroundColor = UIColor.wildcardBackgroundGray()
         layer.cornerRadius = WildcardSDK.imageCornerRadius
         layer.masksToBounds = true
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         
-        _tapGesture = UITapGestureRecognizer(target: self, action: "imageViewTapped:")
+        _tapGesture = UITapGestureRecognizer(target: self, action: #selector(WCImageViewDelegate.imageViewTapped(_:)))
         addGestureRecognizer(_tapGesture)
     }
     
@@ -167,7 +167,7 @@ public class WCImageView : UIImageView
         setup()
     }
     
-    public override func awakeFromNib() {
+    open override func awakeFromNib() {
         super.awakeFromNib()
         setup()
     }

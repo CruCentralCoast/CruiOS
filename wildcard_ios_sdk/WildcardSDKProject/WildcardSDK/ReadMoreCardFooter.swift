@@ -9,13 +9,13 @@
 import Foundation
 
 @objc
-public class ReadMoreFooter: CardViewElement {
+open class ReadMoreFooter: CardViewElement {
     
     /// Read More Button. Always left aligned at the moment.
-    public var readMoreButton:UIButton!
+    open var readMoreButton:UIButton!
     
     /// Content insets. Right inset for this element does nothing at the moment.
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, 0)
         }
@@ -27,11 +27,11 @@ public class ReadMoreFooter: CardViewElement {
     }
     
     // MARK: Private
-    private var leftConstraint:NSLayoutConstraint!
-    private var topConstraint:NSLayoutConstraint!
-    private var bottomConstraint:NSLayoutConstraint!
+    fileprivate var leftConstraint:NSLayoutConstraint!
+    fileprivate var topConstraint:NSLayoutConstraint!
+    fileprivate var bottomConstraint:NSLayoutConstraint!
     
-    override public func initialize() {
+    override open func initialize() {
         readMoreButton = UIButton.defaultReadMoreButton()
         addSubview(readMoreButton!)
         
@@ -39,24 +39,24 @@ public class ReadMoreFooter: CardViewElement {
         topConstraint = readMoreButton?.constrainTopToSuperView(10)
         bottomConstraint = readMoreButton?.constrainBottomToSuperView(10)
         
-        readMoreButton.addTarget(self, action: "readMoreButtonTapped", forControlEvents: UIControlEvents.TouchUpInside)
+        readMoreButton.addTarget(self, action: #selector(ReadMoreFooter.readMoreButtonTapped), for: UIControlEvents.touchUpInside)
     }
     
-    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0
         height += topConstraint.constant
-        height += readMoreButton.intrinsicContentSize().height
+        height += readMoreButton.intrinsicContentSize.height
         height += bottomConstraint.constant
         return round(height)
     }
     
-    override public func adjustForPreferredWidth(cardWidth: CGFloat) {
+    override open func adjustForPreferredWidth(_ cardWidth: CGFloat) {
     }
     
     func readMoreButtonTapped(){
-        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"readMore"], withCard: cardView?.backingCard)
+        WildcardSDK.analytics?.trackEvent("CardEngaged", withProperties: ["cta":"readMore"], with: cardView?.backingCard)
         if(cardView != nil){
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .Maximize, parameters: nil))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .maximize, parameters: nil))
         }
     }
 }

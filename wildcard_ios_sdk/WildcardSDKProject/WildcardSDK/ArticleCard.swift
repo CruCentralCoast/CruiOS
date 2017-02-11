@@ -12,25 +12,25 @@ import Foundation
 Article Card
 */
 @objc
-public class ArticleCard : Card{
+open class ArticleCard : Card{
     
-    public let title:String
-    public let creator:Creator
-    public let abstractContent:String?
+    open let title:String
+    open let creator:Creator
+    open let abstractContent:String?
     
-    public let keywords:[String]?
-    public let tags:[String]?
-    public let html:String?
-    public let publicationDate:NSDate?
-    public let isBreaking:Bool?
-    public let source:String?
-    public let author:String?
-    public let updatedDate:NSDate?
-    public let media:NSDictionary?
-    public let appLinkIos:NSURL?
-    public let primaryImageURL:NSURL?
+    open let keywords:[String]?
+    open let tags:[String]?
+    open let html:String?
+    open let publicationDate:Date?
+    open let isBreaking:Bool?
+    open let source:String?
+    open let author:String?
+    open let updatedDate:Date?
+    open let media:NSDictionary?
+    open let appLinkIos:URL?
+    open let primaryImageURL:URL?
     
-    public init(title:String, abstractContent:String, url:NSURL,creator:Creator, data:NSDictionary){
+    public init(title:String, abstractContent:String, url:URL,creator:Creator, data:NSDictionary){
         self.title = title
         self.abstractContent = abstractContent
         self.creator = creator
@@ -38,28 +38,28 @@ public class ArticleCard : Card{
         self.tags = data["tags"] as? [String]
         
         if let url = data["appLinkIos"] as? String{
-            self.appLinkIos = NSURL(string: url)
+            self.appLinkIos = URL(string: url)
         }else{
             self.appLinkIos = nil
         }
         
         var cardHtml:String?
-        var cardPublicationDate:NSDate?
-        var cardUpdatedDate:NSDate?
+        var cardPublicationDate:Date?
+        var cardUpdatedDate:Date?
         var cardIsBreaking:Bool?
         var cardAuthor:String?
         var cardSource:String?
         var cardMedia:NSDictionary?
-        var cardPrimaryImageURL:NSURL?
+        var cardPrimaryImageURL:URL?
         
         // optional fields from article data
         if let article = data["article"] as? NSDictionary{
-            if let epochTime = article["publicationDate"] as? NSTimeInterval{
-                cardPublicationDate = NSDate(timeIntervalSince1970: epochTime/1000)
+            if let epochTime = article["publicationDate"] as? TimeInterval{
+                cardPublicationDate = Date(timeIntervalSince1970: epochTime/1000)
             }
             
-            if let epochTime = article["updatedDate"] as? NSTimeInterval{
-                cardUpdatedDate = NSDate(timeIntervalSince1970: epochTime/1000)
+            if let epochTime = article["updatedDate"] as? TimeInterval{
+                cardUpdatedDate = Date(timeIntervalSince1970: epochTime/1000)
             }
             
             cardHtml = article["htmlContent"] as? String
@@ -71,7 +71,7 @@ public class ArticleCard : Card{
             if let media = cardMedia{
                 if media["type"] as! String == "image"{
                     let imageUrl = media["imageUrl"] as! String
-                    cardPrimaryImageURL = NSURL(string:imageUrl)
+                    cardPrimaryImageURL = URL(string:imageUrl)
                 }
             }
         }
@@ -88,15 +88,15 @@ public class ArticleCard : Card{
         super.init(webUrl: url, cardType: "article")
     }
     
-    override class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+    override class func deserializeFromData(_ data: NSDictionary) -> AnyObject? {
         var articleCard:ArticleCard?
         
-        var startURL:NSURL?
+        var startURL:URL?
         var title:String?
         var abstractContent:String?
         var creator:Creator?
         if let urlString = data["webUrl"] as? String{
-            startURL = NSURL(string:urlString)
+            startURL = URL(string:urlString)
         }
         
         if let creatorData = data["creator"] as? NSDictionary{
@@ -113,10 +113,10 @@ public class ArticleCard : Card{
         return articleCard
     }
     
-    public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return layout == WCCardLayout.ArticleCardTall ||
-            layout == WCCardLayout.ArticleCardShort ||
-            layout == WCCardLayout.ArticleCardNoImage
+    open override func supportsLayout(_ layout: WCCardLayout) -> Bool {
+        return layout == WCCardLayout.articleCardTall ||
+            layout == WCCardLayout.articleCardShort ||
+            layout == WCCardLayout.articleCardNoImage
     }
     
 }

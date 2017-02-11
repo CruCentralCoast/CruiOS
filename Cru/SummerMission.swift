@@ -16,8 +16,8 @@ class SummerMission {
     var url: String
     var cost: Double
     var leaders: String
-    var startNSDate: NSDate
-    var endNSDate: NSDate
+    var startNSDate: Date
+    var endNSDate: Date
     var location: NSDictionary?
     var imageLink: String
     
@@ -28,8 +28,8 @@ class SummerMission {
         self.url = ""
         self.cost = 0.0
         self.leaders = ""
-        self.startNSDate = NSDate()
-        self.endNSDate = NSDate()
+        self.startNSDate = Date()
+        self.endNSDate = Date()
         self.location = NSDictionary()
         self.imageLink = ""
     }
@@ -73,7 +73,7 @@ class SummerMission {
     func getLocationString() -> String {
         var retLoc = ""
         
-        if location != "" {
+        if location != nil {
             if let dSuburb = location!["suburb"] as? String {
                 retLoc += dSuburb
             }

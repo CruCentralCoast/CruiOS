@@ -50,16 +50,16 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         super.viewDidLoad()
         
         
-        phoneField.keyboardType = UIKeyboardType.NumberPad
+        phoneField.keyboardType = UIKeyboardType.numberPad
         
-        roundTripButton.setImage(checkImage, forState: UIControlState.Selected)
-        roundTripButton.setImage(uncheckImage, forState: UIControlState.Normal)
+        roundTripButton.setImage(checkImage, for: UIControlState.selected)
+        roundTripButton.setImage(uncheckImage, for: UIControlState())
         
-        toEventButton.setImage(checkImage, forState: UIControlState.Selected)
-        toEventButton.setImage(uncheckImage, forState: UIControlState.Normal)
+        toEventButton.setImage(checkImage, for: UIControlState.selected)
+        toEventButton.setImage(uncheckImage, for: UIControlState())
         
-        fromEventButton.setImage(checkImage, forState: UIControlState.Selected)
-        fromEventButton.setImage(uncheckImage, forState: UIControlState.Normal)
+        fromEventButton.setImage(checkImage, for: UIControlState.selected)
+        fromEventButton.setImage(uncheckImage, for: UIControlState())
         
         stepper.value = 1
         numSeats.text = "1"
@@ -80,11 +80,11 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         navigationItem.title = "Offer a Ride"
         
         self.navigationItem.hidesBackButton = true
-        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(handleCancelRide(_:)))
+        let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleCancelRide(_:)))
         self.navigationItem.leftBarButtonItem = newBackButton
         
         
-        eventName.userInteractionEnabled = true // Remember to do this
+        eventName.isUserInteractionEnabled = true // Remember to do this
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(chooseEvent(_:)))
         eventName.addGestureRecognizer(tap)
         tap.delegate = self
@@ -94,19 +94,19 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
             eventName.text = chosenEvent!.name
         }
         
-        pickupLocation.userInteractionEnabled = true
-        let tap2: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "choosePickupLocation:")
+        pickupLocation.isUserInteractionEnabled = true
+        let tap2: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(OfferRideViewController.choosePickupLocation(_:)))
         pickupLocation.addGestureRecognizer(tap2)
         tap2.delegate = self
         
-        pickupTime.userInteractionEnabled = true
-        let tap3: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "chooseTime:")
+        pickupTime.isUserInteractionEnabled = true
+        let tap3: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(OfferRideViewController.chooseTime(_:)))
     
         pickupTime.addGestureRecognizer(tap3)
         tap3.delegate = self
         
-        pickupDate.userInteractionEnabled = true
-        let tap4: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "chooseDate:")
+        pickupDate.isUserInteractionEnabled = true
+        let tap4: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(OfferRideViewController.chooseDate(_:)))
         pickupDate.addGestureRecognizer(tap4)
         tap4.delegate = self
     
@@ -117,7 +117,7 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func numSeatsChanged(sender: UIStepper) {
+    @IBAction func numSeatsChanged(_ sender: UIStepper) {
         var val =  Int(sender.value).description
 
         if(val == "0"){
@@ -130,7 +130,7 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
     }
 
     
-    @IBAction func touchedButton(sender: AnyObject) {
+    @IBAction func touchedButton(_ sender: AnyObject) {
         if let sendr = sender as? RadioButton{
             let text = sendr.titleLabel?.text
             if(text == "  Round-Trip"){
@@ -161,7 +161,7 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
             return
         }
         
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         //CruClients.getRideUtils().postRideOffer(chosenEvent!.id, name: (nameField.text)!, phone: phoneField.text!, seats: Int(numSeats.text!)!, location: location.getLocationAsDict(location), radius: 1, direction: getDirection(), handler:  handleRequestResult)
         
         
@@ -170,7 +170,7 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
     
     
     // Function for returning a direction based off of what is picked in the diriver direction picker
-    private func getDirection() -> String {
+    fileprivate func getDirection() -> String {
         if direction! == "To Event" {
             return "to"
         }
@@ -182,12 +182,12 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         }
     }
     
-    func handleRequestResult(result : Ride?){
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+    func handleRequestResult(_ result : Ride?){
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         if result != nil {
             presentAlert("Ride Offered", msg: "Thank you your offered ride has been created!", handler:  {
                 if let navController = self.navigationController {
-                    navController.popViewControllerAnimated(true)
+                    navController.popViewController(animated: true)
                     self.rideVC?.refresh(self)
                 }
             })
@@ -198,35 +198,69 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         }
     }
     
-    private func presentAlert(title: String, msg: String, handler: ()->()) {
-        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+    fileprivate func presentAlert(_ title: String, msg: String, handler: @escaping ()->()) {
+        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
         
-        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             action in
             handler()
             
         }))
-        presentViewController(cancelRideAlert, animated: true, completion: nil)
+        present(cancelRideAlert, animated: true, completion: nil)
         
     }
     
     
-    func resetLabel(field: UITextField, error: UILabel){
-        field.layer.borderColor = UIColor.clearColor().CGColor
+    func resetLabel(_ field: UITextField, error: UILabel){
+        field.layer.borderColor = UIColor.clear.cgColor
         field.layer.borderWidth = 0.0
         error.text = ""
     }
     
-    func validationFailed(errors:[UITextField:ValidationError]) {
+    func validationFailed(_ errors:[(Validatable ,ValidationError)]) {
+        
+        var numValid = true
+        var nameValid = true
+        
+        // turn the fields to red
+        for (field, error) in errors {
+            if let field = field as? UITextField {
+                field.layer.borderColor = CruColors.yellow.cgColor
+                //field.layer.borderColor = UIColor.red.cgColor
+                field.layer.borderWidth = 1.0
+                
+                if(field == nameField){
+                    nameValid = false
+                }
+                if(field == phoneField){
+                    numValid = false
+                }
+            }
+            error.errorLabel?.text = error.errorMessage // works if you added labels
+            error.errorLabel?.isHidden = false
+            
+            
+        }
+        
+        if(nameValid){
+            resetLabel(nameField, error: nameFieldError)
+        }
+        if(numValid){
+            resetLabel(phoneField, error: phoneFieldError)
+        }
+    }
+    
+    
+    /*func validationFailed(_ errors:[UITextField:ValidationError]) {
         var numValid = true
         var nameValid = true
         
         // turn the fields to red
         for (field, error) in validator.errors {
-            field.layer.borderColor = UIColor.redColor().CGColor
+            field.layer.borderColor = UIColor.red.cgColor
             field.layer.borderWidth = 1.0
             error.errorLabel?.text = error.errorMessage // works if you added labels
-            error.errorLabel?.hidden = false
+            error.errorLabel?.isHidden = false
             
             if(field == nameField){
                 nameValid = false
@@ -242,13 +276,13 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         if(numValid){
             resetLabel(phoneField, error: phoneFieldError)
         }
-    }
+    }*/
     
-    @IBAction func submitPressed(sender: UIButton) {
+    @IBAction func submitPressed(_ sender: UIButton) {
         validator.validate(self)
     }
     
-    @IBAction func choosePickupLocation(sender: AnyObject) {
+    @IBAction func choosePickupLocation(_ sender: AnyObject) {
         let locationPicker = LocationPickerViewController()
         
         if self.location != nil {
@@ -262,21 +296,21 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         navigationController?.pushViewController(locationPicker, animated: true)
     }
     
-    @IBAction func chooseEventSelected(sender: AnyObject) {
-        self.performSegueWithIdentifier("eventPopover", sender: self)
+    @IBAction func chooseEventSelected(_ sender: AnyObject) {
+        self.performSegue(withIdentifier: "eventPopover", sender: self)
     }
-    func chooseEvent(sender: UITapGestureRecognizer){
+    func chooseEvent(_ sender: UITapGestureRecognizer){
         chooseEventSelected(sender)
     }
-    @IBAction func chooseTime(sender: UIButton) {
+    @IBAction func chooseTime(_ sender: UIButton) {
         TimePicker.pickTime(self)
     }
     
-    @IBAction func chooseDate(sender: AnyObject) {
+    @IBAction func chooseDate(_ sender: AnyObject) {
         TimePicker.pickDate(self, handler: chooseDateHandler)
     }
     
-    func chooseDateHandler(month : Int, day : Int, year : Int){
+    func chooseDateHandler(_ month : Int, day : Int, year : Int){
         let month = String(month)
         let day = String(day)
         let year = String(year)
@@ -287,16 +321,16 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
 
 
     
-    func datePicked(obj: NSDate) {
-        let formatter = NSDateFormatter()
+    func datePicked(_ obj: Date) {
+        let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
-        pickupTime.text = formatter.stringFromDate(obj)
+        pickupTime.text = formatter.string(from: obj)
         formHasBeenEdited = true
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "eventPopover"{
-            let vc  = segue.destinationViewController as? EventsModalTableViewController
+            let vc  = segue.destination as? EventsModalTableViewController
             vc?.events = Event.eventsWithRideShare(events)
             vc?.vc = self
             let controller = vc?.popoverPresentationController
@@ -308,8 +342,8 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
     
     
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
     // MARK: - Table view data source
@@ -319,18 +353,18 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         })
     }
     
-    func insertEvent(dict : NSDictionary) {
-        events.insert(Event(dict: dict)!, atIndex: 0)
+    func insertEvent(_ dict : NSDictionary) {
+        events.insert(Event(dict: dict)!, at: 0)
     }
     
     /* Function for handling canceling a submission of offering a ride. Displays an alert box if there is unsaved data in the offer ride form and asks the user if they would really like to exit */
-    func handleCancelRide(sender: UIBarButtonItem) {
+    func handleCancelRide(_ sender: UIBarButtonItem) {
         if (formHasBeenEdited) {
-            let cancelRideAlert = UIAlertController(title: "Cancel Ride", message: "Are you sure you would like to continue? All unsaved data will be lost!", preferredStyle: UIAlertControllerStyle.Alert)
+            let cancelRideAlert = UIAlertController(title: "Cancel Ride", message: "Are you sure you would like to continue? All unsaved data will be lost!", preferredStyle: UIAlertControllerStyle.alert)
             
-            cancelRideAlert.addAction(UIAlertAction(title: "Yes", style: .Destructive, handler: performBackAction))
-            cancelRideAlert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: nil))
-            presentViewController(cancelRideAlert, animated: true, completion: nil)
+            cancelRideAlert.addAction(UIAlertAction(title: "Yes", style: .destructive, handler: performBackAction))
+            cancelRideAlert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+            present(cancelRideAlert, animated: true, completion: nil)
         }
         else {
             performBackAction(UIAlertAction())
@@ -338,8 +372,8 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
     }
     
     // Helper function for popping the offer rides view controller from the view stack and show the rides table
-    func performBackAction(action: UIAlertAction) {
-        self.navigationController?.popViewControllerAnimated(true)
+    func performBackAction(_ action: UIAlertAction) {
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -347,8 +381,8 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
 }
 
 extension Location {
-    func getLocationAsDict(loc: Location) -> NSDictionary {
-        var dict = [String:AnyObject]()
+    func getLocationAsDict(_ loc: Location) -> Dictionary<String, Any> {
+        var dict = [String:Any]()
         
         if let street = loc.placemark.addressDictionary!["Street"] {
             dict[LocationKeys.street1] = street

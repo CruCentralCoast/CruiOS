@@ -10,11 +10,11 @@ import Foundation
 
 public extension UIView{
     
-    class func loadFromNibNamed(nibNamed: String) -> UIView? {
+    class func loadFromNibNamed(_ nibNamed: String) -> UIView? {
         return UINib(
             nibName: nibNamed,
-            bundle: NSBundle.wildcardSDKBundle()
-            ).instantiateWithOwner(nil, options: nil)[0] as? UIView
+            bundle: Bundle.wildcardSDKBundle()
+            ).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
     
     /// For any view with a superview, constrain all edges flush with superview. e.g. Leading, Top, Bottom, Right all 0
@@ -27,117 +27,117 @@ public extension UIView{
     }
     
     /// Given a reference view, constrain this view to be exactly the same size and position (Useful for overlays that aren't child views). Superviews must be the same
-    public func constrainExactlyToView(view:UIView){
+    public func constrainExactlyToView(_ view:UIView){
         if(hasSuperview() && (superview == view.superview)){
             translatesAutoresizingMaskIntoConstraints = false
-            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1.0, constant: 0.0))
-            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: view, attribute: .Width, multiplier: 1.0, constant: 0.0))
-            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: view, attribute: .Height, multiplier: 1.0, constant: 0.0))
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .centerY, multiplier: 1.0, constant: 0.0))
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: view, attribute: .width, multiplier: 1.0, constant: 0.0))
+            superview?.addConstraint(NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: view, attribute: .height, multiplier: 1.0, constant: 0.0))
         }
     }
     
     /// Given a reference view, align left. Superviews must be the same.
-    public func alignLeftToView(view:UIView){
+    public func alignLeftToView(_ view:UIView){
         if(hasSuperview() && (superview == view.superview)){
             translatesAutoresizingMaskIntoConstraints = false
-            let constraint = NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: view, attribute: .Leading, multiplier: 1.0, constant: 0)
+            let constraint = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: view, attribute: .leading, multiplier: 1.0, constant: 0)
             superview?.addConstraint(constraint)
         }
     }
     
     /// Given a reference view, align right. Superviews must be the same.
-    public func alignRightToView(view:UIView){
+    public func alignRightToView(_ view:UIView){
         if(hasSuperview() && (superview == view.superview)){
             translatesAutoresizingMaskIntoConstraints = false
-            let constraint = NSLayoutConstraint(item: self, attribute: .Trailing, relatedBy: .Equal, toItem: view, attribute: .Trailing, multiplier: 1.0, constant: 0)
+            let constraint = NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: view, attribute: .trailing, multiplier: 1.0, constant: 0)
             superview?.addConstraint(constraint)
         }
     }
     
     /// Given a reference view, align top. Superviews must be the same.
-    public func alignTopToView(view:UIView){
+    public func alignTopToView(_ view:UIView){
         if(hasSuperview() && (superview == view.superview)){
             translatesAutoresizingMaskIntoConstraints = false
-            let constraint = NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: view, attribute: .Top, multiplier: 1.0, constant: 0)
+            let constraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1.0, constant: 0)
             superview?.addConstraint(constraint)
         }
     }
     
     /// Given a reference view, align bottom. Superviews must be the same.
-    public func alignBottomToView(view:UIView){
+    public func alignBottomToView(_ view:UIView){
         if(hasSuperview() && (superview == view.superview)){
             translatesAutoresizingMaskIntoConstraints = false
-            let constraint = NSLayoutConstraint(item: self, attribute: .Bottom, relatedBy: .Equal, toItem: view, attribute: .Bottom, multiplier: 1.0, constant: 0)
+            let constraint = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1.0, constant: 0)
             superview?.addConstraint(constraint)
         }
     }
     
-    public func constrainLeftToSuperView(offset:CGFloat)->NSLayoutConstraint{
+    public func constrainLeftToSuperView(_ offset:CGFloat)->NSLayoutConstraint{
         translatesAutoresizingMaskIntoConstraints = false
-        let leftConstraint = NSLayoutConstraint(item: self, attribute: .Leading, relatedBy: .Equal, toItem: self.superview, attribute: .Leading, multiplier: 1.0, constant: offset)
+        let leftConstraint = NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: self.superview, attribute: .leading, multiplier: 1.0, constant: offset)
         superview?.addConstraint(leftConstraint)
         return leftConstraint
     }
     
-    public func constrainRightToSuperView(offset:CGFloat)->NSLayoutConstraint{
+    public func constrainRightToSuperView(_ offset:CGFloat)->NSLayoutConstraint{
         translatesAutoresizingMaskIntoConstraints = false
-        let rightConstraint = NSLayoutConstraint(item: self.superview!, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1.0, constant: offset)
+        let rightConstraint = NSLayoutConstraint(item: self.superview!, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1.0, constant: offset)
         superview?.addConstraint(rightConstraint)
         return rightConstraint
     }
     
-    public func constrainTopToSuperView(offset:CGFloat)->NSLayoutConstraint{
+    public func constrainTopToSuperView(_ offset:CGFloat)->NSLayoutConstraint{
         translatesAutoresizingMaskIntoConstraints = false
-        let topConstraint = NSLayoutConstraint(item: self, attribute: .Top, relatedBy: .Equal, toItem: self.superview, attribute: .Top, multiplier: 1.0, constant: offset)
+        let topConstraint = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: self.superview, attribute: .top, multiplier: 1.0, constant: offset)
         superview?.addConstraint(topConstraint)
         return topConstraint
     }
     
-    public func constrainBottomToSuperView(offset:CGFloat)->NSLayoutConstraint{
+    public func constrainBottomToSuperView(_ offset:CGFloat)->NSLayoutConstraint{
         translatesAutoresizingMaskIntoConstraints = false
-        let bottomConstraint = NSLayoutConstraint(item: self.superview!, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: offset)
+        let bottomConstraint = NSLayoutConstraint(item: self.superview!, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: offset)
         superview?.addConstraint(bottomConstraint)
         return bottomConstraint
     }
     
-    public func verticallyCenterToSuperView(offset:CGFloat)->NSLayoutConstraint {
+    public func verticallyCenterToSuperView(_ offset:CGFloat)->NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
-        let yConstraint = NSLayoutConstraint(item: self, attribute: .CenterY, relatedBy: .Equal, toItem: superview, attribute: .CenterY, multiplier: 1.0, constant: offset)
+        let yConstraint = NSLayoutConstraint(item: self, attribute: .centerY, relatedBy: .equal, toItem: superview, attribute: .centerY, multiplier: 1.0, constant: offset)
         superview!.addConstraint(yConstraint)
         return yConstraint
     }
     
-    public func horizontallyCenterToSuperView(offset:CGFloat)->NSLayoutConstraint {
+    public func horizontallyCenterToSuperView(_ offset:CGFloat)->NSLayoutConstraint {
         translatesAutoresizingMaskIntoConstraints = false
-        let xConstraint = NSLayoutConstraint(item: self, attribute: .CenterX, relatedBy: .Equal, toItem: superview, attribute: .CenterX, multiplier: 1.0, constant: offset)
+        let xConstraint = NSLayoutConstraint(item: self, attribute: .centerX, relatedBy: .equal, toItem: superview, attribute: .centerX, multiplier: 1.0, constant: offset)
         superview!.addConstraint(xConstraint)
         return xConstraint
     }
     
-    public func constrainHeight(height:CGFloat)->NSLayoutConstraint{
+    public func constrainHeight(_ height:CGFloat)->NSLayoutConstraint{
         translatesAutoresizingMaskIntoConstraints = false
-        let heightConstraint = NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .Height, multiplier: 1.0, constant: height)
+        let heightConstraint = NSLayoutConstraint(item: self, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: height)
         addConstraint(heightConstraint)
         return heightConstraint
     }
     
-    public func constrainWidth(width:CGFloat)->NSLayoutConstraint{
+    public func constrainWidth(_ width:CGFloat)->NSLayoutConstraint{
         translatesAutoresizingMaskIntoConstraints = false
-        let widthConstraint = NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .Width, multiplier: 1.0, constant: width)
+        let widthConstraint = NSLayoutConstraint(item: self, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .width, multiplier: 1.0, constant: width)
         addConstraint(widthConstraint)
         return widthConstraint
     }
     
-    public func constrainWidth(width:CGFloat, height:CGFloat){
+    public func constrainWidth(_ width:CGFloat, height:CGFloat){
         translatesAutoresizingMaskIntoConstraints = false
         constrainHeight(height)
         constrainWidth(width)
     }
 
     // adds a blur overlay to the view and returns a reference to it.
-    func addBlurOverlay(style:UIBlurEffectStyle)->UIView{
-        let overlay = UIView(frame: CGRectZero)
+    func addBlurOverlay(_ style:UIBlurEffectStyle)->UIView{
+        let overlay = UIView(frame: CGRect.zero)
         addSubview(overlay)
         overlay.constrainToSuperViewEdges()
         
@@ -158,7 +158,7 @@ public extension UIView{
             if parentResponder == nil {
                 return nil
             }
-            parentResponder = parentResponder!.nextResponder()
+            parentResponder = parentResponder!.next
             if parentResponder is UIViewController {
                 return (parentResponder as! UIViewController)
             }
@@ -166,8 +166,8 @@ public extension UIView{
     }
     
     /// Adds a bottom border with specified width and color
-    func addBottomBorderWithWidth(width:CGFloat, color:UIColor)->UIView{
-        let borderImageView = UIImageView(frame: CGRectZero)
+    func addBottomBorderWithWidth(_ width:CGFloat, color:UIColor)->UIView{
+        let borderImageView = UIImageView(frame: CGRect.zero)
         borderImageView.backgroundColor = color
         borderImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(borderImageView)
@@ -179,8 +179,8 @@ public extension UIView{
     }
     
     /// Adds a left border with specified width and color
-    func addLeftBorderWithWidth(width:CGFloat, color:UIColor)->UIView{
-        let borderImageView = UIImageView(frame: CGRectZero)
+    func addLeftBorderWithWidth(_ width:CGFloat, color:UIColor)->UIView{
+        let borderImageView = UIImageView(frame: CGRect.zero)
         borderImageView.backgroundColor = color
         borderImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(borderImageView)
@@ -192,8 +192,8 @@ public extension UIView{
     }
     
     /// Adds a right border with specified width and color
-    func addRightBorderWithWidth(width:CGFloat, color:UIColor)->UIView{
-        let borderImageView = UIImageView(frame: CGRectZero)
+    func addRightBorderWithWidth(_ width:CGFloat, color:UIColor)->UIView{
+        let borderImageView = UIImageView(frame: CGRect.zero)
         borderImageView.backgroundColor = color
         borderImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(borderImageView)
@@ -205,8 +205,8 @@ public extension UIView{
     }
     
     /// Adds a top border with specified width and color
-    func addTopBorderWithWidth(width:CGFloat, color:UIColor)->UIView{
-        let borderImageView = UIImageView(frame: CGRectZero)
+    func addTopBorderWithWidth(_ width:CGFloat, color:UIColor)->UIView{
+        let borderImageView = UIImageView(frame: CGRect.zero)
         borderImageView.backgroundColor = color
         borderImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(borderImageView)

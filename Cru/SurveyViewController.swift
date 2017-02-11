@@ -19,39 +19,39 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var optionHandler: ((String)->())!
     var optionCell: OptionQuestionCell!
     
-    private var ministry: Ministry!
+    fileprivate var ministry: Ministry!
     
     @IBOutlet weak var table: UITableView!
     
-    func setMinistry(min: Ministry) {
+    func setMinistry(_ min: Ministry) {
         ministry = min
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         
         CruClients.getServerClient().getDataIn(DBCollection.Ministry, parentId: ministry.id, child: DBCollection.Question,
             insert: insertQuestion, completionHandler: finishInserting)
         // Do any additional setup after loading the view.
     }
     
-    private func insertQuestion(dict: NSDictionary) {
+    fileprivate func insertQuestion(_ dict: NSDictionary) {
         let question = CGQuestion(dict: dict)
         
         var cell: UITableViewCell
         switch (question.type) {
             case .TEXT:
-                cell = self.table.dequeueReusableCellWithIdentifier(textId)!
+                cell = self.table.dequeueReusableCell(withIdentifier: textId)!
                 let textCell = cell as! TextQuestionCell
                 textCell.answer.layer.borderWidth = 1
-                textCell.answer.layer.borderColor = UIColor.lightGrayColor().CGColor
+                textCell.answer.layer.borderColor = UIColor.lightGray.cgColor
                 textCell.setQuestion(question)
                 break;
 
             case .SELECT:
-                cell = self.table.dequeueReusableCellWithIdentifier(optionId)!
+                cell = self.table.dequeueReusableCell(withIdentifier: optionId)!
                 let selectCell = cell as! OptionQuestionCell
                 selectCell.setQuestion(question)
                 selectCell.presentingVC = self
@@ -59,15 +59,15 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         }
         questions.append(cell)
-        table.insertRowsAtIndexPaths([NSIndexPath(forItem: 0, inSection: 0)], withRowAnimation: .Automatic)
+        table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         
     }
     
-    private func finishInserting(success: Bool) {
+    fileprivate func finishInserting(_ success: Bool) {
         table.reloadData()
         
         
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,16 +75,16 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return questions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = questions[indexPath.row]
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let cell = questions[indexPath.row]
         switch (cell.reuseIdentifier!) {
@@ -99,39 +99,39 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
 
-    @IBAction func submitPressed(sender: AnyObject) {
+    @IBAction func submitPressed(_ sender: AnyObject) {
         if (validateAnswers()) {
-            self.performSegueWithIdentifier("showCGS", sender: self)
+            self.performSegue(withIdentifier: "showCGS", sender: self)
         }
     }
     
-    private func validateAnswers() -> Bool {
+    fileprivate func validateAnswers() -> Bool {
         let optionCells = questions.filter{ $0 is OptionQuestionCell } as! [OptionQuestionCell]
         //optionCells.forEach { $0.validate() }
         return optionCells.reduce(true) {(result, cur) in result && cur.validate()}
     }
     
-    func showOptions(options: [String], optionHandler: ((String)->()), theCell: OptionQuestionCell){
+    func showOptions(_ options: [String], optionHandler: @escaping ((String)->()), theCell: OptionQuestionCell){
         self.optionCell = theCell
         optionsToBeShown = options
         self.optionHandler = optionHandler
-        self.performSegueWithIdentifier("showOptions", sender: self)
+        self.performSegue(withIdentifier: "showOptions", sender: self)
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "showOptions"){
-            if let popupVC = segue.destinationViewController as? SearchableOptionsVC{
+            if let popupVC = segue.destination as? SearchableOptionsVC{
                 
                 popupVC.options = optionsToBeShown
                 popupVC.optionHandler = optionHandler
                 popupVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.97, height: self.view.frame.height * 0.77)
-                popupVC.popoverPresentationController!.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), (optionCell.frame.origin.y),0,0)
-                popupVC.popoverPresentationController?.permittedArrowDirections = .Any
+                popupVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.bounds.midX, y: (optionCell.frame.origin.y),width: 0,height: 0)
+                popupVC.popoverPresentationController?.permittedArrowDirections = .any
                 popupVC.popoverPresentationController?.sourceView = self.table
                 
                 let controller = popupVC.popoverPresentationController
@@ -141,7 +141,7 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 }
             }
         } else if (segue.identifier == "showCGS"){
-            if let selectCGVC = segue.destinationViewController as? SelectCGVC {
+            if let selectCGVC = segue.destination as? SelectCGVC {
                 // we're ignoring the tet question answers for now, as they will be sent differently
                 selectCGVC.setAnswers(getOptionQuestionAnswers())
                 selectCGVC.setMinistry(ministry.id)
@@ -149,14 +149,14 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    private func getOptionQuestionAnswers() -> [[String:String]] {
+    fileprivate func getOptionQuestionAnswers() -> [[String:String]] {
         var optionQuestionCells = questions.filter{ $0 is OptionQuestionCell } as! [OptionQuestionCell]
         optionQuestionCells = optionQuestionCells.filter{ $0.isAnswered() != nil }
         return optionQuestionCells.map{ $0.getAnswer().getDict() }
     }
 
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 
 }

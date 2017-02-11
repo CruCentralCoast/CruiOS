@@ -11,10 +11,49 @@ import Foundation
 /// Global convenience settings
 
 @objc
-public class WildcardSDK: NSObject {
+open class WildcardSDK: NSObject {
+    
+    static var sharedInstance: WildcardSDK = WildcardSDK()
+    
+    override init() {
+        __cardTitleFont = UIFont(name:"HelveticaNeue-Medium", size: 16.0)!
+        __cardTitleColor = UIColor.wildcardDarkBlue()
+        __cardKickerFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
+        __cardKickerColor = UIColor.wildcardMediumGray()
+        __cardDescriptionFont = UIFont(name:"HelveticaNeue", size: 12.0)!
+        __cardDescriptionColor = UIColor.wildcardMediaBodyColor()
+        __cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
+        __networkDelegateQueue = OperationQueue.main
+        __cardBackgroundColor = UIColor.white
+        __cardDropShadow = true
+    }
+    
+    /*class var sharedInstance : WildcardSDK{
+        struct Static{
+            static var onceToken : Int = 0
+            static var instance : WildcardSDK? = nil
+        }
+        
+        _ = WildcardSDK.__once
+        return Static.instance!
+    }
+ 
+    private static var __once: () = { () -> Void in
+            Static.instance = WildcardSDK()
+            Static.instance!.__cardTitleFont = UIFont(name:"HelveticaNeue-Medium", size: 16.0)!
+            Static.instance!.__cardTitleColor = UIColor.wildcardDarkBlue()
+            Static.instance!.__cardKickerFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
+            Static.instance!.__cardKickerColor = UIColor.wildcardMediumGray()
+            Static.instance!.__cardDescriptionFont = UIFont(name:"HelveticaNeue", size: 12.0)!
+            Static.instance!.__cardDescriptionColor = UIColor.wildcardMediaBodyColor()
+            Static.instance!.__cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
+            Static.instance!.__networkDelegateQueue = OperationQueue.main
+            Static.instance!.__cardBackgroundColor = UIColor.white
+            Static.instance!.__cardDropShadow = true
+        }()*/
  
     /// Custom font for Card titles
-    public class var cardTitleFont:UIFont{
+    open class var cardTitleFont:UIFont{
         get{
             return WildcardSDK.sharedInstance.__cardTitleFont
         }set{
@@ -23,7 +62,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Custom color for Card titles
-    public class var cardTitleColor:UIColor{
+    open class var cardTitleColor:UIColor{
         get{
             return WildcardSDK.sharedInstance.__cardTitleColor
         }set{
@@ -32,7 +71,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Custom font for Card kickers
-    public class var cardKickerFont:UIFont{
+    open class var cardKickerFont:UIFont{
         get{
             return WildcardSDK.sharedInstance.__cardKickerFont
         }set{
@@ -41,7 +80,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Custom color for Card kickers
-    public class var cardKickerColor:UIColor{
+    open class var cardKickerColor:UIColor{
         get{
             return WildcardSDK.sharedInstance.__cardKickerColor
         }set{
@@ -50,7 +89,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Custom font for Card descriptions
-    public class var cardDescriptionFont:UIFont{
+    open class var cardDescriptionFont:UIFont{
         get{
             return WildcardSDK.sharedInstance.__cardDescriptionFont
         }set{
@@ -59,7 +98,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Custom color for Card descriptions
-    public class var cardDescriptionColor:UIColor{
+    open class var cardDescriptionColor:UIColor{
         get{
             return WildcardSDK.sharedInstance.__cardDescriptionColor
         }set{
@@ -68,7 +107,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Custom font for Card Action Buttons
-    public class var cardActionButtonFont:UIFont{
+    open class var cardActionButtonFont:UIFont{
         get{
             return WildcardSDK.sharedInstance.__cardActionButtonFont
         }set{
@@ -77,7 +116,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Card Corner Radius
-    public class var cardCornerRadius:CGFloat{
+    open class var cardCornerRadius:CGFloat{
         get{
             return WildcardSDK.sharedInstance.__cardCornerRadius
         }set{
@@ -86,7 +125,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Delegate queue for network request callbacks
-    public class var networkDelegateQueue:NSOperationQueue{
+    open class var networkDelegateQueue:OperationQueue{
         get{
             return WildcardSDK.sharedInstance.__networkDelegateQueue;
         }set{
@@ -95,7 +134,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Custom corner radius for images shown in cards
-    public class var imageCornerRadius:CGFloat{
+    open class var imageCornerRadius:CGFloat{
         get{
             return WildcardSDK.sharedInstance.__imageCornerRadius;
         }set{
@@ -104,7 +143,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// This value is used to calculate a default preferred width for a CardView if none is explicilty given.
-    public class var defaultScreenMargin:CGFloat{
+    open class var defaultScreenMargin:CGFloat{
         get{
             return WildcardSDK.sharedInstance.__defaultScreenMargin
         }set{
@@ -113,7 +152,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// The default background color for any card view
-    public class var cardBackgroundColor:UIColor{
+    open class var cardBackgroundColor:UIColor{
         get{
             return WildcardSDK.sharedInstance.__cardBackgroundColor
         }set{
@@ -122,7 +161,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Enables or disables a drop shadow on the card view, ON by default
-    public class var cardDropShadow:Bool{
+    open class var cardDropShadow:Bool{
         get{
             return WildcardSDK.sharedInstance.__cardDropShadow
         }set{
@@ -131,7 +170,7 @@ public class WildcardSDK: NSObject {
     }
     
     /// Initialize the SDK
-    public class func initializeWithApiKey(key:String){
+    open class func initializeWithApiKey(_ key:String){
         if(WildcardSDK.sharedInstance.__applicationKey == nil){
             WildcardSDK.sharedInstance.__applicationKey = key
             WildcardSDK.sharedInstance.__analytics = WCAnalytics(key:key)
@@ -166,27 +205,7 @@ public class WildcardSDK: NSObject {
     var __cardDropShadow:Bool!
     var __applicationKey:String?
     var __analytics:WCAnalytics?
-    var __networkDelegateQueue:NSOperationQueue!
+    var __networkDelegateQueue:OperationQueue!
     
-    class var sharedInstance : WildcardSDK{
-        struct Static{
-            static var onceToken : dispatch_once_t = 0
-            static var instance : WildcardSDK? = nil
-        }
-        
-        dispatch_once(&Static.onceToken, { () -> Void in
-            Static.instance = WildcardSDK()
-            Static.instance!.__cardTitleFont = UIFont(name:"HelveticaNeue-Medium", size: 16.0)!
-            Static.instance!.__cardTitleColor = UIColor.wildcardDarkBlue()
-            Static.instance!.__cardKickerFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
-            Static.instance!.__cardKickerColor = UIColor.wildcardMediumGray()
-            Static.instance!.__cardDescriptionFont = UIFont(name:"HelveticaNeue", size: 12.0)!
-            Static.instance!.__cardDescriptionColor = UIColor.wildcardMediaBodyColor()
-            Static.instance!.__cardActionButtonFont = UIFont(name:"HelveticaNeue-Medium", size: 12.0)!
-            Static.instance!.__networkDelegateQueue = NSOperationQueue.mainQueue()
-            Static.instance!.__cardBackgroundColor = UIColor.whiteColor()
-            Static.instance!.__cardDropShadow = true
-        })
-        return Static.instance!
-    }
+    
 }

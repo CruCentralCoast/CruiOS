@@ -22,7 +22,7 @@ class Resource {
     var id: String!
     var url: String!
     var type: ResourceType!
-    var date: NSDateComponents!
+    var date: DateComponents!
     var tags: [String]!
     var restricted: Bool!
     

@@ -40,13 +40,14 @@ class EventTableViewCell: UITableViewCell {
             locationLabel.text = location
             
             if event.imageUrl == "" {
-                eventImage.hidden = true
+                eventImage.isHidden = true
                 spaceToTopCard.constant = 8
             }
             else {
-                eventImage.hidden = false
+                eventImage.isHidden = false
                 spaceToTopCard.constant = 158
-                eventImage.load(event.imageUrl)
+                //eventImage.load(event.imageUrl)
+                eventImage.load.request(with: event.imageUrl)
             }
         }
     }

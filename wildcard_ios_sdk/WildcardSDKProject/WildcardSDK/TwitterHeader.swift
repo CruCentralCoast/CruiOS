@@ -9,14 +9,14 @@
 import Foundation
 
 @objc
-public class TwitterHeader : CardViewElement
+open class TwitterHeader : CardViewElement
 {
     @IBOutlet weak var twitterIcon: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var kicker: UILabel!
     
     /// Content insets of card card content
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(topConstraint.constant, leadingConstraint.constant, bottomConstraint.constant, trailingConstraint.constant)
         }
@@ -30,14 +30,14 @@ public class TwitterHeader : CardViewElement
     }
  
     // MARK: Private
-    @IBOutlet weak private var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var topConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var leadingConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var trailingConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var twitterIconHeightConstraint: NSLayoutConstraint!
-    @IBOutlet weak private var twitterIconWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var bottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var leadingConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var trailingConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var twitterIconHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak fileprivate var twitterIconWidthConstraint: NSLayoutConstraint!
     
-    override public func initialize() {
+    override open func initialize() {
         twitterIcon.tintColor = UIColor.twitterBlue()
         
         title.textColor = WildcardSDK.cardTitleColor
@@ -50,8 +50,8 @@ public class TwitterHeader : CardViewElement
         contentEdgeInset = UIEdgeInsetsMake(20, 20, 20, 20)
     }
     
-    override public func update(card:Card) {
-        if(card.type == WCCardType.Summary){
+    override open func update(_ card:Card) {
+        if(card.type == WCCardType.summary){
             let summaryCard = card as! SummaryCard
             title.text = summaryCard.title
             if let subtitle = summaryCard.subtitle{
@@ -64,7 +64,7 @@ public class TwitterHeader : CardViewElement
         }
     }
     
-    override public func optimizedHeight(cardWidth: CGFloat) -> CGFloat {
+    override open func optimizedHeight(_ cardWidth: CGFloat) -> CGFloat {
         var height:CGFloat = 0
         height += topConstraint.constant
         height += twitterIconHeightConstraint.constant

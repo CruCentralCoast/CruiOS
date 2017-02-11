@@ -13,14 +13,14 @@ class EmptyCardBack : CardViewElement {
     var titleLabel:UILabel!
     
     override func initialize() {
-        titleLabel = UILabel(frame: CGRectZero)
+        titleLabel = UILabel(frame: CGRect.zero)
         titleLabel.numberOfLines = 1
-        titleLabel.textAlignment = NSTextAlignment.Center
+        titleLabel.textAlignment = NSTextAlignment.center
         addSubview(titleLabel)
         titleLabel.verticallyCenterToSuperView(0)
         titleLabel.horizontallyCenterToSuperView(0)
         titleLabel.font = WildcardSDK.cardTitleFont
-        titleLabel.textColor = UIColor.whiteColor()
+        titleLabel.textColor = UIColor.white
         titleLabel.text = "The Back!"
         backgroundColor = UIColor.wildcardDarkBlue()
     }

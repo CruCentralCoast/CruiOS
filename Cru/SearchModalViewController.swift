@@ -41,10 +41,10 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         searchField?.text = prevSearchPhrase
         
         if prevSearchPhrase == "" {
-            resetButton?.hidden = true
+            resetButton?.isHidden = true
         }
         
-        self.view.backgroundColor = UIColor.clearColor()
+        self.view.backgroundColor = UIColor.clear
        
     }
 
@@ -54,8 +54,8 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     //MARK: Actions
-    @IBAction func resetSearch(sender: UIButton) {
-        resetButton?.hidden = true
+    @IBAction func resetSearch(_ sender: UIButton) {
+        resetButton?.isHidden = true
         filteredTags = tags
         prevSearchPhrase = ""
         searchField?.text = ""
@@ -67,7 +67,7 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     
-    @IBAction func applyFilters(sender: UIButton) {
+    @IBAction func applyFilters(_ sender: UIButton) {
         //Get chosen tags
         filteredTags = [ResourceTag]()
         let cells = resourceTagTable?.visibleCells as! [ResourceTagTableViewCell]
@@ -79,51 +79,51 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
             }
         }
         
-        if searchField != nil && searchField!.hasText() {
+        if searchField != nil && searchField!.hasText {
             parentVC?.applyFilters(filteredTags, searchText: searchField!.text)
         }
         else {
             parentVC?.applyFilters(filteredTags, searchText: nil)
         }
 
-        self.dismissViewControllerAnimated(true, completion: {})
+        self.dismiss(animated: true, completion: {})
     }
     
     //MARK: Text Field Delegate Functions
     
-    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
-        UIView.animateWithDuration(0.5, animations: {
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        UIView.animate(withDuration: 0.5, animations: {
             self.searchLine?.backgroundColor = CruColors.lightBlue
         })
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        UIView.animateWithDuration(0.5, animations: {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        UIView.animate(withDuration: 0.5, animations: {
             self.searchLine?.backgroundColor = self.inactiveGray
         })
         return true
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.OverCurrentContext
+    func adaptivePresentationStyleForPresentationController(_ controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.overCurrentContext
     }
     
     //MARK: Table View Delegate Methods
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 30
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tags.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ResourceTagTableViewCell", forIndexPath: indexPath) as! ResourceTagTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceTagTableViewCell", for: indexPath) as! ResourceTagTableViewCell
         
         let tag = tags[indexPath.row]
         cell.title.text = tag.title
@@ -131,7 +131,7 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         
         //Restore the settings from the last search
         if filteredTags.count != tags.count {
-            if !filteredTags.contains({tag.id == $0.id}) {
+            if !filteredTags.contains(where: {tag.id == $0.id}) {
                 
                 cell.checkbox.isChecked = false
                 cell.setUnchecked()

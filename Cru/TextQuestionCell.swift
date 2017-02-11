@@ -16,7 +16,7 @@ class TextQuestionCell: UITableViewCell {
     
     var cgQuestion: CGQuestion!
 
-    func setQuestion(cgq: CGQuestion) {
+    func setQuestion(_ cgq: CGQuestion) {
         cgQuestion = cgq
         question.text = cgQuestion.question
         answer.text = ""

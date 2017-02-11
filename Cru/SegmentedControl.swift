@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable class SegmentedControl: UIControl {
-    private var labels = [UILabel]()
+    fileprivate var labels = [UILabel]()
     var thumbView = UIView()
     
     var items:[String] = ["Round Trip", "To Event", "From Event"] {
@@ -40,7 +40,7 @@ import UIKit
     override func layoutSubviews() {
         super.layoutSubviews()
         var selectFrame = self.bounds
-        let newWidth = CGRectGetWidth(selectFrame) / CGFloat(items.count)
+        let newWidth = selectFrame.width / CGFloat(items.count)
         selectFrame.size.width = newWidth
         thumbView.frame = selectFrame
         thumbView.backgroundColor = CruColors.lightBlue
@@ -50,18 +50,18 @@ import UIKit
         let labelWidth = self.bounds.width / CGFloat(labels.count)
         
         for index in 0...labels.count - 1 {
-            var label = labels[index]
+            let label = labels[index]
             
             let xPos = CGFloat(index) * labelWidth
-            label.frame = CGRectMake(xPos, 0, labelWidth, labelHeight)
+            label.frame = CGRect(x: xPos, y: 0, width: labelWidth, height: labelHeight)
         }
     }
     
-    override func beginTrackingWithTouch(touch: UITouch, withEvent event: UIEvent?) -> Bool {
-        let location = touch.locationInView(self)
+    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
+        let location = touch.location(in: self)
         var calculatedIndex: Int?
         
-        for(index, item) in labels.enumerate() {
+        for(index, item) in labels.enumerated() {
             if item.frame.contains(location) {
                 calculatedIndex = index
             }
@@ -70,7 +70,7 @@ import UIKit
         
         if calculatedIndex != nil {
             selectedIndex = calculatedIndex!
-            sendActionsForControlEvents(.ValueChanged)
+            sendActions(for: .valueChanged)
         }
         
         return false
@@ -80,12 +80,12 @@ import UIKit
     //Setup the view
     func setupView() {
         layer.cornerRadius = frame.height / 5
-        layer.borderColor = CruColors.lightBlue.CGColor
+        layer.borderColor = CruColors.lightBlue.cgColor
         layer.borderWidth = 1
         
-        backgroundColor = UIColor.clearColor()
+        backgroundColor = UIColor.clear
         setupLabels()
-        insertSubview(thumbView, atIndex: 0)
+        insertSubview(thumbView, at: 0)
     }
     
     func setupLabels() {
@@ -93,18 +93,18 @@ import UIKit
             label.removeFromSuperview()
         }
         
-        labels.removeAll(keepCapacity: true)
+        labels.removeAll(keepingCapacity: true)
         
         for index in 1...items.count {
-            let label = UILabel(frame: CGRectZero)
+            let label = UILabel(frame: CGRect.zero)
             label.text = items[index - 1]
-            label.textAlignment = .Center
+            label.textAlignment = .center
             print("\nindex: \(index)")
             
             label.textColor = CruColors.lightBlue
             
             if index-1 == selectedIndex {
-                label.textColor = UIColor.whiteColor()
+                label.textColor = UIColor.white
             }
             
             label.font = UIFont(name: Config.fontBold, size: 14)
@@ -121,14 +121,14 @@ import UIKit
     
     func displayNewSelectedIndex() {
         resetLabelColors()
-        var label = labels[selectedIndex]
+        let label = labels[selectedIndex]
         
         
         //self.thumbView.frame = label.frame
         
-        UIView.animateWithDuration(0.4, animations: {
+        UIView.animate(withDuration: 0.4, animations: {
             self.thumbView.frame = label.frame
-            label.textColor = UIColor.whiteColor()
+            label.textColor = UIColor.white
         })
     }
     

@@ -18,14 +18,14 @@ import LocationPicker
 import MRProgress
 
 enum EditTags: Int {
-    case Time
-    case Date
-    case Address
-    case Radius
-    case Direction
-    case Seats
-    case Name
-    case Number
+    case time
+    case date
+    case address
+    case radius
+    case direction
+    case seats
+    case name
+    case number
 }
 
 struct EditRideConstants{
@@ -88,7 +88,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     var eventValue: UILabel!
     var hasUserEdited = false
     var directionCell: UITableViewCell!
-    var directionCellPath: NSIndexPath!
+    var directionCellPath: IndexPath!
     var passesToDrop : Int!
     var passesDropped : Int!
     var parsedNum : String?
@@ -113,12 +113,12 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         if(isOfferingRide){
             self.navigationItem.title = OfferRideConstants.pageTitle
             self.ride = Ride()
-            bottomButton.setTitle(OfferRideConstants.bottomButton, forState: .Normal)
+            bottomButton.setTitle(OfferRideConstants.bottomButton, for: UIControlState())
             
         }
         else{
             self.navigationItem.title = EditRideConstants.pageTitle
-            bottomButton.setTitle(EditRideConstants.bottomButton, forState: .Normal)
+            bottomButton.setTitle(EditRideConstants.bottomButton, for: UIControlState())
             getRideLocation()
         }
         
@@ -202,30 +202,30 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         self.table?.reloadData()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return options.count
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80.0
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(EditRideConstants.cellIdentifier) as! EditCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: EditRideConstants.cellIdentifier) as! EditCell
         let option = options[indexPath.row]
         
         cell.contentType.text = option.itemName
         cell.contentValue.text = option.itemValue
-        cell.editButton.setTitle(option.itemName, forState: .Normal)
+        cell.editButton.setTitle(option.itemName, for: UIControlState())
         
         if option.itemIsText! {
-            cell.contentValue.hidden = true
-            cell.contentTextField.hidden = false
+            cell.contentValue.isHidden = true
+            cell.contentTextField.isHidden = false
             cell.contentTextField.text = option.itemValue
         }
         else{
-            cell.contentTextField.hidden = true
-            cell.contentValue.hidden = false
+            cell.contentTextField.isHidden = true
+            cell.contentValue.isHidden = false
         }
         
         switch (cell.contentType.text!){
@@ -240,14 +240,14 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             dateValue = cell.contentValue
             
         case Labels.seatsLabel:
-            cell.contentTextField.keyboardType = .NumberPad
-            cell.contentTextField.tag = EditTags.Seats.rawValue
+            cell.contentTextField.keyboardType = .numberPad
+            cell.contentTextField.tag = EditTags.seats.rawValue
             cell.contentTextField.delegate = self
             seatsValue = cell.contentTextField
             
         case Labels.seatsOfferLabel:
-            cell.contentTextField.keyboardType = .NumberPad
-            cell.contentTextField.tag = EditTags.Seats.rawValue
+            cell.contentTextField.keyboardType = .numberPad
+            cell.contentTextField.tag = EditTags.seats.rawValue
             cell.contentTextField.delegate = self
             seatsValue = cell.contentTextField
             
@@ -257,13 +257,13 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         case Labels.nameLabel:
             nameValue = cell.contentTextField
             nameValue.delegate = self
-            cell.contentTextField.tag = EditTags.Name.rawValue
-            cell.contentTextField.keyboardType = .Default
+            cell.contentTextField.tag = EditTags.name.rawValue
+            cell.contentTextField.keyboardType = .default
             nameValue.delegate = self
             
         case Labels.phoneLabel:
-            cell.contentTextField.keyboardType = .NumberPad
-            cell.contentTextField.tag = EditTags.Number.rawValue
+            cell.contentTextField.keyboardType = .numberPad
+            cell.contentTextField.tag = EditTags.number.rawValue
             numberValue = cell.contentTextField
             numberValue.delegate = self
             numberValue.text = PhoneFormatter.unparsePhoneNumber(ride.driverNumber)
@@ -275,9 +275,9 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             
         case Labels.pickupRadius:
             pickupRadius = cell.contentTextField
-            pickupRadius.tag = EditTags.Radius.rawValue
+            pickupRadius.tag = EditTags.radius.rawValue
             pickupRadius.delegate = self
-            pickupRadius.editable = false
+            pickupRadius.isEditable = false
             
         case Labels.passengers:
             passengerValue = cell.contentTextField
@@ -286,13 +286,13 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             print("error in switch statement on edit ride page")
         }
         
-        cell.editButton.hidden = !(option.itemEditable)
+        cell.editButton.isHidden = !(option.itemEditable)
         table = tableView
         
         return cell
     }
     
-    @IBAction func editPressed(sender: UIButton) {
+    @IBAction func editPressed(_ sender: UIButton) {
         let editChoice = sender.currentTitle
         hasUserEdited = true
         
@@ -312,19 +312,19 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         case Labels.seatsOfferLabel:
             seatsValue.becomeFirstResponder()
         case Labels.directionLabel:
-            self.performSegueWithIdentifier(EditRideConstants.editDirectionSegue, sender: self)
+            self.performSegue(withIdentifier: EditRideConstants.editDirectionSegue, sender: self)
         case Labels.pickupRadius:
             if(self.CLocation != nil){
-                self.performSegueWithIdentifier(EditRideConstants.editRadiusSegue, sender: self)
+                self.performSegue(withIdentifier: EditRideConstants.editRadiusSegue, sender: self)
             }
             else{
                 showValidationError("Please pick a location before picking a radius.")
             }
         case Labels.passengers:
-            self.performSegueWithIdentifier(EditRideConstants.editPassengersSegue, sender: self)
+            self.performSegue(withIdentifier: EditRideConstants.editPassengersSegue, sender: self)
         case Labels.eventLabel:
             if (isOfferingRide){
-                self.performSegueWithIdentifier(OfferRideConstants.chooseEventSegue, sender: self)
+                self.performSegue(withIdentifier: OfferRideConstants.chooseEventSegue, sender: self)
             }
         default:
             print("")
@@ -333,40 +333,40 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     }
     
     //called when a date is chosen
-    func chooseDateHandler(month : Int, day : Int, year : Int){
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+    func chooseDateHandler(_ month : Int, day : Int, year : Int){
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MM d yyyy"
         
         //if date formatter returns nil return the current date/time
-        if let date = dateFormatter.dateFromString(String(month) + " " + String(day) + " " + String(year)) {
+        if let date = dateFormatter.date(from: String(month) + " " + String(day) + " " + String(year)) {
             ride.date = date
             ride.monthNum = month
             ride.day = day
             ride.year = year
             ride.departureDay = date
             self.dateValue.text = ride.getDate()
-            self.dateValue.hidden = false
+            self.dateValue.isHidden = false
             updateOptions()
             self.table.reloadData()
         }
     }
     
     //called when a time is chosen
-    func datePicked(obj: NSDate){
-        let formatter = NSDateFormatter()
+    func datePicked(_ obj: Date){
+        let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
-        timeValue.text = formatter.stringFromDate(obj)
-        let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: obj)
-        ride.hour = comp.hour
-        ride.minute = comp.minute
+        timeValue.text = formatter.string(from: obj)
+        let calendar = Calendar.current
+        let comp = (calendar as NSCalendar).components([.hour, .minute], from: obj)
+        ride.hour = comp.hour!
+        ride.minute = comp.minute!
         ride.timeStr = timeValue.text!
         ride.departureTime = obj
         updateOptions()
     }
     
-    func choosePickupLocation(sender: AnyObject) {
+    func choosePickupLocation(_ sender: AnyObject) {
         let locationPicker = LocationPickerViewController()
         
         if self.location != nil {
@@ -392,15 +392,15 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         ride.eventEndDate = event.endNSDate
         
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDate()){
-            ride.day = (components.day)
-            ride.monthNum = (components.month)
-            ride.year = (components.year)
+            ride.day = (components.day)!
+            ride.monthNum = (components.month)!
+            ride.year = (components.year)!
         }
         
         
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureTime()){
-            ride.hour = (components.hour)
-            ride.minute = (components.minute)
+            ride.hour = (components.hour)!
+            ride.minute = (components.minute)!
         }
         
         
@@ -516,9 +516,9 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func extractNumSeats()->Bool{
-        if (seatsValue != nil && seatsValue != ""){
-            if let val = Int(seatsValue.text.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet())){
+        if (seatsValue != nil && seatsValue.text != ""){
+            if let val = Int(seatsValue.text.trimmingCharacters(
+                in: CharacterSet.whitespacesAndNewlines)){
                 if(ride.isValidNumSeats(val) != ""){
                     showValidationError(ride.isValidNumSeats(val))
                     return false
@@ -539,7 +539,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     
         
     
-    @IBAction func savePressed(sender: AnyObject) {
+    @IBAction func savePressed(_ sender: AnyObject) {
         //extract seats, time, date, location, name, phone number (all if possible aka null checking)
         if(timeValue != nil){ ride.time = timeValue.text! }
         if(extractNumSeats() == false){return}
@@ -553,7 +553,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         
         if(isOfferingRide){
             if (validateOffer()) {
-                MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+                MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
                 sendRideOffer()
             }
             
@@ -593,16 +593,16 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         
     }
     
-    func postRideOffer(success: Bool){
+    func postRideOffer(_ success: Bool){
         if (success){
-            CruClients.getRideUtils().postRideOffer(ride.eventId, name: nameValue.text, phone: numberValue.text, seats: ride.seats, time: ride.getTimeInServerFormat(), location: location.getLocationAsDict(location), radius: ride.radius, direction: ride.direction, handler:  handleRequestResult)
+            CruClients.getRideUtils().postRideOffer(ride.eventId, name: nameValue.text, phone: numberValue.text, seats: ride.seats, time: ride.getTimeInServerFormat(), location: location.getLocationAsDict(location) as NSDictionary, radius: ride.radius, direction: ride.direction, handler:  handleRequestResult)
         }else{
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             showValidationError(ValidationErrors.phoneUnauthorized)
         }
     }
     
-    func handleDropPass(success: Bool){
+    func handleDropPass(_ success: Bool){
         if(self.passesDropped == nil){
             self.passesDropped = 0
         }
@@ -617,13 +617,13 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             }
         }
         else{
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             presentAlert("Could not drop a passenger", msg: "", handler: {  })
         }
     }
     
-    func handleRequestResult(result : Ride?){
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+    func handleRequestResult(_ result : Ride?){
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         if result != nil {
             
             
@@ -631,7 +631,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
                 self.rideVC.refresh(self)
                 presentAlert("Ride Offered", msg: "Thank you! Your offered ride has been created!", handler:  {
                     if let navController = self.navigationController {
-                        navController.popViewControllerAnimated(true)
+                        navController.popViewController(animated: true)
                         
                     }
                 })
@@ -639,7 +639,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             else{
                 presentAlert("Ride Offered", msg: "Thank you! Your offered ride has been created! You can view your ride offer in the Ridehsaring section.", handler:  {
                     if let navController = self.navigationController {
-                        navController.popViewControllerAnimated(true)
+                        navController.popViewController(animated: true)
                         
                     }
                 })
@@ -651,41 +651,41 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    private func presentAlert(title: String, msg: String, handler: ()->()) {
-        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+    fileprivate func presentAlert(_ title: String, msg: String, handler: @escaping ()->()) {
+        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
         
-        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             action in
             handler()
             
         }))
-        presentViewController(cancelRideAlert, animated: true, completion: nil)
+        present(cancelRideAlert, animated: true, completion: nil)
         
     }
     
-    func addTextViewError(textView: UITextView){
+    func addTextViewError(_ textView: UITextView){
         textView.layer.borderWidth = 1
-        textView.layer.borderColor = UIColor.redColor().CGColor
+        textView.layer.borderColor = UIColor.red.cgColor
     }
     
-    func removeTextViewError(textView: UITextView){
+    func removeTextViewError(_ textView: UITextView){
         textView.layer.borderWidth = 0
     }
     
-    func showValidationError(error: String){
-        let alert = UIAlertController(title: error, message: "", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+    func showValidationError(_ error: String){
+        let alert = UIAlertController(title: error, message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(ok)
-        self.presentViewController(alert, animated: true, completion: {})
+        self.present(alert, animated: true, completion: {})
     }
     
     
-    func handlePostResult(ride: Ride?){
+    func handlePostResult(_ ride: Ride?){
         
         if(ride?.hour != -1){
-            let alert = UIAlertController(title: "Ride updated successfully", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: {
+            let alert = UIAlertController(title: "Ride updated successfully", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: {
                 //self.navigationController?.popViewControllerAnimated(true)
             })
             self.ride = ride
@@ -697,17 +697,17 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             }
         }
         else{
-            let alert = UIAlertController(title: "Could not update ride", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Could not update ride", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
-    func handleDirectionChoice(choice: String){
+    func handleDirectionChoice(_ choice: String){
         directionValue.text = choice
         ride.direction = ride.getServerDirectionValue(choice)
         directionOption.itemValue = choice
@@ -716,15 +716,15 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if(segue.identifier == EditRideConstants.editDirectionSegue){
             
             //uipopover magic
-            let popoverVC = segue.destinationViewController
+            let popoverVC = segue.destination
             let controller = popoverVC.popoverPresentationController
-            popoverVC.preferredContentSize = CGSizeMake(self.view.frame.width - 30, 195)
+            popoverVC.preferredContentSize = CGSize(width: self.view.frame.width - 30, height: 195)
             
             if(controller != nil){
                 controller?.delegate = self
@@ -733,19 +733,19 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             if let vc = popoverVC as? DirectionTVC{
                 vc.handler = handleDirectionChoice
             }
-            let fromRect:CGRect = self.table!.rectForRowAtIndexPath(directionCellPath!)
+            let fromRect:CGRect = self.table!.rectForRow(at: directionCellPath!)
             controller!.sourceView = self.table
             controller!.sourceRect = fromRect
-            controller!.permittedArrowDirections = .Any
+            controller!.permittedArrowDirections = .any
         }
         else if (segue.identifier == OfferRideConstants.chooseEventSegue){
-            let eventVC = segue.destinationViewController as! EventsModalTableViewController
+            let eventVC = segue.destination as! EventsModalTableViewController
             eventVC.events = self.events
             eventVC.offerRide = self
             
             eventVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.97, height: self.view.frame.height * 0.77)
-            eventVC.popoverPresentationController!.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), (eventValue.frame.origin.y),0,0)
-            eventVC.popoverPresentationController?.permittedArrowDirections = .Any
+            eventVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.bounds.midX, y: (eventValue.frame.origin.y),width: 0,height: 0)
+            eventVC.popoverPresentationController?.permittedArrowDirections = .any
             eventVC.popoverPresentationController?.sourceView = self.table
             
             let controller = eventVC.popoverPresentationController
@@ -756,16 +756,16 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             
         }
         else if(segue.identifier == EditRideConstants.editRadiusSegue){
-            let vc = segue.destinationViewController as! PickRadiusViewController
+            let vc = segue.destination as! PickRadiusViewController
             vc.ride = self.ride
             vc.setRadius = setRadius
             vc.numMiles = ride.radius
             //vc.location = CLocation
         }
         else if(segue.identifier == EditRideConstants.editPassengersSegue){
-            let popoverVC = segue.destinationViewController
+            let popoverVC = segue.destination
             popoverVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.97, height: self.view.frame.height * 0.77)
-            popoverVC.popoverPresentationController!.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), (passengerValue?.frame.origin.y)! - 50.0,0,0)
+            popoverVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.bounds.midX, y: (passengerValue?.frame.origin.y)! - 50.0,width: 0,height: 0)
             
             let controller = popoverVC.popoverPresentationController
             
@@ -783,7 +783,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     }
     
     
-    func setRadius(radius: Int){
+    func setRadius(_ radius: Int){
         ride.radius = radius
         pickupRadius.text = ride.getRadius()
         updateOptions()
@@ -801,7 +801,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         
         
         let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) in
+        search.start { (response, error) in
             guard let response = response else {
                 return
             }
@@ -813,19 +813,19 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         }
     }
     
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         let senderId = textView.tag
         
         switch senderId{
-        case EditTags.Name.rawValue:
+        case EditTags.name.rawValue:
             ride.driverName = nameValue.text
-        case EditTags.Number.rawValue:
+        case EditTags.number.rawValue:
             ride.driverNumber = numberValue.text
-        case EditTags.Direction.rawValue:
+        case EditTags.direction.rawValue:
             ride.direction = ride.getServerDirectionValue(directionValue.text!)
-        case EditTags.Seats.rawValue:
-            if let val = Int(seatsValue.text.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet())){
+        case EditTags.seats.rawValue:
+            if let val = Int(seatsValue.text.trimmingCharacters(
+                in: CharacterSet.whitespacesAndNewlines)){
                 if (ride.numSeatsNeedToDrop(val) >= 1 && val > 0){
                     needToDropPassenger(val, numToDrop: ride.numSeatsNeedToDrop(val))
                 }
@@ -839,7 +839,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         updateOptions()
     }
     
-    func needToDropPassenger(num : Int, numToDrop: Int){
+    func needToDropPassenger(_ num : Int, numToDrop: Int){
         var message = "If you want to lower the number of offered seats to " +
             String(num) + ", you must drop " + String(numToDrop)
         
@@ -853,7 +853,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         showValidationError(message)
     }
     
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if(textView == nameValue || textView == seatsValue){
             return GlobalUtils.shouldChangeNameTextInRange(textView.text, range: range, text: text)

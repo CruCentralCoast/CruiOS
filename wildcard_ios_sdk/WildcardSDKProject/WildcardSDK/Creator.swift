@@ -14,38 +14,38 @@ Creator of a Card
 Any entity that owns Card content. This may be a company, specific website, or individual.
 */
 
-public class Creator : PlatformObject {
+open class Creator : PlatformObject {
     
-    public let name:String
-    public let url:NSURL
-    public let favicon:NSURL?
-    public let iosAppStoreUrl:NSURL?
+    open let name:String
+    open let url:URL
+    open let favicon:URL?
+    open let iosAppStoreUrl:URL?
     
-    public init(name:String, url:NSURL, favicon:NSURL?, iosStore:NSURL?){
+    public init(name:String, url:URL, favicon:URL?, iosStore:URL?){
         self.name = name
         self.url = url
         self.favicon = favicon
         self.iosAppStoreUrl = iosStore
     }
     
-    class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+    class func deserializeFromData(_ data: NSDictionary) -> AnyObject? {
         
         let name = data["name"] as? String
-        var creatorUrl:NSURL?
+        var creatorUrl:URL?
         if let url = data["url"] as? String{
-            creatorUrl = NSURL(string: url)
+            creatorUrl = URL(string: url)
         }
         
         if(name != nil && creatorUrl != nil){
-            var favicon:NSURL?
-            var iosStoreUrl:NSURL?
+            var favicon:URL?
+            var iosStoreUrl:URL?
             
             if let fav = data["favicon"] as? String{
-                favicon = NSURL(string: fav)
+                favicon = URL(string: fav)
             }
             
             if let iosStore = data["iosAppStoreUrl"] as? String{
-                iosStoreUrl = NSURL(string:iosStore)
+                iosStoreUrl = URL(string:iosStore)
             }
             
             return Creator(name:name!, url:creatorUrl!, favicon:favicon, iosStore:iosStoreUrl)

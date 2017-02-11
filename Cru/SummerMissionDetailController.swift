@@ -13,34 +13,34 @@ class SummerMissionDetailController: UIViewController {
     
     //MARK: Properties
     
-    @IBOutlet private weak var image: UIImageView!
+    @IBOutlet fileprivate weak var image: UIImageView!
     //@IBOutlet private weak var topCoverView: UIView!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var datesLabel: UILabel!
+    @IBOutlet fileprivate weak var titleLabel: UILabel!
+    @IBOutlet fileprivate weak var datesLabel: UILabel!
     //@IBOutlet private weak var scrollingView: UIView!
-    @IBOutlet private weak var descriptionView: UITextView!
-    @IBOutlet private weak var locationLabel: UILabel!
+    @IBOutlet fileprivate weak var descriptionView: UITextView!
+    @IBOutlet fileprivate weak var locationLabel: UILabel!
     
     //@IBOutlet private weak var fbButton: UIButton!
     //@IBOutlet private weak var eventTimeLabel: UILabel!
     
     @IBOutlet weak var learnMoreButton: UIButton!
     
-    private let COVER_ALPHA: CGFloat = 0.35
+    fileprivate let COVER_ALPHA: CGFloat = 0.35
     var uiImage: UIImage!
     var mission: SummerMission!
     var dateText = ""
     //MARK: Actions
     
-    @IBAction func learnMoreButton(sender: UIButton) {
-        UIApplication.sharedApplication().openURL(NSURL(string: (mission.url))!)
+    @IBAction func learnMoreButton(_ sender: UIButton) {
+        UIApplication.shared.openURL(URL(string: (mission.url))!)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         image.image = nil
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         

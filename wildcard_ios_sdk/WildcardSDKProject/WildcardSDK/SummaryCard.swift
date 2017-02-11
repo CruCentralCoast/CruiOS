@@ -10,29 +10,29 @@
 Summary Card
 */
 @objc
-public class SummaryCard : Card {
+open class SummaryCard : Card {
     
-    public let title:String
-    public let abstractContent:String
-    public let subtitle:String?
-    public let media:NSDictionary?
-    public let primaryImageURL:NSURL?
-    public let appLinkIos:NSURL?
-    public let tags:[String]?
+    open let title:String
+    open let abstractContent:String
+    open let subtitle:String?
+    open let media:NSDictionary?
+    open let primaryImageURL:URL?
+    open let appLinkIos:URL?
+    open let tags:[String]?
     
-    public init(url:NSURL, description:String, title:String, media:NSDictionary?, data:NSDictionary?){
+    public init(url:URL, description:String, title:String, media:NSDictionary?, data:NSDictionary?){
         self.title = title
         self.abstractContent = description
         self.media = media
         self.tags = data!["tags"] as? [String]
         
-        var cardPrimaryImageURL:NSURL?
-        var cardAppLinkIos:NSURL?
+        var cardPrimaryImageURL:URL?
+        var cardAppLinkIos:URL?
         var subtitle:String?
         
         if let dataDict = data{
             if let url = dataDict["appLinkIos"] as? String{
-                cardAppLinkIos = NSURL(string: url)
+                cardAppLinkIos = URL(string: url)
             }
             if let summary = dataDict["summary"] as? NSDictionary{
                 subtitle = summary["subtitle"] as? String
@@ -42,7 +42,7 @@ public class SummaryCard : Card {
         if self.media != nil {
             if self.media!["type"] as! String == "image"{
                 let imageUrl = self.media!["imageUrl"] as! String
-                cardPrimaryImageURL = NSURL(string:imageUrl)
+                cardPrimaryImageURL = URL(string:imageUrl)
             }
         }
         
@@ -53,14 +53,14 @@ public class SummaryCard : Card {
         super.init(webUrl: url, cardType: "summary")
     }
     
-    override class func deserializeFromData(data: NSDictionary) -> AnyObject? {
+    override class func deserializeFromData(_ data: NSDictionary) -> AnyObject? {
         var summaryCard:SummaryCard?
-        var startURL:NSURL?
+        var startURL:URL?
         var title:String?
         var description:String?
         
         if let urlString = data["webUrl"] as? String{
-            startURL = NSURL(string:urlString)
+            startURL = URL(string:urlString)
         }
         
         if let summary = data["summary"] as? NSDictionary{
@@ -74,13 +74,13 @@ public class SummaryCard : Card {
         return summaryCard
     }
     
-    public override func supportsLayout(layout: WCCardLayout) -> Bool {
-        return layout == WCCardLayout.SummaryCardTall ||
-            layout == WCCardLayout.SummaryCardShort ||
-            layout == WCCardLayout.SummaryCardShortLeft ||
-            layout == WCCardLayout.SummaryCardNoImage ||
-            layout == WCCardLayout.SummaryCardImageOnly ||
-            layout == WCCardLayout.SummaryCardTwitterProfile ||
-            layout == WCCardLayout.SummaryCardTwitterTweet
+    open override func supportsLayout(_ layout: WCCardLayout) -> Bool {
+        return layout == WCCardLayout.summaryCardTall ||
+            layout == WCCardLayout.summaryCardShort ||
+            layout == WCCardLayout.summaryCardShortLeft ||
+            layout == WCCardLayout.summaryCardNoImage ||
+            layout == WCCardLayout.summaryCardImageOnly ||
+            layout == WCCardLayout.summaryCardTwitterProfile ||
+            layout == WCCardLayout.summaryCardTwitterTweet
     }
 }

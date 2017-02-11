@@ -42,7 +42,7 @@ class CGQuestion {
     }
     
     static
-        func getString(dict: NSDictionary, key: String) -> String {
+        func getString(_ dict: NSDictionary, key: String) -> String {
         if let value = dict[key] as? String {
             return value
         } else {

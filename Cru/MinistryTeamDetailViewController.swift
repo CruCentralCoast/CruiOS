@@ -38,11 +38,11 @@ class MinistryTeamDetailViewController: UIViewController {
     }
     
     //inserts the ministry team we're looking for into the current view
-    func insertMinistryTeam(dict: NSDictionary) {
+    func insertMinistryTeam(_ dict: NSDictionary) {
         self.ministryTeam = MinistryTeam(dict: dict)!
     }
     
-    func completeMinistryTeamInsert(isSuccess: Bool) {
+    func completeMinistryTeamInsert(_ isSuccess: Bool) {
         if isSuccess {
             ministryTeamNameLabel.text = ministryTeam.ministryName
             
@@ -50,7 +50,8 @@ class MinistryTeamDetailViewController: UIViewController {
                 heightFromLabelToSuperView.constant = 8.0
             }
             else {
-                ministryTeamImage.load(ministryTeam.imageUrl)
+                //ministryTeamImage.load(ministryTeam.imageUrl)
+                ministryTeamImage.load.request(with: ministryTeam.imageUrl)
             }
             
             var description = ministryTeam.description
@@ -84,22 +85,22 @@ class MinistryTeamDetailViewController: UIViewController {
     }
     
     //leaves the ministry team
-    @IBAction func leaveMinistryTeam(sender: AnyObject) {
-        let alert = UIAlertController(title: "Leaving Ministry Team", message: "Are you sure you would like to leave this Ministry Team?", preferredStyle: UIAlertControllerStyle.Alert)
+    @IBAction func leaveMinistryTeam(_ sender: AnyObject) {
+        let alert = UIAlertController(title: "Leaving Ministry Team", message: "Are you sure you would like to leave this Ministry Team?", preferredStyle: UIAlertControllerStyle.alert)
         
         //add alert box actions
-        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.Default, handler: nil))
-        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.Destructive, handler: unwindToMinistryTeamList))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertActionStyle.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertActionStyle.destructive, handler: unwindToMinistryTeamList))
         
         //present the alert box
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
     
-    func unwindToMinistryTeamList(action: UIAlertAction){
+    func unwindToMinistryTeamList(_ action: UIAlertAction){
         teamStorageManager.removeElement(ministryTeam.id)
         
         if let navController = self.navigationController {
-            navController.popViewControllerAnimated(true)
+            navController.popViewController(animated: true)
             
             if (listVC != nil){
                 listVC?.refresh(self)

@@ -69,11 +69,7 @@ typedef NS_ENUM(NSInteger, GMSPlacePickerErrorCode) {
  * thread.
  *
  * It is not possible to have multiple place picking operations active at the same time. If this is
- * attempted, the second callback will be invoked with an error.
- *
- * A reference to the place picker must be retained for the duration of the place picking operation.
- * If the retain count of the place picker object becomes 0, the picking operation will be cancelled
- * and the callback will not be invoked.
+ * attempted, the callback will be invoked with an error.
  */
 - (void)pickPlaceWithCallback:(GMSPlaceResultCallback)callback;
 

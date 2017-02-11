@@ -13,21 +13,21 @@ class SubscriptionManager: SubscriptionProtocol {
     
     let gcmKey = "GCM"
     
-    private var unsubList = [String]()
-    private var subList = [String]()
-    private var responses = [String:Bool?]()
+    fileprivate var unsubList = [String]()
+    fileprivate var subList = [String]()
+    fileprivate var responses = [String:Bool?]()
     
-    private var successfulMinistries = [Ministry]()
+    fileprivate var successfulMinistries = [Ministry]()
     
-    private static let clientDispatchQueue = dispatch_queue_create("gcm-subcription-queue", DISPATCH_QUEUE_CONCURRENT)
+    fileprivate static let clientDispatchQueue = DispatchQueue(label: "gcm-subcription-queue", attributes: DispatchQueue.Attributes.concurrent)
     
-    private static func synchronized(closure: Void->Void) {
-        dispatch_sync(clientDispatchQueue) {
+    fileprivate static func synchronized(_ closure: (Void)->Void) {
+        clientDispatchQueue.sync {
             closure()
         }
     }
     
-    func saveGCMToken(token: String){
+    func saveGCMToken(_ token: String){
         GlobalUtils.saveString(gcmKey, value: token)
     }
     
@@ -36,15 +36,15 @@ class SubscriptionManager: SubscriptionProtocol {
     }
     
     func loadCampuses() -> [Campus] {
-        if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey(Config.campusKey) as? NSData {
-            if let campuses = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Campus]{
+        if let unarchivedObject = UserDefaults.standard.object(forKey: Config.campusKey) as? Data {
+            if let campuses = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Campus]{
                 return campuses
             }
         }
         return [Campus]()
     }
     
-    func saveCampuses(campuses:[Campus]) {
+    func saveCampuses(_ campuses:[Campus]) {
         var enabledCampuses = [Campus]()
         
         for camp in campuses{
@@ -53,22 +53,22 @@ class SubscriptionManager: SubscriptionProtocol {
             }
         }
         //TODO: Ensure that unsubscribing from a campus will unsubscribe the associate ministries
-        let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(enabledCampuses as NSArray)
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setObject(archivedObject, forKey: Config.campusKey)
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabledCampuses as NSArray)
+        let defaults = UserDefaults.standard
+        defaults.set(archivedObject, forKey: Config.campusKey)
         defaults.synchronize()
     }
     
     func loadMinistries() -> [Ministry] {
-        if let unarchivedObject = NSUserDefaults.standardUserDefaults().objectForKey(Config.ministryKey) as? NSData {
-            if let minisArr = NSKeyedUnarchiver.unarchiveObjectWithData(unarchivedObject) as? [Ministry]{
+        if let unarchivedObject = UserDefaults.standard.object(forKey: Config.ministryKey) as? Data {
+            if let minisArr = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Ministry]{
                 return minisArr
             }
         }
         return [Ministry]()
     }
     
-    func didMinistriesChange(ministries:[Ministry]) -> Bool {
+    func didMinistriesChange(_ ministries:[Ministry]) -> Bool {
         var enabledMinistries = [Ministry]()
         
         for min in ministries {
@@ -92,11 +92,11 @@ class SubscriptionManager: SubscriptionProtocol {
         return oldMinistries.count != enabledMinistries.count
     }
     
-    func saveMinistries(ministries:[Ministry], updateGCM: Bool) {
+    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool) {
         saveMinistries(ministries, updateGCM: updateGCM, handler: {(map) in })
     }
     
-    func saveMinistries(ministries:[Ministry], updateGCM: Bool, handler: [String:Bool]->Void) {
+    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool, handler: @escaping ([String:Bool])->Void) {
         
         var enabledMinistries = [Ministry]()
         
@@ -129,7 +129,7 @@ class SubscriptionManager: SubscriptionProtocol {
         }
     }
     
-    private func sendRequests(handler: [String:Bool]->Void) {
+    fileprivate func sendRequests(_ handler: @escaping ([String:Bool])->Void) {
         
         subList.forEach {
             let minId = $0
@@ -150,7 +150,7 @@ class SubscriptionManager: SubscriptionProtocol {
         }
     }
     
-    private func checkFinished(success: Bool, minId: String, handler: [String:Bool]->Void) {
+    fileprivate func checkFinished(_ success: Bool, minId: String, handler: ([String:Bool])->Void) {
         self.responses[minId] = success
         if (!success) {
             self.successfulMinistries = self.successfulMinistries.filter { $0.id != minId }
@@ -163,36 +163,39 @@ class SubscriptionManager: SubscriptionProtocol {
             print("Yup")
             print("responses: \(responses)")
             
-            let archivedObject = NSKeyedArchiver.archivedDataWithRootObject(successfulMinistries as NSArray)
-            let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setObject(archivedObject, forKey: Config.ministryKey)
+            let archivedObject = NSKeyedArchiver.archivedData(withRootObject: successfulMinistries as NSArray)
+            let defaults = UserDefaults.standard
+            defaults.set(archivedObject, forKey: Config.ministryKey)
             defaults.synchronize()
         } else {
             print("Nope")
         }
     }
     
-    func campusContainsMinistry(campus: Campus, ministry: Ministry)->Bool{
+    func campusContainsMinistry(_ campus: Campus, ministry: Ministry)->Bool{
         return ministry.campusId == campus.id
     }
     
-    func subscribeToTopic(topic: String) {
+    func subscribeToTopic(_ topic: String) {
         subscribeToTopic(topic, handler : {(success) in })
     }
     
-    func subscribeToTopic(topic: String, handler: (Bool) -> Void) {
+    func subscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
         // If the app has a registration token and is connected to GCM, proceed to subscribe to the
         // topic
         let gcmToken = loadGCMToken()
-        GCMPubSub.sharedInstance().subscribeWithToken(gcmToken, topic: topic,
+        GCMPubSub.sharedInstance().subscribe(withToken: gcmToken, topic: topic,
             options: nil, handler: {(error) -> Void in
+                let err = error! as NSError
                 var success : Bool = false
-                if (error != nil) {
+                
+                if (err != nil) {
                     // Treat the "already subscribed" error more gently
-                    if error.code == 3001 {
+                    
+                    if err.code == 3001 {
                         print("Already subscribed to \(topic)")
                     } else {
-                        print("Subscription failed: \(error.localizedDescription)");
+                        print("Subscription failed: \(error?.localizedDescription)");
                     }
                 } else {
                     success = true
@@ -202,21 +205,21 @@ class SubscriptionManager: SubscriptionProtocol {
         })
     }
     
-    func unsubscribeToTopic(topic: String) {
+    func unsubscribeToTopic(_ topic: String) {
         unsubscribeToTopic(topic, handler : {(success) in })
     }
 
-    func unsubscribeToTopic(topic: String, handler: (Bool) -> Void) {
+    func unsubscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
         // If the app has a registration token and is connected to GCM, proceed to subscribe to the
         // topic
         
         let gcmToken = loadGCMToken()
         
-        GCMPubSub.sharedInstance().unsubscribeWithToken(gcmToken, topic: topic,
+        GCMPubSub.sharedInstance().unsubscribe(withToken: gcmToken, topic: topic,
             options: nil, handler: {(error) -> Void in
                 var success : Bool = false
                 if (error != nil) {
-                    print("Failed to unsubscribe: \(error.localizedDescription)")
+                    print("Failed to unsubscribe: \(error?.localizedDescription)")
                 } else {
                     success = true
                     NSLog("Unsubscribed to \(topic)")
@@ -224,6 +227,9 @@ class SubscriptionManager: SubscriptionProtocol {
                 handler(success)
         })
     }
+    
+    /* New functions required by the Swift 3 changes to protocols */
+    
     
     
     

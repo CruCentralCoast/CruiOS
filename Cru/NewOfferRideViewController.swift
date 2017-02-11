@@ -67,11 +67,11 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             addressField?.text = pickedLocation.formattedAddress
             let delimiter = ", "
            
-            let parts = pickedLocation.formattedAddress!.componentsSeparatedByString(delimiter)
+            let parts = pickedLocation.formattedAddress!.components(separatedBy: delimiter)
             
             
             let newDel = " "
-            let components = parts[2].componentsSeparatedByString(newDel)
+            let components = parts[2].components(separatedBy: newDel)
             let state = components[0]
             let postalcode = components[1]
             let address = parts[0]
@@ -79,7 +79,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             let country = parts[3]
             
             convertedDict = ["country": country, "state": state, "street1": address, "postcode": postalcode, "suburb": city]
-            CLocation = CLLocation(coordinate: pickedLocation.coordinate, altitude: 0.0, horizontalAccuracy: 1.0, verticalAccuracy: 1.0, timestamp: NSDate())
+            CLocation = CLLocation(coordinate: pickedLocation.coordinate, altitude: 0.0, horizontalAccuracy: 1.0, verticalAccuracy: 1.0, timestamp: Date())
             
         }
     }
@@ -90,14 +90,14 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         //Set the text field delegates to self
         nameField?.delegate = self
         phoneField?.delegate = self
-        phoneField?.keyboardType = .NumberPad
+        phoneField?.keyboardType = .numberPad
         eventField?.delegate = self
         dateField?.delegate = self
         timeField?.delegate = self
         addressField?.delegate = self
         pickupRadiusField?.delegate = self
         seatsField?.delegate = self
-        seatsField?.keyboardType = .NumberPad
+        seatsField?.keyboardType = .numberPad
         
         //Instantiate the ride
         self.ride = Ride()
@@ -112,8 +112,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         }
         
         //Navbar buttons
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(doneAction(_:)))
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(cancelAction(_:)))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneAction(_:)))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(_:)))
         
         doneButton.tintColor = CruColors.lightBlue
         cancelButton.tintColor = CruColors.orange
@@ -122,36 +122,36 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         self.navigationItem.leftBarButtonItem = cancelButton
         
         //Hide the time hint until an event is selected
-        timeHint?.hidden = true
-        endDateHint?.hidden = true
+        timeHint?.isHidden = true
+        endDateHint?.isHidden = true
         
         //Setup for the Google Place Picker
-        placesClient = GMSPlacesClient.sharedClient()
+        placesClient = GMSPlacesClient.shared()
         
         //Sync the ride with the event if it's coming from event details
         if fromEventDetails {
             syncRideToEvent()
             eventField?.text = event.name
-            eventField?.enabled = false
+            eventField?.isEnabled = false
             
         }
         
     }
     
     //Asynchronous function that's called to insert an event into the table
-    func insertEvent(dict : NSDictionary) {
+    func insertEvent(_ dict : NSDictionary) {
         //Create event
         let event = Event(dict: dict)!
         
         //Insert event into the array only if ridesharing is enabled
         if event.rideSharingEnabled == true {
-            self.events.insert(event, atIndex: 0)
+            self.events.insert(event, at: 0)
         }
     }
     
     
     // MARK: UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case nameField!:
             nameField?.resignFirstResponder()
@@ -175,7 +175,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     
     
     
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case nameField!:
             highlightField(nameLine)
@@ -186,7 +186,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         case eventField!:
             eventField?.resignFirstResponder()
             highlightField(eventLine)
-            self.performSegueWithIdentifier(OfferRideConstants.chooseEventSegue, sender: self)
+            self.performSegue(withIdentifier: OfferRideConstants.chooseEventSegue, sender: self)
             //eventLine?.backgroundColor = CruColors.lightBlue
         case dateField!:
             highlightField(dateLine)
@@ -228,7 +228,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
         switch textField {
         case nameField!:
@@ -255,14 +255,14 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
     // MARK: Animations
-    func highlightField(view: UIView) {
-        UIView.animateWithDuration(0.5, animations: {
+    func highlightField(_ view: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = CruColors.lightBlue
         })
     }
     
-    func makeFieldInactive(view: UIView) {
-        UIView.animateWithDuration(0.5, animations: {
+    func makeFieldInactive(_ view: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = self.inactiveGray
         })
     }
@@ -272,27 +272,27 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     
     // MARK: Actions
     
-    @IBAction func directionChanged(sender: SegmentedControl) {
+    @IBAction func directionChanged(_ sender: SegmentedControl) {
         
         ride.direction = segmentedControl.getDirection()
         
-        if timeHint.hidden == false {
+        if timeHint.isHidden == false {
             if segmentedControl.getDirection() == "from" {
                 timeHint.text = String("(event ends at \(event.getEndTime())\(event.getEndAmOrPm()))")
                 
-                endDateHint.hidden = false
+                endDateHint.isHidden = false
                 endDateHint.text = String("(event ends on \(event.getEndDate()))")
             }
                 
             else if segmentedControl.getDirection() == "to" || segmentedControl.getDirection() == "both" {
-                endDateHint.hidden = true
+                endDateHint.isHidden = true
                 timeHint.text = String("(event starts at \(event.getStartTime())\(event.getAmOrPm()))")
             }
         }
     }
     
-    @IBAction func directionPicked(sender: UISegmentedControl) {
-        switch direction {
+    @IBAction func directionPicked(_ sender: UISegmentedControl) {
+        switch direction.selectedSegmentIndex {
         case 0:
             //Round trip
             ride.direction = ride.getServerDirectionValue("both")
@@ -307,7 +307,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         }
     }
     
-    @IBAction func doneAction(sender: UIBarButtonItem) {
+    @IBAction func doneAction(_ sender: UIBarButtonItem) {
         //Validation here
         
         if validateName() == false { return}
@@ -322,19 +322,19 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             ride.time = (timeField?.text)!
         }
         //Show the progress wheel and send offer
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         sendRideOffer()
         
     }
     
-    @IBAction func cancelAction(sender: UIBarButtonItem) {
-        self.navigationController!.popViewControllerAnimated(true)
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        self.navigationController!.popViewController(animated: true)
     }
     
     // MARK: Validators
     func validateName() -> Bool {
         if (nameField?.text != ""){
-            nameField?.text = (nameField?.text)!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            nameField?.text = (nameField?.text)!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
             let error  = ride.isValidName((nameField?.text)!)
             if(error != ""){
                 showValidationError(error)
@@ -362,7 +362,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
     func validateNumber() -> Bool {
-        if (phoneField != "") {
+        if (phoneField?.text != "") {
             parsedNum = PhoneFormatter.parsePhoneNumber((phoneField?.text)!)
             
             let error  = ride.isValidPhoneNum(parsedNum!)
@@ -405,14 +405,14 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         
         
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDate()){
-            ride.day = (components.day)
-            ride.monthNum = (components.month)
-            ride.year = (components.year)
+            ride.day = (components.day)!
+            ride.monthNum = (components.month)!
+            ride.year = (components.year)!
         }
         
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureTime()){
-            ride.hour = (components.hour)
-            ride.minute = (components.minute)
+            ride.hour = (components.hour)!
+            ride.minute = (components.minute)!
         }
         
         
@@ -467,8 +467,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     
     func validateSeats() -> Bool{
         if seatsField?.text != "" {
-            if let val = Int((seatsField?.text)!.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet())){
+            if let val = Int((seatsField?.text)!.trimmingCharacters(
+                in: CharacterSet.whitespacesAndNewlines)){
                 if(ride.isValidNumSeats(val) != ""){
                     showValidationError(ride.isValidNumSeats(val))
                     return false
@@ -506,19 +506,19 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         
     }
     
-    func postRideOffer(success: Bool){
+    func postRideOffer(_ success: Bool){
         if (success){
             
             //CruClients.getRideUtils().postRideOffer(ride.eventId, name: ride.driverName, phone: ride.driverNumber, seats: ride.seats, time: ride.getTimeInServerFormat(), location: location.getLocationAsDict(location), radius: ride.radius, direction: ride.direction, handler:  handleRequestResult)
             CruClients.getRideUtils().postRideOffer(ride.eventId, name: ride.driverName, phone: (self.phoneField?.text)!, seats: ride.seats, time: ride.getTimeInServerFormat(), location: self.convertedDict, radius: ride.radius, direction: ride.direction, handler:  handleRequestResult)
         }else{
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             showValidationError(ValidationErrors.phoneUnauthorized)
         }
     }
     
-    func handleRequestResult(result : Ride?){
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+    func handleRequestResult(_ result : Ride?){
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         if result != nil {
             
             
@@ -526,7 +526,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
                 self.rideVC.refresh(self)
                 presentAlert("Success", msg: "Thank you! Your ride has been created!", handler:  {
                     if let navController = self.navigationController {
-                        navController.popViewControllerAnimated(true)
+                        navController.popViewController(animated: true)
                         
                     }
                 })
@@ -534,7 +534,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             else{
                 presentAlert("Ride Offered", msg: "Thank you! Your offered ride has been created! You can view your ride offer in the Ridehsaring section.", handler:  {
                     if let navController = self.navigationController {
-                        navController.popViewControllerAnimated(true)
+                        navController.popViewController(animated: true)
                         
                     }
                 })
@@ -563,7 +563,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         ride.direction = "both"
         
         //show the time hint
-        timeHint.hidden = false
+        timeHint.isHidden = false
         timeHint.text = String("(event starts at \(event.getStartTime())\(event.getAmOrPm()))")
         
     }
@@ -579,7 +579,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         
         
         let search = MKLocalSearch(request: request)
-        search.startWithCompletionHandler { (response, error) in
+        search.start { (response, error) in
             guard let response = response else {
                 return
             }
@@ -592,13 +592,13 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
     //called when a date is chosen
-    func chooseDateHandler(month : Int, day : Int, year : Int){
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+    func chooseDateHandler(_ month : Int, day : Int, year : Int){
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MM d yyyy"
         
         //if date formatter returns nil return the current date/time
-        if let date = dateFormatter.dateFromString(String(month) + " " + String(day) + " " + String(year)) {
+        if let date = dateFormatter.date(from: String(month) + " " + String(day) + " " + String(year)) {
             ride.date = date
             ride.monthNum = month
             ride.day = day
@@ -609,28 +609,28 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
     //called when a time is chosen
-    func datePicked(obj: NSDate){
-        let formatter = NSDateFormatter()
+    func datePicked(_ obj: Date){
+        let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
-        timeField!.text = formatter.stringFromDate(obj)
-        let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: obj)
-        ride.hour = comp.hour
-        ride.minute = comp.minute
+        timeField!.text = formatter.string(from: obj)
+        let calendar = Calendar.current
+        let comp = (calendar as NSCalendar).components([.hour, .minute], from: obj)
+        ride.hour = comp.hour!
+        ride.minute = comp.minute!
         ride.timeStr = (timeField?.text)!
         ride.departureTime = obj
     }
     
-    func dismissLocationPicker(sender: UIBarButtonItem) {
+    func dismissLocationPicker(_ sender: UIBarButtonItem) {
         print("\nNow this gets executed\n")
-        navigationController!.popViewControllerAnimated(true)
+        navigationController!.popViewController(animated: true)
     }
     
-    func sendLocation(sender: UIBarButtonItem) {
-        navigationController!.popViewControllerAnimated(true)
+    func sendLocation(_ sender: UIBarButtonItem) {
+        navigationController!.popViewController(animated: true)
     }
     
-    func setRadius(radius: Int){
+    func setRadius(_ radius: Int){
         ride.radius = radius
         pickupRadiusField?.text = ride.getRadius()
         pickupLine.backgroundColor = inactiveGray
@@ -641,7 +641,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     func presentCustomPicker() {
         let autocompleteController = GMSAutocompleteViewController()
         autocompleteController.delegate = self
-        self.presentViewController(autocompleteController, animated: true, completion: nil)
+        self.present(autocompleteController, animated: true, completion: nil)
     }
     
     func googlePlacePicker() {
@@ -651,7 +651,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         
         
         // Present it fullscreen.
-        placePicker.pickPlaceWithCallback { (place, error) in
+        placePicker.pickPlace { (place, error) in
             
             // Handle the selection if it was successful.
             if let place = place {
@@ -728,41 +728,41 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     
     // MARK: Changing UI
     
-    func addTextFieldError(view: UIView){
-        UIView.animateWithDuration(0.5, animations: {
+    func addTextFieldError(_ view: UIView){
+        UIView.animate(withDuration: 0.5, animations: {
             //view.backgroundColor = UIColor(red: 190/255, green: 59/255, blue: 52/255, alpha: 1.0)
-            view.backgroundColor = UIColor.redColor()
+            view.backgroundColor = UIColor.red
         })
     }
     
-    func removeTextFieldError(view: UIView){
-        UIView.animateWithDuration(0.5, animations: {
+    func removeTextFieldError(_ view: UIView){
+        UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = self.inactiveGray
         })
     }
     
-    func showValidationError(error: String){
-        let alert = UIAlertController(title: error, message: "", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+    func showValidationError(_ error: String){
+        let alert = UIAlertController(title: error, message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(ok)
-        self.presentViewController(alert, animated: true, completion: {})
+        self.present(alert, animated: true, completion: {})
     }
     
-    private func presentAlert(title: String, msg: String, handler: ()->()) {
-        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+    fileprivate func presentAlert(_ title: String, msg: String, handler: @escaping ()->()) {
+        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
         
-        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             action in
             handler()
             
         }))
-        presentViewController(cancelRideAlert, animated: true, completion: nil)
+        present(cancelRideAlert, animated: true, completion: nil)
         
     }
     
     /* Prevents the event popover to not fill the entire screen */
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
 
@@ -770,7 +770,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "radiusPicker" {
             if self.pickedLocation == nil {
                 showValidationError("Please pick a location before picking a radius.")
@@ -783,18 +783,18 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         return true
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == OfferRideConstants.chooseEventSegue{
-            let eventVC = segue.destinationViewController as! EventsPopoverViewController
+            let eventVC = segue.destination as! EventsPopoverViewController
             eventVC.events = self.events
             eventVC.offerRide = self
             
             eventVC.popoverPresentationController?.sourceView = self.eventField
             eventVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.75, height: self.view.frame.height * 0.5)
-            eventVC.popoverPresentationController!.sourceRect = CGRectMake(self.view.frame.width / 2, 15,0,0)
-            eventVC.popoverPresentationController?.permittedArrowDirections = .Up
+            eventVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.frame.width / 2, y: 15,width: 0,height: 0)
+            eventVC.popoverPresentationController?.permittedArrowDirections = .up
             
             
             let controller = eventVC.popoverPresentationController
@@ -805,7 +805,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             
         }
         else if(segue.identifier == OfferRideConstants.editRadiusSegue){
-            let vc = segue.destinationViewController as! PickRadiusViewController
+            let vc = segue.destination as! PickRadiusViewController
             vc.ride = self.ride
             vc.setRadius = setRadius
             vc.numMiles = ride.radius
@@ -833,30 +833,30 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
 //Extension for the Google Places picker
 extension NewOfferRideViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
-    func viewController(viewController: GMSAutocompleteViewController, didAutocompleteWithPlace place: GMSPlace) {
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         print("Place name: ", place.name)
         print("Place address: ", place.formattedAddress)
         print("Place attributions: ", place.attributions)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    func viewController(viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: NSError) {
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         // TODO: handle the error.
-        print("Error: ", error.description)
+        print("Error: ", error.localizedDescription)
     }
     
     // User canceled the operation.
-    func wasCancelled(viewController: GMSAutocompleteViewController) {
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         //self.dismissViewControllerAnimated(true, completion: nil)
-        self.navigationController!.popViewControllerAnimated(true)
+        self.navigationController!.popViewController(animated: true)
     }
     
     // Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictions(viewController: GMSAutocompleteViewController) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func didUpdateAutocompletePredictions(viewController: GMSAutocompleteViewController) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 }

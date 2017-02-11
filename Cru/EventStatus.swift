@@ -9,7 +9,7 @@
 import Foundation
 
 enum EventStatus {
-    case NotAdded
-    case Added
-    case Sync
+    case notAdded
+    case added
+    case sync
 }

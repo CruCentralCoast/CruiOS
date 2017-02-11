@@ -34,12 +34,12 @@ class MinistryTeam: Comparable, Equatable{
         self.parentMinName = ""
         
         //grabbing dictionary values
-        let dId = dict.objectForKey("_id")
-        let dParentMinistry = dict.objectForKey("parentMinistry")
-        let dDescription = dict.objectForKey("description")
-        let dMinistryName = dict.objectForKey("name")
-        let dImage = dict.objectForKey("leadersImage")
-        let dLeaders = dict.objectForKey("leaders")
+        let dId = dict.object(forKey: "_id")
+        let dParentMinistry = dict.object(forKey: "parentMinistry")
+        let dDescription = dict.object(forKey: "description")
+        let dMinistryName = dict.object(forKey: "name")
+        let dImage = dict.object(forKey: "leadersImage")
+        let dLeaders = dict.object(forKey: "leaders")
         
         //set up object
         if (dId != nil) {
@@ -55,7 +55,7 @@ class MinistryTeam: Comparable, Equatable{
             self.ministryName = dMinistryName as! String
         }
         if (dImage != nil) {
-            if let imageUrl = dImage?.objectForKey("secure_url") {
+            if let imageUrl = (dImage as AnyObject).object(forKey: "secure_url") {
                 self.imageUrl = imageUrl as! String
             }
             else {
@@ -68,7 +68,7 @@ class MinistryTeam: Comparable, Equatable{
         }
         if let leaderDicts = dLeaders as? [[String:AnyObject]] {
             self.leaders = leaderDicts.map{
-                User(dict: $0)
+                User(dict: $0 as NSDictionary)
             }
         }
     }

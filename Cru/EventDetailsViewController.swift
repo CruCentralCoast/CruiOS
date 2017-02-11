@@ -48,33 +48,33 @@ class EventDetailsViewController: UIViewController {
         navigationItem.title = "Event Details"
         
         if self.navigationController != nil {
-            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         }
         
         
         
         //initialize the view
         initializeView()
-        setButtonConstraints(UIScreen.mainScreen().bounds.width)
+        setButtonConstraints(UIScreen.main.bounds.width)
         
         //Disable the ride sharing buttons if user is already driving/is passenger
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
     }
     
-    func insertRide(dict : NSDictionary) {
+    func insertRide(_ dict : NSDictionary) {
         //create ride
         let newRide = Ride(dict: dict)
         
         //insert into ride array
-        rides.insert(newRide!, atIndex: 0)
+        rides.insert(newRide!, at: 0)
     }
     
-    func finishRideInsert(type: ResponseType){
+    func finishRideInsert(_ type: ResponseType){
         
         switch type{
             
             
-        case .NoConnection:
+        case .noConnection:
             print("No Connection")
             //self.ridesTableView.emptyDataSetSource = self
             //self.ridesTableView.emptyDataSetDelegate = self
@@ -90,11 +90,11 @@ class EventDetailsViewController: UIViewController {
             }
         }
         
-        rides.sortInPlace()
+        rides.sort()
     }
     
     //UI view initializer
-    private func initializeView() {
+    fileprivate func initializeView() {
         let dateFormat = "h:mma MMMM d, yyyy"
         let dateFormatter = "MMM d, yyyy"
         let timeFormatter = "h:mma"
@@ -102,7 +102,7 @@ class EventDetailsViewController: UIViewController {
         navigationItem.title = "Event Details"
         
         //Set the UI elements to the event’s corresponding value
-        image.load(event.imageUrl)
+        image.load.request(with: event.imageUrl)
         titleLabel.text = event.name
         startTimeLabel.text = GlobalUtils.stringFromDate(event.startNSDate, format: dateFormat)
         endTimeLabel.text = GlobalUtils.stringFromDate(event.endNSDate, format: dateFormat)
@@ -134,7 +134,7 @@ class EventDetailsViewController: UIViewController {
         
         //If there's no Facebook event, disable the button
         if event.url == "" {
-            fbButton.enabled = false
+            fbButton.isEnabled = false
         }
         
         //If ridesharing is not enabled, disable the buttons
@@ -148,13 +148,13 @@ class EventDetailsViewController: UIViewController {
         }
     }
     
-    private func disableRideSharing() {
-        findRideButton.enabled = false
-        offerRideButton.enabled = false
+    fileprivate func disableRideSharing() {
+        findRideButton.isEnabled = false
+        offerRideButton.isEnabled = false
     }
     
     //Checks for differences between the native event and the one being displayed
-    func checkForChanges(eventID: String) {
+    func checkForChanges(_ eventID: String) {
         var changed = false
         
         if let nativeEvent = calendarManager.getEvent(eventID) {
@@ -172,10 +172,10 @@ class EventDetailsViewController: UIViewController {
             }
             
             if changed {
-                self.reconfigureCalendarButton(EventStatus.Sync)
+                self.reconfigureCalendarButton(EventStatus.sync)
             }
             else {
-                self.reconfigureCalendarButton(EventStatus.Added)
+                self.reconfigureCalendarButton(EventStatus.added)
                 print("Event exists")
             }
         }
@@ -185,7 +185,7 @@ class EventDetailsViewController: UIViewController {
     }
     
     //Sets the spacing of the buttons according to the screen size
-    func setButtonConstraints(screenWidth: CGFloat) {
+    func setButtonConstraints(_ screenWidth: CGFloat) {
         let totalSpacing = screenWidth - (calendarButton.bounds.width*4) - 40
         let interval = totalSpacing/3
         
@@ -197,12 +197,12 @@ class EventDetailsViewController: UIViewController {
     //MARK: Actions
     
     //This action allows the user to access the event on facebook
-    @IBAction func facebookLinkButton(sender: UIButton) {
-        UIApplication.sharedApplication().openURL(NSURL(string: (event.url))!)
+    @IBAction func facebookLinkButton(_ sender: UIButton) {
+        UIApplication.shared.openURL(URL(string: (event.url))!)
     }
     
     //This action is for saving an event to the native calendar
-    @IBAction func saveToCalendar(sender: UIButton) {
+    @IBAction func saveToCalendar(_ sender: UIButton) {
         calendarManager.addEventToCalendar(event, completionHandler: {
             errors, id in
             
@@ -212,14 +212,14 @@ class EventDetailsViewController: UIViewController {
                     //error code 9 means that the event you tried to add was not successful
                     if (error.code == 9) {
                         self.displayError("I'm sorry. There was an error adding that event to your calendar")
-                        self.reconfigureCalendarButton(EventStatus.NotAdded)
+                        self.reconfigureCalendarButton(EventStatus.notAdded)
                     }
                 }
             }
             else {
                 if let _ = id {
                     self.eventLocalStorageManager.addElement(self.event.id, elem: id!)
-                    self.reconfigureCalendarButton(EventStatus.Added)
+                    self.reconfigureCalendarButton(EventStatus.added)
                 }
             }
         })
@@ -227,7 +227,7 @@ class EventDetailsViewController: UIViewController {
     
     //This function syncs the event in the database to the event that
     //already exists in the user's native calendar
-    func syncToCalendar(sender: UIButton) {
+    func syncToCalendar(_ sender: UIButton) {
         let eventIdentifier = eventLocalStorageManager.getElement(event.id)
         
         calendarManager.syncEventToCalendar(event, eventIdentifier: eventIdentifier as! String, completionHandler: {
@@ -239,20 +239,20 @@ class EventDetailsViewController: UIViewController {
                     //to remove
                     if (error.code == 10) {
                         self.displayError("That event was already synced!")
-                        self.reconfigureCalendarButton(EventStatus.Added)
+                        self.reconfigureCalendarButton(EventStatus.added)
                     }
                 }
             }
             else {
                 //self.eventLocalStorageManager.removeElement(self.event.id)
-                self.reconfigureCalendarButton(EventStatus.Added)
+                self.reconfigureCalendarButton(EventStatus.added)
                 //print("ERRORS")
             }
         })
     }
     
     //this action removes events from the calendar
-    func removeFromCalendar(sender: UIButton) {
+    func removeFromCalendar(_ sender: UIButton) {
         let eventIdentifier = eventLocalStorageManager.getElement(event.id)
         
         calendarManager.removeEventFromCalendar(eventIdentifier as! String, completionHandler: {
@@ -264,44 +264,44 @@ class EventDetailsViewController: UIViewController {
                     //to remove
                     if (error.code == 10) {
                         self.displayError("That event was already removed from your calendar!")
-                        self.reconfigureCalendarButton(EventStatus.NotAdded)
+                        self.reconfigureCalendarButton(EventStatus.notAdded)
                     }
                 }
             }
             else {
                 self.eventLocalStorageManager.removeElement(self.event.id)
-                self.reconfigureCalendarButton(EventStatus.NotAdded)
+                self.reconfigureCalendarButton(EventStatus.notAdded)
             }
         })
     }
     
     //reconfigures the calendar button
-    private func reconfigureCalendarButton(status: EventStatus) {
+    fileprivate func reconfigureCalendarButton(_ status: EventStatus) {
         var action = "saveToCalendar:"
         var buttonImage = UIImage(named: "add-to-calendar")
         
         switch status {
-        case .Added:
+        case .added:
             action = "removeFromCalendar:"
             buttonImage = UIImage(named: "remove-from-calendar")
-        case .Sync:
+        case .sync:
             action = "syncToCalendar:"
             buttonImage = UIImage(named: "sync-to-calendar")
         default: ()
         }
         
-        calendarButton.removeTarget(nil, action: nil, forControlEvents: UIControlEvents.AllEvents)
-        calendarButton.addTarget(self, action: Selector(action), forControlEvents: .TouchUpInside)
-        calendarButton.setBackgroundImage(buttonImage, forState: .Normal)
+        calendarButton.removeTarget(nil, action: nil, for: UIControlEvents.allEvents)
+        calendarButton.addTarget(self, action: Selector(action), for: .touchUpInside)
+        calendarButton.setBackgroundImage(buttonImage, for: UIControlState())
     }
 
     //This function opens the ridesharing section of the application
     //from the events page
-    @IBAction func linkToRideShare(sender: AnyObject) {
+    @IBAction func linkToRideShare(_ sender: AnyObject) {
         
         if let button = sender as? UIButton{
             if(button.currentTitle == "offer ride"){
-                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("newOfferRide") as! NewOfferRideViewController
+                let vc = self.storyboard!.instantiateViewController(withIdentifier: "newOfferRide") as! NewOfferRideViewController
                 self.navigationController?.pushViewController(vc, animated: true)
                 vc.event = event
                 //vc.isOfferingRide = true
@@ -310,7 +310,7 @@ class EventDetailsViewController: UIViewController {
                 
             }
             else{
-                let vc = self.storyboard!.instantiateViewControllerWithIdentifier("ridesByEvent") as! FilterByEventViewController
+                let vc = self.storyboard!.instantiateViewController(withIdentifier: "ridesByEvent") as! FilterByEventViewController
                 self.navigationController?.pushViewController(vc, animated: true)
                 vc.loadRides(event)
                 vc.eventVC = self
@@ -319,10 +319,10 @@ class EventDetailsViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "offerRide"{
             //let destVC = segue.destinationViewController as! OfferOrEditRideViewController
-            let vc = segue.destinationViewController as! NewOfferRideViewController
+            let vc = segue.destination as! NewOfferRideViewController
             vc.event = event
             vc.fromEventDetails = true
             
@@ -330,10 +330,10 @@ class EventDetailsViewController: UIViewController {
     }
     
     //displays any errors on the page as necessary
-    func displayError(message: String) {
-        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+    func displayError(_ message: String) {
+        let alert = UIAlertController(title: "Oops!", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
 }

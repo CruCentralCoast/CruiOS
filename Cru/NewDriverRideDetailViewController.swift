@@ -81,11 +81,11 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
             addressField?.text = pickedLocation.formattedAddress
             let delimiter = ", "
             
-            let parts = pickedLocation.formattedAddress!.componentsSeparatedByString(delimiter)
+            let parts = pickedLocation.formattedAddress!.components(separatedBy: delimiter)
             
             
             let newDel = " "
-            let components = parts[2].componentsSeparatedByString(newDel)
+            let components = parts[2].components(separatedBy: newDel)
             let state = components[0]
             let postalcode = components[1]
             let address = parts[0]
@@ -135,7 +135,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         addressField?.delegate = self
         pickupField?.delegate = self
         offeredField?.delegate = self
-        offeredField?.keyboardType = .NumberPad
+        offeredField?.keyboardType = .numberPad
         availableField?.delegate = self
         directionField?.delegate = self
         
@@ -148,19 +148,19 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         //Set up the gradient background after the constraints are set
         
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = illustrationView.frame
         
         
-        gradient.colors = [gradientGray.CGColor, UIColor.whiteColor().CGColor]
-        illustrationView.layer.insertSublayer(gradient, atIndex: 0)
+        gradient.colors = [gradientGray.cgColor, UIColor.white.cgColor]
+        illustrationView.layer.insertSublayer(gradient, at: 0)
     }
     
     //Called for every passenger returned from the database query
-    func insertPassenger(newPassenger: NSDictionary){
+    func insertPassenger(_ newPassenger: NSDictionary){
         let newPassenger = Passenger(dict: newPassenger)
         passengers.append(newPassenger)
     }
@@ -209,31 +209,31 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         addressField?.text = ride.getCompleteAddress()
         pickupField?.text = ride.getRadius()
         offeredField?.text = String(ride.seats)
-        availableField?.text = ride.seatsLeft()
+        availableField?.text = ride.seatsLeftAsString()
         directionField?.text = ride.getDirection()
     }
     
     // MARK: Button actions
     func normalMode() {
-        eventLine?.backgroundColor = UIColor.clearColor()
-        dateLine?.backgroundColor = UIColor.clearColor()
-        timeLine?.backgroundColor = UIColor.clearColor()
-        addressLine?.backgroundColor = UIColor.clearColor()
-        pickupLine?.backgroundColor = UIColor.clearColor()
-        offeredLine?.backgroundColor = UIColor.clearColor()
+        eventLine?.backgroundColor = UIColor.clear
+        dateLine?.backgroundColor = UIColor.clear
+        timeLine?.backgroundColor = UIColor.clear
+        addressLine?.backgroundColor = UIColor.clear
+        pickupLine?.backgroundColor = UIColor.clear
+        offeredLine?.backgroundColor = UIColor.clear
         
-        endDateHint.hidden = true
-        timeHint.hidden = true
+        endDateHint.isHidden = true
+        timeHint.isHidden = true
         
         //Disable editing
-        eventField?.userInteractionEnabled = false
-        dateField?.userInteractionEnabled = false
-        timeField?.userInteractionEnabled = false
-        addressField?.userInteractionEnabled = false
-        pickupField?.userInteractionEnabled = false
-        offeredField?.userInteractionEnabled = false
-        availableField?.userInteractionEnabled = false
-        directionField?.userInteractionEnabled = false
+        eventField?.isUserInteractionEnabled = false
+        dateField?.isUserInteractionEnabled = false
+        timeField?.isUserInteractionEnabled = false
+        addressField?.isUserInteractionEnabled = false
+        pickupField?.isUserInteractionEnabled = false
+        offeredField?.isUserInteractionEnabled = false
+        availableField?.isUserInteractionEnabled = false
+        directionField?.isUserInteractionEnabled = false
         
         //Add edit bar button item
         //Add the edit button to the nav bar
@@ -247,19 +247,19 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     func editMode(){
         editModeActivated = true
         //Replace the edit button with a save button
-        let saveButton = UIBarButtonItem(title: "Save", style: .Plain, target: self, action: #selector(saveRide))
+        let saveButton = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(saveRide))
         self.navigationItem.rightBarButtonItem = saveButton
-        self.navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!], forState: .Normal)
+        self.navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!], for: UIControlState())
         
-        viewPassengers.setImage(UIImage(named: "edit-passengers"), forState: .Normal)
+        viewPassengers.setImage(UIImage(named: "edit-passengers"), for: UIControlState())
         
         
         //Enable editing for certain fields
-        dateField?.userInteractionEnabled = true
-        timeField?.userInteractionEnabled = true
-        addressField?.userInteractionEnabled = true
-        pickupField?.userInteractionEnabled = true
-        offeredField?.userInteractionEnabled = true
+        dateField?.isUserInteractionEnabled = true
+        timeField?.isUserInteractionEnabled = true
+        addressField?.isUserInteractionEnabled = true
+        pickupField?.isUserInteractionEnabled = true
+        offeredField?.isUserInteractionEnabled = true
         
         //Change the color of the lines under editable fields
         makeFieldInactive(dateLine)
@@ -278,7 +278,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         
         
         //Show the progress wheel and send offer
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         self.passesToDrop = self.passengersToDrop.count
         
         if(self.passesToDrop != 0){
@@ -294,7 +294,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     }
     
     //Handle dropping passengers
-    func handleDropPass(success: Bool){
+    func handleDropPass(_ success: Bool){
         if(self.passesDropped == nil){
             self.passesDropped = 0
         }
@@ -309,7 +309,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
             }
         }
         else{
-            MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             presentAlert("Could not drop a passenger", msg: "", handler: {  })
         }
     }
@@ -320,39 +320,39 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     }
     
     //We get the new ride back if patch was successfull
-    func handlePostResult(ride: Ride?){
+    func handlePostResult(_ ride: Ride?){
         
         if(ride?.hour != -1){
-            let alert = UIAlertController(title: "Ride updated successfully", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: {
+            let alert = UIAlertController(title: "Ride updated successfully", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: {
                 //self.navigationController?.popViewControllerAnimated(true)
             })
             self.ride = ride
         }
         else{
-            let alert = UIAlertController(title: "Could not update ride", message: "", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Could not update ride", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
     
     /* Functions for handling ride cancellation */
-    @IBAction func cancelPressed(sender: UIButton) {
+    @IBAction func cancelPressed(_ sender: UIButton) {
         Cancler.confirmCancel(self, handler: cancelConfirmed)
     }
     
-    func cancelConfirmed(action: UIAlertAction){
-        MRProgressOverlayView.showOverlayAddedTo(self.view, animated: true)
+    func cancelConfirmed(_ action: UIAlertAction){
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         CruClients.getRideUtils().leaveRideDriver(ride.id, handler: handleCancelResult)
     }
     
-    func handleCancelResult(success: Bool){
+    func handleCancelResult(_ success: Bool){
         if(success){
             Cancler.showCancelSuccess(self, handler: { action in
                 if let navController = self.navigationController {
-                    navController.popViewControllerAnimated(true)
+                    navController.popViewController(animated: true)
                     self.rideVC?.refresh(self)
                 }
                 
@@ -361,12 +361,12 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         else{
             Cancler.showCancelFailure(self)
         }
-        MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
     
-    @IBAction func viewOrEditPassengers(sender: UIButton) {
+    @IBAction func viewOrEditPassengers(_ sender: UIButton) {
         if editModeActivated {
-            self.performSegueWithIdentifier("viewPassengers", sender: self)
+            self.performSegue(withIdentifier: "viewPassengers", sender: self)
         }
         
     }
@@ -378,14 +378,14 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         ride.eventEndDate = event.endNSDate
         
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDay()){
-            ride.day = (components.day)
-            ride.monthNum = (components.month)
-            ride.year = (components.year)
+            ride.day = (components.day)!
+            ride.monthNum = (components.month)!
+            ride.year = (components.year)!
         }
         
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureTime()){
-            ride.hour = (components.hour)
-            ride.minute = (components.minute)
+            ride.hour = (components.hour)!
+            ride.minute = (components.minute)!
         }
         
         
@@ -439,8 +439,8 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     
     func validateSeats() -> Bool{
         if offeredField?.text != "" {
-            if let val = Int((offeredField?.text)!.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceAndNewlineCharacterSet())){
+            if let val = Int((offeredField?.text)!.trimmingCharacters(
+                in: CharacterSet.whitespacesAndNewlines)){
                 if(ride.isValidNumSeats(val) != ""){
                     showValidationError(ride.isValidNumSeats(val))
                     return false
@@ -460,7 +460,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     }
     
     // MARK: Text Field Functions
-    func textFieldDidBeginEditing(textField: UITextField) {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case dateField!:
             highlightField(dateLine)
@@ -493,7 +493,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         }
     }
     
-    func textFieldDidEndEditing(textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
         switch textField {
         case dateField!:
@@ -511,7 +511,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         }
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case dateField!:
             dateField?.resignFirstResponder()
@@ -528,13 +528,13 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     }
     
     //called when a date is chosen
-    func chooseDateHandler(month : Int, day : Int, year : Int){
-        let dateFormatter = NSDateFormatter()
-        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+    func chooseDateHandler(_ month : Int, day : Int, year : Int){
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MM d yyyy"
         
         //if date formatter returns nil return the current date/time
-        if let date = dateFormatter.dateFromString(String(month) + " " + String(day) + " " + String(year)) {
+        if let date = dateFormatter.date(from: String(month) + " " + String(day) + " " + String(year)) {
             ride.date = date
             ride.monthNum = month
             ride.day = day
@@ -545,20 +545,20 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     }
     
     //called when a time is chosen
-    func datePicked(obj: NSDate){
-        let formatter = NSDateFormatter()
+    func datePicked(_ obj: Date){
+        let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
-        timeField!.text = formatter.stringFromDate(obj)
-        let calendar = NSCalendar.currentCalendar()
-        let comp = calendar.components([.Hour, .Minute], fromDate: obj)
-        ride.hour = comp.hour
-        ride.minute = comp.minute
+        timeField!.text = formatter.string(from: obj)
+        let calendar = Calendar.current
+        let comp = (calendar as NSCalendar).components([.hour, .minute], from: obj)
+        ride.hour = comp.hour!
+        ride.minute = comp.minute!
         ride.timeStr = (timeField?.text)!
         ride.departureTime = obj
     }
     
     //Called when the pickup location text field becomes active
-    func choosePickupLocation(sender: AnyObject) {
+    func choosePickupLocation(_ sender: AnyObject) {
         let locationPicker = LocationPicker()
         locationPicker.pickCompletion = { (pickedLocationItem) in
             // Do something with the location the user picked.
@@ -569,13 +569,13 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
             
         }
         //locationPicker.addBarButtons()
-        let doneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: #selector(sendLocation(_:)))
-        let cancelButton = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: #selector(dismissLocationPicker(_:)))
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(sendLocation(_:)))
+        let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(dismissLocationPicker(_:)))
         
         doneButton.tintColor = CruColors.lightBlue
-        cancelButton.tintColor = UIColor.redColor()
+        cancelButton.tintColor = UIColor.red
         
-        locationPicker.setColors(CruColors.yellow, primaryTextColor: CruColors.darkBlue, secondaryTextColor: CruColors.lightBlue)
+        locationPicker.setColors(themeColor: CruColors.yellow, primaryTextColor: CruColors.darkBlue, secondaryTextColor: CruColors.lightBlue)
         locationPicker.searchBar.barTintColor = CruColors.gray
         
         //locationPicker.addBarButtons()
@@ -598,20 +598,20 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
          self.CLocation = self.location.location
          
          }*/
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        navigationController?.navigationBar.tintColor = UIColor.white
         navigationController!.pushViewController(locationPicker, animated: true)
     }
     
-    func dismissLocationPicker(sender: UIBarButtonItem) {
+    func dismissLocationPicker(_ sender: UIBarButtonItem) {
         print("\nNow this gets executed\n")
-        navigationController!.popViewControllerAnimated(true)
+        navigationController!.popViewController(animated: true)
     }
     
-    func sendLocation(sender: UIBarButtonItem) {
-        navigationController!.popViewControllerAnimated(true)
+    func sendLocation(_ sender: UIBarButtonItem) {
+        navigationController!.popViewController(animated: true)
     }
     
-    func setRadius(radius: Int){
+    func setRadius(_ radius: Int){
         ride.radius = radius
         pickupField?.text = ride.getRadius()
         
@@ -619,72 +619,72 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     
     // MARK: Validation UI Functions
     
-    func addTextFieldError(view: UIView){
-        UIView.animateWithDuration(0.5, animations: {
+    func addTextFieldError(_ view: UIView){
+        UIView.animate(withDuration: 0.5, animations: {
             //view.backgroundColor = UIColor(red: 190/255, green: 59/255, blue: 52/255, alpha: 1.0)
-            view.backgroundColor = UIColor.redColor()
+            view.backgroundColor = UIColor.red
         })
     }
     
-    func removeTextFieldError(view: UIView){
-        UIView.animateWithDuration(0.5, animations: {
+    func removeTextFieldError(_ view: UIView){
+        UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = self.inactiveGray
         })
     }
     
-    func showValidationError(error: String){
-        let alert = UIAlertController(title: error, message: "", preferredStyle: .Alert)
-        let ok = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+    func showValidationError(_ error: String){
+        let alert = UIAlertController(title: error, message: "", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
         alert.addAction(ok)
-        self.presentViewController(alert, animated: true, completion: {})
+        self.present(alert, animated: true, completion: {})
     }
     
-    private func presentAlert(title: String, msg: String, handler: ()->()) {
-        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.Alert)
+    fileprivate func presentAlert(_ title: String, msg: String, handler: @escaping ()->()) {
+        let cancelRideAlert = UIAlertController(title: title, message: msg, preferredStyle: UIAlertControllerStyle.alert)
         
-        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: {
+        cancelRideAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             action in
             handler()
             
         }))
-        presentViewController(cancelRideAlert, animated: true, completion: nil)
+        present(cancelRideAlert, animated: true, completion: nil)
         
     }
     
     // MARK: Animations
-    func highlightField(view: UIView) {
-        UIView.animateWithDuration(0.5, animations: {
+    func highlightField(_ view: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = CruColors.lightBlue
         })
     }
     
-    func makeFieldInactive(view: UIView) {
-        UIView.animateWithDuration(0.5, animations: {
+    func makeFieldInactive(_ view: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = self.inactiveGray
         })
     }
 
     
     // MARK: - Navigation
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return UIStatusBarStyle.LightContent
+    override var preferredStatusBarStyle : UIStatusBarStyle {
+        return UIStatusBarStyle.lightContent
         
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .None
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         //Prepare for passenger segue
         if segue.identifier == "viewPassengers" {
-            let popoverVC = segue.destinationViewController
+            let popoverVC = segue.destination
             popoverVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.96, height: self.view.frame.height * 0.77)
-            popoverVC.popoverPresentationController!.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), (addressField?.frame.origin.y)! - 50.0,0,0)
+            popoverVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.bounds.midX, y: (addressField?.frame.origin.y)! - 50.0,width: 0,height: 0)
             
             let controller = popoverVC.popoverPresentationController
             
@@ -702,9 +702,9 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
             }
         }
         else if segue.identifier == EditRideConstants.editPassengersSegue {
-            let popoverVC = segue.destinationViewController
+            let popoverVC = segue.destination
             popoverVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.97, height: self.view.frame.height * 0.77)
-            popoverVC.popoverPresentationController!.sourceRect = CGRectMake(CGRectGetMidX(self.view.bounds), (offeredField?.frame.origin.y)! - 50.0,0,0)
+            popoverVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.bounds.midX, y: (offeredField?.frame.origin.y)! - 50.0,width: 0,height: 0)
             
             let controller = popoverVC.popoverPresentationController
             
@@ -720,7 +720,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
             }
         }
         else if segue.identifier == "editRadius" {
-            let vc = segue.destinationViewController as! PickRadiusViewController
+            let vc = segue.destination as! PickRadiusViewController
             vc.ride = self.ride
             vc.setRadius = setRadius
             vc.numMiles = ride.radius

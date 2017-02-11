@@ -10,10 +10,10 @@ import Foundation
 
 class Article {
     let title: String
-    let url: NSURL
+    let url: URL
     let content: String
     
-    required init(title: String, url: NSURL, content: String) {
+    required init(title: String, url: URL, content: String) {
         self.title = title
         self.url = url
         self.content = content

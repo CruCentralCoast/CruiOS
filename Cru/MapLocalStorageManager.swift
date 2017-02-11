@@ -13,7 +13,7 @@ import Foundation
 
 class MapLocalStorageManager: LocalStorageManager {
     var key: String = ""
-    var map: [String: AnyObject] = [:]
+    var map: [String: Any] = [:]
     
     //initializer with key
     init(key: String) {
@@ -27,7 +27,7 @@ class MapLocalStorageManager: LocalStorageManager {
     
     //Adds an element to the local storage
     //NOTE: FOR NOW SETTING VALUE PAIRS TO BOOLEANS
-    func addElement(key: String, elem: AnyObject) {
+    func addElement(_ key: String, elem: Any) {
         let obj = self.map[key]
         
         if obj == nil {
@@ -38,14 +38,14 @@ class MapLocalStorageManager: LocalStorageManager {
     }
     
     //Get element from local storage
-    func getElement(key: String) -> AnyObject? {
+    func getElement(_ key: String) -> Any? {
         return self.map[key]
     }
     
     //Removes element from local storage
-    func removeElement(key: String) {
+    func removeElement(_ key: String) {
         if let _ = self.map[key] {
-            self.map.removeValueForKey(key)
+            self.map.removeValue(forKey: key)
             super.putObject(self.key, object: self.map)
         }
         
@@ -56,7 +56,7 @@ class MapLocalStorageManager: LocalStorageManager {
     }
     
     //deletes the entire map
-    func deleteMap(key: String) {
+    func deleteMap(_ key: String) {
         super.removeObject(key)
     }
     

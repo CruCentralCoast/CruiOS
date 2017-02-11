@@ -9,13 +9,13 @@
 import Foundation
 
 @objc
-public class CardViewAction: NSObject{
+open class CardViewAction: NSObject{
     
     /// Any parameters for the card action. e.g. for a WCCardAction.ViewOnWeb, there is a url parameter
-    public let parameters:NSDictionary?
+    open let parameters:NSDictionary?
     
     /// Action type. See WCCardAction
-    public let type:WCCardAction
+    open let type:WCCardAction
     
     /// Init
     public init(type:WCCardAction, parameters:NSDictionary?){

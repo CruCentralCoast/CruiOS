@@ -10,15 +10,15 @@ import Foundation
 
 class CruClients {
     
-    private static var serverClient: ServerProtocol!
-    private static var rideUtils: RideUtils!
-    private static var eventUtils: EventUtils!
-    private static var subscriptionManager: SubscriptionProtocol!
+    fileprivate static var serverClient: ServerProtocol!
+    fileprivate static var rideUtils: RideUtils!
+    fileprivate static var eventUtils: EventUtils!
+    fileprivate static var subscriptionManager: SubscriptionProtocol!
     
-    private static let clientDispatchQueue = dispatch_queue_create("idunnowhat", DISPATCH_QUEUE_CONCURRENT)
+    fileprivate static let clientDispatchQueue = DispatchQueue(label: "idunnowhat", attributes: DispatchQueue.Attributes.concurrent)
 
-    private static func synchronized(closure: Void->Void) {
-        dispatch_sync(clientDispatchQueue) {
+    fileprivate static func synchronized(_ closure: (Void)->Void) {
+        clientDispatchQueue.sync {
             closure()
         }
     }

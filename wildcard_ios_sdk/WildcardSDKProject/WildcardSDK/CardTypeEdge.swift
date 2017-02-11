@@ -18,7 +18,7 @@ class CardTypeEdge : LayoutDecisionEdge
         super.init(description: "Card Type is " + cardType + "?")
     }
     
-    override func evaluation(input: AnyObject) -> Bool {
+    override func evaluation(_ input: AnyObject) -> Bool {
         if let card = input as? Card{
             return card.cardType == cardType
         }else{

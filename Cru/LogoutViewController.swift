@@ -15,15 +15,15 @@ class LogoutViewController: UIViewController {
         
         navigationItem.title = "Log Out"
         
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
     
     
     
-    @IBAction func logoutPressed(sender: AnyObject) {
+    @IBAction func logoutPressed(_ sender: AnyObject) {
         LoginUtils.logout()
         if let navController = self.navigationController {
-            navController.popViewControllerAnimated(true)
+            navController.popViewController(animated: true)
         }
     }
     

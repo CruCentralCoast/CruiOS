@@ -18,25 +18,25 @@ class CalendarManager {
     
     Creates the event and adds it to the calendar if it is not already there.
     */
-    func addEventToCalendar(event: Event, completionHandler: (error: NSError?, eventIdentifier: String?) -> ()) {
+    func addEventToCalendar(_ event: Event, completionHandler: (_ error: NSError?, _ eventIdentifier: String?) -> ()) {
         var errors: NSError? = nil
         var eventIdentifier: String? = nil
         
         //Get authorization to native calendar
-        switch EKEventStore.authorizationStatusForEntityType(EKEntityType.Event) {
+        switch EKEventStore.authorizationStatus(for: EKEntityType.event) {
         //If the user has authorized access to the calendar
-        case .Authorized:
+        case .authorized:
             addEvent(event, completionHandler: { error, id in
                 errors = error
                 eventIdentifier = id
             })
             
         //If the user has denied access to the calendar
-        case .Denied:
+        case .denied:
             errors = createUnauthorizedErrorObject()
             
         //If access tp the calendar has not yet been determined
-        case .NotDetermined:
+        case .notDetermined:
             if requestNativeCalendarAccess() {
                 addEvent(event, completionHandler: { error, id in
                     errors = error
@@ -52,25 +52,25 @@ class CalendarManager {
             
         }
         
-        completionHandler(error: errors, eventIdentifier: eventIdentifier)
+        completionHandler(errors, eventIdentifier)
     }
     
     //Function that syncs the updated event to the pre-existing one
-    func syncEventToCalendar(event: Event, eventIdentifier: String, completionHandler: (error: NSError?) -> ()) {
+    func syncEventToCalendar(_ event: Event, eventIdentifier: String, completionHandler: (_ error: NSError?) -> ()) {
         var errors: NSError? = NSError(domain: "", code: 0, userInfo: nil)
         
         //Get authorization to native calendar
-        switch EKEventStore.authorizationStatusForEntityType(EKEntityType.Event) {
+        switch EKEventStore.authorizationStatus(for: EKEntityType.event) {
             //If the user has authorized access to the calendar
-        case .Authorized:
+        case .authorized:
             errors = syncEvent(event, eventIdentifier: eventIdentifier)
             
             //If the user has denied access to the calendar
-        case .Denied:
+        case .denied:
             errors = createUnauthorizedErrorObject()
             
             //If access tp the calendar has not yet been determined
-        case .NotDetermined:
+        case .notDetermined:
             if requestNativeCalendarAccess() {
                 errors = syncEvent(event, eventIdentifier: eventIdentifier)
             }
@@ -83,25 +83,25 @@ class CalendarManager {
             
         }
         
-        completionHandler(error: errors)
+        completionHandler(errors)
         
     }
     
-    func removeEventFromCalendar(eventIdentifier: String, completionHandler: (error: NSError?) -> ()) {
+    func removeEventFromCalendar(_ eventIdentifier: String, completionHandler: (_ error: NSError?) -> ()) {
         var errors: NSError? = NSError(domain: "", code: 0, userInfo: nil)
         
         //Get authorization to native calendar
-        switch EKEventStore.authorizationStatusForEntityType(EKEntityType.Event) {
+        switch EKEventStore.authorizationStatus(for: EKEntityType.event) {
             //If the user has authorized access to the calendar
-        case .Authorized:
+        case .authorized:
             errors = removeEvent(eventIdentifier)
             
             //If the user has denied access to the calendar
-        case .Denied:
+        case .denied:
             errors = createUnauthorizedErrorObject()
             
             //If access tp the calendar has not yet been determined
-        case .NotDetermined:
+        case .notDetermined:
             if requestNativeCalendarAccess() {
                 errors = removeEvent(eventIdentifier)
             }
@@ -114,12 +114,12 @@ class CalendarManager {
             
         }
         
-        completionHandler(error: errors)
+        completionHandler(errors)
     }
     
     //Returns the event in the calendar
-    func getEvent(eventIdentifier: String) -> EKEvent? {
-        if let calendarEvent = self.calendarStore.eventWithIdentifier(eventIdentifier) {
+    func getEvent(_ eventIdentifier: String) -> EKEvent? {
+        if let calendarEvent = self.calendarStore.event(withIdentifier: eventIdentifier) {
             return calendarEvent
         }
         else {
@@ -129,8 +129,8 @@ class CalendarManager {
     }
     
     //Creates an unauthorized error object
-    private func createUnauthorizedErrorObject() -> NSError {
-        let errorInfo: [NSObject : AnyObject] =
+    fileprivate func createUnauthorizedErrorObject() -> NSError {
+        let errorInfo: [AnyHashable: Any] =
         [
             NSLocalizedDescriptionKey :  NSLocalizedString("Unauthorized", value: "Please change the calendar access settings for this application", comment: ""),
             NSLocalizedFailureReasonErrorKey : NSLocalizedString("Unauthorized", value: "Access to the native calendar has not been given to this application", comment: "")
@@ -140,19 +140,19 @@ class CalendarManager {
     }
     
     //Helper function that actually changes the event in user's calendar
-    private func syncEvent(event: Event, eventIdentifier: String) -> NSError? {
+    fileprivate func syncEvent(_ event: Event, eventIdentifier: String) -> NSError? {
         let dateFormat = "h:mma MMMM d, yyyy"
         var errors: NSError? = nil
         print("Event to update: ")
         print("   start: \(GlobalUtils.stringFromDate(event.startNSDate, format: dateFormat))")
         print("   end: \(GlobalUtils.stringFromDate(event.endNSDate, format: dateFormat))")
         
-        if let calendarEvent = self.calendarStore.eventWithIdentifier(eventIdentifier) {
+        if let calendarEvent = self.calendarStore.event(withIdentifier: eventIdentifier) {
             //try to store the event into the calendar
             
             calendarEvent.location = event.getLocationString()
-            calendarEvent.startDate = event.startNSDate
-            calendarEvent.endDate = event.endNSDate
+            calendarEvent.startDate = event.startNSDate as Date
+            calendarEvent.endDate = event.endNSDate as Date
             print("Syncing event now")
             
             let dateFormat = "h:mma MMMM d, yyyy"
@@ -161,7 +161,7 @@ class CalendarManager {
             print("   end: \(GlobalUtils.stringFromDate(calendarEvent.endDate, format: dateFormat))")
             
             do {
-                try self.calendarStore.saveEvent(calendarEvent, span: EKSpan.ThisEvent, commit: true)
+                try self.calendarStore.save(calendarEvent, span: EKSpan.thisEvent, commit: true)
                 
             }
             catch let error as NSError {
@@ -180,14 +180,14 @@ class CalendarManager {
     }
     
     //helper function that actually inserts the event to the calendar
-    private func addEvent(event: Event, completionHandler: (errors: NSError?, eventIdentifier: String?) -> ()) {
+    fileprivate func addEvent(_ event: Event, completionHandler: (_ errors: NSError?, _ eventIdentifier: String?) -> ()) {
         let calendarEvent = createCalendarEvent(event)
         var errors: NSError? = nil
         var eventIdentifier: String? = nil
         
         //try to store the event into the calendar
         do {
-            try self.calendarStore.saveEvent(calendarEvent, span: EKSpan.ThisEvent, commit: true)
+            try self.calendarStore.save(calendarEvent, span: EKSpan.thisEvent, commit: true)
             eventIdentifier = calendarEvent.eventIdentifier
         }
         catch let error as NSError {
@@ -197,15 +197,15 @@ class CalendarManager {
             fatalError()
         }
         
-        completionHandler(errors: errors, eventIdentifier: eventIdentifier)
+        completionHandler(errors, eventIdentifier)
     }
     
     //helper method for removing event from calendar
-    private func removeEvent(eventIdentifier: String) -> NSError? {
-        if let calendarEvent = self.calendarStore.eventWithIdentifier(eventIdentifier) {
+    fileprivate func removeEvent(_ eventIdentifier: String) -> NSError? {
+        if let calendarEvent = self.calendarStore.event(withIdentifier: eventIdentifier) {
             //try to store the event into the calendar
             do {
-                try self.calendarStore.removeEvent(calendarEvent, span: EKSpan.ThisEvent, commit: true)
+                try self.calendarStore.remove(calendarEvent, span: EKSpan.thisEvent, commit: true)
                 return nil
             }
             catch let error as NSError {
@@ -222,10 +222,10 @@ class CalendarManager {
     
     //this function tries to get access to the native calendar for the application
     //returns true if success, false otherwise
-    private func requestNativeCalendarAccess() -> Bool {
+    fileprivate func requestNativeCalendarAccess() -> Bool {
         var isValid = false
         
-        calendarStore.requestAccessToEntityType(EKEntityType.Event, completion: {
+        calendarStore.requestAccess(to: EKEntityType.event, completion: {
             granted, error in
             
             if granted && error == nil {
@@ -237,7 +237,7 @@ class CalendarManager {
     }
     
     //this function creates an EKEvent that can be stored in the native calendar
-    func createCalendarEvent(event: Event) -> EKEvent {
+    func createCalendarEvent(_ event: Event) -> EKEvent {
         let calendarEvent: EKEvent = EKEvent(eventStore: self.calendarStore)
         
         calendarEvent.calendar = calendarStore.defaultCalendarForNewEvents
@@ -247,8 +247,8 @@ class CalendarManager {
         }
         
         calendarEvent.title = event.name
-        calendarEvent.startDate = event.startNSDate
-        calendarEvent.endDate = event.endNSDate
+        calendarEvent.startDate = event.startNSDate as Date
+        calendarEvent.endDate = event.endNSDate as Date
         
         return calendarEvent
     }

@@ -17,84 +17,84 @@ class FakeServerClient: ServerProtocol {
         idCounter = 0
     }
     
-    private func getCollection(collection: DBCollection) -> [[String:AnyObject]] {
+    fileprivate func getCollection(_ collection: DBCollection) -> [[String:AnyObject]] {
         if (fakeDB[collection] == nil) {
             fakeDB[collection] = []
         }
         return fakeDB[collection]!
     }
     
-    private func getNewId() -> String {
+    fileprivate func getNewId() -> String {
         idCounter += 1
         return String(idCounter)
     }
     
-    func sendHttpGetRequest(reqUrl : String, completionHandler : (AnyObject?) -> Void) {
+    func sendHttpGetRequest(_ reqUrl : String, completionHandler : @escaping (AnyObject?) -> Void) {
         let exception = NSException(
-            name: "Not implemented!",
+            name: NSExceptionName(rawValue: "Not implemented!"),
             reason: "Don't need it yet",
             userInfo: nil
         )
         exception.raise()
     }
     
-    func sendHttpPostRequest(reqUrl : String, params : [String : AnyObject], completionHandler : (AnyObject?) -> Void) {
+    func sendHttpPostRequest(_ reqUrl : String, params : [String : AnyObject], completionHandler : @escaping (AnyObject?) -> Void) {
         let exception = NSException(
-            name: "Not implemented!",
+            name: NSExceptionName(rawValue: "Not implemented!"),
             reason: "Don't need it yet",
             userInfo: nil
         )
         exception.raise()
     }
     
-    func joinMinistryTeam(ministryTeamId: String, fullName: String, phone: String, callback: (NSArray?) -> Void) {
-        let jimbo = ["name":["first":"Jim", "last":"Bo"], "phone":"1234567890"]
-        let quan = ["name":["first":"Quan", "last":"Tran"], "phone":"0987654321"]
+    func joinMinistryTeam(_ ministryTeamId: String, fullName: String, phone: String, callback: @escaping (NSArray?) -> Void) {
+        let jimbo = ["name":["first":"Jim", "last":"Bo"], "phone":"1234567890"] as [String : Any]
+        let quan = ["name":["first":"Quan", "last":"Tran"], "phone":"0987654321"] as [String : Any]
         
         callback([jimbo, quan])
     }
     
-    func getById(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void, id: String) {
+    func getById(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void, id: String) {
         
         let dict = getById(collection, id: id)
         
         if (dict != nil) {
-            insert(dict!)
+            insert(dict! as NSDictionary)
         }
         
         completionHandler(dict != nil)
     }
     
-    func deleteById(collection: DBCollection, id: String, completionHandler: (Bool)->Void) {
+    func deleteById(_ collection: DBCollection, id: String, completionHandler: @escaping (Bool)->Void) {
         completionHandler(deleteById(collection, id: id))
     }
     
-    func deleteByIdIn(parent: DBCollection, parentId: String, child: DBCollection, childId: String, completionHandler: (Bool)->Void) {
+    func deleteByIdIn(_ parent: DBCollection, parentId: String, child: DBCollection, childId: String, completionHandler: @escaping (Bool)->Void) {
         if (deleteById(child, id: childId)) {
             completionHandler(false)
         } else {
             var parObj = getById(parent, id: parentId)
             
             //remove the child id from the parent's list of children
-            var children = parObj[child.name()] as! [String]
+            var children = parObj?[child.name()] as! [String]
             children = children.filter() {$0 != childId}
-            parObj[child.name()] = children
+            parObj?[child.name()] = children as AnyObject?
             
             //replace the parent object
             deleteById(parent, id: parentId)
             var parCol = getCollection(parent)
-            parCol.append(parObj)
+            parCol.append(parObj!)
             fakeDB[parent] = parCol
             
             completionHandler(true)
         }
     }
     
-    func postData(collection: DBCollection, params: [String:AnyObject], completionHandler: (NSDictionary?)->Void) {
-        completionHandler(postData(collection, params: params))
+    func postData(_ collection: DBCollection, params: [String:AnyObject], completionHandler: @escaping (NSDictionary?)->Void) {
+        completionHandler(postData(collection, params: params) as NSDictionary?)
     }
     
-    func postDataIn(parent: DBCollection, parentId: String, child: DBCollection, params: [String:AnyObject], completionHandler: (NSDictionary?)->Void) {
+    func postDataIn(_ parent: DBCollection, parentId: String, child: DBCollection, params: [String:Any], completionHandler: @escaping (NSDictionary?)->Void) {
         var parObj = getById(parent, id: parentId)
         if (parObj == nil) {
             completionHandler(nil)
@@ -102,86 +102,86 @@ class FakeServerClient: ServerProtocol {
             //put the new child object in the child collection
             var childObj = params
             let id = getNewId()
-            childObj["_id"] = id
+            childObj["_id"] = id as Any?
             var childCol = getCollection(child)
-            childCol.append(childObj)
+            childCol.append(childObj as [String : AnyObject])
             fakeDB[child] = childCol
 
             //add new child id to parent's list of children
-            var children = parObj[child.name()] as! [String]
+            var children = parObj?[child.name()] as! [String]
             children.append(id)
-            parObj[child.name()] = children
+            parObj?[child.name()] = children as AnyObject?
 
             //replace the parent object
             deleteById(parent, id: parentId)
             var parCol = getCollection(parent)
-            parCol.append(parObj)
+            parCol.append(parObj!)
             fakeDB[parent] = parCol
 
-            completionHandler(childObj)
+            completionHandler(childObj as NSDictionary?)
         }
     }
     
-    func postDataIn(parent: DBCollection, parentId: String, child: DBCollection, params: [String:AnyObject],
-        insert: (NSDictionary)->(), completionHandler: Bool->Void) {
+    func postDataIn(_ parent: DBCollection, parentId: String, child: DBCollection, params: [String:Any],
+        insert: @escaping (NSDictionary)->(), completionHandler: @escaping (Bool)->Void) {
         let exception = NSException(
-            name: "Not implemented!",
+            name: NSExceptionName(rawValue: "Not implemented!"),
             reason: "Seems complicated",
             userInfo: nil
         )
         exception.raise()
     }
 
-    func getData(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void) {
+    func getData(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void) {
         let col = getCollection(collection)
         for dict in col {
-            insert(dict)
+            insert(dict as NSDictionary)
         }
         completionHandler(true)
     }
 
-    func getData(collection: DBCollection, insert: (NSDictionary) -> (), completionHandler: (Bool)->Void, params: [String:AnyObject]) {
+    func getData(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void, params: [String:Any]) {
         let exception = NSException(
-            name: "Not implemented!",
+            name: NSExceptionName(rawValue: "Not implemented!"),
             reason: "Seems complicated",
             userInfo: nil
         )
         exception.raise()
     }
     
-    func getDataIn(parent: DBCollection, parentId: String, child: DBCollection, insert: (NSDictionary) -> (),
-        completionHandler: (Bool)->Void) {
+    func getDataIn(_ parent: DBCollection, parentId: String, child: DBCollection,
+                   insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void) {
         let exception = NSException(
-            name: "Not implemented!",
+            name: NSExceptionName(rawValue: "Not implemented!"),
             reason: "It's new",
             userInfo: nil
         )
         exception.raise()
     }
     
-    func patch(collection: DBCollection, params: [String : AnyObject], completionHandler: (NSDictionary?) -> Void, id: String) {
+    func patch(_ collection: DBCollection, params: [String : Any], completionHandler: @escaping (NSDictionary?) -> Void, id: String) {
         var dict = getById(collection, id: id)
         if (dict == nil) {
             completionHandler(nil)
         } else {
             for (k, v) in params {
-                dict[k] = v
+                dict?[k] = v as AnyObject?
             }
 
-            overrideData(collection, params: dict)
-            completionHandler(dict)
+            overrideData(collection, params: dict!)
+            completionHandler(dict as NSDictionary?)
         }
     }
     
-    func checkConnection(handler: (Bool) -> ()) {
+    func checkConnection(_ handler: @escaping (Bool) -> ()) {
         handler(true)
     }
     
-    func checkIfValidNum(num: Double, handler: (Bool)->()){
+    func checkIfValidNum(_ num: Double, handler: @escaping (Bool)->()){
         
     }
     
-    private func getById(collection: DBCollection, id: String) -> [String:AnyObject]! {
+    fileprivate func getById(_ collection: DBCollection, id: String) -> [String:AnyObject]! {
         let col = getCollection(collection)
         
         let matches = col.filter() {$0["_id"] as! String == id}
@@ -193,7 +193,7 @@ class FakeServerClient: ServerProtocol {
         }
     }
     
-    private func deleteById(collection: DBCollection, id: String) -> Bool {
+    fileprivate func deleteById(_ collection: DBCollection, id: String) -> Bool {
         var col = getCollection(collection)
         let len = col.count
         col = col.filter() {$0["_id"] as! String != id}
@@ -202,17 +202,17 @@ class FakeServerClient: ServerProtocol {
         return len != col.count
     }
     
-    private func postData(collection: DBCollection, params: [String: AnyObject]) -> [String:AnyObject] {
+    fileprivate func postData(_ collection: DBCollection, params: [String: AnyObject]) -> [String:AnyObject] {
         var col = getCollection(collection)
         var dict = params
         
-        dict["_id"] = getNewId()
+        dict["_id"] = getNewId() as AnyObject?
         col.append(dict)
         fakeDB[collection] = col
         return dict
     }
     
-    private func overrideData(collection: DBCollection, params: [String: AnyObject]) -> [String:AnyObject] {
+    fileprivate func overrideData(_ collection: DBCollection, params: [String: AnyObject]) -> [String:AnyObject] {
         deleteById(collection, id: params["_id"] as! String)
         
         var col = getCollection(collection)

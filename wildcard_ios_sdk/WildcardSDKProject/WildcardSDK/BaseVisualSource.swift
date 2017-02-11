@@ -10,7 +10,7 @@ import Foundation
 
 /// DO NOT instantiate. You may derive from this if you are customizing your own visual source.
 
-public class BaseVisualSource
+open class BaseVisualSource
 {
     var card:Card
     

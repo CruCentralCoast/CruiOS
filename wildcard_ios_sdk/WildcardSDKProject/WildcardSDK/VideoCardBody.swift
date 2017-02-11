@@ -12,12 +12,12 @@ import WebKit
 
 /// A Card Body which can play various Video Cards
 @objc
-public class VideoCardBody : CardViewElement, WCVideoViewDelegate{
+open class VideoCardBody : CardViewElement, WCVideoViewDelegate{
     
-    public var videoView:WCVideoView!
+    open var videoView:WCVideoView!
     
     /// Adjusts the aspect ratio of the video
-    public var videoAspectRatio:CGFloat{
+    open var videoAspectRatio:CGFloat{
         get{
             return __videoAspectRatio
         }
@@ -29,7 +29,7 @@ public class VideoCardBody : CardViewElement, WCVideoViewDelegate{
     }
     
     /// Content insets
-    public var contentEdgeInset:UIEdgeInsets{
+    open var contentEdgeInset:UIEdgeInsets{
         get{
             return UIEdgeInsetsMake(topConstraint.constant, leftConstraint.constant, bottomConstraint.constant, rightConstraint.constant)
         }
@@ -44,18 +44,18 @@ public class VideoCardBody : CardViewElement, WCVideoViewDelegate{
         }
     }
     
-    private var topConstraint:NSLayoutConstraint!
-    private var leftConstraint:NSLayoutConstraint!
-    private var rightConstraint:NSLayoutConstraint!
-    private var bottomConstraint:NSLayoutConstraint!
-    private var videoHeightConstraint:NSLayoutConstraint!
-    private var videoWidthConstraint:NSLayoutConstraint!
-    private var __videoAspectRatio:CGFloat = 0.75
+    fileprivate var topConstraint:NSLayoutConstraint!
+    fileprivate var leftConstraint:NSLayoutConstraint!
+    fileprivate var rightConstraint:NSLayoutConstraint!
+    fileprivate var bottomConstraint:NSLayoutConstraint!
+    fileprivate var videoHeightConstraint:NSLayoutConstraint!
+    fileprivate var videoWidthConstraint:NSLayoutConstraint!
+    fileprivate var __videoAspectRatio:CGFloat = 0.75
    
-    override public func initialize(){
+    override open func initialize(){
         
         // wildcard video view
-        videoView = WCVideoView(frame:CGRectZero)
+        videoView = WCVideoView(frame:CGRect.zero)
         videoView.delegate = self
         addSubview(videoView)
         leftConstraint = videoView.constrainLeftToSuperView(10)
@@ -68,13 +68,13 @@ public class VideoCardBody : CardViewElement, WCVideoViewDelegate{
         videoHeightConstraint.priority = 999
     }
     
-    public override func adjustForPreferredWidth(cardWidth: CGFloat) {
+    open override func adjustForPreferredWidth(_ cardWidth: CGFloat) {
         videoWidthConstraint.constant = cardWidth - leftConstraint.constant - rightConstraint.constant
         videoHeightConstraint.constant = round(videoWidthConstraint.constant * __videoAspectRatio)
         invalidateIntrinsicContentSize()
     }
     
-    override public func update(card:Card) {
+    override open func update(_ card:Card) {
         if let videoCard = card as? VideoCard{
             videoView.loadVideoCard(videoCard)
         }else{
@@ -82,7 +82,7 @@ public class VideoCardBody : CardViewElement, WCVideoViewDelegate{
         }
     }
     
-    override public func optimizedHeight(cardWidth:CGFloat)->CGFloat{
+    override open func optimizedHeight(_ cardWidth:CGFloat)->CGFloat{
         var height:CGFloat = 0.0
         height += topConstraint.constant
         height += videoHeightConstraint.constant
@@ -91,19 +91,19 @@ public class VideoCardBody : CardViewElement, WCVideoViewDelegate{
     }
     
     // MARK: WCVideoViewDelegate
-    public func videoViewTapped(videoView: WCVideoView) {
-        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"videoTapped"], withCard:cardView?.backingCard)
+    open func videoViewTapped(_ videoView: WCVideoView) {
+        WildcardSDK.analytics?.trackEvent("CardEngagement", withProperties: ["cta":"videoTapped"], with:cardView?.backingCard)
     }
     
-    public func videoViewDidStartPlaying(videoView: WCVideoView) {
+    open func videoViewDidStartPlaying(_ videoView: WCVideoView) {
         if(cardView != nil){
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoDidStartPlaying, parameters:nil))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .videoDidStartPlaying, parameters:nil))
         }
     }
     
-    public func videoViewWillEndPlaying(videoView: WCVideoView) {
+    open func videoViewWillEndPlaying(_ videoView: WCVideoView) {
         if(cardView != nil){
-            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .VideoWillEndPlaying, parameters:nil))
+            cardView!.delegate?.cardViewRequestedAction?(cardView!, action: CardViewAction(type: .videoWillEndPlaying, parameters:nil))
         }
     }
     

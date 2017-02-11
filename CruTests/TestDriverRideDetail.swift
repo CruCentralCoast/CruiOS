@@ -13,9 +13,9 @@ class TestDriverRideDetail: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let bundle = NSBundle(forClass: self.dynamicType)
+        let bundle = Bundle(for: type(of: self))
         let storyboard = UIStoryboard(name: "riderdetail", bundle: bundle)
-        viewController = storyboard.instantiateViewControllerWithIdentifier("RiderRideDetailViewController") as!
+        viewController = storyboard.instantiateViewController(withIdentifier: "RiderRideDetailViewController") as!
         RiderRideDetailViewController
         let ride = Ride(dict: ["time":"2016-03-05T00:08:44.000Z"])
         viewController.ride = ride
@@ -48,7 +48,7 @@ class TestDriverRideDetail: XCTestCase {
     }
 
     func testPerformanceExample() {
-        self.measureBlock {
+        self.measure {
         }
     }
 

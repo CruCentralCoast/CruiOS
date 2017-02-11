@@ -23,13 +23,13 @@ class ArrayLocalStorageManager: LocalStorageManager {
     }
     
     //Adds an element to the local storage
-    func addElement(elem: String) {
+    func addElement(_ elem: String) {
         self.array.append(elem)
         super.putObject(self.key, object: self.array)
     }
     
     //Get element from local storage
-    func getElement(index: Int) -> String? {
+    func getElement(_ index: Int) -> String? {
         if (index > 0 && index < array.count) {
             return self.array[index]
         } else {
@@ -41,15 +41,15 @@ class ArrayLocalStorageManager: LocalStorageManager {
         return array
     }
     
-    func replaceArray(newArray: [String]) {
+    func replaceArray(_ newArray: [String]) {
         array = newArray
         super.putObject(self.key, object: self.array)
     }
     
     //Removes element from local storage
-    func removeElementAtIndex(index: Int) -> String? {
+    func removeElementAtIndex(_ index: Int) -> String? {
         if (index > 0 && index < array.count) {
-            let result = self.array.removeAtIndex(index)
+            let result = self.array.remove(at: index)
             super.putObject(self.key, object: self.array)
             return result
         } else {
@@ -58,7 +58,7 @@ class ArrayLocalStorageManager: LocalStorageManager {
     }
     
     //Removes element from local storage
-    func removeElement(obj: String) {
+    func removeElement(_ obj: String) {
         self.array = array.filter() {$0 != obj}
         super.putObject(self.key, object: self.array)
     }

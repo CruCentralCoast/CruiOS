@@ -14,7 +14,7 @@ class CheckTwitterTweetEdge : LayoutDecisionEdge
         super.init(description: "Twitter Tweet?")
     }
     
-    override func evaluation(input: AnyObject) -> Bool {
+    override func evaluation(_ input: AnyObject) -> Bool {
         if let card = input as? SummaryCard{
             return card.webUrl.isTwitterTweetURL()
         }else{

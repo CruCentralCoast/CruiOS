@@ -11,17 +11,17 @@ import GoogleMaps
 import GooglePlaces
 import GooglePlacePicker
 
-class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
+class PlacePickerViewController: UIViewController, CLLocationManagerDelegate, CAAnimationDelegate {
     
-    private var mapView: GMSMapView!
+    fileprivate var mapView: GMSMapView!
     var resultsViewController: GMSAutocompleteResultsViewController?
     var offerRideVC: NewOfferRideViewController?
     var editRideVC: NewDriverRideDetailViewController?
     var searchController: UISearchController?
     let locationManager = CLLocationManager()
-    private let zoomLevel = Float(12)
-    private let animationDuration = CFTimeInterval(30)
-    private var isAnimating = false
+    fileprivate let zoomLevel = Float(12)
+    fileprivate let animationDuration = CFTimeInterval(30)
+    fileprivate var isAnimating = false
     /// The coordinate to animate the map around
     var coordinate = CLLocationCoordinate2D(latitude: -33.8675, longitude: 151.2070) { // Sydney
         didSet {
@@ -31,7 +31,7 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
     
     override func loadView() {
         mapView = GMSMapView()
-        mapView.myLocationEnabled = true
+        mapView.isMyLocationEnabled = true
         mapView.settings.compassButton = true
         mapView.settings.myLocationButton = true
         mapView.settings.scrollGestures = true
@@ -79,14 +79,14 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
         // Put the search bar in the navigation bar.
         
         self.navigationItem.titleView = searchController?.searchBar
-        self.navigationItem.titleView?.userInteractionEnabled = true
+        self.navigationItem.titleView?.isUserInteractionEnabled = true
         searchController?.searchBar.sizeToFit()
         
         
         resultsViewController?.primaryTextHighlightColor = CruColors.lightBlue
         resultsViewController?.tableCellBackgroundColor = UIColor(red: 76/225, green: 72/255, blue: 73/255, alpha: 1.0)
-        resultsViewController?.primaryTextColor = UIColor.whiteColor().colorWithAlphaComponent(0.7)
-        resultsViewController?.secondaryTextColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        resultsViewController?.primaryTextColor = UIColor.white.withAlphaComponent(0.7)
+        resultsViewController?.secondaryTextColor = UIColor.white.withAlphaComponent(0.5)
         
         
         // When UISearchController presents the results view, present it in
@@ -96,15 +96,15 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
         // Prevent the navigation bar from being hidden when searching.
         searchController?.hidesNavigationBarDuringPresentation = false
         
-        searchController?.searchBar.barStyle = .BlackTranslucent
-        searchController?.searchBar.tintColor = UIColor.whiteColor()
+        searchController?.searchBar.barStyle = .blackTranslucent
+        searchController?.searchBar.tintColor = UIColor.white
     }
     
     deinit {
         let _ = self.searchController!.view          // iOS 8
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         
@@ -112,7 +112,7 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         coordinate = locValue
         
@@ -120,7 +120,7 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     // MARK: Implementation
-    private func updateCoordinate() {
+    fileprivate func updateCoordinate() {
         if let mapView = mapView {
             // Start and stop the map animating if needed.
             let wasAnimating = isAnimating
@@ -135,7 +135,7 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    private func startAnimatingMap() {
+    fileprivate func startAnimatingMap() {
         
         isAnimating = true
         
@@ -181,20 +181,20 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
         group.delegate = self
         
         // Start the animations.
-        mapView?.layer.addAnimation(group, forKey: nil)
+        mapView?.layer.add(group, forKey: nil)
     }
     
-    private func randomOffset() -> CLLocationDegrees {
+    fileprivate func randomOffset() -> CLLocationDegrees {
         // Pick a random value from -0.05 to 0.05.
         return Double(arc4random()) / Double(UINT32_MAX) * 0.1 - 0.05
     }
     
-    private func stopAnimatingMap() {
+    fileprivate func stopAnimatingMap() {
         isAnimating = false
         mapView?.layer.removeAllAnimations()
     }
     
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
         // Start the animation again if we're still running it.
         if isAnimating {
             startAnimatingMap()
@@ -217,9 +217,9 @@ class PlacePickerViewController: UIViewController, CLLocationManagerDelegate {
 
 // Handle the user's selection.
 extension PlacePickerViewController: GMSAutocompleteResultsViewControllerDelegate {
-    func resultsController(resultsController: GMSAutocompleteResultsViewController,
-                           didAutocompleteWithPlace place: GMSPlace) {
-        searchController?.active = false
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didAutocompleteWith place: GMSPlace) {
+        searchController?.isActive = false
         
         // Do something with the selected place.
         print("Place name: ", place.name)
@@ -241,18 +241,18 @@ extension PlacePickerViewController: GMSAutocompleteResultsViewControllerDelegat
         
     }
     
-    func resultsController(resultsController: GMSAutocompleteResultsViewController,
-                           didFailAutocompleteWithError error: NSError){
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didFailAutocompleteWithError error: Error){
         // TODO: handle the error.
-        print("Error: ", error.description)
+        print("Error: ", error.localizedDescription)
     }
     
     // Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
-    func didUpdateAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
 }
