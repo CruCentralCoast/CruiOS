@@ -1,4 +1,4 @@
-//
+ //
 //  ResourcesViewController.swift
 //  Cru
 //  Formats and displays the resources in the Cru database as cards. Handles actions for full-screen view.
@@ -14,6 +14,7 @@ import Alamofire
 import HTMLReader
 import MRProgress
 import DZNEmptyDataSet
+import ReadabilityKit
 
 let InitialCount = 20
 let PageSize = 8
@@ -25,12 +26,24 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var selectorBar: UITabBar!
     @IBOutlet weak var searchButton: UIBarButtonItem!
     
+    
     var serverClient: ServerProtocol
     var resources = [Resource]()
     var cardViews = [CardView]()
     var tags = [ResourceTag]()
     var overlayRunning = false
     var currentType = ResourceType.Article
+    
+    var articles = [Article]()
+    var audioFiles = [Audio]()
+    var videos = [Video]()
+    var filteredArticles = [Article]()
+    var filteredAudioFiles = [Audio]()
+    var filteredVideos = [Video]()
+    var selectedRow = -1
+    
+    
+    
     
     var filteredResources = [Resource]()
     var articleViews = [CardView]()
@@ -44,6 +57,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var audioCards = [SummaryCard]()
     var videoCards = [VideoCard]()
     
+    var parser: Readability?
     var audioPlayer:AVAudioPlayer!
     var apiKey = "AIzaSyDW_36-r4zQNHYBk3Z8eg99yB0s2jx3kpc"
     var cruChannelID = "UCe-RJ-3Q3tUqJciItiZmjdg"
@@ -98,6 +112,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
 
         selectorBar.selectedItem = selectorBar.items![0]
@@ -113,7 +128,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.backgroundColor = Colors.googleGray
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 50
+        tableView.estimatedRowHeight = 150
         videoCardHeight = 0
         
         //Set the nav title
@@ -201,7 +216,8 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             overlayRunning = true
-            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
+            //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
+            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
             
             //Also get resource tags and store them
             serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
@@ -235,25 +251,25 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         switch (item.title!){
         case "Articles":
             newType = ResourceType.Article
-            newTypeCount = articleCards.count
+            newTypeCount = articles.count
         case "Audio":
             newType = ResourceType.Audio
-            newTypeCount = audioCards.count
+            newTypeCount = audioFiles.count
         case "Videos":
             newType = ResourceType.Video
-            newTypeCount = videoCards.count
+            newTypeCount = videos.count
         default :
             newType = ResourceType.Article
-            newTypeCount = articleCards.count
+            newTypeCount = articles.count
         }
         
         switch (currentType){
         case .Article:
-            oldTypeCount = articleCards.count
+            oldTypeCount = articles.count
         case .Audio:
-            oldTypeCount = audioCards.count
+            oldTypeCount = audioFiles.count
         case .Video:
-            oldTypeCount = videoCards.count
+            oldTypeCount = videos.count
         }
         
         
@@ -272,29 +288,35 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         resources.insert(resource, at: 0)
         
         if (resource.type == ResourceType.Article) {
-            insertArticle(resource, completionHandler: {_ in 
+            insertArticle(resource, completionHandler: {_ in
                 print("done inserting articles")
             })
+            
+            //print("Insert article here")
         }
             
         else if (resource.type == ResourceType.Video) {
             if(resource.url.range(of: "youtube") != nil) {
-                insertYoutube(resource, completionHandler: doNothing)
+                //insertYoutube(resource, completionHandler: doNothing)
+                print("insert youtube")
             }
             else {
-                insertGeneric(resource, completionHandler: doNothing)
+                //insertGeneric(resource, completionHandler: doNothing)
+                print("insert generic video")
             }
         }
             
         else if (resource.type == ResourceType.Audio) {
-            insertAudio(resource, completionHandler: doNothing)
+            insertAudio(resource, completionHandler: {_ in
+                print("done inserting audio")
+            })
         }
     }
     
     /* Implement when tools support is requested */
     fileprivate func insertAudio(_ resource: Resource, completionHandler: (Bool) -> Void) {
     
-        var card: SummaryCard!
+        /*var card: SummaryCard!
        
         let media:NSMutableDictionary = NSMutableDictionary()
         let data:NSMutableDictionary = NSMutableDictionary()
@@ -305,134 +327,53 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         let audioUrl = URL(string: resource.url)!
         card = SummaryCard(url:audioUrl, description: "This is where a description would go.", title: resource.title, media:media, data: data)
         
-        self.audioCards.append(card)
+        self.audioCards.append(card)*/
+        let newAud = Audio(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, restricted: resource.restricted)!
+        audioFiles.append(newAud)
     }
+    
     
     /* Helper function to get and insert an article card */
     fileprivate func insertArticle(_ resource: Resource,completionHandler: (Bool) -> Void) {
-        Alamofire.request(resource.url, method: .get)
-            .responseString { responseString in
-                guard responseString.result.error == nil else {
-                    //completionHandler(responseString.result.error!)
-                    return
-                    
-                }
-                guard let htmlAsString = responseString.result.value else {
-                    //Future problem: impement better error code with Alamofire 4
-                    print("Error: Could not get HTML as String")
-                    return
-                }
-                
-                
-                let doc = HTMLDocument(string: htmlAsString)
-                var abstract = ""
-                var filteredContent = ""
-
-                var articleCard:ArticleCard!
-                var creator: Creator!
-                
-                let imgurUrl = URL(string: "https://unsplash.com/photos/rivAqXQNves")!
-                
-                let everyStudent = Creator(name:"everystudent.com", url:imgurUrl, favicon:URL(string:"https://pbs.twimg.com/profile_images/471735874497941504/EjyLnH9D.jpeg"), iosStore:nil)
-                
-                let cru = Creator(name:"cru.org", url:imgurUrl, favicon:URL(string:"http://www.boomeranggmail.com/img/cru_logo.jpg"), iosStore:nil)
-                
-                let generic = Creator(name:"", url: URL(string:"")!, favicon:URL(string:"http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png"), iosStore:nil)
-                
-                //Use the right creator with the right favicon
-                if(resource.url.range(of: "cru") != nil) {
-                    creator = cru
-                    
-                    
-                    let absContent = doc.nodes(matchingSelector: "p")
-                    
-                    abstract = absContent[0].textContent
-                    
-                    
-                    
-                    let shareIcons = doc.firstNode(matchingSelector: ".listInline")
-                    //doc.removeChild(deleteThis!)
-                    
-                    
-                    let content = doc.nodes(matchingSelector: ".postContent")
-                    //let content = doc.nodesMatchingSelector(".textImage")
-                    
-                    
-                    
-                    //Removes the share icons on the top of Cru's articles
-                    filteredContent = content[0].innerHTML
-                    let listStart = "<ul class=\"listInline"
-                    let listEnd = "<!-- The component"
- 
-                    let startIndex = filteredContent.range(of: listStart)
-                    let start = startIndex?.lowerBound
-                    
-                    let firstPart = filteredContent.substring(to: start!)
-                    
-                    var endIndex = filteredContent.range(of: listEnd)
-                    var end = endIndex?.lowerBound
-                    
-                    if end == nil {
-                        endIndex = filteredContent.range(of: "<div class=\"parsys post-body-parsys\"")
-                        end = endIndex?.lowerBound
-                    }
-                    
-                    if end != nil {
-                        let lastPart = filteredContent.substring(from: end!)
-                        
-                        let newContent = firstPart + lastPart
-                        filteredContent = newContent
-                    }
-                    
-                    //filteredContent.removeRange(Range<String.Index>(start: start!, end: end!))
-                    
-                    
-                    //filteredContent = content[0].textContent
-                    
-                    
-                }
-                else if(resource.url.range(of: "everystudent") != nil) {
-                    creator = everyStudent
-                    
-                    let absContent = doc.nodes(matchingSelector: ".subhead")
-                    
-                    for el in absContent {
-                        let subhead = el.firstNode(matchingSelector: "em")!
-                        //vidURL = vidNode.objectForKeyedSubscript("src") as? String
-                        let child = subhead.child(at: 0)
-                        
-                        abstract = child.textContent
-                    }
-                    
-                    let content = doc.nodes(matchingSelector: ".contentpadding")
-                    
-                    filteredContent = content[0].innerHTML
-                    
-                    
-                }
-                else {
-                    creator = generic
-                }
-                
-                
-                let articleData:NSMutableDictionary = NSMutableDictionary()
-                let articleBaseData:NSMutableDictionary = NSMutableDictionary()
-                
-                articleData["htmlContent"] = filteredContent
-                articleData["publicationDate"] = NSNumber(value: 1429063354000 as Int64)
-                let articleMedia:NSMutableDictionary = NSMutableDictionary()
-                articleMedia["imageUrl"] =  "https://images.unsplash.com/photo-1458170143129-546a3530d995?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=82cec66525b351900022cf11428dad4a"
-                articleMedia["type"] = "image"
-                articleData["media"] = articleMedia
-                articleBaseData["article"] = articleData
-                articleBaseData["tags"] = resource.tags
-                
-                
-                articleCard = ArticleCard(title: resource.title, abstractContent: abstract, url: URL(string: resource.url)!, creator: creator, data: articleBaseData)
-                
-                self.articleCards.append(articleCard)
-                self.tableView.reloadData()
+        let resUrl = URL(string: resource.url)
+        guard let url = resUrl else {
+            return
         }
+        
+        Readability.parse(url: url) { data in
+            
+            
+            /*guard let imageUrlStr = data?.topImage else {
+                return
+            }
+            
+            guard let imageUrl = URL(string: imageUrlStr) else {
+                return
+            }
+            
+            guard let imageData = try? Data(contentsOf: imageUrl) else {
+                return
+            }*/
+            let title = data?.title ?? "Article"
+            let description = data?.description ?? ""
+            let keywords = data?.keywords ?? [""]
+            let imageUrl = data?.topImage ?? ""
+            let videoUrl = data?.topVideo ?? ""
+            
+            print("Readabilty found: ")
+            print("Title: \(title)")
+            print("Description: \(description)")
+            print("Keywords: \(keywords)")
+            print("ImageURL: \(imageUrl)")
+            print("Video URL: \(videoUrl)")
+            
+            let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, imgURL: imageUrl, restricted: resource.restricted)
+            self.articles.append(newArt!)
+            self.tableView.reloadData()
+            
+        }
+        
+        
     }
     
     /* Inserts a video from a generic source */
@@ -464,7 +405,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 var videoCard: VideoCard!
                 
-                let creator = Creator(name:"", url: URL(string:"")!, favicon:URL(string:"http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png"), iosStore:nil)
+                let creator = Creator(name:"", url: URL(string:"http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png")!, favicon:URL(string:"http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png"), iosStore:nil)
               
                 let youtubeID = self.getYoutubeID(vidURL)
                 let embedUrl = URL(string: vidURL)!
@@ -526,13 +467,14 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     fileprivate func insertYoutubeFromChannel(_ resource: Resource, description: String, completionHandler: (Bool) -> Void) {
         var videoCard:VideoCard!
         
-        let newUrl = URL(string: "http://www.youtube.com")!
+        let newUrl = URL(string: "http://www.youtube.com")
         
-        let embedUrl = URL(string: "https://www.youtube.com/embed/\(resource.id)?rel=0")!
-        let vidwebUrl = URL(string: String("https://www.youtube.com/watch?v=\(resource.id)"))!
+        print("embedUrl: https://www.youtube.com/embed/\(resource.id!)?rel=0")
+        let embedUrl = URL(string: "https://www.youtube.com/embed/\(resource.id!)?rel=0")
+        let vidwebUrl = URL(string: String("https://www.youtube.com/watch?v=\(resource.id!)"))
         
         
-        let youtube = Creator(name:"Youtube", url: newUrl, favicon:URL(string:"http://coopkanicstang-development.s3.amazonaws.com/brandlogos/logo-youtube.png"), iosStore:nil)
+        let youtube = Creator(name:"Youtube", url: newUrl!, favicon:URL(string:"http://coopkanicstang-development.s3.amazonaws.com/brandlogos/logo-youtube.png"), iosStore:nil)
         
         
         let videoData:NSMutableDictionary = NSMutableDictionary()
@@ -543,7 +485,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         videoData["media"] = videoMedia
         videoData["tags"] = []
-        videoCard = VideoCard(title: resource.title, embedUrl: embedUrl, url: vidwebUrl, creator: youtube, data: videoData)
+        videoCard = VideoCard(title: resource.title, embedUrl: embedUrl!, url: vidwebUrl!, creator: youtube, data: videoData)
         
         self.videoCards.append(videoCard)
         self.resources.append(resource)
@@ -642,6 +584,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             print("Could not finish loading videos")
         }
         
+        if self.overlayRunning {
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+            self.overlayRunning = false
+            
+        }
+        tableView.reloadData()
+        
     }
     
     func performGetRequest(_ targetURL: URL!, completion: @escaping (_ data: Data?, _ HTTPStatusCode: Int, _ error: Error?) -> Void) {
@@ -697,21 +646,21 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         if searchActivated {
             switch (currentType){
             case .Article:
-                return filteredArticleCards.count
+                return filteredArticles.count
             case .Audio:
-                return filteredAudioCards.count
+                return filteredAudioFiles.count
             case .Video:
-                return filteredVideoCards.count
+                return filteredVideos.count
             }
         }
         else {
             switch (currentType){
             case .Article:
-                return articleCards.count
+                return articles.count
             case .Audio:
-                return audioCards.count
+                return audioFiles.count
             case .Video:
-                return videoCards.count
+                return videos.count
             }
         }
         
@@ -721,47 +670,107 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     //Configures each cell in the table view as a card and sets the UI elements to match with the Resource data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellIdentifier = "CardTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! CardTableViewCell
-        let cardView: CardView?
         
-        if searchActivated {
+        //Should be refactored to be more efficient
+        //Problem for a later dev
+        //if searchActivated {
             switch (currentType){
             case .Article:
-                cardView = CardView.createCardView(filteredArticleCards[indexPath.row], layout: .articleCardNoImage)!
-            //cardView = articleViews[indexPath.row]
-            case .Audio:
-                cardView = CardView.createCardView(filteredAudioCards[indexPath.row], layout: .summaryCardNoImage)!
-            //cardView = audioViews[indexPath.row]
+                var art: Article
+                if searchActivated {
+                    art = filteredArticles[indexPath.row]
+                }
+                else {
+                    art = articles[indexPath.row]
+                }
+                
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
+                cell.date.text = GlobalUtils.stringFromDate(art.date, format: "MMMM d, yyyy")
+                cell.desc.text = art.abstract
+                cell.title.text = art.title
+                
+                //Set up the cell's button for web view controller
+                cell.tapAction = {(cell) in
+                    let vc = CustomWebViewController()
+                    vc.urlString = art.url
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+
+                cell.card.layer.shadowColor = UIColor.black.cgColor
+                cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+                cell.card.layer.shadowOpacity = 0.25
+                cell.card.layer.shadowRadius = 2
+                
+                
+                return cell
             case .Video:
-                cardView = CardView.createCardView(filteredVideoCards[indexPath.row], layout: .videoCardShortFull)!
-                //cardView = videoViews[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableViewCell", for: indexPath) as! VideoTableViewCell
+                
+                return cell
+            case .Audio:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AudioTableViewCell", for: indexPath) as! AudioTableViewCell
+                
+                var aud: Audio
+                if searchActivated {
+                    aud = filteredAudioFiles[indexPath.row]
+                }
+                else {
+                    aud = audioFiles[indexPath.row]
+                }
+                
+                cell.date.text = GlobalUtils.stringFromDate(aud.date, format: "MMMM d, yyyy")
+                cell.title.text = aud.title
+                cell.audioString = aud.url
+                
+                cell.prepareAudioFile()
+                
+                cell.card.layer.shadowColor = UIColor.black.cgColor
+                cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+                cell.card.layer.shadowOpacity = 0.25
+                cell.card.layer.shadowRadius = 2
+                
+                return cell
             }
-        }
-        else {
+        //}
+        /*else {
             switch (currentType){
             case .Article:
-                cardView = CardView.createCardView(articleCards[indexPath.row], layout: .articleCardNoImage)!
-            //cardView = articleViews[indexPath.row]
-            case .Audio:
-                cardView = CardView.createCardView(audioCards[indexPath.row], layout: .summaryCardNoImage)!
-            //cardView = audioViews[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
+                let art = articles[indexPath.row]
+                cell.date.text = GlobalUtils.stringFromDate(art.date, format: "MMMM d, yyyy")
+                cell.desc.text = art.abstract
+                cell.title.text = art.title
+                
+                //Set up the cell's button for web view controller
+                cell.tapAction = {(cell) in
+                    let vc = CustomWebViewController()
+                    vc.urlString = art.url!
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                cell.card.layer.shadowColor = UIColor.black.cgColor
+                cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+                cell.card.layer.shadowOpacity = 0.25
+                cell.card.layer.shadowRadius = 2
+                
+                return cell
             case .Video:
-                cardView = CardView.createCardView(videoCards[indexPath.row], layout: .videoCardShortFull)!
-                //cardView = videoViews[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableViewCell", for: indexPath) as! VideoTableViewCell
+                
+                return cell
+            case .Audio:
+                let cell = tableView.dequeueReusableCell(withIdentifier: "AudioTableViewCell", for: indexPath) as! AudioTableViewCell
+                
+                return cell
+            
             }
-        }
+        }*/
         
-        cardView?.delegate = self
         
-        //Add the newl card view to the cell
-        cell.contentView.subviews.forEach({ $0.removeFromSuperview() }) // this gets things done
-        cell.contentView.addSubview(cardView!)
-        cell.contentView.backgroundColor = Colors.googleGray
         
-        //Set the constraints
-        self.constrainView(cardView!, row: indexPath.row)
-        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        selectedRow = indexPath.row
     }
     
     //Sets the constraints for the cards so they float in the middle of the table
@@ -916,6 +925,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
             }
             dim(.in, alpha: dimLevel, speed: dimSpeed)
+            
+        }
+        else if segue.identifier == "showWebView" {
+            let vc = segue.destination as! CustomWebViewController
             
         }
     }

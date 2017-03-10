@@ -235,6 +235,7 @@ class KeystoneClient: ServerProtocol {
             completionHandler(true)
         } else {
             print("Failure!")
+            //Print thingy here
             completionHandler(false)
         }
     }

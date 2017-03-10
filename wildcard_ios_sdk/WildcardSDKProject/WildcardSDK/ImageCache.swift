@@ -44,7 +44,7 @@ class ImageCache: NSCache<AnyObject, AnyObject> {
     private override init() {
         NotificationCenter.default.addObserver(
             ImageCache.sharedInstance,
-            selector: "memoryWarningReceived",
+            selector: #selector(ImageCache.memoryWarningReceived),
             name: NSNotification.Name.UIApplicationDidReceiveMemoryWarning,
             object: nil)
     }

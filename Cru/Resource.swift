@@ -22,7 +22,7 @@ class Resource {
     var id: String!
     var url: String!
     var type: ResourceType!
-    var date: DateComponents!
+    var date: Date!
     var tags: [String]!
     var restricted: Bool!
     
@@ -44,7 +44,7 @@ class Resource {
         self.title = title
         self.url = url
         self.type = ResourceType(rawValue: type!)
-        self.date = GlobalUtils.dateComponentsFromDate(GlobalUtils.dateFromString(date!))!
+        self.date = GlobalUtils.dateFromString(date!)
         self.tags = tags
     }
     
@@ -67,7 +67,7 @@ class Resource {
         }
         
         if let date = dict["date"] as? String {
-            self.date = GlobalUtils.dateComponentsFromDate(GlobalUtils.dateFromString(date))
+            self.date = GlobalUtils.dateFromString(date)
         }
         
         if let tags = dict["tags"]  {
