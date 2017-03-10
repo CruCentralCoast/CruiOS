@@ -9,21 +9,24 @@
 import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
-    @IBOutlet weak var title: UILabel!
 
-    @IBOutlet weak var source: UILabel!
+    //MARK: Properties
+    
+    @IBOutlet weak var card: UIView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var desc: UITextView!
+    @IBOutlet weak var date: UILabel!
     @IBOutlet weak var readMoreButton: UIButton!
-    @IBOutlet weak var descView: UITextView!
-    @IBOutlet weak var sourceLogo: UIImageView!
+    var tapAction: ((UITableViewCell) -> Void)?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    @IBAction func readMore(_ sender: UIButton) {
+        tapAction?(self)
     }
-
-}
+    
+    }

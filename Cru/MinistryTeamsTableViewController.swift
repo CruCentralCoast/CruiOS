@@ -33,7 +33,7 @@ class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSo
         
         if !self.ministries.isEmpty {
             let ministryIds = ministries.map{$0.id}
-            let params: [String:Any] = ["parentMinistry":["$in":ministryIds]]
+            let params: [String:[String: [String]]] = ["parentMinistry":["$in":ministryIds as! Array<String>]]
             
             //load ministry teams
             CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting, params: params)
@@ -51,7 +51,7 @@ class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSo
     //Set the text to be displayed when the table is empty
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
-        return NSAttributedString(string: "You are not subscribed to any campuses! Subscribe to a campus to join one of its ministry teams.", attributes: attributes)
+        return NSAttributedString(string: "No ministry teams available! Try changing your subscribed campuses.", attributes: attributes)
         
     }
     

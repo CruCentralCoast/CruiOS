@@ -22,7 +22,7 @@ class EventUtils {
     
     func loadEvents(_ inserter: @escaping (NSDictionary)->Void, completionHandler:
         @escaping (Bool)->Void) {
-        //Will load all events if you belong to no ministries
+        //Will load all events if user doesn't subscribe to any ministries
         var ministryIds = [String]()
         let ministries = CruClients.getSubscriptionManager().loadMinistries()
         
@@ -32,7 +32,7 @@ class EventUtils {
         
         let curDate = GlobalUtils.stringFromDate(Date())
         
-        let params: [String:Any] = [Event.ministriesField:["$in":ministryIds], Event.endDateField:["$gte": curDate]]
+        let params: [String:Any] = [Event.ministriesField:["$in":ministryIds], Event.endDateField:["$gte": [curDate]]]
         
         
         
@@ -40,7 +40,7 @@ class EventUtils {
     }
     
     func loadEventsWithoutMinistries(_ inserter: @escaping (NSDictionary)->Void, completionHandler: @escaping (Bool)->Void) {
-        let params2: [String: Any] = [Event.ministriesField: ["$size": 0]]
+        let params2: [String: [String: Int] ] = [Event.ministriesField: ["$size": 0]]
         
         CruClients.getServerClient().getData(.Event, insert: inserter, completionHandler: completionHandler, params: params2)
     }
