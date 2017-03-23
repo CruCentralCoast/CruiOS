@@ -102,7 +102,10 @@ class EventDetailsViewController: UIViewController {
         navigationItem.title = "Event Details"
         
         //Set the UI elements to the event’s corresponding value
-        image.load.request(with: event.imageUrl)
+        if event.imageUrl != "" {
+            image.load.request(with: event.imageUrl)
+        }
+        
         titleLabel.text = event.name
         startTimeLabel.text = GlobalUtils.stringFromDate(event.startNSDate, format: dateFormat)
         endTimeLabel.text = GlobalUtils.stringFromDate(event.endNSDate, format: dateFormat)

@@ -120,13 +120,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.table!.tableFooterView = UIView()
         
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.black]
-        noRideString = NSAttributedString(string: "Currently no rides available", attributes: attributes)
+        noRideString = NSAttributedString(string: "No rides for the next two week", attributes: attributes)
         
         noEventsString = NSAttributedString(string: "No events for the next two weeks", attributes: attributes)
         
         noConnectionRidesString = NSAttributedString(string: "Currently no rides available. Check your internet connection.", attributes: attributes)
         
-        noConnectionEventsString = NSAttributedString(string: "No events for the next two weeks. Check your internet connection.", attributes: attributes)
+        noConnectionEventsString = NSAttributedString(string: "No events available. Check your internet connection.", attributes: attributes)
         
         self.table!.emptyDataSetSource = self;
         self.table!.emptyDataSetDelegate = self;
@@ -142,14 +142,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if scrollView.frame.height <= screenSize.height {
             let totalSpace = screenSize.height - eventsTable.frame.maxY
             socialBarSpace.constant = totalSpace - 65
-            print("\nTotal space available: \(totalSpace)\n")
         }
-        
-        
-
-        
-        print("\nHeight of screen: \(screenSize.height)\n")
-        print("\nHeight of scroll: \(scrollView.frame.height)\n")
         
     }
     
@@ -205,12 +198,16 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func insertRide(_ dict : NSDictionary) {
         //create ride
-        let newRide = Ride(dict: dict)
+        let newRide = Ride(dict: dict)!
         
-        //insert into ride array
-        rides.insert(newRide!, at: 0)
-        rides.sort()
+        let curDate = Date()
+        let week = curDate.addDays(14)
         
+        //Check if ride hasn't already happened and is within the next week
+        if (newRide.departureDate?.isGreaterThanDate(curDate.addDays(-1)))! && (newRide.departureDate?.isLessThanDate(week))! {
+            rides.insert(newRide, at: 0)
+            rides.sort()
+        }
     }
     
     //Asynchronous function that's called to insert an event into the table
