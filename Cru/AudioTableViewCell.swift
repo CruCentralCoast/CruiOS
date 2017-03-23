@@ -22,6 +22,7 @@ class AudioTableViewCell: UITableViewCell {
     var newTimePosition = 0.0 // Used when going forward or rewinding
     var duration = 0.0 // The duration of the audio file in seconds
     
+    var audioFileLoaded = false
     var playImage = UIImage(named: "play")
     var pauseImage = UIImage(named: "pause")
     
@@ -89,6 +90,7 @@ class AudioTableViewCell: UITableViewCell {
         playbackSlider.isContinuous = false
         
         playbackSlider.setThumbImage(UIImage(named: "position-indicator"), for: .normal)
+        playbackSlider.value = 0
         
     }
     
@@ -102,11 +104,6 @@ class AudioTableViewCell: UITableViewCell {
             playerItem = AVPlayerItem(asset: audioAsset, automaticallyLoadedAssetKeys: nil)
             audioPlayer = AVPlayer(playerItem: playerItem)
             
-            
-            //Only enable buttons if file can be played from URL
-            forwardButton.isEnabled = true
-            rewindButton.isEnabled = true
-            playButton.isEnabled = true
             
             //Get duration of file and display the nicely formatted string
             let durTime = audioAsset.duration
@@ -214,6 +211,12 @@ class AudioTableViewCell: UITableViewCell {
     
     //Play/pause button action method
     @IBAction func playPauseButtonClicked(_ sender: UIButton) {
+        
+        if audioFileLoaded == false {
+            prepareAudioFile()
+            audioFileLoaded = true
+        }
+        
         if audioPlayer?.rate == 0
         {
             audioPlayer!.play()
@@ -224,14 +227,6 @@ class AudioTableViewCell: UITableViewCell {
             //playButton!.setImage(UIImage(named: "player_control_play_50px.png"), forState: UIControlState.Normal)
             playButton!.setImage(playImage, for: .normal)
         }
-    }
-
-
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

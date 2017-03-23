@@ -8,7 +8,6 @@
 //
 
 import UIKit
-import WildcardSDK
 import AVFoundation
 import Alamofire
 import HTMLReader
@@ -19,7 +18,7 @@ import ReadabilityKit
 let InitialCount = 20
 let PageSize = 8
 
-class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, CardViewDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UIPopoverPresentationControllerDelegate {
+class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UIPopoverPresentationControllerDelegate {
     //MARK: Properties
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -29,7 +28,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var serverClient: ServerProtocol
     var resources = [Resource]()
-    var cardViews = [CardView]()
     var tags = [ResourceTag]()
     var overlayRunning = false
     var currentType = ResourceType.Article
@@ -37,37 +35,24 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var articles = [Article]()
     var audioFiles = [Audio]()
     var videos = [Video]()
+    var newVideos = [Video]()
     var filteredArticles = [Article]()
     var filteredAudioFiles = [Audio]()
     var filteredVideos = [Video]()
     var selectedRow = -1
     
-    
-    
-    
     var filteredResources = [Resource]()
-    var articleViews = [CardView]()
-    var audioViews = [CardView]()
-    var videoViews = [CardView]()
-    var allViews = [CardView]()
-    var filteredArticleCards = [ArticleCard]()
-    var filteredAudioCards = [SummaryCard]()
-    var filteredVideoCards = [VideoCard]()
-    var articleCards = [ArticleCard]()
-    var audioCards = [SummaryCard]()
-    var videoCards = [VideoCard]()
     
     var parser: Readability?
     var audioPlayer:AVAudioPlayer!
-    var apiKey = "AIzaSyDW_36-r4zQNHYBk3Z8eg99yB0s2jx3kpc"
-    var cruChannelID = "UCe-RJ-3Q3tUqJciItiZmjdg"
-    var cruUploadsID = "UUe-RJ-3Q3tUqJciItiZmjdg"
+    
     var videosArray: Array<Dictionary<NSObject, AnyObject>> = []
     var nextPageToken = ""
     var pageNum = 1
-    let dimLevel: CGFloat = 0.5
+    let dimLevel: CGFloat = 0.1
     let dimSpeed: Double = 0.5
     var searchActivated = false
+    var scrolling = false
     var modalActive = false {
         didSet {
             if modalActive == true {
@@ -84,6 +69,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var hasConnection = true
     var emptyTableImage: UIImage!
     var numUploads: Int!
+    var numNewVideos: Int! // The number of new youtube videos from infinite scrolling
     var urlString: String!
     var noResultsString: NSAttributedString!
     var verticalContentOffset: CGFloat!
@@ -139,6 +125,36 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         selectorBar.tintColor = UIColor.white
         
         
+        //Infinite scroll stuff
+        // change indicator view style to white
+        self.tableView.infiniteScrollIndicatorStyle = .white
+        
+        // Add infinite scroll handler
+        self.tableView.addInfiniteScroll {(tableView) -> Void in
+            
+            //Only load if we're on the videos tab and user hasn't received the memory warning
+            if self.currentType == .Video && !self.memoryWarning{
+                self.loadYouTubeVideos(completionHandler: { (numNewVids) in
+                    let videoCount = self.videos.count
+                    let (start, end) = (videoCount, self.newVideos.count + videoCount)
+                    let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
+                    
+                    // update data source
+                    self.videos.append(contentsOf: self.newVideos)
+                    
+                    // make sure you update tableView before calling -finishInfiniteScroll
+                    tableView.beginUpdates()
+                    tableView.insertRows(at: indexPaths, with: .automatic)
+                    tableView.endUpdates()
+                    
+                    // finish infinite scroll animation
+                    tableView.finishInfiniteScroll()
+                })
+            }
+
+        }
+        // load initial data
+        //tableView.beginInfiniteScroll(true)
         
         /* Uncomment this for a later release*/
         //addLeaderTab()
@@ -216,8 +232,8 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             overlayRunning = true
-            //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
-            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
+            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
+            //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
             
             //Also get resource tags and store them
             serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
@@ -288,22 +304,18 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         resources.insert(resource, at: 0)
         
         if (resource.type == ResourceType.Article) {
+            //Can't pass in nil to completion so pass instead print confirmation
             insertArticle(resource, completionHandler: {_ in
                 print("done inserting articles")
             })
             
-            //print("Insert article here")
         }
             
         else if (resource.type == ResourceType.Video) {
-            if(resource.url.range(of: "youtube") != nil) {
-                //insertYoutube(resource, completionHandler: doNothing)
-                print("insert youtube")
-            }
-            else {
-                //insertGeneric(resource, completionHandler: doNothing)
-                print("insert generic video")
-            }
+            insertVideo(resource, completionHandler: {_ in
+                print("done inserting videos")
+            })
+        
         }
             
         else if (resource.type == ResourceType.Audio) {
@@ -313,59 +325,25 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    /* Implement when tools support is requested */
+    /* Creates new Audio object and inserts into table if necessary*/
     fileprivate func insertAudio(_ resource: Resource, completionHandler: (Bool) -> Void) {
-    
-        /*var card: SummaryCard!
-       
-        let media:NSMutableDictionary = NSMutableDictionary()
-        let data:NSMutableDictionary = NSMutableDictionary()
-        
-        media["type"] = "audio"
-        data["tags"] = resource.tags
-        
-        let audioUrl = URL(string: resource.url)!
-        card = SummaryCard(url:audioUrl, description: "This is where a description would go.", title: resource.title, media:media, data: data)
-        
-        self.audioCards.append(card)*/
         let newAud = Audio(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, restricted: resource.restricted)!
         audioFiles.append(newAud)
+        self.tableView.reloadData()
     }
     
     
-    /* Helper function to get and insert an article card */
+    /* Helper function to insert an article resource */
     fileprivate func insertArticle(_ resource: Resource,completionHandler: (Bool) -> Void) {
         let resUrl = URL(string: resource.url)
         guard let url = resUrl else {
             return
         }
         
+        //Use Readability to scrape article for description
         Readability.parse(url: url) { data in
-            
-            
-            /*guard let imageUrlStr = data?.topImage else {
-                return
-            }
-            
-            guard let imageUrl = URL(string: imageUrlStr) else {
-                return
-            }
-            
-            guard let imageData = try? Data(contentsOf: imageUrl) else {
-                return
-            }*/
-            let title = data?.title ?? "Article"
             let description = data?.description ?? ""
-            let keywords = data?.keywords ?? [""]
             let imageUrl = data?.topImage ?? ""
-            let videoUrl = data?.topVideo ?? ""
-            
-            print("Readabilty found: ")
-            print("Title: \(title)")
-            print("Description: \(description)")
-            print("Keywords: \(keywords)")
-            print("ImageURL: \(imageUrl)")
-            print("Video URL: \(videoUrl)")
             
             let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, imgURL: imageUrl, restricted: resource.restricted)
             self.articles.append(newArt!)
@@ -376,54 +354,64 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    /* Inserts a video from a generic source */
-    fileprivate func insertGeneric(_ resource: Resource,completionHandler: (Bool) -> Void) {
-        Alamofire.request(resource.url, method: .get)
-            .responseString { responseString in
-                guard responseString.result.error == nil else {
-                    //completionHandler(responseString.result.error!)
-                    return
-                    
-                }
-                guard let htmlAsString = responseString.result.value else {
-                    //Future problem: impement better error code with Alamofire 4
-                    print("Error: Could not get HTML as String")
-                    return
-                }
-                
-                var vidURL: String!
-                
-                let doc = HTMLDocument(string: htmlAsString)
-                let content = doc.nodes(matchingSelector: "iframe")
-                
-                for vidEl in content {
-                    let vidNode = vidEl.firstNode(matchingSelector: "iframe")!
-                    vidURL = vidNode.objectForKeyedSubscript("src") as? String
-                    
-                    
-                }
-                
-                var videoCard: VideoCard!
-                
-                let creator = Creator(name:"", url: URL(string:"http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png")!, favicon:URL(string:"http://icons.iconarchive.com/icons/iconsmind/outline/512/Open-Book-icon.png"), iosStore:nil)
-              
-                let youtubeID = self.getYoutubeID(vidURL)
-                let embedUrl = URL(string: vidURL)!
-                let vidwebUrl = URL(string: vidURL)!
-                
-                
-                let videoData:NSMutableDictionary = NSMutableDictionary()
-                let videoMedia:NSMutableDictionary = NSMutableDictionary()
-                videoMedia["description"] =  ""
-                videoMedia["posterImageUrl"] = "http://i1.ytimg.com/vi/\(youtubeID)/mqdefault.jpg"
-                
-                videoData["media"] = videoMedia
-                videoData["tags"] = resource.tags
-                
-                videoCard = VideoCard(title: resource.title, embedUrl: embedUrl, url: vidwebUrl, creator: creator, data: videoData)
-                self.videoCards.append(videoCard)
-                
+    //Inserts a video resource
+    fileprivate func insertVideo(_ resource: Resource, completionHandler: (Bool) -> Void) {
+        let resUrl = URL(string: resource.url)
+        guard let url = resUrl else {
+            return
         }
+        
+        Readability.parse(url: url) { data in
+            
+            let description = data?.description ?? ""
+            let videoUrl = data?.topVideo ?? ""
+            
+            //If Readability doesn't find video URL, scrape HTML and get source from iFrame
+            if videoUrl == "" {
+                Alamofire.request(resource.url, method: .get)
+                    .responseString { responseString in
+                        guard responseString.result.error == nil else {
+                            //completionHandler(responseString.result.error!)
+                            return
+                            
+                        }
+                        guard let htmlAsString = responseString.result.value else {
+                            //Future problem: impement better error code with Alamofire 4
+                            print("Error: Could not get HTML as String")
+                            return
+                        }
+                        
+                        var vidURL: String!
+                        
+                        let doc = HTMLDocument(string: htmlAsString)
+                        let content = doc.nodes(matchingSelector: "iframe")
+                        
+                        for vidEl in content {
+                            let vidNode = vidEl.firstNode(matchingSelector: "iframe")!
+                            vidURL = vidNode.objectForKeyedSubscript("src") as? String
+                        }
+                        
+                        let youtubeID = self.getYoutubeID(vidURL)
+                        //let embedUrl = URL(string: vidURL)!
+                        //let vidwebUrl = URL(string: vidURL)!
+                        
+                        let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: vidURL, thumbnailURL: "", restricted: resource.restricted)
+                        
+                        self.videos.append(newVid!)
+                        self.tableView.reloadData()
+                }
+            }
+            else {
+                let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: videoUrl, thumbnailURL: "", restricted: resource.restricted)
+                self.videos.append(newVid!)
+                self.tableView.reloadData()
+            }
+            
+            
+            
+        }
+        
+        
     }
     
     //Get the id of the youtube video by searching within the URL
@@ -439,33 +427,11 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         return String("")
     }
     
-    fileprivate func insertYoutube(_ resource: Resource,completionHandler: (Bool) -> Void) {
-        var videoCard:VideoCard!
-        
-        let newUrl = URL(string: "http://www.youtube.com")!
-        let embedUrl = URL(string: resource.url)!
-        let vidwebUrl = URL(string: resource.url)!
-        
-        
-        let youtube = Creator(name:"Youtube", url: newUrl, favicon:URL(string:"http://coopkanicstang-development.s3.amazonaws.com/brandlogos/logo-youtube.png"), iosStore:nil)
-        
-        
-        let videoData:NSMutableDictionary = NSMutableDictionary()
-        let videoMedia:NSMutableDictionary = NSMutableDictionary()
-        videoMedia["description"] = ""
-        videoMedia["posterImageUrl"] = "http://i1.ytimg.com/vi/\(getYoutubeID(resource.url))/mqdefault.jpg"
-        
-        videoData["media"] = videoMedia
-        videoData["tags"] = resource.tags
-        videoCard = VideoCard(title: resource.title, embedUrl: embedUrl, url: vidwebUrl, creator: youtube, data: videoData)
-        
-        self.videoCards.append(videoCard)
-        
-        
-    }
-    
     fileprivate func insertYoutubeFromChannel(_ resource: Resource, description: String, completionHandler: (Bool) -> Void) {
-        var videoCard:VideoCard!
+        
+        
+        
+        /*var videoCard:VideoCard!
         
         let newUrl = URL(string: "http://www.youtube.com")
         
@@ -489,6 +455,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         self.videoCards.append(videoCard)
         self.resources.append(resource)
+         */
     }
     
     // MARK: Cru CC Youtube Video Retrieval
@@ -499,13 +466,17 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             overlayRunning = true
         }
         
+        //let request = Search(.fromChannel(Config.cruChannelID, [.snippet, .contentDetails]), limit: )
         // Get the selected channel's playlistID value from the channelsDataArray array and use it for fetching the proper video playlst.
         
         // Form the request URL string.
-        self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&playlistId=\(cruUploadsID)&key=\(apiKey)"
+        //self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&playlistId=\(Config.cruUploadsID)&key=\(Config.youtubeApiKey)"
+        //self.urlString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=\(Config.cruChannelID)&key=\(Config.youtubeApiKey)"
+        self.urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=\(Config.cruChannelID)&maxResults=\(PageSize)&order=date&type=video&key=\(Config.youtubeApiKey)"
         
         if nextPageToken != "" {
-            self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&pageToken=\(nextPageToken)&playlistId=\(cruUploadsID)&key=\(apiKey)"
+            self.urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=\(Config.cruChannelID)&maxResults=\(PageSize)&order=date&pageToken=\(nextPageToken)&type=video&key=\(Config.youtubeApiKey)"
+            //self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&pageToken=\(nextPageToken)&playlistId=\(Config.cruUploadsID)&key=\(Config.youtubeApiKey)"
             
         }
         
@@ -527,32 +498,39 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                     
                     // Use a loop to go through all video items.
                     for i in 0 ..< items.count {
-                        let playlistSnippetDict = (items[i] as Dictionary<String, AnyObject>)["snippet"] as! Dictionary<String, AnyObject>
+                        let idDict = (items[i] as Dictionary<String, AnyObject>)["id"] as! Dictionary<String, AnyObject>
+                        let videoID = idDict["videoId"] as! String
+                        
+                        
+                        let snippetDict = (items[i] as Dictionary<String, AnyObject>)["snippet"] as! Dictionary<String, AnyObject>
                         
                         // Initialize a new dictionary and store the data of interest.
-                        var desiredPlaylistItemDataDict = Dictionary<String, AnyObject>()
+                        //var thumbnailsDict = Dictionary<String, AnyObject>()
                         
-                        desiredPlaylistItemDataDict["title"] = playlistSnippetDict["title"]
-                        desiredPlaylistItemDataDict["description"] = playlistSnippetDict["description"]
-                        desiredPlaylistItemDataDict["thumbnail"] = ((playlistSnippetDict["thumbnails"] as! Dictionary<String, AnyObject>)["medium"] as! Dictionary<String, AnyObject>)["url"]
-                        desiredPlaylistItemDataDict["videoID"] = (playlistSnippetDict["resourceId"] as! Dictionary<String, AnyObject>)["videoId"]
-                        desiredPlaylistItemDataDict["date"] = playlistSnippetDict["publishedAt"]
+                        
+                        let thumbnailURL = ((snippetDict["thumbnails"] as! Dictionary<String, AnyObject>)["default"] as! Dictionary<String, AnyObject>)["url"]
+                        //desiredPlaylistItemDataDict["videoID"] = (snippetDict["resourceId"] as! Dictionary<String, AnyObject>)["videoId"]
+                        //desiredPlaylistItemDataDict["date"] = snippetDict["publishedAt"]
                        
                         // Append the desiredPlaylistItemDataDict dictionary to the videos array.
-                        self.videosArray.append(desiredPlaylistItemDataDict as [NSObject : AnyObject])
+                        self.videosArray.append(snippetDict as [NSObject : AnyObject])
                         //print("\n\(resultsDict)\n")
-                        let resource = Resource(id: desiredPlaylistItemDataDict["videoID"] as! String, title: desiredPlaylistItemDataDict["title"] as! String, url: "https://www.youtube.com/embed/\(desiredPlaylistItemDataDict["videoID"])?rel=0", type: "video", date: desiredPlaylistItemDataDict["date"] as! String, tags: nil)
+                        let resource = Resource(id: videoID, title: snippetDict["title"] as! String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as! String, tags: nil)!
+                        
+                        let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as! String, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
+                        
+                        self.resources.append(resource)
+                        self.videos.append(newVid!)
+                        
                         // Reload the tableview.
                         //self.tblVideos.reloadData()
-                        self.insertYoutubeFromChannel(resource!, description: desiredPlaylistItemDataDict["description"] as! String, completionHandler: self.finished)
+                        //self.insertYoutubeFromChannel(resource!, description: snippetDict["description"] as! String, completionHandler: self.finished)
                         
                         
                         
                     }
                     self.pageNum = self.pageNum + 1
                     self.tableView.reloadData()
-                    
-                    
                     
                     if self.overlayRunning {
                         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
@@ -563,6 +541,72 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                     self.tableView.emptyDataSetSource = self
                     self.tableView.emptyDataSetDelegate = self
                     self.tableView.tableFooterView = UIView()
+                }
+                catch {
+                    print("Error loading videos")
+                }
+                
+            }
+                
+            else {
+                print("HTTP Status Code = \(HTTPStatusCode)\n")
+                print("Error while loading channel videos: \(error)\n")
+            }
+            
+            
+        })
+    }
+    
+    
+    //Yes, this is similar to the function above but this one has a completion handler
+    //Load youtube videos for infinite scrolling
+    func loadYouTubeVideos(completionHandler: @escaping (_ numVideos: Int) -> Void) {
+        self.urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=\(Config.cruChannelID)&maxResults=\(PageSize)&order=date&pageToken=\(nextPageToken)&type=video&key=\(Config.youtubeApiKey)"
+        
+        self.newVideos = [Video]() //Clear the new videos array
+        // Fetch the playlist from Google.
+        performGetRequest(URL(string: self.urlString), completion: { (data, HTTPStatusCode, error) -> Void in
+            if HTTPStatusCode == 200 && error == nil {
+                // Convert the JSON data into a dictionary.
+                do {
+                    let resultsDict = try JSONSerialization.jsonObject(with: data!, options: []) as? Dictionary<String, AnyObject>
+                    
+                    //Get next page token
+                    self.nextPageToken = resultsDict?["nextPageToken"] as! String
+                    self.numUploads = (resultsDict?["pageInfo"] as! Dictionary<String, AnyObject>)["totalResults"] as! Int
+                    self.numNewVideos = (resultsDict?["pageInfo"] as! Dictionary<String, AnyObject>)["resultsPerPage"] as! Int
+                    
+                    // Get all playlist items ("items" array).
+                    
+                    let items: Array<Dictionary<String, AnyObject>> = resultsDict!["items"] as! Array<Dictionary<String, AnyObject>>
+                    
+                    // Use a loop to go through all video items.
+                    for i in 0 ..< items.count {
+                        let idDict = (items[i] as Dictionary<String, AnyObject>)["id"] as! Dictionary<String, AnyObject>
+                        let videoID = idDict["videoId"] as! String
+                        
+                        
+                        let snippetDict = (items[i] as Dictionary<String, AnyObject>)["snippet"] as! Dictionary<String, AnyObject>
+                        
+                        // Initialize a new dictionary and store the data of interest.
+                        
+                        
+                        let thumbnailURL = ((snippetDict["thumbnails"] as! Dictionary<String, AnyObject>)["default"] as! Dictionary<String, AnyObject>)["url"]
+                        
+                        // Append the desiredPlaylistItemDataDict dictionary to the videos array.
+                        self.videosArray.append(snippetDict as [NSObject : AnyObject])
+
+                        let resource = Resource(id: videoID, title: snippetDict["title"] as! String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as! String, tags: nil)!
+                        
+                        let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as! String, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
+                        
+                        self.resources.append(resource)
+                        self.newVideos.append(newVid!)
+                    }
+                    self.pageNum = self.pageNum + 1
+                    
+                    self.tableView.tableFooterView = UIView()
+                    completionHandler(self.numNewVideos)
                 }
                 catch {
                     print("Error loading videos")
@@ -613,8 +657,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,forRowAt indexPath: IndexPath) {
+        
+        if currentType == .Video{
+            let vidCell = cell as! VideoTableViewCell
+        }
         
         //print("Number of videoViews: \(videoViews.count)")
         
@@ -627,7 +676,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         
         //Set the height if videoCardHeight hasn't been set yet or there's a smaller card
-        if (videoCardHeight - cell.bounds.height > 0 || videoCardHeight == 0) && currentType == .Video{
+        /*if (videoCardHeight - cell.bounds.height > 0 || videoCardHeight == 0) && currentType == .Video{
             videoCardHeight = cell.bounds.height
         }
         
@@ -637,7 +686,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             //verticalContentOffset = tableView.contentOffset.y
             print("Should get videos for channel")
             getVideosForChannel(true)
-        }
+        }*/
         
     }
     
@@ -671,9 +720,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     //Configures each cell in the table view as a card and sets the UI elements to match with the Resource data
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        let dateFormatString = "MMM d, yyyy"
+        
         //Should be refactored to be more efficient
         //Problem for a later dev
-        //if searchActivated {
             switch (currentType){
             case .Article:
                 var art: Article
@@ -685,7 +735,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
-                cell.date.text = GlobalUtils.stringFromDate(art.date, format: "MMMM d, yyyy")
+                cell.date.text = GlobalUtils.stringFromDate(art.date, format: dateFormatString)
                 cell.desc.text = art.abstract
                 cell.title.text = art.title
                 
@@ -704,9 +754,49 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 return cell
             case .Video:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableViewCell", for: indexPath) as! VideoTableViewCell
+                var video: Video
+                if searchActivated {
+                    video = filteredVideos[indexPath.row]
+                }
+                else {
+                    video = videos[indexPath.row]
+                }
                 
+                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableViewCell", for: indexPath) as! VideoTableViewCell
+                cell.date.text = GlobalUtils.stringFromDate(video.date, format: dateFormatString)
+                cell.desc.text = video.abstract
+                cell.title.text = video.title
+                
+                if video.videoURL != "" {
+                    cell.videoURL = video.videoURL
+                }
+                
+                if video.thumbnailURL != "" {
+                    cell.thumbnailView.load.request(with: video.thumbnailURL)
+                    
+                }
+                else {
+                    //Adjust the spacing for title, date, & desc to be flush with card
+                    cell.thumbnailView.isHidden = true
+                    cell.stackLeadingSpace.constant = 10.0
+                }
+                
+                if video.abstract == "" {
+                    
+                    
+                    
+                    
+                    
+                }
+                
+                
+                
+                cell.card.layer.shadowColor = UIColor.black.cgColor
+                cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+                cell.card.layer.shadowOpacity = 0.25
+                cell.card.layer.shadowRadius = 2
                 return cell
+            
             case .Audio:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AudioTableViewCell", for: indexPath) as! AudioTableViewCell
                 
@@ -718,12 +808,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                     aud = audioFiles[indexPath.row]
                 }
                 
-                cell.date.text = GlobalUtils.stringFromDate(aud.date, format: "MMMM d, yyyy")
+                cell.date.text = GlobalUtils.stringFromDate(aud.date, format: dateFormatString)
                 cell.title.text = aud.title
                 cell.audioString = aud.url
                 
-                cell.prepareAudioFile()
-                
                 cell.card.layer.shadowColor = UIColor.black.cgColor
                 cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
                 cell.card.layer.shadowOpacity = 0.25
@@ -731,58 +819,27 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 return cell
             }
-        //}
-        /*else {
-            switch (currentType){
-            case .Article:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
-                let art = articles[indexPath.row]
-                cell.date.text = GlobalUtils.stringFromDate(art.date, format: "MMMM d, yyyy")
-                cell.desc.text = art.abstract
-                cell.title.text = art.title
-                
-                //Set up the cell's button for web view controller
-                cell.tapAction = {(cell) in
-                    let vc = CustomWebViewController()
-                    vc.urlString = art.url!
-                    self.navigationController?.pushViewController(vc, animated: true)
-                }
-                cell.card.layer.shadowColor = UIColor.black.cgColor
-                cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
-                cell.card.layer.shadowOpacity = 0.25
-                cell.card.layer.shadowRadius = 2
-                
-                return cell
-            case .Video:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableViewCell", for: indexPath) as! VideoTableViewCell
-                
-                return cell
-            case .Audio:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "AudioTableViewCell", for: indexPath) as! AudioTableViewCell
-                
-                return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if currentType == .Video {
+            var selectedVid: Video
+            if searchActivated {
+                selectedVid = filteredVideos[indexPath.row]
+            }
+            else {
+                selectedVid = videos[indexPath.row]
+            }
             
-            }
-        }*/
-        
-        
-        
+            let vc = CustomWebViewController()
+            vc.urlString = selectedVid.url
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
-    }
-    
-    //Sets the constraints for the cards so they float in the middle of the table
-    fileprivate func constrainView(_ cardView: CardView, row: Int) {
-        cardView.delegate = self
-        cardView.translatesAutoresizingMaskIntoConstraints = false
-        cardView.horizontallyCenterToSuperView(0)
-        
-        cardView.constrainTopToSuperView(15)
-        cardView.constrainBottomToSuperView(15)
-        cardView.constrainRightToSuperView(15)
-        cardView.constrainLeftToSuperView(15)
     }
     
     // MARK: Actions
@@ -840,8 +897,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     func checkTags(_ resTags: [String], filteredTags: [ResourceTag]) -> Bool{
         for tag in resTags {
             for filtTag in filteredTags {
-                print("comparing \(tag) to \(filtTag.id)")
-                if tag == filtTag.id {
+                if tag == filtTag.id! {
                     return true
                 }
             }
@@ -852,45 +908,41 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     func filterContent(_ tags: [ResourceTag], searchText: String?) {
         
         //Filter by tags first
-        let taggedAudio = audioCards.filter { card in
-            return checkTags(card.tags!, filteredTags: tags)
+        let taggedAudio = audioFiles.filter { file in
+            return checkTags(file.tags!, filteredTags: tags)
         }
         
-        let taggedArticles = articleCards.filter { card in
-            return checkTags(card.tags!, filteredTags: tags)
+        let taggedArticles = articles.filter { art in
+            return checkTags(art.tags!, filteredTags: tags)
         }
-        let taggedVideos = videoCards.filter { card in
-            if !(card.tags?.isEmpty)! {
-                return checkTags(card.tags!, filteredTags: tags)
+        let taggedVideos = videos.filter { vid in
+            if !(vid.tags?.isEmpty)! {
+                return checkTags(vid.tags!, filteredTags: tags)
             }
             return false
         }
         
         if searchText != nil {
-            filteredAudioCards = taggedAudio.filter { card in
-                return card.title.lowercased().contains(searchText!.lowercased())
+            filteredAudioFiles = taggedAudio.filter { file in
+                return file.title.lowercased().contains(searchText!.lowercased())
             }
             
-            filteredArticleCards = taggedArticles.filter { card in
-                return card.title.lowercased().contains(searchText!.lowercased())
+            filteredArticles = taggedArticles.filter { art in
+                return art.title.lowercased().contains(searchText!.lowercased())
             }
-            filteredVideoCards = taggedVideos.filter { card in
-                return card.title.lowercased().contains(searchText!.lowercased())
+            filteredVideos = taggedVideos.filter { vid in
+                return vid.title.lowercased().contains(searchText!.lowercased())
             }
         }
         else {
-            filteredArticleCards = taggedArticles
-            filteredAudioCards = taggedAudio
-            filteredVideoCards = taggedVideos
+            filteredArticles = taggedArticles
+            filteredAudioFiles = taggedAudio
+            filteredVideos = taggedVideos
         }
         
         tableView.reloadData()
     }
     
-    func cardViewRequestedAction(_ cardView: CardView, action: CardViewAction) {
-        
-        handleCardAction(cardView, action: action)
-    }
     
     //reveal controller function for disabling the current view
     func revealController(_ revealController: SWRevealViewController!, willMoveTo position: FrontViewPosition) {
@@ -913,8 +965,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             modalVC.transitioningDelegate = self
             modalVC.preferredContentSize = CGSize(width: UIScreen.main.bounds.width * 0.7, height: UIScreen.main.bounds.height * 0.7)
             modalVC.parentVC = self
-            
-            
             
             
             modalVC.tags = self.tags

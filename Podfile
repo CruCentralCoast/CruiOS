@@ -26,9 +26,10 @@ def cru_pods
     pod 'GooglePlacePicker'
     pod 'GoogleMaps'
     pod 'ReadabilityKit'
-    pod 'Material', '~> 2.0'
     pod 'AudioKit', '~> 3.5'
-    pod 'FontAwesome.swift'
+    pod 'YouTubePlayer'
+    pod 'ReactiveSwift'
+    pod 'UIScrollView-InfiniteScroll', '~> 1.0'
 end
 
 def crash_monitor
