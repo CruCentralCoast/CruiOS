@@ -165,31 +165,42 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     
     func insertRide(_ dict : NSDictionary) {
-        let newRide = Ride(dict: dict)
+        let newRide = Ride(dict: dict)!
+        
+        let curDate = Date()
+        
+        //TODO - Figure out how to remove past rides from server
         
         if let pMap = passMap as? MapLocalStorageManager{
-            if(newRide!.gcmId != Config.gcmId()){
-                if let passId = pMap.getElement(newRide!.id) as? String{
+            if(newRide.gcmId != Config.gcmId()){
+                if let passId = pMap.getElement(newRide.id) as? String{
                     
                     //if dropped from ride
-                    if(!newRide!.isPassengerInRide(passId)){
-                        ridesDroppedFrom.append(newRide!)
-                        pMap.removeElement(newRide!.id)
+                    if(!newRide.isPassengerInRide(passId)){
+                        ridesDroppedFrom.append(newRide)
+                        pMap.removeElement(newRide.id)
                         passMap = RideUtils.getMyPassengerMaps()
                     }
                         
                     //if passenger in ride
                     else{
-                        rides.insert(newRide!, at: 0)
-                        self.ridesTableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .middle)
+                        //Check if ride hasn't already happened
+                        if (newRide.departureDate?.isGreaterThanDate(curDate.addDays(-1)))! {
+                            rides.insert(newRide, at: 0)
+                            self.ridesTableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .middle)
+                        }
                     }
                 }
             }
             else{
                 
-                //if driving a ride
-                rides.insert(newRide!, at: 0)
-                self.ridesTableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .middle)
+                //Check if ride hasn't already happened
+                if (newRide.departureDate?.isGreaterThanDate(curDate.addDays(-1)))! {
+                    //if driving a ride
+                    rides.insert(newRide, at: 0)
+                    self.ridesTableView.insertRows(at: [IndexPath(item: 0, section: 0)], with: .middle)
+                }
+                
             }
         }
         
