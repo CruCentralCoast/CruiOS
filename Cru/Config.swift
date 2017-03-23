@@ -57,6 +57,11 @@ struct Config {
     //configuration key for NSUserDefaults ministry teams
     static let ministryTeamNSDefaultsKey = "ministryTeams"
     
+    /* Configurations for Resources */
+    static let cruChannelID = "UCe-RJ-3Q3tUqJciItiZmjdg" // Cru youtube channel id
+    //static let cruUploadsID = "UUe-RJ-3Q3tUqJciItiZmjdg" // Cru's upload playlist id
+    static let youtubeApiKey = "AIzaSyDW_36-r4zQNHYBk3Z8eg99yB0s2jx3kpc"
+    
     //LOCAL STORAGE KEYS
     static let eventStorageKey = "events"
     static let userStorageKey = "user"

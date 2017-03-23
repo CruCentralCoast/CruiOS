@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class SegmentedControl: UIControl {
+class SegmentedControl: UIControl {
     fileprivate var labels = [UILabel]()
     var thumbView = UIView()
     

@@ -25,8 +25,10 @@ class ArticleTableViewCell: UITableViewCell {
         // Initialization code
         
     }
+    
+    //Action that will use function passed at runtime
     @IBAction func readMore(_ sender: UIButton) {
         tapAction?(self)
     }
     
-    }
+}
