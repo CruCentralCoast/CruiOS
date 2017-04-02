@@ -28,7 +28,6 @@ def cru_pods
     pod 'ReadabilityKit'
     pod 'AudioKit', '~> 3.5'
     pod 'YouTubePlayer'
-    pod 'ReactiveSwift'
     pod 'UIScrollView-InfiniteScroll', '~> 1.0'
 end
 
