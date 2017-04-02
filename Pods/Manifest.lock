@@ -81,11 +81,8 @@ PODS:
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
   - RadioButton (1.0)
-  - ReactiveSwift (1.0.1):
-    - Result (~> 3.1)
   - ReadabilityKit (0.6.1):
     - Ji (~> 2.0.1)
-  - Result (3.1.0)
   - SideMenu (2.2.0)
   - SwiftValidator (4.0.0)
   - SwiftyJSON (3.1.4)
@@ -112,7 +109,6 @@ DEPENDENCIES:
   - LocationPickerViewController (= 3.0.0)
   - MRProgress
   - RadioButton
-  - ReactiveSwift
   - ReadabilityKit
   - SideMenu (= 2.2.0)
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
@@ -158,15 +154,13 @@ SPEC CHECKSUMS:
   LocationPickerViewController: ee898cc76d9a06083b398c59e67d3c16aa298636
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
-  ReactiveSwift: b1453c8885ebfb9b09b6d60bc5bc3303f56dc72c
   ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
-  Result: 4e3ed5995ed94d0cd6a09be9a431fce3f3624bbf
   SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: 69d2679b29e3241c009bc580ff5e2149d7c8c819
+PODFILE CHECKSUM: f5789b5ce2cf903a55390a5c07ca6c59bd3720de
 
 COCOAPODS: 1.2.0
