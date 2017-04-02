@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import WildcardSDK
 
 struct AudioCard {
     var tags = [String]()

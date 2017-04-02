@@ -180,9 +180,6 @@
 		6D10D5EF1D92F525008265AD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10D5EE1D92F525008265AD /* AboutViewController.swift */; };
 		6D10D5F01D92F525008265AD /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D10D5EE1D92F525008265AD /* AboutViewController.swift */; };
 		6D12525E1C0799EC0039D3C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */; };
-		6D1F089B1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
-		6D1F089C1D306039005B53EE /* WildcardSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F089A1D306039005B53EE /* WildcardSDK.framework */; };
-		6D1F089D1D306094005B53EE /* WildcardSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1F08961D305F6D005B53EE /* WildcardSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6D2798FA1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D2798FB1CF26D79008E5906 /* EventStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2798F91CF26D78008E5906 /* EventStatus.swift */; };
 		6D2B4FC21D8549D00009DC2D /* ResourceTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2B4FC11D8549D00009DC2D /* ResourceTagTableViewCell.swift */; };
@@ -211,6 +208,7 @@
 		6D5C10341D5CE246007AC44E /* FindRideFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */; };
 		6D5C10361D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
 		6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
+		6D679D9C1E91B371006F672C /* CloudMessaging.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */; };
 		6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */; };
 		6D76CA771C06A41900F8B007 /* FreigSanProLig.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */; };
 		6D76CA7B1C06AB6900F8B007 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7A1C06AB6900F8B007 /* Event.swift */; };
@@ -275,7 +273,7 @@
 		C1214DC91CEA63B300E7D25F /* EventUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214DC71CEA63B300E7D25F /* EventUtils.swift */; };
 		C1214DCB1CEA668300E7D25F /* EventUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214DCA1CEA668300E7D25F /* EventUtilsTest.swift */; };
 		C12562551CD3E77B002B05D0 /* SWRevealViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7C1CBF3A3700EF5EFB /* SWRevealViewController.h */; };
-		C12562561CD3E77B002B05D0 /* Cru-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7A1CBF3A3600EF5EFB /* Cru-Bridging-Header.h */; };
+		C12562561CD3E77B002B05D0 /* CloudMessaging.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */; };
 		C12562571CD3E77B002B05D0 /* CruTests-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7B1CBF3A3600EF5EFB /* CruTests-Bridging-Header.h */; };
 		C12940E61CCD82D4004DACB1 /* CruClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E51CCD82D4004DACB1 /* CruClients.swift */; };
 		C12940E71CCD82D4004DACB1 /* CruClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E51CCD82D4004DACB1 /* CruClients.swift */; };
@@ -344,7 +342,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				6D1F089D1D306094005B53EE /* WildcardSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,7 +430,7 @@
 		50B1D3C41CED6BB10014EE1B /* ChooseMinistryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMinistryVC.swift; sourceTree = "<group>"; };
 		50B1D3C71CED76910014EE1B /* SelectCGVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCGVC.swift; sourceTree = "<group>"; };
 		50B1D3CA1CED76D60014EE1B /* CommunityGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroup.swift; sourceTree = "<group>"; };
-		50C6CC7A1CBF3A3600EF5EFB /* Cru-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Cru-Bridging-Header.h"; sourceTree = "<group>"; };
+		50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CloudMessaging.h; path = ../Pods/Google/Headers/GGLCloudMessaging/Public/CloudMessaging.h; sourceTree = "<group>"; };
 		50C6CC7B1CBF3A3600EF5EFB /* CruTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CruTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50C6CC7C1CBF3A3700EF5EFB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		50C6CC7D1CBF3A3700EF5EFB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -459,8 +456,6 @@
 		6D0968E01CE52E6300FA8638 /* ResourcesViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesViewControllerTest.swift; sourceTree = "<group>"; };
 		6D10D5EE1D92F525008265AD /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6D1F08961D305F6D005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
-		6D1F089A1D306039005B53EE /* WildcardSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = WildcardSDK.framework; sourceTree = "<group>"; };
 		6D2798F91CF26D78008E5906 /* EventStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		6D2B4FC11D8549D00009DC2D /* ResourceTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTagTableViewCell.swift; sourceTree = "<group>"; };
 		6D2B4FC41D854B770009DC2D /* ResourceTagTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTagTableView.swift; sourceTree = "<group>"; };
@@ -551,7 +546,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D1F089B1D306039005B53EE /* WildcardSDK.framework in Frameworks */,
 				50D8B6DD1C0E323A001127D5 /* MapKit.framework in Frameworks */,
 				9FDEFB5CEC9246C845B15AC3 /* Pods_Cru.framework in Frameworks */,
 			);
@@ -561,7 +555,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D1F089C1D306039005B53EE /* WildcardSDK.framework in Frameworks */,
 				C7CE531F18E039F4D2824DAE /* Pods_CruTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,8 +631,6 @@
 			isa = PBXGroup;
 			children = (
 				6D5542671D4ED52B004008A5 /* LocationPickerViewController.framework */,
-				6D1F089A1D306039005B53EE /* WildcardSDK.framework */,
-				6D1F08961D305F6D005B53EE /* WildcardSDK.framework */,
 				50D8B6DC1C0E323A001127D5 /* MapKit.framework */,
 				0F8CEF1F1BEC0E13008FC70D /* Cru */,
 				0F8CEF371BEC0E14008FC70D /* CruTests */,
@@ -846,7 +837,7 @@
 			children = (
 				50C6CC7C1CBF3A3700EF5EFB /* SWRevealViewController.h */,
 				50C6CC7D1CBF3A3700EF5EFB /* SWRevealViewController.m */,
-				50C6CC7A1CBF3A3600EF5EFB /* Cru-Bridging-Header.h */,
+				50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */,
 				50C6CC7B1CBF3A3600EF5EFB /* CruTests-Bridging-Header.h */,
 			);
 			name = SWRevealController;
@@ -1338,6 +1329,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D679D9C1E91B371006F672C /* CloudMessaging.h in Sources */,
 				C1536D611CFD3C8D00730281 /* SummerMission.swift in Sources */,
 				507B368A1CE10BDC003D6CF9 /* UpcomingItemCell.swift in Sources */,
 				C1E9DC1A1CF7920B00066C5F /* DisplayCGVC.swift in Sources */,
@@ -1485,7 +1477,7 @@
 				50697BC51CE03B5600776CC5 /* PassengersViewController.swift in Sources */,
 				C12562551CD3E77B002B05D0 /* SWRevealViewController.h in Sources */,
 				6D424DD61E6E10A400496301 /* VideoTableViewCell.swift in Sources */,
-				C12562561CD3E77B002B05D0 /* Cru-Bridging-Header.h in Sources */,
+				C12562561CD3E77B002B05D0 /* CloudMessaging.h in Sources */,
 				50697BBF1CE002C500776CC5 /* DirectionTVC.swift in Sources */,
 				C12562571CD3E77B002B05D0 /* CruTests-Bridging-Header.h in Sources */,
 				5072B4281CB38F43001F5BF6 /* PassengerTableViewCell.swift in Sources */,
