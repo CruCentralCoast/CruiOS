@@ -10,36 +10,43 @@ import UIKit
 import MRProgress
 
 class CustomWebViewController: UIViewController, UIWebViewDelegate {
+    var url:URL?
     var urlString:String?
     private var webView:UIWebView!
     private var progressShowing = false
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        
-        webView = UIWebView(frame: self.view.frame)
-        webView.delegate = self
-        var url:URL
-        
+        if webView == nil {
+            webView = UIWebView(frame: self.view.frame)
+            webView.delegate = self
+            self.view.addSubview(webView)
+        }
+
         if let desiredURL = urlString
-        {
+        { 
             url = URL(string: desiredURL)!
+            webView.loadRequest(URLRequest(url: url!))
         }
-        else
-        {
-            url = URL(string: "www.cru.org")!
-        }
-        
-        webView.loadRequest(URLRequest(url: url))
-        self.view.addSubview(webView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setUrl(string: String) {
+        urlString = string
+        
+        url = URL(string: urlString!)!
+        if webView == nil {
+            webView = UIWebView(frame: self.view.frame)
+            webView.delegate = self
+            self.view.addSubview(webView)
+        }
+        webView.loadRequest(URLRequest(url: url!))
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {

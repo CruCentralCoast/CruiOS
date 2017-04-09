@@ -40,6 +40,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     var filteredAudioFiles = [Audio]()
     var filteredVideos = [Video]()
     var selectedRow = -1
+    var selectedVid: Video?
     
     var filteredResources = [Resource]()
     
@@ -821,10 +822,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if currentType == .Video {
-            var selectedVid: Video
+            
             if searchActivated {
                 selectedVid = filteredVideos[indexPath.row]
             }
@@ -832,14 +833,12 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 selectedVid = videos[indexPath.row]
             }
             
-            let vc = CustomWebViewController()
-            vc.urlString = selectedVid.url
-            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
+        print("Bro?")
     }
     
     // MARK: Actions
@@ -977,10 +976,29 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             dim(.in, alpha: dimLevel, speed: dimSpeed)
             
         }
-        else if segue.identifier == "showWebView" {
+        else if segue.identifier == "openWebView" {
             let vc = segue.destination as! CustomWebViewController
             
+            if let index = tableView.indexPathForSelectedRow {
+                if currentType == .Video {
+                    
+                    if searchActivated {
+                        selectedVid = filteredVideos[index.row]
+                    }
+                    else {
+                        selectedVid = videos[index.row]
+                    }
+                    
+                    //let vc = CustomWebViewController()
+                    //vc.urlString = selectedVid.url
+                    //self.navigationController?.pushViewController(vc, animated: true)
+                }
+                vc.setUrl(string: (selectedVid?.url)!)
+            }
+            
+            //vc.urlString = selectedVid?.url
         }
+        
     }
     
     @IBAction func unwindFromSecondary(_ segue: UIStoryboardSegue) {
