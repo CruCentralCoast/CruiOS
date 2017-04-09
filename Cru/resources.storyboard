@@ -169,7 +169,7 @@
                                                                 <constraint firstAttribute="trailing" secondItem="bpC-Nq-ow9" secondAttribute="trailing" constant="10" id="aj2-8Q-b1R"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-large" translatesAutoresizingMaskIntoConstraints="NO" id="U8K-df-rbb">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="video-large" translatesAutoresizingMaskIntoConstraints="NO" id="U8K-df-rbb">
                                                             <rect key="frame" x="5" y="5" width="110" height="62"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="110" id="6vm-hH-F0a"/>
@@ -480,7 +480,7 @@
                                                                 <constraint firstAttribute="width" constant="20" id="Mqb-gA-Kup"/>
                                                                 <constraint firstAttribute="height" constant="20" id="xGh-hu-4jw"/>
                                                             </constraints>
-                                                            <state key="normal" title="Button" image="BB157DA5-50F9-4DC9-A5B9-2B7D81CE3EB5"/>
+                                                            <state key="normal" title="Button" image="C14ED08C-85A9-49B0-B64F-48F078C9C32A"/>
                                                             <connections>
                                                                 <action selector="buttonTapped:" destination="FSL-hh-tYh" eventType="touchUpInside" id="aJS-5k-h8R"/>
                                                             </connections>
@@ -643,7 +643,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BB157DA5-50F9-4DC9-A5B9-2B7D81CE3EB5" width="90" height="90">
+        <image name="C14ED08C-85A9-49B0-B64F-48F078C9C32A" width="90" height="90">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOjtYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISgrLjQ3VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
