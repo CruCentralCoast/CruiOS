@@ -26,7 +26,7 @@ def cru_pods
     pod 'GooglePlacePicker'
     pod 'GoogleMaps'
     pod 'ReadabilityKit'
-    pod 'AudioKit', '~> 3.5'
+    # pod 'AudioKit', '~> 3.5'
     pod 'YouTubePlayer'
     pod 'UIScrollView-InfiniteScroll', '~> 1.0'
 end
