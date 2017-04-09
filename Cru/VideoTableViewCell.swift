@@ -26,21 +26,15 @@ class VideoTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        //Customize image thumbnail
+        thumbnailView.contentMode = .scaleAspectFill
+        thumbnailView.layer.masksToBounds = true
         
         if desc.text == "" {
             desc.isHidden = true
             stackLeadingSpace.constant = 10.0
             
-            /*for view in subviews  {
-                if let text = view as? UITextView {
-                    text.removeFromSuperview()
-                }
-            }
-            
-            let verticalConstraint = NSLayoutConstraint(item: date, attribute: NSLayoutAttribute.top, relatedBy: NSLayoutRelation.equal, toItem: title, attribute: NSLayoutAttribute.bottom, multiplier: 1, constant: 0)
-            
-            self.contentView.addConstraint(verticalConstraint)*/
         }
         
     }
