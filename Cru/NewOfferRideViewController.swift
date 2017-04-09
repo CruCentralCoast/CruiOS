@@ -136,6 +136,11 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             
         }
         
+        // If the location dictionary has not been set, set it to the default location
+        if convertedDict.count == 0 {
+            convertedDict = ["country": "USA", "state": "CA", "street1": "1 Grand Ave", "postcode": "93407", "suburb": "San Luis Obispo"]
+        }
+        
     }
     
     //Asynchronous function that's called to insert an event into the table
