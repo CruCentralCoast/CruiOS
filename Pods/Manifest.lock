@@ -2,7 +2,6 @@ PODS:
   - ActionSheetPicker-3.0 (2.2.0)
   - Alamofire (4.3.0)
   - Appsee (2.3.1)
-  - AudioKit (3.5.3)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DatePickerCell (1.0.5)
@@ -93,7 +92,6 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 4.3)
   - Appsee
-  - AudioKit (~> 3.5)
   - Crashlytics
   - DatePickerCell
   - DZNEmptyDataSet
@@ -130,7 +128,6 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   Appsee: 78b5d4b281ceb83d5fd17d7df18d5ff8c292e031
-  AudioKit: bf2ebc611bb9b8107dcbe14f8356c761ee8fcc12
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DatePickerCell: 8cd5d7fc93d195b85a7b2389b0ea4a9017c51f9b
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
@@ -161,6 +158,6 @@ SPEC CHECKSUMS:
   UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: f5789b5ce2cf903a55390a5c07ca6c59bd3720de
+PODFILE CHECKSUM: a4d31af546b68b7211ffd98992c34ef08e71d778
 
 COCOAPODS: 1.2.0
