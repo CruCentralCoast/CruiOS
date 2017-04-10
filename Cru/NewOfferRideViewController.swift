@@ -386,6 +386,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             let error = ride.isValidPhoneNum(ride.driverNumber)
             if (error != "") {
                 showValidationError(error)
+                addTextFieldError(phoneLine)
                 return false
             }
         }
