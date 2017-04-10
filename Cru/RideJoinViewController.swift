@@ -205,15 +205,16 @@ class RideJoinViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func extractNameFromView() -> Bool{
         if (nameValue != nil){
-            let error  = ride.isValidName(nameValue.text)
+            let nameText = nameValue.text.trimmingCharacters(in: .whitespaces)
+            let error  = ride.isValidName(nameText)
             if(error != ""){
                 showValidationError(error)
                 addTextViewError(nameValue)
                 return false
             }
             else{
-                parsedName = nameValue.text!
-                ride.driverName = nameValue.text!
+                parsedName = nameText
+                ride.driverName = nameText
                 removeTextViewError(nameValue)
                 return true
             }
