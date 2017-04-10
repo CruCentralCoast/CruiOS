@@ -382,17 +382,15 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
                 return true
             }
             
-        }
-        else{
-            if(ride.isValidPhoneNum(ride.driverNumber) == ""){
-                return true
-            }
-            else{
-                ride.isValidPhoneNum(ride.driverNumber)
+        } else {
+            let error = ride.isValidPhoneNum(ride.driverNumber)
+            if (error != "") {
+                showValidationError(error)
                 return false
             }
-            
         }
+        
+        return true
     }
     
     func validateEvent() -> Bool {
