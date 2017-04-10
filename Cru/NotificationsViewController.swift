@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class NotificationsViewController: UITableViewController {
+class NotificationsViewController: UITableViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     
     var notifications = [Notification]()
 
@@ -24,12 +25,14 @@ class NotificationsViewController: UITableViewController {
         tableView.estimatedRowHeight = 105.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        
+        //Set the empty set delegate and source
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        
         tableView.reloadData()
         
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
-        
-        
-        
         
         
         if let savedNotifications = loadNotifications() {
@@ -37,11 +40,19 @@ class NotificationsViewController: UITableViewController {
         }
         else {
             // Load the sample data.
-            //loadSampleNotifications()
+            // loadSampleNotifications()
         }
         
         //Temporary method to test out persisting data
         saveNotifications()
+        
+    }
+    
+    //Set the text to be displayed when the table is empty
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        self.tableView.separatorColor = UIColor.clear
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+        return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
         
     }
 
@@ -59,6 +70,7 @@ class NotificationsViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print("The current value of notifications.count is \(notifications.count)")
         return notifications.count
     }
 
