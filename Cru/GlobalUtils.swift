@@ -54,6 +54,14 @@ class GlobalUtils {
         return dateFormatter
     }
     
+    class func getCommunityGroupsDateFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter
+    }
+    
     //gets an NSDate from a given string
     class func dateFromString(_ dateStr: String) -> Date {
         let dateFormatter = getDefaultDateFormatter()

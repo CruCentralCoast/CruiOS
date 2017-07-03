@@ -93,7 +93,7 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
         
         for lead in group.leaders{
             if let cell = self.table.dequeueReusableCell(withIdentifier: "leaderCell")! as? CGLeaderCell{
-                cell.setUser(lead)
+                cell.setLeader(lead)
                 cells.append(cell)
                 table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
             }

@@ -13,11 +13,11 @@ class CGLeaderCell: UITableViewCell {
     @IBOutlet weak var email: UITextView!
     @IBOutlet weak var phone: UITextView!
     
-    func setUser(_ user: User) {
-        name.text = user.name
-        let number = user.phone
+    func setLeader(_ leader: CommunityGroupLeader) {
+        name.text = leader.name
+        let number = leader.phone
         phone.text = number
-        email.text = user.email
+        email.text = leader.email
     }
     
 }

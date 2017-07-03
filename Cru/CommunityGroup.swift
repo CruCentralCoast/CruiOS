@@ -31,53 +31,94 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
+//use to parse community group data to and from keystone db
+struct CommunityGroupKeys {
+    static let id = "_id"
+    static let ministry = "ministry"
+    static let type = "type"
+    static let meetingTime = "meetingTime"
+    static let description = "description"
+    static let name = "name"
+    static let dayOfWeek = "dayOfWeek"
+    static let leaders = "leaders"
+    static let imageURL = "imageURL"
+}
+
 
 class CommunityGroup: Comparable, Equatable{
 
-    var id: String!
-    var name : String!
-    var description: String!
-    var meetingTime: String!
-    //var leaders : [[String: AnyObject]]!
-    var parentMinistry : String!
-    var ministryName: String?
-    var leaders = [User]()
+    // MARK: - Properties
+    var id = ""
+    var name = ""
+    var description = ""
+    var dayOfWeek = ""
+    var meetingTime: Date!
+    //var meetingTime = ""
+    var parentMinistry = ""
+    var leaders = [CommunityGroupLeader]()
+    var type = ""
+    var imgURL = ""
+    //var types = [String: String]() // for when groups have multiple types
+    
+    
     
     init(dict: NSDictionary) {
-        id = dict["_id"] as? String
-        name = dict["name"] as? String
-        description = dict["description"] as? String
-        if let dateStr = dict["meetingTime"] as? String {
-            //the date is in a different format from other dates
-            // just going to use the string for now
-            meetingTime = dateStr//GlobalUtils.dateFromString(dateStr)
+        if let id = dict[CommunityGroupKeys.id] as? String {
+            self.id = id
         }
-        if let leadersDict  = dict["leaders"] as? [[String: AnyObject]]{
+        
+        if let name = dict[CommunityGroupKeys.name] as? String {
+            self.name = name
+        }
+        
+        if let desc = dict[CommunityGroupKeys.description] as? String {
+            description = desc
+        }
+        
+        if let day = dict[CommunityGroupKeys.dayOfWeek] as? String {
+            dayOfWeek = day
+        }
+        
+        if let time = dict[CommunityGroupKeys.meetingTime] as? String {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "h:mm a"
+            meetingTime = dateFormatter.date(from: time)
+        }
+        else {
+            meetingTime = Date()
+        }
+        
+        if let leadersDict = dict[CommunityGroupKeys.leaders] as? [[String: AnyObject]]{
             for lead in leadersDict{
-                leaders.append(User(dict: lead as NSDictionary))
+                leaders.append(CommunityGroupLeader(dict: lead as NSDictionary))
             }
         }
-        parentMinistry = dict["parentMinistry"] as? String
+        if let type = dict[CommunityGroupKeys.type] as? String {
+            self.type = type
+        }
+        
+        if let url = dict[CommunityGroupKeys.imageURL] as? String {
+            self.imgURL = url
+        }
+        
+        if let min = dict[CommunityGroupKeys.ministry] as? String {
+           parentMinistry = min
+        }
+        
+        
     }
     
     func getMeetingTime()->String{
-        let format = "E h:mm a"
-        let serverFormat = "E M d y H:m:s"
+        let format = "h:mm a"
+        //let serverFormat = "E M d y H:m:s"
+        //let serverFormat = "h:mm a"
   
-        let formatter = GlobalUtils.getDefaultDateFormatter()//NSDateFormatter()
-        //formatter.dateFormat = serverFormat
+        let formatter = GlobalUtils.getCommunityGroupsDateFormatter()
         
-        if (meetingTime != nil && meetingTime.characters.count > 15){
-            //let parsedMeetingTime = meetingTime.substringWithRange(Range<String.Index>(start: meetingTime.startIndex, end: meetingTime.endIndex.advancedBy(-14)))
-            let meetingTimeAsDate = formatter.date(from: meetingTime)
-            formatter.dateFormat = format
-            
-            if (meetingTimeAsDate != nil){
-                return formatter.string(from: meetingTimeAsDate!)
-            }
-            else{
-                return ""
-            }
+        
+        if (meetingTime != nil ){
+            return formatter.string(from: meetingTime)
         }
         else{
             return ""
