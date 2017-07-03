@@ -13,6 +13,7 @@ class CruClients {
     fileprivate static var serverClient: ServerProtocol!
     fileprivate static var rideUtils: RideUtils!
     fileprivate static var eventUtils: EventUtils!
+    fileprivate static var communityGroupUtils: CommunityGroupUtils!
     fileprivate static var subscriptionManager: SubscriptionProtocol!
     
     fileprivate static let clientDispatchQueue = DispatchQueue(label: "idunnowhat", attributes: DispatchQueue.Attributes.concurrent)
@@ -48,6 +49,15 @@ class CruClients {
             }
         }
         return eventUtils
+    }
+    
+    static func getCommunityGroupUtils() -> CommunityGroupUtils {
+        synchronized() {
+            if (communityGroupUtils == nil) {
+                communityGroupUtils = CommunityGroupUtils()
+            }
+        }
+        return communityGroupUtils
     }
     
     static func getSubscriptionManager() -> SubscriptionProtocol {

@@ -8,11 +8,14 @@
 
 import UIKit
 import MRProgress
+import DZNEmptyDataSet
 
-class CommunityGroupsListTableViewController: UITableViewController {
+class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     
     // MARK: - Properties
     var groups = [CommunityGroup]()
+    var hasConnection = true
+    var answers = [[String:String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +23,9 @@ class CommunityGroupsListTableViewController: UITableViewController {
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         //MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-        loadCommunityGroups()
+        //Check for connection then load events in the completion function
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+        //loadCommunityGroups()
 
     }
 
@@ -60,6 +65,8 @@ class CommunityGroupsListTableViewController: UITableViewController {
         cell.typeLabel.text = groups[indexPath.row].type
         cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
         
+        cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+        
         if groups[indexPath.row].imgURL != "" {
             cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
         }
@@ -74,9 +81,53 @@ class CommunityGroupsListTableViewController: UITableViewController {
     
     
     // MARK: - Helper Functions
+    //Test to make sure there is a connection then load groups
+    func finishConnectionCheck(_ connected: Bool){
+        self.tableView!.emptyDataSetSource = self
+        self.tableView!.emptyDataSetDelegate = self
+        
+        if(!connected){
+            hasConnection = false
+            //Display a message if either of the tables are empty
+            
+            self.tableView!.reloadData()
+            //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            
+            // Make API call to load groups
+            //CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: loadEventsWithoutMinistries)
+            //loadCommunityGroups()
+            //Make API call here later
+            CruClients.getCommunityGroupUtils().loadGroups(insertGroup, completionHandler: finishInserting)
+            
+            
+        }
+        
+    }
+    //insert helper function for inserting group data
+    fileprivate func insertGroup(_ dict: NSDictionary) {
+        let group = CommunityGroup(dict: dict)
+        self.groups.insert(group, at: 0)
+        
+    }
+    
+    //helper function for finishing off inserting group data
+    fileprivate func finishInserting(_ success: Bool) {
+        //self.events.sort(by: {$0.startNSDate.compare($1.startNSDate as Date) == .orderedAscending})
+        
+       //Dismiss overlay here
+
+        self.tableView!.reloadData()
+        
+    }
+    
+    //Load Community groups
     private func loadCommunityGroups() {
         
-        //Make API call here later
+        
+        
         //load sample data for now
         
         var leader1 = [String: Any]()
@@ -151,6 +202,22 @@ class CommunityGroupsListTableViewController: UITableViewController {
         
         
         
+    }
+    
+    // MARK: Empty Data Set Functions
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        if hasConnection == false {
+            return UIImage(named: Config.noConnectionImageName)
+        }
+        else {
+            return UIImage(named: Config.noEventsImage)
+            
+        }
+        
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
     }
     
 

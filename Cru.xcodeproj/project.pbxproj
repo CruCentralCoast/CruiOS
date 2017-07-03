@@ -222,6 +222,8 @@
 		6D8F42401CD80CF60013BB13 /* YoutubeThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */; };
 		6D9112B41F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */; };
 		6D9112B51F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */; };
+		6D9112B81F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */; };
+		6D9112B91F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */; };
 		6D9379271F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */; };
 		6D9379281F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */; };
 		6D94BCFC1D2374160063CED8 /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */; };
@@ -486,6 +488,7 @@
 		6D8F423B1CD80C8D0013BB13 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeThumbnail.swift; sourceTree = "<group>"; };
 		6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupTableViewCell.swift; sourceTree = "<group>"; };
+		6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupUtils.swift; sourceTree = "<group>"; };
 		6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupsListTableViewController.swift; sourceTree = "<group>"; };
 		6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		6D94BD011D2451CA0063CED8 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
@@ -895,7 +898,6 @@
 				6D76CA7F1C06C1D200F8B007 /* EventDetailsViewController.swift */,
 				0F5302711CD2AFCF0097F9F2 /* EventsTableViewController.swift */,
 				0F5302741CD2B85D0097F9F2 /* EventTableViewCell.swift */,
-				C1214DC71CEA63B300E7D25F /* EventUtils.swift */,
 				6D2798F91CF26D78008E5906 /* EventStatus.swift */,
 			);
 			name = Events;
@@ -1037,6 +1039,8 @@
 			children = (
 				0F17E3D71C9106B500713297 /* LocalStorage */,
 				C1DCEC451C7681E1009FACE0 /* RideUtils.swift */,
+				C1214DC71CEA63B300E7D25F /* EventUtils.swift */,
+				6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */,
 				6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */,
 				C151D9B51C7D2D9A0067A29E /* LoginUtils.swift */,
 				0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */,
@@ -1379,6 +1383,7 @@
 				0F5302721CD2AFCF0097F9F2 /* EventsTableViewController.swift in Sources */,
 				0F6862211CE65D4A00138377 /* SummerMissionsTableViewController.swift in Sources */,
 				0F52709B1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */,
+				6D9112B81F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */,
 				502609501C066D1F0019E97C /* CampusesTableViewController.swift in Sources */,
 				50A341CE1C0C10F3006B73DB /* Campus.swift in Sources */,
 				6DFBF2941D8D735700487F86 /* ResourceTypeExtensions.swift in Sources */,
@@ -1521,6 +1526,7 @@
 				6D01D8421D845588006A9AC0 /* ResourceTag.swift in Sources */,
 				50697BC81CE0456600776CC5 /* PhoneFormatter.swift in Sources */,
 				6D424DD91E6E10AC00496301 /* AudioTableViewCell.swift in Sources */,
+				6D9112B91F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */,
 				5072B4221CB38E70001F5BF6 /* RideTableViewCell.swift in Sources */,
 				50D507871CBF7A7F00A07045 /* OfferRideViewController.swift in Sources */,
 				C1536D5A1CFD1DB400730281 /* FakeSubscriptionManager.swift in Sources */,

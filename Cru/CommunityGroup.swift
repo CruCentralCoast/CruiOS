@@ -125,6 +125,16 @@ class CommunityGroup: Comparable, Equatable{
         }
     }
     
+    func getLeaderString() ->String {
+        var str = ""
+        for lead in leaders {
+            str.append(lead.name + ", ")
+        }
+        //str.remove(at: str.endIndex) // remove the last space and comma
+        //str.remove(at: str.endIndex)
+        return str
+    }
+    
 }
 
 /* Function for the Comparable & Equatable protocols */
