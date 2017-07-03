@@ -40,6 +40,17 @@ class CommunityGroupsListTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return groups.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let group = groups[indexPath.row]
+        
+        if group.imgURL == "" {
+            return 194.0
+        }
+        else {
+            return 340.0
+        }
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,7 +59,16 @@ class CommunityGroupsListTableViewController: UITableViewController {
         cell.ministryLabel.text = groups[indexPath.row].parentMinistry
         cell.typeLabel.text = groups[indexPath.row].type
         cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
-        cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+        
+        if groups[indexPath.row].imgURL != "" {
+            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+        }
+        else {
+            cell.groupImage.isHidden = true
+            cell.leaderTopConstraint.constant = 12
+        }
+        
+        
         return cell
     }
     
@@ -75,7 +95,7 @@ class CommunityGroupsListTableViewController: UITableViewController {
             CommunityGroupKeys.name : "Erica's Test Community Group",
             CommunityGroupKeys.description : "This is a test group.",
             CommunityGroupKeys.type : "Senior",
-            CommunityGroupKeys.ministry : "563b07402930ae0300fbc09b",
+            CommunityGroupKeys.ministry : "Cru Cal Poly",
             CommunityGroupKeys.meetingTime : "10:30 AM",
             CommunityGroupKeys.dayOfWeek : "Saturday",
             CommunityGroupKeys.leaders : [leader1, leader2],
@@ -87,7 +107,7 @@ class CommunityGroupsListTableViewController: UITableViewController {
             CommunityGroupKeys.name : "A Test Community Group",
             CommunityGroupKeys.description : "This is the second test group.",
             CommunityGroupKeys.type : "Sophomore",
-            CommunityGroupKeys.ministry : "563b07402930ae0300fbc09b",
+            CommunityGroupKeys.ministry : "Faculty Commons",
             CommunityGroupKeys.meetingTime : "2:00 PM",
             CommunityGroupKeys.dayOfWeek : "Monday",
             CommunityGroupKeys.leaders : [leader1, leader2],
@@ -99,19 +119,34 @@ class CommunityGroupsListTableViewController: UITableViewController {
             CommunityGroupKeys.name : "Another Test Community Group",
             CommunityGroupKeys.description : "This is the third test group.",
             CommunityGroupKeys.type : "Freshmen",
-            CommunityGroupKeys.ministry : "563b07402930ae0300fbc09b",
+            CommunityGroupKeys.ministry : "Cru at Allan Hancock",
             CommunityGroupKeys.meetingTime : "11:00 AM",
             CommunityGroupKeys.dayOfWeek : "Sunday",
             CommunityGroupKeys.leaders : [leader1, leader2],
             CommunityGroupKeys.imageURL : "https://s3-us-west-1.amazonaws.com/static.crucentralcoast.com/images/ministry-teams/outreach-team-image.jpg"
         ]
         
+        let dict4 : NSDictionary = [
+            CommunityGroupKeys.id : "9996",
+            CommunityGroupKeys.name : "The Last Test Community Group",
+            CommunityGroupKeys.description : "This is the fourth test group.",
+            CommunityGroupKeys.type : "Seniors",
+            CommunityGroupKeys.ministry : "Fellowship of Christian Athletes in Action",
+            CommunityGroupKeys.meetingTime : "11:00 AM",
+            CommunityGroupKeys.dayOfWeek : "Sunday",
+            CommunityGroupKeys.leaders : [leader1, leader2],
+            CommunityGroupKeys.imageURL : ""
+        ]
+        
         let group1 = CommunityGroup(dict: dict1)
         let group2 = CommunityGroup(dict: dict2)
         let group3 = CommunityGroup(dict: dict3)
+        let group4 = CommunityGroup(dict: dict4)
+        
         groups.append(group1)
         groups.append(group2)
         groups.append(group3)
+        groups.append(group4)
         
         
         

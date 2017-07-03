@@ -984,6 +984,26 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6D9112B61F0AC8A1001BCE51 /* Old Design */ = {
+			isa = PBXGroup;
+			children = (
+				50B1D3C71CED76910014EE1B /* SelectCGVC.swift */,
+				50B1D3C41CED6BB10014EE1B /* ChooseMinistryVC.swift */,
+				C1EF49091CDBF74E009439FE /* SurveyViewController.swift */,
+				C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */,
+				C13F7DED1CE28CF50057D0F5 /* TextQuestionCell.swift */,
+				C13F7DF31CE28D2F0057D0F5 /* OptionQuestionCell.swift */,
+				50B1725F1CEBBE7F007CDD44 /* SearchableOptionsVC.swift */,
+				C1E9DC101CF6A2B200066C5F /* CGQuestionAnswer.swift */,
+				C1E9DC131CF6B49700066C5F /* CommunityGroupCell.swift */,
+				C1E9DC161CF7894800066C5F /* CGLeaderCell.swift */,
+				50D3166D1CFECD800050692B /* CGDetailTableViewCell.swift */,
+				C1E9DC191CF7920B00066C5F /* DisplayCGVC.swift */,
+				6D3675711D5531D600272151 /* CurrentCGViewController.swift */,
+			);
+			name = "Old Design";
+			sourceTree = "<group>";
+		};
 		6D9563B11F099607000B0683 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -1057,19 +1077,7 @@
 				C1EF49061CDBF3AD009439FE /* communitygroups.storyboard */,
 				6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */,
 				6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */,
-				50B1D3C71CED76910014EE1B /* SelectCGVC.swift */,
-				50B1D3C41CED6BB10014EE1B /* ChooseMinistryVC.swift */,
-				C1EF49091CDBF74E009439FE /* SurveyViewController.swift */,
-				C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */,
-				C13F7DED1CE28CF50057D0F5 /* TextQuestionCell.swift */,
-				C13F7DF31CE28D2F0057D0F5 /* OptionQuestionCell.swift */,
-				50B1725F1CEBBE7F007CDD44 /* SearchableOptionsVC.swift */,
-				C1E9DC101CF6A2B200066C5F /* CGQuestionAnswer.swift */,
-				C1E9DC131CF6B49700066C5F /* CommunityGroupCell.swift */,
-				C1E9DC161CF7894800066C5F /* CGLeaderCell.swift */,
-				50D3166D1CFECD800050692B /* CGDetailTableViewCell.swift */,
-				C1E9DC191CF7920B00066C5F /* DisplayCGVC.swift */,
-				6D3675711D5531D600272151 /* CurrentCGViewController.swift */,
+				6D9112B61F0AC8A1001BCE51 /* Old Design */,
 			);
 			name = CommunityGroups;
 			sourceTree = "<group>";

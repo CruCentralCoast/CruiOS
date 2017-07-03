@@ -12,6 +12,7 @@ class CommunityGroupTableViewCell: UITableViewCell {
     
     // MARK: Properties
     
+    @IBOutlet weak var leaderTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var card: UIView!
     @IBOutlet weak var groupImage: UIImageView!
     @IBOutlet weak var leaderLabel: UILabel!
