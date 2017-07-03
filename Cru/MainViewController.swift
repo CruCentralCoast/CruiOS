@@ -116,7 +116,6 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //Check for connection then load rides and events in the completion function
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         
-        
         self.table!.tableFooterView = UIView()
         
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.black]
@@ -148,6 +147,9 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     /* This function acts after the view is loaded and appears on the phone. */
     override func viewDidAppear(_ animated: Bool) {
+        self.table!.backgroundColor = Colors.googleGray
+        self.eventsTable!.backgroundColor = Colors.googleGray
+        
         if !hasAppLaunchedBefore() {
             self.performSegue(withIdentifier: "introSegue", sender: self)
             self.navigationItem.leftBarButtonItem?.isEnabled = false
