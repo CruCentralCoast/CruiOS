@@ -99,7 +99,7 @@ class RideUtils {
     func postRideOffer(_ eventId : String, name : String , phone : String, seats : Int, time: String,
         location: NSDictionary, radius: Int, direction: String, handler: @escaping (Ride?)->()) {
             let body = ["event":eventId, "driverName":name, "driverNumber":phone, "seats":seats, "time": time,
-                "gcm_id": Config.gcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0] as [String : Any]
+                "gcm_id": Config.fcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0] as [String : Any]
             
             
             serverClient.postData(DBCollection.Ride, params: body as [String : AnyObject], completionHandler:
@@ -122,9 +122,9 @@ class RideUtils {
     // adds a passenger to a ride by first adding the passenger to the database, then associating
     // the passenger with the ride
     func joinRide(_ name: String, phone: String, direction: String,  rideId: String, handler: @escaping (Bool)->Void){
-        let gcmToken = Config.gcmId()
+        let fcmToken = Config.fcmId()
         let body: [String : AnyObject]
-        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "gcm_id":gcmToken as AnyObject, "gender": 0 as AnyObject]
+        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "gcm_id":fcmToken as AnyObject, "gender": 0 as AnyObject]
         
         serverClient.postData(DBCollection.Passenger, params: body, completionHandler:
             { passenger in

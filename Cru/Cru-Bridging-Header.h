@@ -9,7 +9,7 @@
 #ifndef Cru_Bridging_Header_h
 #define Cru_Bridging_Header_h
 
-#import <Google/CloudMessaging.h>
+#import <Firebase/Firebase.h>
 #import "SWRevealViewController.h"
 #import <UIScrollView_InfiniteScroll/UIScrollView+InfiniteScroll.h>
 #endif
