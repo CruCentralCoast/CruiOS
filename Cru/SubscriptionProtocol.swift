@@ -11,9 +11,9 @@ import Foundation
 protocol SubscriptionProtocol {
  
     
-    func saveGCMToken(_ token: String)
+    func saveFCMToken(_ token: String)
     
-    func loadGCMToken()->String
+    func loadFCMToken()->String
     
     func loadCampuses() -> [Campus]
     
