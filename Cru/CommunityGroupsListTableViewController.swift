@@ -16,13 +16,22 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     var groups = [CommunityGroup]()
     var hasConnection = true
     var answers = [[String:String]]()
+    var ministries = [Ministry]()
+    var ministryTable = [String: String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Community Groups"
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
-        //MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        //Set the cells for automatic cell height
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        
+        //Load ministries
+        createMinistryDictionary()
+        
         //Check for connection then load events in the completion function
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         //loadCommunityGroups()
@@ -46,11 +55,12 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         return groups.count
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         let group = groups[indexPath.row]
         
         if group.imgURL == "" {
-            return 194.0
+            //return 194.0
+            return 194
         }
         else {
             return 340.0
@@ -61,11 +71,18 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
         
-        cell.ministryLabel.text = groups[indexPath.row].parentMinistry
+        if let parentMin = ministryTable[groups[indexPath.row].parentMinistry] {
+            cell.ministryLabel.text = parentMin
+        }
+        else {
+            cell.ministryLabel.text = "Unknown"
+        }
+        
         cell.typeLabel.text = groups[indexPath.row].type
         cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
         
         cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+        //print(groups[indexPath.row].getLeaderString())
         
         if groups[indexPath.row].imgURL != "" {
             cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
@@ -76,6 +93,9 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         }
         
         
+        cell.sizeToFit()
+        
+        cell.setSignupCallback(jumpBackToGetInvolved)
         return cell
     }
     
@@ -91,37 +111,68 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             //Display a message if either of the tables are empty
             
             self.tableView!.reloadData()
-            //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             //hasConnection = false
         }else{
             hasConnection = true
-            
-            // Make API call to load groups
-            //CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: loadEventsWithoutMinistries)
-            //loadCommunityGroups()
-            //Make API call here later
+            //API call to load groups
             CruClients.getCommunityGroupUtils().loadGroups(insertGroup, completionHandler: finishInserting)
             
             
         }
         
     }
-    //insert helper function for inserting group data
+    
+    //Get ministry list from local storage
+    //Create a dictionary with ministry id & name for easy lookup
+    fileprivate func createMinistryDictionary() {
+        ministries = CruClients.getSubscriptionManager().loadMinistries()
+        
+        for ministry in ministries {
+            ministryTable[ministry.id] = ministry.name
+        }
+    }
+    
+    //helper function for inserting group data
+    //func loadGroups(_ inserter: @escaping (NSDictionary)->Void, completionHandler: @escaping (Bool)->Void) {
+        
     fileprivate func insertGroup(_ dict: NSDictionary) {
         let group = CommunityGroup(dict: dict)
+        
+        //Have to do this so we can get the names of the leaders from the database
+        DispatchQueue.global(qos: .userInitiated).async { // 1
+            group.getLeaderNames()
+            DispatchQueue.main.async { // 2
+                self.tableView.reloadData()
+            }
+        }
+        
         self.groups.insert(group, at: 0)
         
+        
     }
+
     
     //helper function for finishing off inserting group data
     fileprivate func finishInserting(_ success: Bool) {
         //self.events.sort(by: {$0.startNSDate.compare($1.startNSDate as Date) == .orderedAscending})
         
        //Dismiss overlay here
-
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         self.tableView!.reloadData()
         
     }
+    
+    //Function to take user back to get involved once they've selected a group
+    func jumpBackToGetInvolved() {
+        for controller in (self.navigationController?.viewControllers)! {
+            if controller.isKind(of: GetInvolvedViewController.self) {
+                self.navigationController?.popToViewController(controller, animated: true)
+            }
+        }
+    }
+    
+    
     
     //Load Community groups
     private func loadCommunityGroups() {

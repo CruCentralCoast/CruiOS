@@ -54,6 +54,23 @@ class KeystoneClient: ServerProtocol {
         }*/
     }
     
+    func joinCommunityGroup(_ groupId: String, fullName: String, phone: String, callback: @escaping (NSArray?) -> Void) {
+        let url = Config.serverEndpoint + DBCollection.CommunityGroup.name() + "/" + groupId + "/join"
+        //let url = Config.serverEndpoint + DBCollection.MinistryTeam.name() + "/" + ministryTeamId + "/join"
+        let params: [String: AnyObject] = ["name": fullName as AnyObject, "phone": phone as AnyObject]
+        
+        Alamofire.request(url, method: .post, parameters: params)
+            .responseJSON { response in
+                callback(response.result.value as? NSArray)
+        }
+        
+        /*Alamofire.request(.POST, url, parameters: params).responseJSON {
+         response in
+         
+         callback(response.result.value as? NSArray)
+         }*/
+    }
+    
     func getById(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void, id: String) {
         var reqUrl = Config.serverEndpoint + collection.name() + "/" + id
         print ("Get data by id from \(reqUrl)")

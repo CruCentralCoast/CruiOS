@@ -27,8 +27,9 @@ class CommunityGroupLeader {
     let phone: String!
     let email: String!
     
-    init(dict: NSDictionary) {
+    init(_ dict: NSDictionary) {
         let nameDict = dict[CommunityGroupLeaderKeys.name] as! [String:String]
+        
         name = nameDict[CommunityGroupLeaderKeys.firstName]! + " " + nameDict[CommunityGroupLeaderKeys.lastName]!
         phone = dict[CommunityGroupLeaderKeys.phone] as! String
         email = dict[CommunityGroupLeaderKeys.email] as! String

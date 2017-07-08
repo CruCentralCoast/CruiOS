@@ -75,8 +75,6 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         self.tableView.reloadData()	
     }
     
-    func insertRide(_ dict: NSDictionary){}
-    
     func finishConnectionCheck(_ connected: Bool){
         if(!connected){
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)

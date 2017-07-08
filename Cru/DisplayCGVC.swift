@@ -91,13 +91,13 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
         
-        for lead in group.leaders{
+        /*for lead in group.leaders{
             if let cell = self.table.dequeueReusableCell(withIdentifier: "leaderCell")! as? CGLeaderCell{
-                cell.setLeader(lead)
+                //cell.setLeader(lead)
                 cells.append(cell)
                 table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
             }
-        }
+        }*/
         
         
         self.table.reloadData()

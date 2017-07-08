@@ -232,6 +232,8 @@
 		6D94BD031D2451CA0063CED8 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94BD011D2451CA0063CED8 /* ScrollViewController.swift */; };
 		6D9563B31F099AFC000B0683 /* CommunityGroupLeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */; };
 		6D9563B41F099AFC000B0683 /* CommunityGroupLeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */; };
+		6D9609001F119E1D00413469 /* SubmitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */; };
+		6D9609011F119E1D00413469 /* SubmitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */; };
 		6DA330AB1CD95E1200FCC970 /* ResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */; };
 		6DA815471D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */; };
 		6DA815481D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */; };
@@ -493,6 +495,7 @@
 		6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		6D94BD011D2451CA0063CED8 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
 		6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupLeader.swift; sourceTree = "<group>"; };
+		6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitInformationViewController.swift; sourceTree = "<group>"; };
 		6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTest.swift; sourceTree = "<group>"; };
 		6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOfferRideViewController.swift; sourceTree = "<group>"; };
 		6DA815491D3FFA060087F05B /* newofferride.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = newofferride.storyboard; sourceTree = "<group>"; };
@@ -881,7 +884,6 @@
 				50FE4D3E1C50CE5100EA9042 /* MinistryTableViewController.swift */,
 				50A341CD1C0C10F3006B73DB /* Campus.swift */,
 				50FE4D461C50D37C00EA9042 /* Ministry.swift */,
-				50FE4D421C50D0D100EA9042 /* SubscriptionManager.swift */,
 				C151D9B31C7D2D870067A29E /* LoginViewController.swift */,
 				C172470F1C8BDB8A00A794D4 /* LogoutViewController.swift */,
 				C1536D541CFD192400730281 /* SubscriptionProtocol.swift */,
@@ -1039,14 +1041,15 @@
 			children = (
 				0F17E3D71C9106B500713297 /* LocalStorage */,
 				C1DCEC451C7681E1009FACE0 /* RideUtils.swift */,
+				50FE4D421C50D0D100EA9042 /* SubscriptionManager.swift */,
 				C1214DC71CEA63B300E7D25F /* EventUtils.swift */,
 				6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */,
 				6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */,
 				C151D9B51C7D2D9A0067A29E /* LoginUtils.swift */,
 				0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */,
 				0F17E3D11C90F68300713297 /* CalendarManager.swift */,
-				50697BC61CE0456600776CC5 /* PhoneFormatter.swift */,
 				0FC49DAE1CFE8D9700B4D175 /* CruPhoneNoRule.swift */,
+				50697BC61CE0456600776CC5 /* PhoneFormatter.swift */,
 				6DB072F91E70AF0E00AD6300 /* ResourceUtils.swift */,
 			);
 			name = Utils;
@@ -1079,6 +1082,7 @@
 			children = (
 				6D9563B11F099607000B0683 /* Models */,
 				C1EF49061CDBF3AD009439FE /* communitygroups.storyboard */,
+				6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */,
 				6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */,
 				6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */,
 				6D9112B61F0AC8A1001BCE51 /* Old Design */,
@@ -1374,6 +1378,7 @@
 				5094897D1C64000200A67697 /* DriverRideDetailViewController.swift in Sources */,
 				6D2798FA1CF26D79008E5906 /* EventStatus.swift in Sources */,
 				50E57A8D1CEE989900462F8A /* DriverDetailCell.swift in Sources */,
+				6D9609001F119E1D00413469 /* SubmitInformationViewController.swift in Sources */,
 				509DA91D1C6172FC0050CE26 /* Ride.swift in Sources */,
 				C1DCEC461C7681E1009FACE0 /* RideUtils.swift in Sources */,
 				0F1B8C2B1CC99B0000CEE24C /* CommunityGroupViewController.swift in Sources */,
@@ -1532,6 +1537,7 @@
 				C1536D5A1CFD1DB400730281 /* FakeSubscriptionManager.swift in Sources */,
 				0F68621F1CE65D3600138377 /* SummerMissionsTableViewCell.swift in Sources */,
 				6D94BCFD1D2374160063CED8 /* UpcomingEventCell.swift in Sources */,
+				6D9609011F119E1D00413469 /* SubmitInformationViewController.swift in Sources */,
 				5072B41F1CB38E53001F5BF6 /* OfferedRideTableViewCell.swift in Sources */,
 				5072B41E1CB38E30001F5BF6 /* FilterByEventViewController.swift in Sources */,
 				5072B41C1CB38DF4001F5BF6 /* EventDetailsViewController.swift in Sources */,

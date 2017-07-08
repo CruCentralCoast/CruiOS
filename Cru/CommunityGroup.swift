@@ -53,9 +53,11 @@ class CommunityGroup: Comparable, Equatable{
     var description = ""
     var dayOfWeek = ""
     var meetingTime: Date!
+    var stringTime = ""
     //var meetingTime = ""
     var parentMinistry = ""
-    var leaders = [CommunityGroupLeader]()
+    var leaderIDs = [String]() // ids of leaders
+    var leaders = [CommunityGroupLeader]() // names of leaders
     var type = ""
     var imgURL = ""
     //var types = [String: String]() // for when groups have multiple types
@@ -84,15 +86,21 @@ class CommunityGroup: Comparable, Equatable{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "h:mm a"
             meetingTime = dateFormatter.date(from: time)
+            
+            if meetingTime == nil {
+                stringTime = time
+            }
         }
         else {
             meetingTime = Date()
         }
         
-        if let leadersDict = dict[CommunityGroupKeys.leaders] as? [[String: AnyObject]]{
+        if let leadersDict = dict[CommunityGroupKeys.leaders] as? [String]{
             for lead in leadersDict{
-                leaders.append(CommunityGroupLeader(dict: lead as NSDictionary))
+                
+                leaderIDs.append(lead)
             }
+            //getLeaderNames()
         }
         if let type = dict[CommunityGroupKeys.type] as? String {
             self.type = type
@@ -121,7 +129,16 @@ class CommunityGroup: Comparable, Equatable{
             return formatter.string(from: meetingTime)
         }
         else{
-            return ""
+            return stringTime
+        }
+    }
+    
+    func getLeaderNames() {
+        for lead in leaderIDs {
+            //str.append(lead + ", ")
+            CruClients.getServerClient().getById(DBCollection.User, insert: insertLeader, completionHandler: {
+                success in
+            }, id: lead)
         }
     }
     
@@ -130,10 +147,23 @@ class CommunityGroup: Comparable, Equatable{
         for lead in leaders {
             str.append(lead.name + ", ")
         }
-        //str.remove(at: str.endIndex) // remove the last space and comma
-        //str.remove(at: str.endIndex)
         return str
     }
+    
+    func insertLeader(_ dict: NSDictionary) {
+        let leader = CommunityGroupLeader(dict)
+        leaders.append(leader)
+        /*if let nameDict = dict[CommunityGroupLeaderKeys.name] as? [String:String]{
+            
+            if let first = nameDict[CommunityGroupLeaderKeys.firstName], let last = nameDict[CommunityGroupLeaderKeys.lastName] {
+                leaderNames.append(first + " " + last)
+            }
+            
+
+        }*/
+    }
+    
+    
     
 }
 

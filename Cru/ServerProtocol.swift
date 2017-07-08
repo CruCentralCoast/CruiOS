@@ -47,4 +47,6 @@ protocol ServerProtocol {
     // The server should return a list containing the contact info for each team leader or nil if there was no
     // response from the server
     func joinMinistryTeam(_ ministryTeamId: String, fullName: String, phone: String, callback: @escaping (NSArray?) -> Void)
+    
+    func joinCommunityGroup(_ groupId: String, fullName: String, phone: String, callback: @escaping (NSArray?) -> Void)
 }

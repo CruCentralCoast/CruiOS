@@ -20,17 +20,25 @@ class CommunityGroupTableViewCell: UITableViewCell {
     @IBOutlet weak var ministryLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     
+    fileprivate var signupCallback: ((Void)->Void)!
+    
     @IBOutlet weak var joinButton: UIButton!
+    var groupID = ""
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBAction func signUpPressed(_ sender: AnyObject) {
+        GlobalUtils.saveString(Config.communityGroupKey, value: groupID)
+        signupCallback()
     }
-
+    
+    
+    
+    func setSignupCallback(_ callback: @escaping (Void) -> Void) {
+        signupCallback = callback
+    }
 }
