@@ -93,7 +93,7 @@ class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITable
     
     //navigates to the ministry teams list
     @IBAction func onTouchSeeMore(_ sender: AnyObject) {
-        let vc = UIStoryboard(name: "ministryteam", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamsCollectionViewController")
+        let vc = MinistryTeamsCollectionViewController(collectionViewLayout: UICollectionViewFlowLayout())
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

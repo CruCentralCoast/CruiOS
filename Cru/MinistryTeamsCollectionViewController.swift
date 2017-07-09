@@ -14,10 +14,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
     var ministryTeamsStorageManager: MapLocalStorageManager!
     var ministryTeams = [MinistryTeam]()
     var ministries = [Ministry]()
-    var signedUpMinistryTeams = [NSDictionary]()
-    var selectedMinistryTeam: MinistryTeam!
     var campusImage: UIImage!
-    
     var sizingCell: MinistryTeamCell?
     
     override func viewDidLoad() {
@@ -26,28 +23,28 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         self.setupCollectionView()
         
         // Create fake cell used to calculate height for dynamically sizing collection view cells
-        sizingCell = Bundle.main.loadNibNamed(MinistryTeamCell.className, owner: nil, options: nil)?.first as? MinistryTeamCell
+        self.sizingCell = Bundle.main.loadNibNamed(MinistryTeamCell.className, owner: nil, options: nil)?.first as? MinistryTeamCell
         
-        //setup local storage manager
-        ministryTeamsStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
+        // Setup local storage manager
+        self.ministryTeamsStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
         
+        // Get ministries from local storage
         self.ministries = CruClients.getSubscriptionManager().loadMinistries()
         
         if !self.ministries.isEmpty {
             let ministryIds = ministries.map{$0.id}
             let params: [String:[String: [String]]] = ["parentMinistry":["$in":ministryIds as! Array<String>]]
             
-            //load ministry teams
+            // Load ministry teams
             CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting, params: params)
-        }
-        else {
+        } else {
             print("NO MINISTRIES!!!")
         }
         
-        campusImage = UIImage(named: Config.campusImage)!
+        self.campusImage = UIImage(named: Config.campusImage)!
     }
     
-    func setupCollectionView() {
+    private func setupCollectionView() {
         self.collectionView?.emptyDataSetSource = self
         self.collectionView?.emptyDataSetDelegate = self
         
@@ -56,21 +53,21 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         self.collectionView?.register(UINib(nibName: MinistryTeamCell.className, bundle: nil), forCellWithReuseIdentifier: MinistryTeamCell.cellReuseIdentifier)
     }
     
-    //inserts individual ministry teams into the table view
+    // Insert individual ministry teams into the table view
     fileprivate func insertMinistryTeam(_ dict : NSDictionary) {
-        let addMinistryTeam = MinistryTeam(dict: dict)!
+        let ministryTeam = MinistryTeam(dict: dict)!
         
-        if ministryTeamsStorageManager.getElement(addMinistryTeam.id) == nil {
-            self.ministryTeams.insert(addMinistryTeam, at: 0)
+        if ministryTeamsStorageManager.getElement(ministryTeam.id) == nil {
+            self.ministryTeams.insert(ministryTeam, at: 0)
         }
     }
     
-    //reload the collection view data and store whether or not the user is in the repsective ministries
+    // Reload the collection view data and store whether or not the user is in the repsective ministries
     fileprivate func finishInserting(_ success: Bool) {
-        //TODO: handle failure
+        // TODO: handle failure
         
-        for minTeam in ministryTeams {
-            minTeam.parentMinName = ministries.filter{$0.id == minTeam.parentMinistry}.first!.name
+        for ministryTeam in ministryTeams {
+            ministryTeam.parentMinName = ministries.filter{$0.id == ministryTeam.parentMinistry}.first!.name
         }
         
         ministryTeams.sort()
@@ -90,14 +87,14 @@ extension MinistryTeamsCollectionViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let padding: CGFloat = 32
         if let cell = self.sizingCell {
             cell.ministryTeam = ministryTeams[indexPath.row]
             cell.layoutSubviews()
-            let padding: CGFloat = 32
             let targetSize = CGSize(width: collectionView.frame.size.width - padding, height: 0)
             return cell.sizeThatFits(targetSize)
         }
-        return CGSize(width: 300, height: 200)
+        return CGSize(width: collectionView.frame.size.width - padding, height: 300)
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -113,6 +110,7 @@ extension MinistryTeamsCollectionViewController {
     }
 }
 
+// MARK: - MinistryTeamSignUpDelegate
 extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
     func signUpForMinistryTeam(_ ministryTeam: MinistryTeam) {
         let signUpVC = UIStoryboard(name: "ministryteam", bundle: nil).instantiateViewController(withIdentifier: MinistryTeamSignUpViewController.className) as! MinistryTeamSignUpViewController
@@ -121,6 +119,7 @@ extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
     }
 }
 
+// MARK: - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 extension MinistryTeamsCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
