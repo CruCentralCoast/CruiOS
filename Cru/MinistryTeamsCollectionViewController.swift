@@ -17,13 +17,16 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
     var signedUpMinistryTeams = [NSDictionary]()
     var selectedMinistryTeam: MinistryTeam!
     var campusImage: UIImage!
-    fileprivate let reuseIdentifierPic = "ministryTeamCell"
-    fileprivate let reuseIdentifierNoPic = "ministryTeamNoPicCell"
+    
+    var sizingCell: MinistryTeamCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setupCollectionView()
+        
+        // Create fake cell used to calculate height for dynamically sizing collection view cells
+        sizingCell = Bundle.main.loadNibNamed(MinistryTeamCell.className, owner: nil, options: nil)?.first as? MinistryTeamCell
         
         //setup local storage manager
         ministryTeamsStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
@@ -83,21 +86,17 @@ extension MinistryTeamsCollectionViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+        return UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        if let cell = Bundle.main.loadNibNamed(MinistryTeamCell.className, owner: nil, options: nil)?.first as? MinistryTeamCell {
+        if let cell = self.sizingCell {
             cell.ministryTeam = ministryTeams[indexPath.row]
             cell.layoutSubviews()
-            print(cell.intrinsicContentSize.height)
-            print(cell.systemLayoutSizeFitting(CGSize(width: 300, height: 0)))
-            return cell.systemLayoutSizeFitting(CGSize(width: 300, height: 0))
+            let padding: CGFloat = 32
+            let targetSize = CGSize(width: collectionView.frame.size.width - padding, height: 0)
+            return cell.sizeThatFits(targetSize)
         }
-//        if let cell = collectionView.cellForItem(at: indexPath) as? MinistryTeamCell {
-//            return CGSize(width: 350, height: cell.intrinsicContentSize.height)
-//        }
         return CGSize(width: 300, height: 200)
     }
     
@@ -116,7 +115,7 @@ extension MinistryTeamsCollectionViewController {
 
 extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
     func signUpForMinistryTeam(_ ministryTeam: MinistryTeam) {
-        let signUpVC = UIStoryboard(name: "minstryteam", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamSignUpViewController") as! MinistryTeamSignUpViewController
+        let signUpVC = UIStoryboard(name: "ministryteam", bundle: nil).instantiateViewController(withIdentifier: MinistryTeamSignUpViewController.className) as! MinistryTeamSignUpViewController
         signUpVC.ministryTeam = ministryTeam
         self.navigationController?.pushViewController(signUpVC, animated: true)
     }

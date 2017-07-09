@@ -20,21 +20,24 @@ class MinistryTeamCell: UICollectionViewCell {
     @IBOutlet weak var ministryNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var stackViewTopConstraint: NSLayoutConstraint!
     
     var delegate: MinistryTeamSignUpDelegate?
     
     var ministryTeam: MinistryTeam! {
         didSet {
-            teamNameLabel.text = ministryTeam.ministryName
-            descriptionLabel.text = ministryTeam.description
+            self.teamNameLabel.text = ministryTeam.ministryName
+            self.ministryNameLabel.text = ministryTeam.parentMinistry
+            self.descriptionLabel.text = ministryTeam.description
             
             if ministryTeam.imageUrl == "" {
-                CruClients.getServerClient().getById(.Ministry, insert: { dict in
-                    let ministry = Ministry(dict: dict)
-                    self.ministryNameLabel.text = ministry.name
-                }, completionHandler: { _ in }, id: ministryTeam.parentMinistry)
+                self.imageView.image = nil
+                self.imageView.isHidden = true
+                self.stackViewTopConstraint.constant = 8
             } else {
-                imageView.load.request(with: ministryTeam.imageUrl)
+                self.imageView.load.request(with: ministryTeam.imageUrl)
+                self.imageView.isHidden = false
+                self.stackViewTopConstraint.constant = 0
             }
         }
     }
@@ -42,20 +45,36 @@ class MinistryTeamCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.contentView.autoresizingMask = [UIViewAutoresizing.flexibleHeight]
-        
-        // Rounded corners
-        self.layer.cornerRadius = 5
-        self.signUpButton.layer.cornerRadius = 3
-        
         //Add drop shadow
         self.backgroundView?.layer.shadowColor = UIColor.black.cgColor
         self.backgroundView?.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.backgroundView?.layer.shadowOpacity = 0.25
         self.backgroundView?.layer.shadowRadius = 2
+        self.backgroundView?.clipsToBounds = false
     }
 
     @IBAction func signUpPressed() {
         delegate?.signUpForMinistryTeam(self.ministryTeam)
+    }
+    
+    // Override this method to allow dynamically sized collection view cells
+    override func sizeThatFits(_ size: CGSize) -> CGSize {
+        let originalFrame = self.frame
+        
+        // Update the cell size and layout the contents
+        self.frame.size = size
+        self.setNeedsLayout()
+        self.layoutIfNeeded()
+        
+        // Get the updated size
+        let computedSize = self.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        
+        // Create the final size using the given width and computed height
+        let newSize = CGSize(width: size.width, height: computedSize.height)
+        
+        // Reset the cell's frame to before we modified it
+        self.frame = originalFrame
+        
+        return newSize
     }
 }
