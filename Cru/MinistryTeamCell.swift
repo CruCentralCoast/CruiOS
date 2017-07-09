@@ -26,16 +26,26 @@ class MinistryTeamCell: UICollectionViewCell {
     
     var ministryTeam: MinistryTeam! {
         didSet {
-            self.teamNameLabel.text = ministryTeam.ministryName
-            self.ministryNameLabel.text = ministryTeam.parentMinistry
-            self.descriptionLabel.text = ministryTeam.description
+            self.teamNameLabel.text = self.ministryTeam.ministryName
+            self.ministryNameLabel.text = self.ministryTeam.parentMinistry
+            self.descriptionLabel.text = self.ministryTeam.description
             
+            // Default text in case the leader names don't exist
+            self.leaderNamesLabel.text = "Led by awesome people :)"
+            if !self.ministryTeam.leaders.isEmpty {
+                let leaderNames = self.ministryTeam.leaders.map{$0.name}.filter{!$0.isEmpty}
+                if !leaderNames.isEmpty {
+                    self.leaderNamesLabel.text = leaderNames.reduce(leaderNames.first!) {"\($0), \($1)"}
+                }
+            }
+            
+            // Set the image if it exists
             if ministryTeam.imageUrl == "" {
                 self.imageView.image = nil
                 self.imageView.isHidden = true
                 self.stackViewTopConstraint.constant = 8
             } else {
-                self.imageView.load.request(with: ministryTeam.imageUrl)
+                self.imageView.load.request(with: self.ministryTeam.imageUrl)
                 self.imageView.isHidden = false
                 self.stackViewTopConstraint.constant = 0
             }
@@ -54,7 +64,7 @@ class MinistryTeamCell: UICollectionViewCell {
     }
 
     @IBAction func signUpPressed() {
-        delegate?.signUpForMinistryTeam(self.ministryTeam)
+        self.delegate?.signUpForMinistryTeam(self.ministryTeam)
     }
     
     // Override this method to allow dynamically sized collection view cells
