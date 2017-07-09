@@ -7,120 +7,136 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class MinistryTeamsCollectionViewController: UICollectionViewController{
+class MinistryTeamsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    var ministryTeams = [MinistryTeam]()
     var ministryTeamsStorageManager: MapLocalStorageManager!
+    var ministryTeams = [MinistryTeam]()
+    var ministries = [Ministry]()
+    var signedUpMinistryTeams = [NSDictionary]()
+    var selectedMinistryTeam: MinistryTeam!
+    var campusImage: UIImage!
+    fileprivate let reuseIdentifierPic = "ministryTeamCell"
+    fileprivate let reuseIdentifierNoPic = "ministryTeamNoPicCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setupCollectionView()
+        
         //setup local storage manager
         ministryTeamsStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
         
-        //load ministry teams
-        CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting)
-
-        //set background color of page and accelleration of cells
-        collectionView!.backgroundColor = UIColor.black
-        collectionView!.decelerationRate = UIScrollViewDecelerationRateFast
+        self.ministries = CruClients.getSubscriptionManager().loadMinistries()
+        
+        if !self.ministries.isEmpty {
+            let ministryIds = ministries.map{$0.id}
+            let params: [String:[String: [String]]] = ["parentMinistry":["$in":ministryIds as! Array<String>]]
+            
+            //load ministry teams
+            CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting, params: params)
+        }
+        else {
+            print("NO MINISTRIES!!!")
+        }
+        
+        campusImage = UIImage(named: Config.campusImage)!
     }
     
-    //inserts individual ministry teams into the collection view
+    func setupCollectionView() {
+        self.collectionView?.emptyDataSetSource = self
+        self.collectionView?.emptyDataSetDelegate = self
+        
+        self.collectionView?.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1)
+        
+        self.collectionView?.register(UINib(nibName: MinistryTeamCell.className, bundle: nil), forCellWithReuseIdentifier: MinistryTeamCell.cellReuseIdentifier)
+    }
+    
+    //inserts individual ministry teams into the table view
     fileprivate func insertMinistryTeam(_ dict : NSDictionary) {
-        self.ministryTeams.insert(MinistryTeam(dict: dict)!, at: 0)
+        let addMinistryTeam = MinistryTeam(dict: dict)!
+        
+        if ministryTeamsStorageManager.getElement(addMinistryTeam.id) == nil {
+            self.ministryTeams.insert(addMinistryTeam, at: 0)
+        }
     }
     
     //reload the collection view data and store whether or not the user is in the repsective ministries
     fileprivate func finishInserting(_ success: Bool) {
         //TODO: handle failure
-        self.collectionView!.reloadData()
+        
+        for minTeam in ministryTeams {
+            minTeam.parentMinName = ministries.filter{$0.id == minTeam.parentMinistry}.first!.name
+        }
+        
+        ministryTeams.sort()
+        
+        self.collectionView?.reloadData()
     }
+}
 
-    // MARK: UICollectionViewDataSource
-    //tells the collection view how many sections there are
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
-    //tells the collection view how many cells there are
+// MARK: - UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+extension MinistryTeamsCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ministryTeams.count
     }
-
-    //function for adding scrolling functionality for cells
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Config.ministryTeamReuseIdentifier, for: indexPath)
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        //let ministryTeam = ministryTeams[indexPath.item]
-//        cell.ministryTeam = ministryTeam
-//        cell.joinButton?.layer.setValue(indexPath.row, forKey: "index")
-//        cell.joinButton?.addTarget(self, action: "joinMinistryTeam:", forControlEvents: UIControlEvents.TouchUpInside)
-//        cell.ministryTeamImageView.load(cell.ministryTeam!.imageUrl)
+        if let cell = Bundle.main.loadNibNamed(MinistryTeamCell.className, owner: nil, options: nil)?.first as? MinistryTeamCell {
+            cell.ministryTeam = ministryTeams[indexPath.row]
+            cell.layoutSubviews()
+            print(cell.intrinsicContentSize.height)
+            print(cell.systemLayoutSizeFitting(CGSize(width: 300, height: 0)))
+            return cell.systemLayoutSizeFitting(CGSize(width: 300, height: 0))
+        }
+//        if let cell = collectionView.cellForItem(at: indexPath) as? MinistryTeamCell {
+//            return CGSize(width: 350, height: cell.intrinsicContentSize.height)
+//        }
+        return CGSize(width: 300, height: 200)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let ministryTeam = ministryTeams[indexPath.row]
+        let ministry = ministries.filter{$0.id == ministryTeam.parentMinistry}.first
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MinistryTeamCell.cellReuseIdentifier, for: indexPath) as! MinistryTeamCell
+        cell.ministryTeam = ministryTeam
+        cell.ministryNameLabel.text = (ministry != nil) ? ministry!.name : "N/A"
+        cell.delegate = self
         
         return cell
     }
-    
-    //target action on ministry
-    func joinMinistryTeam(_ sender: UIButton) {
-        let index = sender.layer.value(forKey: "index") as! Int
-        let ministry = ministryTeams[index]
-        var user = ministryTeamsStorageManager.getObject(Config.userStorageKey)
-        
-        //if there is no user pass a fake user
-        if user == nil {
-            user = ["name": "Deniz Tumer", "phone": "1234567890"]
-        }
-        
-        ministryTeamsStorageManager.addElement(ministry.id, elem: ministry.toDictionary())
-        
-        //showCompletionAlert()
+}
+
+extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
+    func signUpForMinistryTeam(_ ministryTeam: MinistryTeam) {
+        let signUpVC = UIStoryboard(name: "minstryteam", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamSignUpViewController") as! MinistryTeamSignUpViewController
+        signUpVC.ministryTeam = ministryTeam
+        self.navigationController?.pushViewController(signUpVC, animated: true)
+    }
+}
+
+extension MinistryTeamsCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+        return NSAttributedString(string: "No ministry teams available! Try changing your subscribed campuses.", attributes: attributes)
     }
     
-//    //alert box that shows a completion alert
-//    func showCompletionAlert() {
-//        let alert = UIAlertController(title: "Thank You!", message: "Thank you for signing up for this ministry team. You will be sent the leader's information shortly", preferredStyle: .Alert)
-//        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-//        self.presentViewController(alert, animated: true, completion: nil)
-//    }
-    
-    //completion handler for ministry team response from the server after joining
-    fileprivate func joinMinistryTeamCompletionHandler(_ ministryTeam: MinistryTeam, sender: UIButton) -> ((NSArray?) -> Void) {
-        //add ministry team to local storage
-//        var leaderInfo = "Leader(s) Info: "
-        
-        return { (response: NSArray?) in
-//            if response != nil {
-//                let leaders = response!
-//                if leaders.count > 0 {
-//                    let leader = leaders[0] as! NSDictionary
-//                    let name = leader["name"] as! [String: String]
-//                    let leaderName = name["first"]! + " " + name["last"]!
-//                    let leaderPhone = leader["phone"] as! String
-//                    leaderInfo += leaderName + ", " + leaderPhone
-//                    //            for leader in response {
-//                    //                print(leader)
-//                    //            }
-//                }
-//                else {
-//                    leaderInfo += "None"
-//                }
-//            } else {
-//                //TODO: handle failure here
-//            }
-//            
-//            self.ministryTeamsStorageManager.addElement(ministryTeam.id, elem: leaderInfo)
-            self.performSegue(withIdentifier: "unwindToMList", sender: self)
-        }
+    func spaceHeight(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+        return 30.0
     }
     
-    //function for adding functionality for clicing of cells
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let layout = collectionViewLayout as! UltravisualLayout
-//        let offset = layout.dragOffset * CGFloat(indexPath.item)
-//        if collectionView.contentOffset.y != offset {
-//            collectionView.setContentOffset(CGPoint(x: 0, y: offset), animated: true)
-//        }
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return campusImage
+    }
+    
+    func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
+        return UIColor.white
     }
 }

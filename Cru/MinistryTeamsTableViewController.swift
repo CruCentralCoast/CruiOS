@@ -10,7 +10,7 @@ import UIKit
 import DZNEmptyDataSet
 
 class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
-
+    
     var ministryTeamsStorageManager: MapLocalStorageManager!
     var ministryTeams = [MinistryTeam]()
     var ministries = [Ministry]()
@@ -23,8 +23,7 @@ class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.estimatedRowHeight = 200
-        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.setupTableView()
         
         //setup local storage manager
         ministryTeamsStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
@@ -42,10 +41,17 @@ class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSo
             print("NO MINISTRIES!!!")
         }
         
+        campusImage = UIImage(named: Config.campusImage)!
+    }
+    
+    func setupTableView() {
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
         
-        campusImage = UIImage(named: Config.campusImage)!
+        self.tableView.estimatedRowHeight = 200
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.register(UINib(nibName: "MinistryTeamCell", bundle: nil), forCellReuseIdentifier: "MinistryTeamCell")
     }
     
     //Set the text to be displayed when the table is empty
@@ -91,15 +97,15 @@ class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSo
         
         self.tableView.reloadData()
     }
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ministryTeams.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let ministryTeam = ministryTeams[indexPath.row]
         let ministry = ministries.filter{$0.id == ministryTeam.parentMinistry}.first
@@ -167,5 +173,6 @@ class MinistryTeamsTableViewController: UITableViewController, DZNEmptyDataSetSo
             vc.ministryTeam = self.selectedMinistryTeam
         }
     }
-
+    
 }
+

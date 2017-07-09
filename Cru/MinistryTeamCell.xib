@@ -22,20 +22,20 @@
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="D7h-S9-y5D">
                         <rect key="frame" x="-20" y="0.0" width="340" height="415.5"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dj4-4f-qSb">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dj4-4f-qSb">
                                 <rect key="frame" x="0.0" y="0.0" width="358" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="QYp-XE-8CQ"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeD-hQ-5Gi">
-                                <rect key="frame" x="20" y="148" width="358" height="33.5"/>
+                                <rect key="frame" x="16" y="148" width="358" height="33.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="n7q-Dj-WN8">
-                                <rect key="frame" x="20" y="189.5" width="358" height="21.5"/>
+                                <rect key="frame" x="24" y="189.5" width="358" height="21.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leader-icon" translatesAutoresizingMaskIntoConstraints="NO" id="lZj-gJ-Fr7">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -53,7 +53,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dW3-qd-Qt3">
-                                <rect key="frame" x="20" y="219" width="358" height="43"/>
+                                <rect key="frame" x="24" y="219" width="358" height="43"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ministry-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wRE-fY-KRh">
                                         <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -71,7 +71,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description that is really long and takes multiple lines" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5Y-o6-0Xq">
-                                <rect key="frame" x="0.0" y="270" width="358" height="36"/>
+                                <rect key="frame" x="16" y="270" width="358" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -93,18 +93,21 @@
                             </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dW3-qd-Qt3" secondAttribute="trailing" constant="20" id="D42-tG-BLF"/>
-                            <constraint firstAttribute="trailing" secondItem="zeD-hQ-5Gi" secondAttribute="trailing" constant="20" id="Gzh-AI-Bhe"/>
-                            <constraint firstItem="zeD-hQ-5Gi" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" constant="20" id="Ksi-3a-9ul"/>
-                            <constraint firstItem="dW3-qd-Qt3" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" constant="20" id="MsI-Sy-62V"/>
+                            <constraint firstItem="r5Y-o6-0Xq" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" constant="16" id="4G5-Ee-Ceg"/>
+                            <constraint firstAttribute="trailing" secondItem="r5Y-o6-0Xq" secondAttribute="trailing" constant="16" id="AXE-lx-FQn"/>
+                            <constraint firstAttribute="trailing" secondItem="dW3-qd-Qt3" secondAttribute="trailing" constant="24" id="D42-tG-BLF"/>
+                            <constraint firstAttribute="trailing" secondItem="zeD-hQ-5Gi" secondAttribute="trailing" constant="16" id="Gzh-AI-Bhe"/>
+                            <constraint firstItem="zeD-hQ-5Gi" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" constant="16" id="Ksi-3a-9ul"/>
+                            <constraint firstItem="dW3-qd-Qt3" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" constant="24" id="MsI-Sy-62V"/>
                             <constraint firstItem="dj4-4f-qSb" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" id="RUx-Ry-aE3"/>
-                            <constraint firstItem="n7q-Dj-WN8" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" constant="20" id="Sfg-Cx-EgV"/>
+                            <constraint firstItem="n7q-Dj-WN8" firstAttribute="leading" secondItem="D7h-S9-y5D" secondAttribute="leading" constant="24" id="Sfg-Cx-EgV"/>
                             <constraint firstAttribute="trailing" secondItem="dj4-4f-qSb" secondAttribute="trailing" id="Yfn-aM-jL3"/>
-                            <constraint firstAttribute="trailing" secondItem="n7q-Dj-WN8" secondAttribute="trailing" constant="20" id="baU-jY-tvq"/>
+                            <constraint firstAttribute="trailing" secondItem="n7q-Dj-WN8" secondAttribute="trailing" constant="24" id="baU-jY-tvq"/>
                         </constraints>
                     </stackView>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="D7h-S9-y5D" secondAttribute="bottom" constant="8" id="L0j-Xh-20w"/>
                 <constraint firstItem="D7h-S9-y5D" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="LR5-Ix-hGc"/>
@@ -117,6 +120,7 @@
                 <outlet property="imageView" destination="dj4-4f-qSb" id="W9G-PK-AoA"/>
                 <outlet property="leaderNamesLabel" destination="Ify-Mr-SN3" id="fdr-SI-NGG"/>
                 <outlet property="ministryNameLabel" destination="El9-d8-bOc" id="9xc-lF-vL2"/>
+                <outlet property="signUpButton" destination="4pY-RM-rg7" id="3DC-EG-PFE"/>
                 <outlet property="teamNameLabel" destination="zeD-hQ-5Gi" id="VCl-s5-0Y0"/>
             </connections>
             <point key="canvasLocation" x="38" y="-109.5"/>

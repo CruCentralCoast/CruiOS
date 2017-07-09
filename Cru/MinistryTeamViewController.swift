@@ -93,9 +93,8 @@ class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITable
     
     //navigates to the ministry teams list
     @IBAction func onTouchSeeMore(_ sender: AnyObject) {
-        let storyboard = UIStoryboard(name: "ministryteam", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "MinistryTeamsCollectionViewController")
-        self.navigationController?.pushViewController(viewController, animated: true)
+        let vc = UIStoryboard(name: "ministryteam", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamsCollectionViewController")
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 
     /* Table View Delegate code */

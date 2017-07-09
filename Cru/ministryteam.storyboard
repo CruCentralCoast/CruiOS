@@ -20,7 +20,7 @@
         <!--Ministry Teams-->
         <scene sceneID="6ns-OO-wtL">
             <objects>
-                <tableViewController storyboardIdentifier="MinistryTeamsCollectionViewController" title="Ministry Teams" id="X1c-iH-i36" customClass="MinistryTeamsTableViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MinistryTeamsTableViewController" title="Ministry Teams" id="X1c-iH-i36" customClass="MinistryTeamsTableViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="273" sectionHeaderHeight="28" sectionFooterHeight="28" id="EOo-DB-8ge">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -220,10 +220,77 @@
             </objects>
             <point key="canvasLocation" x="1737" y="-557"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="hwA-SP-c4s">
+            <objects>
+                <viewController modalPresentationStyle="overFullScreen" id="Iie-LV-5IL" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wgw-Gk-nVe"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kq2-hO-9VL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z0e-BA-34g">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LMu-VF-VXl">
+                                <rect key="frame" x="37.5" y="133.5" width="300" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="400" id="Ob7-6F-NuX"/>
+                                    <constraint firstAttribute="width" constant="300" id="aK9-ve-YRm"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LMu-VF-VXl" firstAttribute="centerX" secondItem="Z0e-BA-34g" secondAttribute="centerX" id="M1F-lt-aCq"/>
+                            <constraint firstItem="LMu-VF-VXl" firstAttribute="centerY" secondItem="Z0e-BA-34g" secondAttribute="centerY" id="Yg4-21-UsH"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vWC-Op-Rky" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1737" y="182"/>
+        </scene>
+        <!--Ministry Teams Collection View Controller-->
+        <scene sceneID="MSk-vx-FJ3">
+            <objects>
+                <collectionViewController storyboardIdentifier="MinistryTeamsCollectionViewController" id="dyO-Tr-BO6" customClass="MinistryTeamsCollectionViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="lf3-AT-MFc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="x47-Oy-b7B">
+                            <size key="itemSize" width="300" height="300"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="QUE-6p-WtM">
+                                <rect key="frame" x="37.5" y="0.0" width="300" height="300"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="dyO-Tr-BO6" id="bXW-kQ-2fl"/>
+                            <outlet property="delegate" destination="dyO-Tr-BO6" id="bat-Xw-s6V"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vdI-IC-ax4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1071" y="-557"/>
+        </scene>
         <!--Sign Up-->
         <scene sceneID="UtH-SV-inM">
             <objects>
-                <viewController title="Sign Up" id="eoN-Kn-cok" customClass="MinistryTeamSignUpViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MinistryTeamSignUpViewController" title="Sign Up" id="eoN-Kn-cok" customClass="MinistryTeamSignUpViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="E14-FD-DGc"/>
                         <viewControllerLayoutGuide type="bottom" id="qLH-fY-AUL"/>
