@@ -64,6 +64,7 @@
 		2F8FA1A31F12BCE700A60392 /* UITableViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1A21F12BCE700A60392 /* UITableViewCell+Additions.swift */; };
 		2F8FA1A71F12C2F100A60392 /* NSObject+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1A61F12C2F100A60392 /* NSObject+Additions.swift */; };
 		2F8FA1A91F12C32F00A60392 /* UICollectionViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1A81F12C32F00A60392 /* UICollectionViewCell+Additions.swift */; };
+		2F8FA1AB1F1319BF00A60392 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1AA1F1319BF00A60392 /* SignUpViewController.swift */; };
 		500A37B01C7D6587007D6A3B /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A37AF1C7D6587007D6A3B /* Passenger.swift */; };
 		500A37B11C7D6587007D6A3B /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A37AF1C7D6587007D6A3B /* Passenger.swift */; };
 		501038B31CD9655F00CCD7DC /* OfferOrEditRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501038B11CD9655F00CCD7DC /* OfferOrEditRideViewController.swift */; };
@@ -389,6 +390,7 @@
 		2F8FA1A21F12BCE700A60392 /* UITableViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Additions.swift"; sourceTree = "<group>"; };
 		2F8FA1A61F12C2F100A60392 /* NSObject+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Additions.swift"; sourceTree = "<group>"; };
 		2F8FA1A81F12C32F00A60392 /* UICollectionViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Additions.swift"; sourceTree = "<group>"; };
+		2F8FA1AA1F1319BF00A60392 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		448B73B6EE603CAABF73EF9B /* Pods_CruTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		500A37AF1C7D6587007D6A3B /* Passenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		501038B11CD9655F00CCD7DC /* OfferOrEditRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferOrEditRideViewController.swift; sourceTree = "<group>"; };
@@ -722,6 +724,7 @@
 				0F52709A1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift */,
 				2F851C541F0F4A2700DF9B81 /* MinistryTeamCell.swift */,
 				2F851C551F0F4A2700DF9B81 /* MinistryTeamCell.xib */,
+				2F8FA1AA1F1319BF00A60392 /* SignUpViewController.swift */,
 			);
 			name = MinistryTeams;
 			sourceTree = "<group>";
@@ -1349,6 +1352,7 @@
 				0FC49DAF1CFE8D9700B4D175 /* CruPhoneNoRule.swift in Sources */,
 				6D01D8351D81AE59006A9AC0 /* CheckboxButton.swift in Sources */,
 				C1EF490A1CDBF74E009439FE /* SurveyViewController.swift in Sources */,
+				2F8FA1AB1F1319BF00A60392 /* SignUpViewController.swift in Sources */,
 				C1E9DC171CF7894800066C5F /* CGLeaderCell.swift in Sources */,
 				0F1959EE1C8E60A200A783BA /* OfferedRideTableViewCell.swift in Sources */,
 				5094897D1C64000200A67697 /* DriverRideDetailViewController.swift in Sources */,

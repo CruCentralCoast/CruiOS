@@ -11,14 +11,11 @@ import SwiftValidator
 
 class MinistryTeamSignUpViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
-
-    //reference to fields we will use
     @IBOutlet weak var fullNameField: UITextField!
     @IBOutlet weak var phoneNoField: UITextField!
     @IBOutlet weak var nameError: UILabel!
     @IBOutlet weak var phoneNoError: UILabel!
     
-    //constants: should move later to config file
     fileprivate let fullNameKey = "fullName"
     fileprivate let phoneNoKey = "phoneNo"
 
