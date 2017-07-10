@@ -14,6 +14,7 @@ protocol MinistryTeamSignUpDelegate {
 
 class MinistryTeamCell: UICollectionViewCell {
     
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var leaderNamesLabel: UILabel!
@@ -55,12 +56,12 @@ class MinistryTeamCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        //Add drop shadow
-        self.backgroundView?.layer.shadowColor = UIColor.black.cgColor
-        self.backgroundView?.layer.shadowOffset = CGSize(width: 0, height: 1)
-        self.backgroundView?.layer.shadowOpacity = 0.25
-        self.backgroundView?.layer.shadowRadius = 2
-        self.backgroundView?.clipsToBounds = false
+        // Add drop shadow
+        self.view.layer.shadowColor = UIColor.black.cgColor
+        self.view.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.view.layer.shadowOpacity = 0.25
+        self.view.layer.shadowRadius = 2
+        self.clipsToBounds = false
     }
 
     @IBAction func signUpPressed() {
