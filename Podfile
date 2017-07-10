@@ -29,6 +29,7 @@ def cru_pods
     # pod 'AudioKit', '~> 3.5'
     pod 'YouTubePlayer'
     pod 'UIScrollView-InfiniteScroll', '~> 1.0'
+    pod 'AnimatedTextInput', '~> 0.5.1'
 end
 
 def crash_monitor
