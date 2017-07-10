@@ -99,6 +99,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Get Involved" id="JMl-pk-V0g">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Tc7-9h-iUc"/>
                         <barButtonItem key="leftBarButtonItem" image="menuIcon" id="Hav-vb-26K"/>
                     </navigationItem>
                     <connections>

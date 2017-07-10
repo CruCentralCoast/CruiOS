@@ -20,6 +20,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Ministry Teams"
         self.setupCollectionView()
         
         // Create fake cell used to calculate height for dynamically sizing collection view cells
