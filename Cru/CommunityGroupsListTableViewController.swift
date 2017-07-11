@@ -18,6 +18,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     var answers = [[String:String]]()
     var ministries = [Ministry]()
     var ministryTable = [String: String]()
+    var selectedGroup: CommunityGroup!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,8 +93,11 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             cell.leaderTopConstraint.constant = 12
         }
         
-        
-        cell.sizeToFit()
+        //Add drop shadow
+        cell.card.layer.shadowColor = UIColor.black.cgColor
+        cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.card.layer.shadowOpacity = 0.25
+        cell.card.layer.shadowRadius = 2
         
         cell.setSignupCallback(jumpBackToGetInvolved)
         return cell
@@ -172,89 +176,6 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         }
     }
     
-    
-    
-    //Load Community groups
-    private func loadCommunityGroups() {
-        
-        
-        
-        //load sample data for now
-        
-        var leader1 = [String: Any]()
-        leader1[CommunityGroupLeaderKeys.name] = [CommunityGroupLeaderKeys.firstName: "Erica", CommunityGroupLeaderKeys.lastName: "Solum"]
-        leader1[CommunityGroupLeaderKeys.phone] = "123-456-7890"
-        leader1[CommunityGroupLeaderKeys.email] = "test@test.test"
-        
-        var leader2 = [String: Any]()
-        leader2[CommunityGroupLeaderKeys.name] = [CommunityGroupLeaderKeys.firstName: "Test", CommunityGroupLeaderKeys.lastName: "Testerson"]
-        leader2[CommunityGroupLeaderKeys.phone] = "123-456-7890"
-        leader2[CommunityGroupLeaderKeys.email] = "test@test.test"
-
-        
-        let dict1 : NSDictionary = [
-            CommunityGroupKeys.id : "9999",
-            CommunityGroupKeys.name : "Erica's Test Community Group",
-            CommunityGroupKeys.description : "This is a test group.",
-            CommunityGroupKeys.type : "Senior",
-            CommunityGroupKeys.ministry : "Cru Cal Poly",
-            CommunityGroupKeys.meetingTime : "10:30 AM",
-            CommunityGroupKeys.dayOfWeek : "Saturday",
-            CommunityGroupKeys.leaders : [leader1, leader2],
-            CommunityGroupKeys.imageURL : "https://s3-us-west-1.amazonaws.com/static.crucentralcoast.com/images/ministry-teams/evangelism-team-image.jpg"
-        ]
-        
-        let dict2 : NSDictionary = [
-            CommunityGroupKeys.id : "9998",
-            CommunityGroupKeys.name : "A Test Community Group",
-            CommunityGroupKeys.description : "This is the second test group.",
-            CommunityGroupKeys.type : "Sophomore",
-            CommunityGroupKeys.ministry : "Faculty Commons",
-            CommunityGroupKeys.meetingTime : "2:00 PM",
-            CommunityGroupKeys.dayOfWeek : "Monday",
-            CommunityGroupKeys.leaders : [leader1, leader2],
-            CommunityGroupKeys.imageURL : "https://s3-us-west-1.amazonaws.com/static.crucentralcoast.com/images/ministry-teams/community-team-image.jpg"
-        ]
-        
-        let dict3 : NSDictionary = [
-            CommunityGroupKeys.id : "9997",
-            CommunityGroupKeys.name : "Another Test Community Group",
-            CommunityGroupKeys.description : "This is the third test group.",
-            CommunityGroupKeys.type : "Freshmen",
-            CommunityGroupKeys.ministry : "Cru at Allan Hancock",
-            CommunityGroupKeys.meetingTime : "11:00 AM",
-            CommunityGroupKeys.dayOfWeek : "Sunday",
-            CommunityGroupKeys.leaders : [leader1, leader2],
-            CommunityGroupKeys.imageURL : "https://s3-us-west-1.amazonaws.com/static.crucentralcoast.com/images/ministry-teams/outreach-team-image.jpg"
-        ]
-        
-        let dict4 : NSDictionary = [
-            CommunityGroupKeys.id : "9996",
-            CommunityGroupKeys.name : "The Last Test Community Group",
-            CommunityGroupKeys.description : "This is the fourth test group.",
-            CommunityGroupKeys.type : "Seniors",
-            CommunityGroupKeys.ministry : "Fellowship of Christian Athletes in Action",
-            CommunityGroupKeys.meetingTime : "11:00 AM",
-            CommunityGroupKeys.dayOfWeek : "Sunday",
-            CommunityGroupKeys.leaders : [leader1, leader2],
-            CommunityGroupKeys.imageURL : ""
-        ]
-        
-        let group1 = CommunityGroup(dict: dict1)
-        let group2 = CommunityGroup(dict: dict2)
-        let group3 = CommunityGroup(dict: dict3)
-        let group4 = CommunityGroup(dict: dict4)
-        
-        groups.append(group1)
-        groups.append(group2)
-        groups.append(group3)
-        groups.append(group4)
-        
-        
-        
-        
-    }
-    
     // MARK: Empty Data Set Functions
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         if hasConnection == false {
@@ -271,19 +192,25 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
     }
     
-
+    //opens sign up form for community group
     
+    @IBAction func joinGroup(_ sender: UIButton) {
+        if let cell = sender.superview?.superview?.superview as? UITableViewCell {
+            let indexPath = tableView.indexPath(for: cell)
+            let group = groups[(indexPath?.row)!]
+            self.selectedGroup = group
+        }
+    }
 
-    
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "comGroupSignUp" {
+            let vc = segue.destination as! SubmitInformationViewController
+            vc.comGroup = self.selectedGroup
+        }
     }
-    */
+    
 
 }

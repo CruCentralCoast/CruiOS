@@ -68,6 +68,7 @@ struct Config {
     static let userStorageKey = "user"
     static let ministryStorageKey = "ministries"
     static let ministryTeamStorageKey = "ministryTeams"
+    static let CommunityGroupsStorageKey = "communityGroups"
     
     // Modal header and footer text color
     static let textColor = UIColor(red: 0.188, green: 0.188, blue: 0.188, alpha: 1.0)
