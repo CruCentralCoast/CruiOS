@@ -78,7 +78,12 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     //completion handler for joining a ministry team
     func completeJoinGroup(_ leaderInfo: NSArray?) {
         //add ministry team to list of ministry teams we're a part of
-        communityGroupsStorageManager.addElement(comGroup.id, elem: comGroup)
+        /*communityGroupsStorageManager.addElement(comGroup.id, elem: comGroup)
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: comGroup)
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(encodedData, forKey: Config.CommunityGroupsStorageKey)*/
+        
+        communityGroupsStorageManager.putObject(Config.CommunityGroupsStorageKey, object: comGroup)
         
         //navigate back to get involved
         for controller in (self.navigationController?.viewControllers)! {

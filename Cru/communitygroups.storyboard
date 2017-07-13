@@ -360,7 +360,6 @@
                                                     </state>
                                                     <connections>
                                                         <action selector="joinGroup:" destination="zAC-Dv-coH" eventType="touchUpInside" id="5Ej-fT-P2L"/>
-                                                        <segue destination="OOW-2H-2av" kind="presentation" identifier="comGroupSignup" id="OmC-gb-Y6h"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -451,7 +450,7 @@
         <!--Submit Information View Controller-->
         <scene sceneID="m1O-47-tVU">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="OOW-2H-2av" customClass="SubmitInformationViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="submitDialog" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="OOW-2H-2av" customClass="SubmitInformationViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1SO-86-9RZ"/>
                         <viewControllerLayoutGuide type="bottom" id="aWo-zv-Uyt"/>
@@ -516,7 +515,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tR0-Bv-5ZZ">
-                                        <rect key="frame" x="15" y="121" width="86.5" height="16"/>
+                                        <rect key="frame" x="15" y="121" width="87" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="yXc-VC-Ro9"/>
                                         </constraints>
@@ -570,7 +569,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="* required field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="63y-RL-CTV">
-                                        <rect key="frame" x="121.5" y="121" width="168.5" height="16"/>
+                                        <rect key="frame" x="122" y="121" width="168" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="Ifc-lE-gkQ"/>
                                         </constraints>

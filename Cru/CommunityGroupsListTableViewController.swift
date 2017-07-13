@@ -200,6 +200,14 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             let group = groups[(indexPath?.row)!]
             self.selectedGroup = group
         }
+        
+        let storyboard = UIStoryboard(name: "communitygroups", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "submitDialog") as! SubmitInformationViewController
+        controller.comGroup = selectedGroup
+        
+        self.present(controller, animated: true, completion: nil)
+        
+        
     }
 
     // MARK: - Navigation
