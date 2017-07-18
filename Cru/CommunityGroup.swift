@@ -45,24 +45,21 @@ struct CommunityGroupKeys {
 }
 
 
-class CommunityGroup: Comparable, Equatable{
+class CommunityGroup: NSObject, NSCoding, Comparable {
 
     // MARK: - Properties
     var id = ""
     var name = ""
-    var description = ""
+    var desc = ""
     var dayOfWeek = ""
     var meetingTime: Date!
     var stringTime = ""
-    //var meetingTime = ""
     var parentMinistry = ""
     var leaderIDs = [String]() // ids of leaders
     var leaders = [CommunityGroupLeader]() // names of leaders
     var type = ""
     var imgURL = ""
     //var types = [String: String]() // for when groups have multiple types
-    
-    
     
     init(dict: NSDictionary) {
         if let id = dict[CommunityGroupKeys.id] as? String {
@@ -74,7 +71,7 @@ class CommunityGroup: Comparable, Equatable{
         }
         
         if let desc = dict[CommunityGroupKeys.description] as? String {
-            description = desc
+            self.desc = desc
         }
         
         if let day = dict[CommunityGroupKeys.dayOfWeek] as? String {
@@ -117,6 +114,21 @@ class CommunityGroup: Comparable, Equatable{
         
     }
     
+    //init for the decoder and whatnot
+    init?(id: String, name: String, desc: String, dayOfWeek: String, meetingTime: Date, stringTime: String, parentMinistry: String, leaderIDs: [String], leaders: [CommunityGroupLeader], type: String, imgURL: String) {
+        self.id = id
+        self.name = name
+        self.desc = desc
+        self.dayOfWeek = dayOfWeek
+        self.meetingTime = meetingTime
+        self.stringTime = stringTime
+        self.parentMinistry = parentMinistry
+        self.leaderIDs = leaderIDs
+        self.leaders = leaders
+        self.type = type
+        self.imgURL = type
+    }
+    
     func getMeetingTime()->String{
         let format = "h:mm a"
         //let serverFormat = "E M d y H:m:s"
@@ -133,6 +145,7 @@ class CommunityGroup: Comparable, Equatable{
         }
     }
     
+    // Gets the names of the community group leaders from the database using the stored IDs
     func getLeaderNames() {
         for lead in leaderIDs {
             //str.append(lead + ", ")
@@ -142,6 +155,7 @@ class CommunityGroup: Comparable, Equatable{
         }
     }
     
+    //Returns a displayable string with the leaders' names
     func getLeaderString() ->String {
         var str = ""
         for lead in leaders {
@@ -163,6 +177,53 @@ class CommunityGroup: Comparable, Equatable{
         }*/
     }
     
+    // MARK: NSCoding
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        /*var id = ""
+        var name = ""
+        var desc = ""
+        var dayOfWeek = ""
+        var meetingTime: Date!
+        var stringTime = ""
+        var parentMinistry = ""
+        var leaderIDs = [String]() // ids of leaders
+        var leaders = [CommunityGroupLeader]() // names of leaders
+        var type = ""
+        var imgURL = ""*/
+        
+        guard let id = aDecoder.decodeObject(forKey: "id") as? String,
+            let name = aDecoder.decodeObject(forKey: "name") as? String,
+            let desc = aDecoder.decodeObject(forKey: "desc") as? String,
+            let dayOfWeek = aDecoder.decodeObject(forKey: "dayOfWeek") as? String,
+            let meetingTime = aDecoder.decodeObject(forKey: "meetingTime") as? Date,
+            let stringTime = aDecoder.decodeObject(forKey: "stringTime") as? String,
+            let parentMinistry = aDecoder.decodeObject(forKey: "parentMinistry") as? String,
+            let leaderIDs = aDecoder.decodeObject(forKey: "leaderIDs") as? [String],
+            let leaders = aDecoder.decodeObject(forKey: "leaders") as? [CommunityGroupLeader],
+            let type = aDecoder.decodeObject(forKey: "type") as? String,
+            let imgURL = aDecoder.decodeObject(forKey: "imgURL") as? String
+        
+            else { return nil }
+        
+        
+        self.init(
+            id: id, name: name, desc: desc, dayOfWeek: dayOfWeek, meetingTime: meetingTime, stringTime: stringTime, parentMinistry: parentMinistry, leaderIDs: leaderIDs, leaders: leaders, type: type, imgURL: imgURL
+        )
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.id, forKey: "id")
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.desc, forKey: "desc")
+        aCoder.encode(self.dayOfWeek, forKey: "dayOfWeek")
+        aCoder.encode(self.meetingTime, forKey: "meetingTime")
+        aCoder.encode(self.stringTime, forKey: "stringTime")
+        aCoder.encode(self.leaderIDs, forKey: "parentMinistry")
+        aCoder.encode(self.leaders, forKey: "leaders")
+        aCoder.encode(self.type, forKey: "type")
+        aCoder.encode(self.imgURL, forKey: "imgURL")
+    }
     
     
 }

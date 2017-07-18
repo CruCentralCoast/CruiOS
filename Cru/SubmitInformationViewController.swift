@@ -83,7 +83,10 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         let userDefaults = UserDefaults.standard
         userDefaults.set(encodedData, forKey: Config.CommunityGroupsStorageKey)*/
         
-        communityGroupsStorageManager.putObject(Config.CommunityGroupsStorageKey, object: comGroup)
+        print("COMPLETE JOIN GROUP")
+        //communityGroupsStorageManager.putObject(Config.CommunityGroupsStorageKey, object: comGroup)
+        communityGroupsStorageManager.addObject(Config.CommunityGroupsStorageKey, obj: comGroup)
+        
         
         //navigate back to get involved
         for controller in (self.navigationController?.viewControllers)! {

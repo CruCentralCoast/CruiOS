@@ -37,6 +37,20 @@ class MapLocalStorageManager: LocalStorageManager {
         super.putObject(self.key, object: self.map)
     }
     
+    //Creates a Data instance with object and adds that to local storage
+    func addObject(_ key: String, obj: Any) {
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: obj)
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(encodedData, forKey: key)
+    }
+    
+    //Gets an object with Data instance from local storage
+    func getDataObject(_ key: String) -> Any {
+        let decoded  = UserDefaults.standard.object(forKey: key) as! Data
+        let decodedObject = NSKeyedUnarchiver.unarchiveObject(with: decoded)
+        return decodedObject
+    }
+    
     //Get element from local storage
     func getElement(_ key: String) -> Any? {
         return self.map[key]
