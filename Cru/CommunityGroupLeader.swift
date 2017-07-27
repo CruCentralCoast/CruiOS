@@ -20,7 +20,7 @@ struct CommunityGroupLeaderKeys {
 }
 
 
-class CommunityGroupLeader {
+class CommunityGroupLeader: NSObject, NSCoding {
     
     // MARK: Properties
     let name: String!
@@ -33,6 +33,30 @@ class CommunityGroupLeader {
         name = nameDict[CommunityGroupLeaderKeys.firstName]! + " " + nameDict[CommunityGroupLeaderKeys.lastName]!
         phone = dict[CommunityGroupLeaderKeys.phone] as! String
         email = dict[CommunityGroupLeaderKeys.email] as! String
+    }
+    
+    init?(name: String, phone: String, email: String) {
+        self.name = name
+        self.phone = phone
+        self.email = email
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        guard let name = aDecoder.decodeObject(forKey: "name") as? String,
+            let phone = aDecoder.decodeObject(forKey: "phone") as? String,
+            let email = aDecoder.decodeObject(forKey: "email") as? String
+            else { return nil }
+        
+        
+        self.init(
+            name: name, phone: phone, email: email
+        )
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.phone, forKey: "phone")
+        aCoder.encode(self.email, forKey: "email")
     }
     
 }

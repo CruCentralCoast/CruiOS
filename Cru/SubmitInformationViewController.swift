@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftValidator
+import MRProgress
 
 class SubmitInformationViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
@@ -16,6 +17,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     @IBOutlet weak var nameError: UILabel!
     @IBOutlet weak var numberError: UILabel!
     
+    @IBOutlet weak var dialogView: UIView!
     // MARK: Properties
     var communityGroupsStorageManager: MapLocalStorageManager!
     var comGroup: CommunityGroup!
@@ -41,12 +43,17 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         numberField.delegate = self
         
         //check if user is already in local storage
-        if let user = communityGroupsStorageManager.getObject(Config.userStorageKey) as? NSDictionary {
-            print(user)
-            nameField.text = (user[fullNameKey] as! String)
-            numberField.text = (user[phoneNoKey] as! String)
-        }
         
+        
+    }
+    
+    //Fill in fields after they've appeared
+    override func viewDidAppear(_ animated: Bool) {
+        /*if let user = communityGroupsStorageManager.getObject(Config.userStorageKey) as? NSDictionary {
+            print(user)
+            nameField.text = (user[fullNameKey] as? String)
+            numberField.text = (user[phoneNoKey] as? String)
+        }*/
     }
 
     @IBAction func closePopup(_ sender: UIButton) {
@@ -61,6 +68,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     
     //function to call if the validation is successful
     func validationSuccessful() {
+        
         var user: Dictionary<String, String>! = [:]
         
         user[fullNameKey] = nameField.text
@@ -69,10 +77,23 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         //update the user information in the local storage
         updateUserInformation(user as NSDictionary)
         
+        //print("YO VALIDATION SUCCESSFUL BUT WAIT THERE'S MORE")
+        showActivityIndicator()
+        
         //join community group
         CruClients.getServerClient().joinCommunityGroup(comGroup.id, fullName: user[fullNameKey]!, phone: user[phoneNoKey]!, callback: completeJoinGroup)
         
         //CruClients.getServerClient().joinMinistryTeam(ministryTeam.id, fullName: user[fullNameKey]!, phone: user[phoneNoKey]!, callback: completeJoinTeam)
+    }
+    
+    //Helper function to hide all the fields and show the progress indicator 
+    private func showActivityIndicator() {
+        nameField.isHidden = true
+        numberField.isHidden = true
+        nameError.isHidden = true
+        numberError.isHidden = true
+        
+        MRProgressOverlayView.showOverlayAdded(to: self.dialogView, animated: true)
     }
     
     //completion handler for joining a ministry team
@@ -86,14 +107,39 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         print("COMPLETE JOIN GROUP")
         //communityGroupsStorageManager.putObject(Config.CommunityGroupsStorageKey, object: comGroup)
         communityGroupsStorageManager.addObject(Config.CommunityGroupsStorageKey, obj: comGroup)
-        
+        MRProgressOverlayView.dismissOverlay(for: self.dialogView, animated: true)
         
         //navigate back to get involved
-        for controller in (self.navigationController?.viewControllers)! {
+        
+        dismissToGetInvolved()
+        
+        
+        /*for controller in (self.navigationController?.viewControllers)! {
             if controller.isKind(of: GetInvolvedViewController.self) {
                 self.navigationController?.popToViewController(controller, animated: true)
             }
-        }
+        }*/
+        
+        //let switchViewController = self.navigationController?.viewControllers[1] as! ComposeViewController
+        //let switchViewController = self.navigationController?.viewControllers[1]
+        
+        
+        //self.navigationController?.popToViewController(switchViewController, animated: true)
+    }
+    
+    func dismissToGetInvolved() {
+        let nav = self.presentingViewController as! UINavigationController
+        dismiss(animated: true, completion: { () -> Void in
+            nav.popViewController(animated: true)
+        })
+        
+        /*
+            UINavigationController *nav = (UINavigationController *)self.presentingViewController;
+            [self dismissViewControllerAnimated:YES completion:^{
+                [nav popViewControllerAnimated:YES];
+                }];
+        
+        */
     }
     
     //used to update the user's information on the sign up page
@@ -108,10 +154,10 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
             //if the information about the user is different in this form
         else {
             if let tempStore = storedUser as? NSDictionary {
-                let storedFullName = tempStore[fullNameKey] as! String
-                let storedPhoneNo = tempStore[phoneNoKey] as! String
-                let fullName = user[fullNameKey] as! String
-                let phoneNo = user[phoneNoKey] as! String
+                let storedFullName = tempStore[fullNameKey] as? String
+                let storedPhoneNo = tempStore[phoneNoKey] as? String
+                let fullName = user[fullNameKey] as? String
+                let phoneNo = user[phoneNoKey] as? String
                 
                 if (storedFullName != fullName) || (storedPhoneNo != phoneNo) {
                     communityGroupsStorageManager.putObject(Config.userStorageKey, object: user)

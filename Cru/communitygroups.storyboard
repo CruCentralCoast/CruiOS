@@ -629,6 +629,7 @@
                     </view>
                     <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
                     <connections>
+                        <outlet property="dialogView" destination="YS6-eu-ukJ" id="L8U-sH-le3"/>
                         <outlet property="nameError" destination="GFe-0i-ned" id="uGf-g7-qza"/>
                         <outlet property="nameField" destination="XuT-wM-A7Z" id="mPR-da-FEZ"/>
                         <outlet property="numberError" destination="63y-RL-CTV" id="ulo-kq-quT"/>
