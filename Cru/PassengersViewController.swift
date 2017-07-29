@@ -21,7 +21,6 @@ class PassengersViewController: UIViewController, UITableViewDataSource, UITable
     override func viewDidAppear(_ animated: Bool) {
         table.emptyDataSetDelegate = self
         table.emptyDataSetSource = self
-        
         table.reloadData()
     }
     

@@ -151,7 +151,7 @@ class SurveyViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     fileprivate func getOptionQuestionAnswers() -> [[String:String]] {
         var optionQuestionCells = questions.filter{ $0 is OptionQuestionCell } as! [OptionQuestionCell]
-        optionQuestionCells = optionQuestionCells.filter{ $0.isAnswered() != nil }
+        optionQuestionCells = optionQuestionCells.filter{ $0.isAnswered() }
         return optionQuestionCells.map{ $0.getAnswer().getDict() }
     }
 
