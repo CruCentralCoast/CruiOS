@@ -114,9 +114,8 @@ extension MinistryTeamsCollectionViewController {
 // MARK: - MinistryTeamSignUpDelegate
 extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
     func signUpForMinistryTeam(_ ministryTeam: MinistryTeam) {
-        let signUpVC = UIStoryboard(name: "ministryteam", bundle: nil).instantiateViewController(withIdentifier: SignUpViewController.className) as! SignUpViewController
-//        signUpVC.ministryTeam = ministryTeam
-//        self.navigationController?.pushViewController(signUpVC, animated: true)
+        let signUpVC = UIStoryboard(name: "MinistryTeam", bundle: nil).instantiateViewController(withIdentifier: MinistryTeamSignUpViewController.className) as! MinistryTeamSignUpViewController
+        signUpVC.ministryTeam = ministryTeam
         self.present(signUpVC, animated: true, completion: nil)
     }
 }
