@@ -378,7 +378,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Get Involved" id="E27-R7-RaZ">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="menuIcon" style="plain" id="Eno-c2-79h">
+                        <barButtonItem key="leftBarButtonItem" image="menuIcon" style="plain" id="Eno-c2-79h">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </barButtonItem>
                     </navigationItem>

@@ -25,6 +25,8 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         self.navigationItem.title = "Community Groups"
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        
         //Set the cells for automatic cell height
         tableView.rowHeight = UITableViewAutomaticDimension
         

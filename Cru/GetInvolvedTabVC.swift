@@ -37,6 +37,8 @@ class GetInvolvedTabVC: ButtonBarPagerTabStripViewController, SWRevealViewContro
         //Set the nav title & font
         navigationItem.title = "Get Involved"
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     }
 
     override func didReceiveMemoryWarning() {
