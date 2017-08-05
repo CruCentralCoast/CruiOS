@@ -25,6 +25,13 @@ class NotificationsViewController: UITableViewController, DZNEmptyDataSetDelegat
         tableView.estimatedRowHeight = 105.0
         tableView.rowHeight = UITableViewAutomaticDimension
         
+        //Set the empty set delegate and source
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+
+        tableView.reloadData()
+        
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         //Set the empty set delegate and source
         self.tableView.emptyDataSetSource = self
@@ -54,6 +61,20 @@ class NotificationsViewController: UITableViewController, DZNEmptyDataSetDelegat
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
         return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
         
+    }
+
+    //Set the text to be displayed when the table is empty
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        self.tableView.separatorColor = UIColor.clear
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+        return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
+    }
+
+    //Set the text to be displayed when the table is empty
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        self.tableView.separatorColor = UIColor.clear
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+        return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
     }
 
     override func didReceiveMemoryWarning() {
