@@ -91,5 +91,8 @@ struct Config {
     static let noPassengersImage = "no-passengers"
     static let campusImage = "campusImage"
     static let communityImage = "communityImage"
+    static let noCommunityGroupsImage = "no-community-group"
+    static let noMinistryTeamsImage = "no-ministry-teams"
+    
     static let noEventsImage = "no-events"
 }

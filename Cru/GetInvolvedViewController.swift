@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
 class GetInvolvedViewController: UIViewController, UITabBarDelegate, SWRevealViewControllerDelegate {
     //MARK: Properties

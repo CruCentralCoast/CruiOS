@@ -86,6 +86,7 @@ PODS:
   - SwiftValidator (4.0.0)
   - SwiftyJSON (3.1.4)
   - UIScrollView-InfiniteScroll (1.0.0)
+  - XLPagerTabStrip (7.0.0)
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
@@ -112,6 +113,7 @@ DEPENDENCIES:
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - SwiftyJSON (= 3.1.4)
   - UIScrollView-InfiniteScroll (~> 1.0)
+  - XLPagerTabStrip (~> 7.0)
   - YouTubePlayer
 
 EXTERNAL SOURCES:
@@ -133,7 +135,7 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   GGLInstanceID: 4a317044f744281b82cd03015f379899f277cad3
-  Google: 97618e118111b998cce1d8dd1bd98b82301d72db
+  Google: 55ccf2acbe6f6ade86f872c1cd29a0c44039c349
   GoogleCloudMessaging: f37ea14dd0f41d4d889c10b5559dd35bbfd9ac26
   GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
   GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
@@ -156,8 +158,9 @@ SPEC CHECKSUMS:
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
+  XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: a4d31af546b68b7211ffd98992c34ef08e71d778
+PODFILE CHECKSUM: 8575ac6f323ab3e656008a29f9f2c6cdd5eda361
 
 COCOAPODS: 1.2.0

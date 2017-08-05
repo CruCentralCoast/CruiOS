@@ -63,20 +63,6 @@ class NotificationsViewController: UITableViewController, DZNEmptyDataSetDelegat
         
     }
 
-    //Set the text to be displayed when the table is empty
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        self.tableView.separatorColor = UIColor.clear
-        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
-        return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
-    }
-
-    //Set the text to be displayed when the table is empty
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        self.tableView.separatorColor = UIColor.clear
-        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
-        return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

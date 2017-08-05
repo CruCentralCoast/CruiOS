@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, IndicatorInfoProvider {
 
     //view objects for hiding and showing the table view
     @IBOutlet weak var ministryTeamView: UIView!
@@ -97,8 +98,13 @@ class MinistryTeamViewController: UIViewController, UITableViewDelegate, UITable
         let viewController = storyboard.instantiateViewController(withIdentifier: "MinistryTeamsCollectionViewController")
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    // MARK: - XLPagerTabStrip Stuff
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "Ministry Teams")
+    }
 
-    /* Table View Delegate code */
+    // MARK: - Table View Delegate code
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ministryTeams.count
     }
