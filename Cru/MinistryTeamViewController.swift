@@ -87,6 +87,7 @@ extension MinistryTeamViewController: UICollectionViewDelegate, UICollectionView
         let padding: CGFloat = 32
         if let cell = self.sizingCell {
             cell.ministryTeam = self.ministryTeams[indexPath.row]
+            cell.signUpButton.isHidden = true
             cell.layoutSubviews()
             let targetSize = CGSize(width: collectionView.frame.size.width - padding, height: 0)
             return cell.sizeThatFits(targetSize)
@@ -97,6 +98,7 @@ extension MinistryTeamViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MinistryTeamCell.cellReuseIdentifier, for: indexPath) as! MinistryTeamCell
         cell.ministryTeam = self.ministryTeams[indexPath.item]
+        cell.signUpButton.isHidden = true
         
         return cell
     }
