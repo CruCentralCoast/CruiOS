@@ -27,8 +27,8 @@ class MinistryTeamCell: UICollectionViewCell {
     
     var ministryTeam: MinistryTeam! {
         didSet {
-            self.teamNameLabel.text = self.ministryTeam.ministryName
-            self.ministryNameLabel.text = self.ministryTeam.parentMinistry
+            self.teamNameLabel.text = self.ministryTeam.name
+            self.ministryNameLabel.text = self.ministryTeam.parentMinistryName
             self.summaryLabel.text = self.ministryTeam.summary
             
             // Default text in case the leader names don't exist

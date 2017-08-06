@@ -68,10 +68,10 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         // TODO: handle failure
         
         for ministryTeam in ministryTeams {
-            ministryTeam.parentMinName = ministries.filter{$0.id == ministryTeam.parentMinistry}.first!.name
+            ministryTeam.parentMinistryName = ministries.filter{$0.id == ministryTeam.parentMinistry}.first!.name
         }
         
-        ministryTeams.sort { $0.ministryName < $1.ministryName }
+        ministryTeams.sort { $0 < $1 }
         
         self.collectionView?.reloadData()
     }
@@ -100,11 +100,9 @@ extension MinistryTeamsCollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let ministryTeam = ministryTeams[indexPath.row]
-        let ministry = ministries.filter{$0.id == ministryTeam.parentMinistry}.first
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MinistryTeamCell.cellReuseIdentifier, for: indexPath) as! MinistryTeamCell
         cell.ministryTeam = ministryTeam
-        cell.ministryNameLabel.text = (ministry != nil) ? ministry!.name : "N/A"
         cell.delegate = self
         
         return cell

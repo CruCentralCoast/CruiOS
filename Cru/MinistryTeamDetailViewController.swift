@@ -44,7 +44,7 @@ class MinistryTeamDetailViewController: UIViewController {
     
     func completeMinistryTeamInsert(_ isSuccess: Bool) {
         if isSuccess {
-            ministryTeamNameLabel.text = ministryTeam.ministryName
+            ministryTeamNameLabel.text = ministryTeam.name
             
             if ministryTeam.imageUrl == "" {
                 heightFromLabelToSuperView.constant = 8.0
