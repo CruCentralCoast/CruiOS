@@ -30,7 +30,7 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var findRideLeading: NSLayoutConstraint!
     //passed in prepareForSegue
     var event: Event!
-    var eventLocalStorageManager: MapLocalStorageManager!
+    var eventLocalStorageManager: MapLocalStorageManager<String>!
     var calendarManager: CalendarManager!
     var rides = [Ride]()
     

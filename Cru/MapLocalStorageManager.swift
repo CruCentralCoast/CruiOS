@@ -11,9 +11,9 @@
 
 import Foundation
 
-class MapLocalStorageManager: LocalStorageManager {
+class MapLocalStorageManager<C: Codable>: LocalStorageManager {
     var key: String = ""
-    private var map: [String: Codable] = [:]
+    private var map: [String: C] = [:]
     
     /// An array containing just the keys of the dictionary.
     var keys: [String] {
@@ -30,7 +30,7 @@ class MapLocalStorageManager: LocalStorageManager {
     
     /// Load the dictionary from storage if it exists.
     private func loadMap() {
-        let map: [String: Codable]? = super.loadObject(self.key)
+        let map: [String: C]? = super.loadObject(self.key)
         if let map = map {
             self.map = map
         }
@@ -38,7 +38,7 @@ class MapLocalStorageManager: LocalStorageManager {
     
     /// Store the object in the dictionary, and then save the dictionary.
     override func save<T: Codable>(_ object: T, forKey key: String) {
-        self.map[key] = object
+        self.map[key] = object as? C
         super.save(self.map, forKey: self.key)
     }
     
