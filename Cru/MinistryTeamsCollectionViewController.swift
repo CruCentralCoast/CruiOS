@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 
 class MinistryTeamsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    var ministryTeamsStorageManager: MapLocalStorageManager!
+    var ministryTeamsStorageManager: MapLocalStorageManager<MinistryTeam>!
     var ministryTeams = [MinistryTeam]()
     var ministries = [Ministry]()
     var campusImage: UIImage!
@@ -49,7 +49,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         self.collectionView?.emptyDataSetSource = self
         self.collectionView?.emptyDataSetDelegate = self
         
-        self.collectionView?.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1)
+        self.collectionView?.backgroundColor = .extraLightGray
         
         self.collectionView?.register(UINib(nibName: MinistryTeamCell.className, bundle: nil), forCellWithReuseIdentifier: MinistryTeamCell.cellReuseIdentifier)
     }
@@ -58,7 +58,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
     fileprivate func insertMinistryTeam(_ dict : NSDictionary) {
         let ministryTeam = MinistryTeam(dict: dict)!
         
-        if ministryTeamsStorageManager.getElement(ministryTeam.id) == nil {
+        if ministryTeamsStorageManager.object(forKey: ministryTeam.id) == nil {
             self.ministryTeams.insert(ministryTeam, at: 0)
         }
     }
@@ -71,7 +71,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
             ministryTeam.parentMinName = ministries.filter{$0.id == ministryTeam.parentMinistry}.first!.name
         }
         
-        ministryTeams.sort()
+        ministryTeams.sort { $0.ministryName < $1.ministryName }
         
         self.collectionView?.reloadData()
     }

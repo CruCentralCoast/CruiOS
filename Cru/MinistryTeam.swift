@@ -8,10 +8,10 @@
 
 import UIKit
 
-class MinistryTeam: Comparable, Equatable{
+class MinistryTeam: NSObject, Codable {
     var id: String
     var parentMinistry: String
-    var description: String
+    var summary: String
     var ministryName: String
     var image: UIImage!
     var imageUrl: String
@@ -25,7 +25,7 @@ class MinistryTeam: Comparable, Equatable{
         self.id = ""
         self.parentMinistry = ""
         self.ministryName = ""
-        self.description = ""
+        self.summary = ""
         self.image = UIImage(named: "event1")
         self.imageUrl = ""
         self.teamImage = UIImage(named: "event1")
@@ -36,7 +36,7 @@ class MinistryTeam: Comparable, Equatable{
         //grabbing dictionary values
         let dId = dict.object(forKey: "_id")
         let dParentMinistry = dict.object(forKey: "parentMinistry")
-        let dDescription = dict.object(forKey: "description")
+        let dSummary = dict.object(forKey: "description")
         let dMinistryName = dict.object(forKey: "name")
         let dImage = dict.object(forKey: "leadersImage")
         let dLeaders = dict.object(forKey: "leaders")
@@ -48,8 +48,8 @@ class MinistryTeam: Comparable, Equatable{
         if (dParentMinistry != nil) {
             self.parentMinistry = dParentMinistry as! String
         }
-        if (dDescription != nil) {
-            self.description = dDescription as! String
+        if (dSummary != nil) {
+            self.summary = dSummary as! String
         }
         if (dMinistryName != nil) {
             self.ministryName = dMinistryName as! String
@@ -77,11 +77,53 @@ class MinistryTeam: Comparable, Equatable{
         return [
             "id": self.id,
             "name": self.ministryName,
-            "description": self.description,
+            "description": self.summary,
             "leaders": self.leaders,
             "imageUrl": self.imageUrl,
             "teamImageUrl": self.teamImageUrl
         ]
+    }
+    
+    // MARK: Codable (Encodable & Decodable)
+    enum CodingKeys: String, CodingKey {
+        case id
+        case parentMinistry
+        case summary
+        case ministryName
+//        case image
+        case imageUrl
+//        case teamImage
+        case teamImageUrl
+        case leaders
+        case parentMinName
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try values.decode(String.self, forKey: .id)
+        self.ministryName = try values.decode(String.self, forKey: .ministryName)
+        self.summary = try values.decode(String.self, forKey: .summary)
+        self.parentMinistry = try values.decode(String.self, forKey: .parentMinistry)
+        self.parentMinName = try values.decode(String.self, forKey: .parentMinName)
+//        self.image = try values.decode(UIImage.self, forKey: .image)
+        self.imageUrl = try values.decode(String.self, forKey: .imageUrl)
+//        self.teamImage = try values.decode(UIImage.self, forKey: .teamImage)
+        self.teamImageUrl = try values.decode(String.self, forKey: .teamImageUrl)
+        self.leaders = try values.decode(Array.self, forKey: .leaders)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(ministryName, forKey: .ministryName)
+        try container.encode(summary, forKey: .summary)
+        try container.encode(parentMinistry, forKey: .parentMinistry)
+        try container.encode(parentMinName, forKey: .parentMinName)
+//        try container.encode(image, forKey: .image)
+        try container.encode(imageUrl, forKey: .imageUrl)
+//        try container.encode(teamImage, forKey: .teamImage)
+        try container.encode(teamImageUrl, forKey: .teamImageUrl)
+        try container.encode(leaders, forKey: .leaders)
     }
 }
 

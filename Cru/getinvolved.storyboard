@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qKH-sz-Wh1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="qKH-sz-Wh1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -37,7 +37,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2F-hS-g5Y">
                                 <rect key="frame" x="0.0" y="49" width="600" height="487"/>
                                 <connections>
-                                    <segue destination="Swp-qm-uyo" kind="embed" id="vlu-AP-znH"/>
+                                    <segue destination="Yha-n9-4SQ" kind="embed" id="trF-If-RMB"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-Rc-b55" userLabel="communityGroupContainer">
@@ -338,30 +338,38 @@
             </objects>
             <point key="canvasLocation" x="2914" y="1715"/>
         </scene>
-        <!--Ministry Team View Controller-->
+        <!--MinistryTeamViewController-->
+        <scene sceneID="3fk-fY-2Pv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MinistryTeam" referencedIdentifier="MinistryTeamViewController" id="Yha-n9-4SQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="o1P-KL-tqP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2200" y="2205"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="43r-bV-BlF">
             <objects>
-                <viewController id="Swp-qm-uyo" customClass="MinistryTeamViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Swp-qm-uyo" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HZK-eG-OCs"/>
                         <viewControllerLayoutGuide type="bottom" id="lxg-BN-oOt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="YkW-h0-iRe">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VJc-Md-wFN">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RiY-4c-lwh">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="427"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ministryTeam" id="Vbj-Jf-Yw3" customClass="JoinedTeamsTableViewCell" customModule="Cru" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vbj-Jf-Yw3" id="cJk-ey-s1u">
-                                                    <rect key="frame" x="0.0" y="0.0" width="567" height="49.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="49.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Ministry Team Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-uY-I7B">
@@ -388,7 +396,7 @@
                                         </connections>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pIj-MI-WSB">
-                                        <rect key="frame" x="0.0" y="443" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                         <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="zB3-iQ-1XA"/>
@@ -414,7 +422,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bHE-Mw-sQa" userLabel="MinistryTeamView">
-                                <rect key="frame" x="20" y="20" width="560" height="467"/>
+                                <rect key="frame" x="16" y="20" width="343" height="647"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Join A Ministry Team!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmt-Pu-SrR">
                                         <rect key="frame" x="8" y="8" width="544" height="29"/>
@@ -430,7 +438,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsD-Fv-mTC">
-                                        <rect key="frame" x="-20" y="423" width="600" height="44"/>
+                                        <rect key="frame" x="-20" y="603" width="383" height="44"/>
                                         <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="AmW-Ip-OtE"/>
@@ -489,7 +497,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2317" y="2443"/>
+            <point key="canvasLocation" x="2202" y="2773"/>
         </scene>
         <!--Ministry Team Detail View Controller-->
         <scene sceneID="gOh-pT-mAr">

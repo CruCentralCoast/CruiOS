@@ -19,7 +19,8 @@ class MinistryTeamSignUpViewController: UIViewController {
     fileprivate let fullNameKey = "fullName"
     fileprivate let phoneNumberKey = "phoneNo"
     
-    fileprivate var ministryTeamStorageManager: MapLocalStorageManager!
+    fileprivate var ministryTeamStorageManager: MapLocalStorageManager<MinistryTeam>!
+    fileprivate var localStorageManager: LocalStorageManager!
     private var validator: Validator!
     
     var ministryTeam: MinistryTeam!
@@ -44,11 +45,12 @@ class MinistryTeamSignUpViewController: UIViewController {
         self.validator.registerField(self.fullNameTextInput, errorLabel: nil, rules: [RequiredRule(), FullNameRule()])
         self.validator.registerField(self.phoneNumberTextInput, errorLabel: nil, rules: [RequiredRule(), CruPhoneNoRule()])
         
-        // Setup user defaults ministry team storage manager
+        // Setup local storage for ministry teams
         self.ministryTeamStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
+        self.localStorageManager = LocalStorageManager()
         
         // Populate text inputs with user info
-        if let user = ministryTeamStorageManager.getObject(Config.userStorageKey) as? NSDictionary {
+        if let user = self.localStorageManager.object(forKey: Config.userStorageKey) as? NSDictionary {
             self.fullNameTextInput.text = (user[self.fullNameKey] as! String)
             self.phoneNumberTextInput.text = (user[self.phoneNumberKey] as! String)
         }
@@ -90,7 +92,8 @@ extension MinistryTeamSignUpViewController: ValidationDelegate {
         self.updateUserInformation(user as NSDictionary)
         
         // Join the ministry team
-        CruClients.getServerClient().joinMinistryTeam(self.ministryTeam.id, fullName: user[self.fullNameKey]!, phone: user[self.phoneNumberKey]!, callback: self.completeJoinTeam)
+//        CruClients.getServerClient().joinMinistryTeam(self.ministryTeam.id, fullName: user[self.fullNameKey]!, phone: user[self.phoneNumberKey]!, callback: self.completeJoinTeam)
+        self.completeJoinTeam(nil)
     }
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
@@ -102,23 +105,18 @@ extension MinistryTeamSignUpViewController: ValidationDelegate {
     }
     
     func completeJoinTeam(_ leaderInfo: NSArray?) {
-        // Add ministry team to list of ministry teams we're a part of
-        self.ministryTeamStorageManager.addElement(self.ministryTeam.id, elem: self.ministryTeam.ministryName)
+        // Save ministry team in local storage
+        self.ministryTeamStorageManager.save(self.ministryTeam, forKey: self.ministryTeam.id)
         
-        // Navigate back to get involved
-        for controller in (self.navigationController?.viewControllers)! {
-            if controller.isKind(of: GetInvolvedViewController.self) {
-                self.navigationController?.popToViewController(controller, animated: true)
-            }
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     func updateUserInformation(_ user: NSDictionary) {
-        let storedUser = self.ministryTeamStorageManager.getObject(Config.userStorageKey)
+        let storedUser = self.localStorageManager.object(forKey: Config.userStorageKey)
         
         // Save user info if it's not already stored or if the info changed
         if storedUser == nil {
-            self.ministryTeamStorageManager.putObject(Config.userStorageKey, object: user)
+            self.localStorageManager.set(user, forKey: Config.userStorageKey)
         } else {
             if let tempStore = storedUser as? NSDictionary {
                 let storedFullName = tempStore[self.fullNameKey] as! String
@@ -127,7 +125,7 @@ extension MinistryTeamSignUpViewController: ValidationDelegate {
                 let phoneNumber = user[self.phoneNumberKey] as! String
                 
                 if (storedFullName != fullName) || (storedPhoneNumber != phoneNumber) {
-                    self.ministryTeamStorageManager.putObject(Config.userStorageKey, object: user)
+                    self.localStorageManager.set(user, forKey: Config.userStorageKey)
                 }
             }
         }

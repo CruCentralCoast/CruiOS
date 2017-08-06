@@ -19,7 +19,7 @@ class MinistryTeamCell: UICollectionViewCell {
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var leaderNamesLabel: UILabel!
     @IBOutlet weak var ministryNameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var stackViewTopConstraint: NSLayoutConstraint!
     
@@ -29,7 +29,7 @@ class MinistryTeamCell: UICollectionViewCell {
         didSet {
             self.teamNameLabel.text = self.ministryTeam.ministryName
             self.ministryNameLabel.text = self.ministryTeam.parentMinistry
-            self.descriptionLabel.text = self.ministryTeam.description
+            self.summaryLabel.text = self.ministryTeam.summary
             
             // Default text in case the leader names don't exist
             self.leaderNamesLabel.text = "Led by awesome people :)"

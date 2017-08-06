@@ -19,10 +19,10 @@ class MinistryTeamDetailViewController: UIViewController {
     @IBOutlet weak var heightFromLabelToSuperView: NSLayoutConstraint!
     
     //storage manager
-    var teamStorageManager: MapLocalStorageManager!
+    var teamStorageManager: MapLocalStorageManager<MinistryTeam>!
     
     //ministry team reference dictionary for the id
-    var ministryTeamDict: NSDictionary!
+//    var ministryTeamDict: NSDictionary!
     var ministryTeam: MinistryTeam!
     
     //reference to previous vc
@@ -31,8 +31,8 @@ class MinistryTeamDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let ministryTeamId = ministryTeamDict["id"] as! String
-        CruClients.getServerClient().getById(.MinistryTeam, insert: insertMinistryTeam, completionHandler: completeMinistryTeamInsert, id: ministryTeamId)
+//        let ministryTeamId = ministryTeamDict["id"] as! String
+//        CruClients.getServerClient().getById(.MinistryTeam, insert: insertMinistryTeam, completionHandler: completeMinistryTeamInsert, id: ministryTeamId)
         
         teamStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
     }

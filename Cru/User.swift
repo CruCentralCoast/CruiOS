@@ -8,7 +8,7 @@
 
 import UIKit
 
-class User {
+class User: Codable {
 
     let name: String!
     let phone: String!
