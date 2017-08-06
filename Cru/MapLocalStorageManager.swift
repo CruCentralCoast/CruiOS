@@ -13,55 +13,55 @@ import Foundation
 
 class MapLocalStorageManager: LocalStorageManager {
     var key: String = ""
-    var map: [String: Any] = [:]
+    private var map: [String: Codable] = [:]
     
-    //initializer with key
+    /// An array containing just the keys of the dictionary.
+    var keys: [String] {
+        return Array(self.map.keys)
+    }
+    
+    /// Initialize with the key of a dictionary that is or will be stored locally on device.
     init(key: String) {
         super.init()
         
         self.key = key
-        if let map =  super.getObject(self.key) as? [String: AnyObject] {
+        self.loadMap()
+    }
+    
+    /// Load the dictionary from storage if it exists.
+    private func loadMap() {
+        let map: [String: Codable]? = super.loadObject(self.key)
+        if let map = map {
             self.map = map
         }
     }
     
-    //Adds an element to the local storage
-    //NOTE: FOR NOW SETTING VALUE PAIRS TO BOOLEANS
-    func addElement(_ key: String, elem: Any) {
-        let obj = self.map[key]
-        
-        if obj == nil {
-            self.map[key] = elem
-        }
-        
-        super.putObject(self.key, object: self.map)
+    /// Store the object in the dictionary, and then save the dictionary.
+    override func save<T: Codable>(_ object: T, forKey key: String) {
+        self.map[key] = object
+        super.save(self.map, forKey: self.key)
     }
     
-    //Get element from local storage
-    func getElement(_ key: String) -> Any? {
+    /// Get an object stored in the dictionary.
+    override func object(forKey key: String) -> Any? {
         return self.map[key]
     }
     
-    //Removes element from local storage
+    /// Remove element from the dictionary and from local storage.
     func removeElement(_ key: String) {
         if let _ = self.map[key] {
             self.map.removeValue(forKey: key)
-            super.putObject(self.key, object: self.map)
+            super.set(self.map, forKey: self.key)
         }
         
         //if there are no objects in the map remove the whole object
         if map.count == 0 {
-            super.removeObject(key)
+            super.removeObject(forKey: key)
         }
     }
     
-    //deletes the entire map
+    /// Delete the entire dictionary from local storage.
     func deleteMap(_ key: String) {
-        super.removeObject(key)
-    }
-    
-    //gets the keys as an array
-    func getKeys() -> [String] {
-        return Array(map.keys)
+        super.removeObject(forKey: key)
     }
 }
