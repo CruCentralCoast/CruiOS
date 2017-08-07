@@ -27,9 +27,9 @@ class MinistryTeam: NSObject, Codable {
         self.parentMinistry = dict.object(forKey: "parentMinistry") as? String ?? ""
         self.parentMinistryName = dict.object(forKey: "parentMinistryName") as? String ?? ""
         self.summary = dict.object(forKey: "description") as? String ?? ""
-        self.image = UIImage(named: "fall-retreat-still")
+//        self.image = UIImage(named: "fall-retreat-still")
         self.imageUrl = ""
-        self.teamImage = UIImage(named: "event1")
+//        self.teamImage = UIImage(named: "event1")
         self.teamImageUrl = ""
         self.leaders = [User]()
         

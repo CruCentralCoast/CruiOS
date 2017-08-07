@@ -51,8 +51,8 @@ class MinistryTeamSignUpViewController: UIViewController {
         
         // Populate text inputs with user info
         if let user = self.localStorageManager.object(forKey: Config.userStorageKey) as? NSDictionary {
-            self.fullNameTextInput.text = (user[self.fullNameKey] as! String)
-            self.phoneNumberTextInput.text = (user[self.phoneNumberKey] as! String)
+            self.fullNameTextInput.text = user[self.fullNameKey] as? String ?? ""
+            self.phoneNumberTextInput.text = user[self.phoneNumberKey] as? String ?? ""
         }
     }
     
@@ -119,10 +119,10 @@ extension MinistryTeamSignUpViewController: ValidationDelegate {
             self.localStorageManager.set(user, forKey: Config.userStorageKey)
         } else {
             if let tempStore = storedUser as? NSDictionary {
-                let storedFullName = tempStore[self.fullNameKey] as! String
-                let storedPhoneNumber = tempStore[self.phoneNumberKey] as! String
-                let fullName = user[self.fullNameKey] as! String
-                let phoneNumber = user[self.phoneNumberKey] as! String
+                let storedFullName = tempStore[self.fullNameKey] as? String ?? ""
+                let storedPhoneNumber = tempStore[self.phoneNumberKey] as? String ?? ""
+                let fullName = user[self.fullNameKey] as? String ?? ""
+                let phoneNumber = user[self.phoneNumberKey] as? String ?? ""
                 
                 if (storedFullName != fullName) || (storedPhoneNumber != phoneNumber) {
                     self.localStorageManager.set(user, forKey: Config.userStorageKey)

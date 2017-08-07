@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class MinistryTeamViewController: UIViewController {
     
@@ -24,10 +25,7 @@ class MinistryTeamViewController: UIViewController {
         self.sizingCell = Bundle.main.loadNibNamed(MinistryTeamCell.className, owner: nil, options: nil)?.first as? MinistryTeamCell
         
         // Configure UICollectionView
-        self.collectionView.register(UINib(nibName: MinistryTeamCell.className, bundle: nil), forCellWithReuseIdentifier: MinistryTeamCell.cellReuseIdentifier)
-        
-        // Setup local storage manager
-        self.ministryTeamsStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
+        self.configureCollectionView()
         
         populateJoinedMinistryTeams()
         
@@ -39,6 +37,13 @@ class MinistryTeamViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         refresh(self)
+    }
+    
+    private func configureCollectionView() {
+        self.collectionView.emptyDataSetSource = self
+        self.collectionView.emptyDataSetDelegate = self
+        
+        self.collectionView.register(UINib(nibName: MinistryTeamCell.className, bundle: nil), forCellWithReuseIdentifier: MinistryTeamCell.cellReuseIdentifier)
     }
     
     func refresh(_ sender: AnyObject) {
@@ -55,12 +60,10 @@ class MinistryTeamViewController: UIViewController {
     }
     
     func populateJoinedMinistryTeams() {
+        // Setup local storage manager
+        self.ministryTeamsStorageManager = MapLocalStorageManager(key: Config.ministryTeamStorageKey)
+        
         for joinedTeamId in self.ministryTeamsStorageManager.keys {
-//            var ministryTeam = [String:String]()
-//            ministryTeam["id"] = joinedTeamId
-//            ministryTeam["name"] = (self.ministryTeamsStorageManager.getElement(joinedTeamId) as! String)
-//            self.ministryTeams.append(ministryTeam as NSDictionary)
-            
             let ministryTeam = self.ministryTeamsStorageManager.object(forKey: joinedTeamId) as! MinistryTeam
             self.ministryTeams.append(ministryTeam)
         }
@@ -106,11 +109,16 @@ extension MinistryTeamViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let ministryTeam = self.ministryTeams[indexPath.item]
         
-        let ministryTeamDetailVC = self.storyboard!.instantiateViewController(withIdentifier: "MinistryTeamDetailViewController") as! MinistryTeamDetailViewController
-//        ministryTeamDetailVC.ministryTeamDict = ministryTeam
+        let ministryTeamDetailVC = UIStoryboard(name: "getinvolved", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamDetailViewController") as! MinistryTeamDetailViewController
         ministryTeamDetailVC.ministryTeam = ministryTeam
         ministryTeamDetailVC.listVC = self
         
         self.navigationController?.pushViewController(ministryTeamDetailVC, animated: true)
+    }
+}
+
+extension MinistryTeamViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return #imageLiteral(resourceName: "no-ministry-teams")
     }
 }
