@@ -51,7 +51,7 @@ class MapLocalStorageManager<C: Codable>: LocalStorageManager {
     func removeElement(_ key: String) {
         if let _ = self.map[key] {
             self.map.removeValue(forKey: key)
-            super.set(self.map, forKey: self.key)
+            super.save(self.map, forKey: self.key)
         }
         
         //if there are no objects in the map remove the whole object
