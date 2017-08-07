@@ -23,6 +23,8 @@ class MinistryTeamSignUpViewController: UIViewController {
     fileprivate var localStorageManager: LocalStorageManager!
     private var validator: Validator!
     
+    var delegate: MinistryTeamSignUpDelegate?
+    
     var ministryTeam: MinistryTeam!
     
     override func viewDidLoad() {
@@ -108,7 +110,9 @@ extension MinistryTeamSignUpViewController: ValidationDelegate {
         // Save ministry team in local storage
         self.ministryTeamStorageManager.save(self.ministryTeam, forKey: self.ministryTeam.id)
         
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            self.delegate?.didSignUpForMinistryTeam(self.ministryTeam)
+        }
     }
     
     func updateUserInformation(_ user: NSDictionary) {

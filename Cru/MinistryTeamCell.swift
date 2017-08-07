@@ -10,6 +10,7 @@ import UIKit
 
 protocol MinistryTeamSignUpDelegate {
     func signUpForMinistryTeam(_ ministryTeam: MinistryTeam)
+    func didSignUpForMinistryTeam(_ ministryTeam: MinistryTeam)
 }
 
 class MinistryTeamCell: UICollectionViewCell {

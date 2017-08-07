@@ -114,7 +114,12 @@ extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
     func signUpForMinistryTeam(_ ministryTeam: MinistryTeam) {
         let signUpVC = UIStoryboard(name: "MinistryTeam", bundle: nil).instantiateViewController(withIdentifier: MinistryTeamSignUpViewController.className) as! MinistryTeamSignUpViewController
         signUpVC.ministryTeam = ministryTeam
+        signUpVC.delegate = self
         self.present(signUpVC, animated: true, completion: nil)
+    }
+    
+    func didSignUpForMinistryTeam(_ ministryTeam: MinistryTeam) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
