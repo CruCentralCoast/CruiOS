@@ -74,12 +74,8 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
         
-        if let parentMin = ministryTable[groups[indexPath.row].parentMinistry] {
-            cell.ministryLabel.text = parentMin
-        }
-        else {
-            cell.ministryLabel.text = "Unknown"
-        }
+        
+        cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
         
         cell.typeLabel.text = groups[indexPath.row].type
         cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
@@ -143,7 +139,11 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     //func loadGroups(_ inserter: @escaping (NSDictionary)->Void, completionHandler: @escaping (Bool)->Void) {
         
     fileprivate func insertGroup(_ dict: NSDictionary) {
+        //Create group and assign its parent ministry name
         let group = CommunityGroup(dict: dict)
+        if let parentMin = ministryTable[group.parentMinistryID] {
+            group.parentMinistryName = parentMin
+        }
         
         //Have to do this so we can get the names of the leaders from the database
         DispatchQueue.global(qos: .userInitiated).async { // 1

@@ -98,20 +98,45 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     
     //Complete joining a community group by storing it in local storage
     func completeJoinGroup(_ leaderInfo: NSArray?) {
-        print("COMPLETE JOIN GROUP")
-        //communityGroupsStorageManager.addObject(Config.CommunityGroupsStorageKey, obj: comGroup)
-        /*let defaults = UserDefaults.standard
-        defaults.set(comGroup, forKey: Config.CommunityGroupsStorageKey)*/
-        let storeGroup = StoredCommunityGroup(group: comGroup)
-        let comGroupArray = [storeGroup]
-        let groupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
-        UserDefaults.standard.set(groupData, forKey: Config.CommunityGroupsStorageKey)
+        let storeGroup = StoredCommunityGroup(group: comGroup, role: "member")
+        var comGroupArray = [StoredCommunityGroup]()
+        
+        // Add new group to previously joined groups in local storage
+        guard let prevGroupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
+            print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
+            return
+        }
+        
+        guard let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [StoredCommunityGroup] else {
+            print("Could not unarchive from groupData")
+            return
+        }
+        
+        for group in prevGroupArray {
+            print("")
+            print("group.id: \(group.id)")
+            print("group.desc: \(group.desc)")
+            print("place.parentMinistry: \(group.parentMinistryName)")
+            comGroupArray.append(group)
+        }
+        
+        comGroupArray.append(storeGroup)
+        
+        
+        
+        let newGroupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
+        UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
         
         
         MRProgressOverlayView.dismissOverlay(for: self.dialogView, animated: true)
         
         //navigate back to get involved
         dismissToGetInvolved()
+    }
+    
+    public func loadCommunityGroups() {
+        
+        
     }
     
     func dismissToGetInvolved() {

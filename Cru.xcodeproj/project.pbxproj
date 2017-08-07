@@ -196,6 +196,8 @@
 		6D2F38811F36937600E31433 /* CommunityGroupTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */; };
 		6D2F38831F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */; };
 		6D2F38841F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */; };
+		6D2F38861F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */; };
+		6D2F38871F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */; };
 		6D31382D1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
 		6D31382E1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
 		6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
@@ -486,6 +488,7 @@
 		6D2F387C1F366B0A00E31433 /* MinistryTeamsTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamsTabVC.swift; sourceTree = "<group>"; };
 		6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupTabCell.swift; sourceTree = "<group>"; };
 		6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredCommunityGroup.swift; sourceTree = "<group>"; };
+		6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupRole.swift; sourceTree = "<group>"; };
 		6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSlider.swift; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
 		6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
@@ -1043,6 +1046,7 @@
 			children = (
 				50B1D3CA1CED76D60014EE1B /* CommunityGroup.swift */,
 				6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */,
+				6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */,
 				6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */,
 				6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */,
 			);
@@ -1532,6 +1536,7 @@
 				0FF87DA41C8A268D00D56C4E /* GlobalUtils.swift in Sources */,
 				50A38FE91C5F0D960013BFBD /* MinistryTableViewCell.swift in Sources */,
 				85EAB81A1C0ECC8A005C7658 /* Config.swift in Sources */,
+				6D2F38861F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */,
 				6D01D83B1D843475006A9AC0 /* CustomDismissAnimationController.swift in Sources */,
 				0F68621E1CE65D3600138377 /* SummerMissionsTableViewCell.swift in Sources */,
 				50FE4D3F1C50CE5100EA9042 /* MinistryTableViewController.swift in Sources */,
@@ -1630,6 +1635,7 @@
 				6D2F38771F3660D200E31433 /* GetInvolvedTabVC.swift in Sources */,
 				C14019CE1CBF711000B01203 /* ArrayLocalStorageManager.swift in Sources */,
 				0FB811851C8F47C600883951 /* Ministry.swift in Sources */,
+				6D2F38871F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */,
 				0F5302761CD2B85D0097F9F2 /* EventTableViewCell.swift in Sources */,
 				0F17E3D31C90F68300713297 /* CalendarManager.swift in Sources */,
 				6D8F423D1CD80C8D0013BB13 /* Article.swift in Sources */,

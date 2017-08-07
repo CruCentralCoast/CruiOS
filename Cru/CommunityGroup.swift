@@ -54,11 +54,13 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
     var dayOfWeek = ""
     var meetingTime: Date!
     var stringTime = ""
-    var parentMinistry = ""
+    var parentMinistryID = ""
+    var parentMinistryName = ""
     var leaderIDs = [String]() // ids of leaders
     var leaders = [CommunityGroupLeader]() // names of leaders
     var type = ""
     var imgURL = ""
+    //var role = "member"
     //var types = [String: String]() // for when groups have multiple types
     
     init(dict: NSDictionary) {
@@ -107,25 +109,28 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         }
         
         if let min = dict[CommunityGroupKeys.ministry] as? String {
-           parentMinistry = min
+           self.parentMinistryID = min
         }
         
+        self.parentMinistryName = ""
         
     }
     
     //init for the decoder and whatnot
-    init?(id: String, name: String, desc: String, dayOfWeek: String, meetingTime: Date, stringTime: String, parentMinistry: String, leaderIDs: [String], leaders: [CommunityGroupLeader], type: String, imgURL: String) {
+    init?(id: String, name: String, desc: String, dayOfWeek: String, meetingTime: Date, stringTime: String, parentMinistryID: String, parentMinistryName: String, leaderIDs: [String], leaders: [CommunityGroupLeader], type: String, imgURL: String) {
         self.id = id
         self.name = name
         self.desc = desc
         self.dayOfWeek = dayOfWeek
         self.meetingTime = meetingTime
         self.stringTime = stringTime
-        self.parentMinistry = parentMinistry
+        self.parentMinistryID = parentMinistryID
+        self.parentMinistryName = parentMinistryName
         self.leaderIDs = leaderIDs
         self.leaders = leaders
         self.type = type
         self.imgURL = imgURL
+        //self.role = role
     }
     
     func getMeetingTime()->String{
@@ -197,17 +202,19 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
             let dayOfWeek = aDecoder.decodeObject(forKey: "dayOfWeek") as? String,
             let meetingTime = aDecoder.decodeObject(forKey: "meetingTime") as? Date,
             let stringTime = aDecoder.decodeObject(forKey: "stringTime") as? String,
-            let parentMinistry = aDecoder.decodeObject(forKey: "parentMinistry") as? String,
+            let parentMinistryID = aDecoder.decodeObject(forKey: "parentMinistryID") as? String,
+            let parentMinistryName = aDecoder.decodeObject(forKey: "parentMinistryName") as? String,
             let leaderIDs = aDecoder.decodeObject(forKey: "leaderIDs") as? [String],
             let leaders = aDecoder.decodeObject(forKey: "leaders") as? [CommunityGroupLeader],
             let type = aDecoder.decodeObject(forKey: "type") as? String,
             let imgURL = aDecoder.decodeObject(forKey: "imgURL") as? String
+            //let role = aDecoder.decodeObject(forKey: "role") as? String
         
             else { return nil }
         
         
         self.init(
-            id: id, name: name, desc: desc, dayOfWeek: dayOfWeek, meetingTime: meetingTime, stringTime: stringTime, parentMinistry: parentMinistry, leaderIDs: leaderIDs, leaders: leaders, type: type, imgURL: imgURL
+            id: id, name: name, desc: desc, dayOfWeek: dayOfWeek, meetingTime: meetingTime, stringTime: stringTime, parentMinistryID: parentMinistryID, parentMinistryName: parentMinistryName, leaderIDs: leaderIDs, leaders: leaders, type: type, imgURL: imgURL
         )
     }
     
@@ -218,11 +225,13 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         aCoder.encode(self.dayOfWeek, forKey: "dayOfWeek")
         aCoder.encode(self.meetingTime, forKey: "meetingTime")
         aCoder.encode(self.stringTime, forKey: "stringTime")
-        aCoder.encode(self.parentMinistry, forKey: "parentMinistry")
+        aCoder.encode(self.parentMinistryID, forKey: "parentMinistryID")
+        aCoder.encode(self.parentMinistryName, forKey: "parentMinistryName")
         aCoder.encode(self.leaderIDs, forKey: "leaderIDs")
         aCoder.encode(self.leaders, forKey: "leaders")
         aCoder.encode(self.type, forKey: "type")
         aCoder.encode(self.imgURL, forKey: "imgURL")
+        //aCoder.encode(self.role, forKey: "role")
     }
     
     

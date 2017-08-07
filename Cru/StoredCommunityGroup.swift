@@ -18,34 +18,36 @@ class StoredCommunityGroup: NSObject, NSCoding {
     var desc = ""
     var dayOfWeek = ""
     var stringTime = ""
-    var parentMinistry = ""
+    var parentMinistryName = ""
     var leaderNames = [String]() // ids of leaders
     var imgURL = ""
+    var role = ""
     
-    init(group: CommunityGroup) {
+    init(group: CommunityGroup, role: String) {
         self.id = group.id
         self.name = group.name
         self.desc = group.desc
         self.dayOfWeek = group.dayOfWeek
         self.stringTime = group.stringTime
-        self.parentMinistry = group.parentMinistry
+        self.parentMinistryName = group.parentMinistryName
         self.imgURL = group.imgURL
         for leader in group.leaders {
             leaderNames.append(leader.name)
         }
+        self.role = role
     }
     
     //init for the decoder and whatnot
-    init?(id: String, name: String, desc: String, dayOfWeek: String, stringTime: String, parentMinistry: String, leaderNames: [String],imgURL: String) {
+    init?(id: String, name: String, desc: String, dayOfWeek: String, stringTime: String, parentMinistryName: String, leaderNames: [String],imgURL: String, role: String) {
         self.id = id
         self.name = name
         self.desc = desc
         self.dayOfWeek = dayOfWeek
         self.stringTime = stringTime
-        self.parentMinistry = parentMinistry
+        self.parentMinistryName = parentMinistryName
         self.imgURL = imgURL
         self.leaderNames = leaderNames
-        
+        self.role = role
     }
     
     //Returns a displayable string with the leaders' names
@@ -65,14 +67,15 @@ class StoredCommunityGroup: NSObject, NSCoding {
             let desc = aDecoder.decodeObject(forKey: "desc") as? String,
             let dayOfWeek = aDecoder.decodeObject(forKey: "dayOfWeek") as? String,
             let stringTime = aDecoder.decodeObject(forKey: "stringTime") as? String,
-            let parentMinistry = aDecoder.decodeObject(forKey: "parentMinistry") as? String,
+            let parentMinistryName = aDecoder.decodeObject(forKey: "parentMinistryName") as? String,
             let leaderNames = aDecoder.decodeObject(forKey: "leaderNames") as? [String],
-            let imgURL = aDecoder.decodeObject(forKey: "imgURL") as? String
+            let imgURL = aDecoder.decodeObject(forKey: "imgURL") as? String,
+            let role = aDecoder.decodeObject(forKey: "role") as? String
             
             else { return nil }
         
         self.init(
-            id: id, name: name, desc: desc, dayOfWeek: dayOfWeek, stringTime: stringTime, parentMinistry: parentMinistry, leaderNames: leaderNames, imgURL: imgURL
+            id: id, name: name, desc: desc, dayOfWeek: dayOfWeek, stringTime: stringTime, parentMinistryName: parentMinistryName, leaderNames: leaderNames, imgURL: imgURL, role: role
         )
     }
     
@@ -82,9 +85,10 @@ class StoredCommunityGroup: NSObject, NSCoding {
         aCoder.encode(self.desc, forKey: "desc")
         aCoder.encode(self.dayOfWeek, forKey: "dayOfWeek")
         aCoder.encode(self.stringTime, forKey: "stringTime")
-        aCoder.encode(self.parentMinistry, forKey: "parentMinistry")
+        aCoder.encode(self.parentMinistryName, forKey: "parentMinistryName")
         aCoder.encode(self.leaderNames, forKey: "leaderNames")
         aCoder.encode(self.imgURL, forKey: "imgURL")
+        aCoder.encode(self.role, forKey: "role")
     }
 
 }

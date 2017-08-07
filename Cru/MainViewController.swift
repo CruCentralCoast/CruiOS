@@ -119,7 +119,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.table!.tableFooterView = UIView()
         
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.black]
-        noRideString = NSAttributedString(string: "No rides for the next two week", attributes: attributes)
+        noRideString = NSAttributedString(string: "No rides for the next two weeks", attributes: attributes)
         
         noEventsString = NSAttributedString(string: "No events for the next two weeks", attributes: attributes)
         

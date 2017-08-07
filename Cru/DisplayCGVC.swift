@@ -55,10 +55,10 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     fileprivate func insertGroup(_ dict: NSDictionary) {
         group = CommunityGroup(dict: dict)
         
-        if(group.parentMinistry != nil){
+        if(group.parentMinistryID != nil){
             CruClients.getServerClient().getById(.Ministry, insert: insertMinistry, completionHandler: {
                 success in
-                }, id: group.parentMinistry)
+                }, id: group.parentMinistryID)
         }
         
         

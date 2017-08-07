@@ -42,14 +42,6 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     }
 
     public func loadCommunityGroups() {
-        /*let joinedGroupIds = communityGroupsStorageManager.getKeys()
-        print("Joined groups:")
-        print(joinedGroupIds)
-        if let group = communityGroupsStorageManager.getDataObject(Config.CommunityGroupsStorageKey) as? CommunityGroup {
-            groups.append(group)
-            print("Appending a group")
-        }*/
-        
         guard let groupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
             print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
             return
@@ -61,10 +53,6 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         }
         
         for group in groupArray {
-            print("")
-            print("group.id: \(group.id)")
-            print("group.desc: \(group.desc)")
-            print("place.parentMinistry: \(group.parentMinistry)")
             groups.append(group)
         }
  
@@ -103,7 +91,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
      
         // Configure the cell...
-        if let parentMin = groups[indexPath.row].parentMinistry as? String {
+        if let parentMin = groups[indexPath.row].parentMinistryName as? String {
             cell.ministryLabel.text = parentMin
         }
         else {
@@ -121,6 +109,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             cell.groupImage.isHidden = true
             cell.leaderTopConstraint.constant = 12
         }
+        cell.roleLabel.text = groups[indexPath.row].role.uppercased()
         
         //Add drop shadow
         cell.backgroundColor = Colors.googleGray
