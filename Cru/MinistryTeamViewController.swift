@@ -67,6 +67,8 @@ class MinistryTeamViewController: UIViewController {
             let ministryTeam = self.ministryTeamsStorageManager.object(forKey: joinedTeamId) as! MinistryTeam
             self.ministryTeams.append(ministryTeam)
         }
+        
+        self.ministryTeams.sort { $0 < $1 }
     }
     
     @IBAction func showMinistryTeams() {
