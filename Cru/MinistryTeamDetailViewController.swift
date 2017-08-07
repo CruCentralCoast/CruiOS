@@ -44,7 +44,7 @@ class MinistryTeamDetailViewController: UIViewController {
         self.ministryTeamNameLabel.text = self.ministryTeam.name
         
         if self.ministryTeam.imageUrl == "" {
-            self.heightFromLabelToSuperView.constant = 8.0
+            self.ministryTeamImage.image = #imageLiteral(resourceName: "fall-retreat-still")
         } else if self.ministryTeam.image == nil {
             self.ministryTeamImage.load.request(with: ministryTeam.imageUrl)
             self.ministryTeam.image = self.ministryTeamImage.image

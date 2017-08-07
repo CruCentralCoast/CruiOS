@@ -34,20 +34,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2F-hS-g5Y">
-                                <rect key="frame" x="0.0" y="49" width="600" height="487"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2F-hS-g5Y">
+                                <rect key="frame" x="0.0" y="49" width="375" height="554"/>
                                 <connections>
                                     <segue destination="Yha-n9-4SQ" kind="embed" id="trF-If-RMB"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-Rc-b55" userLabel="communityGroupContainer">
-                                <rect key="frame" x="0.0" y="49" width="600" height="487"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-Rc-b55" userLabel="communityGroupContainer">
+                                <rect key="frame" x="0.0" y="49" width="375" height="554"/>
                                 <connections>
                                     <segue destination="ROr-Ps-fvZ" kind="embed" identifier="cgSegue" id="HZc-Oc-05V"/>
                                 </connections>
                             </containerView>
-                            <tabBar contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb7-NY-Slq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                            <tabBar contentMode="scaleToFill" barStyle="black" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zb7-NY-Slq">
+                                <rect key="frame" x="-4" y="0.0" width="383" height="49"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <items>
                                     <tabBarItem title="Community Group" image="community-group-icon" id="AVU-sM-4Gk"/>
@@ -59,8 +59,8 @@
                                     <outlet property="delegate" destination="Pi5-cD-Qdc" id="afY-kW-p1y"/>
                                 </connections>
                             </tabBar>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yfC-RN-qFp">
-                                <rect key="frame" x="0.0" y="49" width="600" height="487"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yfC-RN-qFp">
+                                <rect key="frame" x="0.0" y="49" width="375" height="554"/>
                                 <connections>
                                     <segue destination="1jQ-Jp-03d" kind="embed" identifier="cgDetailSegue" id="lX1-Ne-uRv"/>
                                 </connections>
@@ -146,18 +146,18 @@
                         <viewControllerLayoutGuide type="bottom" id="m65-IS-AsP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cjX-bn-CMi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="115" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="I7x-J4-cUs">
-                                <rect key="frame" x="0.0" y="20" width="600" height="423"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="490"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="50" id="HX5-hf-loX" customClass="CGDetailTableViewCell" customModule="Cru" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HX5-hf-loX" id="qAk-jC-4Wy">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0O-y5-WWm">
@@ -170,7 +170,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3o1-kM-osL">
-                                                    <rect key="frame" x="172" y="5" width="420" height="31"/>
+                                                    <rect key="frame" x="172" y="5" width="195" height="31"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
@@ -194,10 +194,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="leaderCell" rowHeight="180" id="thI-ry-sc7" customClass="CGLeaderCell" customModule="Cru" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="78" width="600" height="180"/>
+                                        <rect key="frame" x="0.0" y="78" width="375" height="180"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="thI-ry-sc7" id="lQ5-bt-urK">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="180"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pe8-Dc-THh">
@@ -220,7 +220,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sdz-e3-S2p">
-                                                    <rect key="frame" x="172" y="56" width="420" height="30"/>
+                                                    <rect key="frame" x="172" y="56" width="195" height="30"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
@@ -236,7 +236,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WNv-nT-FBa">
-                                                    <rect key="frame" x="172" y="94" width="420" height="30"/>
+                                                    <rect key="frame" x="172" y="94" width="195" height="30"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
@@ -250,7 +250,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="OjO-Eh-2lE">
-                                                    <rect key="frame" x="172" y="132" width="420" height="31"/>
+                                                    <rect key="frame" x="172" y="132" width="195" height="31"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
@@ -302,7 +302,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="quK-46-3eX">
-                                <rect key="frame" x="0.0" y="443" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="510" width="375" height="44"/>
                                 <color key="backgroundColor" red="0.90196078430000004" green="0.74829734209992893" blue="0.37953453549410171" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="YyH-JN-9Jt"/>
@@ -499,7 +499,7 @@
             </objects>
             <point key="canvasLocation" x="2202" y="2773"/>
         </scene>
-        <!--Ministry Team Detail View Controller-->
+        <!--Ministry Team-->
         <scene sceneID="gOh-pT-mAr">
             <objects>
                 <viewController storyboardIdentifier="MinistryTeamDetailViewController" id="kK3-7x-RQT" customClass="MinistryTeamDetailViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
@@ -512,13 +512,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2v-fc-Wdb">
-                                <rect key="frame" x="-4" y="20" width="383" height="647"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4T-Of-6oF">
-                                        <rect key="frame" x="0.0" y="0.0" width="380" height="330"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="328.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wWw-vp-4CK">
-                                                <rect key="frame" x="0.0" y="0.0" width="380" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="wWw-vp-4CK" secondAttribute="height" multiplier="5:3" id="NUE-YB-d0L"/>
                                                     <constraint firstAttribute="height" constant="200" id="Pgj-My-pvc"/>
@@ -540,26 +540,26 @@
                                                 </variation>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1x-uX-6FD">
-                                                <rect key="frame" x="15" y="208" width="350" height="31"/>
+                                                <rect key="frame" x="15" y="208" width="345" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="24"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNB-ig-BtX">
-                                                <rect key="frame" x="15" y="277" width="350" height="1"/>
+                                                <rect key="frame" x="15" y="276" width="345" height="1"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="1" id="GE1-VB-0WG"/>
                                                 </constraints>
                                             </view>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="Ministry team description" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2qi-hT-PEM">
-                                                <rect key="frame" x="25" y="286" width="330" height="36"/>
+                                                <rect key="frame" x="25" y="285" width="325" height="35.5"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVU-yl-9LT">
-                                                <rect key="frame" x="25" y="243" width="330" height="26"/>
+                                                <rect key="frame" x="25" y="242.5" width="325" height="25.5"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                 <color key="textColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -618,7 +618,7 @@
                                 <constraints>
                                     <constraint firstItem="m4T-Of-6oF" firstAttribute="leading" secondItem="s2v-fc-Wdb" secondAttribute="leading" id="Gkd-cD-HtF"/>
                                     <constraint firstItem="m4T-Of-6oF" firstAttribute="top" secondItem="s2v-fc-Wdb" secondAttribute="top" id="J7i-vU-OPN"/>
-                                    <constraint firstAttribute="trailing" secondItem="m4T-Of-6oF" secondAttribute="trailing" constant="-5" id="Z7v-K5-csa"/>
+                                    <constraint firstAttribute="trailing" secondItem="m4T-Of-6oF" secondAttribute="trailing" id="Z7v-K5-csa"/>
                                     <constraint firstAttribute="bottom" secondItem="m4T-Of-6oF" secondAttribute="bottom" id="biL-Mm-bEG"/>
                                 </constraints>
                             </scrollView>
@@ -647,11 +647,11 @@
                             <constraint firstItem="m4T-Of-6oF" firstAttribute="height" secondItem="tMc-Rh-DgV" secondAttribute="height" id="XYI-eN-AFN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s2v-fc-Wdb" secondAttribute="trailing" constant="-20" id="dUi-R7-V6F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ul5-hy-nar" secondAttribute="trailing" constant="-24" id="h24-1k-v3D"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="s2v-fc-Wdb" secondAttribute="trailing" constant="-20" id="i3K-06-sSn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s2v-fc-Wdb" secondAttribute="trailing" constant="-16" id="i3K-06-sSn"/>
                             <constraint firstItem="Ul5-hy-nar" firstAttribute="centerX" secondItem="tMc-Rh-DgV" secondAttribute="centerX" id="mjQ-LL-KSO"/>
                             <constraint firstItem="Ul5-hy-nar" firstAttribute="leading" secondItem="tMc-Rh-DgV" secondAttribute="leadingMargin" constant="-24" id="n1u-IU-yXD"/>
-                            <constraint firstItem="s2v-fc-Wdb" firstAttribute="leading" secondItem="tMc-Rh-DgV" secondAttribute="leadingMargin" constant="-20" id="spl-fL-7Mf"/>
-                            <constraint firstItem="m4T-Of-6oF" firstAttribute="width" secondItem="tMc-Rh-DgV" secondAttribute="width" constant="5" id="xWT-zb-bUd"/>
+                            <constraint firstItem="s2v-fc-Wdb" firstAttribute="leading" secondItem="tMc-Rh-DgV" secondAttribute="leadingMargin" constant="-16" id="spl-fL-7Mf"/>
+                            <constraint firstItem="m4T-Of-6oF" firstAttribute="width" secondItem="tMc-Rh-DgV" secondAttribute="width" id="xWT-zb-bUd"/>
                             <constraint firstItem="s2v-fc-Wdb" firstAttribute="leading" secondItem="tMc-Rh-DgV" secondAttribute="leadingMargin" constant="-20" id="yYA-BJ-mYg"/>
                         </constraints>
                         <variation key="default">
@@ -664,7 +664,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="NLQ-fQ-d2O"/>
+                    <navigationItem key="navigationItem" title="Ministry Team" id="NLQ-fQ-d2O"/>
                     <connections>
                         <outlet property="heightFromLabelToSuperView" destination="Ao2-fs-cW7" id="OxW-sv-qxd"/>
                         <outlet property="ministryNameLabel" destination="nVU-yl-9LT" id="U19-WD-l2Q"/>
@@ -686,11 +686,11 @@
                         <viewControllerLayoutGuide type="bottom" id="0Dy-ED-kNW"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Xpd-b9-2bh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uS1-wq-mn1" userLabel="CommunityGroupView">
-                                <rect key="frame" x="20" y="20" width="560" height="467"/>
+                                <rect key="frame" x="16" y="20" width="343" height="534"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Join A Community Group!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kld-tR-OoT">
                                         <rect key="frame" x="8" y="8" width="544" height="29"/>
@@ -699,14 +699,14 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="EUt-3t-uJg">
-                                        <rect key="frame" x="8" y="36" width="544" height="363"/>
+                                        <rect key="frame" x="8" y="36" width="327" height="430"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <string key="text">Here is information about what a community group is and anything else that you would like to hear about Community Groups. Here's another sentence to provide more information about what this information provides.</string>
                                         <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZHy-fT-PBH">
-                                        <rect key="frame" x="-20" y="423" width="600" height="44"/>
+                                        <rect key="frame" x="-20" y="490" width="383" height="44"/>
                                         <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
