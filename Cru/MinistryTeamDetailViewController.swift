@@ -46,8 +46,9 @@ class MinistryTeamDetailViewController: UIViewController {
         if self.ministryTeam.imageUrl == "" {
             self.ministryTeamImage.image = #imageLiteral(resourceName: "fall-retreat-still")
         } else if self.ministryTeam.image == nil {
-            self.ministryTeamImage.load.request(with: ministryTeam.imageUrl)
-            self.ministryTeam.image = self.ministryTeamImage.image
+            self.ministryTeamImage.load.request(with: self.ministryTeam.imageUrl, onCompletion: { (image, error, operation) in
+                self.ministryTeam.image = self.ministryTeamImage.image
+            })
         } else {
             self.ministryTeamImage.image = self.ministryTeam.image
         }

@@ -47,8 +47,9 @@ class MinistryTeamCell: UICollectionViewCell {
                 self.imageView.isHidden = true
                 self.stackViewTopConstraint.constant = 8
             } else if ministryTeam.image == nil {
-                self.imageView.load.request(with: self.ministryTeam.imageUrl)
-                self.ministryTeam.image = self.imageView.image
+                self.imageView.load.request(with: self.ministryTeam.imageUrl, onCompletion: { (image, error, operation) in
+                    self.ministryTeam.image = self.imageView.image
+                })
                 self.imageView.isHidden = false
                 self.stackViewTopConstraint.constant = 0
             } else {
