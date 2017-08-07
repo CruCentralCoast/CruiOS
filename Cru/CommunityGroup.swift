@@ -79,10 +79,9 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         }
         
         if let time = dict[CommunityGroupKeys.meetingTime] as? String {
-            
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "h:mm a"
-            meetingTime = dateFormatter.date(from: time)
+            meetingTime = dateFormatter.date(from: time) as Date!
             
             if meetingTime == nil {
                 stringTime = time
@@ -126,7 +125,7 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         self.leaderIDs = leaderIDs
         self.leaders = leaders
         self.type = type
-        self.imgURL = type
+        self.imgURL = imgURL
     }
     
     func getMeetingTime()->String{
@@ -138,7 +137,7 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         
         
         if (meetingTime != nil ){
-            return formatter.string(from: meetingTime)
+            return formatter.string(from: meetingTime as Date)
         }
         else{
             return stringTime

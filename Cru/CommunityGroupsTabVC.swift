@@ -2,6 +2,9 @@
 //  CommunityGroupsTableViewController.swift
 //  Cru
 //
+//  The view controller class for the Community Groups tab, set up using 
+//  the instructions at https://medium.com/michaeladeyeri/how-to-implement-android-like-tab-layouts-in-ios-using-swift-3-578516c3aa9 .
+//
 //  Created by Erica Solum on 8/5/17.
 //  Copyright © 2017 Jamaican Hopscotch Mafia. All rights reserved.
 //
@@ -15,6 +18,9 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var joinButton: UIButton!
+    
+    private var groups = [StoredCommunityGroup]()
+    private var communityGroupsStorageManager: MapLocalStorageManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +29,52 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         self.tableView.dataSource = self
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
-        //self.tableView.emptyDataSetDelegate = self
-        //self.tableView.emptyDataSetSource = self
+        
+        //Set the cells for automatic cell height
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.backgroundColor = Colors.googleGray
+        
+        //set up storage managers for ministry teams and for storing/loading user information
+        communityGroupsStorageManager = MapLocalStorageManager(key: Config.CommunityGroupsStorageKey)
+        //Load Community Groups from local storage
+        loadCommunityGroups()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    public func loadCommunityGroups() {
+        /*let joinedGroupIds = communityGroupsStorageManager.getKeys()
+        print("Joined groups:")
+        print(joinedGroupIds)
+        if let group = communityGroupsStorageManager.getDataObject(Config.CommunityGroupsStorageKey) as? CommunityGroup {
+            groups.append(group)
+            print("Appending a group")
+        }*/
+        
+        guard let groupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
+            print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
+            return
+        }
+        
+        guard let groupArray = NSKeyedUnarchiver.unarchiveObject(with: groupData as Data) as? [StoredCommunityGroup] else {
+            print("Could not unarchive from groupData")
+            return
+        }
+        
+        for group in groupArray {
+            print("")
+            print("group.id: \(group.id)")
+            print("group.desc: \(group.desc)")
+            print("place.parentMinistry: \(group.parentMinistry)")
+            groups.append(group)
+        }
+ 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        loadCommunityGroups()
+        self.tableView.reloadData()
+    }
+ 
     // MARK: - XLPagerTabStrip Stuff
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "COMMUNITY GROUPS")
@@ -47,78 +84,65 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return UIImage(named: Config.noCommunityGroupsImage)
     }
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
+        
+        self.tableView.reloadData()
+    }
+    
 
     
-    // MARK: - Table view data source
-    
+    // MARK: - Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 0
+        return groups.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
      
         // Configure the cell...
+        if let parentMin = groups[indexPath.row].parentMinistry as? String {
+            cell.ministryLabel.text = parentMin
+        }
+        else {
+            cell.ministryLabel.text = "Unknown"
+        }
+        
+        cell.meetingTimeLabel.text = groups[indexPath.row].stringTime
+        
+        cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+        
+        if groups[indexPath.row].imgURL != "" {
+            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+        }
+        else {
+            cell.groupImage.isHidden = true
+            cell.leaderTopConstraint.constant = 12
+        }
+        
+        //Add drop shadow
+        cell.backgroundColor = Colors.googleGray
+        cell.cardView.layer.shadowColor = UIColor.black.cgColor
+        cell.cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        cell.cardView.layer.shadowOpacity = 0.25
+        cell.cardView.layer.shadowRadius = 2
      
         return cell
     }
     
-    // MARK: - Button Actions
-    @IBAction func joinPressed(_ sender: UIButton) {
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let group = groups[indexPath.row]
         
+        if group.imgURL == "" {
+            //return 194.0
+            return 154
+        }
+        else {
+            return 300
+        }
     }
- 
-    
-    /*func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    
-        let workout = self.workouts[indexPath.row] as? Workout
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as? WorkoutCell!
-        cell!.textCell?.text = workout?.title
-        cell!.backgroundColor = workout?.color
-        cell!.countLabel.text = "\(indexPath.row+1)"
-        cell!.selectionStyle = UITableViewCellSelectionStyle.None
-        return cell!
-    }*/
-
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
     
 
     /*

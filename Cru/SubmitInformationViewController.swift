@@ -96,35 +96,22 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         MRProgressOverlayView.showOverlayAdded(to: self.dialogView, animated: true)
     }
     
-    //completion handler for joining a ministry team
+    //Complete joining a community group by storing it in local storage
     func completeJoinGroup(_ leaderInfo: NSArray?) {
-        //add ministry team to list of ministry teams we're a part of
-        /*communityGroupsStorageManager.addElement(comGroup.id, elem: comGroup)
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: comGroup)
-        let userDefaults = UserDefaults.standard
-        userDefaults.set(encodedData, forKey: Config.CommunityGroupsStorageKey)*/
-        
         print("COMPLETE JOIN GROUP")
-        //communityGroupsStorageManager.putObject(Config.CommunityGroupsStorageKey, object: comGroup)
-        communityGroupsStorageManager.addObject(Config.CommunityGroupsStorageKey, obj: comGroup)
+        //communityGroupsStorageManager.addObject(Config.CommunityGroupsStorageKey, obj: comGroup)
+        /*let defaults = UserDefaults.standard
+        defaults.set(comGroup, forKey: Config.CommunityGroupsStorageKey)*/
+        let storeGroup = StoredCommunityGroup(group: comGroup)
+        let comGroupArray = [storeGroup]
+        let groupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
+        UserDefaults.standard.set(groupData, forKey: Config.CommunityGroupsStorageKey)
+        
+        
         MRProgressOverlayView.dismissOverlay(for: self.dialogView, animated: true)
         
         //navigate back to get involved
-        
         dismissToGetInvolved()
-        
-        
-        /*for controller in (self.navigationController?.viewControllers)! {
-            if controller.isKind(of: GetInvolvedViewController.self) {
-                self.navigationController?.popToViewController(controller, animated: true)
-            }
-        }*/
-        
-        //let switchViewController = self.navigationController?.viewControllers[1] as! ComposeViewController
-        //let switchViewController = self.navigationController?.viewControllers[1]
-        
-        
-        //self.navigationController?.popToViewController(switchViewController, animated: true)
     }
     
     func dismissToGetInvolved() {
@@ -132,14 +119,6 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         dismiss(animated: true, completion: { () -> Void in
             nav.popViewController(animated: true)
         })
-        
-        /*
-            UINavigationController *nav = (UINavigationController *)self.presentingViewController;
-            [self dismissViewControllerAnimated:YES completion:^{
-                [nav popViewControllerAnimated:YES];
-                }];
-        
-        */
     }
     
     //used to update the user's information on the sign up page

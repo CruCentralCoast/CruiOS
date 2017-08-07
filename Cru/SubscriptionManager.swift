@@ -186,22 +186,21 @@ class SubscriptionManager: SubscriptionProtocol {
         let gcmToken = loadGCMToken()
         GCMPubSub.sharedInstance().subscribe(withToken: gcmToken, topic: topic,
             options: nil, handler: {(error) -> Void in
-                let err = error! as NSError
-                var success : Bool = false
-                
-                if (err != nil) {
-                    // Treat the "already subscribed" error more gently
+                if let err = error as? NSError {
+                    var success : Bool = false
                     
                     if err.code == 3001 {
                         print("Already subscribed to \(topic)")
                     } else {
                         print("Subscription failed: \(error?.localizedDescription)");
                     }
-                } else {
-                    success = true
+                    
+                    handler(success)
+                }
+                else {
                     NSLog("Subscribed to \(topic)");
                 }
-                handler(success)
+        
         })
     }
     
