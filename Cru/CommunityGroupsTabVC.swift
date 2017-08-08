@@ -21,6 +21,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     
     private var groups = [StoredCommunityGroup]()
     private var communityGroupsStorageManager: MapLocalStorageManager!
+    private var selectedGroup: StoredCommunityGroup?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -133,15 +134,22 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedGroup = groups[indexPath.row]
+    }
+    
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "detailSegue" {
+            if let vc = segue.destination as? CommunityGroupDetailsViewController {
+                vc.group = selectedGroup
+            }
+        }
     }
-    */
 
 }

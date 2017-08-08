@@ -249,6 +249,10 @@
 		6D9609001F119E1D00413469 /* SubmitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */; };
 		6D9609011F119E1D00413469 /* SubmitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */; };
 		6DA330AB1CD95E1200FCC970 /* ResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */; };
+		6DA598481F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */; };
+		6DA598491F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */; };
+		6DA5984B1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */; };
+		6DA5984C1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */; };
 		6DA815471D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */; };
 		6DA815481D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */; };
 		6DA8154A1D3FFA060087F05B /* newofferride.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA815491D3FFA060087F05B /* newofferride.storyboard */; };
@@ -518,6 +522,8 @@
 		6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupLeader.swift; sourceTree = "<group>"; };
 		6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitInformationViewController.swift; sourceTree = "<group>"; };
 		6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTest.swift; sourceTree = "<group>"; };
+		6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupDetailsViewController.swift; sourceTree = "<group>"; };
+		6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveGroupViewController.swift; sourceTree = "<group>"; };
 		6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOfferRideViewController.swift; sourceTree = "<group>"; };
 		6DA815491D3FFA060087F05B /* newofferride.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = newofferride.storyboard; sourceTree = "<group>"; };
 		6DA8154C1D4019E70087F05B /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
@@ -1015,7 +1021,6 @@
 			children = (
 				6D2F38751F3660D200E31433 /* GetInvolvedTabVC.swift */,
 				6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */,
-				6D2F38781F366A9900E31433 /* CommunityGroupsTabVC.swift */,
 				6D2F387C1F366B0A00E31433 /* MinistryTeamsTabVC.swift */,
 			);
 			name = "Tab View Controller";
@@ -1119,7 +1124,10 @@
 				6D9563B11F099607000B0683 /* Models */,
 				C1EF49061CDBF3AD009439FE /* communitygroups.storyboard */,
 				6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */,
+				6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */,
 				6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */,
+				6D2F38781F366A9900E31433 /* CommunityGroupsTabVC.swift */,
+				6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */,
 				6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */,
 				6D9112B61F0AC8A1001BCE51 /* Old Design */,
 			);
@@ -1457,6 +1465,7 @@
 				6DA8154D1D4019E70087F05B /* SegmentedControl.swift in Sources */,
 				6D2F38831F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */,
 				0F83D56E1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift in Sources */,
+				6DA5984B1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */,
 				0FAAE91C1CE6A83A0055770D /* MinistryTeamsTableViewController.swift in Sources */,
 				6D2F38791F366A9900E31433 /* CommunityGroupsTabVC.swift in Sources */,
 				50AA7CCB1C63320F00866BE6 /* RideTableViewCell.swift in Sources */,
@@ -1508,6 +1517,7 @@
 				6D9379271F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */,
 				50C6CC7E1CBF3A3700EF5EFB /* SWRevealViewController.m in Sources */,
 				50A9B0291CFBE04A00E759E2 /* RiderEditTableViewCell.swift in Sources */,
+				6DA598481F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */,
 				6D59068F1CE3F0DC00464D57 /* CardTableViewCell.swift in Sources */,
 				6D2B4FC51D854B770009DC2D /* ResourceTagTableView.swift in Sources */,
 				6DC46F6E1D3D593C008BB70A /* ArticleTableViewCell.swift in Sources */,
@@ -1614,6 +1624,7 @@
 				50B1D3CC1CED76D60014EE1B /* CommunityGroup.swift in Sources */,
 				6D434A231D42ABE200661CA8 /* LocationViewController.swift in Sources */,
 				6D31382E1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */,
+				6DA598491F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */,
 				6DC46F7E1D3D73D8008BB70A /* Notification.swift in Sources */,
 				507B368B1CE10BDC003D6CF9 /* UpcomingItemCell.swift in Sources */,
 				50A9B02D1CFBFA1900E759E2 /* MapOfRidesViewController.swift in Sources */,
@@ -1652,6 +1663,7 @@
 				C13F7DE91CE277E30057D0F5 /* CGQuestion.swift in Sources */,
 				0F1959CD1C8E5B0C00A783BA /* LoginUtils.swift in Sources */,
 				6D2B4FC61D854B770009DC2D /* ResourceTagTableView.swift in Sources */,
+				6DA5984C1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */,
 				50D3166F1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
 				6D9112B51F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */,
 				6D76CA7C1C06AB6900F8B007 /* Event.swift in Sources */,
