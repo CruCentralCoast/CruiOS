@@ -32,7 +32,11 @@ class MinistryTeamViewController: UIViewController {
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
         self.refreshControl.addTarget(self, action: #selector(MinistryTeamViewController.refresh(_:)), for: UIControlEvents.valueChanged)
-        self.collectionView.refreshControl = self.refreshControl
+        if #available(iOS 10.0, *) {
+            self.collectionView.refreshControl = self.refreshControl
+        } else {
+            self.collectionView.addSubview(self.refreshControl)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
