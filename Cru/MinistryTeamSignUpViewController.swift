@@ -94,8 +94,7 @@ extension MinistryTeamSignUpViewController: ValidationDelegate {
         self.updateUserInformation(user as NSDictionary)
         
         // Join the ministry team
-//        CruClients.getServerClient().joinMinistryTeam(self.ministryTeam.id, fullName: user[self.fullNameKey]!, phone: user[self.phoneNumberKey]!, callback: self.completeJoinTeam)
-        self.completeJoinTeam(nil)
+        CruClients.getServerClient().joinMinistryTeam(self.ministryTeam.id, fullName: user[self.fullNameKey]!, phone: user[self.phoneNumberKey]!, callback: self.completeJoinTeam)
     }
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
