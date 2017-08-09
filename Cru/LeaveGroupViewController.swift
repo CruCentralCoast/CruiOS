@@ -29,6 +29,8 @@ class LeaveGroupViewController: UIViewController{
     @IBAction func leaveGroup(_ sender: UIButton) {
         
         //CruClients.getServerClient().joinCommunityGroup(comGroup.id, fullName: user[fullNameKey]!, phone: user[phoneNoKey]!, callback: completeJoinGroup)
+        //As soon as server endpoint is created, pass completeLeaveGroup as callback like above
+        
         completeLeaveGroup()
         
         

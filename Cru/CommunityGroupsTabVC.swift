@@ -37,8 +37,8 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         
         //set up storage managers for ministry teams and for storing/loading user information
         communityGroupsStorageManager = MapLocalStorageManager(key: Config.CommunityGroupsStorageKey)
-        //Load Community Groups from local storage
-        loadCommunityGroups()
+        
+        
 
     }
 
@@ -54,12 +54,16 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         }
         
         for group in groupArray {
-            groups.append(group)
+            if !groups.contains(group) {
+                groups.append(group)
+            }
+            
         }
  
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //Load Community Groups from local storage
         loadCommunityGroups()
         self.tableView.reloadData()
     }

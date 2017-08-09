@@ -32,8 +32,11 @@ struct Config {
             #endif
         }
     }
-    static let leaderApiKey = "LeaderAPIKey"
+    //static let leaderApiKey = "LeaderAPIKey"
     static let username = "username"
+    static let userID = "userId"
+    static let email = "email"
+    static let phone = "phone"
     static let ridesReceiving = "ridesReceiving"
     static let ridesOffering = "ridesOffering"
     static let communityGroupKey = "CommunityGroup"

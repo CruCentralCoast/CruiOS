@@ -28,7 +28,7 @@ class SettingsTableViewController: UITableViewController, SWRevealViewController
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     override func viewWillAppear(_ animated: Bool) {
-        if(GlobalUtils.loadString(Config.leaderApiKey) == ""){
+        if(GlobalUtils.loadString(Config.userID) == ""){
             loginLabel.text = "Log in"
         }
         else{
@@ -55,7 +55,7 @@ class SettingsTableViewController: UITableViewController, SWRevealViewController
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.row == 2) {
-            if (GlobalUtils.loadString(Config.leaderApiKey) == "") {
+            if (GlobalUtils.loadString(Config.userID) == "") {
                 self.performSegue(withIdentifier: "LoginSegue", sender: self)
             } else {
                 self.performSegue(withIdentifier: "LogoutSegue", sender: self)

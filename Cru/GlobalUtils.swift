@@ -123,6 +123,21 @@ class GlobalUtils {
         return ""
     }
     
+    class func saveBool(_ key: String, value: Bool){
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: value)
+        let defaults = UserDefaults.standard
+        defaults.set(archivedObject, forKey: key)
+        defaults.synchronize()
+    }
+    
+    class func loadBool(_ key: String)-> Bool{
+        if let unarchivedObject = UserDefaults.standard.object(forKey: key) as? Data {
+            let token = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? Bool
+            return token!
+        }
+        return false
+    }
+    
     class func printRequest(_ params: AnyObject) {
         do {
             let something = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)

@@ -8,6 +8,22 @@
 
 import UIKit
 
+
+//use to parse user data to and from keystone db
+struct UserKeys {
+    static let id = "_id"
+    static let phone = "phone"
+    static let email = "email"
+    static let notifications = "notifications"
+    static let summerMissionsUpdates = "summerMissionUpdates"
+    static let communityGroupUpdates = "communityGroupUpdates"
+    static let ministryTeamUpdates = "ministryTeamUpdates"
+    static let isCommunityGroupLeader = "isCommunityGroupLeader"
+    static let isMinistryTeamLeader = "isMinistryTeamLeader"
+    static let isSummerMissionLeader = "isSummerMissionLeader"
+    
+}
+
 class User {
 
     let name: String!

@@ -90,5 +90,13 @@ class StoredCommunityGroup: NSObject, NSCoding {
         aCoder.encode(self.imgURL, forKey: "imgURL")
         aCoder.encode(self.role, forKey: "role")
     }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        if let other = object as? StoredCommunityGroup {
+            return self.id == other.id
+        } else {
+            return false
+        }
+    }
 
 }

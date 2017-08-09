@@ -48,11 +48,40 @@ class LoginViewController: UIViewController, ValidationDelegate {
                 }
             }))
             
+            if success {
+                LoginUtils.getUserInfo(insert: self.insertUserInfo, afterFunc: self.completeGetUserInfo)
+            }
+            
+            
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true, completion: {
                 self.present(alert, animated: true, completion: nil)
                 
             })
         })
+    }
+    
+    func insertUserInfo(_ dict: NSDictionary) {
+        if let email = dict[UserKeys.email] as? String {
+            GlobalUtils.saveString(Config.email, value: email)
+        }
+        if let phone = dict[UserKeys.phone] as? String {
+            GlobalUtils.saveString(Config.phone, value: phone)
+        }
+        if let leader = dict[UserKeys.isCommunityGroupLeader] as? Bool {
+            GlobalUtils.saveBool(UserKeys.isCommunityGroupLeader, value: leader)
+        }
+        if let notifications = dict[UserKeys.notifications] as? NSDictionary {
+            if let groupNotifications = notifications[UserKeys.communityGroupUpdates] as? Bool{
+                GlobalUtils.saveBool(UserKeys.communityGroupUpdates, value: groupNotifications)
+            }
+            if let teamNotifications = notifications[UserKeys.ministryTeamUpdates] as? Bool{
+                GlobalUtils.saveBool(UserKeys.ministryTeamUpdates, value: teamNotifications)
+            }
+        }
+    }
+    
+    func completeGetUserInfo(_ success: Bool) {
+        // TODO: Do something here?
     }
     
     func resetLabel(_ field: UITextField, error: UILabel){

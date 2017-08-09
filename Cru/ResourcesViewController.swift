@@ -239,7 +239,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             //Also get resource tags and store them
             serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
                 //Hide the community leader tag if the user isn't logged in
-                if GlobalUtils.loadString(Config.leaderApiKey) == "" {
+                if GlobalUtils.loadString(Config.userID) == "" {
                     let index = self.tags.index(where: {$0.title == "Leader (password needed)"})
                     self.tags.remove(at: index!)
                     
