@@ -50,7 +50,7 @@ class GetInvolvedTabVC: ButtonBarPagerTabStripViewController, SWRevealViewContro
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         
         let child_1 = UIStoryboard(name: "communitygroups", bundle: nil).instantiateViewController(withIdentifier: "tab1")
-        let child_2 = UIStoryboard(name: "getinvolved", bundle: nil).instantiateViewController(withIdentifier: "child2")
+        let child_2 = UIStoryboard(name: "MinistryTeam", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamViewController")
         return [child_1, child_2]
     }
     

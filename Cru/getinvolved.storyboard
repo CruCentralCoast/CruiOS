@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="owy-JZ-lL2">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13168.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="owy-JZ-lL2">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -37,7 +37,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2F-hS-g5Y">
                                 <rect key="frame" x="0.0" y="49" width="375" height="554"/>
                                 <connections>
-                                    <segue destination="Yha-n9-4SQ" kind="embed" id="trF-If-RMB"/>
+                                    <segue destination="Hlb-To-BKX" kind="embed" id="hHs-ua-x7d"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hpv-Rc-b55" userLabel="communityGroupContainer">
@@ -114,12 +114,20 @@
             </objects>
             <point key="canvasLocation" x="1207" y="1582"/>
         </scene>
+        <!--MinistryTeamViewController-->
+        <scene sceneID="6fF-aC-xhV">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MinistryTeam" referencedIdentifier="MinistryTeamViewController" id="Hlb-To-BKX" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aHH-8U-HO6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1205" y="2069"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="mkK-IV-cDm">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="qKH-sz-Wh1" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="8Aj-E9-wWT">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="8Aj-E9-wWT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -336,7 +344,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eST-5V-ifG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2914" y="1715"/>
+            <point key="canvasLocation" x="2530" y="1545"/>
         </scene>
         <!--Get Involved-->
         <scene sceneID="iPz-NT-qjp">
@@ -347,7 +355,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mVg-wj-t8F"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sye-Qg-9uC">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iHG-oN-KEm">
@@ -427,27 +435,27 @@
                                                                 <constraint firstAttribute="height" constant="150" id="10A-Ok-zIm"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" image="meeting-time-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0Nk-hJ-C8G">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" layoutMarginsFollowReadableWidth="YES" image="meeting-time-icon" translatesAutoresizingMaskIntoConstraints="NO" id="0Nk-hJ-C8G">
                                                             <rect key="frame" x="19" y="190" width="20" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="9wt-wh-7E6"/>
                                                                 <constraint firstAttribute="width" constant="20" id="Ju1-WJ-gud"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ministry-icon" translatesAutoresizingMaskIntoConstraints="NO" id="zZh-Cy-jzf">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="ministry-icon" translatesAutoresizingMaskIntoConstraints="NO" id="zZh-Cy-jzf">
                                                             <rect key="frame" x="18" y="221" width="21" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="21" id="5yn-Sh-3rw"/>
                                                                 <constraint firstAttribute="height" constant="20" id="R1k-ej-5Gg"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day, time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWB-rJ-jwd">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Day, time" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KWB-rJ-jwd">
                                                             <rect key="frame" x="46" y="190" width="289" height="23"/>
                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1l-xC-Hzg">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Ministry" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X1l-xC-Hzg">
                                                             <rect key="frame" x="46" y="221" width="289" height="23"/>
                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -460,13 +468,13 @@
                                                                 <constraint firstAttribute="width" constant="17" id="pKT-4X-DHW"/>
                                                             </constraints>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leader One, Leader Two" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-xq-PLO">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Leader One, Leader Two" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdu-xq-PLO">
                                                             <rect key="frame" x="46" y="159" width="289" height="23"/>
                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MEMBER" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEz-iy-rCL">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="MEMBER" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEz-iy-rCL">
                                                             <rect key="frame" x="46" y="252" width="289" height="20"/>
                                                             <fontDescription key="fontDescription" name="FreightSansProSemibold-Regular" family="FreightSans Pro" pointSize="15"/>
                                                             <color key="textColor" red="0.86666666670000003" green="0.49019607840000001" blue="0.1058823529" alpha="1" colorSpace="calibratedRGB"/>
@@ -574,68 +582,7 @@
             </objects>
             <point key="canvasLocation" x="1292" y="4250"/>
         </scene>
-        <!--Ministry Teams TabVC-->
-        <scene sceneID="wAe-1G-YyS">
-            <objects>
-                <viewController storyboardIdentifier="child2" id="LDf-SO-znd" customClass="MinistryTeamsTabVC" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="IS8-kP-2wo"/>
-                        <viewControllerLayoutGuide type="bottom" id="bRw-kA-Zky"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="xDd-jF-ZaW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ed1-dT-501">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" id="SA1-vc-84F">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SA1-vc-84F" id="p7j-H8-Rgu">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYb-YF-fl8">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="gfT-sW-uZP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="20"/>
-                                <state key="normal" title="Join a Ministry Team">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="joinPressed:" destination="LDf-SO-znd" eventType="touchUpInside" id="lsc-yL-odO"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Ed1-dT-501" firstAttribute="top" secondItem="xDd-jF-ZaW" secondAttribute="top" id="CEh-Tq-6ez"/>
-                            <constraint firstAttribute="trailing" secondItem="Ed1-dT-501" secondAttribute="trailing" id="OPj-Bc-4l8"/>
-                            <constraint firstItem="Ed1-dT-501" firstAttribute="leading" secondItem="xDd-jF-ZaW" secondAttribute="leading" id="Uq0-CT-lDx"/>
-                            <constraint firstItem="bRw-kA-Zky" firstAttribute="top" secondItem="IYb-YF-fl8" secondAttribute="bottom" id="Wup-Rj-G3b"/>
-                            <constraint firstItem="IYb-YF-fl8" firstAttribute="top" secondItem="Ed1-dT-501" secondAttribute="bottom" id="f6m-Qv-4Rd"/>
-                            <constraint firstAttribute="trailing" secondItem="IYb-YF-fl8" secondAttribute="trailing" id="gox-xE-BFN"/>
-                            <constraint firstItem="IYb-YF-fl8" firstAttribute="leading" secondItem="xDd-jF-ZaW" secondAttribute="leading" id="z7f-aK-xo3"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="joinButton" destination="IYb-YF-fl8" id="XKr-L4-FmY"/>
-                        <outlet property="tableView" destination="Ed1-dT-501" id="Ddh-Kv-q1G"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KCA-ci-T7d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2082" y="3877"/>
-        </scene>
-        <!--Ministry Team View Controller-->
+        <!--View Controller-->
         <scene sceneID="43r-bV-BlF">
             <objects>
                 <viewController id="Swp-qm-uyo" sceneMemberID="viewController">
@@ -662,7 +609,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Team Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1dZ-uY-I7B">
-                                                            <rect key="frame" x="8" y="13" width="584" height="23"/>
+                                                            <rect key="frame" x="8" y="13" width="359" height="23"/>
                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -964,7 +911,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqk-yG-Dsj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3464.8000000000002" y="2385.1574212893556"/>
+            <point key="canvasLocation" x="3465" y="2426"/>
         </scene>
         <!--Community Group View Controller-->
         <scene sceneID="G68-eN-OY9">
@@ -1057,7 +1004,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2992" y="1704"/>
+            <point key="canvasLocation" x="3465" y="1545"/>
         </scene>
         <!--communitygroups-->
         <scene sceneID="OsC-yo-5Hj">
@@ -1065,14 +1012,14 @@
                 <viewControllerPlaceholder storyboardName="communitygroups" id="Xoq-Tk-ub7" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KMq-r0-AzC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3861" y="1973"/>
+            <point key="canvasLocation" x="3464" y="1956"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="6SN-Yt-Th7">
             <objects>
                 <navigationController storyboardIdentifier="getInvolvedStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="owy-JZ-lL2" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="uTJ-Wc-TYh">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="uTJ-Wc-TYh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

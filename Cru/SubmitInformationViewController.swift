@@ -19,7 +19,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     
     @IBOutlet weak var dialogView: UIView!
     // MARK: Properties
-    var communityGroupsStorageManager: MapLocalStorageManager!
+    var localStorageManager: LocalStorageManager!
     var comGroup: CommunityGroup!
     let validator = Validator()
     
@@ -30,7 +30,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         super.viewDidLoad()
         
         //set up storage managers for ministry teams and for storing/loading user information
-        communityGroupsStorageManager = MapLocalStorageManager(key: Config.CommunityGroupsStorageKey)
+        self.localStorageManager = LocalStorageManager()
         
         //set up validator to validate the fields
         validator.registerField(nameField, errorLabel: nameError, rules: [RequiredRule(), FullNameRule()])
@@ -49,7 +49,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     
     //Fill in fields after they've appeared
     override func viewDidAppear(_ animated: Bool) {
-        /*if let user = communityGroupsStorageManager.getObject(Config.userStorageKey) as? NSDictionary {
+        /*if let user = self.localStorageManager.object(forKey: Config.userStorageKey) as? NSDictionary {
             print(user)
             nameField.text = (user[fullNameKey] as? String)
             numberField.text = (user[phoneNoKey] as? String)
@@ -148,15 +148,11 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     
     //used to update the user's information on the sign up page
     func updateUserInformation(_ user: NSDictionary) {
-        let storedUser = communityGroupsStorageManager.getObject(Config.userStorageKey)
+        let storedUser = self.localStorageManager.object(forKey: Config.userStorageKey)
         
-        //if there is no information stored about the user yet
         if storedUser == nil {
-            //            print("ADDED NEW USER")
-            communityGroupsStorageManager.putObject(Config.userStorageKey, object: user)
-        }
-            //if the information about the user is different in this form
-        else {
+            self.localStorageManager.set(user, forKey: Config.userStorageKey)
+        } else {
             if let tempStore = storedUser as? NSDictionary {
                 let storedFullName = tempStore[fullNameKey] as? String
                 let storedPhoneNo = tempStore[phoneNoKey] as? String
@@ -164,7 +160,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
                 let phoneNo = user[phoneNoKey] as? String
                 
                 if (storedFullName != fullName) || (storedPhoneNo != phoneNo) {
-                    communityGroupsStorageManager.putObject(Config.userStorageKey, object: user)
+                    self.localStorageManager.set(user, forKey: Config.userStorageKey)
                 }
             }
         }

@@ -127,7 +127,7 @@ extension MinistryTeamViewController: UICollectionViewDelegate, UICollectionView
 
 extension MinistryTeamViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return #imageLiteral(resourceName: "no-ministry-teams")
+        return UIImage(named: Config.noMinistryTeamsImage)
     }
 }
 

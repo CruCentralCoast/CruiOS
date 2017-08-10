@@ -20,7 +20,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var joinButton: UIButton!
     
     private var groups = [StoredCommunityGroup]()
-    private var communityGroupsStorageManager: MapLocalStorageManager!
+//    private var communityGroupsStorageManager: MapLocalStorageManager!
     private var selectedGroup: StoredCommunityGroup?
 
     override func viewDidLoad() {
@@ -36,7 +36,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         self.tableView.backgroundColor = Colors.googleGray
         
         //set up storage managers for ministry teams and for storing/loading user information
-        communityGroupsStorageManager = MapLocalStorageManager(key: Config.CommunityGroupsStorageKey)
+//        communityGroupsStorageManager = MapLocalStorageManager(key: Config.CommunityGroupsStorageKey)
         
         
 
