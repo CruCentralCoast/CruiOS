@@ -97,7 +97,8 @@ extension MinistryTeamViewController: UICollectionViewDelegate, UICollectionView
         if let cell = self.sizingCell {
             cell.ministryTeam = self.ministryTeams[indexPath.row]
             cell.signUpButton.isHidden = true
-            cell.layoutSubviews()
+            cell.setNeedsLayout()
+            cell.layoutIfNeeded()
             let targetSize = CGSize(width: collectionView.frame.size.width - padding, height: 0)
             return cell.sizeThatFits(targetSize)
         }
