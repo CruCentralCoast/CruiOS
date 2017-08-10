@@ -9,8 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="FreigSanProBook.otf">
-            <string>FreightSansProBook-Regular</string>
+        <array key="FreigSanProSem.otf">
+            <string>FreightSansProSemibold-Regular</string>
+        </array>
+        <array key="FreigSanProMed.otf">
+            <string>FreightSansProMedium-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -33,7 +36,7 @@
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="M0U-gg-BhR"/>
                                     <constraint firstAttribute="height" constant="44" id="QRm-IN-Njz"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="20"/>
                                 <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Join a Ministry Team"/>
                                 <connections>

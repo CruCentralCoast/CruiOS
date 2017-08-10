@@ -134,7 +134,7 @@ extension MinistryTeamViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDele
 // MARK: - XLPagerTabStrip
 extension MinistryTeamViewController: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
-        return IndicatorInfo(title: "Ministry Teams")
+        return IndicatorInfo(title: "MINISTRY TEAMS")
     }
 }
 
