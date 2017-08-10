@@ -12,15 +12,15 @@ class FakeLocalStorageManager: LocalStorageManager {
     
     var store = [String:Any]()
     
-    override func getObject(_ key: String) -> Any? {
+    override func object(forKey key: String) -> Any? {
         return store[key]
     }
     
-    override func putObject(_ key: String, object: Any) {
-        store[key] = object
+    override func set(_ value: Any?, forKey key: String) {
+        store[key] = value
     }
     
-    override func removeObject(_ key: String) {
+    override func removeObject(forKey key: String) {
         store[key] = nil
     }
 }

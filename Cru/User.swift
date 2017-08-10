@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 //use to parse user data to and from keystone db
 struct UserKeys {
     static let id = "_id"
@@ -24,7 +23,7 @@ struct UserKeys {
     
 }
 
-class User {
+class User: Codable {
 
     let name: String!
     let phone: String!

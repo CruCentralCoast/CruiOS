@@ -60,7 +60,6 @@ class NotificationsViewController: UITableViewController, DZNEmptyDataSetDelegat
         self.tableView.separatorColor = UIColor.clear
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
         return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
-        
     }
 
     override func didReceiveMemoryWarning() {
