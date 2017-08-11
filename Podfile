@@ -29,6 +29,7 @@ def cru_pods
     pod 'XLPagerTabStrip', '~> 7.0'
     pod 'YouTubePlayer'
     pod 'UIScrollView-InfiniteScroll', '~> 1.0'
+    pod 'DropDown'
 end
 
 def crash_monitor

@@ -19,9 +19,9 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var joinButton: UIButton!
     
-    private var groups = [StoredCommunityGroup]()
+    private var groups = [CommunityGroup]()
     private var communityGroupsStorageManager: MapLocalStorageManager!
-    private var selectedGroup: StoredCommunityGroup?
+    private var selectedGroup: CommunityGroup?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +48,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
-        guard let groupArray = NSKeyedUnarchiver.unarchiveObject(with: groupData as Data) as? [StoredCommunityGroup] else {
+        guard let groupArray = NSKeyedUnarchiver.unarchiveObject(with: groupData as Data) as? [CommunityGroup] else {
             print("Could not unarchive from groupData")
             return
         }

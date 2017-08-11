@@ -98,29 +98,31 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     
     //Complete joining a community group by storing it in local storage
     func completeJoinGroup(_ leaderInfo: NSArray?) {
-        let storeGroup = StoredCommunityGroup(group: comGroup, role: "member")
-        var comGroupArray = [StoredCommunityGroup]()
+        //let storeGroup = StoredCommunityGroup(group: comGroup, role: "member")
+        var comGroupArray = [CommunityGroup]()
+        comGroup.role = "member"
         
         // Add new group to previously joined groups in local storage
-        guard let prevGroupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
+        if let prevGroupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData {
+            if let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [CommunityGroup] {
+                for group in prevGroupArray {
+                    comGroupArray.append(group)
+                }
+            }
+            else {
+                print("Could not unarchive from groupData")
+            }
+        }
+        else {
             print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
-            return
+
         }
         
-        guard let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [StoredCommunityGroup] else {
-            print("Could not unarchive from groupData")
-            return
-        }
         
-        for group in prevGroupArray {
-            print("")
-            print("group.id: \(group.id)")
-            print("group.desc: \(group.desc)")
-            print("place.parentMinistry: \(group.parentMinistryName)")
-            comGroupArray.append(group)
-        }
         
-        comGroupArray.append(storeGroup)
+        
+        
+        comGroupArray.append(comGroup)
         
         
         

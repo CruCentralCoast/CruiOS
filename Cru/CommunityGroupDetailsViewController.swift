@@ -9,7 +9,7 @@
 import UIKit
 
 class CommunityGroupDetailsViewController: UIViewController {
-    var group: StoredCommunityGroup!
+    var group: CommunityGroup!
 
     @IBOutlet weak var descriptionView: UITextView!
     @IBOutlet weak var typeLabel: UILabel!
@@ -43,6 +43,10 @@ class CommunityGroupDetailsViewController: UIViewController {
     }
     
     func editGroup() {
+        let storyboard = UIStoryboard(name: "communitygroups", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "editVC") as! EditGroupInfoViewController
+        controller.group = group
+        self.navigationController?.pushViewController(controller, animated: true)
         
     }
 

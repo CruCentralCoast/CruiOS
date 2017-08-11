@@ -239,7 +239,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             //Also get resource tags and store them
             serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
                 //Hide the community leader tag if the user isn't logged in
-                if GlobalUtils.loadString(Config.userID) == "" {
+                if GlobalUtils.loadString(Config.userID) == "" && GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader){
                     let index = self.tags.index(where: {$0.title == "Leader (password needed)"})
                     self.tags.remove(at: index!)
                     
@@ -428,37 +428,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         return String("")
     }
     
-    fileprivate func insertYoutubeFromChannel(_ resource: Resource, description: String, completionHandler: (Bool) -> Void) {
-        
-        
-        
-        /*var videoCard:VideoCard!
-        
-        let newUrl = URL(string: "http://www.youtube.com")
-        
-        print("embedUrl: https://www.youtube.com/embed/\(resource.id!)?rel=0")
-        let embedUrl = URL(string: "https://www.youtube.com/embed/\(resource.id!)?rel=0")
-        let vidwebUrl = URL(string: String("https://www.youtube.com/watch?v=\(resource.id!)"))
-        
-        
-        let youtube = Creator(name:"Youtube", url: newUrl!, favicon:URL(string:"http://coopkanicstang-development.s3.amazonaws.com/brandlogos/logo-youtube.png"), iosStore:nil)
-        
-        
-        let videoData:NSMutableDictionary = NSMutableDictionary()
-        let videoMedia:NSMutableDictionary = NSMutableDictionary()
-        videoMedia["description"] =  description
-        videoMedia["posterImageUrl"] = "http://i1.ytimg.com/vi/\(resource.id)/mqdefault.jpg"
-        
-        
-        videoData["media"] = videoMedia
-        videoData["tags"] = []
-        videoCard = VideoCard(title: resource.title, embedUrl: embedUrl!, url: vidwebUrl!, creator: youtube, data: videoData)
-        
-        self.videoCards.append(videoCard)
-        self.resources.append(resource)
-         */
-    }
-    
     // MARK: Cru CC Youtube Video Retrieval
     //Get the data from Cru Central Coast's youtube channel
     func getVideosForChannel(_ success: Bool) {
@@ -467,12 +436,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             overlayRunning = true
         }
         
-        //let request = Search(.fromChannel(Config.cruChannelID, [.snippet, .contentDetails]), limit: )
-        // Get the selected channel's playlistID value from the channelsDataArray array and use it for fetching the proper video playlst.
-        
-        // Form the request URL string.
-        //self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&playlistId=\(Config.cruUploadsID)&key=\(Config.youtubeApiKey)"
-        //self.urlString = "https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=\(Config.cruChannelID)&key=\(Config.youtubeApiKey)"
         self.urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=\(Config.cruChannelID)&maxResults=\(PageSize)&order=date&type=video&key=\(Config.youtubeApiKey)"
         
         if nextPageToken != "" {
@@ -522,12 +485,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                         
                         self.resources.append(resource)
                         self.videos.append(newVid!)
-                        
-                        // Reload the tableview.
-                        //self.tblVideos.reloadData()
-                        //self.insertYoutubeFromChannel(resource!, description: snippetDict["description"] as! String, completionHandler: self.finished)
-                        
-                        
                         
                     }
                     self.pageNum = self.pageNum + 1
@@ -665,29 +622,6 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         if currentType == .Video{
             let vidCell = cell as! VideoTableViewCell
         }
-        
-        //print("Number of videoViews: \(videoViews.count)")
-        
-        /*let visiblePaths = tableView.indexPathsForVisibleRows
-        let lastVisPath = visiblePaths![visiblePaths!.count - 1]
-        print("Last visible row: \(lastVisPath.row)")*/
-        
-        /*verticalContentOffset = tableView.contentOffset.y
-        print("Vertical Content offset: \(verticalContentOffset)")*/
-        
-        
-        //Set the height if videoCardHeight hasn't been set yet or there's a smaller card
-        /*if (videoCardHeight - cell.bounds.height > 0 || videoCardHeight == 0) && currentType == .Video{
-            videoCardHeight = cell.bounds.height
-        }
-        
-        if !memoryWarning && currentType == .Video && searchActivated == false
-            && (videosArray.count < numUploads)
-            && tableView.contentOffset.y > (((CGFloat)(videoCards.count-3))*videoCardHeight - videoCardHeight) {
-            //verticalContentOffset = tableView.contentOffset.y
-            print("Should get videos for channel")
-            getVideosForChannel(true)
-        }*/
         
     }
     
@@ -838,23 +772,12 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
-        print("Bro?")
     }
     
     // MARK: Actions
     
     @IBAction func presentSearchModal(_ sender: UIBarButtonItem) {
         
-        /*let searchModal = SearchModalViewController()
-        searchModal.modalPresentationStyle = UIModalPresentationStyle.Popover
-        //self.performSegueWithIdentifier("searchModal", sender: self)
-        let popoverMenuViewController = searchModal.popoverPresentationController
-        popoverMenuViewController!.permittedArrowDirections = .Unknown
-        popoverMenuViewController!.delegate = self
-        popoverMenuViewController!.sourceView = self.view
-        presentViewController(searchModal,
-            animated: true,
-            completion: nil)*/
         self.performSegue(withIdentifier: "searchModal", sender: self)
         modalActive = true
         

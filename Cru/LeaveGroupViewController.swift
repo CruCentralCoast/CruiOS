@@ -11,7 +11,7 @@ import MRProgress
 
 class LeaveGroupViewController: UIViewController{
     @IBOutlet weak var dialogView: UIView!
-    var group: StoredCommunityGroup!
+    var group: CommunityGroup!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,29 +42,39 @@ class LeaveGroupViewController: UIViewController{
     //Complete joining a community group by storing it in local storage
     func completeLeaveGroup() {
         
-        var comGroupArray = [StoredCommunityGroup]()
+        var comGroupArray = [CommunityGroup]()
         
         // Add new group to previously joined groups in local storage
-        guard let prevGroupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
+        // Add new group to previously joined groups in local storage
+        if let prevGroupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData {
+            if let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [CommunityGroup] {
+                
+                for cGroup in prevGroupArray {
+                    print("HERE WE GO")
+                    if cGroup.id != group.id {
+                        comGroupArray.append(cGroup)
+                    }
+                    
+                }
+            }
+            else {
+                print("Could not unarchive from groupData")
+            }
+        }
+        else {
+            print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
+            
+        }
+        
+        /*guard let prevGroupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
             print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
             return
         }
         
-        guard let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [StoredCommunityGroup] else {
+        guard let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [CommunityGroup] else {
             print("Could not unarchive from groupData")
             return
-        }
-        
-        for group in prevGroupArray {
-            print("")
-            print("group.id: \(group.id)")
-            print("group.desc: \(group.desc)")
-            print("place.parentMinistry: \(group.parentMinistryName)")
-            comGroupArray.append(group)
-        }
-        if comGroupArray.contains(group) {
-            comGroupArray.remove(at: comGroupArray.index(of: group)!)
-        }
+        }*/
         
         
         

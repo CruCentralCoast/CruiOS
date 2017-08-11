@@ -198,6 +198,10 @@
 		6D2F38841F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */; };
 		6D2F38861F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */; };
 		6D2F38871F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */; };
+		6D310AF31F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */; };
+		6D310AF41F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */; };
+		6D310AF61F3CE38600ECD0F5 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */; };
+		6D310AF71F3CE38600ECD0F5 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */; };
 		6D31382D1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
 		6D31382E1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
 		6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
@@ -493,6 +497,8 @@
 		6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupTabCell.swift; sourceTree = "<group>"; };
 		6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredCommunityGroup.swift; sourceTree = "<group>"; };
 		6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupRole.swift; sourceTree = "<group>"; };
+		6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGroupInfoViewController.swift; sourceTree = "<group>"; };
+		6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSlider.swift; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
 		6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
@@ -1123,12 +1129,14 @@
 			children = (
 				6D9563B11F099607000B0683 /* Models */,
 				C1EF49061CDBF3AD009439FE /* communitygroups.storyboard */,
+				6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */,
 				6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */,
 				6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */,
 				6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */,
 				6D2F38781F366A9900E31433 /* CommunityGroupsTabVC.swift */,
 				6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */,
 				6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */,
+				6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */,
 				6D9112B61F0AC8A1001BCE51 /* Old Design */,
 			);
 			name = CommunityGroups;
@@ -1507,6 +1515,7 @@
 				6D4119851D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */,
 				6DAD2B751D2D8C6C001F8A1B /* DateUtils.swift in Sources */,
 				6DBD7B8C1C756D1000D11FFA /* CruColors.swift in Sources */,
+				6D310AF31F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */,
 				0F1B8C291CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift in Sources */,
 				0FAAE91F1CE6A8480055770D /* MinistryTeamsTableViewCell.swift in Sources */,
 				50FE4D471C50D37C00EA9042 /* Ministry.swift in Sources */,
@@ -1537,6 +1546,7 @@
 				6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */,
 				6D2F38801F36937600E31433 /* CommunityGroupTabCell.swift in Sources */,
 				50DC2D2D1CEEBE690015C574 /* OfferOrEditRideViewController.swift in Sources */,
+				6D310AF61F3CE38600ECD0F5 /* DropDownButton.swift in Sources */,
 				C13F7DE81CE277E30057D0F5 /* CGQuestion.swift in Sources */,
 				6D424DD51E6E10A400496301 /* VideoTableViewCell.swift in Sources */,
 				6D76CA801C06C1D200F8B007 /* EventDetailsViewController.swift in Sources */,
@@ -1663,6 +1673,7 @@
 				C13F7DE91CE277E30057D0F5 /* CGQuestion.swift in Sources */,
 				0F1959CD1C8E5B0C00A783BA /* LoginUtils.swift in Sources */,
 				6D2B4FC61D854B770009DC2D /* ResourceTagTableView.swift in Sources */,
+				6D310AF41F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */,
 				6DA5984C1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */,
 				50D3166F1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
 				6D9112B51F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */,
@@ -1705,6 +1716,7 @@
 				6D4B78B71C702FDF00F643CB /* Resource.swift in Sources */,
 				501038B31CD9655F00CCD7DC /* OfferOrEditRideViewController.swift in Sources */,
 				50B1D3C61CED6BB10014EE1B /* ChooseMinistryVC.swift in Sources */,
+				6D310AF71F3CE38600ECD0F5 /* DropDownButton.swift in Sources */,
 				0F1B8C701CCFDB8700CEE24C /* RidesViewController.swift in Sources */,
 				6D01D8391D81B5D5006A9AC0 /* SearchModalViewController.swift in Sources */,
 				0FF87DA51C8A268D00D56C4E /* GlobalUtils.swift in Sources */,

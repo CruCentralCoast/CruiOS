@@ -42,6 +42,7 @@ struct CommunityGroupKeys {
     static let dayOfWeek = "dayOfWeek"
     static let leaders = "leaders"
     static let imageURL = "imageURL"
+    static let gender = "gender"
 }
 
 
@@ -52,7 +53,8 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
     var name = ""
     var desc = ""
     var dayOfWeek = ""
-    var meetingTime: Date!
+    var gender = ""
+    var meetingTime = ""
     var stringTime = ""
     var parentMinistryID = ""
     var parentMinistryName = ""
@@ -60,7 +62,7 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
     var leaders = [CommunityGroupLeader]() // names of leaders
     var type = ""
     var imgURL = ""
-    //var role = "member"
+    var role = ""
     //var types = [String: String]() // for when groups have multiple types
     
     init(dict: NSDictionary) {
@@ -81,16 +83,14 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         }
         
         if let time = dict[CommunityGroupKeys.meetingTime] as? String {
-            let dateFormatter = DateFormatter()
+            self.meetingTime = time
+            /*let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "h:mm a"
             meetingTime = dateFormatter.date(from: time) as Date!
             
             if meetingTime == nil {
                 stringTime = time
-            }
-        }
-        else {
-            meetingTime = Date()
+            }*/
         }
         
         if let leadersDict = dict[CommunityGroupKeys.leaders] as? [String]{
@@ -112,33 +112,39 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
            self.parentMinistryID = min
         }
         
+        if let gen = dict[CommunityGroupKeys.gender] as? String {
+            self.gender = gen
+        }
+        
+        self.role = "member"
+        
         self.parentMinistryName = ""
         
     }
     
     //init for the decoder and whatnot
-    init?(id: String, name: String, desc: String, dayOfWeek: String, meetingTime: Date, stringTime: String, parentMinistryID: String, parentMinistryName: String, leaderIDs: [String], leaders: [CommunityGroupLeader], type: String, imgURL: String) {
+    init?(id: String, name: String, desc: String, dayOfWeek: String, meetingTime: String, parentMinistryID: String, parentMinistryName: String, leaderIDs: [String], leaders: [CommunityGroupLeader], type: String, imgURL: String, gender: String, role: String) {
         self.id = id
         self.name = name
         self.desc = desc
         self.dayOfWeek = dayOfWeek
         self.meetingTime = meetingTime
-        self.stringTime = stringTime
         self.parentMinistryID = parentMinistryID
         self.parentMinistryName = parentMinistryName
         self.leaderIDs = leaderIDs
         self.leaders = leaders
         self.type = type
         self.imgURL = imgURL
-        //self.role = role
+        self.gender = gender
+        self.role = role
     }
     
     func getMeetingTime()->String{
-        let format = "h:mm a"
+        //let format = "h:mm a"
         //let serverFormat = "E M d y H:m:s"
         //let serverFormat = "h:mm a"
   
-        let formatter = GlobalUtils.getCommunityGroupsDateFormatter()
+        /*let formatter = GlobalUtils.getCommunityGroupsDateFormatter()
         
         
         if (meetingTime != nil ){
@@ -146,7 +152,9 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         }
         else{
             return stringTime
-        }
+        }*/
+        
+        return meetingTime
     }
     
     // Gets the names of the community group leaders from the database using the stored IDs
@@ -200,21 +208,21 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
             let name = aDecoder.decodeObject(forKey: "name") as? String,
             let desc = aDecoder.decodeObject(forKey: "desc") as? String,
             let dayOfWeek = aDecoder.decodeObject(forKey: "dayOfWeek") as? String,
-            let meetingTime = aDecoder.decodeObject(forKey: "meetingTime") as? Date,
-            let stringTime = aDecoder.decodeObject(forKey: "stringTime") as? String,
+            let meetingTime = aDecoder.decodeObject(forKey: "meetingTime") as? String,
             let parentMinistryID = aDecoder.decodeObject(forKey: "parentMinistryID") as? String,
             let parentMinistryName = aDecoder.decodeObject(forKey: "parentMinistryName") as? String,
             let leaderIDs = aDecoder.decodeObject(forKey: "leaderIDs") as? [String],
             let leaders = aDecoder.decodeObject(forKey: "leaders") as? [CommunityGroupLeader],
             let type = aDecoder.decodeObject(forKey: "type") as? String,
-            let imgURL = aDecoder.decodeObject(forKey: "imgURL") as? String
-            //let role = aDecoder.decodeObject(forKey: "role") as? String
+            let gender = aDecoder.decodeObject(forKey: "gender") as? String,
+            let imgURL = aDecoder.decodeObject(forKey: "imgURL") as? String,
+            let role = aDecoder.decodeObject(forKey: "role") as? String
         
             else { return nil }
         
         
         self.init(
-            id: id, name: name, desc: desc, dayOfWeek: dayOfWeek, meetingTime: meetingTime, stringTime: stringTime, parentMinistryID: parentMinistryID, parentMinistryName: parentMinistryName, leaderIDs: leaderIDs, leaders: leaders, type: type, imgURL: imgURL
+            id: id, name: name, desc: desc, dayOfWeek: dayOfWeek, meetingTime: meetingTime, parentMinistryID: parentMinistryID, parentMinistryName: parentMinistryName, leaderIDs: leaderIDs, leaders: leaders, type: type, imgURL: imgURL, gender: gender, role: role
         )
     }
     
@@ -224,14 +232,25 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         aCoder.encode(self.desc, forKey: "desc")
         aCoder.encode(self.dayOfWeek, forKey: "dayOfWeek")
         aCoder.encode(self.meetingTime, forKey: "meetingTime")
-        aCoder.encode(self.stringTime, forKey: "stringTime")
         aCoder.encode(self.parentMinistryID, forKey: "parentMinistryID")
         aCoder.encode(self.parentMinistryName, forKey: "parentMinistryName")
         aCoder.encode(self.leaderIDs, forKey: "leaderIDs")
         aCoder.encode(self.leaders, forKey: "leaders")
         aCoder.encode(self.type, forKey: "type")
+        aCoder.encode(self.gender, forKey: "gender")
         aCoder.encode(self.imgURL, forKey: "imgURL")
-        //aCoder.encode(self.role, forKey: "role")
+        aCoder.encode(self.role, forKey: "role")
+    }
+    
+//    static func  ==(lGroup: CommunityGroup, rGroup: CommunityGroup) -> Bool{
+//        return lGroup.id == rGroup.id
+//    }
+    override func isEqual(_ object: Any?) -> Bool {
+        if let object = object as? CommunityGroup {
+            return id == object.id
+        } else {
+            return false
+        }
     }
     
     
@@ -248,6 +267,4 @@ func  < (lGroup: CommunityGroup, rGroup: CommunityGroup) -> Bool{
     return false
 }
 
-func  ==(lGroup: CommunityGroup, rGroup: CommunityGroup) -> Bool{
-    return lGroup.id == rGroup.id
-}
+
