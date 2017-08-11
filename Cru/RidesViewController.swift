@@ -171,9 +171,9 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //TODO - Figure out how to remove past rides from server
         
-        if let pMap = passMap as? MapLocalStorageManager{
-            if(newRide.gcmId != Config.gcmId()){
-                if let passId = pMap.getElement(newRide.id) as? String{
+        if let pMap = passMap as? MapLocalStorageManager<String> {
+            if(newRide.fcmId != Config.fcmId()){
+                if let passId = pMap.object(forKey: newRide.id) as? String {
                     
                     //if dropped from ride
                     if(!newRide.isPassengerInRide(passId)){
@@ -302,7 +302,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.month.text = ride.month
         
         
-        if(ride.gcmId == Config.gcmId()){
+        if(ride.fcmId == Config.fcmId()){
             cell.rideType.text = driver
             cell.icon.image  = UIImage(named: driver)
         }
@@ -324,7 +324,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         tappedEvent = getEventForEventId((tappedRide?.eventId)!)
         tappedRide!.eventName = (tappedEvent?.name)!
         
-        if(tappedRide?.gcmId == Config.gcmId()){
+        if(tappedRide?.fcmId == Config.fcmId()){
             self.performSegue(withIdentifier: "driverdetailsegue", sender: self)
         }
         else{

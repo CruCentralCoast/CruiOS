@@ -15,7 +15,7 @@ struct RideKeys {
     static let driverName = "driverName"
     static let driverNumber = "driverNumber"
     static let event = "event"
-    static let gcm_id = "gcm_id"
+    static let fcm_id = "gcm_id"
     static let gender = "gender" //int
     static let radius = "radius" //int
     static let seats = "seats" //int
@@ -96,7 +96,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     var direction: String = ""
     var seats: Int = -1
     var radius: Int = -1
-    var gcmId: String = ""
+    var fcmId: String = ""
     var driverNumber: String = ""
     var driverName: String = ""
     var eventId: String = ""
@@ -165,8 +165,8 @@ class Ride: Comparable, Equatable, TimeDetail {
         if (dict.object(forKey: RideKeys.radius) != nil){
             radius = dict.object(forKey: RideKeys.radius) as! Int
         }
-        if (dict.object(forKey: RideKeys.gcm_id) != nil){
-            gcmId = dict.object(forKey: RideKeys.gcm_id) as! String
+        if (dict.object(forKey: RideKeys.fcm_id) != nil){
+            fcmId = dict.object(forKey: RideKeys.fcm_id) as! String
         }
         if (dict.object(forKey: RideKeys.driverNumber) != nil){
             driverNumber = dict.object(forKey: RideKeys.driverNumber) as! String
@@ -227,7 +227,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     
     func getDescription(_ eventName: String)->String{
-        if (self.gcmId == Config.gcmId()){
+        if (self.fcmId == Config.fcmId()){
             return "Driving to " + eventName + " at " + self.getTime()
          }
         else{

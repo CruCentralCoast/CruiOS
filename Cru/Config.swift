@@ -20,8 +20,8 @@ struct Config {
     static let gcmIdField = "gcmId"
     static let googleAPIKey = "AIzaSyBxo_oBsj-cNhzynsF65sHjMBEdIhgJr_Q"
     static let instagramUsername = "crucentralcoast"
-    static func gcmId()->String{
-        return CruClients.getSubscriptionManager().loadGCMToken()
+    static func fcmId()->String{
+        return CruClients.getSubscriptionManager().loadFCMToken()
     }
     static var simulatorMode: Bool{
         get{
