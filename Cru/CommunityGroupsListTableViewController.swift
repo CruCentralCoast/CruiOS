@@ -14,6 +14,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     
     // MARK: - Properties
     var groups = [CommunityGroup]()
+    var filteredGroups = [CommunityGroup]()
     var hasConnection = true
     var answers = [[String:String]]()
     var ministries = [Ministry]()
@@ -26,6 +27,9 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        let filterButton = UIBarButtonItem(image: #imageLiteral(resourceName: "filter-icon-white"), style: .plain, target: self, action: #selector(self.showFilter))
+        self.navigationItem.rightBarButtonItem = filterButton
         
         //Set the cells for automatic cell height
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -40,10 +44,12 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         //loadCommunityGroups()
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @objc func showFilter() {
+        let filterVC = FilterCommunityGroupsTableViewController()
+        filterVC.filterDelegate = self
+        let nav = UINavigationController(rootViewController: filterVC)
+        self.present(nav, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -286,4 +292,10 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     }
     
 
+}
+
+extension CommunityGroupsListTableViewController: FilterCommunityGroupsDelegate {
+    func applyFilter(options: FilterCommunityGroupsTableViewController.FilterOptions) {
+        
+    }
 }

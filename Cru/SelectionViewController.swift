@@ -40,9 +40,12 @@ class SelectionViewController: UITableViewController {
     }
     
     @objc fileprivate func finishSelection() {
-        self.dismiss(animated: true) {
-            self.delegate?.selectedOptions(self.selectedOptions)
+        if let navigationController = self.navigationController {
+            navigationController.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
         }
+        self.delegate?.selectedOptions(self.selectedOptions)
     }
 }
 
