@@ -184,7 +184,7 @@ class SubscriptionManager: SubscriptionProtocol {
         // If the app has a registration token and is connected to GCM, proceed to subscribe to the
         // topic
         let fcmToken = loadFCMToken()
-        FIRMessaging.messaging().subscribe(toTopic: topic)
+        Messaging.messaging().subscribe(toTopic: topic)
 //        GCMPubSub.sharedInstance().subscribe(withToken: fcmToken, topic: topic,
 //            options: nil, handler: {(error) -> Void in
 //                let err = error! as NSError
@@ -215,7 +215,7 @@ class SubscriptionManager: SubscriptionProtocol {
         // topic
         
         let fcmToken = loadFCMToken()
-        FIRMessaging.messaging().unsubscribe(fromTopic: topic)
+        Messaging.messaging().unsubscribe(fromTopic: topic)
 //        GCMPubSub.sharedInstance().unsubscribe(withToken: fcmToken, topic: topic,
 //            options: nil, handler: {(error) -> Void in
 //                var success : Bool = false
