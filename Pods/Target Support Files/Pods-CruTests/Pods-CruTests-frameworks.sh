@@ -94,6 +94,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DatePickerCell/DatePickerCell.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DropDown/DropDown.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HTMLReader/HTMLReader.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ImageLoader/ImageLoader.framework"
@@ -101,6 +102,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LocationPicker/LocationPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LocationPickerViewController/LocationPickerViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MRProgress/MRProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RadioButton/RadioButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReadabilityKit/ReadabilityKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SideMenu/SideMenu.framework"
@@ -109,6 +111,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework"
   install_framework "$BUILT_PRODUCTS_DIR/XLPagerTabStrip/XLPagerTabStrip.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YouTubePlayer/YouTubePlayer.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
@@ -116,6 +119,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DatePickerCell/DatePickerCell.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DropDown/DropDown.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/GoogleToolboxForMac/GoogleToolboxForMac.framework"
   install_framework "$BUILT_PRODUCTS_DIR/HTMLReader/HTMLReader.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ImageLoader/ImageLoader.framework"
@@ -123,6 +127,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LocationPicker/LocationPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LocationPickerViewController/LocationPickerViewController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MRProgress/MRProgress.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RadioButton/RadioButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReadabilityKit/ReadabilityKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SideMenu/SideMenu.framework"
@@ -131,6 +136,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/UIScrollView-InfiniteScroll/UIScrollView_InfiniteScroll.framework"
   install_framework "$BUILT_PRODUCTS_DIR/XLPagerTabStrip/XLPagerTabStrip.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YouTubePlayer/YouTubePlayer.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
