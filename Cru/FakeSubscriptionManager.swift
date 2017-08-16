@@ -11,7 +11,7 @@ import Foundation
 class FakeSubscriptionManager: SubscriptionProtocol {
 
 
-    fileprivate var gcmToken = "emulator-id-hey-whats-up-hello"
+    fileprivate var fcmToken = "emulator-id-hey-whats-up-hello"
     
     fileprivate let storageManager: LocalStorageManager
     
@@ -23,12 +23,12 @@ class FakeSubscriptionManager: SubscriptionProtocol {
         self.storageManager = storageManager
     }
     
-    func saveGCMToken(_ token: String) {
-        gcmToken = token
+    func saveFCMToken(_ token: String) {
+        fcmToken = token
     }
     
-    func loadGCMToken()->String {
-        return gcmToken
+    func loadFCMToken()->String {
+        return fcmToken
     }
     
     func loadCampuses() -> [Campus] {

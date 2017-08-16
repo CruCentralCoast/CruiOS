@@ -7,7 +7,7 @@ class LoginUtils {
     class func login(_ username: String, password :String, completionHandler : @escaping (_ success : Bool) -> Void) {
         
         var params = ["username":username, "password":password]
-        let gcmId = CruClients.getSubscriptionManager().loadGCMToken()
+        let gcmId = CruClients.getSubscriptionManager().loadFCMToken()
         if (gcmId != "") {
             params[Config.gcmIdField] = gcmId
         }
