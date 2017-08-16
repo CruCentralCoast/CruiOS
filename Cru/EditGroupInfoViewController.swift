@@ -8,8 +8,11 @@
 
 import UIKit
 import DropDown
+import ImagePicker
 
-class EditGroupInfoViewController: UIViewController {
+class EditGroupInfoViewController: UIViewController, ImagePickerDelegate {
+    
+
     
     // MARK: - Properties
     
@@ -23,6 +26,7 @@ class EditGroupInfoViewController: UIViewController {
     @IBOutlet weak var editImageButton: UIButton!
     
     var group: CommunityGroup!
+    var selectedImage: UIImage!
     
     //MARK: - DropDown's
     
@@ -159,7 +163,28 @@ class EditGroupInfoViewController: UIViewController {
     }
     
     @IBAction func editPressed(_ sender: UIButton) {
+        let imagePickerController = ImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.imageLimit = 1
+        present(imagePickerController, animated: true, completion: nil)
     }
+    
+    //MARK: - Image Picker Delegate Functions
+    public func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        // Do nothing because they haven't confirmed image selection yet
+    }
+    
+    public func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+    
+    public func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        guard images.count > 0 else { return }
+        self.selectedImage = images[0]
+        groupImage.image = self.selectedImage
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+
     
     //MARK: - DropDowns Setup
     

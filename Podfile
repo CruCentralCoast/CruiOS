@@ -30,6 +30,7 @@ def cru_pods
     pod 'YouTubePlayer'
     pod 'UIScrollView-InfiniteScroll', '~> 1.0'
     pod 'DropDown'
+    pod 'ImagePicker'
 end
 
 def crash_monitor

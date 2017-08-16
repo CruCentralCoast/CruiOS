@@ -47,6 +47,7 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.1)
   - HTMLReader (1.0.1)
   - ImageLoader (0.12.2)
+  - ImagePicker (2.1.1)
   - IQKeyboardManagerSwift (4.0.8)
   - Ji (2.0.1):
     - Ji/Ji (= 2.0.1)
@@ -114,6 +115,7 @@ DEPENDENCIES:
   - GooglePlaces
   - HTMLReader (~> 1.0)
   - ImageLoader
+  - ImagePicker
   - IQKeyboardManagerSwift (= 4.0.8)
   - LocationPicker
   - LocationPickerViewController (= 3.0.0)
@@ -157,6 +159,7 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   HTMLReader: 9c9a018b11d7e9884a52ab97ce1bd23bdca7fddb
   ImageLoader: f461c9641350d0b8df39c2d3785b263f15cd63c2
+  ImagePicker: fe4c699abb56ff03994fa98d8b02e3883ee118be
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
   LocationPicker: 240b6328b8d7799530cc0da9973ea3f02dc646f4
@@ -173,6 +176,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: cc8f142eb29060bfd3c8a202fda31fdaf6534c4f
+PODFILE CHECKSUM: f59be63b828c7943fb7d5000b3e971ec55fe441d
 
 COCOAPODS: 1.2.0
