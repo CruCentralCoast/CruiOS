@@ -46,11 +46,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // Setup the Firebase Cloud Messaging service
-        FIRApp.configure()
-        NotificationCenter.default.addObserver(self, selector: #selector(onTokenRefresh), name: NSNotification.Name.firInstanceIDTokenRefresh, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(sendDataMessageFailure(notification:)), name: NSNotification.Name.FIRMessagingSendError, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(sendDataMessageSuccess(notification:)), name: NSNotification.Name.FIRMessagingSendSuccess, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(didDeleteMessagesOnServer), name: NSNotification.Name.FIRMessagingMessagesDeleted, object: nil)
+        FirebaseApp.configure()
+        NotificationCenter.default.addObserver(self, selector: #selector(onTokenRefresh), name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sendDataMessageFailure(notification:)), name: NSNotification.Name.MessagingSendError, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sendDataMessageSuccess(notification:)), name: NSNotification.Name.MessagingSendSuccess, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didDeleteMessagesOnServer), name: NSNotification.Name.MessagingMessagesDeleted, object: nil)
         
         //Initialize Google Places
         GMSPlacesClient.provideAPIKey(Config.googleAPIKey)
@@ -93,7 +93,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data ) {
-        FIRInstanceID.instanceID().token()
+        InstanceID.instanceID().token()
         
 //            // Create a config and set a delegate that implements the GGLInstaceIDDelegate protocol.
 //            let instanceIDConfig = GGLInstanceIDConfig.default()
@@ -214,7 +214,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // had a default token most likely this will be nil too. But that is OK we just
         // wait for another notification of this type.
         print("The Firebase Cloud Messaging token needs to be refreshed. Refreshing now.")
-        FIRInstanceID.instanceID().token()
+        InstanceID.instanceID().token()
     }
     
     func sendDataMessageFailure(notification: Notification) {
