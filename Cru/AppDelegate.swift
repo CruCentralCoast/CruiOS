@@ -61,9 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.sharedManager().enable = true
         
         // Set up AWS S3 stuff
-        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2, identityPoolId:"us-west-2:23478422-d01b-4f71-8da2-4d8b1d4dc2d7")
+        //let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2, identityPoolId:"us-west-2:23478422-d01b-4f71-8da2-4d8b1d4dc2d7")
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest1, identityPoolId: Config.s3IdentityPoolID)
         
-        let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider:credentialsProvider)
+        let configuration = AWSServiceConfiguration(region:.USWest1, credentialsProvider:credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         

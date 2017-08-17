@@ -89,7 +89,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         group.meetingTime = timeButton.currentTitle!.replacingOccurrences(of: " ", with: "")
         group.desc = descriptionView.text
         group.parentMinistryID = ministryTable[ministryButton.currentTitle!]!
-        group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(group.id)-image.png"
+        group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(Config.s3ImageFolderURL)/\(group.id)-image.png"
         
         print("New group info: ")
         print("dayOfWeek: " + group.dayOfWeek)
