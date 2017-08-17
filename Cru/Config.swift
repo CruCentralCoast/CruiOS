@@ -48,6 +48,10 @@ struct Config {
     static let backgroundViewOpacity: CGFloat = 0.7
     static let modalBackgroundRadius: CGFloat = 15.0
     
+    /* Configurations for AWS S3 */
+    static let s3BucketName: String = "community-group-images" // Update this to your bucket name
+    static let s3ImageURL = "https://s3-us-west-2.amazonaws.com/"
+    
     /* Configurations for Events */
     //reuse identifier for event collection cells
     static let eventReuseIdentifier = "event"

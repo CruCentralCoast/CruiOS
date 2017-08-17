@@ -2,6 +2,11 @@ PODS:
   - ActionSheetPicker-3.0 (2.2.0)
   - Alamofire (4.3.0)
   - Appsee (2.3.1)
+  - AWSCognito (2.5.10):
+    - AWSCore (= 2.5.10)
+  - AWSCore (2.5.10)
+  - AWSS3 (2.5.10):
+    - AWSCore (= 2.5.10)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DatePickerCell (1.0.5)
@@ -104,6 +109,8 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 4.3)
   - Appsee
+  - AWSCognito
+  - AWSS3
   - Crashlytics
   - DatePickerCell
   - DropDown
@@ -143,6 +150,9 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   Appsee: 78b5d4b281ceb83d5fd17d7df18d5ff8c292e031
+  AWSCognito: 75de3956984129b9a270f99261c431fa1eb87c26
+  AWSCore: 490c988f6af48a10ea113ff06c53a1ef72a3534b
+  AWSS3: cd25080951a7637668d4f33393fe24bcb04dfac7
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DatePickerCell: 8cd5d7fc93d195b85a7b2389b0ea4a9017c51f9b
   DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
@@ -176,6 +186,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: f59be63b828c7943fb7d5000b3e971ec55fe441d
+PODFILE CHECKSUM: 9bedc0e974701ef0752469e6beb5b31cd8ca0347
 
 COCOAPODS: 1.2.0
