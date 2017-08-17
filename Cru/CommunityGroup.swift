@@ -95,28 +95,13 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
             }*/
         }
         
-        /*if let leadersDict = dict[CommunityGroupKeys.leaders] as? [[String: AnyObject]]{
+        if let leadersDict = dict[CommunityGroupKeys.leaders] as? [String]{
             for lead in leadersDict{
-                /*if let namesDict = lead[CommunityGroupKeys.name] as? [String:String]{
-                    if let first = namesDict[CommunityGroupKeys.firstName] {
-                        
-                    }
-                }
-                leaderIDs.append(lead)*/
-                print("new leader")
-                print(lead)
-                let newLeader = CommunityGroupLeader(lead as NSDictionary)
-                leaders.append(newLeader)
+                
+                leaderIDs.append(lead)
             }
-            self.leaders = leader
-        }*/
-        
-        if let leaderDicts = dict.object(forKey: CommunityGroupKeys.leaders) as? [[String:AnyObject]] {
-            self.leaders = leaderDicts.map{
-                CommunityGroupLeader($0 as NSDictionary)
-            }
+            //getLeaderNames()
         }
-        
         if let type = dict[CommunityGroupKeys.type] as? String {
             self.type = type
         }
@@ -174,6 +159,16 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         return meetingTime
     }
     
+    // Gets the names of the community group leaders from the database using the stored IDs
+    func getLeaderNames() {
+        for lead in leaderIDs {
+            //str.append(lead + ", ")
+            CruClients.getServerClient().getById(DBCollection.User, insert: insertLeader, completionHandler: {
+                success in
+            }, id: lead)
+        }
+    }
+    
     //Returns a displayable string with the leaders' names
     func getLeaderString() ->String {
         var str = ""
@@ -181,6 +176,19 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
             str.append(lead.name + ", ")
         }
         return str
+    }
+    
+    func insertLeader(_ dict: NSDictionary) {
+        let leader = CommunityGroupLeader(dict)
+        leaders.append(leader)
+        /*if let nameDict = dict[CommunityGroupLeaderKeys.name] as? [String:String]{
+            
+            if let first = nameDict[CommunityGroupLeaderKeys.firstName], let last = nameDict[CommunityGroupLeaderKeys.lastName] {
+                leaderNames.append(first + " " + last)
+            }
+            
+
+        }*/
     }
     
     // MARK: NSCoding
