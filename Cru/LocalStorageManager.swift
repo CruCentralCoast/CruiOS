@@ -12,26 +12,42 @@
 import Foundation
 
 class LocalStorageManager {
-    let defaults: UserDefaults
+    /// The UserDefaults to use for local storage. Change this if using a different local storage
+    /// than UserDefaults.standard.
+    weak private var defaults = UserDefaults.standard
     
-    //initializer for the manager
-    init() {
-        self.defaults = UserDefaults.standard
+    /// Wrapper for the UserDefaults object(forKey:) method.
+    func object(forKey key: String) -> Any? {
+        return self.defaults?.object(forKey: key)
     }
     
-    //function for getting object form local storage
-    func getObject(_ key: String) -> Any? {
-        return defaults.object(forKey: key) as Any?
+    /// Wrapper for the UserDefaults set(_:, forKey:) method.
+    func set(_ value: Any?, forKey key: String) {
+        self.defaults?.set(value, forKey: key)
     }
     
-    //function for storing an object into local storage
-    func putObject(_ key: String, object: Any) {
-        defaults.set(object, forKey: key)
-        defaults.synchronize()
+    /// Wrapper for the UserDefaults removeObject(forKey:) method.
+    func removeObject(forKey key: String) {
+        self.defaults?.removeObject(forKey: key)
     }
     
-    //function for removing an object from local storage
-    func removeObject(_ key: String) {
-        defaults.removeObject(forKey: key)
+    /// Save an object to NSUserDefaults. The object must conform to the Encodable protocol.
+    /// The object will be converted to a Data object, which is then stored.
+    /// This method should only be used on instances of a class or struct, not on primitive types.
+    /// Use putObject(_:) when storing primitive types.
+    func save<T: Encodable>(_ object: T, forKey key: String) {
+        let encodedObject = try! PropertyListEncoder().encode(object)
+        self.defaults?.set(encodedObject, forKey: key)
+    }
+    
+    /// Load an object from NSUserDefaults. The object must conform to the Decodable protocol.
+    /// The object will be converted from a Data object, which was saved, to the inferred type.
+    /// This method should only be used on instances of a class or struct, not on primitive types.
+    /// Use getObject(_:) when fetching primitive types.
+    func loadObject<T: Decodable>(_ key: String) -> T? {
+        guard let encodedObject = self.defaults?.object(forKey: key) as? Data else {
+            return nil
+        }
+        return try! PropertyListDecoder().decode(T.self, from: encodedObject)
     }
 }

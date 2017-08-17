@@ -85,14 +85,14 @@ class RideUtils {
         let alsm = ArrayLocalStorageManager(key: Config.ridesOffering)
         var rideIds = alsm.getArray()
         
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
-        rideIds += mlsm.getKeys()
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
+        rideIds += mlsm.keys
         
         return rideIds
     }
     
     static func getMyPassengerMaps() -> LocalStorageManager{
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
         return mlsm
     }
 
@@ -153,8 +153,8 @@ class RideUtils {
     }
     
     fileprivate func saveRideReceiving(_ rideId: String, passengerId: String) {
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
-        mlsm.addElement(rideId, elem: passengerId)
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
+        mlsm.save(passengerId, forKey: rideId)
     }
     
     func dropPassenger(_ rideId: String, passengerId: String, handler: @escaping (Bool)->Void){
@@ -164,8 +164,8 @@ class RideUtils {
     
     func leaveRidePassenger(_ ride: Ride, handler: @escaping (Bool)->()){
         let rideId = ride.id
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
-        let passId = mlsm.getElement(rideId) as! String
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
+        let passId = mlsm.object(forKey: rideId) as! String
         
         serverClient.deleteByIdIn(DBCollection.Ride, parentId: rideId, child: DBCollection.Passenger, childId: passId, completionHandler:
             { success in

@@ -1,6 +1,7 @@
 PODS:
   - ActionSheetPicker-3.0 (2.2.0)
   - Alamofire (4.3.0)
+  - AnimatedTextInput (0.5.1)
   - Appsee (2.3.1)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
@@ -101,6 +102,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 4.3)
+  - AnimatedTextInput (~> 0.5.1)
   - Appsee
   - Crashlytics
   - DatePickerCell
@@ -139,6 +141,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AnimatedTextInput: 0fde4c9c8d71dafc032b9b222531a788767536fb
   Appsee: 78b5d4b281ceb83d5fd17d7df18d5ff8c292e031
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DatePickerCell: 8cd5d7fc93d195b85a7b2389b0ea4a9017c51f9b
@@ -172,6 +175,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: cc8f142eb29060bfd3c8a202fda31fdaf6534c4f
+PODFILE CHECKSUM: f8db5c7911d8ab66ac3ec68cb3a5034abf3805ae
 
 COCOAPODS: 1.2.0

@@ -171,9 +171,9 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         //TODO - Figure out how to remove past rides from server
         
-        if let pMap = passMap as? MapLocalStorageManager{
+        if let pMap = passMap as? MapLocalStorageManager<String> {
             if(newRide.fcmId != Config.fcmId()){
-                if let passId = pMap.getElement(newRide.id) as? String{
+                if let passId = pMap.object(forKey: newRide.id) as? String {
                     
                     //if dropped from ride
                     if(!newRide.isPassengerInRide(passId)){

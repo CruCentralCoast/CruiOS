@@ -30,7 +30,7 @@ class EventDetailsViewController: UIViewController {
     @IBOutlet weak var findRideLeading: NSLayoutConstraint!
     //passed in prepareForSegue
     var event: Event!
-    var eventLocalStorageManager: MapLocalStorageManager!
+    var eventLocalStorageManager: MapLocalStorageManager<String>!
     var calendarManager: CalendarManager!
     var rides = [Ride]()
     
@@ -146,7 +146,7 @@ class EventDetailsViewController: UIViewController {
         }
         
         //check if event is in calendar
-        if let eventId = eventLocalStorageManager.getElement(event.id) {
+        if let eventId = eventLocalStorageManager.object(forKey: event.id) {
             checkForChanges(eventId as! String)  
         }
     }
@@ -221,7 +221,7 @@ class EventDetailsViewController: UIViewController {
             }
             else {
                 if let _ = id {
-                    self.eventLocalStorageManager.addElement(self.event.id, elem: id!)
+                    self.eventLocalStorageManager.save(id!, forKey: self.event.id)
                     self.reconfigureCalendarButton(EventStatus.added)
                 }
             }
@@ -231,7 +231,7 @@ class EventDetailsViewController: UIViewController {
     //This function syncs the event in the database to the event that
     //already exists in the user's native calendar
     func syncToCalendar(_ sender: UIButton) {
-        let eventIdentifier = eventLocalStorageManager.getElement(event.id)
+        let eventIdentifier = eventLocalStorageManager.object(forKey: event.id)
         
         calendarManager.syncEventToCalendar(event, eventIdentifier: eventIdentifier as! String, completionHandler: {
             errors in
@@ -256,7 +256,7 @@ class EventDetailsViewController: UIViewController {
     
     //this action removes events from the calendar
     func removeFromCalendar(_ sender: UIButton) {
-        let eventIdentifier = eventLocalStorageManager.getElement(event.id)
+        let eventIdentifier = eventLocalStorageManager.object(forKey: event.id)
         
         calendarManager.removeEventFromCalendar(eventIdentifier as! String, completionHandler: {
             errors in
