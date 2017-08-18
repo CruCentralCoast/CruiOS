@@ -33,7 +33,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         
         //Set the cells for automatic cell height
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.backgroundColor = Colors.googleGray
+        //self.tableView.backgroundColor = Colors.googleGray
         
         //set up storage managers for ministry teams and for storing/loading user information
 //        communityGroupsStorageManager = MapLocalStorageManager(key: Config.CommunityGroupsStorageKey)
@@ -88,6 +88,9 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     // MARK: - Table View Data Source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+        if groups.count > 0 {
+            self.tableView.backgroundColor = Colors.googleGray
+        }
         return groups.count
     }
     
@@ -194,7 +197,14 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "communitygroups", bundle: nil)
+        let detailsVC = storyBoard.instantiateViewController(withIdentifier: "detailVC") as! CommunityGroupDetailsViewController
+        detailsVC.group = groups[indexPath.row]
         selectedGroup = groups[indexPath.row]
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+        //self.present(detailsVC, animated: true, completion: nil)
+        
+        
     }
     
 
@@ -204,11 +214,11 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if segue.identifier == "detailSegue" {
+        /*if segue.identifier == "detailSegue" {
             if let vc = segue.destination as? CommunityGroupDetailsViewController {
                 vc.group = selectedGroup
             }
-        }
+        }*/
     }
 
 }
