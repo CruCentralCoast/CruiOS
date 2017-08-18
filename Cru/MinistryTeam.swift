@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MinistryTeam: NSObject, Codable {
+class MinistryTeam: NSObject, NSCoding {
     var id: String
     var name: String
     var parentMinistry: String
@@ -57,46 +57,28 @@ class MinistryTeam: NSObject, Codable {
         ]
     }
     
-    // MARK: Codable (Encodable & Decodable)
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case parentMinistry
-        case parentMinistryName
-        case summary
-//        case image
-        case imageUrl
-//        case teamImage
-        case teamImageUrl
-        case leaders
+    required init?(coder aDecoder: NSCoder) {
+        self.id = aDecoder.decodeObject(forKey: "id") as! String
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.parentMinistry = aDecoder.decodeObject(forKey: "parentMinistry") as! String
+        self.parentMinistryName = aDecoder.decodeObject(forKey: "parentMinistryName") as! String
+        self.summary = aDecoder.decodeObject(forKey: "summary") as! String
+        self.imageUrl = aDecoder.decodeObject(forKey: "imageUrl") as! String
+        self.teamImageUrl = aDecoder.decodeObject(forKey: "teamImageUrl") as! String
+        self.leaders = aDecoder.decodeObject(forKey: "leaders") as! [User]
     }
     
-    required init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try values.decode(String.self, forKey: .id)
-        self.name = try values.decode(String.self, forKey: .name)
-        self.parentMinistry = try values.decode(String.self, forKey: .parentMinistry)
-        self.parentMinistryName = try values.decode(String.self, forKey: .parentMinistryName)
-        self.summary = try values.decode(String.self, forKey: .summary)
-//        self.image = try values.decode(UIImage.self, forKey: .image)
-        self.imageUrl = try values.decode(String.self, forKey: .imageUrl)
-//        self.teamImage = try values.decode(UIImage.self, forKey: .teamImage)
-        self.teamImageUrl = try values.decode(String.self, forKey: .teamImageUrl)
-        self.leaders = try values.decode(Array.self, forKey: .leaders)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(parentMinistry, forKey: .parentMinistry)
-        try container.encode(parentMinistryName, forKey: .parentMinistryName)
-        try container.encode(summary, forKey: .summary)
-//        try container.encode(image, forKey: .image)
-        try container.encode(imageUrl, forKey: .imageUrl)
-//        try container.encode(teamImage, forKey: .teamImage)
-        try container.encode(teamImageUrl, forKey: .teamImageUrl)
-        try container.encode(leaders, forKey: .leaders)
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(parentMinistry, forKey: "parentMinistry")
+        aCoder.encode(parentMinistryName, forKey: "parentMinistryName")
+        aCoder.encode(summary, forKey: "summary")
+        //        aCoder.encode(image, forKey: .image)
+        aCoder.encode(imageUrl, forKey: "imageUrl")
+        //        aCoder.encode(teamImage, forKey: .teamImage)
+        aCoder.encode(teamImageUrl, forKey: "teamImageUrl")
+        aCoder.encode(leaders, forKey: "leaders")
     }
 }
 

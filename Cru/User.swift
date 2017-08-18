@@ -23,7 +23,7 @@ struct UserKeys {
     
 }
 
-class User: Codable {
+class User: NSCoding {
 
     let name: String!
     let phone: String!
@@ -34,5 +34,17 @@ class User: Codable {
         name = nameDict["first"]! + " " + nameDict["last"]!
         phone = dict["phone"] as! String
         email = dict["email"] as! String
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.phone = aDecoder.decodeObject(forKey: "phone") as! String
+        self.email = aDecoder.decodeObject(forKey: "email") as! String
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(self.name, forKey: "name")
+        aCoder.encode(self.phone, forKey: "phone")
+        aCoder.encode(self.email, forKey: "email")
     }
 }

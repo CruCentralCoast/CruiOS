@@ -35,8 +35,9 @@ class LocalStorageManager {
     /// The object will be converted to a Data object, which is then stored.
     /// This method should only be used on instances of a class or struct, not on primitive types.
     /// Use putObject(_:) when storing primitive types.
-    func save<T: Encodable>(_ object: T, forKey key: String) {
-        let encodedObject = try! PropertyListEncoder().encode(object)
+    func save(_ object: Any, forKey key: String) {
+        let encodedObject = NSKeyedArchiver.archivedData(withRootObject: object)
+//        let encodedObject = try! PropertyListEncoder().encode(object)
         self.defaults?.set(encodedObject, forKey: key)
     }
     
@@ -44,10 +45,11 @@ class LocalStorageManager {
     /// The object will be converted from a Data object, which was saved, to the inferred type.
     /// This method should only be used on instances of a class or struct, not on primitive types.
     /// Use getObject(_:) when fetching primitive types.
-    func loadObject<T: Decodable>(_ key: String) -> T? {
+    func loadObject(_ key: String) -> Any? {
         guard let encodedObject = self.defaults?.object(forKey: key) as? Data else {
             return nil
         }
-        return try! PropertyListDecoder().decode(T.self, from: encodedObject)
+        return NSKeyedUnarchiver.unarchiveObject(with: encodedObject)
+//        return try! PropertyListDecoder().decode(T.self, from: encodedObject)
     }
 }
