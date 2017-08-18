@@ -8,6 +8,7 @@
 
 import UIKit
 import DZNEmptyDataSet
+import MRProgress
 
 class MinistryTeamsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
@@ -16,6 +17,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
     var ministries = [Ministry]()
     var campusImage: UIImage!
     var sizingCell: MinistryTeamCell?
+    var hasConnection = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,25 +35,50 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         self.ministries = CruClients.getSubscriptionManager().loadMinistries()
         
         if !self.ministries.isEmpty {
-            let ministryIds = ministries.map{$0.id}
-            let params: [String:[String: [String]]] = ["parentMinistry":["$in":ministryIds as! Array<String>]]
             
-            // Load ministry teams
-            CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting, params: params)
+            MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+            
+            
+      
+            //Check connection and load teams
+            CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+            
         } else {
             print("NO MINISTRIES!!!")
+            self.campusImage = UIImage(named: Config.campusImage)!
         }
         
-        self.campusImage = UIImage(named: Config.campusImage)!
+        
     }
     
     private func setupCollectionView() {
-        self.collectionView?.emptyDataSetSource = self
-        self.collectionView?.emptyDataSetDelegate = self
+        //self.collectionView?.emptyDataSetSource = self
+        //self.collectionView?.emptyDataSetDelegate = self
         
         self.collectionView?.backgroundColor = Colors.googleGray
         
         self.collectionView?.register(UINib(nibName: MinistryTeamCell.className, bundle: nil), forCellWithReuseIdentifier: MinistryTeamCell.cellReuseIdentifier)
+    }
+    
+    //Test to make sure there is a connection then load teams
+    func finishConnectionCheck(_ connected: Bool){
+        self.collectionView?.emptyDataSetSource = self
+        self.collectionView?.emptyDataSetDelegate = self
+        
+        if(!connected){
+            hasConnection = false
+            //Display a message if either of the tables are empty
+            
+            self.collectionView?.reloadData()
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            //API call to load teams
+            let ministryIds = ministries.map{$0.id}
+            let params: [String:[String: [String]]] = ["parentMinistry":["$in":ministryIds as! Array<String>]]
+            CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting, params: params)
+        }
     }
     
     // Insert individual ministry teams into the table view
@@ -74,6 +101,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         ministryTeams.sort { $0 < $1 }
         
         self.collectionView?.reloadData()
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
 }
 
@@ -126,8 +154,14 @@ extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
 // MARK: - DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 extension MinistryTeamsCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
-        return NSAttributedString(string: "No ministry teams available! Try changing your subscribed campuses.", attributes: attributes)
+        if hasConnection == false {
+            return nil
+        }
+        else {
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+            return NSAttributedString(string: "No ministry teams available! Try changing your subscribed ministries or campuses.", attributes: attributes)
+            
+        }
     }
     
     func spaceHeight(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
@@ -135,7 +169,13 @@ extension MinistryTeamsCollectionViewController: DZNEmptyDataSetSource, DZNEmpty
     }
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return campusImage
+        if hasConnection == false {
+            return UIImage(named: Config.noConnectionImageName)
+        }
+        else {
+            return campusImage
+            
+        }
     }
     
     func backgroundColor(forEmptyDataSet scrollView: UIScrollView!) -> UIColor! {
