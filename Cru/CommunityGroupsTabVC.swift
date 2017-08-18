@@ -93,10 +93,65 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
+        
+        if groups[indexPath.row].imgURL != "" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
+            
+            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            // Configure the cell...
+            if let parentMin = groups[indexPath.row].parentMinistryName as? String {
+                cell.ministryLabel.text = parentMin
+            }
+            else {
+                cell.ministryLabel.text = "Unknown"
+            }
+            
+            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            
+            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            cell.roleLabel.text = groups[indexPath.row].role.uppercased()
+            
+            //Add drop shadow
+            cell.backgroundColor = Colors.googleGray
+            cell.cardView.layer.shadowColor = UIColor.black.cgColor
+            cell.cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.cardView.layer.shadowOpacity = 0.25
+            cell.cardView.layer.shadowRadius = 2
+            
+            return cell
+            
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell2", for: indexPath) as! CommunityGroupNoImageTabCell
+            
+            // Configure the cell...
+            if let parentMin = groups[indexPath.row].parentMinistryName as? String {
+                cell.ministryLabel.text = parentMin
+            }
+            else {
+                cell.ministryLabel.text = "Unknown"
+            }
+            
+            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            
+            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            cell.roleLabel.text = groups[indexPath.row].role.uppercased()
+            
+            //Add drop shadow
+            cell.backgroundColor = Colors.googleGray
+            cell.cardView.layer.shadowColor = UIColor.black.cgColor
+            cell.cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.cardView.layer.shadowOpacity = 0.25
+            cell.cardView.layer.shadowRadius = 2
+            
+            return cell
+            
+        }
+        
+        
      
         // Configure the cell...
-        if let parentMin = groups[indexPath.row].parentMinistryName as? String {
+        /*if let parentMin = groups[indexPath.row].parentMinistryName as? String {
             cell.ministryLabel.text = parentMin
         }
         else {
@@ -123,7 +178,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         cell.cardView.layer.shadowOpacity = 0.25
         cell.cardView.layer.shadowRadius = 2
      
-        return cell
+        return cell*/
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -131,7 +186,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         
         if group.imgURL == "" {
             //return 194.0
-            return 154
+            return 153
         }
         else {
             return 300

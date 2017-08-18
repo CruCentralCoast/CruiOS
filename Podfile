@@ -31,6 +31,9 @@ def cru_pods
     pod 'UIScrollView-InfiniteScroll', '~> 1.0'
     pod 'DropDown'
     pod 'AnimatedTextInput', '~> 0.5.1'
+    pod 'ImagePicker'
+    pod 'AWSS3'
+    pod 'AWSCognito'
 end
 
 def crash_monitor

@@ -89,6 +89,9 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCognito/AWSCognito.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCore/AWSCore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSS3/AWSS3.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AnimatedTextInput/AnimatedTextInput.framework"
@@ -99,6 +102,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/HTMLReader/HTMLReader.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ImageLoader/ImageLoader.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ImagePicker/ImagePicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Ji/Ji.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LocationPicker/LocationPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LocationPickerViewController/LocationPickerViewController.framework"
@@ -115,6 +119,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCognito/AWSCognito.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCore/AWSCore.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSS3/AWSS3.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AnimatedTextInput/AnimatedTextInput.framework"
@@ -125,6 +132,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/HTMLReader/HTMLReader.framework"
   install_framework "$BUILT_PRODUCTS_DIR/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ImageLoader/ImageLoader.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ImagePicker/ImagePicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Ji/Ji.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LocationPicker/LocationPicker.framework"
   install_framework "$BUILT_PRODUCTS_DIR/LocationPickerViewController/LocationPickerViewController.framework"

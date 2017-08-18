@@ -15,6 +15,7 @@ import GooglePlaces
 import Fabric
 import Crashlytics
 import Appsee
+import AWSCognito
 
 
 @UIApplicationMain
@@ -58,6 +59,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //IQKeyboardManager makes keyboards play nicely with textfields usually covered by keyboard
         IQKeyboardManager.sharedManager().enable = true
+        
+        // Set up AWS S3 stuff
+        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2, identityPoolId: Config.s3IdentityPoolID)
+        
+        let configuration = AWSServiceConfiguration(region:.USWest1, credentialsProvider:credentialsProvider)
+        
+        AWSServiceManager.default().defaultServiceConfiguration = configuration
         
         return true
     }

@@ -37,6 +37,8 @@ class CommunityGroupUtils {
         //CruClients.getServerClient().getData(.CommunityGroup, insert: inserter, completionHandler: completionHandler)
     }
     
+    
+    
     func patchGroup(_ id: String, params: [String:Any], handler: @escaping (CommunityGroup?)->Void) {
         serverClient.patch(DBCollection.CommunityGroup, params: params, completionHandler: { dict in
             if dict == nil {
@@ -47,4 +49,8 @@ class CommunityGroupUtils {
         }, id: id)
     }
     
+    func loadLeaders(_ inserter: @escaping (NSDictionary)->Void, parentId: String, completionHandler:
+        @escaping (Bool)->Void) {
+        serverClient.getDataIn(.CommunityGroup, parentId: parentId, child: .Leader, insert: inserter, completionHandler: completionHandler)
+    }
 }
