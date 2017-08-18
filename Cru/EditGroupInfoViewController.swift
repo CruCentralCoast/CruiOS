@@ -49,9 +49,10 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         super.viewDidLoad()
         leaderLabel.text = group.getLeaderString()
         dayButton.setTitle(group.dayOfWeek, for: .normal)
-        timeButton.setTitle(group.stringTime, for: .normal)
+        timeButton.setTitle(group.meetingTime, for: .normal)
         ministryButton.setTitle(group.parentMinistryName, for: .normal)
         descriptionView.text = group.desc
+        groupImage.load.request(with: group.imgURL)
         
         //Get ministries
         createMinistryDictionary()
@@ -119,7 +120,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
                 // Do something e.g. Alert a user for transfer completion.
                 // On failed uploads, `error` contains the error object.
                 if let error = error {
-                    print("Error: \(error.localizedDescription)")
+                    print("completion hander Error: \(error.localizedDescription)")
                 }
                 else {
                     print("Maybe we're finished?")
@@ -139,7 +140,8 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
             expression: nil,
             completionHandler: completionHandler).continueWith { (task) -> AnyObject! in
                 if let error = task.error {
-                    print("Error: \(error.localizedDescription)")
+                    print("Transfer utility Error: \(error.localizedDescription)")
+                    
                     //self.statusLabel.text = "Failed"
                 }
                 

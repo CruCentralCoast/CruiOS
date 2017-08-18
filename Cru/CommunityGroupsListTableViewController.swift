@@ -63,7 +63,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         
         if group.imgURL == "" {
             //return 194.0
-            return 194
+            return 193
         }
         else {
             return 340.0
@@ -72,33 +72,61 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
-        
-        
-        cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
-        
-        cell.typeLabel.text = groups[indexPath.row].type
-        cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
-        
-        cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+        //TODO: Figure out way to create cells with different classes w/o repeating code
+        if groups[indexPath.row].imgURL != "" {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
+            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
+            
+            cell.typeLabel.text = groups[indexPath.row].type
+            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            
+            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            
+            //Add drop shadow
+            cell.card.layer.shadowColor = UIColor.black.cgColor
+            cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.card.layer.shadowOpacity = 0.25
+            cell.card.layer.shadowRadius = 2
+            
+            cell.setSignupCallback(jumpBackToGetInvolved)
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell2", for: indexPath) as! CommunityGroupNoImageCell
+            cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
+            
+            cell.typeLabel.text = groups[indexPath.row].type
+            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            
+            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            
+            //Add drop shadow
+            cell.card.layer.shadowColor = UIColor.black.cgColor
+            cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.card.layer.shadowOpacity = 0.25
+            cell.card.layer.shadowRadius = 2
+            
+            cell.setSignupCallback(jumpBackToGetInvolved)
+            return cell
+        }
         //print(groups[indexPath.row].getLeaderString())
         
-        if groups[indexPath.row].imgURL != "" {
-            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+        /*if groups[indexPath.row].imgURL != "" {
+            //cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            cell.groupImage.load.request(with: groups[indexPath.row].imgURL, onCompletion: { image in
+                print("yo yo yo homie g wuzzup")
+                //image still doesn't get displayed after it's loaded so gonna have to do some bad programming
+                //self.tableView.reloadData()
+            })
         }
         else {
             cell.groupImage.isHidden = true
             cell.leaderTopConstraint.constant = 12
-        }
+        }*/
         
-        //Add drop shadow
-        cell.card.layer.shadowColor = UIColor.black.cgColor
-        cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
-        cell.card.layer.shadowOpacity = 0.25
-        cell.card.layer.shadowRadius = 2
         
-        cell.setSignupCallback(jumpBackToGetInvolved)
-        return cell
+        //return cell
     }
     
     
@@ -145,15 +173,36 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             group.parentMinistryName = parentMin
         }
         
+        //CruClients.getCommunityGroupUtils().loadLeaders(insertLeader(group), parentId: group.id, completionHandler: finishInsertingLeaders)
+            
+        CruClients.getCommunityGroupUtils().loadLeaders({(dict) -> Void in
+            let leader = CommunityGroupLeader(dict)
+            if leader != nil {
+                print("leader: " + leader.name)
+                group.leaders.append(leader)
+            }
+        }, parentId: group.id, completionHandler: {(success) -> Void in
+            self.groups.insert(group, at: 0)
+            self.tableView.reloadData()
+            if success {
+                print("Successfully loaded a leader!")
+            }
+            else {
+                print("Nope, try loading the leader again.")
+            }
+        })
+        
+        
+        
         //Have to do this so we can get the names of the leaders from the database
-        DispatchQueue.global(qos: .userInitiated).async { // 1
+        /*DispatchQueue.global(qos: .userInitiated).async { // 1
             group.getLeaderNames()
             DispatchQueue.main.async { // 2
                 self.tableView.reloadData()
             }
-        }
+        }*/
         
-        self.groups.insert(group, at: 0)
+        
         
         
     }
@@ -167,6 +216,28 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         self.tableView!.reloadData()
         
+        /*for group in groups {
+            CruClients.getCommunityGroupUtils().loadLeaders(insertLeader, parentId: group.id, completionHandler: finishInsertingLeaders)
+        }*/
+        
+        
+    }
+    
+    fileprivate func insertLeader(_ dict: NSDictionary, group: CommunityGroup) {
+        let leader = CommunityGroupLeader(dict)
+        if leader != nil {
+            print("leader: " + leader.name)
+            group.leaders.append(leader)
+        }
+    }
+    
+    fileprivate func finishInsertingLeaders(_ success: Bool) {
+        if success {
+            print("Successfully loaded a leader!")
+        }
+        else {
+            print("Nope, try loading the leader again.")
+        }
     }
     
     //Function to take user back to get involved once they've selected a group

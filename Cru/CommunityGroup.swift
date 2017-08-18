@@ -95,13 +95,20 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
             }*/
         }
         
-        if let leadersDict = dict[CommunityGroupKeys.leaders] as? [String]{
+        // Set the leaders if they exist
+        if let leaderDicts = dict.object(forKey: "leaders") as? [[String:AnyObject]] {
+            self.leaders = leaderDicts.map {
+                CommunityGroupLeader($0 as NSDictionary)
+            }
+        }
+        
+        /*if let leadersDict = dict[CommunityGroupKeys.leaders] as? [String]{
             for lead in leadersDict{
                 
                 leaderIDs.append(lead)
             }
             //getLeaderNames()
-        }
+        }*/
         if let type = dict[CommunityGroupKeys.type] as? String {
             self.type = type
         }
@@ -156,26 +163,42 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
             return stringTime
         }*/
         
-        return meetingTime
+        if dayOfWeek != "" {
+            return "\(dayOfWeek), \(meetingTime)"
+        }
+        else if meetingTime != "" {
+            return meetingTime
+        }
+        else {
+            return "TBD"
+        }
+        
+        
     }
     
     // Gets the names of the community group leaders from the database using the stored IDs
-    func getLeaderNames() {
+    /*func getLeaderNames() {
         for lead in leaderIDs {
             //str.append(lead + ", ")
             CruClients.getServerClient().getById(DBCollection.User, insert: insertLeader, completionHandler: {
                 success in
             }, id: lead)
         }
-    }
+    }*/
     
     //Returns a displayable string with the leaders' names
     func getLeaderString() ->String {
-        var str = ""
-        for lead in leaders {
-            str.append(lead.name + ", ")
+        if leaders.count == 0 {
+            return "Unknown"
         }
-        return str
+        else {
+            var str = ""
+            for lead in leaders {
+                str.append(lead.name + ", ")
+            }
+            return str
+        }
+        
     }
     
     func insertLeader(_ dict: NSDictionary) {

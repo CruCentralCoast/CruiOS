@@ -24,7 +24,7 @@ class CommunityGroupDetailsViewController: UIViewController {
             descriptionView.text = group.desc
             leaderLabel.text = group.getLeaderString()
             typeLabel.text = "Type goes here"
-            timeLabel.text = group.stringTime
+            timeLabel.text = group.getMeetingTime()
             if group.imgURL != "" {
                 imageView.load.request(with: group.imgURL)
             }
