@@ -13,7 +13,9 @@ import MRProgress
 class SubmitInformationViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var nameLine: UIView!
     @IBOutlet weak var numberField: UITextField!
+    @IBOutlet weak var numberLine: UIView!
     @IBOutlet weak var nameError: UILabel!
     @IBOutlet weak var numberError: UILabel!
     
@@ -43,17 +45,49 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         numberField.delegate = self
         
         //check if user is already in local storage
-        
+        if let user = self.localStorageManager.object(forKey: Config.userStorageKey) as? NSDictionary {
+            self.nameField.text = user[self.fullNameKey] as? String ?? ""
+            self.numberField.text = user[self.phoneNoKey] as? String ?? ""
+        }
         
     }
     
-    //Fill in fields after they've appeared
-    override func viewDidAppear(_ animated: Bool) {
-        /*if let user = self.localStorageManager.object(forKey: Config.userStorageKey) as? NSDictionary {
-            print(user)
-            nameField.text = (user[fullNameKey] as? String)
-            numberField.text = (user[phoneNoKey] as? String)
-        }*/
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        switch textField {
+        case nameField!:
+            makeFieldInactive(nameLine)
+        //nameLine?.backgroundColor = inactiveGray
+        case numberField:
+            makeFieldInactive(numberLine)
+            numberField!.text = PhoneFormatter.unparsePhoneNumber(numberField!.text!)
+        default:
+            print("Text field not recognized")
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case nameField!:
+            highlightField(nameLine)
+        case numberField!:
+            highlightField(numberLine)
+        default:
+            print("Text field not recognized")
+        }
+    }
+    
+    // MARK: Animations
+    func highlightField(_ view: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.backgroundColor = CruColors.lightBlue
+        })
+    }
+    
+    func makeFieldInactive(_ view: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.backgroundColor = Colors.inactiveGray
+        })
     }
 
     @IBAction func closePopup(_ sender: UIButton) {
@@ -118,13 +152,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
 
         }
         
-        
-        
-        
-        
         comGroupArray.append(comGroup)
-        
-        
         
         let newGroupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
         UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
@@ -134,11 +162,6 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         
         //navigate back to get involved
         dismissToGetInvolved()
-    }
-    
-    public func loadCommunityGroups() {
-        
-        
     }
     
     func dismissToGetInvolved() {
