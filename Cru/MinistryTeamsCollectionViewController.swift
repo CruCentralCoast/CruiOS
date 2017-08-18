@@ -49,7 +49,7 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         self.collectionView?.emptyDataSetSource = self
         self.collectionView?.emptyDataSetDelegate = self
         
-        self.collectionView?.backgroundColor = .extraLightGray
+        self.collectionView?.backgroundColor = Colors.googleGray
         
         self.collectionView?.register(UINib(nibName: MinistryTeamCell.className, bundle: nil), forCellWithReuseIdentifier: MinistryTeamCell.cellReuseIdentifier)
     }
