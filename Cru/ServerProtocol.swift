@@ -35,6 +35,8 @@ protocol ServerProtocol {
     
     func patch(_ collection: DBCollection, params: [String:Any], completionHandler: @escaping (NSDictionary?)->Void, id: String)
     
+    func upload(_ collection: DBCollection, image: Data, completionHandler: @escaping (NSDictionary?)->Void, id: String)
+    
     func sendHttpGetRequest(_ reqUrl : String, completionHandler : @escaping (AnyObject?) -> Void)
     
     func sendHttpPostRequest(_ reqUrl : String, params : [String : AnyObject], completionHandler : @escaping (AnyObject?) -> Void)

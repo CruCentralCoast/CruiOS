@@ -37,7 +37,15 @@ class CommunityGroupUtils {
         //CruClients.getServerClient().getData(.CommunityGroup, insert: inserter, completionHandler: completionHandler)
     }
     
-    
+    func uploadImage(_ id: String, image: Data, handler: @escaping (CommunityGroup?)->Void){
+        serverClient.upload(DBCollection.CommunityGroup, image: image, completionHandler: { dict in
+            if dict == nil {
+                handler(nil)
+            } else {
+                handler(CommunityGroup(dict: dict!))
+            }
+        }, id: id)
+    }
     
     func patchGroup(_ id: String, params: [String:Any], handler: @escaping (CommunityGroup?)->Void) {
         serverClient.patch(DBCollection.CommunityGroup, params: params, completionHandler: { dict in

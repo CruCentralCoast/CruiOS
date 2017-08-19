@@ -180,6 +180,16 @@ class FakeServerClient: ServerProtocol {
         }
     }
     
+    // TODO: Make this be correct
+    func upload(_ collection: DBCollection, image: Data, completionHandler: @escaping (NSDictionary?) -> Void, id: String) {
+        var dict = getById(collection, id: id)
+        if (dict == nil) {
+            completionHandler(nil)
+        } else {
+            completionHandler(dict as NSDictionary?)
+        }
+    }
+    
     func checkConnection(_ handler: @escaping (Bool) -> ()) {
         handler(true)
     }

@@ -193,11 +193,33 @@ class KeystoneClient: ServerProtocol {
             .responseJSON { response in
                 completionHandler(response.result.value as? NSDictionary)
         }
-        /*
-        Alamofire.request(.PATCH, reqUrl, parameters: params)
-            .responseJSON { response in
-                completionHandler(response.result.value as? NSDictionary)
-        }*/
+    }
+    
+    // Specifically used for uploading files/images
+    func upload(_ collection: DBCollection, image: Data, completionHandler: @escaping (NSDictionary?)->Void, id: String) {
+        let reqUrl = Config.serverEndpoint + collection.name() + "/" + id
+        let name = id + "-image"
+        let fileName = id + "-image.png"
+        
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(image,
+                                         withName: name,
+                                         fileName: fileName,
+                                         mimeType: "image/png")
+            },
+            to: reqUrl,
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                    case .success(let upload, _, _):
+                        upload.responseJSON { response in
+                            debugPrint(response)
+                        }
+                    case .failure(let encodingError):
+                        print(encodingError)
+                }
+            }
+        )
     }
     
     func checkConnection(_ handler: @escaping (Bool)->()){
@@ -225,7 +247,7 @@ class KeystoneClient: ServerProtocol {
     }
     
     fileprivate func requestData(_ url: String, method: Alamofire.HTTPMethod, params: [String:Any]?, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void) {
-        var reqUrl = url
+        let reqUrl = url
         if (LoginUtils.isLoggedIn()) {
             //reqUrl += "?" + Config.leaderApiKey + "=" + GlobalUtils.loadString(Config.leaderApiKey)
         }
