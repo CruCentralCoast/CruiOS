@@ -9,7 +9,7 @@
 import UIKit
 import DropDown
 import ImagePicker
-import AWSS3
+//import AWSS3
 import MRProgress
 
 class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -101,7 +101,9 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         
         
         if let image = selectedImage {
-            self.uploadImage(with: UIImagePNGRepresentation(image)!)
+            CruClients.getCommunityGroupUtils().patchGroup(self.group.id, params: [CommunityGroupKeys.dayOfWeek: self.group.dayOfWeek, CommunityGroupKeys.meetingTime: self.group.meetingTime ,CommunityGroupKeys.description: self.group.desc, CommunityGroupKeys.imageURL: self.group.imgURL], handler: self.handlePostResult)
+            CruClients.getCommunityGroupUtils().uploadImage(self.group.id, image: UIImagePNGRepresentation(image)!, handler: self.handlePostResult)
+            //self.uploadImage(with: UIImagePNGRepresentation(image)!)
         }
         else {
             //MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
@@ -110,12 +112,12 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     }
     
     func uploadImage(with data: Data) {
-        let transferUtility = AWSS3TransferUtility.default()
-        let expression = AWSS3TransferUtilityUploadExpression()
+        //let transferUtility = AWSS3TransferUtility.default()
+        //let expression = AWSS3TransferUtilityUploadExpression()
         //expression.progressBlock = progressBlock
-        var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
+        //var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
         
-        completionHandler = { (task, error) -> Void in
+        /*completionHandler = { (task, error) -> Void in
             DispatchQueue.main.async(execute: {
                 // Do something e.g. Alert a user for transfer completion.
                 // On failed uploads, `error` contains the error object.
@@ -127,12 +129,13 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
                     
                     MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
                     CruClients.getCommunityGroupUtils().patchGroup(self.group.id, params: [CommunityGroupKeys.dayOfWeek: self.group.dayOfWeek, CommunityGroupKeys.meetingTime: self.group.meetingTime ,CommunityGroupKeys.description: self.group.desc, CommunityGroupKeys.imageURL: self.group.imgURL], handler: self.handlePostResult)
+                    CruClients.getCommunityGroupUtils().uploadImage(self.group.id, image: data, handler: self.handlePostResult)
                 }
             })
-        }
+        }*/
         
         
-        transferUtility.uploadData(
+        /*transferUtility.uploadData(
             data,
             bucket: Config.s3BucketName,
             key: "\(group.id)-image.png",
@@ -152,7 +155,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
                 }
                 
                 return nil;
-        }
+        }*/
     }
     
     func handlePostResult(_ newGroup: CommunityGroup?){
