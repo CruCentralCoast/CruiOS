@@ -53,12 +53,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             return
         }
         
-        for group in groupArray {
-            if !groups.contains(group) {
-                groups.append(group)
-            }
-            
-        }
+        groups = groupArray
  
     }
     
@@ -75,6 +70,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: - Empty Data Set Functions
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        self.tableView.backgroundColor = UIColor.white
         return UIImage(named: Config.noCommunityGroupsImage)
     }
     

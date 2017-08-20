@@ -110,23 +110,6 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             cell.setSignupCallback(jumpBackToGetInvolved)
             return cell
         }
-        //print(groups[indexPath.row].getLeaderString())
-        
-        /*if groups[indexPath.row].imgURL != "" {
-            //cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
-            cell.groupImage.load.request(with: groups[indexPath.row].imgURL, onCompletion: { image in
-                print("yo yo yo homie g wuzzup")
-                //image still doesn't get displayed after it's loaded so gonna have to do some bad programming
-                //self.tableView.reloadData()
-            })
-        }
-        else {
-            cell.groupImage.isHidden = true
-            cell.leaderTopConstraint.constant = 12
-        }*/
-        
-        
-        //return cell
     }
     
     
@@ -255,10 +238,19 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             return UIImage(named: Config.noConnectionImageName)
         }
         else {
-            return UIImage(named: Config.noEventsImage)
+            return UIImage(named: "communityImage")
             
         }
         
+    }
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        if hasConnection == false {
+            return nil
+        }
+        else {
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+            return NSAttributedString(string: "No community groups available! Try changing your subscribed ministries or campuses in Settings.", attributes: attributes)
+        }
     }
     
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {

@@ -50,9 +50,10 @@ class LeaveGroupViewController: UIViewController{
             if let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [CommunityGroup] {
                 
                 for cGroup in prevGroupArray {
-                    print("HERE WE GO")
+                    
                     if cGroup.id != group.id {
                         comGroupArray.append(cGroup)
+                        print("HERE WE GO")
                     }
                     
                 }
