@@ -9,8 +9,6 @@
 import UIKit
 import DZNEmptyDataSet
 
-
-
 class EventsTableViewController: UITableViewController, SWRevealViewControllerDelegate, DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     
     var events = [Event]()
@@ -66,7 +64,8 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         if(!connected){
             hasConnection = false
             //Display a message if either of the tables are empty
-
+            self.tableView.emptyDataSetSource = self
+            self.tableView.emptyDataSetDelegate = self
             self.tableView!.reloadData()
             //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
             //hasConnection = false
