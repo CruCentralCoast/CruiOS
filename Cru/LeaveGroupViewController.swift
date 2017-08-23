@@ -53,7 +53,6 @@ class LeaveGroupViewController: UIViewController{
                     
                     if cGroup.id != group.id {
                         comGroupArray.append(cGroup)
-                        print("HERE WE GO")
                     }
                     
                 }

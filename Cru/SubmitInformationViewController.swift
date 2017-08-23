@@ -12,6 +12,8 @@ import MRProgress
 
 class SubmitInformationViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var nameField: UITextField!
     @IBOutlet weak var nameLine: UIView!
     @IBOutlet weak var numberField: UITextField!
@@ -20,10 +22,14 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     @IBOutlet weak var numberError: UILabel!
     
     @IBOutlet weak var dialogView: UIView!
+    @IBOutlet weak var submitButton: UIButton!
+    
+    @IBOutlet weak var titleLabel: UILabel!
     // MARK: Properties
     var localStorageManager: LocalStorageManager!
     var comGroup: CommunityGroup!
     let validator = Validator()
+    var buttonState = 0
     
     fileprivate let fullNameKey = "fullName"
     fileprivate let phoneNoKey = "phoneNumber"
@@ -97,7 +103,15 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     // MARK: Button Actions
     
     @IBAction func submitPressed(_ sender: UIButton) {
-        validator.validate(self)
+        //increase button state
+        buttonState += 1
+        if buttonState == 1 {
+            validator.validate(self)
+        }
+        else {
+            dismissToGetInvolved()
+        }
+        
     }
     
     //function to call if the validation is successful
@@ -116,23 +130,25 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         
         //join community group
         CruClients.getServerClient().joinCommunityGroup(comGroup.id, fullName: user[fullNameKey]!, phone: user[phoneNoKey]!, callback: completeJoinGroup)
-        
-        //CruClients.getServerClient().joinMinistryTeam(ministryTeam.id, fullName: user[fullNameKey]!, phone: user[phoneNoKey]!, callback: completeJoinTeam)
+
     }
     
     //Helper function to hide all the fields and show the progress indicator 
     private func showActivityIndicator() {
         nameField.isHidden = true
-        numberField.isHidden = true
+        nameLine.isHidden = true
         nameError.isHidden = true
+        numberField.isHidden = true
+        numberLabel.isHidden = true
         numberError.isHidden = true
+        nameLabel.isHidden = true
+        numberLine.isHidden = true
         
         MRProgressOverlayView.showOverlayAdded(to: self.dialogView, animated: true)
     }
     
     //Complete joining a community group by storing it in local storage
     func completeJoinGroup(_ leaderInfo: NSArray?) {
-        //let storeGroup = StoredCommunityGroup(group: comGroup, role: "member")
         var comGroupArray = [CommunityGroup]()
         comGroup.role = "member"
         
@@ -157,9 +173,61 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         let newGroupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
         UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
         
-        
         MRProgressOverlayView.dismissOverlay(for: self.dialogView, animated: true)
         
+        
+        /*dismiss(animated: true, completion: { () -> Void in
+            let storyboard = UIStoryboard(name: "communitygroups", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: "confirmDialog") as! ConfirmJoinGroupViewController
+            
+            self.present(controller, animated: true, completion: nil)
+        })*/
+        
+        
+        
+        // Hide all other views and show confirmation message
+        
+        let confirmLabel = UILabel()
+        confirmLabel.text = "Your community group leaders will contact you soon with more information."
+        confirmLabel.textColor = UIColor.black
+        confirmLabel.translatesAutoresizingMaskIntoConstraints = false
+        confirmLabel.font = UIFont(name: Config.fontName, size: 18)
+        dialogView.addSubview(confirmLabel)
+        confirmLabel.numberOfLines = 0
+        
+        let leading = NSLayoutConstraint(item: confirmLabel, attribute: .left, relatedBy: .equal, toItem: dialogView, attribute: .left, multiplier: 1.0, constant: 15.0)
+        let trailing = NSLayoutConstraint(item: confirmLabel, attribute: .right, relatedBy: .equal, toItem: dialogView, attribute: .right, multiplier: 1.0, constant: 15.0)
+        let top = NSLayoutConstraint(item: confirmLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: 18.0)
+        let bottom = NSLayoutConstraint(item: confirmLabel, attribute: .bottom, relatedBy: .equal, toItem: submitButton, attribute: .top, multiplier: 1.0, constant: 18.0)
+        dialogView.addConstraints([leading, trailing, top, bottom])
+        
+        
+        /*let widthConstraint = NSLayoutConstraint(item: confirmLabel, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 300)
+        let heightConstraint = NSLayoutConstraint(item: confirmLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
+        var constraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "V:[superview]-(<=1)-[label]",
+            options: NSLayoutFormatOptions.alignAllCenterX,
+            metrics: nil,
+            views: ["superview":dialogView, "label":confirmLabel])
+        dialogView.addConstraints(constraints)
+        
+        // Center vertically
+        constraints = NSLayoutConstraint.constraints(
+            withVisualFormat: "H:[superview]-(<=1)-[label]",
+            options: NSLayoutFormatOptions.alignAllCenterY,
+            metrics: nil,
+            views: ["superview":dialogView, "label":confirmLabel])
+        
+        view.addConstraints(constraints)
+        
+        view.addConstraints([ widthConstraint, heightConstraint])*/
+        
+        submitButton.setTitle("Great", for: .normal)
+        
+        
+    }
+    
+    func confirmationPressed(_ sender: UIButton) {
         //navigate back to get involved
         dismissToGetInvolved()
     }
