@@ -149,19 +149,6 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
     }
     
     func getMeetingTime()->String{
-        //let format = "h:mm a"
-        //let serverFormat = "E M d y H:m:s"
-        //let serverFormat = "h:mm a"
-  
-        /*let formatter = GlobalUtils.getCommunityGroupsDateFormatter()
-        
-        
-        if (meetingTime != nil ){
-            return formatter.string(from: meetingTime as Date)
-        }
-        else{
-            return stringTime
-        }*/
         
         if dayOfWeek != "" {
             return "\(dayOfWeek), \(meetingTime)"
@@ -176,16 +163,6 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         
     }
     
-    // Gets the names of the community group leaders from the database using the stored IDs
-    /*func getLeaderNames() {
-        for lead in leaderIDs {
-            //str.append(lead + ", ")
-            CruClients.getServerClient().getById(DBCollection.User, insert: insertLeader, completionHandler: {
-                success in
-            }, id: lead)
-        }
-    }*/
-    
     //Returns a displayable string with the leaders' names
     func getLeaderString() ->String {
         if leaders.count == 0 {
@@ -194,10 +171,27 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
         else {
             var str = ""
             for lead in leaders {
-                str.append(lead.name + ", ")
+                str.append(lead.name + ",  ")
             }
-            return str
+            str = str.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
+            let truncatedStr = str.substring(to: str.index(before: str.endIndex))
+            return truncatedStr
         }
+        
+    }
+    
+    //Returns a displayable string for the types
+    func getTypeString() -> String {
+        var string = type
+        //If gender is "Other" than it's most likely a mixed group which is specified in the type variable
+        if gender != "Other" {
+            //Only add comma if there will be more than one specification
+            if string != "" {
+                string.append(", ")
+            }
+            string.append(gender)
+        }
+        return string
         
     }
     

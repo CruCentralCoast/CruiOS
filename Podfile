@@ -34,6 +34,7 @@ def cru_pods
     pod 'ImagePicker'
     pod 'AWSS3'
     pod 'AWSCognito'
+    pod 'AlamofireImage', '~> 3.2'
 end
 
 def crash_monitor

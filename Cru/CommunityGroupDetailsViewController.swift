@@ -23,7 +23,8 @@ class CommunityGroupDetailsViewController: UIViewController {
         if group != nil {
             descriptionView.text = group.desc
             leaderLabel.text = group.getLeaderString()
-            typeLabel.text = "Type goes here"
+            typeLabel.text = group.getTypeString()
+            ministryLabel.text  = group.parentMinistryName
             timeLabel.text = group.getMeetingTime()
             if group.imgURL != "" {
                 imageView.load.request(with: group.imgURL)

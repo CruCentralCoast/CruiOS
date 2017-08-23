@@ -17,6 +17,8 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var card: UIView!
     
+    var eImage: UIImage?
+    
     var event: Event! {
         didSet {
             let dateFormatter = "MMM d, yyyy"
@@ -48,6 +50,17 @@ class EventTableViewCell: UITableViewCell {
                 spaceToTopCard.constant = 158
                 //eventImage.load(event.imageUrl)
                 eventImage.load.request(with: event.imageUrl)
+                /*if eImage == nil {
+                    //eventImage.load.request(with: event.imageUrl)
+                    eventImage.load.request(with: event.imageUrl, onCompletion: { image, error, operation in
+                        self.eImage = image
+                    })
+                    
+                }
+                else {
+                    eventImage.image = eImage
+                }*/
+                
             }
         }
     }

@@ -96,7 +96,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell2", for: indexPath) as! CommunityGroupNoImageCell
             cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
             
-            cell.typeLabel.text = groups[indexPath.row].type
+            cell.typeLabel.text = groups[indexPath.row].getTypeString()
             cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
             
             cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
@@ -174,20 +174,6 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
                 print("Nope, try loading the leader again.")
             }
         })
-        
-        
-        
-        //Have to do this so we can get the names of the leaders from the database
-        /*DispatchQueue.global(qos: .userInitiated).async { // 1
-            group.getLeaderNames()
-            DispatchQueue.main.async { // 2
-                self.tableView.reloadData()
-            }
-        }*/
-        
-        
-        
-        
     }
 
     
@@ -204,23 +190,6 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         }*/
         
         
-    }
-    
-    fileprivate func insertLeader(_ dict: NSDictionary, group: CommunityGroup) {
-        let leader = CommunityGroupLeader(dict)
-        if leader != nil {
-            print("leader: " + leader.name)
-            group.leaders.append(leader)
-        }
-    }
-    
-    fileprivate func finishInsertingLeaders(_ success: Bool) {
-        if success {
-            print("Successfully loaded a leader!")
-        }
-        else {
-            print("Nope, try loading the leader again.")
-        }
     }
     
     //Function to take user back to get involved once they've selected a group
