@@ -72,7 +72,7 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
             self.tableView.emptyDataSetSource = self
             self.tableView.emptyDataSetDelegate = self
             self.tableView!.reloadData()
-            //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             //hasConnection = false
         }else{
             hasConnection = true

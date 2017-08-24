@@ -33,7 +33,7 @@ class MinistryTeamCell: UICollectionViewCell {
             self.summaryLabel.text = self.ministryTeam.summary
             
             // Default text in case the leader names don't exist
-            self.leaderNamesLabel.text = "Led by awesome people :)"
+            self.leaderNamesLabel.text = "N/A"
             if !self.ministryTeam.leaders.isEmpty {
                 let leaderNames = self.ministryTeam.leaders.map{$0.name}.filter{!$0.isEmpty}
                 if !leaderNames.isEmpty {
