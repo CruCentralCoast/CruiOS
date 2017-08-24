@@ -285,6 +285,8 @@
 		6DC46F811D3D75DE008BB70A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */; };
 		6DC538261D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
 		6DC538271D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
+		6DD13BC01F4E3F9A00F60B6B /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */; };
+		6DD13BC11F4E3F9A00F60B6B /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */; };
 		6DDDAAF01F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */; };
 		6DDDAAF11F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */; };
 		6DF096FA1D92CED80053741A /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF096F91D92CED80053741A /* about.storyboard */; };
@@ -550,6 +552,7 @@
 		6DC46F7C1D3D73D8008BB70A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerViewController.swift; sourceTree = "<group>"; };
+		6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmJoinGroupViewController.swift; sourceTree = "<group>"; };
 		6DF096F91D92CED80053741A /* about.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTableViewCell.swift; sourceTree = "<group>"; };
@@ -1101,6 +1104,7 @@
 			children = (
 				0F17E3D71C9106B500713297 /* LocalStorage */,
 				C1DCEC451C7681E1009FACE0 /* RideUtils.swift */,
+				6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */,
 				50FE4D421C50D0D100EA9042 /* SubscriptionManager.swift */,
 				C1214DC71CEA63B300E7D25F /* EventUtils.swift */,
 				6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */,
@@ -1586,6 +1590,7 @@
 				6D01D83E1D8440E5006A9AC0 /* CustomPresentAnimationController.swift in Sources */,
 				6D10D5EF1D92F525008265AD /* AboutViewController.swift in Sources */,
 				C12C0A871C941E9C005751A0 /* DBCollection.swift in Sources */,
+				6DD13BC01F4E3F9A00F60B6B /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1662,6 +1667,7 @@
 				6D01D8361D81AE59006A9AC0 /* CheckboxButton.swift in Sources */,
 				C1015CD81C942D7F005B559E /* GlobalUtilsTest.swift in Sources */,
 				6D01D83F1D8440E5006A9AC0 /* CustomPresentAnimationController.swift in Sources */,
+				6DD13BC11F4E3F9A00F60B6B /* ImageUtils.swift in Sources */,
 				C1214DCB1CEA668300E7D25F /* EventUtilsTest.swift in Sources */,
 				507252E51CC07E8200DD4EFF /* EventsModalTableViewController.swift in Sources */,
 				6DF5177B1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */,

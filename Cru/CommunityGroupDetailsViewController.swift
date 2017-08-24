@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CommunityGroupDetailsViewController: UIViewController {
     var group: CommunityGroup!
@@ -27,7 +28,14 @@ class CommunityGroupDetailsViewController: UIViewController {
             ministryLabel.text  = group.parentMinistryName
             timeLabel.text = group.getMeetingTime()
             if group.imgURL != "" {
-                imageView.load.request(with: group.imgURL)
+                //Load image or get from cache
+                let urlRequest = URLRequest(url: URL(string: group.imgURL)!)
+                CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                    if let image = response.result.value {
+                        self.imageView.image = image
+                    }
+                }
+                
             }
         }
         

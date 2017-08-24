@@ -75,10 +75,17 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         //TODO: Figure out way to create cells with different classes w/o repeating code
         if groups[indexPath.row].imgURL != "" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
-            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            //cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            //Load image or get from cache
+            let urlRequest = URLRequest(url: URL(string: groups[indexPath.row].imgURL)!)
+            CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                if let image = response.result.value {
+                    cell.groupImage.image = image
+                }
+            }
             cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
             
-            cell.typeLabel.text = groups[indexPath.row].type
+            cell.typeLabel.text = groups[indexPath.row].getTypeString()
             cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
             
             cell.leaderLabel.text = groups[indexPath.row].getLeaderString()

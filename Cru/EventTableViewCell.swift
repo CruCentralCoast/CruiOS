@@ -49,18 +49,14 @@ class EventTableViewCell: UITableViewCell {
                 eventImage.isHidden = false
                 spaceToTopCard.constant = 158
                 //eventImage.load(event.imageUrl)
-                eventImage.load.request(with: event.imageUrl)
-                /*if eImage == nil {
-                    //eventImage.load.request(with: event.imageUrl)
-                    eventImage.load.request(with: event.imageUrl, onCompletion: { image, error, operation in
-                        self.eImage = image
-                    })
-                    
-                }
-                else {
-                    eventImage.image = eImage
-                }*/
                 
+                //Load image or get from cache
+                let urlRequest = URLRequest(url: URL(string: event.imageUrl)!)
+                CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                    if let image = response.result.value {
+                        self.eventImage.image = image
+                    }
+                }
             }
         }
     }

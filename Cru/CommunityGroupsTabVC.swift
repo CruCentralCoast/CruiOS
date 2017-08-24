@@ -12,6 +12,7 @@
 import UIKit
 import XLPagerTabStrip
 import DZNEmptyDataSet
+import AlamofireImage
 
 class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -96,7 +97,14 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         if groups[indexPath.row].imgURL != "" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
             
-            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            //Load image or get from cache
+            let urlRequest = URLRequest(url: URL(string: groups[indexPath.row].imgURL)!)
+            CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                if let image = response.result.value {
+                    cell.groupImage.image = image
+                }
+            }
+
             // Configure the cell...
             if let parentMin = groups[indexPath.row].parentMinistryName as? String {
                 cell.ministryLabel.text = parentMin

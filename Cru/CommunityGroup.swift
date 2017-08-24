@@ -184,7 +184,7 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
     func getTypeString() -> String {
         var string = type
         //If gender is "Other" than it's most likely a mixed group which is specified in the type variable
-        if gender != "Other" {
+        if gender != "Other" && gender != "" {
             //Only add comma if there will be more than one specification
             if string != "" {
                 string.append(", ")
