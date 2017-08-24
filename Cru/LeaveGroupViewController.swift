@@ -66,18 +66,6 @@ class LeaveGroupViewController: UIViewController{
             
         }
         
-        /*guard let prevGroupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
-            print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
-            return
-        }
-        
-        guard let prevGroupArray = NSKeyedUnarchiver.unarchiveObject(with: prevGroupData as Data) as? [CommunityGroup] else {
-            print("Could not unarchive from groupData")
-            return
-        }*/
-        
-        
-        
         let newGroupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
         UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
         

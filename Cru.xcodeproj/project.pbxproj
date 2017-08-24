@@ -553,6 +553,7 @@
 		6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerViewController.swift; sourceTree = "<group>"; };
 		6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
+		6DD13BC21F4EA1DD00F60B6B /* Cru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cru.entitlements; sourceTree = "<group>"; };
 		6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmJoinGroupViewController.swift; sourceTree = "<group>"; };
 		6DF096F91D92CED80053741A /* about.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTableViewCell.swift; sourceTree = "<group>"; };
@@ -708,6 +709,7 @@
 		0F8CEF1F1BEC0E13008FC70D /* Cru */ = {
 			isa = PBXGroup;
 			children = (
+				6DD13BC21F4EA1DD00F60B6B /* Cru.entitlements */,
 				2F8FA1A11F12BCCF00A60392 /* Extensions */,
 				6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */,
 				C12940E41CCD829E004DACB1 /* Clients */,
@@ -1860,6 +1862,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Cru/Cru.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7F72R928UK;
@@ -1889,6 +1892,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Cru/Cru.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7F72R928UK;

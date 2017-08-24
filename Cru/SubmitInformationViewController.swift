@@ -202,26 +202,6 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         dialogView.addConstraints([leading, trailing, top, bottom])
         
         
-        /*let widthConstraint = NSLayoutConstraint(item: confirmLabel, attribute: NSLayoutAttribute.width, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 300)
-        let heightConstraint = NSLayoutConstraint(item: confirmLabel, attribute: NSLayoutAttribute.height, relatedBy: NSLayoutRelation.equal, toItem: nil, attribute: NSLayoutAttribute.notAnAttribute, multiplier: 1, constant: 200)
-        var constraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "V:[superview]-(<=1)-[label]",
-            options: NSLayoutFormatOptions.alignAllCenterX,
-            metrics: nil,
-            views: ["superview":dialogView, "label":confirmLabel])
-        dialogView.addConstraints(constraints)
-        
-        // Center vertically
-        constraints = NSLayoutConstraint.constraints(
-            withVisualFormat: "H:[superview]-(<=1)-[label]",
-            options: NSLayoutFormatOptions.alignAllCenterY,
-            metrics: nil,
-            views: ["superview":dialogView, "label":confirmLabel])
-        
-        view.addConstraints(constraints)
-        
-        view.addConstraints([ widthConstraint, heightConstraint])*/
-        
         submitButton.setTitle("Great", for: .normal)
         
         

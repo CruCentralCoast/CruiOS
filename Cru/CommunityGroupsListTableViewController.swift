@@ -146,11 +146,8 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     //Get ministry list from local storage
     //Create a dictionary with ministry id & name for easy lookup
     fileprivate func createMinistryDictionary() {
-        ministries = CruClients.getSubscriptionManager().loadMinistries()
+        ministryTable = CruClients.getCommunityGroupUtils().getMinistryTable()
         
-        for ministry in ministries {
-            ministryTable[ministry.id] = ministry.name
-        }
     }
     
     //helper function for inserting group data

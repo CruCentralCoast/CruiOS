@@ -102,13 +102,13 @@ class CommunityGroup: NSObject, NSCoding, Comparable {
             }
         }
         
-        /*if let leadersDict = dict[CommunityGroupKeys.leaders] as? [String]{
+        if let leadersDict = dict[CommunityGroupKeys.leaders] as? [String]{
             for lead in leadersDict{
                 
                 leaderIDs.append(lead)
             }
             //getLeaderNames()
-        }*/
+        }
         if let type = dict[CommunityGroupKeys.type] as? String {
             self.type = type
         }

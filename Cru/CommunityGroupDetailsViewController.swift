@@ -39,8 +39,7 @@ class CommunityGroupDetailsViewController: UIViewController {
             }
         }
         
-        //Add edit button if user is a community group leader
-        if GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader) {
+        if group.leaderIDs.contains(GlobalUtils.loadString(Config.userID)) {
             let editButton = UIButton(type: .custom)
             editButton.setImage(UIImage(named: "edit-icon"), for: .normal)
             editButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -49,6 +48,17 @@ class CommunityGroupDetailsViewController: UIViewController {
             
             self.navigationItem.setRightBarButton(item1, animated: true)
         }
+        
+        //Add edit button if user is a community group leader
+        /*if GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader) {
+            let editButton = UIButton(type: .custom)
+            editButton.setImage(UIImage(named: "edit-icon"), for: .normal)
+            editButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            editButton.addTarget(self, action: #selector(self.editGroup), for: .touchUpInside)
+            let item1 = UIBarButtonItem(customView: editButton)
+            
+            self.navigationItem.setRightBarButton(item1, animated: true)
+        }*/
     }
     
     func editGroup() {

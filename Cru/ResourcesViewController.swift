@@ -833,6 +833,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         let taggedArticles = articles.filter { art in
             return checkTags(art.tags!, filteredTags: tags)
         }
+        
         let taggedVideos = videos.filter { vid in
             if (vid.tags != nil) && vid.tags.isEmpty {
                 return checkTags(vid.tags!, filteredTags: tags)
