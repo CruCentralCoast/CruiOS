@@ -11,49 +11,49 @@ import UIKit
 class FilterCommunityGroupsTableViewController: UITableViewController {
     
     struct FilterOptions {
-        var ministry: String?
+        var ministries: [String]
         var days: [String]
-        var hours: (Int, Int)
-        var grade: String?
+        var time: Date?
+        var grades: [String]
         var gender: String?
     }
     
-    fileprivate enum Section: Int {
-        case ministry
+    fileprivate enum Row: Int {
+        case ministries
         case days
-        case hours
-        case grade
+        case time
+        case grades
         case gender
-        
-        var rowCount: Int {
-            switch self {
-            case .ministry: return 1
-            case .days: return 1
-            case .hours: return 2
-            case .grade: return 1
-            case .gender: return 1
-            }
-        }
         
         var title: String {
             switch self {
-            case .ministry: return "Ministry"
+            case .ministries: return "Ministries"
             case .days: return "Days Available"
-            case .hours: return "Hours Available"
-            case .grade: return "Grade"
+            case .time: return "Time Available"
+            case .grades: return "Grade Level"
             case .gender: return "Gender"
+            }
+        }
+        
+        var options: [String] {
+            switch self {
+            case .ministries: return CruClients.getSubscriptionManager().loadMinistries().map { $0.name }
+            case .days: return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            case .time: return []
+            case .grades: return ["Freshman", "Sophomore", "Junior", "Senior+"]
+            case .gender: return ["Male", "Female"]
             }
         }
     }
     
-    fileprivate let sections: [Section] = [.ministry, .days, .hours, .grade, .gender]
-    fileprivate var selectedSection: Section?
+    fileprivate let rows: [Row] = [.ministries, .days, .time, .grades, .gender]
+    fileprivate var selectedRow: Row?
     
     var filterOptions: FilterOptions
     var filterDelegate: FilterCommunityGroupsDelegate?
     
     init(options: FilterOptions? = nil) {
-        self.filterOptions = options ?? FilterOptions(ministry: nil, days: [], hours: (0, 24), grade: nil, gender: nil)
+        self.filterOptions = options ?? FilterOptions(ministries: [], days: [], time: nil, grades: [], gender: nil)
         super.init(style: .grouped)
     }
     
@@ -64,13 +64,18 @@ class FilterCommunityGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.title = "Filter"
+        // Configure nav bar
+        self.title = "Filter"
+        self.navigationController?.navigationBar.tintColor = CruColors.yellow
         let filterButton = UIBarButtonItem(title: "Apply", style: .done, target: self, action: #selector(self.applyFilter))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancel))
         self.navigationItem.rightBarButtonItem = filterButton
         self.navigationItem.leftBarButtonItem = cancelButton
         
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FilterCell")
+        // Configure tableView
+        self.tableView.registerNib(FilterCell.self)
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44
     }
     
     @objc func applyFilter() {
@@ -81,98 +86,123 @@ class FilterCommunityGroupsTableViewController: UITableViewController {
     @objc func cancel() {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func presentSelectionViewController(options: [String], selectedOptions: [String] = [], allowsMultipleSelections: Bool = false) {
+        let selectionVC = SelectionViewController(options: options, selectedOptions: selectedOptions, allowsMultipleSelections: allowsMultipleSelections)
+        selectionVC.delegate = self
+        self.navigationController?.pushViewController(selectionVC, animated: true)
+    }
+    
+    func presentTimePicker() {
+        TimePicker.pickTime(self)
+    }
+    
+    @objc func datePicked(_ date: Date) {
+        self.filterOptions.time = date
+        self.tableView.reloadData()
+    }
 }
 
 extension FilterCommunityGroupsTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return self.sections.count
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.sections[section].rowCount
-    }
-    
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return self.sections[section].title
+        switch section {
+        case 1:
+            return 2
+        default:
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath)
-        
-        cell.accessoryType = .disclosureIndicator
-        
-        switch Section(rawValue: indexPath.section)! {
-        case .ministry:
-            cell.textLabel?.text = self.filterOptions.ministry ?? "Select ministry"
-        case .days:
-            if filterOptions.days.count > 0 {
-                cell.textLabel?.text = filterOptions.days.joined(separator: ", ")
-            } else {
-                cell.textLabel?.text = "Select available days"
-            }
-        case .hours:
-            break
-        case .grade:
-            cell.textLabel?.text = self.filterOptions.grade ?? "Select grade level"
-        case .gender:
-            cell.textLabel?.text = self.filterOptions.gender ?? "Select gender"
+        let cell = tableView.dequeueCell(FilterCell.self, for: indexPath)
+        var index = indexPath.section + indexPath.row
+        if indexPath.section >= 2 {
+            index += 1
         }
+        
+        let row = self.rows[index]
+        var detailText = "All"
+        switch row {
+        case .ministries:
+            if !self.filterOptions.ministries.isEmpty {
+                detailText = self.filterOptions.ministries.joined(separator: ", ")
+            }
+        case .days:
+            if !self.filterOptions.days.isEmpty {
+                detailText = self.filterOptions.days.joined(separator: ", ")
+            }
+        case .time:
+            if let time = self.filterOptions.time {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "h:mm a"
+                let timeString = formatter.string(from: time)
+                detailText = "After \(timeString)"
+            }
+        case .grades:
+            if !self.filterOptions.grades.isEmpty {
+                detailText = self.filterOptions.grades.joined(separator: ", ")
+            }
+        case .gender:
+            if let gender = self.filterOptions.gender {
+                detailText = gender
+            }
+        }
+        cell.titleLabel.text = row.title
+        cell.detailLabel.text = detailText
         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectedSection = Section(rawValue: indexPath.section)!
+        var index = indexPath.section + indexPath.row
+        if indexPath.section >= 2 {
+            index += 1
+        }
         
-        var options = [String]()
+        self.selectedRow = self.rows[index]
+        
+        let options = self.selectedRow?.options ?? []
         var selectedOptions = [String]()
-        var allowsMultipleSelections = false
         
-        switch self.selectedSection! {
-        case .ministry:
-            options = ["Cru Cal Poly"]
-            if let ministry = self.filterOptions.ministry {
-                selectedOptions = [ministry]
-            }
+        switch self.selectedRow! {
+        case .ministries:
+            selectedOptions = self.filterOptions.ministries
+            let allowsMultipleSelections = selectedOptions.count > 1 ? true : false
+            self.presentSelectionViewController(options: options, selectedOptions: selectedOptions, allowsMultipleSelections: allowsMultipleSelections)
         case .days:
-            options = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-            if self.filterOptions.days.count > 0 {
-                selectedOptions = self.filterOptions.days
-            }
-            allowsMultipleSelections = true
-        case .hours:
-            break
-        case .grade:
-            options = ["Freshman", "Sophomore", "Junior", "Senior+"]
-            if let grade = self.filterOptions.grade {
-                selectedOptions = [grade]
-            }
+            selectedOptions = self.filterOptions.days
+            self.presentSelectionViewController(options: options, selectedOptions: selectedOptions, allowsMultipleSelections: true)
+        case .time:
+            self.presentTimePicker()
+        case .grades:
+            selectedOptions = self.filterOptions.grades
+            self.presentSelectionViewController(options: options, selectedOptions: selectedOptions)
         case .gender:
-            options = ["Male", "Female"]
             if let gender = self.filterOptions.gender {
                 selectedOptions = [gender]
             }
+            self.presentSelectionViewController(options: options, selectedOptions: selectedOptions)
         }
-        
-        let selectionVC = SelectionViewController(options: options, selectedOptions: selectedOptions, allowsMultipleSelections: allowsMultipleSelections)
-        selectionVC.delegate = self
-        self.navigationController?.pushViewController(selectionVC, animated: true)
     }
 }
 
 extension FilterCommunityGroupsTableViewController: SelectionViewControllerDelegate {
     func selectedOptions(_ selectedOptions: [String]) {
-        switch self.selectedSection! {
-        case .ministry:
-            self.filterOptions.ministry = selectedOptions.first!
+        switch self.selectedRow! {
+        case .ministries:
+            self.filterOptions.ministries = selectedOptions
         case .days:
             self.filterOptions.days = selectedOptions
-        case .hours:
+        case .time:
             break
-        case .grade:
-            self.filterOptions.grade = selectedOptions.first!
+        case .grades:
+            self.filterOptions.grades = selectedOptions
         case .gender:
-            self.filterOptions.gender = selectedOptions.first!
+            self.filterOptions.gender = selectedOptions.first ?? nil
         }
         
         self.tableView.reloadData()

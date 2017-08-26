@@ -20,6 +20,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     var ministries = [Ministry]()
     var ministryTable = [String: String]()
     var selectedGroup: CommunityGroup!
+    var filterOptions = FilterCommunityGroupsTableViewController.FilterOptions(ministries: [], days: [], time: nil, grades: [], gender: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +47,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     }
     
     @objc func showFilter() {
-        let filterVC = FilterCommunityGroupsTableViewController()
+        let filterVC = FilterCommunityGroupsTableViewController(options: self.filterOptions)
         filterVC.filterDelegate = self
         let nav = UINavigationController(rootViewController: filterVC)
         self.present(nav, animated: true, completion: nil)
@@ -54,24 +55,16 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return self.filteredGroups.count
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        let group = groups[indexPath.row]
+        let group = self.filteredGroups[indexPath.row]
         
         if group.imgURL == "" {
-            //return 194.0
             return 193
-        }
-        else {
+        } else {
             return 340.0
         }
     }
@@ -79,15 +72,16 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //TODO: Figure out way to create cells with different classes w/o repeating code
-        if groups[indexPath.row].imgURL != "" {
+        let group = self.filteredGroups[indexPath.row]
+        if group.imgURL != "" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
-            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
-            cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
+            cell.groupImage.load.request(with: group.imgURL)
+            cell.ministryLabel.text = group.parentMinistryName
             
-            cell.typeLabel.text = groups[indexPath.row].type
-            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            cell.typeLabel.text = group.type
+            cell.meetingTimeLabel.text = group.getMeetingTime()
             
-            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            cell.leaderLabel.text = group.getLeaderString()
             
             //Add drop shadow
             cell.card.layer.shadowColor = UIColor.black.cgColor
@@ -100,12 +94,12 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell2", for: indexPath) as! CommunityGroupNoImageCell
-            cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
+            cell.ministryLabel.text = group.parentMinistryName
             
-            cell.typeLabel.text = groups[indexPath.row].type
-            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            cell.typeLabel.text = group.type
+            cell.meetingTimeLabel.text = group.getMeetingTime()
             
-            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            cell.leaderLabel.text = group.getLeaderString()
             
             //Add drop shadow
             cell.card.layer.shadowColor = UIColor.black.cgColor
@@ -172,6 +166,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             }
         }, parentId: group.id, completionHandler: {(success) -> Void in
             self.groups.insert(group, at: 0)
+            self.filteredGroups.insert(group, at: 0)
             self.tableView.reloadData()
             if success {
                 print("Successfully loaded a leader!")
@@ -200,6 +195,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     //helper function for finishing off inserting group data
     fileprivate func finishInserting(_ success: Bool) {
         //self.events.sort(by: {$0.startNSDate.compare($1.startNSDate as Date) == .orderedAscending})
+        self.filteredGroups = self.groups.sorted()
         
        //Dismiss overlay here
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
@@ -268,7 +264,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     @IBAction func joinGroup(_ sender: UIButton) {
         if let cell = sender.superview?.superview?.superview as? UITableViewCell {
             let indexPath = tableView.indexPath(for: cell)
-            let group = groups[(indexPath?.row)!]
+            let group = self.filteredGroups[indexPath!.row]
             self.selectedGroup = group
         }
         
@@ -296,6 +292,14 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
 
 extension CommunityGroupsListTableViewController: FilterCommunityGroupsDelegate {
     func applyFilter(options: FilterCommunityGroupsTableViewController.FilterOptions) {
-        
+        self.filterOptions = options
+        self.filteredGroups = self.groups.filter {
+            (self.filterOptions.ministries.isEmpty || self.filterOptions.ministries.contains($0.parentMinistryName)) &&
+            (self.filterOptions.days.isEmpty || self.filterOptions.days.contains($0.dayOfWeek)) &&
+//            (self.filterOptions.time == nil || $0.getMeetingTime() &&
+            (self.filterOptions.grades.isEmpty || self.filterOptions.grades.contains($0.type)) &&
+            (self.filterOptions.gender == nil || self.filterOptions.gender == $0.gender)
+        }.sorted()
+        self.tableView.reloadData()
     }
 }

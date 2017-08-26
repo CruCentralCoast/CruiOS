@@ -55,6 +55,9 @@
 		0FC8E3B21C48750A007A7208 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8E3B11C48750A007A7208 /* IntroViewController.swift */; };
 		0FF87DA41C8A268D00D56C4E /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */; };
 		0FF87DA51C8A268D00D56C4E /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */; };
+		2F283A7E1F4BEC1E00248422 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F283A7C1F4BEC1E00248422 /* FilterCell.swift */; };
+		2F283A7F1F4BEC1E00248422 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F283A7D1F4BEC1E00248422 /* FilterCell.xib */; };
+		2F5EA1CC1F4C00620098115E /* UITableView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EA1CB1F4C00620098115E /* UITableView+Additions.swift */; };
 		2F7198AD1F3FE8BE007A7720 /* Filter.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F7198AC1F3FE8BE007A7720 /* Filter.storyboard */; };
 		2F7198AF1F3FEAF7007A7720 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7198AE1F3FEAF7007A7720 /* SelectionViewController.swift */; };
 		2F851C561F0F4A2700DF9B81 /* MinistryTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F851C541F0F4A2700DF9B81 /* MinistryTeamCell.swift */; };
@@ -416,6 +419,9 @@
 		0FC8E3A51C45EB1A007A7208 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		0FC8E3B11C48750A007A7208 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
+		2F283A7C1F4BEC1E00248422 /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		2F283A7D1F4BEC1E00248422 /* FilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		2F5EA1CB1F4C00620098115E /* UITableView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
 		2F7198AC1F3FE8BE007A7720 /* Filter.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Filter.storyboard; sourceTree = "<group>"; };
 		2F7198AE1F3FEAF7007A7720 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		2F851C541F0F4A2700DF9B81 /* MinistryTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamCell.swift; sourceTree = "<group>"; };
@@ -822,6 +828,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8FA1A61F12C2F100A60392 /* NSObject+Additions.swift */,
+				2F5EA1CB1F4C00620098115E /* UITableView+Additions.swift */,
 				2F8FA1A21F12BCE700A60392 /* UITableViewCell+Additions.swift */,
 				2F8FA1A81F12C32F00A60392 /* UICollectionViewCell+Additions.swift */,
 				2FC9D8801F36E0F400EFF153 /* UIColor+Additions.swift */,
@@ -969,6 +976,8 @@
 				0F1B8C2A1CC99B0000CEE24C /* CommunityGroupViewController.swift */,
 				2F7198AC1F3FE8BE007A7720 /* Filter.storyboard */,
 				2F96AF1F1F414094008F38B0 /* FilterCommunityGroupsTableViewController.swift */,
+				2F283A7C1F4BEC1E00248422 /* FilterCell.swift */,
+				2F283A7D1F4BEC1E00248422 /* FilterCell.xib */,
 			);
 			name = "Get Involved";
 			sourceTree = "<group>";
@@ -1275,6 +1284,7 @@
 				6DB922821C07CE1400C7B120 /* FreigSanProBook.otf in Resources */,
 				509DA9151C616BE60050CE26 /* riderdetail.storyboard in Resources */,
 				0FC8E39D1C3EF320007A7208 /* sideMenu.storyboard in Resources */,
+				2F283A7F1F4BEC1E00248422 /* FilterCell.xib in Resources */,
 				C13F7DE61CE2713A0057D0F5 /* getinvolved.storyboard in Resources */,
 				503A06CC1C5F08CC00DAD10E /* offerride.storyboard in Resources */,
 				501D0ABF1C68588700BF243A /* events.storyboard in Resources */,
@@ -1478,6 +1488,7 @@
 				50697BBE1CE002C500776CC5 /* DirectionTVC.swift in Sources */,
 				2FC9D8811F36E0F400EFF153 /* UIColor+Additions.swift in Sources */,
 				50AC22531CDB033D00427C08 /* EditableItem.swift in Sources */,
+				2F283A7E1F4BEC1E00248422 /* FilterCell.swift in Sources */,
 				6D8F423C1CD80C8D0013BB13 /* Article.swift in Sources */,
 				50697BC41CE03B5600776CC5 /* PassengersViewController.swift in Sources */,
 				50A9B02C1CFBFA1900E759E2 /* MapOfRidesViewController.swift in Sources */,
@@ -1549,6 +1560,7 @@
 				6D9379271F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */,
 				2F851C561F0F4A2700DF9B81 /* MinistryTeamCell.swift in Sources */,
 				2F8FA1A31F12BCE700A60392 /* UITableViewCell+Additions.swift in Sources */,
+				2F5EA1CC1F4C00620098115E /* UITableView+Additions.swift in Sources */,
 				50C6CC7E1CBF3A3700EF5EFB /* SWRevealViewController.m in Sources */,
 				50A9B0291CFBE04A00E759E2 /* RiderEditTableViewCell.swift in Sources */,
 				6DA598481F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */,
