@@ -49,8 +49,8 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     @objc func showFilter() {
         let filterVC = FilterCommunityGroupsTableViewController(options: self.filterOptions)
         filterVC.filterDelegate = self
-        let nav = UINavigationController(rootViewController: filterVC)
-        self.present(nav, animated: true, completion: nil)
+        let modalNav = ModalNavigationController(rootViewController: filterVC)
+        self.present(modalNav, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
@@ -199,7 +199,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         
        //Dismiss overlay here
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-        self.tableView!.reloadData()
+        self.tableView.reloadData()
         
         /*for group in groups {
             CruClients.getCommunityGroupUtils().loadLeaders(insertLeader, parentId: group.id, completionHandler: finishInsertingLeaders)

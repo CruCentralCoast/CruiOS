@@ -49,7 +49,7 @@ class FilterCommunityGroupsTableViewController: UITableViewController {
     fileprivate let rows: [Row] = [.ministries, .days, .time, .grades, .gender]
     fileprivate var selectedRow: Row?
     
-    var filterOptions: FilterOptions
+    fileprivate var filterOptions: FilterOptions
     var filterDelegate: FilterCommunityGroupsDelegate?
     
     init(options: FilterOptions? = nil) {
