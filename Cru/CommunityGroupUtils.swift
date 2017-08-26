@@ -11,6 +11,8 @@ import Foundation
 class CommunityGroupUtils {
     
     var serverClient: ServerProtocol
+    var ministries = [Ministry]()
+    var ministryTable = [String: String]()
     
     init() {
         serverClient = CruClients.getServerClient()
@@ -35,6 +37,18 @@ class CommunityGroupUtils {
         
         CruClients.getServerClient().getData(.CommunityGroup, insert: inserter, completionHandler: completionHandler, params: params)
         //CruClients.getServerClient().getData(.CommunityGroup, insert: inserter, completionHandler: completionHandler)
+    }
+    
+    func getMinistryTable() -> [String: String]{
+        if ministries.isEmpty {
+            ministries = CruClients.getSubscriptionManager().loadMinistries()
+            for ministry in ministries {
+                ministryTable[ministry.id] = ministry.name
+            }
+        }
+        return ministryTable
+        
+        
     }
     
     

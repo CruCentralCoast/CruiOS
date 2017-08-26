@@ -17,6 +17,8 @@ class EventTableViewCell: UITableViewCell {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var card: UIView!
     
+    var eImage: UIImage?
+    
     var event: Event! {
         didSet {
             let dateFormatter = "MMM d, yyyy"
@@ -47,7 +49,14 @@ class EventTableViewCell: UITableViewCell {
                 eventImage.isHidden = false
                 spaceToTopCard.constant = 158
                 //eventImage.load(event.imageUrl)
-                eventImage.load.request(with: event.imageUrl)
+                
+                //Load image or get from cache
+                let urlRequest = URLRequest(url: URL(string: event.imageUrl)!)
+                CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                    if let image = response.result.value {
+                        self.eventImage.image = image
+                    }
+                }
             }
         }
     }

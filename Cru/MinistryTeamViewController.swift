@@ -117,7 +117,7 @@ extension MinistryTeamViewController: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let ministryTeam = self.ministryTeams[indexPath.item]
         
-        let ministryTeamDetailVC = UIStoryboard(name: "getinvolved", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamDetailViewController") as! MinistryTeamDetailViewController
+        let ministryTeamDetailVC = UIStoryboard(name: "MinistryTeam", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamDetailViewController") as! MinistryTeamDetailViewController
         ministryTeamDetailVC.ministryTeam = ministryTeam
         ministryTeamDetailVC.listVC = self
         

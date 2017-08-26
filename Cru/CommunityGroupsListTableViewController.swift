@@ -75,10 +75,17 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         let group = self.filteredGroups[indexPath.row]
         if group.imgURL != "" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
-            cell.groupImage.load.request(with: group.imgURL)
+            //cell.groupImage.load.request(with: group.imgURL)
+            //Load image or get from cache
+            let urlRequest = URLRequest(url: URL(string: group.imgURL)!)
+            CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                if let image = response.result.value {
+                    cell.groupImage.image = image
+                }
+            }
             cell.ministryLabel.text = group.parentMinistryName
             
-            cell.typeLabel.text = group.type
+            cell.typeLabel.text = group.getTypeString()
             cell.meetingTimeLabel.text = group.getMeetingTime()
             
             cell.leaderLabel.text = group.getLeaderString()
@@ -96,7 +103,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell2", for: indexPath) as! CommunityGroupNoImageCell
             cell.ministryLabel.text = group.parentMinistryName
             
-            cell.typeLabel.text = group.type
+            cell.typeLabel.text = group.getTypeString()
             cell.meetingTimeLabel.text = group.getMeetingTime()
             
             cell.leaderLabel.text = group.getLeaderString()
@@ -139,11 +146,8 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     //Get ministry list from local storage
     //Create a dictionary with ministry id & name for easy lookup
     fileprivate func createMinistryDictionary() {
-        ministries = CruClients.getSubscriptionManager().loadMinistries()
+        ministryTable = CruClients.getCommunityGroupUtils().getMinistryTable()
         
-        for ministry in ministries {
-            ministryTable[ministry.id] = ministry.name
-        }
     }
     
     //helper function for inserting group data
@@ -175,20 +179,6 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
                 print("Nope, try loading the leader again.")
             }
         })
-        
-        
-        
-        //Have to do this so we can get the names of the leaders from the database
-        /*DispatchQueue.global(qos: .userInitiated).async { // 1
-            group.getLeaderNames()
-            DispatchQueue.main.async { // 2
-                self.tableView.reloadData()
-            }
-        }*/
-        
-        
-        
-        
     }
 
     
@@ -206,23 +196,6 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         }*/
         
         
-    }
-    
-    fileprivate func insertLeader(_ dict: NSDictionary, group: CommunityGroup) {
-        let leader = CommunityGroupLeader(dict)
-        if leader != nil {
-            print("leader: " + leader.name)
-            group.leaders.append(leader)
-        }
-    }
-    
-    fileprivate func finishInsertingLeaders(_ success: Bool) {
-        if success {
-            print("Successfully loaded a leader!")
-        }
-        else {
-            print("Nope, try loading the leader again.")
-        }
     }
     
     //Function to take user back to get involved once they've selected a group

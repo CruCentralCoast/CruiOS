@@ -1,6 +1,8 @@
 PODS:
   - ActionSheetPicker-3.0 (2.2.0)
   - Alamofire (4.3.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
   - AnimatedTextInput (0.5.1)
   - Appsee (2.3.1)
   - AWSCognito (2.5.10):
@@ -108,6 +110,7 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 4.3)
+  - AlamofireImage (~> 3.2)
   - AnimatedTextInput (~> 0.5.1)
   - Appsee
   - AWSCognito
@@ -150,6 +153,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
   AnimatedTextInput: 0fde4c9c8d71dafc032b9b222531a788767536fb
   Appsee: 78b5d4b281ceb83d5fd17d7df18d5ff8c292e031
   AWSCognito: 75de3956984129b9a270f99261c431fa1eb87c26
@@ -188,6 +192,6 @@ SPEC CHECKSUMS:
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: a982368f51a96fec7b86b3d3e53a8df7eb3bf50e
+PODFILE CHECKSUM: 4d7b26333ccd9bfb79368459a465db6f0fb7bba1
 
 COCOAPODS: 1.2.0

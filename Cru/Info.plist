@@ -54,6 +54,8 @@
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>You can add Cru events to your calendar through the app.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Set your Community Group's image</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>NSPhotoLibraryUsageDescription</key>

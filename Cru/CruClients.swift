@@ -12,6 +12,7 @@ class CruClients {
     
     fileprivate static var serverClient: ServerProtocol!
     fileprivate static var rideUtils: RideUtils!
+    fileprivate static var imageUtils: ImageUtils!
     fileprivate static var eventUtils: EventUtils!
     fileprivate static var communityGroupUtils: CommunityGroupUtils!
     fileprivate static var subscriptionManager: SubscriptionProtocol!
@@ -58,6 +59,15 @@ class CruClients {
             }
         }
         return communityGroupUtils
+    }
+    
+    static func getImageUtils() -> ImageUtils {
+        synchronized() {
+            if (imageUtils == nil) {
+                imageUtils = ImageUtils()
+            }
+        }
+        return imageUtils
     }
     
     static func getSubscriptionManager() -> SubscriptionProtocol {

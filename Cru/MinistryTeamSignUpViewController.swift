@@ -142,14 +142,17 @@ extension AnimatedTextInput: Validatable {
 }
 
 struct CustomTextInputStyle: AnimatedTextInputStyle {
-    let activeColor = UIColor(red: 51.0/255.0, green: 175.0/255.0, blue: 236.0/255.0, alpha: 1.0)
-    let inactiveColor = UIColor.gray.withAlphaComponent(0.8)
-    let lineInactiveColor = UIColor.gray.withAlphaComponent(0.8)
+    //public var textInputFont: UIFont
+
+
+    let activeColor = CruColors.lightBlue
+    let inactiveColor = CruColors.gray
+    let lineInactiveColor = CruColors.gray
     let errorColor = UIColor.red
-    let textInputFont = UIFont.systemFont(ofSize: 17)
+    let textInputFont = Config.regularFont18!
     let textInputFontColor = UIColor.black
     let placeholderMinFontSize: CGFloat = 9
-    let counterLabelFont: UIFont? = UIFont.systemFont(ofSize: 14)
+    let counterLabelFont: UIFont? = Config.regularFont16
     let leftMargin: CGFloat = 8
     let topMargin: CGFloat = 20
     let rightMargin: CGFloat = 0

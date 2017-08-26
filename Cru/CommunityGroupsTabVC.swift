@@ -12,6 +12,7 @@
 import UIKit
 import XLPagerTabStrip
 import DZNEmptyDataSet
+import AlamofireImage
 
 class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableViewDelegate, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -96,7 +97,14 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         if groups[indexPath.row].imgURL != "" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
             
-            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            //Load image or get from cache
+            let urlRequest = URLRequest(url: URL(string: groups[indexPath.row].imgURL)!)
+            CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                if let image = response.result.value {
+                    cell.groupImage.image = image
+                }
+            }
+
             // Configure the cell...
             if let parentMin = groups[indexPath.row].parentMinistryName as? String {
                 cell.ministryLabel.text = parentMin
@@ -109,6 +117,9 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             
             cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
             cell.roleLabel.text = groups[indexPath.row].role.uppercased()
+            if groups[indexPath.row].role == "leader" {
+                cell.roleLabel.textColor = CruColors.darkBlue
+            }
             
             //Add drop shadow
             cell.backgroundColor = Colors.googleGray
@@ -146,38 +157,6 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             return cell
             
         }
-        
-        
-     
-        // Configure the cell...
-        /*if let parentMin = groups[indexPath.row].parentMinistryName as? String {
-            cell.ministryLabel.text = parentMin
-        }
-        else {
-            cell.ministryLabel.text = "Unknown"
-        }
-        
-        cell.meetingTimeLabel.text = groups[indexPath.row].stringTime
-        
-        cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
-        
-        if groups[indexPath.row].imgURL != "" {
-            cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
-        }
-        else {
-            cell.groupImage.isHidden = true
-            cell.leaderTopConstraint.constant = 12
-        }
-        cell.roleLabel.text = groups[indexPath.row].role.uppercased()
-        
-        //Add drop shadow
-        cell.backgroundColor = Colors.googleGray
-        cell.cardView.layer.shadowColor = UIColor.black.cgColor
-        cell.cardView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        cell.cardView.layer.shadowOpacity = 0.25
-        cell.cardView.layer.shadowRadius = 2
-     
-        return cell*/
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
