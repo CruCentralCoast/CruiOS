@@ -46,7 +46,7 @@ class FilterCommunityGroupsTableViewController: UITableViewController {
         }
     }
     
-    fileprivate let rows: [Row] = [.ministries, .days, .time, .grades, .gender]
+    fileprivate let rows: [Row] = [.ministries, .days, /*.time,*/ .grades, .gender]
     fileprivate var selectedRow: Row?
     
     fileprivate var filterOptions: FilterOptions
@@ -111,7 +111,7 @@ extension FilterCommunityGroupsTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
-            return 2
+            return 1//2
         default:
             return 1
         }
@@ -120,9 +120,9 @@ extension FilterCommunityGroupsTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(FilterCell.self, for: indexPath)
         var index = indexPath.section + indexPath.row
-        if indexPath.section >= 2 {
-            index += 1
-        }
+//        if indexPath.section >= 2 {
+//            index += 1
+//        }
         
         let row = self.rows[index]
         var detailText = "All"
@@ -159,9 +159,9 @@ extension FilterCommunityGroupsTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var index = indexPath.section + indexPath.row
-        if indexPath.section >= 2 {
-            index += 1
-        }
+//        if indexPath.section >= 2 {
+//            index += 1
+//        }
         
         self.selectedRow = self.rows[index]
         
