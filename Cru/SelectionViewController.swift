@@ -65,6 +65,7 @@ extension SelectionViewController {
         
         let option = self.options[indexPath.row]
         cell.textLabel?.text = option
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 17)
         cell.accessoryType = self.selectedOptions.contains(option) ? .checkmark : .none
         cell.tintColor = CruColors.orange
         
