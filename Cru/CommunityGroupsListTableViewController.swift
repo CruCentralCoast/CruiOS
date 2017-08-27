@@ -14,11 +14,13 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     
     // MARK: - Properties
     var groups = [CommunityGroup]()
+    var filteredGroups = [CommunityGroup]()
     var hasConnection = true
     var answers = [[String:String]]()
     var ministries = [Ministry]()
     var ministryTable = [String: String]()
     var selectedGroup: CommunityGroup!
+    var filterOptions = FilterCommunityGroupsTableViewController.FilterOptions(ministries: [], days: [], time: nil, grades: [], gender: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,9 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        
+        let filterButton = UIBarButtonItem(image: #imageLiteral(resourceName: "filter-icon-white"), style: .plain, target: self, action: #selector(self.showFilter))
+        self.navigationItem.rightBarButtonItem = filterButton
         
         //Set the cells for automatic cell height
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -40,32 +45,26 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         //loadCommunityGroups()
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @objc func showFilter() {
+        let filterVC = FilterCommunityGroupsTableViewController(options: self.filterOptions)
+        filterVC.filterDelegate = self
+        let modalNav = ModalNavigationController(rootViewController: filterVC)
+        self.present(modalNav, animated: true, completion: nil)
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return groups.count
+        return self.filteredGroups.count
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        let group = groups[indexPath.row]
+        let group = self.filteredGroups[indexPath.row]
         
         if group.imgURL == "" {
-            //return 194.0
             return 193
-        }
-        else {
+        } else {
             return 340.0
         }
     }
@@ -73,22 +72,23 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //TODO: Figure out way to create cells with different classes w/o repeating code
-        if groups[indexPath.row].imgURL != "" {
+        let group = self.filteredGroups[indexPath.row]
+        if group.imgURL != "" {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTableViewCell
-            //cell.groupImage.load.request(with: groups[indexPath.row].imgURL)
+            //cell.groupImage.load.request(with: group.imgURL)
             //Load image or get from cache
-            let urlRequest = URLRequest(url: URL(string: groups[indexPath.row].imgURL)!)
+            let urlRequest = URLRequest(url: URL(string: group.imgURL)!)
             CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
                 if let image = response.result.value {
                     cell.groupImage.image = image
                 }
             }
-            cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
+            cell.ministryLabel.text = group.parentMinistryName
             
-            cell.typeLabel.text = groups[indexPath.row].getTypeString()
-            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            cell.typeLabel.text = group.getTypeString()
+            cell.meetingTimeLabel.text = group.getMeetingTime()
             
-            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            cell.leaderLabel.text = group.getLeaderString()
             
             //Add drop shadow
             cell.card.layer.shadowColor = UIColor.black.cgColor
@@ -101,12 +101,12 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         }
         else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell2", for: indexPath) as! CommunityGroupNoImageCell
-            cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
+            cell.ministryLabel.text = group.parentMinistryName
             
-            cell.typeLabel.text = groups[indexPath.row].getTypeString()
-            cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
+            cell.typeLabel.text = group.getTypeString()
+            cell.meetingTimeLabel.text = group.getMeetingTime()
             
-            cell.leaderLabel.text = groups[indexPath.row].getLeaderString()
+            cell.leaderLabel.text = group.getLeaderString()
             
             //Add drop shadow
             cell.card.layer.shadowColor = UIColor.black.cgColor
@@ -170,6 +170,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             }
         }, parentId: group.id, completionHandler: {(success) -> Void in
             self.groups.insert(group, at: 0)
+            self.filteredGroups.insert(group, at: 0)
             self.tableView.reloadData()
             if success {
                 print("Successfully loaded a leader!")
@@ -184,10 +185,11 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     //helper function for finishing off inserting group data
     fileprivate func finishInserting(_ success: Bool) {
         //self.events.sort(by: {$0.startNSDate.compare($1.startNSDate as Date) == .orderedAscending})
+        self.filteredGroups = self.groups.sorted()
         
        //Dismiss overlay here
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-        self.tableView!.reloadData()
+        self.tableView.reloadData()
         
         /*for group in groups {
             CruClients.getCommunityGroupUtils().loadLeaders(insertLeader, parentId: group.id, completionHandler: finishInsertingLeaders)
@@ -235,7 +237,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     @IBAction func joinGroup(_ sender: UIButton) {
         if let cell = sender.superview?.superview?.superview as? UITableViewCell {
             let indexPath = tableView.indexPath(for: cell)
-            let group = groups[(indexPath?.row)!]
+            let group = self.filteredGroups[indexPath!.row]
             self.selectedGroup = group
         }
         
@@ -259,4 +261,36 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     }
     
 
+}
+
+extension CommunityGroupsListTableViewController: FilterCommunityGroupsDelegate {
+    func applyFilter(options: FilterCommunityGroupsTableViewController.FilterOptions) {
+        self.filterOptions = options
+        self.filteredGroups = self.groups.filter {
+            (self.filterOptions.ministries.isEmpty || self.filterOptions.ministries.contains($0.parentMinistryName)) &&
+            (self.filterOptions.days.isEmpty || self.filterOptions.days.contains($0.dayOfWeek)) &&
+            // TODO: Filter by time once the CommunityGroup's time has been reformatted in the database.
+            // Right now, the meetingTime is not consistent.
+//            (self.filterOptions.time == nil || $0.meetingTime.isGreaterThanDate(self.filterOptions.time)) &&
+            // TODO: Make the grade level naming convention consistent. Right now, we use Freshmen, Sophomore, etc.
+            (self.filterOptions.grades.isEmpty || self.isGradeLevel($0.type, containedIn: self.filterOptions.grades)) &&
+            (self.filterOptions.gender == nil || self.filterOptions.gender == $0.gender)
+        }.sorted()
+        self.tableView.reloadData()
+    }
+    
+    private func isGradeLevel(_ grade: String, containedIn grades: [String]) -> Bool {
+        switch grade.lowercased() {
+        case "freshman", "freshmen":
+            return grades.contains("Freshman")
+        case "sophomore", "sophomores":
+            return grades.contains("Sophomore")
+        case "junior", "juniors":
+            return grades.contains("Junior")
+        case "senior", "seniors", "senior+", "seniors+":
+            return grades.contains("Senior+")
+        default:
+            return true
+        }
+    }
 }
