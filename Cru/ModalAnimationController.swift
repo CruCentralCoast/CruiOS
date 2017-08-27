@@ -32,7 +32,7 @@ class ModalAnimationController: NSObject, UIViewControllerAnimatedTransitioning 
         return self.dataSource.percentCoveringView
     }
     
-    let duration: TimeInterval = 1.0
+    let duration: TimeInterval = 0.5
     var isPresenting: Bool = false
     
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {

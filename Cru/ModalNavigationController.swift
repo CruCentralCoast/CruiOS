@@ -29,5 +29,14 @@ class ModalNavigationController: UINavigationController, ModalAnimationControlle
         // Configure presentation style
         self.modalPresentationStyle = .overCurrentContext
         self.transitioningDelegate = self.modalTransitionController
+        
+        // Setup pan gesture on the nav bar
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(self.handleSwipe(_:)))
+        swipeGesture.direction = .down
+        self.navigationBar.addGestureRecognizer(swipeGesture)
+    }
+    
+    @objc func handleSwipe(_ recognizer: UISwipeGestureRecognizer) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
