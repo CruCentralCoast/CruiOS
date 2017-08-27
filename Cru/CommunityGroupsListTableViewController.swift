@@ -269,10 +269,28 @@ extension CommunityGroupsListTableViewController: FilterCommunityGroupsDelegate 
         self.filteredGroups = self.groups.filter {
             (self.filterOptions.ministries.isEmpty || self.filterOptions.ministries.contains($0.parentMinistryName)) &&
             (self.filterOptions.days.isEmpty || self.filterOptions.days.contains($0.dayOfWeek)) &&
-//            (self.filterOptions.time == nil || $0.getMeetingTime() &&
-            (self.filterOptions.grades.isEmpty || self.filterOptions.grades.contains($0.type)) &&
+            // TODO: Filter by time once the CommunityGroup's time has been reformatted in the database.
+            // Right now, the meetingTime is not consistent.
+//            (self.filterOptions.time == nil || $0.meetingTime.isGreaterThanDate(self.filterOptions.time)) &&
+            // TODO: Make the grade level naming convention consistent. Right now, we use Freshmen, Sophomore, etc.
+            (self.filterOptions.grades.isEmpty || self.isGradeLevel($0.type, containedIn: self.filterOptions.grades)) &&
             (self.filterOptions.gender == nil || self.filterOptions.gender == $0.gender)
         }.sorted()
         self.tableView.reloadData()
+    }
+    
+    private func isGradeLevel(_ grade: String, containedIn grades: [String]) -> Bool {
+        switch grade.lowercased() {
+        case "freshman", "freshmen":
+            return grades.contains("Freshman")
+        case "sophomore", "sophomores":
+            return grades.contains("Sophomore")
+        case "junior", "juniors":
+            return grades.contains("Junior")
+        case "senior", "seniors", "senior+", "seniors+":
+            return grades.contains("Senior+")
+        default:
+            return true
+        }
     }
 }
