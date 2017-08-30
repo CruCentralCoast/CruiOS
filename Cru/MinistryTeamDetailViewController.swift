@@ -13,6 +13,7 @@ class MinistryTeamDetailViewController: UIViewController {
     @IBOutlet weak var ministryTeamNameLabel: UILabel!
     @IBOutlet weak var ministryTeamImage: UIImageView!
     @IBOutlet weak var ministryTeamDescription: UITextView!
+    @IBOutlet weak var leaderLabel: UILabel!
     @IBOutlet weak var ministryNameLabel: UILabel!
     
     //constraint for ministry team name to superview
@@ -42,6 +43,14 @@ class MinistryTeamDetailViewController: UIViewController {
     
     private func updateViewsForMinistryTeam() {
         self.ministryTeamNameLabel.text = self.ministryTeam.name
+        
+        self.leaderLabel.text = "N/A"
+        if !self.ministryTeam.leaders.isEmpty {
+            let leaderNames = self.ministryTeam.leaders.map{$0.name}.filter{!$0.isEmpty}
+            if !leaderNames.isEmpty {
+                self.leaderLabel.text = leaderNames.reduce(leaderNames.first!) {"\($0), \($1)"}
+            }
+        }
         
         if self.ministryTeam.imageUrl == "" {
             self.ministryTeamImage.image = #imageLiteral(resourceName: "fall-retreat-still")

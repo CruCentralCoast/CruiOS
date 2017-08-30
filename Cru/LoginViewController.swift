@@ -15,6 +15,8 @@ class LoginViewController: UIViewController, ValidationDelegate {
     @IBOutlet weak var passwordError: UILabel!
     
     let validator = Validator()
+    var groups = [CommunityGroup]()
+    var savedGroups = [CommunityGroup]()
     
     override func viewDidLoad() {
         usernameError.text = ""
@@ -26,6 +28,7 @@ class LoginViewController: UIViewController, ValidationDelegate {
         validator.registerField(passwordField, errorLabel: passwordError, rules: [RequiredRule()])
         
         navigationItem.title = "Log In"
+        
         
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
@@ -49,7 +52,9 @@ class LoginViewController: UIViewController, ValidationDelegate {
             }))
             
             if success {
+                self.loadCommunityGroups()
                 LoginUtils.getUserInfo(insert: self.insertUserInfo, afterFunc: self.completeGetUserInfo)
+                
             }
             
             
@@ -81,7 +86,58 @@ class LoginViewController: UIViewController, ValidationDelegate {
     }
     
     func completeGetUserInfo(_ success: Bool) {
-        // TODO: Do something here?
+        //Load community groups and check if they're a leader in any of them
+        CruClients.getCommunityGroupUtils().loadGroups(insertGroup, completionHandler: finishInserting)
+        
+    }
+    
+    fileprivate func insertGroup(_ dict: NSDictionary) {
+        //Create group and assign its parent ministry name
+        let group = CommunityGroup(dict: dict)
+        self.groups.insert(group, at: 0)
+    }
+    
+    //helper function for finishing off inserting group data
+    fileprivate func finishInserting(_ success: Bool) {
+        let userID = GlobalUtils.loadString(Config.userID)
+        let filteredGroups = [CommunityGroup]()
+        var ministryTable = CruClients.getCommunityGroupUtils().getMinistryTable()
+        
+        for group in groups {
+            if group.leaderIDs.contains(userID) {
+                group.role = "leader"
+                if let parentMin = ministryTable[group.parentMinistryID] {
+                    group.parentMinistryName = parentMin
+                }
+                savedGroups.append(group)
+            }
+        }
+        
+        
+        
+        
+        saveCommunityGroups()
+        
+    }
+    
+    func saveCommunityGroups() {
+        let newGroupData = NSKeyedArchiver.archivedData(withRootObject: savedGroups)
+        UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
+    }
+    
+    public func loadCommunityGroups() {
+        guard let groupData = UserDefaults.standard.object(forKey: Config.CommunityGroupsStorageKey) as? NSData else {
+            print(Config.CommunityGroupsStorageKey + " not found in UserDefaults")
+            return
+        }
+        
+        guard let groupArray = NSKeyedUnarchiver.unarchiveObject(with: groupData as Data) as? [CommunityGroup] else {
+            print("Could not unarchive from groupData")
+            return
+        }
+        
+        savedGroups = groupArray
+        
     }
     
     func resetLabel(_ field: UITextField, error: UILabel){

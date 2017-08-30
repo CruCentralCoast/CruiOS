@@ -22,7 +22,15 @@ class SummerMissionsTableViewCell: UITableViewCell {
             let endDate = GlobalUtils.stringFromDate(mission.endNSDate, format: dateFormat)
             let date = startDate + " - " + endDate
             
-            missionImage.load.request(with: mission.imageLink)
+            if mission.imageLink != "" {
+                let urlRequest = URLRequest(url: URL(string: mission.imageLink)!)
+                CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                    if let image = response.result.value {
+                        self.missionImage.image = image
+                    }
+                }
+            }
+            //missionImage.load.request(with: mission.imageLink)
             missionName.text = mission.name
             missionDateLabel.text = date
             missionLocation.text = mission.getLocationString()

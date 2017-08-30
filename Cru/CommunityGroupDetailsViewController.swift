@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class CommunityGroupDetailsViewController: UIViewController {
     var group: CommunityGroup!
@@ -23,15 +24,22 @@ class CommunityGroupDetailsViewController: UIViewController {
         if group != nil {
             descriptionView.text = group.desc
             leaderLabel.text = group.getLeaderString()
-            typeLabel.text = "Type goes here"
+            typeLabel.text = group.getTypeString()
+            ministryLabel.text  = group.parentMinistryName
             timeLabel.text = group.getMeetingTime()
             if group.imgURL != "" {
-                imageView.load.request(with: group.imgURL)
+                //Load image or get from cache
+                let urlRequest = URLRequest(url: URL(string: group.imgURL)!)
+                CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                    if let image = response.result.value {
+                        self.imageView.image = image
+                    }
+                }
+                
             }
         }
         
-        //Add edit button if user is a community group leader
-        if GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader) {
+        if group.leaderIDs.contains(GlobalUtils.loadString(Config.userID)) {
             let editButton = UIButton(type: .custom)
             editButton.setImage(UIImage(named: "edit-icon"), for: .normal)
             editButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -40,6 +48,17 @@ class CommunityGroupDetailsViewController: UIViewController {
             
             self.navigationItem.setRightBarButton(item1, animated: true)
         }
+        
+        //Add edit button if user is a community group leader
+        /*if GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader) {
+            let editButton = UIButton(type: .custom)
+            editButton.setImage(UIImage(named: "edit-icon"), for: .normal)
+            editButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+            editButton.addTarget(self, action: #selector(self.editGroup), for: .touchUpInside)
+            let item1 = UIBarButtonItem(customView: editButton)
+            
+            self.navigationItem.setRightBarButton(item1, animated: true)
+        }*/
     }
     
     func editGroup() {

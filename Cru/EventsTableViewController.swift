@@ -8,8 +8,8 @@
 
 import UIKit
 import DZNEmptyDataSet
-
-
+import MRProgress
+import AlamofireImage
 
 class EventsTableViewController: UITableViewController, SWRevealViewControllerDelegate, DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     
@@ -18,6 +18,7 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     let searchController = UISearchController(searchResultsController: nil)
     var filteredEvents = [Event]()
     var hasConnection = true
+    var imageCache = AutoPurgingImageCache()
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
     
@@ -25,6 +26,8 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         super.viewDidLoad()
         
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
+        
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         
         //Check for connection then load events in the completion function
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
@@ -66,9 +69,10 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         if(!connected){
             hasConnection = false
             //Display a message if either of the tables are empty
-
+            self.tableView.emptyDataSetSource = self
+            self.tableView.emptyDataSetDelegate = self
             self.tableView!.reloadData()
-            //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             //hasConnection = false
         }else{
             hasConnection = true
@@ -92,9 +96,9 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     
     fileprivate func loadEventsWithoutMinistries(_ success: Bool) {
         CruClients.getEventUtils().loadEventsWithoutMinistries(insertEvent, completionHandler: finishInserting)
-        self.tableView.emptyDataSetSource = self
+        /*self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
-        self.tableView!.reloadData()
+        self.tableView!.reloadData()*/
     }
     
 
@@ -117,8 +121,11 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         self.tableView!.reloadData()
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         
     }
+    
+    // MARK: -  Table View Delegate Functions
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
