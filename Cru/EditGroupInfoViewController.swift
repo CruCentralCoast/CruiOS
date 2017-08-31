@@ -168,18 +168,10 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
             
             
             let alert = UIAlertController(title: "Your community group was updated!", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: {
-                //self.navigationController?.popViewControllerAnimated(true)
-            })
-            saveGroupToLocalStorage()
-            //self.ride = ride
-            //self.table!.reloadData()
-            //rideDetailVC?.ride = ride
-            
-            //for update in updateFunctions{
-                //update()
-            //}
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(alert: UIAlertAction!) in
+                self.saveGroupToLocalStorage()
+            }))
+            self.present(alert, animated: true, completion: nil)
         }
         else{
             let alert = UIAlertController(title: "Sorry, your community group could not be updated. Try again later.", message: "", preferredStyle: UIAlertControllerStyle.alert)
@@ -212,6 +204,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         let newGroupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
         UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        //self.dismiss(animated: true, completion: nil)
         self.navigationController?.popViewController(animated: true)
     }
     

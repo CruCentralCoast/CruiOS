@@ -35,18 +35,18 @@ class GetInvolvedViewController: UIViewController, UITabBarDelegate, SWRevealVie
         selectorBar.selectedItem = selectorBar.items![0]
         selectorBar.tintColor = UIColor.white
 
-        //Set the nav title & font
-        navigationItem.title = "Get Involved"
         
-        
-        
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //showCGContainer()
         chosenSection = selectorBar.selectedItem!.title!
         showCorrectContainers()
+        //Set the nav title & font
+        navigationItem.title = "Get Involved"
+
+        
+        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
     }
     
     //tab bar function 

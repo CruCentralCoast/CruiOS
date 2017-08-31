@@ -98,6 +98,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
             
             //Load image or get from cache
+            print("Loading image from: " + groups[indexPath.row].imgURL)
             let urlRequest = URLRequest(url: URL(string: groups[indexPath.row].imgURL)!)
             CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
                 if let image = response.result.value {

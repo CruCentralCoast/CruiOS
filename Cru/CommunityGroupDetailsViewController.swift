@@ -18,6 +18,9 @@ class CommunityGroupDetailsViewController: UIViewController {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var leaderLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var groupActionButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,27 +41,22 @@ class CommunityGroupDetailsViewController: UIViewController {
                 
             }
         }
-        
+        //Removes the extra text from the back button
+        self.navigationController?.navigationBar.backItem?.title = " "
+
+
+
+        //Assign the action of the bottom button depending on if user is leader
         if group.leaderIDs.contains(GlobalUtils.loadString(Config.userID)) {
-            let editButton = UIButton(type: .custom)
-            editButton.setImage(UIImage(named: "edit-icon"), for: .normal)
-            editButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            editButton.addTarget(self, action: #selector(self.editGroup), for: .touchUpInside)
-            let item1 = UIBarButtonItem(customView: editButton)
-            
-            self.navigationItem.setRightBarButton(item1, animated: true)
+            // Change the group action button from "Leave Group" to "Edit Group"
+            groupActionButton.setTitle("Edit Group", for: .normal)
+            groupActionButton.backgroundColor = CruColors.orange
+            groupActionButton.addTarget(self, action: #selector(self.editGroup), for: .touchUpInside)
+        }
+        else {
+            groupActionButton.addTarget(self, action: #selector(self.leaveGroup), for: .touchUpInside)
         }
         
-        //Add edit button if user is a community group leader
-        /*if GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader) {
-            let editButton = UIButton(type: .custom)
-            editButton.setImage(UIImage(named: "edit-icon"), for: .normal)
-            editButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-            editButton.addTarget(self, action: #selector(self.editGroup), for: .touchUpInside)
-            let item1 = UIBarButtonItem(customView: editButton)
-            
-            self.navigationItem.setRightBarButton(item1, animated: true)
-        }*/
     }
     
     func editGroup() {
@@ -66,6 +64,16 @@ class CommunityGroupDetailsViewController: UIViewController {
         let controller = storyboard.instantiateViewController(withIdentifier: "editVC") as! EditGroupInfoViewController
         controller.group = group
         self.navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
+    func leaveGroup() {
+        let storyboard = UIStoryboard(name: "communitygroups", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "leaveDialog") as! LeaveGroupViewController
+        controller.group = self.group
+        controller.modalPresentationStyle = .currentContext
+        controller.modalTransitionStyle = .crossDissolve
+        self.present(controller, animated: true, completion: nil)
         
     }
 
@@ -78,10 +86,10 @@ class CommunityGroupDetailsViewController: UIViewController {
         // Pass the selected object to the new view controller.
         
         
-        if segue.identifier == "leaveDialogeSegue" {
+        /*if segue.identifier == "leaveDialogeSegue" {
             let vc = segue.destination as! LeaveGroupViewController
             vc.group = self.group
-        }
+        }*/
     }
  
 
