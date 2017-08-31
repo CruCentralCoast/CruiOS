@@ -104,7 +104,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e70-X9-Uo2" id="RSw-YL-px3">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Question" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hG-3P-Wvx">
@@ -143,7 +143,7 @@
                                         <rect key="frame" x="0.0" y="228" width="600" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="acY-t9-dfU" id="vNy-Qa-nXu">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What Fraternity are you in?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6O-gX-5nG">
@@ -243,7 +243,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="toC-Mc-IpB" id="dyV-bc-oNL">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -760,7 +760,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gcw-x9-qff" id="TAp-WL-QDY">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="249"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="249.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ULY-Js-Xtd">
@@ -896,7 +896,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6b-Sl-SQs">
                                                     <rect key="frame" x="16" y="8" width="343" height="284"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="event2" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-iR-eEl">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image" translatesAutoresizingMaskIntoConstraints="NO" id="FfR-iR-eEl">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="150"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="150" id="smf-uE-VmD"/>
@@ -1158,10 +1158,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gFW-qy-431">
-                                <rect key="frame" x="26" y="215" width="323" height="238"/>
+                                <rect key="frame" x="26" y="216.5" width="323" height="235"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Community Group Signup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UEq-Bc-LAY">
-                                        <rect key="frame" x="12" y="8" width="253" height="25"/>
+                                        <rect key="frame" x="12" y="8" width="253" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="23" id="AYe-Sh-i8u"/>
                                         </constraints>
@@ -1175,7 +1175,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ixe-Kq-si0">
-                                        <rect key="frame" x="15" y="51" width="57" height="16"/>
+                                        <rect key="frame" x="15" y="52" width="63.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="cgI-3G-w8F"/>
                                         </constraints>
@@ -1189,13 +1189,13 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Last" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WPK-FI-0f9">
-                                        <rect key="frame" x="15" y="75" width="273" height="23"/>
+                                        <rect key="frame" x="15" y="76" width="273" height="21"/>
                                         <color key="textColor" red="0.01176470588" green="0.01176470588" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pdz-SG-gU1">
-                                        <rect key="frame" x="15" y="99" width="273" height="1"/>
+                                        <rect key="frame" x="15" y="98" width="273" height="1"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="iEl-Cc-SF9"/>
@@ -1213,7 +1213,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JO-x1-cJ1">
-                                        <rect key="frame" x="15" y="118" width="87" height="16"/>
+                                        <rect key="frame" x="15" y="117" width="94.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="XxE-u1-rDm"/>
                                         </constraints>
@@ -1227,20 +1227,20 @@
                                         </variation>
                                     </label>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="(123)456-7890" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k8E-rf-FYk">
-                                        <rect key="frame" x="15" y="142" width="273" height="23"/>
+                                        <rect key="frame" x="15" y="141" width="273" height="21"/>
                                         <color key="textColor" red="0.01176470588" green="0.01176470588" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                                     </textField>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OzY-2K-zB8">
-                                        <rect key="frame" x="15" y="166" width="273" height="1"/>
+                                        <rect key="frame" x="15" y="163" width="273" height="1"/>
                                         <color key="backgroundColor" red="0.58431372550000005" green="0.57647058819999997" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="1" id="xRG-Jx-ygV"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WAh-5x-N75">
-                                        <rect key="frame" x="102" y="185" width="120" height="35"/>
+                                        <rect key="frame" x="102" y="182" width="120" height="35"/>
                                         <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="86p-6a-tJe"/>
@@ -1254,7 +1254,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="* required field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W0W-iH-TCN">
-                                        <rect key="frame" x="92" y="51" width="196" height="16"/>
+                                        <rect key="frame" x="98.5" y="52" width="189.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="uYg-S9-AaA"/>
                                         </constraints>
@@ -1268,7 +1268,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="* required field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeG-Vd-UoP">
-                                        <rect key="frame" x="122" y="118" width="166" height="16"/>
+                                        <rect key="frame" x="129.5" y="117" width="158.5" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="mZm-Pz-WNm"/>
                                         </constraints>
@@ -1825,7 +1825,6 @@
     </scenes>
     <resources>
         <image name="close-icon" width="15" height="14"/>
-        <image name="event2" width="300" height="150"/>
         <image name="leader-icon" width="15" height="19"/>
         <image name="meeting-time-icon" width="16" height="17"/>
         <image name="ministry-icon" width="19" height="18"/>
