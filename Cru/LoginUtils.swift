@@ -7,9 +7,9 @@ class LoginUtils {
     class func login(_ username: String, password :String, completionHandler : @escaping (_ success : Bool) -> Void) {
         
         var params = ["username":username, "password":password]
-        let gcmId = CruClients.getSubscriptionManager().loadFCMToken()
-        if (gcmId != "") {
-            params[Config.gcmIdField] = gcmId
+        let fcmId = CruClients.getSubscriptionManager().loadFCMToken()
+        if (fcmId != "") {
+            params[Config.fcmIdField] = fcmId
         }
         let url = Config.serverUrl + "api/signin"
         
