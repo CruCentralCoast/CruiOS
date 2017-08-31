@@ -55,13 +55,13 @@ class FakeSubscriptionManager: SubscriptionProtocol {
         return [Ministry]()
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool) {
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool) {
         let enabled = ministries.filter{ $0.feedEnabled }
         let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
         storageManager.set(archivedObject, forKey: Config.ministryKey)
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool, handler: @escaping ([String:Bool])->Void) {
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool, handler: @escaping ([String:Bool])->Void) {
         let enabled = ministries.filter{ $0.feedEnabled }
         let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
         storageManager.set(archivedObject, forKey: Config.ministryKey)

@@ -17,7 +17,7 @@ struct Config {
     static let name = "name"
     static let campusIds = "campuses"
     static let globalTopic = "/topics/global"
-    static let gcmIdField = "gcmId"
+    static let fcmIdField = "fcmId"
     static let googleAPIKey = "AIzaSyBxo_oBsj-cNhzynsF65sHjMBEdIhgJr_Q"
     static let instagramUsername = "crucentralcoast"
     static func fcmId()->String{

@@ -28,16 +28,16 @@ class RideUtils {
     }
     
     //Return the list of events excluding those user is giving/getting a ride to
-    func getAvailableEvents(_ gcmid: String, insert: (NSDictionary) -> (), afterFnc : (Bool) -> ()) {
+    func getAvailableEvents(_ fcmid: String, insert: (NSDictionary) -> (), afterFnc : (Bool) -> ()) {
         //Implement in the future?
     }
     
     //Return the list of rides available
-    func getRidesNotDriving(_ gcmid: String, insert : @escaping (NSDictionary) -> (),
+    func getRidesNotDriving(_ fcmid: String, insert : @escaping (NSDictionary) -> (),
         afterFunc : @escaping (Bool) -> ()) {
 
-        let gcmArray: [String] = [gcmid]
-        let params: [String: Any] =  ["gcm_id": ["$nin" : gcmArray]]
+        let fcmArray: [String] = [fcmid]
+        let params: [String: Any] =  ["fcm_id": ["$nin" : fcmArray]]
         
         serverClient.getData(DBCollection.Ride, insert: insert, completionHandler: afterFunc, params: params)
     }
@@ -99,7 +99,7 @@ class RideUtils {
     func postRideOffer(_ eventId : String, name : String , phone : String, seats : Int, time: String,
         location: NSDictionary, radius: Int, direction: String, handler: @escaping (Ride?)->()) {
             let body = ["event":eventId, "driverName":name, "driverNumber":phone, "seats":seats, "time": time,
-                "gcm_id": Config.fcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0] as [String : Any]
+                "fcm_id": Config.fcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0] as [String : Any]
             
             
             serverClient.postData(DBCollection.Ride, params: body as [String : AnyObject], completionHandler:
@@ -124,7 +124,7 @@ class RideUtils {
     func joinRide(_ name: String, phone: String, direction: String,  rideId: String, handler: @escaping (Bool)->Void){
         let fcmToken = Config.fcmId()
         let body: [String : AnyObject]
-        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "gcm_id":fcmToken as AnyObject, "gender": 0 as AnyObject]
+        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "fcm_id":fcmToken as AnyObject, "gender": 0 as AnyObject]
         
         serverClient.postData(DBCollection.Passenger, params: body, completionHandler:
             { passenger in

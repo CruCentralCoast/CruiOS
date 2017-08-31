@@ -15,7 +15,7 @@ struct RideKeys {
     static let driverName = "driverName"
     static let driverNumber = "driverNumber"
     static let event = "event"
-    static let fcm_id = "gcm_id"
+    static let fcm_id = "fcm_id"
     static let gender = "gender" //int
     static let radius = "radius" //int
     static let seats = "seats" //int

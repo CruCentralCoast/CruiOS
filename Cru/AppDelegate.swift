@@ -101,7 +101,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data ) {
-        InstanceID.instanceID().token()
+        if let token = InstanceID.instanceID().token() {
+            CruClients.getSubscriptionManager().saveFCMToken(token)
+        }
         
 //            // Create a config and set a delegate that implements the GGLInstaceIDDelegate protocol.
 //            let instanceIDConfig = GGLInstanceIDConfig.default()
@@ -222,7 +224,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // had a default token most likely this will be nil too. But that is OK we just
         // wait for another notification of this type.
         print("The Firebase Cloud Messaging token needs to be refreshed. Refreshing now.")
-        InstanceID.instanceID().token()
+        if let token = InstanceID.instanceID().token() {
+            CruClients.getSubscriptionManager().saveFCMToken(token)
+        }
     }
     
     func sendDataMessageFailure(notification: Notification) {

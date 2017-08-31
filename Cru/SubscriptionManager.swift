@@ -11,7 +11,7 @@ import Firebase
 
 class SubscriptionManager: SubscriptionProtocol {
     
-    let fcmKey = "GCM"
+    let fcmKey = "FCM"
     
     fileprivate var unsubList = [String]()
     fileprivate var subList = [String]()
@@ -19,7 +19,7 @@ class SubscriptionManager: SubscriptionProtocol {
     
     fileprivate var successfulMinistries = [Ministry]()
     
-    fileprivate static let clientDispatchQueue = DispatchQueue(label: "gcm-subcription-queue", attributes: DispatchQueue.Attributes.concurrent)
+    fileprivate static let clientDispatchQueue = DispatchQueue(label: "fcm-subcription-queue", attributes: DispatchQueue.Attributes.concurrent)
     
     fileprivate static func synchronized(_ closure: (Void)->Void) {
         clientDispatchQueue.sync {
@@ -92,11 +92,11 @@ class SubscriptionManager: SubscriptionProtocol {
         return oldMinistries.count != enabledMinistries.count
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool) {
-        saveMinistries(ministries, updateGCM: updateGCM, handler: {(map) in })
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool) {
+        saveMinistries(ministries, updateFCM: updateFCM, handler: {(map) in })
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool, handler: @escaping ([String:Bool])->Void) {
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool, handler: @escaping ([String:Bool])->Void) {
         
         var enabledMinistries = [Ministry]()
         
@@ -107,8 +107,8 @@ class SubscriptionManager: SubscriptionProtocol {
         }
         print("updating device ministry data")
         
-        if(updateGCM){
-            print("updating gcm")
+        if(updateFCM){
+            print("updating fcm")
             // unsubcribe from ministries you are no longer in
             // and subscribe to ones that you just joined
             let oldMinistries = loadMinistries()
@@ -181,7 +181,7 @@ class SubscriptionManager: SubscriptionProtocol {
     }
     
     func subscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
-        // If the app has a registration token and is connected to GCM, proceed to subscribe to the
+        // If the app has a registration token and is connected to FCM, proceed to subscribe to the
         // topic
         let fcmToken = loadFCMToken()
         Messaging.messaging().subscribe(toTopic: topic)
@@ -211,9 +211,8 @@ class SubscriptionManager: SubscriptionProtocol {
     }
 
     func unsubscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
-        // If the app has a registration token and is connected to GCM, proceed to subscribe to the
+        // If the app has a registration token and is connected to FCM, proceed to subscribe to the
         // topic
-        
         let fcmToken = loadFCMToken()
         Messaging.messaging().unsubscribe(fromTopic: topic)
 //        GCMPubSub.sharedInstance().unsubscribe(withToken: fcmToken, topic: topic,

@@ -271,7 +271,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
             }
         }
         
-        CruClients.getSubscriptionManager().saveMinistries(subbedMinistries, updateGCM: true)
+        CruClients.getSubscriptionManager().saveMinistries(subbedMinistries, updateFCM: true)
         saveCampusSet()
     }
     
