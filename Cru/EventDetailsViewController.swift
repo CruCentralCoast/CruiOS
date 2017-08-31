@@ -301,19 +301,15 @@ class EventDetailsViewController: UIViewController {
     //This function opens the ridesharing section of the application
     //from the events page
     @IBAction func linkToRideShare(_ sender: AnyObject) {
-        
         if let button = sender as? UIButton{
-            if(button.currentTitle == "offer ride"){
-                let vc = self.storyboard!.instantiateViewController(withIdentifier: "newOfferRide") as! NewOfferRideViewController
+            if button.currentTitle == "offer ride" {
+                let vc = UIStoryboard(name: "newofferride", bundle: nil).instantiateViewController(withIdentifier: "newOfferRide") as! NewOfferRideViewController
                 self.navigationController?.pushViewController(vc, animated: true)
                 vc.event = event
                 //vc.isOfferingRide = true
                 vc.fromEventDetails = true
-                
-                
-            }
-            else{
-                let vc = self.storyboard!.instantiateViewController(withIdentifier: "ridesByEvent") as! FilterByEventViewController
+            } else{
+                let vc = UIStoryboard(name: "findride", bundle: nil).instantiateViewController(withIdentifier: "ridesByEvent") as! FilterByEventViewController
                 self.navigationController?.pushViewController(vc, animated: true)
                 vc.loadRides(event)
                 vc.eventVC = self
