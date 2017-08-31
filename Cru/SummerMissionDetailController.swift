@@ -27,9 +27,8 @@ class SummerMissionDetailController: UIViewController {
         image.image = nil
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
         // Do any additional setup after loading the view.
         if let mission = mission {
             navigationItem.title = "Details"
@@ -49,10 +48,7 @@ class SummerMissionDetailController: UIViewController {
             descriptionView.sizeToFit()
             //topCoverView.alpha = COVER_ALPHA
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+        
         self.image.image = uiImage
         
         // Hide the Learn More button if there is no url
