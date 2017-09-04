@@ -24,9 +24,69 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        subscribedCampuses = CruClients.getSubscriptionManager().loadCampuses()
+        
+        prevMinistries = CruClients.getSubscriptionManager().loadMinistries()
+
+        navigationItem.title = "Ministry Subscriptions"
+
+        if self.navigationController != nil{
+            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        }
+        
+        //Check connection and load ministries
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+       
+    }
+    
+    func finishConnectionCheck(_ connected: Bool){
+        if(!connected){
+            hasConnection = false
+            self.table.emptyDataSetDelegate = self
+            self.table.emptyDataSetSource = self
+            self.tableView.reloadData()
+        }
+        else{
+            CruClients.getServerClient().getData(.Ministry, insert: insertMinistry, completionHandler: {success in
+                // TODO: handle failure
+                
+                self.reloadData()
+                
+            })
+            //self.emptyTableImage = UIImage(named: Config.noCampusesImage)
+            
+            hasConnection = true
+        }
+        
+       
+    }
+    
+    func reloadData(){
+        //TODO: handler failure
+        
+        //super.viewDidLoad()
+        subscribedCampuses = CruClients.getSubscriptionManager().loadCampuses()
+        prevMinistries = CruClients.getSubscriptionManager().loadMinistries()
+                
+        refreshMinistryMap()
+        self.tableView.reloadData()
+    }
+    
+    // MARK: - Empty Data Set Functions
+    
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         if onboarding == false {
-            return emptyTableImage
+            if !hasConnection {
+                return UIImage(named: Config.noConnectionImageName)
+            }
+            else {
+                return UIImage(named: Config.noCampusesImage)
+            }
         }
         else {
             return nil
@@ -48,57 +108,6 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
             return nil
         }
         
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        subscribedCampuses = CruClients.getSubscriptionManager().loadCampuses()
-        
-        prevMinistries = CruClients.getSubscriptionManager().loadMinistries()
-
-        navigationItem.title = "Ministry Subscriptions"
-        
-        //self.navigationItem.hidesBackButton = true
-        //let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(MinistryTableViewController.saveMinistriesToDevice))
-        //self.navigationItem.leftBarButtonItem = newBackButton
-        if self.navigationController != nil{
-            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
-        }
-        
-        
-        CruClients.getServerClient().getData(.Ministry, insert: insertMinistry, completionHandler: {success in
-            // TODO: handle failure
-            self.reloadData()
-            CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
-        })
-        self.tableView.reloadData()	
-    }
-    
-    func finishConnectionCheck(_ connected: Bool){
-        if(!connected){
-            self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
-            hasConnection = false
-        }
-        else{
-            self.emptyTableImage = UIImage(named: Config.noCampusesImage)
-            
-            hasConnection = true
-        }
-        self.table.emptyDataSetDelegate = self
-        self.table.emptyDataSetSource = self
-        self.tableView.reloadData()
-    }
-    
-    func reloadData(){
-        //TODO: handler failure
-        
-        //super.viewDidLoad()
-        subscribedCampuses = CruClients.getSubscriptionManager().loadCampuses()
-        prevMinistries = CruClients.getSubscriptionManager().loadMinistries()
-                
-        refreshMinistryMap()
-        self.tableView.reloadData()
     }
     
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
@@ -185,9 +194,14 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         self.navigationController?.popViewController(animated: true)
     }
     
-    
+    // MARK: - Table View Delegate Functions
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return subscribedCampuses.count
+        if hasConnection {
+            return subscribedCampuses.count
+        }
+        else {
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
