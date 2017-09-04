@@ -9,11 +9,13 @@
 import Foundation
 
 class Notification: NSObject, NSCoding {
-    var content: String
     var title: String
+    var content: String
     var dateReceived: Date
     
-    init?(title: String, content: String, dateReceived: Date) {
+    init?(title: String?, content: String?, dateReceived: Date) {
+        guard let title = title, let content = content else { return nil }
+        
         self.title = title
         self.content = content
         self.dateReceived = dateReceived

@@ -8,6 +8,7 @@ use_frameworks!
 
 def cru_pods
     pod 'SideMenu', '2.2.0'
+    pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'DatePickerCell'
     pod 'LocationPickerViewController', '3.0.0'
