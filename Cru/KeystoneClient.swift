@@ -54,12 +54,29 @@ class KeystoneClient: ServerProtocol {
         }*/
     }
     
+    func joinCommunityGroup(_ groupId: String, fullName: String, phone: String, callback: @escaping (NSArray?) -> Void) {
+        let url = Config.serverEndpoint + DBCollection.CommunityGroup.name() + "/" + groupId + "/join"
+        //let url = Config.serverEndpoint + DBCollection.MinistryTeam.name() + "/" + ministryTeamId + "/join"
+        let params: [String: AnyObject] = ["name": fullName as AnyObject, "phone": phone as AnyObject]
+        
+        Alamofire.request(url, method: .post, parameters: params)
+            .responseJSON { response in
+                callback(response.result.value as? NSArray)
+        }
+        
+        /*Alamofire.request(.POST, url, parameters: params).responseJSON {
+         response in
+         
+         callback(response.result.value as? NSArray)
+         }*/
+    }
+    
     func getById(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void, id: String) {
         var reqUrl = Config.serverEndpoint + collection.name() + "/" + id
         print ("Get data by id from \(reqUrl)")
-        if (LoginUtils.isLoggedIn()) {
+        /*if (LoginUtils.isLoggedIn()) { // I think this was for security but the leader api key is no longer returned during login
             reqUrl += "?" + Config.leaderApiKey + "=" + GlobalUtils.loadString(Config.leaderApiKey)
-        }
+        }*/
         
         Alamofire.request(reqUrl, method: .get)
             .responseJSON { response in
@@ -210,7 +227,7 @@ class KeystoneClient: ServerProtocol {
     fileprivate func requestData(_ url: String, method: Alamofire.HTTPMethod, params: [String:Any]?, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void) {
         var reqUrl = url
         if (LoginUtils.isLoggedIn()) {
-            reqUrl += "?" + Config.leaderApiKey + "=" + GlobalUtils.loadString(Config.leaderApiKey)
+            //reqUrl += "?" + Config.leaderApiKey + "=" + GlobalUtils.loadString(Config.leaderApiKey)
         }
         
         Alamofire.request(reqUrl, method: method, parameters: params)

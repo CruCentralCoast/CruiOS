@@ -54,6 +54,14 @@ class GlobalUtils {
         return dateFormatter
     }
     
+    class func getCommunityGroupsDateFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.dateFormat = "h:mm a"
+        
+        return dateFormatter
+    }
+    
     //gets an NSDate from a given string
     class func dateFromString(_ dateStr: String) -> Date {
         let dateFormatter = getDefaultDateFormatter()
@@ -113,6 +121,21 @@ class GlobalUtils {
             return token!
         }
         return ""
+    }
+    
+    class func saveBool(_ key: String, value: Bool){
+        let archivedObject = NSKeyedArchiver.archivedData(withRootObject: value)
+        let defaults = UserDefaults.standard
+        defaults.set(archivedObject, forKey: key)
+        defaults.synchronize()
+    }
+    
+    class func loadBool(_ key: String)-> Bool{
+        if let unarchivedObject = UserDefaults.standard.object(forKey: key) as? Data {
+            let token = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? Bool
+            return token!
+        }
+        return false
     }
     
     class func printRequest(_ params: AnyObject) {

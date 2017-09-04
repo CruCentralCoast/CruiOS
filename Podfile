@@ -8,7 +8,7 @@ use_frameworks!
 
 def cru_pods
     pod 'SideMenu', '2.2.0'
-    pod 'Google/CloudMessaging', '1.3.2'
+    pod 'Firebase/Messaging'
     pod 'DatePickerCell'
     pod 'LocationPickerViewController', '3.0.0'
     pod 'IQKeyboardManagerSwift', '4.0.8'
@@ -26,9 +26,15 @@ def cru_pods
     pod 'GooglePlacePicker'
     pod 'GoogleMaps'
     pod 'ReadabilityKit'
-    # pod 'AudioKit', '~> 3.5'
+    pod 'XLPagerTabStrip', '~> 7.0'
     pod 'YouTubePlayer'
     pod 'UIScrollView-InfiniteScroll', '~> 1.0'
+    pod 'DropDown'
+    pod 'AnimatedTextInput', '~> 0.5.1'
+    pod 'ImagePicker'
+    pod 'AWSS3'
+    pod 'AWSCognito'
+    pod 'AlamofireImage', '~> 3.2'
 end
 
 def crash_monitor

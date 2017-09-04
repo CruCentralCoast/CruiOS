@@ -21,10 +21,13 @@ class LogoutViewController: UIViewController {
     
     
     @IBAction func logoutPressed(_ sender: AnyObject) {
+        LoginUtils.updateCommunityGroups()
         LoginUtils.logout()
         if let navController = self.navigationController {
             navController.popViewController(animated: true)
         }
     }
+    
+    
     
 }

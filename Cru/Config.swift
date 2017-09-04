@@ -11,16 +11,17 @@ import UIKit
 struct Config {
     //static let serverUrl = "http://ec2-52-39-130-135.us-west-2.compute.amazonaws.com:3001/"
     static let serverUrl = "http://secure-oasis-4438.herokuapp.com/" // Prod
+    //static let serverUrl = "http://cru-central-coast.herokuapp.com/" // New prod
     //static let serverURl = "http://127.0.0.1:3000/" // Dev - only works if you're running on local machine
     static let serverEndpoint = serverUrl + "api/"
     static let name = "name"
     static let campusIds = "campuses"
     static let globalTopic = "/topics/global"
-    static let gcmIdField = "gcmId"
+    static let fcmIdField = "fcmId"
     static let googleAPIKey = "AIzaSyBxo_oBsj-cNhzynsF65sHjMBEdIhgJr_Q"
     static let instagramUsername = "crucentralcoast"
-    static func gcmId()->String{
-        return CruClients.getSubscriptionManager().loadGCMToken()
+    static func fcmId()->String{
+        return CruClients.getSubscriptionManager().loadFCMToken()
     }
     static var simulatorMode: Bool{
         get{
@@ -31,8 +32,11 @@ struct Config {
             #endif
         }
     }
-    static let leaderApiKey = "LeaderAPIKey"
+    //static let leaderApiKey = "LeaderAPIKey"
     static let username = "username"
+    static let userID = "userId"
+    static let email = "email"
+    static let phone = "phone"
     static let ridesReceiving = "ridesReceiving"
     static let ridesOffering = "ridesOffering"
     static let communityGroupKey = "CommunityGroup"
@@ -43,6 +47,13 @@ struct Config {
     /* Modal Configurations: Used on the introduction page and create ride */
     static let backgroundViewOpacity: CGFloat = 0.7
     static let modalBackgroundRadius: CGFloat = 15.0
+    
+    /* Configurations for AWS S3 */
+    //static let s3BucketName = "community-group-images"
+    static let s3BucketName = "static.crucentralcoast.com"
+    static let s3ImageURL = "https://s3-us-west-1.amazonaws.com"
+    static let s3IdentityPoolID = "us-west-2:618b90f8-75e8-459a-9ecc-439a76d0f23c"
+    static let s3ImageFolderURL = "images/community-groups"
     
     /* Configurations for Events */
     //reuse identifier for event collection cells
@@ -68,6 +79,7 @@ struct Config {
     static let userStorageKey = "user"
     static let ministryStorageKey = "ministries"
     static let ministryTeamStorageKey = "ministryTeams"
+    static let CommunityGroupsStorageKey = "communityGroups"
     
     // Modal header and footer text color
     static let textColor = UIColor(red: 0.188, green: 0.188, blue: 0.188, alpha: 1.0)
@@ -80,6 +92,8 @@ struct Config {
     static let introModalContentTextColor = UIColor(red: 0.38, green: 0.38, blue: 0.38, alpha: 1.0)
     static let fontName = "FreightSans Pro"
     static let fontBold = "FreightSansProMedium-Regular"
+    static let regularFont18 = UIFont(name: fontName, size: 18)
+    static let regularFont16 = UIFont(name: fontName, size: 16)
     
     /* Image names */
     static let noConnectionImageName = "server-error"
@@ -89,5 +103,8 @@ struct Config {
     static let noPassengersImage = "no-passengers"
     static let campusImage = "campusImage"
     static let communityImage = "communityImage"
+    static let noCommunityGroupsImage = "no-community-group"
+    static let noMinistryTeamsImage = "no-ministry-teams"
+    
     static let noEventsImage = "no-events"
 }

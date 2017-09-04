@@ -19,14 +19,11 @@
 		0F1959CD1C8E5B0C00A783BA /* LoginUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C151D9B51C7D2D9A0067A29E /* LoginUtils.swift */; };
 		0F1959EE1C8E60A200A783BA /* OfferedRideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 504742451C759823003F276E /* OfferedRideTableViewCell.swift */; };
 		0F1959F01C8E60AC00A783BA /* FilterByEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EF26E21C7592EF0055F480 /* FilterByEventViewController.swift */; };
-		0F1B8C291CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1B8C281CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift */; };
 		0F1B8C2B1CC99B0000CEE24C /* CommunityGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1B8C2A1CC99B0000CEE24C /* CommunityGroupViewController.swift */; };
 		0F1B8C2D1CC99B1A00CEE24C /* MinistryTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1B8C2C1CC99B1A00CEE24C /* MinistryTeamViewController.swift */; };
 		0F1B8C2F1CC9ACA500CEE24C /* MinistryTeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1B8C2E1CC9ACA500CEE24C /* MinistryTeamDetailViewController.swift */; };
 		0F1B8C701CCFDB8700CEE24C /* RidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F10F0211CC03F7000F478ED /* RidesViewController.swift */; };
 		0F1B8C721CCFDC2100CEE24C /* summermissions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6CF501CBF4839007B9F6E /* summermissions.storyboard */; };
-		0F52709B1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52709A1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift */; };
-		0F52709C1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F52709A1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift */; };
 		0F5302721CD2AFCF0097F9F2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5302711CD2AFCF0097F9F2 /* EventsTableViewController.swift */; };
 		0F5302731CD2AFCF0097F9F2 /* EventsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5302711CD2AFCF0097F9F2 /* EventsTableViewController.swift */; };
 		0F5302751CD2B85D0097F9F2 /* EventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5302741CD2B85D0097F9F2 /* EventTableViewCell.swift */; };
@@ -40,18 +37,11 @@
 		0F74A3121C0BC47700401377 /* GetInvolvedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501085B11BFBDB8600849CED /* GetInvolvedViewController.swift */; };
 		0F7CB3C81C919B6500C8444F /* EventTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7CB3C31C919A8600C8444F /* EventTest.swift */; };
 		0F7CB3C91C919D9D00C8444F /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EAB8191C0ECC8A005C7658 /* Config.swift */; };
-		0F83D56E1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F83D56D1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift */; };
-		0F83D56F1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F83D56D1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift */; };
 		0F8CEF211BEC0E13008FC70D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8CEF201BEC0E13008FC70D /* AppDelegate.swift */; };
 		0F8CEF231BEC0E13008FC70D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F8CEF221BEC0E13008FC70D /* MainViewController.swift */; };
 		0F8CEF261BEC0E13008FC70D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CEF241BEC0E13008FC70D /* Main.storyboard */; };
-		0F8CEF291BEC0E13008FC70D /* Cru.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0F8CEF271BEC0E13008FC70D /* Cru.xcdatamodeld */; };
 		0F8CEF2B1BEC0E13008FC70D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F8CEF2A1BEC0E13008FC70D /* Assets.xcassets */; };
-		0FAAE91C1CE6A83A0055770D /* MinistryTeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAAE91B1CE6A83A0055770D /* MinistryTeamsTableViewController.swift */; };
-		0FAAE91D1CE6A83A0055770D /* MinistryTeamsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAAE91B1CE6A83A0055770D /* MinistryTeamsTableViewController.swift */; };
-		0FAAE91F1CE6A8480055770D /* MinistryTeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAAE91E1CE6A8480055770D /* MinistryTeamsTableViewCell.swift */; };
-		0FAAE9201CE6A8480055770D /* MinistryTeamsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAAE91E1CE6A8480055770D /* MinistryTeamsTableViewCell.swift */; };
-		0FAEB97A1C86C1D1005C0B4C /* ministryteam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEB9791C86C1D1005C0B4C /* ministryteam.storyboard */; };
+		0FAEB97A1C86C1D1005C0B4C /* MinistryTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEB9791C86C1D1005C0B4C /* MinistryTeam.storyboard */; };
 		0FAEB97C1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAEB97B1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift */; };
 		0FAEB9801C8795D0005C0B4C /* MinistryTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAEB97F1C8795D0005C0B4C /* MinistryTeam.swift */; };
 		0FAEB9811C8795D0005C0B4C /* MinistryTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAEB97F1C8795D0005C0B4C /* MinistryTeam.swift */; };
@@ -65,6 +55,21 @@
 		0FC8E3B21C48750A007A7208 /* IntroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC8E3B11C48750A007A7208 /* IntroViewController.swift */; };
 		0FF87DA41C8A268D00D56C4E /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */; };
 		0FF87DA51C8A268D00D56C4E /* GlobalUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */; };
+		2F283A7E1F4BEC1E00248422 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F283A7C1F4BEC1E00248422 /* FilterCell.swift */; };
+		2F283A7F1F4BEC1E00248422 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F283A7D1F4BEC1E00248422 /* FilterCell.xib */; };
+		2F5EA1CC1F4C00620098115E /* UITableView+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EA1CB1F4C00620098115E /* UITableView+Additions.swift */; };
+		2F5EA1CE1F522C5A0098115E /* ModalAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EA1CD1F522C5A0098115E /* ModalAnimationController.swift */; };
+		2F5EA1D01F522C6B0098115E /* ModalTransitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EA1CF1F522C6B0098115E /* ModalTransitionController.swift */; };
+		2F5EA1D21F5238C50098115E /* ModalNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5EA1D11F5238C50098115E /* ModalNavigationController.swift */; };
+		2F7198AF1F3FEAF7007A7720 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7198AE1F3FEAF7007A7720 /* SelectionViewController.swift */; };
+		2F851C561F0F4A2700DF9B81 /* MinistryTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F851C541F0F4A2700DF9B81 /* MinistryTeamCell.swift */; };
+		2F851C571F0F4A2700DF9B81 /* MinistryTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F851C551F0F4A2700DF9B81 /* MinistryTeamCell.xib */; };
+		2F8FA1A31F12BCE700A60392 /* UITableViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1A21F12BCE700A60392 /* UITableViewCell+Additions.swift */; };
+		2F8FA1A71F12C2F100A60392 /* NSObject+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1A61F12C2F100A60392 /* NSObject+Additions.swift */; };
+		2F8FA1A91F12C32F00A60392 /* UICollectionViewCell+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1A81F12C32F00A60392 /* UICollectionViewCell+Additions.swift */; };
+		2F8FA1AB1F1319BF00A60392 /* MinistryTeamSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F8FA1AA1F1319BF00A60392 /* MinistryTeamSignUpViewController.swift */; };
+		2F96AF201F414094008F38B0 /* FilterCommunityGroupsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F96AF1F1F414094008F38B0 /* FilterCommunityGroupsTableViewController.swift */; };
+		2FC9D8811F36E0F400EFF153 /* UIColor+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC9D8801F36E0F400EFF153 /* UIColor+Additions.swift */; };
 		500A37B01C7D6587007D6A3B /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A37AF1C7D6587007D6A3B /* Passenger.swift */; };
 		500A37B11C7D6587007D6A3B /* Passenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500A37AF1C7D6587007D6A3B /* Passenger.swift */; };
 		501038B31CD9655F00CCD7DC /* OfferOrEditRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501038B11CD9655F00CCD7DC /* OfferOrEditRideViewController.swift */; };
@@ -108,7 +113,7 @@
 		5072B42E1CB39022001F5BF6 /* ministrytable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0B9DD1C5F0F9400D1524C /* ministrytable.storyboard */; };
 		5072B42F1CB39022001F5BF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */; };
 		5072B4311CB39022001F5BF6 /* resources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F8251E1C0BB965005396BC /* resources.storyboard */; };
-		5072B4321CB39022001F5BF6 /* ministryteam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEB9791C86C1D1005C0B4C /* ministryteam.storyboard */; };
+		5072B4321CB39022001F5BF6 /* MinistryTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEB9791C86C1D1005C0B4C /* MinistryTeam.storyboard */; };
 		5072B4341CB39022001F5BF6 /* settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50ED8FED1C052C65002C9E30 /* settings.storyboard */; };
 		5072B4361CB39022001F5BF6 /* findride.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503A06CF1C5F08E200DAD10E /* findride.storyboard */; };
 		5072B4371CB39022001F5BF6 /* offerride.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 503A06CB1C5F08CC00DAD10E /* offerride.storyboard */; };
@@ -186,6 +191,20 @@
 		6D2B4FC31D8549D00009DC2D /* ResourceTagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2B4FC11D8549D00009DC2D /* ResourceTagTableViewCell.swift */; };
 		6D2B4FC51D854B770009DC2D /* ResourceTagTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2B4FC41D854B770009DC2D /* ResourceTagTableView.swift */; };
 		6D2B4FC61D854B770009DC2D /* ResourceTagTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2B4FC41D854B770009DC2D /* ResourceTagTableView.swift */; };
+		6D2F38761F3660D200E31433 /* GetInvolvedTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38751F3660D200E31433 /* GetInvolvedTabVC.swift */; };
+		6D2F38771F3660D200E31433 /* GetInvolvedTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38751F3660D200E31433 /* GetInvolvedTabVC.swift */; };
+		6D2F38791F366A9900E31433 /* CommunityGroupsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38781F366A9900E31433 /* CommunityGroupsTabVC.swift */; };
+		6D2F387A1F366A9900E31433 /* CommunityGroupsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38781F366A9900E31433 /* CommunityGroupsTabVC.swift */; };
+		6D2F38801F36937600E31433 /* CommunityGroupTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */; };
+		6D2F38811F36937600E31433 /* CommunityGroupTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */; };
+		6D2F38831F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */; };
+		6D2F38841F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */; };
+		6D2F38861F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */; };
+		6D2F38871F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */; };
+		6D310AF31F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */; };
+		6D310AF41F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */; };
+		6D310AF61F3CE38600ECD0F5 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */; };
+		6D310AF71F3CE38600ECD0F5 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */; };
 		6D31382D1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
 		6D31382E1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
 		6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
@@ -208,6 +227,8 @@
 		6D5C10341D5CE246007AC44E /* FindRideFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */; };
 		6D5C10361D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
 		6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
+		6D62D0F91F1571FF008AEE64 /* TableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */; };
+		6D62D0FA1F1571FF008AEE64 /* TableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */; };
 		6D679D9C1E91B371006F672C /* CloudMessaging.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */; };
 		6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */; };
 		6D76CA771C06A41900F8B007 /* FreigSanProLig.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */; };
@@ -220,11 +241,25 @@
 		6D8F423D1CD80C8D0013BB13 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423B1CD80C8D0013BB13 /* Article.swift */; };
 		6D8F423F1CD80CF60013BB13 /* YoutubeThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */; };
 		6D8F42401CD80CF60013BB13 /* YoutubeThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */; };
+		6D9112B41F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */; };
+		6D9112B51F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */; };
+		6D9112B81F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */; };
+		6D9112B91F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */; };
+		6D9379271F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */; };
+		6D9379281F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */; };
 		6D94BCFC1D2374160063CED8 /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */; };
 		6D94BCFD1D2374160063CED8 /* UpcomingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */; };
 		6D94BD021D2451CA0063CED8 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94BD011D2451CA0063CED8 /* ScrollViewController.swift */; };
 		6D94BD031D2451CA0063CED8 /* ScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D94BD011D2451CA0063CED8 /* ScrollViewController.swift */; };
+		6D9563B31F099AFC000B0683 /* CommunityGroupLeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */; };
+		6D9563B41F099AFC000B0683 /* CommunityGroupLeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */; };
+		6D9609001F119E1D00413469 /* SubmitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */; };
+		6D9609011F119E1D00413469 /* SubmitInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */; };
 		6DA330AB1CD95E1200FCC970 /* ResourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */; };
+		6DA598481F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */; };
+		6DA598491F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */; };
+		6DA5984B1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */; };
+		6DA5984C1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */; };
 		6DA815471D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */; };
 		6DA815481D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */; };
 		6DA8154A1D3FFA060087F05B /* newofferride.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DA815491D3FFA060087F05B /* newofferride.storyboard */; };
@@ -258,10 +293,18 @@
 		6DC46F811D3D75DE008BB70A /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */; };
 		6DC538261D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
 		6DC538271D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */; };
+		6DD13BC01F4E3F9A00F60B6B /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */; };
+		6DD13BC11F4E3F9A00F60B6B /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */; };
+		6DDDAAF01F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */; };
+		6DDDAAF11F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */; };
 		6DF096FA1D92CED80053741A /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF096F91D92CED80053741A /* about.storyboard */; };
 		6DF096FB1D92CED80053741A /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF096F91D92CED80053741A /* about.storyboard */; };
 		6DF5177A1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */; };
 		6DF5177B1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */; };
+		6DFAAAF81F46622700D706C0 /* CommunityGroupNoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFAAAF71F46622700D706C0 /* CommunityGroupNoImageCell.swift */; };
+		6DFAAAF91F46622700D706C0 /* CommunityGroupNoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFAAAF71F46622700D706C0 /* CommunityGroupNoImageCell.swift */; };
+		6DFAAAFB1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFAAAFA1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift */; };
+		6DFAAAFC1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFAAAFA1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift */; };
 		6DFBF2941D8D735700487F86 /* ResourceTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBF2931D8D735600487F86 /* ResourceTypeExtensions.swift */; };
 		6DFBF2951D8D735700487F86 /* ResourceTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFBF2931D8D735600487F86 /* ResourceTypeExtensions.swift */; };
 		85EAB81A1C0ECC8A005C7658 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85EAB8191C0ECC8A005C7658 /* Config.swift */; };
@@ -353,32 +396,26 @@
 		0F17E3D11C90F68300713297 /* CalendarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarManager.swift; sourceTree = "<group>"; };
 		0F17E3D41C9103B500713297 /* LocalStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalStorageManager.swift; sourceTree = "<group>"; };
 		0F17E3D81C91076D00713297 /* MapLocalStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapLocalStorageManager.swift; sourceTree = "<group>"; };
-		0F1B8C281CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinedTeamsTableViewCell.swift; sourceTree = "<group>"; };
 		0F1B8C2A1CC99B0000CEE24C /* CommunityGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupViewController.swift; sourceTree = "<group>"; };
 		0F1B8C2C1CC99B1A00CEE24C /* MinistryTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamViewController.swift; sourceTree = "<group>"; };
 		0F1B8C2E1CC9ACA500CEE24C /* MinistryTeamDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamDetailViewController.swift; sourceTree = "<group>"; };
-		0F52709A1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamSignUpViewController.swift; sourceTree = "<group>"; };
 		0F5302711CD2AFCF0097F9F2 /* EventsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventsTableViewController.swift; sourceTree = "<group>"; };
 		0F5302741CD2B85D0097F9F2 /* EventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTableViewCell.swift; sourceTree = "<group>"; };
 		0F68621D1CE65D3600138377 /* SummerMissionsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummerMissionsTableViewCell.swift; sourceTree = "<group>"; };
 		0F6862201CE65D4A00138377 /* SummerMissionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummerMissionsTableViewController.swift; sourceTree = "<group>"; };
 		0F74A30F1C0BB9D300401377 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0F7CB3C31C919A8600C8444F /* EventTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventTest.swift; sourceTree = "<group>"; };
-		0F83D56D1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamNoPictureTableViewCell.swift; sourceTree = "<group>"; };
 		0F8CEF1D1BEC0E13008FC70D /* Cru.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cru.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8CEF201BEC0E13008FC70D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0F8CEF221BEC0E13008FC70D /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		0F8CEF251BEC0E13008FC70D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0F8CEF281BEC0E13008FC70D /* Cru.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cru.xcdatamodel; sourceTree = "<group>"; };
 		0F8CEF2A1BEC0E13008FC70D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0F8CEF2F1BEC0E13008FC70D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F8CEF341BEC0E14008FC70D /* CruTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CruTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0F8CEF3A1BEC0E14008FC70D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0F8CEF431BEC0E14008FC70D /* CruUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruUITests.swift; sourceTree = "<group>"; };
 		0F8CEF451BEC0E14008FC70D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0FAAE91B1CE6A83A0055770D /* MinistryTeamsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamsTableViewController.swift; sourceTree = "<group>"; };
-		0FAAE91E1CE6A8480055770D /* MinistryTeamsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamsTableViewCell.swift; sourceTree = "<group>"; };
-		0FAEB9791C86C1D1005C0B4C /* ministryteam.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ministryteam.storyboard; sourceTree = "<group>"; };
+		0FAEB9791C86C1D1005C0B4C /* MinistryTeam.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MinistryTeam.storyboard; sourceTree = "<group>"; };
 		0FAEB97B1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamsCollectionViewController.swift; sourceTree = "<group>"; };
 		0FAEB97F1C8795D0005C0B4C /* MinistryTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeam.swift; sourceTree = "<group>"; };
 		0FB6CF501CBF4839007B9F6E /* summermissions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = summermissions.storyboard; sourceTree = "<group>"; };
@@ -388,6 +425,21 @@
 		0FC8E3A51C45EB1A007A7208 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		0FC8E3B11C48750A007A7208 /* IntroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroViewController.swift; sourceTree = "<group>"; };
 		0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalUtils.swift; sourceTree = "<group>"; };
+		2F283A7C1F4BEC1E00248422 /* FilterCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		2F283A7D1F4BEC1E00248422 /* FilterCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		2F5EA1CB1F4C00620098115E /* UITableView+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Additions.swift"; sourceTree = "<group>"; };
+		2F5EA1CD1F522C5A0098115E /* ModalAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalAnimationController.swift; sourceTree = "<group>"; };
+		2F5EA1CF1F522C6B0098115E /* ModalTransitionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalTransitionController.swift; sourceTree = "<group>"; };
+		2F5EA1D11F5238C50098115E /* ModalNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalNavigationController.swift; sourceTree = "<group>"; };
+		2F7198AE1F3FEAF7007A7720 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
+		2F851C541F0F4A2700DF9B81 /* MinistryTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamCell.swift; sourceTree = "<group>"; };
+		2F851C551F0F4A2700DF9B81 /* MinistryTeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinistryTeamCell.xib; sourceTree = "<group>"; };
+		2F8FA1A21F12BCE700A60392 /* UITableViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Additions.swift"; sourceTree = "<group>"; };
+		2F8FA1A61F12C2F100A60392 /* NSObject+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+Additions.swift"; sourceTree = "<group>"; };
+		2F8FA1A81F12C32F00A60392 /* UICollectionViewCell+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+Additions.swift"; sourceTree = "<group>"; };
+		2F8FA1AA1F1319BF00A60392 /* MinistryTeamSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamSignUpViewController.swift; sourceTree = "<group>"; };
+		2F96AF1F1F414094008F38B0 /* FilterCommunityGroupsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCommunityGroupsTableViewController.swift; sourceTree = "<group>"; };
+		2FC9D8801F36E0F400EFF153 /* UIColor+Additions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Additions.swift"; sourceTree = "<group>"; };
 		448B73B6EE603CAABF73EF9B /* Pods_CruTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		500A37AF1C7D6587007D6A3B /* Passenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Passenger.swift; sourceTree = "<group>"; };
 		501038B11CD9655F00CCD7DC /* OfferOrEditRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferOrEditRideViewController.swift; sourceTree = "<group>"; };
@@ -459,6 +511,13 @@
 		6D2798F91CF26D78008E5906 /* EventStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventStatus.swift; sourceTree = "<group>"; };
 		6D2B4FC11D8549D00009DC2D /* ResourceTagTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTagTableViewCell.swift; sourceTree = "<group>"; };
 		6D2B4FC41D854B770009DC2D /* ResourceTagTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTagTableView.swift; sourceTree = "<group>"; };
+		6D2F38751F3660D200E31433 /* GetInvolvedTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetInvolvedTabVC.swift; sourceTree = "<group>"; };
+		6D2F38781F366A9900E31433 /* CommunityGroupsTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupsTabVC.swift; sourceTree = "<group>"; };
+		6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupTabCell.swift; sourceTree = "<group>"; };
+		6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoredCommunityGroup.swift; sourceTree = "<group>"; };
+		6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupRole.swift; sourceTree = "<group>"; };
+		6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGroupInfoViewController.swift; sourceTree = "<group>"; };
+		6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSlider.swift; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
 		6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
@@ -472,6 +531,7 @@
 		6D5AD04E1CF6230E0020D567 /* EventDetailsTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailsTest.swift; sourceTree = "<group>"; };
 		6D5C10321D5CE246007AC44E /* FindRideFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FindRideFormViewController.swift; sourceTree = "<group>"; };
 		6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDriverRideDetailViewController.swift; sourceTree = "<group>"; };
+		6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCellExtension.swift; sourceTree = "<group>"; };
 		6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Leitura-Roman 3.otf"; sourceTree = "<group>"; };
 		6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProLig.otf; sourceTree = "<group>"; };
 		6D76CA7A1C06AB6900F8B007 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -479,9 +539,16 @@
 		6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D8F423B1CD80C8D0013BB13 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeThumbnail.swift; sourceTree = "<group>"; };
+		6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupTableViewCell.swift; sourceTree = "<group>"; };
+		6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupUtils.swift; sourceTree = "<group>"; };
+		6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupsListTableViewController.swift; sourceTree = "<group>"; };
 		6D94BCFB1D2374160063CED8 /* UpcomingEventCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingEventCell.swift; sourceTree = "<group>"; };
 		6D94BD011D2451CA0063CED8 /* ScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollViewController.swift; sourceTree = "<group>"; };
+		6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupLeader.swift; sourceTree = "<group>"; };
+		6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitInformationViewController.swift; sourceTree = "<group>"; };
 		6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTest.swift; sourceTree = "<group>"; };
+		6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupDetailsViewController.swift; sourceTree = "<group>"; };
+		6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaveGroupViewController.swift; sourceTree = "<group>"; };
 		6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewOfferRideViewController.swift; sourceTree = "<group>"; };
 		6DA815491D3FFA060087F05B /* newofferride.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = newofferride.storyboard; sourceTree = "<group>"; };
 		6DA8154C1D4019E70087F05B /* SegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedControl.swift; sourceTree = "<group>"; };
@@ -501,8 +568,13 @@
 		6DC46F7C1D3D73D8008BB70A /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		6DC46F7F1D3D75DE008BB70A /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlacePickerViewController.swift; sourceTree = "<group>"; };
+		6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
+		6DD13BC21F4EA1DD00F60B6B /* Cru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cru.entitlements; sourceTree = "<group>"; };
+		6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmJoinGroupViewController.swift; sourceTree = "<group>"; };
 		6DF096F91D92CED80053741A /* about.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTableViewCell.swift; sourceTree = "<group>"; };
+		6DFAAAF71F46622700D706C0 /* CommunityGroupNoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupNoImageCell.swift; sourceTree = "<group>"; };
+		6DFAAAFA1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupNoImageTabCell.swift; sourceTree = "<group>"; };
 		6DFBF2931D8D735600487F86 /* ResourceTypeExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceTypeExtensions.swift; sourceTree = "<group>"; };
 		791BE7C2FCD15FF3898CC4F0 /* Pods-Cru.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cru.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Cru/Pods-Cru.debug.xcconfig"; sourceTree = "<group>"; };
 		85EAB8191C0ECC8A005C7658 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -653,6 +725,8 @@
 		0F8CEF1F1BEC0E13008FC70D /* Cru */ = {
 			isa = PBXGroup;
 			children = (
+				6DD13BC21F4EA1DD00F60B6B /* Cru.entitlements */,
+				2F8FA1A11F12BCCF00A60392 /* Extensions */,
 				6D8DB4761D6906AF00276378 /* GoogleService-Info.plist */,
 				C12940E41CCD829E004DACB1 /* Clients */,
 				50C6CC791CBF3A0300EF5EFB /* SWRevealController */,
@@ -673,7 +747,6 @@
 				508B2BD61CCF4C2C00CD130C /* VarietyItemCollectionViewCell.swift */,
 				0F8CEF2A1BEC0E13008FC70D /* Assets.xcassets */,
 				0F8CEF2F1BEC0E13008FC70D /* Info.plist */,
-				0F8CEF271BEC0E13008FC70D /* Cru.xcdatamodeld */,
 				6DBD7B961C75746300D11FFA /* FreigSanProMedIt.otf */,
 				6DB922811C07CE1400C7B120 /* FreigSanProBook.otf */,
 				6DBD7B991C75747C00D11FFA /* FreigSanProSem.otf */,
@@ -714,13 +787,14 @@
 		0FB3939F1C82DF6400C81EFB /* MinistryTeams */ = {
 			isa = PBXGroup;
 			children = (
-				0FAEB9791C86C1D1005C0B4C /* ministryteam.storyboard */,
+				0FAEB9791C86C1D1005C0B4C /* MinistryTeam.storyboard */,
 				0FAEB97F1C8795D0005C0B4C /* MinistryTeam.swift */,
+				0F1B8C2C1CC99B1A00CEE24C /* MinistryTeamViewController.swift */,
+				0F1B8C2E1CC9ACA500CEE24C /* MinistryTeamDetailViewController.swift */,
 				0FAEB97B1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift */,
-				0FAAE91B1CE6A83A0055770D /* MinistryTeamsTableViewController.swift */,
-				0FAAE91E1CE6A8480055770D /* MinistryTeamsTableViewCell.swift */,
-				0F83D56D1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift */,
-				0F52709A1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift */,
+				2F8FA1AA1F1319BF00A60392 /* MinistryTeamSignUpViewController.swift */,
+				2F851C541F0F4A2700DF9B81 /* MinistryTeamCell.swift */,
+				2F851C551F0F4A2700DF9B81 /* MinistryTeamCell.xib */,
 			);
 			name = MinistryTeams;
 			sourceTree = "<group>";
@@ -760,6 +834,28 @@
 				448B73B6EE603CAABF73EF9B /* Pods_CruTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2F5EA1D31F523F930098115E /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				2F5EA1D11F5238C50098115E /* ModalNavigationController.swift */,
+				2F5EA1CF1F522C6B0098115E /* ModalTransitionController.swift */,
+				2F5EA1CD1F522C5A0098115E /* ModalAnimationController.swift */,
+			);
+			name = Modal;
+			sourceTree = "<group>";
+		};
+		2F8FA1A11F12BCCF00A60392 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2F8FA1A61F12C2F100A60392 /* NSObject+Additions.swift */,
+				2F5EA1CB1F4C00620098115E /* UITableView+Additions.swift */,
+				2F8FA1A21F12BCE700A60392 /* UITableViewCell+Additions.swift */,
+				2F8FA1A81F12C32F00A60392 /* UICollectionViewCell+Additions.swift */,
+				2FC9D8801F36E0F400EFF153 /* UIColor+Additions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		507086811C8F5F08006C5215 /* Ridesharing */ = {
@@ -869,7 +965,6 @@
 				50FE4D3E1C50CE5100EA9042 /* MinistryTableViewController.swift */,
 				50A341CD1C0C10F3006B73DB /* Campus.swift */,
 				50FE4D461C50D37C00EA9042 /* Ministry.swift */,
-				50FE4D421C50D0D100EA9042 /* SubscriptionManager.swift */,
 				C151D9B31C7D2D870067A29E /* LoginViewController.swift */,
 				C172470F1C8BDB8A00A794D4 /* LogoutViewController.swift */,
 				C1536D541CFD192400730281 /* SubscriptionProtocol.swift */,
@@ -886,7 +981,6 @@
 				6D76CA7F1C06C1D200F8B007 /* EventDetailsViewController.swift */,
 				0F5302711CD2AFCF0097F9F2 /* EventsTableViewController.swift */,
 				0F5302741CD2B85D0097F9F2 /* EventTableViewCell.swift */,
-				C1214DC71CEA63B300E7D25F /* EventUtils.swift */,
 				6D2798F91CF26D78008E5906 /* EventStatus.swift */,
 			);
 			name = Events;
@@ -899,11 +993,12 @@
 				0FB3939F1C82DF6400C81EFB /* MinistryTeams */,
 				0F74A30F1C0BB9D300401377 /* User.swift */,
 				501085B11BFBDB8600849CED /* GetInvolvedViewController.swift */,
+				6D2F387B1F366AE500E31433 /* Tab View Controller */,
 				C13F7DE51CE2713A0057D0F5 /* getinvolved.storyboard */,
 				0F1B8C2A1CC99B0000CEE24C /* CommunityGroupViewController.swift */,
-				0F1B8C2C1CC99B1A00CEE24C /* MinistryTeamViewController.swift */,
-				0F1B8C281CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift */,
-				0F1B8C2E1CC9ACA500CEE24C /* MinistryTeamDetailViewController.swift */,
+				2F96AF1F1F414094008F38B0 /* FilterCommunityGroupsTableViewController.swift */,
+				2F283A7C1F4BEC1E00248422 /* FilterCell.swift */,
+				2F283A7D1F4BEC1E00248422 /* FilterCell.xib */,
 			);
 			name = "Get Involved";
 			sourceTree = "<group>";
@@ -975,6 +1070,48 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		6D2F387B1F366AE500E31433 /* Tab View Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6D2F38751F3660D200E31433 /* GetInvolvedTabVC.swift */,
+				6D2F387F1F36937600E31433 /* CommunityGroupTabCell.swift */,
+				6DFAAAFA1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift */,
+			);
+			name = "Tab View Controller";
+			sourceTree = "<group>";
+		};
+		6D9112B61F0AC8A1001BCE51 /* Old Design */ = {
+			isa = PBXGroup;
+			children = (
+				50B1D3C71CED76910014EE1B /* SelectCGVC.swift */,
+				50B1D3C41CED6BB10014EE1B /* ChooseMinistryVC.swift */,
+				C1EF49091CDBF74E009439FE /* SurveyViewController.swift */,
+				C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */,
+				C13F7DED1CE28CF50057D0F5 /* TextQuestionCell.swift */,
+				C13F7DF31CE28D2F0057D0F5 /* OptionQuestionCell.swift */,
+				50B1725F1CEBBE7F007CDD44 /* SearchableOptionsVC.swift */,
+				C1E9DC101CF6A2B200066C5F /* CGQuestionAnswer.swift */,
+				C1E9DC131CF6B49700066C5F /* CommunityGroupCell.swift */,
+				C1E9DC161CF7894800066C5F /* CGLeaderCell.swift */,
+				50D3166D1CFECD800050692B /* CGDetailTableViewCell.swift */,
+				C1E9DC191CF7920B00066C5F /* DisplayCGVC.swift */,
+				6D3675711D5531D600272151 /* CurrentCGViewController.swift */,
+			);
+			name = "Old Design";
+			sourceTree = "<group>";
+		};
+		6D9563B11F099607000B0683 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50B1D3CA1CED76D60014EE1B /* CommunityGroup.swift */,
+				6D2F38821F37CC2000E31433 /* StoredCommunityGroup.swift */,
+				6D2F38851F38FEDC00E31433 /* CommunityGroupRole.swift */,
+				6D9563B21F099AFC000B0683 /* CommunityGroupLeader.swift */,
+				6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		6DC3747B1C925BCA00B3ADB3 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -997,15 +1134,21 @@
 		85C6D1161C0BD5CD006A4F9F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				2F5EA1D31F523F930098115E /* Modal */,
 				0F17E3D71C9106B500713297 /* LocalStorage */,
 				C1DCEC451C7681E1009FACE0 /* RideUtils.swift */,
+				6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */,
+				50FE4D421C50D0D100EA9042 /* SubscriptionManager.swift */,
+				C1214DC71CEA63B300E7D25F /* EventUtils.swift */,
+				6D9112B71F0AD215001BCE51 /* CommunityGroupUtils.swift */,
 				6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */,
 				C151D9B51C7D2D9A0067A29E /* LoginUtils.swift */,
 				0FF87DA31C8A268D00D56C4E /* GlobalUtils.swift */,
 				0F17E3D11C90F68300713297 /* CalendarManager.swift */,
-				50697BC61CE0456600776CC5 /* PhoneFormatter.swift */,
 				0FC49DAE1CFE8D9700B4D175 /* CruPhoneNoRule.swift */,
+				50697BC61CE0456600776CC5 /* PhoneFormatter.swift */,
 				6DB072F91E70AF0E00AD6300 /* ResourceUtils.swift */,
+				2F7198AE1F3FEAF7007A7720 /* SelectionViewController.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1035,21 +1178,19 @@
 		C1EF49051CDBF254009439FE /* CommunityGroups */ = {
 			isa = PBXGroup;
 			children = (
+				6D9563B11F099607000B0683 /* Models */,
 				C1EF49061CDBF3AD009439FE /* communitygroups.storyboard */,
-				50B1D3C71CED76910014EE1B /* SelectCGVC.swift */,
-				50B1D3CA1CED76D60014EE1B /* CommunityGroup.swift */,
-				50B1D3C41CED6BB10014EE1B /* ChooseMinistryVC.swift */,
-				C1EF49091CDBF74E009439FE /* SurveyViewController.swift */,
-				C13F7DE71CE277E30057D0F5 /* CGQuestion.swift */,
-				C13F7DED1CE28CF50057D0F5 /* TextQuestionCell.swift */,
-				C13F7DF31CE28D2F0057D0F5 /* OptionQuestionCell.swift */,
-				50B1725F1CEBBE7F007CDD44 /* SearchableOptionsVC.swift */,
-				C1E9DC101CF6A2B200066C5F /* CGQuestionAnswer.swift */,
-				C1E9DC131CF6B49700066C5F /* CommunityGroupCell.swift */,
-				C1E9DC161CF7894800066C5F /* CGLeaderCell.swift */,
-				50D3166D1CFECD800050692B /* CGDetailTableViewCell.swift */,
-				C1E9DC191CF7920B00066C5F /* DisplayCGVC.swift */,
-				6D3675711D5531D600272151 /* CurrentCGViewController.swift */,
+				6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */,
+				6D9608FF1F119E1D00413469 /* SubmitInformationViewController.swift */,
+				6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */,
+				6DA5984A1F393C3D001CB773 /* LeaveGroupViewController.swift */,
+				6D9112B31F09BC01001BCE51 /* CommunityGroupTableViewCell.swift */,
+				6DFAAAF71F46622700D706C0 /* CommunityGroupNoImageCell.swift */,
+				6D2F38781F366A9900E31433 /* CommunityGroupsTabVC.swift */,
+				6DA598471F39178D001CB773 /* CommunityGroupDetailsViewController.swift */,
+				6D9379261F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift */,
+				6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */,
+				6D9112B61F0AC8A1001BCE51 /* Old Design */,
 			);
 			name = CommunityGroups;
 			sourceTree = "<group>";
@@ -1166,10 +1307,12 @@
 				6DB922821C07CE1400C7B120 /* FreigSanProBook.otf in Resources */,
 				509DA9151C616BE60050CE26 /* riderdetail.storyboard in Resources */,
 				0FC8E39D1C3EF320007A7208 /* sideMenu.storyboard in Resources */,
+				2F283A7F1F4BEC1E00248422 /* FilterCell.xib in Resources */,
 				C13F7DE61CE2713A0057D0F5 /* getinvolved.storyboard in Resources */,
 				503A06CC1C5F08CC00DAD10E /* offerride.storyboard in Resources */,
 				501D0ABF1C68588700BF243A /* events.storyboard in Resources */,
 				6D8DB4771D6906AF00276378 /* GoogleService-Info.plist in Resources */,
+				2F851C571F0F4A2700DF9B81 /* MinistryTeamCell.xib in Resources */,
 				6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */,
 				0F8CEF2B1BEC0E13008FC70D /* Assets.xcassets in Resources */,
 				6DBD7B971C75746300D11FFA /* FreigSanProMedIt.otf in Resources */,
@@ -1185,7 +1328,7 @@
 				0FC8E3A61C45EB1A007A7208 /* Intro.storyboard in Resources */,
 				509DA9191C616C840050CE26 /* driverdetail.storyboard in Resources */,
 				6DF096FA1D92CED80053741A /* about.storyboard in Resources */,
-				0FAEB97A1C86C1D1005C0B4C /* ministryteam.storyboard in Resources */,
+				0FAEB97A1C86C1D1005C0B4C /* MinistryTeam.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1199,7 +1342,7 @@
 				6DA8154B1D3FFA060087F05B /* newofferride.storyboard in Resources */,
 				5072B42F1CB39022001F5BF6 /* LaunchScreen.storyboard in Resources */,
 				5072B4311CB39022001F5BF6 /* resources.storyboard in Resources */,
-				5072B4321CB39022001F5BF6 /* ministryteam.storyboard in Resources */,
+				5072B4321CB39022001F5BF6 /* MinistryTeam.storyboard in Resources */,
 				5072B4341CB39022001F5BF6 /* settings.storyboard in Resources */,
 				5072B4361CB39022001F5BF6 /* findride.storyboard in Resources */,
 				5072B4371CB39022001F5BF6 /* offerride.storyboard in Resources */,
@@ -1337,24 +1480,30 @@
 				0FC49DAF1CFE8D9700B4D175 /* CruPhoneNoRule.swift in Sources */,
 				6D01D8351D81AE59006A9AC0 /* CheckboxButton.swift in Sources */,
 				C1EF490A1CDBF74E009439FE /* SurveyViewController.swift in Sources */,
+				2F8FA1AB1F1319BF00A60392 /* MinistryTeamSignUpViewController.swift in Sources */,
 				C1E9DC171CF7894800066C5F /* CGLeaderCell.swift in Sources */,
 				0F1959EE1C8E60A200A783BA /* OfferedRideTableViewCell.swift in Sources */,
 				5094897D1C64000200A67697 /* DriverRideDetailViewController.swift in Sources */,
 				6D2798FA1CF26D79008E5906 /* EventStatus.swift in Sources */,
 				50E57A8D1CEE989900462F8A /* DriverDetailCell.swift in Sources */,
+				6D9609001F119E1D00413469 /* SubmitInformationViewController.swift in Sources */,
 				509DA91D1C6172FC0050CE26 /* Ride.swift in Sources */,
 				C1DCEC461C7681E1009FACE0 /* RideUtils.swift in Sources */,
 				0F1B8C2B1CC99B0000CEE24C /* CommunityGroupViewController.swift in Sources */,
 				6D94BCFC1D2374160063CED8 /* UpcomingEventCell.swift in Sources */,
+				6DDDAAF01F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */,
 				50FE4D431C50D0D100EA9042 /* SubscriptionManager.swift in Sources */,
 				50D3166E1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
+				6DFAAAFB1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift in Sources */,
 				0F5302721CD2AFCF0097F9F2 /* EventsTableViewController.swift in Sources */,
 				0F6862211CE65D4A00138377 /* SummerMissionsTableViewController.swift in Sources */,
-				0F52709B1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */,
+				6D9112B81F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */,
 				502609501C066D1F0019E97C /* CampusesTableViewController.swift in Sources */,
+				2F5EA1CE1F522C5A0098115E /* ModalAnimationController.swift in Sources */,
 				50A341CE1C0C10F3006B73DB /* Campus.swift in Sources */,
 				6DFBF2941D8D735700487F86 /* ResourceTypeExtensions.swift in Sources */,
 				C12940E61CCD82D4004DACB1 /* CruClients.swift in Sources */,
+				6D2F38761F3660D200E31433 /* GetInvolvedTabVC.swift in Sources */,
 				6DC46F6B1D3D5463008BB70A /* Audio.swift in Sources */,
 				50AC22501CDB016800427C08 /* EditCell.swift in Sources */,
 				0F8CEF231BEC0E13008FC70D /* MainViewController.swift in Sources */,
@@ -1362,7 +1511,9 @@
 				6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */,
 				6DF5177A1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */,
 				50697BBE1CE002C500776CC5 /* DirectionTVC.swift in Sources */,
+				2FC9D8811F36E0F400EFF153 /* UIColor+Additions.swift in Sources */,
 				50AC22531CDB033D00427C08 /* EditableItem.swift in Sources */,
+				2F283A7E1F4BEC1E00248422 /* FilterCell.swift in Sources */,
 				6D8F423C1CD80C8D0013BB13 /* Article.swift in Sources */,
 				50697BC41CE03B5600776CC5 /* PassengersViewController.swift in Sources */,
 				50A9B02C1CFBFA1900E759E2 /* MapOfRidesViewController.swift in Sources */,
@@ -1370,6 +1521,7 @@
 				6D434A221D42ABE200661CA8 /* LocationViewController.swift in Sources */,
 				C13F7DF41CE28D2F0057D0F5 /* OptionQuestionCell.swift in Sources */,
 				0F10F0221CC03F7000F478ED /* RidesViewController.swift in Sources */,
+				2F8FA1A91F12C32F00A60392 /* UICollectionViewCell+Additions.swift in Sources */,
 				50B1D3C51CED6BB10014EE1B /* ChooseMinistryVC.swift in Sources */,
 				C1D9078E1C88F8C800FDC096 /* SettingsTableViewController.swift in Sources */,
 				0F8CEF211BEC0E13008FC70D /* AppDelegate.swift in Sources */,
@@ -1377,11 +1529,14 @@
 				C1E9DC111CF6A2B200066C5F /* CGQuestionAnswer.swift in Sources */,
 				0F17E3D91C91076D00713297 /* MapLocalStorageManager.swift in Sources */,
 				6D424DDB1E6E1E0100496301 /* CustomWebViewController.swift in Sources */,
+				2F7198AF1F3FEAF7007A7720 /* SelectionViewController.swift in Sources */,
 				C151D9B41C7D2D870067A29E /* LoginViewController.swift in Sources */,
+				6DFAAAF81F46622700D706C0 /* CommunityGroupNoImageCell.swift in Sources */,
 				6D5C10331D5CE246007AC44E /* FindRideFormViewController.swift in Sources */,
 				6DA8154D1D4019E70087F05B /* SegmentedControl.swift in Sources */,
-				0F83D56E1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift in Sources */,
-				0FAAE91C1CE6A83A0055770D /* MinistryTeamsTableViewController.swift in Sources */,
+				6D2F38831F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */,
+				6DA5984B1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */,
+				6D2F38791F366A9900E31433 /* CommunityGroupsTabVC.swift in Sources */,
 				50AA7CCB1C63320F00866BE6 /* RideTableViewCell.swift in Sources */,
 				50D507861CBF7A7F00A07045 /* OfferRideViewController.swift in Sources */,
 				0F74A3101C0BB9D300401377 /* User.swift in Sources */,
@@ -1393,6 +1548,7 @@
 				0F1B8C2F1CC9ACA500CEE24C /* MinistryTeamDetailViewController.swift in Sources */,
 				6DC46F7D1D3D73D8008BB70A /* Notification.swift in Sources */,
 				6D76CA7B1C06AB6900F8B007 /* Event.swift in Sources */,
+				2F96AF201F414094008F38B0 /* FilterCommunityGroupsTableViewController.swift in Sources */,
 				0F17E3D51C9103B500713297 /* LocalStorageManager.swift in Sources */,
 				6D31382D1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */,
 				0FC8E3B21C48750A007A7208 /* IntroViewController.swift in Sources */,
@@ -1403,6 +1559,7 @@
 				507252E41CC07E8200DD4EFF /* EventsModalTableViewController.swift in Sources */,
 				5047424A1C75988E003F276E /* PassengerTableViewCell.swift in Sources */,
 				C12940E91CCD833E004DACB1 /* ServerProtocol.swift in Sources */,
+				6D9563B31F099AFC000B0683 /* CommunityGroupLeader.swift in Sources */,
 				6D424DD81E6E10AC00496301 /* AudioTableViewCell.swift in Sources */,
 				505722A41CE095A800F87BE4 /* PickRadiusViewController.swift in Sources */,
 				6DA815471D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */,
@@ -1412,20 +1569,26 @@
 				509527241C63DAAE00E4F7B6 /* RiderRideDetailViewController.swift in Sources */,
 				500A37B01C7D6587007D6A3B /* Passenger.swift in Sources */,
 				0F17E3D21C90F68300713297 /* CalendarManager.swift in Sources */,
+				6D62D0F91F1571FF008AEE64 /* TableViewCellExtension.swift in Sources */,
 				0FAEB97C1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift in Sources */,
 				6DC46F681D3D5456008BB70A /* Video.swift in Sources */,
 				0F5302751CD2B85D0097F9F2 /* EventTableViewCell.swift in Sources */,
 				6D4119851D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */,
 				6DAD2B751D2D8C6C001F8A1B /* DateUtils.swift in Sources */,
 				6DBD7B8C1C756D1000D11FFA /* CruColors.swift in Sources */,
-				0F1B8C291CC97E4D00CEE24C /* JoinedTeamsTableViewCell.swift in Sources */,
-				0FAAE91F1CE6A8480055770D /* MinistryTeamsTableViewCell.swift in Sources */,
+				6D310AF31F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */,
 				50FE4D471C50D37C00EA9042 /* Ministry.swift in Sources */,
 				0F1B8C2D1CC99B1A00CEE24C /* MinistryTeamViewController.swift in Sources */,
 				506EBF921CD9D3AB002E6F6A /* TimePicker.swift in Sources */,
+				6D9112B41F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */,
 				5072B4171CB38616001F5BF6 /* TimeDetail.swift in Sources */,
+				6D9379271F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */,
+				2F851C561F0F4A2700DF9B81 /* MinistryTeamCell.swift in Sources */,
+				2F8FA1A31F12BCE700A60392 /* UITableViewCell+Additions.swift in Sources */,
+				2F5EA1CC1F4C00620098115E /* UITableView+Additions.swift in Sources */,
 				50C6CC7E1CBF3A3700EF5EFB /* SWRevealViewController.m in Sources */,
 				50A9B0291CFBE04A00E759E2 /* RiderEditTableViewCell.swift in Sources */,
+				6DA598481F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */,
 				6D59068F1CE3F0DC00464D57 /* CardTableViewCell.swift in Sources */,
 				6D2B4FC51D854B770009DC2D /* ResourceTagTableView.swift in Sources */,
 				6DC46F6E1D3D593C008BB70A /* ArticleTableViewCell.swift in Sources */,
@@ -1434,6 +1597,7 @@
 				0FAEB9801C8795D0005C0B4C /* MinistryTeam.swift in Sources */,
 				C1214DC81CEA63B300E7D25F /* EventUtils.swift in Sources */,
 				0F74A3121C0BC47700401377 /* GetInvolvedViewController.swift in Sources */,
+				2F8FA1A71F12C2F100A60392 /* NSObject+Additions.swift in Sources */,
 				50DD51481C86B85900752777 /* Colors.swift in Sources */,
 				C1E9DC141CF6B49700066C5F /* CommunityGroupCell.swift in Sources */,
 				C17247101C8BDB8A00A794D4 /* LogoutViewController.swift in Sources */,
@@ -1443,7 +1607,9 @@
 				6DC538261D639AC300EF1E7F /* PlacePickerViewController.swift in Sources */,
 				6D5C10361D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */,
 				6D4B78B61C702FDF00F643CB /* Resource.swift in Sources */,
+				6D2F38801F36937600E31433 /* CommunityGroupTabCell.swift in Sources */,
 				50DC2D2D1CEEBE690015C574 /* OfferOrEditRideViewController.swift in Sources */,
+				6D310AF61F3CE38600ECD0F5 /* DropDownButton.swift in Sources */,
 				C13F7DE81CE277E30057D0F5 /* CGQuestion.swift in Sources */,
 				6D424DD51E6E10A400496301 /* VideoTableViewCell.swift in Sources */,
 				6D76CA801C06C1D200F8B007 /* EventDetailsViewController.swift in Sources */,
@@ -1453,6 +1619,8 @@
 				0FF87DA41C8A268D00D56C4E /* GlobalUtils.swift in Sources */,
 				50A38FE91C5F0D960013BFBD /* MinistryTableViewCell.swift in Sources */,
 				85EAB81A1C0ECC8A005C7658 /* Config.swift in Sources */,
+				2F5EA1D01F522C6B0098115E /* ModalTransitionController.swift in Sources */,
+				6D2F38861F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */,
 				6D01D83B1D843475006A9AC0 /* CustomDismissAnimationController.swift in Sources */,
 				0F68621E1CE65D3600138377 /* SummerMissionsTableViewCell.swift in Sources */,
 				50FE4D3F1C50CE5100EA9042 /* MinistryTableViewController.swift in Sources */,
@@ -1461,9 +1629,10 @@
 				C185BB391CD2904F00787153 /* FakeServerClient.swift in Sources */,
 				50B1D3CB1CED76D60014EE1B /* CommunityGroup.swift in Sources */,
 				6D01D83E1D8440E5006A9AC0 /* CustomPresentAnimationController.swift in Sources */,
-				0F8CEF291BEC0E13008FC70D /* Cru.xcdatamodeld in Sources */,
 				6D10D5EF1D92F525008265AD /* AboutViewController.swift in Sources */,
 				C12C0A871C941E9C005751A0 /* DBCollection.swift in Sources */,
+				2F5EA1D21F5238C50098115E /* ModalNavigationController.swift in Sources */,
+				6DD13BC01F4E3F9A00F60B6B /* ImageUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1473,7 +1642,6 @@
 			files = (
 				50FAC0401CFBD68000E93E89 /* RideJoinViewController.swift in Sources */,
 				C1EF49041CDBE08C009439FE /* TimePicker.swift in Sources */,
-				0FAAE9201CE6A8480055770D /* MinistryTeamsTableViewCell.swift in Sources */,
 				50697BC51CE03B5600776CC5 /* PassengersViewController.swift in Sources */,
 				C12562551CD3E77B002B05D0 /* SWRevealViewController.h in Sources */,
 				6D424DD61E6E10A400496301 /* VideoTableViewCell.swift in Sources */,
@@ -1487,14 +1655,18 @@
 				508B2BD81CCF4C2C00CD130C /* VarietyItemCollectionViewCell.swift in Sources */,
 				6DB072FB1E70AF0E00AD6300 /* ResourceUtils.swift in Sources */,
 				6DAD2B761D2D8C6C001F8A1B /* DateUtils.swift in Sources */,
+				6DDDAAF11F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */,
 				6D01D8421D845588006A9AC0 /* ResourceTag.swift in Sources */,
 				50697BC81CE0456600776CC5 /* PhoneFormatter.swift in Sources */,
 				6D424DD91E6E10AC00496301 /* AudioTableViewCell.swift in Sources */,
+				6D9112B91F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */,
 				5072B4221CB38E70001F5BF6 /* RideTableViewCell.swift in Sources */,
 				50D507871CBF7A7F00A07045 /* OfferRideViewController.swift in Sources */,
 				C1536D5A1CFD1DB400730281 /* FakeSubscriptionManager.swift in Sources */,
 				0F68621F1CE65D3600138377 /* SummerMissionsTableViewCell.swift in Sources */,
+				6D2F38841F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */,
 				6D94BCFD1D2374160063CED8 /* UpcomingEventCell.swift in Sources */,
+				6D9609011F119E1D00413469 /* SubmitInformationViewController.swift in Sources */,
 				5072B41F1CB38E53001F5BF6 /* OfferedRideTableViewCell.swift in Sources */,
 				5072B41E1CB38E30001F5BF6 /* FilterByEventViewController.swift in Sources */,
 				5072B41C1CB38DF4001F5BF6 /* EventDetailsViewController.swift in Sources */,
@@ -1507,14 +1679,12 @@
 				6D3675731D5531D600272151 /* CurrentCGViewController.swift in Sources */,
 				50697BC21CE0303B00776CC5 /* DetailCell.swift in Sources */,
 				6DA8154E1D4019E70087F05B /* SegmentedControl.swift in Sources */,
-				0F83D56F1CEBB86E00E08BA4 /* MinistryTeamNoPictureTableViewCell.swift in Sources */,
 				C12940E71CCD82D4004DACB1 /* CruClients.swift in Sources */,
 				C12940EA1CCD833E004DACB1 /* ServerProtocol.swift in Sources */,
 				C1536D691CFD3E2500730281 /* FakeLocalStorageManager.swift in Sources */,
 				0F1959C71C8E5AFD00A783BA /* Colors.swift in Sources */,
 				6D424DDC1E6E1E0100496301 /* CustomWebViewController.swift in Sources */,
 				C1015CD21C9429D0005B559E /* ResourcesTest.swift in Sources */,
-				0FAAE91D1CE6A83A0055770D /* MinistryTeamsTableViewController.swift in Sources */,
 				C1536D621CFD3CEE00730281 /* SummerMission.swift in Sources */,
 				0F1959B61C8E59DE00A783BA /* Cancler.swift in Sources */,
 				5031E1531CE682F30005AAF6 /* TestDriverRideDetail.swift in Sources */,
@@ -1522,9 +1692,11 @@
 				C1DCEC471C7681E1009FACE0 /* RideUtils.swift in Sources */,
 				50D316701CFED8990050692B /* CruPhoneNoRule.swift in Sources */,
 				505722A51CE095A800F87BE4 /* PickRadiusViewController.swift in Sources */,
+				6D9379281F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */,
 				50B1D3CC1CED76D60014EE1B /* CommunityGroup.swift in Sources */,
 				6D434A231D42ABE200661CA8 /* LocationViewController.swift in Sources */,
 				6D31382E1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */,
+				6DA598491F39178D001CB773 /* CommunityGroupDetailsViewController.swift in Sources */,
 				6DC46F7E1D3D73D8008BB70A /* Notification.swift in Sources */,
 				507B368B1CE10BDC003D6CF9 /* UpcomingItemCell.swift in Sources */,
 				50A9B02D1CFBFA1900E759E2 /* MapOfRidesViewController.swift in Sources */,
@@ -1532,20 +1704,25 @@
 				0F17E3D61C9103B500713297 /* LocalStorageManager.swift in Sources */,
 				50AC22541CDB033D00427C08 /* EditableItem.swift in Sources */,
 				C13F7DEF1CE28CF50057D0F5 /* TextQuestionCell.swift in Sources */,
+				6D2F38811F36937600E31433 /* CommunityGroupTabCell.swift in Sources */,
 				50AC22511CDB016800427C08 /* EditCell.swift in Sources */,
 				6D01D8361D81AE59006A9AC0 /* CheckboxButton.swift in Sources */,
 				C1015CD81C942D7F005B559E /* GlobalUtilsTest.swift in Sources */,
 				6D01D83F1D8440E5006A9AC0 /* CustomPresentAnimationController.swift in Sources */,
+				6DD13BC11F4E3F9A00F60B6B /* ImageUtils.swift in Sources */,
 				C1214DCB1CEA668300E7D25F /* EventUtilsTest.swift in Sources */,
 				507252E51CC07E8200DD4EFF /* EventsModalTableViewController.swift in Sources */,
 				6DF5177B1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */,
 				6DA815511D413E7E0087F05B /* EventsPopoverViewController.swift in Sources */,
 				50C6CC7F1CBF3A3700EF5EFB /* SWRevealViewController.m in Sources */,
 				C185BB3A1CD2904F00787153 /* FakeServerClient.swift in Sources */,
+				6D2F38771F3660D200E31433 /* GetInvolvedTabVC.swift in Sources */,
 				C14019CE1CBF711000B01203 /* ArrayLocalStorageManager.swift in Sources */,
 				0FB811851C8F47C600883951 /* Ministry.swift in Sources */,
+				6D2F38871F38FEDC00E31433 /* CommunityGroupRole.swift in Sources */,
 				0F5302761CD2B85D0097F9F2 /* EventTableViewCell.swift in Sources */,
 				0F17E3D31C90F68300713297 /* CalendarManager.swift in Sources */,
+				6DFAAAF91F46622700D706C0 /* CommunityGroupNoImageCell.swift in Sources */,
 				6D8F423D1CD80C8D0013BB13 /* Article.swift in Sources */,
 				0FAEB9811C8795D0005C0B4C /* MinistryTeam.swift in Sources */,
 				6D2B4FC31D8549D00009DC2D /* ResourceTagTableViewCell.swift in Sources */,
@@ -1553,18 +1730,23 @@
 				C1E9DC181CF7894800066C5F /* CGLeaderCell.swift in Sources */,
 				6DFBF2951D8D735700487F86 /* ResourceTypeExtensions.swift in Sources */,
 				0F5302731CD2AFCF0097F9F2 /* EventsTableViewController.swift in Sources */,
+				6D9563B41F099AFC000B0683 /* CommunityGroupLeader.swift in Sources */,
 				509DA91E1C6172FC0050CE26 /* Ride.swift in Sources */,
 				50A9B02A1CFBE04A00E759E2 /* RiderEditTableViewCell.swift in Sources */,
 				0F17E3DA1C91076D00713297 /* MapLocalStorageManager.swift in Sources */,
 				C13F7DE91CE277E30057D0F5 /* CGQuestion.swift in Sources */,
 				0F1959CD1C8E5B0C00A783BA /* LoginUtils.swift in Sources */,
 				6D2B4FC61D854B770009DC2D /* ResourceTagTableView.swift in Sources */,
+				6D310AF41F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift in Sources */,
+				6DA5984C1F393C3D001CB773 /* LeaveGroupViewController.swift in Sources */,
 				50D3166F1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
+				6D9112B51F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */,
 				6D76CA7C1C06AB6900F8B007 /* Event.swift in Sources */,
 				6D10D5F01D92F525008265AD /* AboutViewController.swift in Sources */,
 				C1E9DC151CF6B49700066C5F /* CommunityGroupCell.swift in Sources */,
 				0F7CB3C91C919D9D00C8444F /* Config.swift in Sources */,
 				6DC46F811D3D75DE008BB70A /* NotificationTableViewCell.swift in Sources */,
+				6DFAAAFC1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift in Sources */,
 				50B172611CEBBE7F007CDD44 /* SearchableOptionsVC.swift in Sources */,
 				6DC46F6C1D3D5463008BB70A /* Audio.swift in Sources */,
 				C1214DC91CEA63B300E7D25F /* EventUtils.swift in Sources */,
@@ -1574,6 +1756,7 @@
 				C1EF490B1CDBF74E009439FE /* SurveyViewController.swift in Sources */,
 				0F7CB3C81C919B6500C8444F /* EventTest.swift in Sources */,
 				6D8F42401CD80CF60013BB13 /* YoutubeThumbnail.swift in Sources */,
+				6D2F387A1F366A9900E31433 /* CommunityGroupsTabVC.swift in Sources */,
 				6DA815481D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */,
 				50B1D3C91CED76910014EE1B /* SelectCGVC.swift in Sources */,
 				50E57A8E1CEE989A00462F8A /* DriverDetailCell.swift in Sources */,
@@ -1589,7 +1772,7 @@
 				6D4119861D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */,
 				6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */,
 				6DC46F691D3D5456008BB70A /* Video.swift in Sources */,
-				0F52709C1CEE55F000D71BB0 /* MinistryTeamSignUpViewController.swift in Sources */,
+				6D62D0FA1F1571FF008AEE64 /* TableViewCellExtension.swift in Sources */,
 				C1015CD31C942C0E005B559E /* DBCollection.swift in Sources */,
 				0FB811861C8F47E200883951 /* Campus.swift in Sources */,
 				6D5AD04F1CF6230E0020D567 /* EventDetailsTest.swift in Sources */,
@@ -1597,6 +1780,7 @@
 				6D4B78B71C702FDF00F643CB /* Resource.swift in Sources */,
 				501038B31CD9655F00CCD7DC /* OfferOrEditRideViewController.swift in Sources */,
 				50B1D3C61CED6BB10014EE1B /* ChooseMinistryVC.swift in Sources */,
+				6D310AF71F3CE38600ECD0F5 /* DropDownButton.swift in Sources */,
 				0F1B8C701CCFDB8700CEE24C /* RidesViewController.swift in Sources */,
 				6D01D8391D81B5D5006A9AC0 /* SearchModalViewController.swift in Sources */,
 				0FF87DA51C8A268D00D56C4E /* GlobalUtils.swift in Sources */,
@@ -1718,8 +1902,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Cru/Cru.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1746,8 +1932,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Cru/Cru.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1839,19 +2027,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		0F8CEF271BEC0E13008FC70D /* Cru.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				0F8CEF281BEC0E13008FC70D /* Cru.xcdatamodel */,
-			);
-			currentVersion = 0F8CEF281BEC0E13008FC70D /* Cru.xcdatamodel */;
-			path = Cru.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 0F8CEF151BEC0E13008FC70D /* Project object */;
 }

@@ -58,11 +58,9 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        let img =  UIImage(named: Config.noRidesForEvent)
-        
-        return img
-    }
+//    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+//        return UIImage(named: Config.noRidesForEvent)
+//    }
     
     func mapView(){
         if(selectedEvent != nil){
@@ -123,7 +121,7 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     func loadRides(_ event: Event?) {
         tempEvent = event
         MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-        CruClients.getRideUtils().getRidesNotDriving(Config.gcmId(), insert: insertRide, afterFunc: loadRidesCompletionHandler)
+        CruClients.getRideUtils().getRidesNotDriving(Config.fcmId(), insert: insertRide, afterFunc: loadRidesCompletionHandler)
     }
     
     fileprivate func insertRide(_ dict: NSDictionary) {

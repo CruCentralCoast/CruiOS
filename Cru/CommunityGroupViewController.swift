@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 
-class CommunityGroupViewController: UIViewController {
+class CommunityGroupViewController: UIViewController, IndicatorInfoProvider {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,12 @@ class CommunityGroupViewController: UIViewController {
     @IBAction func onTouchSeeMore(_ sender: AnyObject) {
         self.performSegue(withIdentifier: "cGroupSurvey", sender: self)
     }
+    
+    // MARK: - XLPagerTabStrip Stuff
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: "Community Groups")
+    }
+    
 
     /*
     // MARK: - Navigation

@@ -11,7 +11,7 @@ import Foundation
 class FakeSubscriptionManager: SubscriptionProtocol {
 
 
-    fileprivate var gcmToken = "emulator-id-hey-whats-up-hello"
+    fileprivate var fcmToken = "emulator-id-hey-whats-up-hello"
     
     fileprivate let storageManager: LocalStorageManager
     
@@ -23,16 +23,16 @@ class FakeSubscriptionManager: SubscriptionProtocol {
         self.storageManager = storageManager
     }
     
-    func saveGCMToken(_ token: String) {
-        gcmToken = token
+    func saveFCMToken(_ token: String) {
+        fcmToken = token
     }
     
-    func loadGCMToken()->String {
-        return gcmToken
+    func loadFCMToken()->String {
+        return fcmToken
     }
     
     func loadCampuses() -> [Campus] {
-        if let unarchivedObject = storageManager.getObject(Config.campusKey) as? Data {
+        if let unarchivedObject = storageManager.object(forKey: Config.campusKey) as? Data {
             if let campuses = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Campus]{
                 return campuses
             }
@@ -43,11 +43,11 @@ class FakeSubscriptionManager: SubscriptionProtocol {
     func saveCampuses(_ campuses:[Campus]) {
         let enabled = campuses.filter{ $0.feedEnabled }
         let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
-        storageManager.putObject(Config.campusKey, object: archivedObject)
+        storageManager.set(archivedObject, forKey: Config.campusKey)
     }
     
     func loadMinistries() -> [Ministry] {
-        if let unarchivedObject = storageManager.getObject(Config.ministryKey) as? Data {
+        if let unarchivedObject = storageManager.object(forKey: Config.ministryKey) as? Data {
             if let ministries = NSKeyedUnarchiver.unarchiveObject(with: unarchivedObject) as? [Ministry]{
                 return ministries
             }
@@ -55,16 +55,16 @@ class FakeSubscriptionManager: SubscriptionProtocol {
         return [Ministry]()
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool) {
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool) {
         let enabled = ministries.filter{ $0.feedEnabled }
         let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
-        storageManager.putObject(Config.ministryKey, object: archivedObject)
+        storageManager.set(archivedObject, forKey: Config.ministryKey)
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool, handler: @escaping ([String:Bool])->Void) {
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool, handler: @escaping ([String:Bool])->Void) {
         let enabled = ministries.filter{ $0.feedEnabled }
         let archivedObject = NSKeyedArchiver.archivedData(withRootObject: enabled as NSArray)
-        storageManager.putObject(Config.ministryKey, object: archivedObject)
+        storageManager.set(archivedObject, forKey: Config.ministryKey)
         var minMap = [String:Bool]()
         enabled.forEach{ minMap[$0.id] = true }
         handler(minMap)

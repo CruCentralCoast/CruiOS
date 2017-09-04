@@ -55,10 +55,10 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
     fileprivate func insertGroup(_ dict: NSDictionary) {
         group = CommunityGroup(dict: dict)
         
-        if(group.parentMinistry != nil){
+        if(group.parentMinistryID != nil){
             CruClients.getServerClient().getById(.Ministry, insert: insertMinistry, completionHandler: {
                 success in
-                }, id: group.parentMinistry)
+                }, id: group.parentMinistryID)
         }
         
         
@@ -91,13 +91,13 @@ class DisplayCGVC: UIViewController, UITableViewDelegate, UITableViewDataSource 
             table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
         }
         
-        for lead in group.leaders{
+        /*for lead in group.leaders{
             if let cell = self.table.dequeueReusableCell(withIdentifier: "leaderCell")! as? CGLeaderCell{
-                cell.setUser(lead)
+                //cell.setLeader(lead)
                 cells.append(cell)
                 table.insertRows(at: [IndexPath(item: 0, section: 0)], with: .automatic)
             }
-        }
+        }*/
         
         
         self.table.reloadData()

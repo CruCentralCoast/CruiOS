@@ -54,6 +54,13 @@ class FakeServerClient: ServerProtocol {
         callback([jimbo, quan])
     }
     
+    func joinCommunityGroup(_ groupId: String, fullName: String, phone: String, callback: @escaping (NSArray?) -> Void) {
+        let jimbo = ["name":["first":"Jim", "last":"Bo"], "phone":"1234567890"] as [String : Any]
+        let quan = ["name":["first":"Quan", "last":"Tran"], "phone":"0987654321"] as [String : Any]
+        
+        callback([jimbo, quan])
+    }
+    
     func getById(_ collection: DBCollection, insert: @escaping (NSDictionary) -> (), completionHandler: @escaping (Bool)->Void, id: String) {
         
         let dict = getById(collection, id: id)

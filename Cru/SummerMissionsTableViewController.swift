@@ -8,29 +8,52 @@
 
 import UIKit
 import DZNEmptyDataSet
-
+import MRProgress
 
 class SummerMissionsTableViewController: UITableViewController, SWRevealViewControllerDelegate, DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     
     @IBOutlet weak var menuButton: UIBarButtonItem!
+    var hasConnection = true
     
     var missions = [SummerMission]()
     fileprivate let reuseIdentifier = "missionCell"
 
-    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        return UIImage(named: Config.noConnectionImageName)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
         
-        CruClients.getServerClient().getData(DBCollection.SummerMission, insert: insertMission, completionHandler: reload)
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        //Check for connection then load events in the completion function
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+        
         
         navigationItem.title = "Summer Missions"
         
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+    }
+    
+    // MARK: - Helper Functions
+    //Test to make sure there is a connection then load missions
+    func finishConnectionCheck(_ connected: Bool){
+        self.tableView!.emptyDataSetSource = self
+        self.tableView!.emptyDataSetDelegate = self
+        
+        if(!connected){
+            hasConnection = false
+            //Display a message if no connection
+            
+            self.tableView!.reloadData()
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            //API call to load missions
+            CruClients.getServerClient().getData(DBCollection.SummerMission, insert: insertMission, completionHandler: reload)
+            
+        }
+        
     }
 
     // Creates and inserts a SummerMission into this collection view from the given dictionary.
@@ -43,11 +66,38 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         self.tableView.reloadData()
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
     
+    // MARK: - Empty Data Set Functions
     func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        CruClients.getServerClient().getData(DBCollection.SummerMission, insert: insertMission, completionHandler: reload)
+        if !hasConnection {
+            CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+        }
     }
+    
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        if hasConnection {
+            return nil
+        }
+        else {
+            return UIImage(named: Config.noConnectionImageName)
+        }
+        
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        if hasConnection {
+            return nil
+        }
+        else {
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+            return NSAttributedString(string: "Sorry, we're working on it! Check back later for more information about summer missions.", attributes: attributes)
+        }
+    }
+    
+    
+    // MARK: - Table View Delegate Functions
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

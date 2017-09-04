@@ -1,48 +1,60 @@
 PODS:
   - ActionSheetPicker-3.0 (2.2.0)
   - Alamofire (4.3.0)
+  - AlamofireImage (3.2.0):
+    - Alamofire (~> 4.1)
+  - AnimatedTextInput (0.5.1)
   - Appsee (2.3.1)
+  - AWSCognito (2.5.10):
+    - AWSCore (= 2.5.10)
+  - AWSCore (2.5.10)
+  - AWSS3 (2.5.10):
+    - AWSCore (= 2.5.10)
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - DatePickerCell (1.0.5)
+  - DropDown (2)
   - DZNEmptyDataSet (1.8.1)
   - Fabric (1.6.11)
-  - GGLInstanceID (1.2.1)
-  - Google/CloudMessaging (1.3.2):
-    - GGLInstanceID (~> 1.0)
-    - Google/Core
-    - GoogleCloudMessaging (~> 1.0)
-  - Google/Core (1.3.2):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleNetworkingUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.1)
-  - GoogleCloudMessaging (1.2.0):
-    - GoogleInterchangeUtilities (~> 1.0)
-    - GoogleIPhoneUtilities (~> 1.0)
-    - GoogleSymbolUtilities (~> 1.0)
-  - GoogleInterchangeUtilities (1.2.2):
-    - GoogleSymbolUtilities (~> 1.1)
-  - GoogleIPhoneUtilities (1.2.1):
-    - GoogleSymbolUtilities (~> 1.0)
-    - GoogleUtilities (~> 1.0)
+  - Firebase/Core (4.0.4):
+    - FirebaseAnalytics (= 4.0.2)
+    - FirebaseCore (= 4.0.4)
+  - Firebase/Messaging (4.0.4):
+    - Firebase/Core
+    - FirebaseMessaging (= 2.0.0)
+  - FirebaseAnalytics (4.0.2):
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (4.0.4):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - nanopb (~> 0.3)
+  - FirebaseInstanceID (2.0.0):
+    - FirebaseCore (~> 4.0)
+  - FirebaseMessaging (2.0.0):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - FirebaseInstanceID (~> 2.0)
+    - GoogleToolboxForMac/Logger (~> 2.1)
+    - Protobuf (~> 3.1)
   - GoogleMaps (2.1.1):
     - GoogleMaps/Maps (= 2.1.1)
   - GoogleMaps/Base (2.1.1)
   - GoogleMaps/Maps (2.1.1):
     - GoogleMaps/Base
-  - GoogleNetworkingUtilities (1.2.2):
-    - GoogleSymbolUtilities (~> 1.1)
   - GooglePlacePicker (2.1.1):
     - GoogleMaps (= 2.1.1)
     - GooglePlaces (= 2.1.1)
   - GooglePlaces (2.1.1):
     - GoogleMaps/Base (= 2.1.1)
-  - GoogleSymbolUtilities (1.1.2)
-  - GoogleUtilities (1.3.2):
-    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/Logger (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
   - HTMLReader (1.0.1)
   - ImageLoader (0.12.2)
+  - ImagePicker (2.1.1)
   - IQKeyboardManagerSwift (4.0.8)
   - Ji (2.0.1):
     - Ji/Ji (= 2.0.1)
@@ -79,6 +91,12 @@ PODS:
   - MRProgress/ProgressBaseClass (0.8.3)
   - MRProgress/Stopable (0.8.3):
     - MRProgress/Helper
+  - nanopb (0.3.8):
+    - nanopb/decode (= 0.3.8)
+    - nanopb/encode (= 0.3.8)
+  - nanopb/decode (0.3.8)
+  - nanopb/encode (0.3.8)
+  - Protobuf (3.3.0)
   - RadioButton (1.0)
   - ReadabilityKit (0.6.1):
     - Ji (~> 2.0.1)
@@ -86,22 +104,29 @@ PODS:
   - SwiftValidator (4.0.0)
   - SwiftyJSON (3.1.4)
   - UIScrollView-InfiniteScroll (1.0.0)
+  - XLPagerTabStrip (7.0.0)
   - YouTubePlayer (0.4.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 4.3)
+  - AlamofireImage (~> 3.2)
+  - AnimatedTextInput (~> 0.5.1)
   - Appsee
+  - AWSCognito
+  - AWSS3
   - Crashlytics
   - DatePickerCell
+  - DropDown
   - DZNEmptyDataSet
   - Fabric
-  - Google/CloudMessaging (= 1.3.2)
+  - Firebase/Messaging
   - GoogleMaps
   - GooglePlacePicker
   - GooglePlaces
   - HTMLReader (~> 1.0)
   - ImageLoader
+  - ImagePicker
   - IQKeyboardManagerSwift (= 4.0.8)
   - LocationPicker
   - LocationPickerViewController (= 3.0.0)
@@ -112,6 +137,7 @@ DEPENDENCIES:
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - SwiftyJSON (= 3.1.4)
   - UIScrollView-InfiniteScroll (~> 1.0)
+  - XLPagerTabStrip (~> 7.0)
   - YouTubePlayer
 
 EXTERNAL SOURCES:
@@ -127,37 +153,45 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
+  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  AnimatedTextInput: 0fde4c9c8d71dafc032b9b222531a788767536fb
   Appsee: 78b5d4b281ceb83d5fd17d7df18d5ff8c292e031
+  AWSCognito: 75de3956984129b9a270f99261c431fa1eb87c26
+  AWSCore: 490c988f6af48a10ea113ff06c53a1ef72a3534b
+  AWSS3: cd25080951a7637668d4f33393fe24bcb04dfac7
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   DatePickerCell: 8cd5d7fc93d195b85a7b2389b0ea4a9017c51f9b
+  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  GGLInstanceID: 4a317044f744281b82cd03015f379899f277cad3
-  Google: 97618e118111b998cce1d8dd1bd98b82301d72db
-  GoogleCloudMessaging: f37ea14dd0f41d4d889c10b5559dd35bbfd9ac26
-  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
-  GoogleIPhoneUtilities: 63f25e93a3ddcb66884d182aab3a660d98f1479b
+  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
+  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
+  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
+  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
+  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
   GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
-  GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
   GooglePlacePicker: 665f39f931f2df32f9dd3fcc45f7e8abf71e535c
   GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
-  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
-  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   HTMLReader: 9c9a018b11d7e9884a52ab97ce1bd23bdca7fddb
   ImageLoader: f461c9641350d0b8df39c2d3785b263f15cd63c2
+  ImagePicker: fe4c699abb56ff03994fa98d8b02e3883ee118be
   IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
   Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
   LocationPicker: 240b6328b8d7799530cc0da9973ea3f02dc646f4
   LocationPickerViewController: ee898cc76d9a06083b398c59e67d3c16aa298636
   MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
   ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
   SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
+  XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: a4d31af546b68b7211ffd98992c34ef08e71d778
+PODFILE CHECKSUM: 4d7b26333ccd9bfb79368459a465db6f0fb7bba1
 
 COCOAPODS: 1.2.0

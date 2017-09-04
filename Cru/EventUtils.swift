@@ -26,7 +26,7 @@ class EventUtils {
         var ministryIds = [String]()
         let ministries = CruClients.getSubscriptionManager().loadMinistries()
         
-        print(ministries)
+        //print(ministries)
         ministryIds = ministries.map({min in min.id})
         
         

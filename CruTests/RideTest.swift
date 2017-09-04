@@ -33,10 +33,10 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 
 class RideTest: XCTestCase {
-    let rideDict = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "gcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2016-03-06T16:10:41.000Z", "passengers":[]] as [String : Any]
-    let rideDict2 = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "gcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2016-02-06T16:10:41.000Z", "passengers":[]] as [String : Any]
-    let rideDict3 = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "gcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2016-03-05T16:10:41.000Z", "passengers":[]] as [String : Any]
-    let rideDict4 = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "gcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2015-03-05T16:09:41.000Z", "passengers":[]] as [String : Any]
+    let rideDict = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "fcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2016-03-06T16:10:41.000Z", "passengers":[]] as [String : Any]
+    let rideDict2 = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "fcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2016-02-06T16:10:41.000Z", "passengers":[]] as [String : Any]
+    let rideDict3 = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "fcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2016-03-05T16:10:41.000Z", "passengers":[]] as [String : Any]
+    let rideDict4 = ["location": ["postcode":"93401", "state":"CA", "suburb":"SLO", "street1":"1 Grand ave."],"_id": "blah", "direction": "both", "seats": 3, "radius": 2, "fcm_id": "blah", "driverNumber": "1234567890", "driverName": "Joe Schmo", "event": "replacethis", "time": "2015-03-05T16:09:41.000Z", "passengers":[]] as [String : Any]
     
     
     override func setUp() {

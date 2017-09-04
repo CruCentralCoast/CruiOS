@@ -8,66 +8,39 @@
 
 import UIKit
 
-class MinistryTeam: Comparable, Equatable{
+class MinistryTeam: NSObject, NSCoding {
     var id: String
+    var name: String
     var parentMinistry: String
-    var description: String
-    var ministryName: String
+    var parentMinistryName: String
+    var summary: String
     var image: UIImage!
     var imageUrl: String
     var teamImage: UIImage!
     var teamImageUrl: String
     var leaders: [User]
-    var parentMinName: String
     
     init?(dict: NSDictionary) {
-        //required initialization of variables
-        self.id = ""
-        self.parentMinistry = ""
-        self.ministryName = ""
-        self.description = ""
-        self.image = UIImage(named: "event1")
+        // Required initialization of variables
+        self.id = dict.object(forKey: "_id") as? String ?? ""
+        self.name = dict.object(forKey: "name") as? String ?? ""
+        self.parentMinistry = dict.object(forKey: "parentMinistry") as? String ?? ""
+        self.parentMinistryName = dict.object(forKey: "parentMinistryName") as? String ?? ""
+        self.summary = dict.object(forKey: "description") as? String ?? ""
+//        self.image = UIImage(named: "fall-retreat-still")
         self.imageUrl = ""
-        self.teamImage = UIImage(named: "event1")
+//        self.teamImage = UIImage(named: "event1")
         self.teamImageUrl = ""
         self.leaders = [User]()
-        self.parentMinName = ""
         
-        //grabbing dictionary values
-        let dId = dict.object(forKey: "_id")
-        let dParentMinistry = dict.object(forKey: "parentMinistry")
-        let dDescription = dict.object(forKey: "description")
-        let dMinistryName = dict.object(forKey: "name")
-        let dImage = dict.object(forKey: "leadersImage")
-        let dLeaders = dict.object(forKey: "leaders")
+        // Set the image if it exists
+        if let imageDict = dict.object(forKey: "leadersImage") as? [String:AnyObject], let imageUrl = imageDict["secure_url"] as? String {
+            self.imageUrl = imageUrl
+        }
         
-        //set up object
-        if (dId != nil) {
-            self.id = dId as! String
-        }
-        if (dParentMinistry != nil) {
-            self.parentMinistry = dParentMinistry as! String
-        }
-        if (dDescription != nil) {
-            self.description = dDescription as! String
-        }
-        if (dMinistryName != nil) {
-            self.ministryName = dMinistryName as! String
-        }
-        if (dImage != nil) {
-            if let imageUrl = (dImage as AnyObject).object(forKey: "secure_url") {
-                self.imageUrl = imageUrl as! String
-            }
-            else {
-                print("error: no image to display")
-            }
-        }
-        else {
-            //if image is nil
-            self.image = UIImage(named: "fall-retreat-still")
-        }
-        if let leaderDicts = dLeaders as? [[String:AnyObject]] {
-            self.leaders = leaderDicts.map{
+        // Set the leaders if they exist
+        if let leaderDicts = dict.object(forKey: "leaders") as? [[String:AnyObject]] {
+            self.leaders = leaderDicts.map {
                 User(dict: $0 as NSDictionary)
             }
         }
@@ -76,37 +49,51 @@ class MinistryTeam: Comparable, Equatable{
     func toDictionary() -> NSDictionary {
         return [
             "id": self.id,
-            "name": self.ministryName,
-            "description": self.description,
+            "name": self.name,
+            "description": self.summary,
             "leaders": self.leaders,
             "imageUrl": self.imageUrl,
             "teamImageUrl": self.teamImageUrl
         ]
     }
+    
+    required init?(coder aDecoder: NSCoder) {
+        self.id = aDecoder.decodeObject(forKey: "id") as! String
+        self.name = aDecoder.decodeObject(forKey: "name") as! String
+        self.parentMinistry = aDecoder.decodeObject(forKey: "parentMinistry") as! String
+        self.parentMinistryName = aDecoder.decodeObject(forKey: "parentMinistryName") as! String
+        self.summary = aDecoder.decodeObject(forKey: "summary") as! String
+        self.imageUrl = aDecoder.decodeObject(forKey: "imageUrl") as! String
+        self.teamImageUrl = aDecoder.decodeObject(forKey: "teamImageUrl") as! String
+        self.leaders = aDecoder.decodeObject(forKey: "leaders") as! [User]
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(id, forKey: "id")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(parentMinistry, forKey: "parentMinistry")
+        aCoder.encode(parentMinistryName, forKey: "parentMinistryName")
+        aCoder.encode(summary, forKey: "summary")
+        //        aCoder.encode(image, forKey: .image)
+        aCoder.encode(imageUrl, forKey: "imageUrl")
+        //        aCoder.encode(teamImage, forKey: .teamImage)
+        aCoder.encode(teamImageUrl, forKey: "teamImageUrl")
+        aCoder.encode(leaders, forKey: "leaders")
+    }
 }
 
 /* Function for the Comparable & Equatable protocols */
-func  < (lTeam: MinistryTeam, rTeam: MinistryTeam) -> Bool{
-    if lTeam.parentMinName < rTeam.parentMinName {
+func < (lTeam: MinistryTeam, rTeam: MinistryTeam) -> Bool{
+    if lTeam.parentMinistryName < rTeam.parentMinistryName {
         return true
-    }
-    else if lTeam.parentMinName > rTeam.parentMinName {
+    } else if lTeam.parentMinistryName > rTeam.parentMinistryName {
         return false
-    }
-    else if lTeam.parentMinName == rTeam.parentMinName {
-        
-        if lTeam.ministryName < rTeam.ministryName {
-            return true
-        }
-        
-        else {
-            return false
-        }
-        
+    } else if lTeam.parentMinistryName == rTeam.parentMinistryName {
+        return lTeam.name < rTeam.name
     }
     return false
 }
 
-func  ==(lTeam: MinistryTeam, rTeam: MinistryTeam) -> Bool{
+func == (lTeam: MinistryTeam, rTeam: MinistryTeam) -> Bool{
     return lTeam.id == rTeam.id
 }

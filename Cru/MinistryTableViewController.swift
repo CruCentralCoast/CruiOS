@@ -75,8 +75,6 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         self.tableView.reloadData()	
     }
     
-    func insertRide(_ dict: NSDictionary){}
-    
     func finishConnectionCheck(_ connected: Bool){
         if(!connected){
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
@@ -162,7 +160,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         
         if (update) {
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-            CruClients.getSubscriptionManager().saveMinistries(subscribedMinistries, updateGCM: true, handler: { (responses) in
+            CruClients.getSubscriptionManager().saveMinistries(subscribedMinistries, updateFCM: true, handler: { (responses) in
                 MRProgressOverlayView.dismissOverlay(for: self.view, animated: true, completion: {
                     let success = responses.reduce(true) {(result, cur) in result && cur.1 == true}
                     print("Was actually a success: \(success)")

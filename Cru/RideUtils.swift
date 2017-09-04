@@ -28,16 +28,16 @@ class RideUtils {
     }
     
     //Return the list of events excluding those user is giving/getting a ride to
-    func getAvailableEvents(_ gcmid: String, insert: (NSDictionary) -> (), afterFnc : (Bool) -> ()) {
+    func getAvailableEvents(_ fcmid: String, insert: (NSDictionary) -> (), afterFnc : (Bool) -> ()) {
         //Implement in the future?
     }
     
     //Return the list of rides available
-    func getRidesNotDriving(_ gcmid: String, insert : @escaping (NSDictionary) -> (),
+    func getRidesNotDriving(_ fcmid: String, insert : @escaping (NSDictionary) -> (),
         afterFunc : @escaping (Bool) -> ()) {
 
-        let gcmArray: [String] = [gcmid]
-        let params: [String: Any] =  ["gcm_id": ["$nin" : gcmArray]]
+        let fcmArray: [String] = [fcmid]
+        let params: [String: Any] =  ["fcm_id": ["$nin" : fcmArray]]
         
         serverClient.getData(DBCollection.Ride, insert: insert, completionHandler: afterFunc, params: params)
     }
@@ -85,21 +85,21 @@ class RideUtils {
         let alsm = ArrayLocalStorageManager(key: Config.ridesOffering)
         var rideIds = alsm.getArray()
         
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
-        rideIds += mlsm.getKeys()
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
+        rideIds += mlsm.keys
         
         return rideIds
     }
     
     static func getMyPassengerMaps() -> LocalStorageManager{
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
         return mlsm
     }
 
     func postRideOffer(_ eventId : String, name : String , phone : String, seats : Int, time: String,
         location: NSDictionary, radius: Int, direction: String, handler: @escaping (Ride?)->()) {
             let body = ["event":eventId, "driverName":name, "driverNumber":phone, "seats":seats, "time": time,
-                "gcm_id": Config.gcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0] as [String : Any]
+                "fcm_id": Config.fcmId(), "location":location, "radius":radius, "direction":direction, "gender": 0] as [String : Any]
             
             
             serverClient.postData(DBCollection.Ride, params: body as [String : AnyObject], completionHandler:
@@ -122,9 +122,9 @@ class RideUtils {
     // adds a passenger to a ride by first adding the passenger to the database, then associating
     // the passenger with the ride
     func joinRide(_ name: String, phone: String, direction: String,  rideId: String, handler: @escaping (Bool)->Void){
-        let gcmToken = Config.gcmId()
+        let fcmToken = Config.fcmId()
         let body: [String : AnyObject]
-        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "gcm_id":gcmToken as AnyObject, "gender": 0 as AnyObject]
+        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "fcm_id":fcmToken as AnyObject, "gender": 0 as AnyObject]
         
         serverClient.postData(DBCollection.Passenger, params: body, completionHandler:
             { passenger in
@@ -153,8 +153,8 @@ class RideUtils {
     }
     
     fileprivate func saveRideReceiving(_ rideId: String, passengerId: String) {
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
-        mlsm.addElement(rideId, elem: passengerId)
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
+        mlsm.save(passengerId, forKey: rideId)
     }
     
     func dropPassenger(_ rideId: String, passengerId: String, handler: @escaping (Bool)->Void){
@@ -164,8 +164,8 @@ class RideUtils {
     
     func leaveRidePassenger(_ ride: Ride, handler: @escaping (Bool)->()){
         let rideId = ride.id
-        let mlsm = MapLocalStorageManager(key: Config.ridesReceiving)
-        let passId = mlsm.getElement(rideId) as! String
+        let mlsm = MapLocalStorageManager<String>(key: Config.ridesReceiving)
+        let passId = mlsm.object(forKey: rideId) as! String
         
         serverClient.deleteByIdIn(DBCollection.Ride, parentId: rideId, child: DBCollection.Passenger, childId: passId, completionHandler:
             { success in

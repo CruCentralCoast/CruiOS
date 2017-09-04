@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import Google
+import Firebase
 
 class SubscriptionManager: SubscriptionProtocol {
     
-    let gcmKey = "GCM"
+    let fcmKey = "FCM"
     
     fileprivate var unsubList = [String]()
     fileprivate var subList = [String]()
@@ -19,7 +19,7 @@ class SubscriptionManager: SubscriptionProtocol {
     
     fileprivate var successfulMinistries = [Ministry]()
     
-    fileprivate static let clientDispatchQueue = DispatchQueue(label: "gcm-subcription-queue", attributes: DispatchQueue.Attributes.concurrent)
+    fileprivate static let clientDispatchQueue = DispatchQueue(label: "fcm-subcription-queue", attributes: DispatchQueue.Attributes.concurrent)
     
     fileprivate static func synchronized(_ closure: (Void)->Void) {
         clientDispatchQueue.sync {
@@ -27,12 +27,12 @@ class SubscriptionManager: SubscriptionProtocol {
         }
     }
     
-    func saveGCMToken(_ token: String){
-        GlobalUtils.saveString(gcmKey, value: token)
+    func saveFCMToken(_ token: String){
+        GlobalUtils.saveString(fcmKey, value: token)
     }
     
-    func loadGCMToken()->String{
-        return GlobalUtils.loadString(gcmKey)
+    func loadFCMToken()->String{
+        return GlobalUtils.loadString(fcmKey)
     }
     
     func loadCampuses() -> [Campus] {
@@ -92,11 +92,11 @@ class SubscriptionManager: SubscriptionProtocol {
         return oldMinistries.count != enabledMinistries.count
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool) {
-        saveMinistries(ministries, updateGCM: updateGCM, handler: {(map) in })
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool) {
+        saveMinistries(ministries, updateFCM: updateFCM, handler: {(map) in })
     }
     
-    func saveMinistries(_ ministries:[Ministry], updateGCM: Bool, handler: @escaping ([String:Bool])->Void) {
+    func saveMinistries(_ ministries:[Ministry], updateFCM: Bool, handler: @escaping ([String:Bool])->Void) {
         
         var enabledMinistries = [Ministry]()
         
@@ -107,8 +107,8 @@ class SubscriptionManager: SubscriptionProtocol {
         }
         print("updating device ministry data")
         
-        if(updateGCM){
-            print("updating gcm")
+        if(updateFCM){
+            print("updating fcm")
             // unsubcribe from ministries you are no longer in
             // and subscribe to ones that you just joined
             let oldMinistries = loadMinistries()
@@ -181,28 +181,29 @@ class SubscriptionManager: SubscriptionProtocol {
     }
     
     func subscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
-        // If the app has a registration token and is connected to GCM, proceed to subscribe to the
+        // If the app has a registration token and is connected to FCM, proceed to subscribe to the
         // topic
-        let gcmToken = loadGCMToken()
-        GCMPubSub.sharedInstance().subscribe(withToken: gcmToken, topic: topic,
-            options: nil, handler: {(error) -> Void in
-                let err = error! as NSError
-                var success : Bool = false
-                
-                if (err != nil) {
-                    // Treat the "already subscribed" error more gently
-                    
-                    if err.code == 3001 {
-                        print("Already subscribed to \(topic)")
-                    } else {
-                        print("Subscription failed: \(error?.localizedDescription)");
-                    }
-                } else {
-                    success = true
-                    NSLog("Subscribed to \(topic)");
-                }
-                handler(success)
-        })
+        let fcmToken = loadFCMToken()
+        Messaging.messaging().subscribe(toTopic: topic)
+//        GCMPubSub.sharedInstance().subscribe(withToken: fcmToken, topic: topic,
+//            options: nil, handler: {(error) -> Void in
+//                let err = error! as NSError
+//                var success : Bool = false
+//                
+//                if (err != nil) {
+//                    // Treat the "already subscribed" error more gently
+//                    
+//                    if err.code == 3001 {
+//                        print("Already subscribed to \(topic)")
+//                    } else {
+//                        print("Subscription failed: \(error?.localizedDescription)");
+//                    }
+//                } else {
+//                    success = true
+//                    NSLog("Subscribed to \(topic)");
+//                }
+//                handler(success)
+//        })
     }
     
     func unsubscribeToTopic(_ topic: String) {
@@ -210,22 +211,21 @@ class SubscriptionManager: SubscriptionProtocol {
     }
 
     func unsubscribeToTopic(_ topic: String, handler: @escaping (Bool) -> Void) {
-        // If the app has a registration token and is connected to GCM, proceed to subscribe to the
+        // If the app has a registration token and is connected to FCM, proceed to subscribe to the
         // topic
-        
-        let gcmToken = loadGCMToken()
-        
-        GCMPubSub.sharedInstance().unsubscribe(withToken: gcmToken, topic: topic,
-            options: nil, handler: {(error) -> Void in
-                var success : Bool = false
-                if (error != nil) {
-                    print("Failed to unsubscribe: \(error?.localizedDescription)")
-                } else {
-                    success = true
-                    NSLog("Unsubscribed to \(topic)")
-                }
-                handler(success)
-        })
+        let fcmToken = loadFCMToken()
+        Messaging.messaging().unsubscribe(fromTopic: topic)
+//        GCMPubSub.sharedInstance().unsubscribe(withToken: fcmToken, topic: topic,
+//            options: nil, handler: {(error) -> Void in
+//                var success : Bool = false
+//                if (error != nil) {
+//                    print("Failed to unsubscribe: \(error?.localizedDescription)")
+//                } else {
+//                    success = true
+//                    NSLog("Unsubscribed to \(topic)")
+//                }
+//                handler(success)
+//        })
     }
     
     /* New functions required by the Swift 3 changes to protocols */
