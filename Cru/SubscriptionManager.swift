@@ -185,6 +185,7 @@ class SubscriptionManager: SubscriptionProtocol {
         // topic
         let fcmToken = loadFCMToken()
         Messaging.messaging().subscribe(toTopic: topic)
+        handler(true)
 //        GCMPubSub.sharedInstance().subscribe(withToken: fcmToken, topic: topic,
 //            options: nil, handler: {(error) -> Void in
 //                let err = error! as NSError
@@ -215,6 +216,7 @@ class SubscriptionManager: SubscriptionProtocol {
         // topic
         let fcmToken = loadFCMToken()
         Messaging.messaging().unsubscribe(fromTopic: topic)
+        handler(true)
 //        GCMPubSub.sharedInstance().unsubscribe(withToken: fcmToken, topic: topic,
 //            options: nil, handler: {(error) -> Void in
 //                var success : Bool = false
