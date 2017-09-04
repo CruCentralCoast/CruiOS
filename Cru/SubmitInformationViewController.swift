@@ -25,6 +25,9 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     @IBOutlet weak var submitButton: UIButton!
     
     @IBOutlet weak var titleLabel: UILabel!
+    var activeField: UITextField?
+    @IBOutlet weak var scrollView: UIScrollView!
+
     // MARK: Properties
     var localStorageManager: LocalStorageManager!
     var comGroup: CommunityGroup!
@@ -50,16 +53,79 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         nameField.delegate = self
         numberField.delegate = self
         
+        //Set up notifications for keyboard
+        setupKeyboardNotifications()
+        
         //check if user is already in local storage
         if let user = self.localStorageManager.object(forKey: Config.userStorageKey) as? NSDictionary {
             self.nameField.text = user[self.fullNameKey] as? String ?? ""
             self.numberField.text = user[self.phoneNoKey] as? String ?? ""
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        deregisterKeyboardNotifications()
+    }
+    // MARK: - Keyboard Notification Methods
+    
+    func setupKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeShown), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillBeHidden), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    func deregisterKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillBeShown(notification: NSNotification) {
+        print("SHOWING KEYBOARD")
+        self.scrollView.isScrollEnabled = true
+        let info = notification.userInfo! as NSDictionary
         
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let activeFieldPresent = activeField
+        {
+            if (!aRect.contains(activeField!.frame.origin))
+            {
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+            }
+        }
+    }
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        //Once keyboard disappears, restore original positions
+        let info = notification.userInfo! as NSDictionary
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.isScrollEnabled = false
+    }
+    
+    // MARK: - Text Field delegate functions
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        activeField = textField
+        switch textField {
+        case nameField!:
+            highlightField(nameLine)
+        case numberField!:
+            highlightField(numberLine)
+        default:
+            print("Text field not recognized")
+        }
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
+        activeField = nil
         switch textField {
         case nameField!:
             makeFieldInactive(nameLine)
@@ -72,16 +138,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         }
     }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        switch textField {
-        case nameField!:
-            highlightField(nameLine)
-        case numberField!:
-            highlightField(numberLine)
-        default:
-            print("Text field not recognized")
-        }
-    }
+    
     
     // MARK: Animations
     func highlightField(_ view: UIView) {
@@ -104,12 +161,16 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
     
     @IBAction func submitPressed(_ sender: UIButton) {
         //increase button state
-        buttonState += 1
         if buttonState == 1 {
-            validator.validate(self)
+            dismissToGetInvolved()
         }
         else {
-            dismissToGetInvolved()
+            // Hide error labels in case of multiple validations
+            nameError.isHidden = true
+            numberError.isHidden = true
+            
+            validator.validate(self)
+            
         }
         
     }
@@ -121,6 +182,9 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         
         user[fullNameKey] = nameField.text
         user[phoneNoKey] = numberField.text
+        
+        //Change button state to Confirmation
+        buttonState += 1
         
         //update the user information in the local storage
         updateUserInformation(user as NSDictionary)
@@ -196,7 +260,7 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         confirmLabel.numberOfLines = 0
         
         let leading = NSLayoutConstraint(item: confirmLabel, attribute: .left, relatedBy: .equal, toItem: dialogView, attribute: .left, multiplier: 1.0, constant: 15.0)
-        let trailing = NSLayoutConstraint(item: confirmLabel, attribute: .right, relatedBy: .equal, toItem: dialogView, attribute: .right, multiplier: 1.0, constant: 15.0)
+        let trailing = NSLayoutConstraint(item: confirmLabel, attribute: .right, relatedBy: .equal, toItem: dialogView, attribute: .right, multiplier: 1.0, constant: -15.0)
         let top = NSLayoutConstraint(item: confirmLabel, attribute: .top, relatedBy: .equal, toItem: titleLabel, attribute: .bottom, multiplier: 1.0, constant: 18.0)
         let bottom = NSLayoutConstraint(item: confirmLabel, attribute: .bottom, relatedBy: .equal, toItem: submitButton, attribute: .top, multiplier: 1.0, constant: 18.0)
         dialogView.addConstraints([leading, trailing, top, bottom])
@@ -245,9 +309,16 @@ class SubmitInformationViewController: UIViewController, ValidationDelegate, UIT
         // turn the fields to red
         for (field, error) in errors {
             if let field = field as? UITextField {
-                field.layer.borderColor = UIColor.red.cgColor
-                field.layer.borderWidth = 1.0
+                if field == nameField {
+                    nameLine.backgroundColor = UIColor.red
+                }
+                else {
+                    numberLine.backgroundColor = UIColor.red
+                }
+                //field.layer.borderColor = UIColor.red.cgColor
+                //field.layer.borderWidth = 1.0
             }
+            
             error.errorLabel?.text = error.errorMessage // works if you added labels
             error.errorLabel?.isHidden = false
         }
