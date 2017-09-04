@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     var notifications = [Notification]()
-    var ridesPage : RidesViewController?
+    weak var ridesPage : RidesViewController?
     
     let registrationKey = "onRegistrationCompleted"
     let messageKey = "onMessageReceived"
