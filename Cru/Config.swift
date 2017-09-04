@@ -9,7 +9,6 @@
 import UIKit
 
 struct Config {
-    //static let serverUrl = "http://ec2-52-39-130-135.us-west-2.compute.amazonaws.com:3001/"
     static let serverUrl = "http://secure-oasis-4438.herokuapp.com/" // Prod
     //static let serverUrl = "http://cru-central-coast.herokuapp.com/" // New prod
     //static let serverURl = "http://127.0.0.1:3000/" // Dev - only works if you're running on local machine

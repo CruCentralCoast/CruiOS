@@ -47,8 +47,6 @@ class CommunityGroupUtils {
             }
         }
         return ministryTable
-        
-        
     }
     
     func uploadImage(_ id: String, image: Data, handler: @escaping (CommunityGroup?)->Void){
