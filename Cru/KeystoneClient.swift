@@ -201,6 +201,10 @@ class KeystoneClient: ServerProtocol {
         let name = id + "-image"
         let fileName = id + "-image.png"
         
+        print("name: " + name)
+        print("filename: " + fileName)
+        print("request URL: " + reqUrl)
+        
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 multipartFormData.append(image,
@@ -212,7 +216,7 @@ class KeystoneClient: ServerProtocol {
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                     case .success(let upload, _, _):
-                        upload.responseJSON { response in
+                        upload.responseString { response in
                             debugPrint(response)
                         }
                     case .failure(let encodingError):

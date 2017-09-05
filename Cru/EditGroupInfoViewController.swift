@@ -52,7 +52,9 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         timeButton.setTitle(group.meetingTime, for: .normal)
         ministryButton.setTitle(group.parentMinistryName, for: .normal)
         descriptionView.text = group.desc
-        groupImage.load.request(with: group.imgURL)
+        if group.imgURL != "" {
+            groupImage.load.request(with: group.imgURL)
+        }
         
         //Get ministries
         createMinistryDictionary()
@@ -89,7 +91,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         group.dayOfWeek = dayButton.currentTitle!
         group.meetingTime = timeButton.currentTitle!.replacingOccurrences(of: " ", with: "")
         group.desc = descriptionView.text
-        group.parentMinistryID = ministryTable[ministryButton.currentTitle!]!
+        //group.parentMinistryID = ministryTable[ministryButton.currentTitle!]!
         group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(Config.s3ImageFolderURL)/\(group.id)-image.png"
         
         print("New group info: ")
