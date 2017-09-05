@@ -36,64 +36,36 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
             self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         }
         
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         
-        CruClients.getServerClient().getData(.Campus, insert: insertCampus, completionHandler: {success in
-            
-            if (success){
-                self.loadedData = success
-            }
-
-            
-            self.tableView.reloadData()
-            CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
-            //TODO: should be handling failure here
-        })
+        
         subbedMinistries = CruClients.getSubscriptionManager().loadMinistries()
         
         //setupSearchBar()
         self.tableView.reloadData()
         
     }
-    
-    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-        if !onboarding {
-            return emptyTableImage
-        }
-        return nil
-    }
-    
-    //Set the text to be displayed when either table is empty
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        if onboarding {
-            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
-            return NSAttributedString(string: "No connection found. Please try again later.", attributes: attributes)
-        }
-        return nil
-        
-    }
-    
-    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
-        if(hasConnection == false){
-            CruClients.getServerClient().getData(.Campus, insert: insertCampus, completionHandler: {success in
-
-                
-                // TODO: handle failure
-                self.table.reloadData()
-                CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
-            })
-        }
-    }
-    
+    // MARK: - Connection Check and Inserting Data
     func finishConnectionCheck(_ connected: Bool){
         if(!connected){
             hasConnection = false
-            self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
             self.tableView.emptyDataSetDelegate = self
             self.tableView.emptyDataSetSource = self
             self.tableView.reloadData()
             //hasConnection = false
         }else{
             hasConnection = true
+            CruClients.getServerClient().getData(.Campus, insert: insertCampus, completionHandler: {success in
+                
+                if (success){
+                    self.loadedData = success
+                }
+                
+                
+                self.tableView.reloadData()
+                
+                //TODO: should be handling failure here
+            })
         }
         
     }
@@ -101,8 +73,6 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     func refreshSubbedMinistries(){
         subbedMinistries = CruClients.getSubscriptionManager().loadMinistries()
     }
-    
-    
     
     func insertCampus(_ dict : NSDictionary) {
         self.tableView.beginUpdates()
@@ -129,18 +99,36 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         self.tableView.endUpdates()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        var temp = [Campus]()
-        for camp in campuses{
-            temp.append(camp)
+    // MARK: - Empty Data Set Delegate functions
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        if !onboarding {
+            if !hasConnection {
+                return UIImage(named: Config.noConnectionImageName)
+            }
         }
-        
-        CruClients.getSubscriptionManager().saveCampuses(temp)
+        return nil
     }
+    
+    //Set the text to be displayed when either table is empty
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        if onboarding {
+            let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+            return NSAttributedString(string: "No connection found. Please try again later.", attributes: attributes)
+        }
+        return nil
+        
+    }
+    
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap view: UIView!) {
+        if(hasConnection == false){
+            CruClients.getServerClient().getData(.Campus, insert: insertCampus, completionHandler: {success in
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+                
+                // TODO: handle failure
+                self.table.reloadData()
+                CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+            })
+        }
     }
 
     // MARK: - Table view data source
@@ -151,12 +139,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if (self.resultSearchController != nil && self.resultSearchController.active){
-//            return self.filteredCampuses.count
-//        }
-//        else{
-            return self.campuses.count
-        //}
+        return self.campuses.count
     }
 
     
@@ -271,8 +254,8 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
             }
         }
         
-        CruClients.getSubscriptionManager().saveMinistries(subbedMinistries, updateFCM: true)
-        saveCampusSet()
+        //CruClients.getSubscriptionManager().saveMinistries(subbedMinistries, updateFCM: true)
+        //saveCampusSet()
     }
     
     func setupSearchBar(){

@@ -190,11 +190,11 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        /*if segue.identifier == "detailSegue" {
-            if let vc = segue.destination as? CommunityGroupDetailsViewController {
-                vc.group = selectedGroup
+        if segue.identifier == "listSegue" {
+            if let vc = segue.destination as? CommunityGroupsListTableViewController {
+                vc.joinedGroups = self.groups
             }
-        }*/
+        }
     }
 
 }

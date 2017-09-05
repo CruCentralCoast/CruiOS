@@ -14,6 +14,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     
     // MARK: - Properties
     var groups = [CommunityGroup]()
+    var joinedGroups: [CommunityGroup]!
     var filteredGroups = [CommunityGroup]()
     var hasConnection = true
     var answers = [[String:String]]()
@@ -160,7 +161,13 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
             group.parentMinistryName = parentMin
         }
         
-        //CruClients.getCommunityGroupUtils().loadLeaders(insertLeader(group), parentId: group.id, completionHandler: finishInsertingLeaders)
+        //If group has already been joined or leader is listed as a member, skip it
+        for joinedGroup in joinedGroups {
+            if group.id == joinedGroup.id {
+                return
+            }
+        }
+
             
         CruClients.getCommunityGroupUtils().loadLeaders({(dict) -> Void in
             let leader = CommunityGroupLeader(dict)
@@ -189,6 +196,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         
        //Dismiss overlay here
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        
         self.tableView.reloadData()
         
         /*for group in groups {
