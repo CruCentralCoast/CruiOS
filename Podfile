@@ -11,7 +11,7 @@ def cru_pods
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'DatePickerCell'
-    pod 'LocationPickerViewController', '3.0.0'
+    pod 'LocationPickerViewController'
     pod 'IQKeyboardManagerSwift', '4.0.8'
     pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
     pod 'MRProgress'

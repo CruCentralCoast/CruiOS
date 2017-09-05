@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import LocationPicker
-import LocationPickerViewController
 import MRProgress
 import GooglePlaces
 import GooglePlacePicker

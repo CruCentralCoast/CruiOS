@@ -14,15 +14,11 @@ import GooglePlaces
 import Fabric
 import Crashlytics
 import Appsee
-<<<<<<< HEAD
 //import AWSCognito
-=======
-import AWSCognito
 import UserNotifications
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
->>>>>>> develop
 
 
 @UIApplicationMain
