@@ -28,7 +28,9 @@ class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDele
     
     override func viewDidLoad() {
         emailField.delegate = self
+        emailField.returnKeyType = .next
         passwordField.delegate = self
+        passwordField.returnKeyType = .done
         
         emailError.text = ""
         passwordError.text = ""
@@ -188,13 +190,12 @@ class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDele
         }
     }
     
-    @IBAction func loginPressed(_ sender: AnyObject) {
+    @IBAction func loginPressed() {
         validator.validate(self)
     }
     
     // MARK: - Text Field delegate stuff
     func textFieldDidEndEditing(_ textField: UITextField) {
-        
         switch textField {
         case emailField!:
             makeFieldInactive(emailLine, field: emailField)
@@ -214,6 +215,19 @@ class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDele
         default:
             print("Text field not recognized")
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailField!:
+            self.passwordField.becomeFirstResponder()
+        case passwordField!:
+            self.passwordField.resignFirstResponder()
+            self.loginPressed()
+        default:
+            print("Text field not recognized")
+        }
+        return true
     }
     
     // MARK: Animations
