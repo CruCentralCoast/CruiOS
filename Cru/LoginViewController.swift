@@ -5,26 +5,40 @@ import UIKit
 import SwiftValidator
 import MRProgress
 
-class LoginViewController: UIViewController, ValidationDelegate {
-    @IBOutlet weak var usernameField: UITextField!
+class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDelegate {
+    /*@IBOutlet weak var usernameField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
     
     @IBOutlet weak var usernameError: UILabel!
     
+    @IBOutlet weak var passwordError: UILabel!*/
+    
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var emailError: UILabel!
+    @IBOutlet weak var emailLine: UIView!
+    @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var passwordError: UILabel!
+    @IBOutlet weak var passwordLine: UIView!
+    
     
     let validator = Validator()
     var groups = [CommunityGroup]()
     var savedGroups = [CommunityGroup]()
     
     override func viewDidLoad() {
-        usernameError.text = ""
+        emailField.delegate = self
+        passwordField.delegate = self
+        
+        emailError.text = ""
         passwordError.text = ""
         
-        usernameField.text = GlobalUtils.loadString(Config.username)
+        if let email = GlobalUtils.loadString(Config.email) as? String{
+            emailField.text = email
+        }
         
-        validator.registerField(usernameField, errorLabel: usernameError, rules: [RequiredRule(), EmailRule()])
+        
+        validator.registerField(emailField, errorLabel: emailError, rules: [RequiredRule(), EmailRule()])
         validator.registerField(passwordField, errorLabel: passwordError, rules: [RequiredRule()])
         
         navigationItem.title = "Log In"
@@ -34,7 +48,7 @@ class LoginViewController: UIViewController, ValidationDelegate {
     }
     
     func validationSuccessful() {
-        let username = usernameField.text
+        let username = emailField.text
         let password = passwordField.text
         
         MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
@@ -112,10 +126,6 @@ class LoginViewController: UIViewController, ValidationDelegate {
                 savedGroups.append(group)
             }
         }
-        
-        
-        
-        
         saveCommunityGroups()
         
     }
@@ -154,10 +164,10 @@ class LoginViewController: UIViewController, ValidationDelegate {
         // turn the fields to red
         for (field, error) in errors {
             if let field = field as? UITextField {
-                field.layer.borderColor = CruColors.yellow.cgColor
-                field.layer.borderWidth = 1.0
+                //field.layer.borderColor = CruColors.yellow.cgColor
+                //field.layer.borderWidth = 1.0
                 
-                if(field == usernameField){
+                if(field == emailField){
                     userValid = false
                 }
                 if(field == passwordField){
@@ -171,7 +181,7 @@ class LoginViewController: UIViewController, ValidationDelegate {
         }
         
         if(userValid){
-            resetLabel(usernameField, error: usernameError)
+            resetLabel(emailField, error: emailError)
         }
         if(pwdValid){
             resetLabel(passwordField, error: passwordError)
@@ -180,5 +190,45 @@ class LoginViewController: UIViewController, ValidationDelegate {
     
     @IBAction func loginPressed(_ sender: AnyObject) {
         validator.validate(self)
+    }
+    
+    // MARK: - Text Field delegate stuff
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        switch textField {
+        case emailField!:
+            makeFieldInactive(emailLine, field: emailField)
+        case passwordField!:
+            makeFieldInactive(passwordLine, field: passwordField)
+        default:
+            print("Text field not recognized")
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case emailField!:
+            highlightField(emailLine, field: emailField)
+        case passwordField!:
+            highlightField(passwordLine, field: passwordField)
+        default:
+            print("Text field not recognized")
+        }
+    }
+    
+    // MARK: Animations
+    func highlightField(_ view: UIView, field: UITextField) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.backgroundColor = CruColors.lightBlue
+            field.textColor = CruColors.lightBlue
+            
+        })
+    }
+    
+    func makeFieldInactive(_ view: UIView, field: UITextField) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.backgroundColor = Colors.lightInactiveGray
+            field.textColor = UIColor.white
+        })
     }
 }

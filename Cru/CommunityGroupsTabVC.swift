@@ -98,6 +98,7 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell", for: indexPath) as! CommunityGroupTabCell
             
             //Load image or get from cache
+            print("Loading image from: " + groups[indexPath.row].imgURL)
             let urlRequest = URLRequest(url: URL(string: groups[indexPath.row].imgURL)!)
             CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
                 if let image = response.result.value {
@@ -189,11 +190,11 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        /*if segue.identifier == "detailSegue" {
-            if let vc = segue.destination as? CommunityGroupDetailsViewController {
-                vc.group = selectedGroup
+        if segue.identifier == "listSegue" {
+            if let vc = segue.destination as? CommunityGroupsListTableViewController {
+                vc.joinedGroups = self.groups
             }
-        }*/
+        }
     }
 
 }

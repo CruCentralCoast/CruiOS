@@ -7,23 +7,23 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>945359168592-82ok5js5ebg3jha5kkjf8ev5sa9jgkug.apps.googleusercontent.com</string>
+	<string>871635036476-vke4g1qfnoq11klu8brp0eqetc849j4f.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.945359168592-82ok5js5ebg3jha5kkjf8ev5sa9jgkug</string>
+	<string>com.googleusercontent.apps.871635036476-vke4g1qfnoq11klu8brp0eqetc849j4f</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBxo_oBsj-cNhzynsF65sHjMBEdIhgJr_Q</string>
+	<string>AIzaSyC_UPTVksSwFyRoaRADjlfCHF802rLOwGY</string>
 	<key>GCM_SENDER_ID</key>
-	<string>945359168592</string>
+	<string>871635036476</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.crucc.calpoly.beta</string>
 	<key>PROJECT_ID</key>
-	<string>cru-central-coast-81716</string>
+	<string>cru-central-coast-ios</string>
 	<key>STORAGE_BUCKET</key>
-	<string>cru-central-coast-81716.appspot.com</string>
+	<string>cru-central-coast-ios.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false/>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
 	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
@@ -31,10 +31,10 @@
 	<key>IS_GCM_ENABLED</key>
 	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<false/>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:945359168592:ios:b7a429cbdec0258f</string>
+	<string>1:871635036476:ios:b7a429cbdec0258f</string>
 	<key>DATABASE_URL</key>
-	<string>https://cru-central-coast-81716.firebaseio.com</string>
+	<string>https://cru-central-coast-ios.firebaseio.com</string>
 </dict>
 </plist>
