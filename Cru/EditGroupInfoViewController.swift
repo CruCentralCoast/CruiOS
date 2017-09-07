@@ -6,6 +6,8 @@
 //  Copyright © 2017 Jamaican Hopscotch Mafia. All rights reserved.
 //
 
+// TODO: Pass image in from Details VC
+
 import UIKit
 import DropDown
 import ImagePicker
@@ -26,10 +28,15 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     @IBOutlet weak var editImageButton: UIButton!
     
     var group: CommunityGroup!
+    var delegate: CommunityGroupDataDelegate?
     var selectedImage: UIImage?
+    var oldImage: UIImage?
     var ministries = [Ministry]()
     var stringMinistries = [String]()
     var ministryTable = [String: String]()
+    var progressBlock: AWSS3TransferUtilityProgressBlock?
+    var circularView: MRProgressOverlayView?
+    var progressView: MRProgressOverlayView?
     
     //MARK: - DropDown's
     
@@ -48,9 +55,9 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         leaderLabel.text = group.getLeaderString()
-        dayButton.setTitle(group.dayOfWeek, for: .normal)
+        /*dayButton.setTitle(group.dayOfWeek, for: .normal)
         timeButton.setTitle(group.meetingTime, for: .normal)
-        ministryButton.setTitle(group.parentMinistryName, for: .normal)
+        ministryButton.setTitle(group.parentMinistryName, for: .normal)*/
         descriptionView.text = group.desc
         groupImage.load.request(with: group.imgURL)
         
@@ -83,13 +90,14 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     
     func saveGroupInfo() {
         
-        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+        
         
         //Get new info
-        group.dayOfWeek = dayButton.currentTitle!
-        group.meetingTime = timeButton.currentTitle!.replacingOccurrences(of: " ", with: "")
+        group.dayOfWeek = chooseDayDropDown.selectedItem!
+        group.meetingTime = chooseTimeDropDown.selectedItem!.replacingOccurrences(of: " ", with: "")
         group.desc = descriptionView.text
-        group.parentMinistryID = ministryTable[ministryButton.currentTitle!]!
+        group.parentMinistryID = ministryTable[chooseMinistryDropDown.selectedItem!]!
+        group.parentMinistryName = chooseMinistryDropDown.selectedItem!
         group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(Config.s3ImageFolderURL)/\(group.id)-image.png"
         
         print("New group info: ")
@@ -101,9 +109,19 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         
         
         if let image = selectedImage {
+            circularView = MRProgressOverlayView.showOverlayAdded(to: self.view, title: "Uploading", mode: .determinateCircular, animated: true)
+            circularView?.progress = 0.0
+            
+            self.progressBlock = {(task, progress) in
+                DispatchQueue.main.async(execute: {
+                    self.circularView?.progress = Float(progress.fractionCompleted)
+                })
+            }
+            
             self.uploadImage(with: UIImagePNGRepresentation(image)!)
         }
         else {
+            progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             //MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             CruClients.getCommunityGroupUtils().patchGroup(self.group.id, params: [CommunityGroupKeys.dayOfWeek: self.group.dayOfWeek, CommunityGroupKeys.meetingTime: self.group.meetingTime ,CommunityGroupKeys.description: self.group.desc, CommunityGroupKeys.imageURL: self.group.imgURL, CommunityGroupKeys.ministry: self.group.parentMinistryID], handler: self.handlePostResult)
         }
@@ -112,7 +130,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     func uploadImage(with data: Data) {
         let transferUtility = AWSS3TransferUtility.default()
         let expression = AWSS3TransferUtilityUploadExpression()
-        //expression.progressBlock = progressBlock
+        expression.progressBlock = progressBlock
         var completionHandler: AWSS3TransferUtilityUploadCompletionHandlerBlock?
         
         completionHandler = { (task, error) -> Void in
@@ -121,11 +139,20 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
                 // On failed uploads, `error` contains the error object.
                 if let error = error {
                     print("completion hander Error: \(error.localizedDescription)")
+                    self.groupImage.image = self.oldImage // reset image
+                    self.selectedImage = nil
+                    
+                    self.circularView?.dismiss(true)
+                    
+                    let alert = UIAlertController(title: "Image Upload Failed", message: "Sorry, looks like your image can't be uploaded. Try again later!", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
                 else {
                     print("Maybe we're finished?")
-                    
-                    MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+                    self.circularView?.dismiss(true)
+                    self.progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+                    //MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
                     CruClients.getCommunityGroupUtils().patchGroup(self.group.id, params: [CommunityGroupKeys.dayOfWeek: self.group.dayOfWeek, CommunityGroupKeys.meetingTime: self.group.meetingTime ,CommunityGroupKeys.description: self.group.desc, CommunityGroupKeys.imageURL: self.group.imgURL], handler: self.handlePostResult)
                 }
             })
@@ -156,7 +183,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     }
     
     func handlePostResult(_ newGroup: CommunityGroup?){
-
+        progressView?.dismiss(true)
         if(newGroup != nil){
             print("Returned group: ")
             print("id: " + (newGroup?.id)!)
@@ -165,7 +192,6 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
             print("imgURL: " + (newGroup?.imgURL)!)
             print("meetingTime: " + (newGroup?.meetingTime)!)
             print("parentMin: " + (newGroup?.parentMinistryID)!)
-            
             
             let alert = UIAlertController(title: "Your community group was updated!", message: "", preferredStyle: UIAlertControllerStyle.alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(alert: UIAlertAction!) in
@@ -203,8 +229,8 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         comGroupArray.append(group)
         let newGroupData = NSKeyedArchiver.archivedData(withRootObject: comGroupArray)
         UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
-        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         //self.dismiss(animated: true, completion: nil)
+        self.delegate?.communityGroupDataResponse(group: group)
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -262,6 +288,10 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         //let croppedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        
+        //Save old image in case new image can't be uploaded
+        self.oldImage = self.groupImage.image
+        
         self.selectedImage = image
         self.groupImage.image = image
         
@@ -282,6 +312,10 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     //MARK: - DropDowns Setup
     
     func setupDropDowns() {
+        let appearance = DropDown.appearance()
+        appearance.textFont = UIFont(name: Config.fontBold, size: 17)!
+        appearance.textColor = CruColors.gray
+        appearance.selectionBackgroundColor = CruColors.lightBlue
         setupChooseDayDropDown()
         setupChooseTimeDropDown()
         setupChooseMinistryDropDown()
@@ -299,31 +333,20 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         // If you want to have the dropdown underneath your anchor view, you can do this:
         chooseDayDropDown.bottomOffset = CGPoint(x: 0, y: dayButton.bounds.height)
         
-        // You can also use localizationKeysDataSource instead. Check the docs.
-        chooseDayDropDown.dataSource = [
-            "Monday",
-            "Tuesday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-        ]
+        // Should probably get these from the database but that isn't implemented yet
+        chooseDayDropDown.dataSource = Config.dayList
         
         // Action triggered on selection
         chooseDayDropDown.selectionAction = { [unowned self] (index, item) in
             self.dayButton.setTitle(item, for: .normal)
         }
         
-        // Action triggered on dropdown cancelation (hide)
-        //		dropDown.cancelAction = { [unowned self] in
-        //			// You could for example deselect the selected item
-        //			self.dropDown.deselectRowAtIndexPath(self.dropDown.indexForSelectedRow)
-        //			self.actionButton.setTitle("Canceled", forState: .Normal)
-        //		}
+        // Manually select current day
         
-        // You can manually select a row if needed
-        //		dropDown.selectRowAtIndex(3)
+        if let index = Config.dayList.index(of: group.dayOfWeek) {
+            chooseDayDropDown.selectRow(at: index)
+            self.dayButton.setTitle(chooseDayDropDown.selectedItem!, for: .normal)
+        }
     }
     
     func setupChooseTimeDropDown() {
@@ -331,14 +354,21 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         
         chooseTimeDropDown.bottomOffset = CGPoint(x: 0, y: timeButton.bounds.height)
         
-        // You can also use localizationKeysDataSource instead. Check the docs.
-        chooseTimeDropDown.dataSource = [
-            "6:00 am", "6:30 am", "7:00 am", "7:30 am", "8:00 am", "8:30 am", "9:00 am", "9:30 am", "10:00 am", "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm", "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm", "9:30 pm", "10:00 pm"
-        ]
+        // Should probably get these from the database but that isn't implemented yet
+        /*chooseTimeDropDown.dataSource = [
+            "6:00 am", "6:30 am", "7:00 am", "7:30 am", "8:00 am", "8:30 am", "9:00 am", "9:30 am", "10:00 am", "10:30 am", "11:00 am", "11:30 am", "12:00 pm", "12:30 pm", "1:00 pm", "1:30 pm", "2:00 pm", "2:30 pm", "3:00 pm", "3:30 pm", "4:00 pm", "4:30 pm", "5:00 pm", "5:30 pm", "6:00 pm", "6:30 pm", "7:00 pm", "7:30 pm", "8:00 pm", "8:30 pm", "9:00 pm", "9:30 pm", "10:00 pm"
+        ]*/
+        chooseTimeDropDown.dataSource = Config.timeList
         
         // Action triggered on selection
         chooseTimeDropDown.selectionAction = { [unowned self] (index, item) in
             self.timeButton.setTitle(item, for: .normal)
+        }
+        
+        // Manually select current time
+        if let index = Config.timeList.index(of: group.meetingTime) {
+            chooseTimeDropDown.selectRow(at: index)
+            self.timeButton.setTitle(chooseTimeDropDown.selectedItem!, for: .normal)
         }
     }
     
@@ -353,6 +383,12 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         // Action triggered on selection
         chooseMinistryDropDown.selectionAction = { [unowned self] (index, item) in
             self.ministryButton.setTitle(item, for: .normal)
+        }
+        
+        // Manually select current ministry
+        if let index = chooseMinistryDropDown.dataSource.index(of: group.parentMinistryName) {
+            chooseMinistryDropDown.selectRow(at: index)
+            self.ministryButton.setTitle(chooseMinistryDropDown.selectedItem!, for: .normal)
         }
     }
     
@@ -371,4 +407,10 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         
     }
 
+}
+
+// Create protocol so that EditGroup VC can pass new group back to Details VC
+protocol CommunityGroupDataDelegate
+{
+    func communityGroupDataResponse(group: CommunityGroup)
 }

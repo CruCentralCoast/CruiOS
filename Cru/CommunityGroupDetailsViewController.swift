@@ -9,7 +9,7 @@
 import UIKit
 import AlamofireImage
 
-class CommunityGroupDetailsViewController: UIViewController {
+class CommunityGroupDetailsViewController: UIViewController, CommunityGroupDataDelegate {
     var group: CommunityGroup!
 
     @IBOutlet weak var descriptionView: UITextView!
@@ -59,10 +59,31 @@ class CommunityGroupDetailsViewController: UIViewController {
         
     }
     
+    // Define Delegate Method
+    func communityGroupDataResponse(group: CommunityGroup) {
+        descriptionView.text = group.desc
+        timeLabel.text = group.getMeetingTime()
+        ministryLabel.text = group.parentMinistryName
+        
+        //Check if image was changed before downloading
+        if self.group.imgURL != group.imgURL {
+            //Load image or get from cache
+            let urlRequest = URLRequest(url: URL(string: group.imgURL)!)
+            CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                if let image = response.result.value {
+                    self.imageView.image = image
+                }
+            }
+            
+        }
+        self.group = group
+    }
+    
     func editGroup() {
         let storyboard = UIStoryboard(name: "communitygroups", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "editVC") as! EditGroupInfoViewController
         controller.group = group
+        controller.delegate = self
         self.navigationController?.pushViewController(controller, animated: true)
         
     }
