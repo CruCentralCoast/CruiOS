@@ -15,8 +15,8 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var rideTable: UITableView!
     @IBOutlet weak var eventNameLabel: UILabel!
     
-    var rideVC:RidesViewController?
-    var eventVC: EventDetailsViewController?
+    weak var rideVC:RidesViewController?
+    weak var eventVC: EventDetailsViewController?
     
     var events = [Event]()
     var filteredRides = [Ride]()
@@ -209,9 +209,15 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let vc = segue.destination as? JoinRideViewController, segue.identifier == "joinSegue" {
-                    vc.ride = self.selectedRide
-                    vc.event = self.selectedEvent
-                    vc.wasLinkedFromEvents = self.wasLinkedFromEvents
+            vc.ride = self.selectedRide
+            vc.event = self.selectedEvent
+            if let eVC = self.eventVC {
+                vc.popVC = eVC
+            }
+            if let rVC = self.rideVC {
+                vc.popVC = rVC
+            }
+            vc.wasLinkedFromEvents = self.wasLinkedFromEvents
         }
         
         //check if we're going to event modal

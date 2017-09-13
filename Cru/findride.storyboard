@@ -210,7 +210,7 @@
         <!--Join Ride View Controller-->
         <scene sceneID="4pd-of-6b5">
             <objects>
-                <viewController id="Stv-CU-eMc" customClass="JoinRideViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="joinRideVC" id="Stv-CU-eMc" customClass="JoinRideViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nQi-g8-4aE"/>
                         <viewControllerLayoutGuide type="bottom" id="zBU-kH-vcO"/>
@@ -721,7 +721,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 seats left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bDW-U3-KPN">
-                                                    <rect key="frame" x="454" y="21" width="85" height="29"/>
+                                                    <rect key="frame" x="454.5" y="21.5" width="84.5" height="28.5"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1053,7 +1053,90 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCk-bC-gY8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3345" y="741"/>
+            <point key="canvasLocation" x="3407" y="741"/>
+        </scene>
+        <!--Alert View Controller-->
+        <scene sceneID="P4Z-iL-aJd">
+            <objects>
+                <viewController storyboardIdentifier="alertVC" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="XVQ-tu-zIk" customClass="AlertViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="CbT-bs-znN"/>
+                        <viewControllerLayoutGuide type="bottom" id="5aW-qa-yY3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Nin-9K-PGj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7cJ-ud-7w3">
+                                <rect key="frame" x="26" y="260.5" width="323" height="146"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ride Signup" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9sU-DR-cbd">
+                                        <rect key="frame" x="12" y="8" width="291" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="23" id="Pib-hp-TMl"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="22"/>
+                                        <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Pib-hp-TMl"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HgO-Dq-yae">
+                                        <rect key="frame" x="102" y="93" width="120" height="35"/>
+                                        <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Ehm-TE-cgG"/>
+                                            <constraint firstAttribute="width" constant="120" id="pGt-Qx-ero"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="17"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Great"/>
+                                        <connections>
+                                            <action selector="buttonAction:" destination="XVQ-tu-zIk" eventType="touchUpInside" id="A97-lI-vTF"/>
+                                        </connections>
+                                    </button>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="You successfully joined the ride! Contact your driver for more details about the ride." textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlL-ge-AAW">
+                                        <rect key="frame" x="15" y="43" width="288" height="40"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="XlL-ge-AAW" firstAttribute="leading" secondItem="7cJ-ud-7w3" secondAttribute="leading" constant="15" id="1v6-cl-pnj"/>
+                                    <constraint firstItem="9sU-DR-cbd" firstAttribute="leading" secondItem="7cJ-ud-7w3" secondAttribute="leading" constant="12" id="8BX-oY-zmB"/>
+                                    <constraint firstItem="HgO-Dq-yae" firstAttribute="centerX" secondItem="7cJ-ud-7w3" secondAttribute="centerX" id="BLD-Dd-CAL"/>
+                                    <constraint firstAttribute="bottom" secondItem="HgO-Dq-yae" secondAttribute="bottom" constant="18" id="Baa-0S-7o0"/>
+                                    <constraint firstItem="XlL-ge-AAW" firstAttribute="top" secondItem="9sU-DR-cbd" secondAttribute="bottom" constant="10" id="NR8-os-GvD"/>
+                                    <constraint firstAttribute="trailing" secondItem="9sU-DR-cbd" secondAttribute="trailing" constant="20" id="Vh6-1W-LPN"/>
+                                    <constraint firstItem="9sU-DR-cbd" firstAttribute="top" secondItem="7cJ-ud-7w3" secondAttribute="top" constant="8" id="des-oA-L7a"/>
+                                    <constraint firstAttribute="trailing" secondItem="XlL-ge-AAW" secondAttribute="trailing" constant="20" id="hVH-DX-afg"/>
+                                    <constraint firstItem="HgO-Dq-yae" firstAttribute="top" secondItem="XlL-ge-AAW" secondAttribute="bottom" constant="10" id="s7v-si-pad"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="7cJ-ud-7w3" secondAttribute="trailing" constant="10" id="5UM-Zk-IEy"/>
+                            <constraint firstItem="7cJ-ud-7w3" firstAttribute="centerY" secondItem="Nin-9K-PGj" secondAttribute="centerY" id="Ou3-0P-muU"/>
+                            <constraint firstItem="7cJ-ud-7w3" firstAttribute="leading" secondItem="Nin-9K-PGj" secondAttribute="leadingMargin" constant="10" id="kVM-Y4-NCb"/>
+                            <constraint firstItem="7cJ-ud-7w3" firstAttribute="centerX" secondItem="Nin-9K-PGj" secondAttribute="centerX" id="xiW-rP-tah"/>
+                        </constraints>
+                    </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="375" height="667"/>
+                    <connections>
+                        <outlet property="bottomButton" destination="HgO-Dq-yae" id="l24-lI-og1"/>
+                        <outlet property="messageTextView" destination="XlL-ge-AAW" id="qEs-da-QG8"/>
+                        <outlet property="titleLabel" destination="9sU-DR-cbd" id="5LM-ei-aTm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fZj-hn-Zhw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4168.8000000000002" y="740.7796101949026"/>
         </scene>
     </scenes>
     <resources>

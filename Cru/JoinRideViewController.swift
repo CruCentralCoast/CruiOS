@@ -11,8 +11,9 @@ import GoogleMaps
 import MapKit
 import Alamofire
 import SwiftyJSON
+import MRProgress
 
-class JoinRideViewController: UIViewController, JoinRideDelegate {
+class JoinRideViewController: UIViewController, JoinRideDelegate, AlertDelegate {
     
     // MARK: - Outlets
     
@@ -59,6 +60,7 @@ class JoinRideViewController: UIViewController, JoinRideDelegate {
     var wasLinkedFromMap = false
     var rideStartLocation: CLLocation!
     var eventLoc: CLLocation!
+    weak var popVC: UIViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -260,26 +262,39 @@ class JoinRideViewController: UIViewController, JoinRideDelegate {
     
     // MARK: - Join Ride Delegate
     func didFinishTask(name: String, phone: String) {
+        MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         CruClients.getRideUtils().joinRide(name, phone: phone, direction: ride.getServerDirection(),  rideId: ride.id, eventId: event.id, handler: successfulJoin)
     }
     
     func successfulJoin(_ success: Bool){
         var successAlert :UIAlertController?
-        //MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        let storyboard = UIStoryboard(name: "findride", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "alertVC") as! AlertViewController
+        controller.alertTitle = "Ride Signup"
+        controller.delegate = self
         
         if success {
-            successAlert = UIAlertController(title: "Join Successful", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            
-            
+            controller.buttonTitle = "Great"
+            controller.message = "You successfully joined the ride! Contact your driver for more details about the ride."
         }
         else {
-            successAlert = UIAlertController(title: "Failed to Join Ride", message: "", preferredStyle: UIAlertControllerStyle.alert)
+            controller.buttonTitle = "Darn"
+            controller.message = "Sorry, looks like you couldn't join the ride. Try again later!"
         }
         
-        successAlert!.addAction(UIAlertAction(title: "Ok", style: .default, handler: unwindToRideList))
+        self.present(controller, animated: true, completion: nil)
         
-        self.present(successAlert!, animated: true, completion: nil)
-        
+    }
+    
+    // MARK: - Alert View Controller Delegate Function
+    func closeAlertAction(_ button: UIButton) {
+        if let navController = self.navigationController {
+            
+            if let vc = popVC {
+                navController.popToViewController(vc, animated: true)
+            }
+        }
     }
     
     //Go back to MyRides with new ride added to the list

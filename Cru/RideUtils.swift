@@ -124,7 +124,10 @@ class RideUtils {
     func joinRide(_ name: String, phone: String, direction: String,  rideId: String, eventId: String, handler: @escaping (Bool)->Void){
         let fcmToken = Config.fcmId()
         let body: [String : AnyObject]
-        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "fcm_id":fcmToken as AnyObject, "gender": 0 as AnyObject, "event": eventId as AnyObject]
+        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "fcm_id":fcmToken as AnyObject, "gender_pref": 0 as AnyObject, "event": eventId as AnyObject, "has_driver": true as AnyObject]
+        
+        print("New Passenger:")
+        print(body)
         
         serverClient.postData(DBCollection.Passenger, params: body, completionHandler:
             { passenger in
@@ -140,6 +143,9 @@ class RideUtils {
     
     fileprivate func addPassengerToRide(_ rideId: String, passengerId: String, eventId: String, handler : @escaping (Bool)->Void){
         let body = ["_id": passengerId, "event": eventId]
+        
+        print("Adding Passenger: ")
+        print("body: \(body)")
         
         serverClient.postDataIn(DBCollection.Ride, parentId: rideId, child: DBCollection.Passenger, params: body, completionHandler:
             { response in

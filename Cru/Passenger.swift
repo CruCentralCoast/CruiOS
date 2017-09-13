@@ -13,6 +13,10 @@ class Passenger: Comparable, Equatable {
     var name = ""
     var phone = ""
     var direction = ""
+    var event = ""
+    var gender_pref = 0
+    var has_driver = false
+    var location = [String: String]()
     
     init(dict: NSDictionary){
         if (dict.object(forKey: "_id") != nil){
@@ -26,6 +30,18 @@ class Passenger: Comparable, Equatable {
         }
         if (dict.object(forKey: "direction") != nil){
             direction = dict.object(forKey: "direction") as! String
+        }
+        if (dict.object(forKey: "event") != nil){
+            event = dict.object(forKey: "event") as! String
+        }
+        if (dict.object(forKey: "gender_pref") != nil){
+            gender_pref = dict.object(forKey: "gender_pref") as! Int
+        }
+        if (dict.object(forKey: "has_driver") != nil){
+            has_driver = dict.object(forKey: "has_driver") as! Bool
+        }
+        if (dict.object(forKey: "location") != nil){
+            location = dict.object(forKey: "location") as! [String: String]
         }
     }
 }
