@@ -178,6 +178,7 @@ class Ride: Comparable, Equatable, TimeDetail {
             eventId = dict.object(forKey: RideKeys.event) as! String
         }
         if (dict.object(forKey: RideKeys.time) != nil){
+            
             time = dict.object(forKey: RideKeys.time) as! String
             self.date = GlobalUtils.dateFromString(time)
             self.departureDate = self.date
@@ -295,6 +296,24 @@ class Ride: Comparable, Equatable, TimeDetail {
         return address
     }
     
+    //Return just the street address
+    func getStreetString() -> String {
+        return street
+    }
+    
+    //Return just the street address
+    func getSuburbString() -> String {
+        var address: String = ""
+        
+        if(city != ""){
+            address += city
+        }
+        if(state != ""){
+            address += ", " + state
+        }
+        return address
+    }
+    
     func getTime()->String{
         let dFormat = "h:mm a"
         return GlobalUtils.stringFromDate(self.date, format: dFormat)
@@ -325,6 +344,19 @@ class Ride: Comparable, Equatable, TimeDetail {
         
     }
     
+    //For use in the Join Ride view controller
+    // Returns date formatted like SEP 23
+    func getShortDepartureDay()->String{
+        let dFormat = "MMM d"
+        if(self.departureDate == nil){
+            return ""
+        }
+        else{
+            return GlobalUtils.stringFromDate(self.departureDate!, format: dFormat)
+        }
+        
+    }
+    
     func getFormatedDay() -> String {
         if(day == -1){
             return ""
@@ -346,6 +378,27 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
         else{
             return GlobalUtils.stringFromDate(self.departureTime!, format: dFormat)
+        }
+    }
+    
+    //Get Departure time without AM or PM
+    func getDeptTimeNoAMPM() -> String {
+        let dFormat = "h:mm"
+        if(self.departureDate == nil){
+            return ""
+        }
+        else{
+            return GlobalUtils.stringFromDate(self.departureDate!, format: dFormat)
+        }
+    }
+    
+    func getDeptAMPM() -> String {
+        let dFormat = "a"
+        if(self.departureDate == nil){
+            return ""
+        }
+        else{
+            return GlobalUtils.stringFromDate(self.departureDate!, format: dFormat)
         }
     }
     
@@ -379,6 +432,24 @@ class Ride: Comparable, Equatable, TimeDetail {
                 return Directions.from
             default:
                 return Directions.both
+        }
+    }
+    
+    func getServerDirection()-> String {
+        return direction
+    }
+    
+    //Return displayable string for Join Ride VC
+    func getDisplayableDirection() -> String {
+        switch (direction){
+        case "both":
+            return "Round trip"
+        case "to":
+            return "To event"
+        case "from":
+            return "From event"
+        default:
+            return "Round trip"
         }
     }
     

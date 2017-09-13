@@ -121,25 +121,25 @@ class RideUtils {
     
     // adds a passenger to a ride by first adding the passenger to the database, then associating
     // the passenger with the ride
-    func joinRide(_ name: String, phone: String, direction: String,  rideId: String, handler: @escaping (Bool)->Void){
+    func joinRide(_ name: String, phone: String, direction: String,  rideId: String, eventId: String, handler: @escaping (Bool)->Void){
         let fcmToken = Config.fcmId()
         let body: [String : AnyObject]
-        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "fcm_id":fcmToken as AnyObject, "gender": 0 as AnyObject]
+        body = ["name": name as AnyObject, "phone": phone as AnyObject, "direction":direction as AnyObject, "fcm_id":fcmToken as AnyObject, "gender": 0 as AnyObject, "event": eventId as AnyObject]
         
         serverClient.postData(DBCollection.Passenger, params: body, completionHandler:
             { passenger in
                 if (passenger != nil) {
                     GlobalUtils.printRequest(passenger!)
                     let passengerId = passenger!["_id"] as! String
-                    self.addPassengerToRide(rideId, passengerId: passengerId, handler: handler)
+                    self.addPassengerToRide(rideId, passengerId: passengerId, eventId: eventId, handler: handler)
                 } else {
                     handler(false)
                 }
         })
     }
     
-    fileprivate func addPassengerToRide(_ rideId: String, passengerId: String, handler : @escaping (Bool)->Void){
-        let body = ["passenger_id": passengerId]
+    fileprivate func addPassengerToRide(_ rideId: String, passengerId: String, eventId: String, handler : @escaping (Bool)->Void){
+        let body = ["_id": passengerId, "event": eventId]
         
         serverClient.postDataIn(DBCollection.Ride, parentId: rideId, child: DBCollection.Passenger, params: body, completionHandler:
             { response in
@@ -217,5 +217,24 @@ class RideUtils {
                 handler(Passenger(dict: dict!))
             }
             }, id: id)
+    }
+}
+
+// Created for calculating the time in between Dates
+extension Date {
+    /// Returns the amount of hours from another date
+    func hours(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.hour], from: date, to: self).hour ?? 0
+    }
+    /// Returns the amount of minutes from another date
+    func minutes(from date: Date) -> Int {
+        return Calendar.current.dateComponents([.minute], from: date, to: self).minute ?? 0
+    }
+
+    /// Returns the a custom time interval description from another date
+    func offset(from date: Date) -> String {
+        if hours(from: date)   > 0 { return "\(hours(from: date))h"   }
+        if minutes(from: date) > 0 { return "\(minutes(from: date))m" }
+        return ""
     }
 }

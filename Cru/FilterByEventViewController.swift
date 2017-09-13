@@ -208,12 +208,10 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let vc = segue.destination as? RideJoinViewController, segue.identifier == "joinSegue" {
+        if let vc = segue.destination as? JoinRideViewController, segue.identifier == "joinSegue" {
                     vc.ride = self.selectedRide
                     vc.event = self.selectedEvent
-                    vc.rideVC = self.rideVC
                     vc.wasLinkedFromEvents = self.wasLinkedFromEvents
-                    vc.eventVC = self.eventVC
         }
         
         //check if we're going to event modal

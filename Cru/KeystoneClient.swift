@@ -146,6 +146,7 @@ class KeystoneClient: ServerProtocol {
     func postDataIn(_ parent: DBCollection, parentId: String, child: DBCollection, params: [String:Any], completionHandler: @escaping (NSDictionary?)->Void) {
         
         let requestUrl = Config.serverEndpoint + parent.name() + "/" + parentId + "/" + child.name()
+        print(requestUrl)
         
         Alamofire.request(requestUrl, method: .post, parameters: params)
             .responseJSON { response in

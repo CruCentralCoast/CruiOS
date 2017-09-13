@@ -138,6 +138,25 @@ class Event: Equatable {
         return ""
     }
     
+    //Returns address without city, state or zipcode
+    func getStreetString() -> String {
+        if location != nil {
+            let street = location!.object(forKey: "street1") as! String
+            return  street
+        }
+        return ""
+    }
+    
+    //Returns address without city, state or zipcode
+    func getSuburbString() -> String {
+        if location != nil {
+            let suburb = location!.object(forKey: "suburb") as! String
+            let state = location!.object(forKey: "state") as! String
+            return  "\(suburb), \(state)"
+        }
+        return ""
+    }
+    
     func getTime()->String{
         return GlobalUtils.stringFromDate(startNSDate, format: "M/d/YYYY") + "\n" +
                GlobalUtils.stringFromDate(startNSDate, format: "h:mm a")
@@ -158,6 +177,10 @@ class Event: Equatable {
     
     func getAmOrPm()->String{
         return GlobalUtils.stringFromDate(startNSDate, format: "a")
+    }
+    
+    func getShortStartDay() -> String {
+        return GlobalUtils.stringFromDate(startNSDate, format: "MMM d")
     }
     
     func getEndAmOrPm() -> String {

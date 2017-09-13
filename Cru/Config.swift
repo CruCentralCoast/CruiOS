@@ -108,6 +108,10 @@ struct Config {
     
     static let noEventsImage = "no-events"
     
+    /* Ridesharing keys */
+    static let fullNameKey = "fullName"
+    static let phoneNoKey = "phoneNumber"
+    
     /* Edit Community Group Data Sources */
     
     static let dayList = [
