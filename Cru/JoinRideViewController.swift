@@ -123,8 +123,11 @@ class JoinRideViewController: UIViewController, JoinRideDelegate, AlertDelegate 
     }
     
     private func setupToRideView() {
+        print(ride.getDirection())
         if ride.getDirection() == "from" {
             toRideView.isHidden = true
+            toRideSeparator.isHidden = true
+            directionIcon.image = #imageLiteral(resourceName: "from-event-sign")
         }
         else {
             self.toTimeLabel.text = ride.getDeptTimeNoAMPM()
@@ -143,6 +146,8 @@ class JoinRideViewController: UIViewController, JoinRideDelegate, AlertDelegate 
     private func setupFromRideView() {
         if ride.getDirection() == "to" {
             fromRideView.isHidden = true
+            fromRideSeparator.isHidden = true
+            directionIcon.image = #imageLiteral(resourceName: "to-event-sign")
         }
         else {
             // Calculate home arrival time

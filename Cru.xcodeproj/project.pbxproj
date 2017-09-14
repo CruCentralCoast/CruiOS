@@ -278,6 +278,8 @@
 		6DB922821C07CE1400C7B120 /* FreigSanProBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DB922811C07CE1400C7B120 /* FreigSanProBook.otf */; };
 		6DBA69FA1F69DBC60006036F /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBA69F91F69DBC60006036F /* AlertViewController.swift */; };
 		6DBA69FB1F69DBC60006036F /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBA69F91F69DBC60006036F /* AlertViewController.swift */; };
+		6DBA69FD1F6B01090006036F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBA69FC1F6B01090006036F /* Direction.swift */; };
+		6DBA69FE1F6B01090006036F /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBA69FC1F6B01090006036F /* Direction.swift */; };
 		6DBD7B8C1C756D1000D11FFA /* CruColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBD7B8B1C756D1000D11FFA /* CruColors.swift */; };
 		6DBD7B8D1C756D1000D11FFA /* CruColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBD7B8B1C756D1000D11FFA /* CruColors.swift */; };
 		6DBD7B901C7573DC00D11FFA /* FreigSanProLigIt.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DBD7B8F1C7573DC00D11FFA /* FreigSanProLigIt.otf */; };
@@ -563,6 +565,7 @@
 		6DB072F91E70AF0E00AD6300 /* ResourceUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceUtils.swift; sourceTree = "<group>"; };
 		6DB922811C07CE1400C7B120 /* FreigSanProBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProBook.otf; sourceTree = "<group>"; };
 		6DBA69F91F69DBC60006036F /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		6DBA69FC1F6B01090006036F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		6DBD7B8B1C756D1000D11FFA /* CruColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CruColors.swift; sourceTree = "<group>"; };
 		6DBD7B8F1C7573DC00D11FFA /* FreigSanProLigIt.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProLigIt.otf; sourceTree = "<group>"; };
 		6DBD7B931C75742A00D11FFA /* FreigSanProMed.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProMed.otf; sourceTree = "<group>"; };
@@ -826,8 +829,12 @@
 		0FFCBC2D1C63F689000B4E18 /* OfferRide */ = {
 			isa = PBXGroup;
 			children = (
+				6DA815491D3FFA060087F05B /* newofferride.storyboard */,
+				6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */,
+				505722A31CE095A800F87BE4 /* PickRadiusViewController.swift */,
 				503A06CB1C5F08CC00DAD10E /* offerride.storyboard */,
 				50D507851CBF7A7F00A07045 /* OfferRideViewController.swift */,
+				6DA8154C1D4019E70087F05B /* SegmentedControl.swift */,
 				507252E31CC07E8200DD4EFF /* EventsModalTableViewController.swift */,
 			);
 			name = OfferRide;
@@ -877,6 +884,7 @@
 		508258FE1C9013E7008BAD6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6DBA69FC1F6B01090006036F /* Direction.swift */,
 				509DA91C1C6172FC0050CE26 /* Ride.swift */,
 				500A37AF1C7D6587007D6A3B /* Passenger.swift */,
 				5072B4161CB38616001F5BF6 /* TimeDetail.swift */,
@@ -889,8 +897,8 @@
 			isa = PBXGroup;
 			children = (
 				509DA9181C616C840050CE26 /* driverdetail.storyboard */,
+				6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */,
 				50E57A8A1CEE8FE300462F8A /* DriverDetailCell.swift */,
-				505722A31CE095A800F87BE4 /* PickRadiusViewController.swift */,
 				50697BC31CE03B5600776CC5 /* PassengersViewController.swift */,
 				504742491C75988E003F276E /* PassengerTableViewCell.swift */,
 				50697BC01CE0303B00776CC5 /* DetailCell.swift */,
@@ -898,14 +906,10 @@
 				50AC224F1CDB016800427C08 /* EditCell.swift */,
 				50AC22521CDB033D00427C08 /* EditableItem.swift */,
 				5094897C1C64000200A67697 /* DriverRideDetailViewController.swift */,
-				6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */,
 				501038B11CD9655F00CCD7DC /* OfferOrEditRideViewController.swift */,
-				6DA815461D3FF9780087F05B /* NewOfferRideViewController.swift */,
 				6DC538251D639AC300EF1E7F /* PlacePickerViewController.swift */,
 				6DA8154F1D413E7E0087F05B /* EventsPopoverViewController.swift */,
 				6D434A211D42ABE200661CA8 /* LocationViewController.swift */,
-				6DA815491D3FFA060087F05B /* newofferride.storyboard */,
-				6DA8154C1D4019E70087F05B /* SegmentedControl.swift */,
 			);
 			name = Driver;
 			sourceTree = "<group>";
@@ -1697,6 +1701,7 @@
 				6D31382D1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */,
 				0FC8E3B21C48750A007A7208 /* IntroViewController.swift in Sources */,
 				6D94BD021D2451CA0063CED8 /* ScrollViewController.swift in Sources */,
+				6DBA69FD1F6B01090006036F /* Direction.swift in Sources */,
 				6D2B4FC21D8549D00009DC2D /* ResourceTagTableViewCell.swift in Sources */,
 				E9CB00341C8F7E04000F7E12 /* SummerMissionDetailController.swift in Sources */,
 				50697BC11CE0303B00776CC5 /* DetailCell.swift in Sources */,
@@ -1808,6 +1813,7 @@
 				6D9112B91F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */,
 				5072B4221CB38E70001F5BF6 /* RideTableViewCell.swift in Sources */,
 				50D507871CBF7A7F00A07045 /* OfferRideViewController.swift in Sources */,
+				6DBA69FE1F6B01090006036F /* Direction.swift in Sources */,
 				C1536D5A1CFD1DB400730281 /* FakeSubscriptionManager.swift in Sources */,
 				0F68621F1CE65D3600138377 /* SummerMissionsTableViewCell.swift in Sources */,
 				6D2F38841F37CC2000E31433 /* StoredCommunityGroup.swift in Sources */,

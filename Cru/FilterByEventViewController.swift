@@ -76,7 +76,7 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     // MARK: - Table view data source
     //Load the user's current rides
     func loadCurRides() {
-        CruClients.getRideUtils().getMyRides(fillRides, afterFunc: { sucess in
+        CruClients.getRideUtils().getMyRides(fillRides, afterFunc: { success in
             //Don't need to do anything
         })
     }

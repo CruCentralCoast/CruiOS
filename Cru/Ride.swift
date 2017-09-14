@@ -127,7 +127,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     
     init(){
-        self.direction = Directions.both
+        self.direction = RideDirection.roundTrip.rawValue
         self.seats = 1
         self.radius = 1
     }
@@ -423,16 +423,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     }
     
     func getDirection()->String{
-        switch (direction){
-            case "both":
-                return Directions.both
-            case "to":
-                return Directions.to
-            case "from":
-                return Directions.from
-            default:
-                return Directions.both
-        }
+        return direction
     }
     
     func getServerDirection()-> String {
@@ -468,7 +459,7 @@ class Ride: Comparable, Equatable, TimeDetail {
             return ValidationErrors.none
         }
         
-        if(direction == "to" || direction == "both"){
+        if(direction == RideDirection.toEvent.rawValue || direction == RideDirection.roundTrip.rawValue){
             
             if theDate.compare(eventStartDate) == ComparisonResult.orderedDescending {
                 return ValidationErrors.badTimeBefore  + " " + GlobalUtils.stringFromDate(eventStartDate, format: "MM/dd/yy h:mm a")
@@ -555,16 +546,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     //converts our direction value to a server value
     func getServerDirectionValue(_ dir : String)->String{
-        switch (dir){
-            case Directions.from:
-                return "from"
-            case Directions.to:
-                return  "to"
-            case Directions.both:
-                return  "both"
-            default:
-                return  ""
-        }
+        return dir
     }
     
     

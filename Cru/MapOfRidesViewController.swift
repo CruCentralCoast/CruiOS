@@ -31,8 +31,8 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
     var index = 0
     var selectedTitle = ""
     var selectedRide: Ride!
-    var rideTVC : RidesViewController?
-    var eventVC : EventDetailsViewController?
+    weak var rideTVC : RidesViewController?
+    weak var eventVC : EventDetailsViewController?
     var wasLinkedFromEvents = false 
     @IBOutlet weak var map: MKMapView!
     
@@ -233,7 +233,7 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         
         if let ride = findRideForAnnotation(view.annotation!){
             self.selectedRide = ride
-            self.performSegue(withIdentifier: "joinRide", sender: self)
+            self.performSegue(withIdentifier: "joinRideMap", sender: self)
 //            if let navigation = navigationController where navigation.viewControllers.count > 1 {
 //                navigation.popViewControllerAnimated(true)
 //            } else {
@@ -295,12 +295,16 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "joinRide" {
-            if let vc = segue.destination as? RideJoinViewController{
+        if segue.identifier == "joinRideMap" {
+            if let vc = segue.destination as? JoinRideViewController{
                 vc.ride = self.selectedRide
                 vc.event = self.event
-                vc.rideVC = self.rideTVC
-                vc.eventVC = self.eventVC
+                if let rVC = self.rideTVC {
+                    vc.popVC = rVC
+                }
+                if let eVC = self.eventVC {
+                    vc.popVC = eVC
+                }
                 vc.wasLinkedFromMap = true
                 vc.wasLinkedFromEvents = (self.eventVC != nil)
             }

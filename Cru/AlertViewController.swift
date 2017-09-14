@@ -25,6 +25,7 @@ class AlertViewController: UIViewController {
         super.viewDidLoad()
         titleLabel.text = alertTitle
         messageTextView.text = message
+        messageTextView.font = UIFont(name: Config.fontName, size: 18)
         bottomButton.setTitle(buttonTitle, for: .normal)
 
         // Do any additional setup after loading the view.
