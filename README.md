@@ -4,7 +4,6 @@ iOS mobile app for Cru Central Coast
 ##How to Build
 * Install CocoaPods
 * Run the command `pod install` in the project directory
-* Run `pod install` again
 * Follow the instructions below
 
 ### Notes
