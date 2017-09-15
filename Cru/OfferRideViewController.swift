@@ -310,13 +310,13 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
         TimePicker.pickDate(self, handler: chooseDateHandler)
     }
     
-    func chooseDateHandler(_ month : Int, day : Int, year : Int){
-        let month = String(month)
-        let day = String(day)
-        let year = String(year)
+    func chooseDateHandler(_ date: Date){
+        //let month = String(month)
+        //let day = String(day)
+        //let year = String(year)
         
-        self.pickupDate.text = month + "/" + day + "/" + year
-        self.formHasBeenEdited = true
+        //self.pickupDate.text = month + "/" + day + "/" + year
+        //self.formHasBeenEdited = true
     }
 
 

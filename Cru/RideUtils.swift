@@ -104,12 +104,26 @@ class RideUtils {
             
             serverClient.postData(DBCollection.Ride, params: body as [String : AnyObject], completionHandler:
                 { ride in
-                    if (ride != nil) {
+                    if let rideDict = ride {
+                        
+                        if let rideID = rideDict.object(forKey: "_id") {
+                            self.saveRideOffering(rideID as! String)
+                            handler(Ride(dict: rideDict))
+                        }
+                        else {
+                            handler(nil)
+                        }
+                    }
+                    else {
+                        handler(nil)
+                    }
+                    
+                    /*if (ride != nil) {
                         self.saveRideOffering(ride!["_id"] as! String)
                         handler(Ride(dict: ride!))
                     } else {
                         handler(nil)
-                    }
+                    }*/
             })
     }
     

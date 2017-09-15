@@ -27,7 +27,7 @@ struct IllustrationConstants{
 
 class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
     
-    // MARK: Properties
+    // MARK: - Properties
     @IBOutlet weak var illustrationView: UIView!
     @IBOutlet weak var addresslabel: UILabel!
     @IBOutlet weak var carImage: UIImageView!
@@ -35,7 +35,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     @IBOutlet weak var eventLabel: UILabel!
     
     
-    //Fields
+    // MARK: Fields
     @IBOutlet weak var eventField: UITextField?
     @IBOutlet weak var dateField: UITextField?
     @IBOutlet weak var timeField: UITextField?
@@ -45,7 +45,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     @IBOutlet weak var availableField: UITextField?
     @IBOutlet weak var directionField: UITextField?
     
-    //Lines
+    //MARK: Lines
     @IBOutlet weak var eventLine: UIView!
     @IBOutlet weak var dateLine: UIView!
     @IBOutlet weak var timeLine: UIView!
@@ -53,15 +53,17 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     @IBOutlet weak var pickupLine: UIView!
     @IBOutlet weak var offeredLine: UIView!
     
-    //Hints
+    //MARK: Hints
     @IBOutlet weak var endDateHint: UILabel!
     @IBOutlet weak var timeHint: UILabel!
     
-    //Buttons
+    //MARK: Buttons
     @IBOutlet weak var viewPassengers: UIButton!
     @IBOutlet weak var cancelRide: UIButton!
     
-    var rideVC: RidesViewController?
+    var timeComponents: DateComponents?
+    var dateComponents: DateComponents?
+    weak var rideVC: RidesViewController?
     var event: Event!
     var gradientGray = UIColor(red: 216/255, green: 216/255, blue: 216/255, alpha: 1.0)
     var passengers = [Passenger]()
@@ -210,10 +212,10 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         pickupField?.text = ride.getRadius()
         offeredField?.text = String(ride.seats)
         availableField?.text = ride.seatsLeftAsString()
-        directionField?.text = ride.getDirection()
+        directionField?.text = ride.getDisplayableDirection()
     }
     
-    // MARK: Button actions
+    // MARK: - Button actions
     func normalMode() {
         eventLine?.backgroundColor = UIColor.clear
         dateLine?.backgroundColor = UIColor.clear
@@ -238,9 +240,10 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         //Add edit bar button item
         //Add the edit button to the nav bar
         
-        /*let editButton = UIBarButtonItem(title: "Edit", style: .Plain, target: self, action: #selector(editMode))
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editMode))
+        editButton.tintColor = CruColors.orange
         self.navigationItem.rightBarButtonItem = editButton
-        self.navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!], forState: .Normal)*/
+        self.navigationItem.rightBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!], for: .normal)
     }
 
     //Transform field to edit fields
@@ -372,33 +375,59 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     }
     
     
-    // MARK: Validators
+    // MARK: - Validators
     func validateTime() -> Bool {
         ride.eventStartDate = event.startNSDate
         ride.eventEndDate = event.endNSDate
         
-        if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDay()){
-            ride.day = (components.day)!
-            ride.monthNum = (components.month)!
-            ride.year = (components.year)!
+        ride.eventStartDate = event.startNSDate
+        ride.eventEndDate = event.endNSDate
+        
+        //Combine date and time
+        var mergedComponents = DateComponents()
+        if let dComps = dateComponents {
+            mergedComponents.year = dComps.year
+            mergedComponents.month = dComps.month
+            mergedComponents.day = dComps.day
         }
-        
-        if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureTime()){
-            ride.hour = (components.hour)!
-            ride.minute = (components.minute)!
+        if let tComps = timeComponents {
+            mergedComponents.hour = tComps.hour
+            mergedComponents.minute = tComps.minute
         }
+        let calendar = Calendar.current
+        
+        let rideDeptDate = calendar.date(from: mergedComponents)!
+        
+        if ride.direction == RideDirection.fromEvent.rawValue {
+            //check if from-event time is before event starts
+            if rideDeptDate.isLessThanDate(ride.eventStartDate) {
+                addTextFieldError(timeLine!)
+                addTextFieldError(dateLine!)
+                showValidationError("Please select a time after the event starts.")
+                return false
+            }
+        }
+        else {
+            if rideDeptDate.isGreaterThanDate(ride.eventEndDate) {
+                addTextFieldError(timeLine!)
+                addTextFieldError(dateLine!)
+                showValidationError("Please select a time before the event ends.")
+                return false
+            }
+        }
+        ride.departureDate = rideDeptDate
+        ride.date = rideDeptDate
+        return true
         
         
-        ride.date = GlobalUtils.dateFromString(ride.getTimeInServerFormat())
-        
-        if (ride.isValidTime() == ""){
+        /*if (ride.isValidTime() == ""){
             return true
         }
         else{
             addTextFieldError(timeLine!)
             showValidationError(ride.isValidTime())
             return false
-        }
+        }*/
     }
     func validateLoc() -> Bool {
         if(loc != nil){
@@ -459,7 +488,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         return true
     }
     
-    // MARK: Text Field Functions
+    // MARK: - Text Field Delegate Functions
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
         case dateField!:
@@ -528,20 +557,18 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
     }
     
     //called when a date is chosen
-    func chooseDateHandler(_ month : Int, day : Int, year : Int){
+    func chooseDateHandler(_ date: Date){
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MM d yyyy"
         
-        //if date formatter returns nil return the current date/time
-        if let date = dateFormatter.date(from: String(month) + " " + String(day) + " " + String(year)) {
-            ride.date = date
-            ride.monthNum = month
-            ride.day = day
-            ride.year = year
-            ride.departureDay = date
-            self.dateField?.text = ride.getDate()
-        }
+        let calendar = Calendar.current
+        
+        self.dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        ride.monthNum = (dateComponents?.month)!
+        ride.day = (dateComponents?.day)!
+        ride.year = (dateComponents?.year)!
+        self.dateField?.text = dateFormatter.string(from: date)
     }
     
     //called when a time is chosen
@@ -549,12 +576,13 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         timeField!.text = formatter.string(from: obj)
+        
         let calendar = Calendar.current
-        let comp = (calendar as NSCalendar).components([.hour, .minute], from: obj)
-        ride.hour = comp.hour!
-        ride.minute = comp.minute!
+        self.timeComponents = calendar.dateComponents([.hour, .minute], from: obj)
+        
+        ride.hour = timeComponents!.hour!
+        ride.minute = timeComponents!.minute!
         ride.timeStr = (timeField?.text)!
-        ride.departureTime = obj
     }
     
     //Called when the pickup location text field becomes active
@@ -617,7 +645,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         
     }
     
-    // MARK: Validation UI Functions
+    // MARK: - Validation UI Functions
     
     func addTextFieldError(_ view: UIView){
         UIView.animate(withDuration: 0.5, animations: {
@@ -651,7 +679,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         
     }
     
-    // MARK: Animations
+    // MARK: - Animations
     func highlightField(_ view: UIView) {
         UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = CruColors.lightBlue

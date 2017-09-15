@@ -13,8 +13,8 @@ class Cancler {
     static func confirmCancel(_ view: UIViewController, handler: @escaping (_ action: UIAlertAction)->()){
         let cancelAlert = UIAlertController(title: "Are you sure you want to cancel this ride?", message: "This action is permanent.", preferredStyle: UIAlertControllerStyle.alert)
         
-        cancelAlert.addAction(UIAlertAction(title: "Cancel the Ride", style: .destructive, handler: handler))
-        cancelAlert.addAction(UIAlertAction(title: "Just Kidding", style: .default, handler: nil))
+        cancelAlert.addAction(UIAlertAction(title: "Cancel the ride", style: .destructive, handler: handler))
+        cancelAlert.addAction(UIAlertAction(title: "Just kidding", style: .default, handler: nil))
         view.present(cancelAlert, animated: true, completion: nil)
     }
     

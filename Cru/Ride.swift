@@ -87,7 +87,7 @@ struct ValidationErrors{
 
 struct RideConstants{
     static let minSeats = 1
-    static let maxSeats = 50
+    static let maxSeats = 15
     
 }
 
@@ -122,8 +122,8 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     //user for offering rides primarily
     var departureDate : Date? //both time and date
-    var departureTime: Date? //only time component h:mm a
-    var departureDay : Date?  //only date component d/m/y
+    //var departureTime: Date? //only time component h:mm a
+    //var departureDay : Date?  //only date component d/m/y
     
     
     init(){
@@ -178,7 +178,6 @@ class Ride: Comparable, Equatable, TimeDetail {
             eventId = dict.object(forKey: RideKeys.event) as! String
         }
         if (dict.object(forKey: RideKeys.time) != nil){
-            
             time = dict.object(forKey: RideKeys.time) as! String
             self.date = GlobalUtils.dateFromString(time)
             self.departureDate = self.date
@@ -207,15 +206,19 @@ class Ride: Comparable, Equatable, TimeDetail {
 
     }
     
-    
-    func getRadius()->String{
-        if (radius == 1){
-            return String(radius) + " mile"
-        }
-        else{
-            return String(radius) + " miles"
-        }
+    func getRideAsDict()->[String:AnyObject]{
+        var map: [String:AnyObject] = [RideKeys.id : self.id as AnyObject,
+                                       RideKeys.direction: self.direction as AnyObject, RideKeys.driverName: self.driverName as AnyObject,
+                                       RideKeys.driverNumber: self.driverNumber as AnyObject, RideKeys.radius: self.radius as AnyObject,
+                                       RideKeys.seats: self.seats as AnyObject, RideKeys.time: self.time as AnyObject,
+                                       RideKeys.location: self.getLocationAsDict() as AnyObject, RideKeys.passengers: self.passengers as AnyObject]
+        map.updateValue(self.direction as AnyObject, forKey: RideKeys.direction)
+        map[RideKeys.direction] = self.direction as AnyObject?
+        return map
     }
+    
+    
+    
     
     func isPassengerInRide(_ passId: String)->Bool{
         for pass in passengers{
@@ -236,42 +239,23 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
     }
     
-    func getTimeInServerFormat()->String{
+    // MARK: - Location Functions
+    //Return just the street address
+    func getStreetString() -> String {
+        return street
+    }
+    
+    //Return just the street address
+    func getSuburbString() -> String {
+        var address: String = ""
         
-        var dayString = ""
-        var hourString = ""
-        var minuteString = ""
-        var monthString = ""
-        
-        if(monthNum < 10){
-            monthString = "0" + String(monthNum)
+        if(city != ""){
+            address += city
         }
-        else{
-            monthString = String(monthNum)
+        if(state != ""){
+            address += ", " + state
         }
-        
-        if(day < 10){
-            dayString = "0" + String(day)
-        }
-        else{
-            dayString = String(day)
-        }
-        
-        if(hour < 10){
-            hourString = "0"  + String(hour)
-        }
-        else{
-            hourString = String(hour)
-        }
-        
-        if(minute < 10){
-            minuteString = "0"  + String(minute)
-        }
-        else{
-            minuteString = String(minute)
-        }
-        
-        return String(year) + "-" + String(monthString) + "-" + String(dayString) + "T" + hourString + ":" + String(minuteString) + ":00.000Z"
+        return address
     }
     
     func getCompleteAddress()->String{
@@ -296,36 +280,75 @@ class Ride: Comparable, Equatable, TimeDetail {
         return address
     }
     
-    //Return just the street address
-    func getStreetString() -> String {
-        return street
+    func clearAddress(){
+        postcode = ""
+        state = ""
+        city = ""
+        street = ""
+        country = ""
     }
     
-    //Return just the street address
-    func getSuburbString() -> String {
-        var address: String = ""
+    func getLocationAsDict()->[String:AnyObject]{
+        var map = [String:AnyObject]()
+        var locMap = [String:String]()
         
-        if(city != ""){
-            address += city
+        locMap[LocationKeys.postcode] = self.postcode
+        locMap[LocationKeys.state] = self.state
+        locMap[LocationKeys.street1] = self.street
+        locMap[LocationKeys.country] = self.country
+        locMap[LocationKeys.city] = self.city
+        
+        map[LocationKeys.loc] = locMap as AnyObject?
+        
+        return map
+    }
+    
+    func getMapSubtitle()->String{
+        return self.seatsLeftAsString()  + " seats left"
+    }
+    
+    // MARK: - Pickup Radius Functions
+    func getRadius()->String{
+        if (radius == 1){
+            return String(radius) + " mile"
         }
-        if(state != ""){
-            address += ", " + state
+        else{
+            return String(radius) + " miles"
         }
-        return address
+    }
+    
+    // MARK: - Time and Date Functions
+    func getTimeInServerFormat()->String{
+        
+        let calendar = Calendar.current
+        let comps = calendar.dateComponents([.year, .month, .day, .hour, .minute], from: departureDate!)
+        
+        let year = comps.year!
+        let month = comps.month!
+        let day = comps.day!
+        let hour = comps.hour!
+        let minute = comps.minute!
+        
+        var dayString = String(format: "%02d", day)
+        var hourString = String(format: "%02d", hour)
+        var minuteString = String(format: "%02d", minute)
+        var monthString = String(format: "%02d", month)
+        
+        return String(year) + "-" + String(monthString) + "-" + String(dayString) + "T" + hourString + ":" + String(minuteString) + ":00.000Z"
     }
     
     func getTime()->String{
         let dFormat = "h:mm a"
-        return GlobalUtils.stringFromDate(self.date, format: dFormat)
+        return GlobalUtils.stringFromDate(self.departureDate!, format: dFormat)
     }
     
     func getDate()->String{
-        if(day == -1){
+        if(self.departureDate != nil){
             return ""
         }
         else{
             let dFormat = "MMMM d, yyyy"
-            return GlobalUtils.stringFromDate(self.date, format: dFormat)
+            return GlobalUtils.stringFromDate(self.departureDate!, format: dFormat)
         }
     }
     
@@ -335,11 +358,11 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     func getDepartureDay()->String{
         let dFormat = "MMMM d, yyyy"
-        if(self.departureDay == nil){
+        if(self.departureDate == nil){
             return ""
         }
         else{
-            return GlobalUtils.stringFromDate(self.departureDay!, format: dFormat)
+            return GlobalUtils.stringFromDate(self.departureDate!, format: dFormat)
         }
         
     }
@@ -373,11 +396,11 @@ class Ride: Comparable, Equatable, TimeDetail {
     
     func getDepartureTime()->String{
         let dFormat = "h:mm a"
-        if(self.departureTime == nil){
+        if(self.departureDate == nil){
             return ""
         }
         else{
-            return GlobalUtils.stringFromDate(self.departureTime!, format: dFormat)
+            return GlobalUtils.stringFromDate(self.departureDate!, format: dFormat)
         }
     }
     
@@ -405,7 +428,9 @@ class Ride: Comparable, Equatable, TimeDetail {
     func getDepartureTime()->Date{
         return self.departureDate!
     }
-        
+    
+    
+    // MARK: - Seat Functions
     func hasSeats()->Bool{
         return (self.seats - passengers.count)  != 0
     }
@@ -422,12 +447,26 @@ class Ride: Comparable, Equatable, TimeDetail {
         return passengers.count - proposedNumSeats
     }
     
+    func getSeatsInfo() -> [EditableItem]{
+        var details = [EditableItem]()
+        details.append(EditableItem(itemName: Labels.seatsLabel, itemValue: String(seats), itemEditable: false, itemIsText: true))
+        details.append(EditableItem(itemName: Labels.seatsLeftLabel, itemValue: String(seatsLeft()), itemEditable: false, itemIsText: true))
+        return details
+    }
+
+    
+    // MARK: - Direction Functions
     func getDirection()->String{
         return direction
     }
     
     func getServerDirection()-> String {
         return direction
+    }
+    
+    //converts our direction value to a server value
+    func getServerDirectionValue(_ dir : String)->String{
+        return dir
     }
     
     //Return displayable string for Join Ride VC
@@ -444,13 +483,7 @@ class Ride: Comparable, Equatable, TimeDetail {
         }
     }
     
-    func clearAddress(){
-        postcode = ""
-        state = ""
-        city = ""
-        street = ""
-        country = ""
-    }
+    // MARK: - Validator Function
     
     func isValidTime() -> String{
         let theDate =  GlobalUtils.dateFromString(self.getTimeInServerFormat())
@@ -543,12 +576,8 @@ class Ride: Comparable, Equatable, TimeDetail {
         
     }
     
-    
-    //converts our direction value to a server value
-    func getServerDirectionValue(_ dir : String)->String{
-        return dir
-    }
-    
+    // MARK: - Old Functions 
+    // TODO: Check if still being used
     
     func getRiderDetails() -> [EditableItem]{
         var details = [EditableItem]()
@@ -566,12 +595,6 @@ class Ride: Comparable, Equatable, TimeDetail {
         return details
     }
     
-    func getSeatsInfo() -> [EditableItem]{
-        var details = [EditableItem]()
-        details.append(EditableItem(itemName: Labels.seatsLabel, itemValue: String(seats), itemEditable: false, itemIsText: true))
-        details.append(EditableItem(itemName: Labels.seatsLeftLabel, itemValue: String(seatsLeft()), itemEditable: false, itemIsText: true))
-        return details
-    }
     
     func getEventInfo() -> [EditableItem]{
         return [EditableItem(itemName: Labels.eventLabel, itemValue: eventName, itemEditable: false, itemIsText: true)]
@@ -595,35 +618,11 @@ class Ride: Comparable, Equatable, TimeDetail {
         return details
     }
     
-    func getMapSubtitle()->String{
-        return self.seatsLeftAsString()  + " seats left"
-    }
     
-    func getRideAsDict()->[String:AnyObject]{
-        var map: [String:AnyObject] = [RideKeys.id : self.id as AnyObject,
-            RideKeys.direction: self.direction as AnyObject, RideKeys.driverName: self.driverName as AnyObject,
-            RideKeys.driverNumber: self.driverNumber as AnyObject, RideKeys.radius: self.radius as AnyObject,
-            RideKeys.seats: self.seats as AnyObject, RideKeys.time: self.time as AnyObject,
-            RideKeys.location: self.getLocationAsDict() as AnyObject, RideKeys.passengers: self.passengers as AnyObject]
-        map.updateValue(self.direction as AnyObject, forKey: RideKeys.direction)
-        map[RideKeys.direction] = self.direction as AnyObject?
-        return map
-    }
     
-    func getLocationAsDict()->[String:AnyObject]{
-        var map = [String:AnyObject]()
-        var locMap = [String:String]()
-        
-        locMap[LocationKeys.postcode] = self.postcode
-        locMap[LocationKeys.state] = self.state
-        locMap[LocationKeys.street1] = self.street
-        locMap[LocationKeys.country] = self.country
-        locMap[LocationKeys.city] = self.city
-        
-        map[LocationKeys.loc] = locMap as AnyObject?
-        
-        return map
-    }
+    
+    
+    
 }
 
 func  <(lRide: Ride, rRide: Ride) -> Bool{

@@ -139,8 +139,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         ride.eventId = event.id
         ride.eventStartDate = event.startNSDate
         ride.eventEndDate = event.endNSDate
-        ride.departureDay = event.startNSDate
-        ride.departureTime = event.startNSDate
+        ride.departureDate = event.startNSDate
     }
     
     
@@ -333,23 +332,25 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     }
     
     //called when a date is chosen
-    func chooseDateHandler(_ month : Int, day : Int, year : Int){
+    func chooseDateHandler(_ date: Date){
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MM d yyyy"
         
+        ride.date = date
+        
         //if date formatter returns nil return the current date/time
-        if let date = dateFormatter.date(from: String(month) + " " + String(day) + " " + String(year)) {
+        /*if let date = dateFormatter.date(from: String(month) + " " + String(day) + " " + String(year)) {
             ride.date = date
             ride.monthNum = month
             ride.day = day
             ride.year = year
-            ride.departureDay = date
+            //ride.departureDate = date
             self.dateValue.text = ride.getDate()
             self.dateValue.isHidden = false
             updateOptions()
             self.table.reloadData()
-        }
+        }*/
     }
     
     //called when a time is chosen
@@ -362,7 +363,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
         ride.hour = comp.hour!
         ride.minute = comp.minute!
         ride.timeStr = timeValue.text!
-        ride.departureTime = obj
+        //ride.departureDate = obj
         updateOptions()
     }
     

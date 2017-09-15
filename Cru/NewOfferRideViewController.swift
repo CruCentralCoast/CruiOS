@@ -55,6 +55,9 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     var CLocation: CLLocation?
     var convertedDict = NSDictionary()
     var fromEventDetails = false
+    var timeComponents: DateComponents?
+    var dateComponents: DateComponents?
+    var localStorageManager: LocalStorageManager!
     
     struct OfferRideConstants{
         static let pageTitle = "Offer Ride"
@@ -139,6 +142,15 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         // If the location dictionary has not been set, set it to the default location
         if convertedDict.count == 0 {
             convertedDict = ["country": "USA", "state": "CA", "street1": "1 Grand Ave", "postcode": "93407", "suburb": "San Luis Obispo"]
+            
+        }
+        
+        
+        //check if user is already in local storage
+        self.localStorageManager = LocalStorageManager()
+        if let user = self.localStorageManager.object(forKey: Config.userStorageKey) as? NSDictionary {
+            self.nameField?.text = user[Config.fullNameKey] as? String ?? ""
+            self.phoneField?.text = user[Config.phoneNoKey] as? String ?? ""
         }
         
     }
@@ -155,7 +167,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
     
-    // MARK: UITextFieldDelegate
+    // MARK: - UITextFieldDelegate Functions
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case nameField!:
@@ -259,7 +272,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         }
     }
     
-    // MARK: Animations
+    // MARK: - Animations
     func highlightField(_ view: UIView) {
         UIView.animate(withDuration: 0.5, animations: {
             view.backgroundColor = CruColors.lightBlue
@@ -275,7 +288,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     
     
     
-    // MARK: Actions
+    // MARK: - Actions
     
     @IBAction func directionChanged(_ sender: SegmentedControl) {
         
@@ -284,6 +297,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         if timeHint.isHidden == false {
             if segmentedControl.getDirection() == "from" {
                 timeHint.text = String("(event ends at \(event.getEndTime())\(event.getEndAmOrPm()))")
+                addressField?.text = event.getLocationString()
                 
                 endDateHint.isHidden = false
                 endDateHint.text = String("(event ends on \(event.getEndDate()))")
@@ -336,7 +350,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         self.navigationController!.popViewController(animated: true)
     }
     
-    // MARK: Validators
+    // MARK: - Validators
     func validateName() -> Bool {
         if (nameField?.text != ""){
             nameField?.text = (nameField?.text)!.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
@@ -407,8 +421,22 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         ride.eventStartDate = event.startNSDate
         ride.eventEndDate = event.endNSDate
         
+        //Combine date and time
+        var mergedComponents = DateComponents()
+        if let dComps = dateComponents {
+            mergedComponents.year = dComps.year
+            mergedComponents.month = dComps.month
+            mergedComponents.day = dComps.day
+        }
+        if let tComps = timeComponents {
+            mergedComponents.hour = tComps.hour
+            mergedComponents.minute = tComps.minute
+        }
+        let calendar = Calendar.current
         
-        if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDate()){
+        let rideDeptDate = calendar.date(from: mergedComponents)!
+        
+        /*if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureDate()){
             ride.day = (components.day)!
             ride.monthNum = (components.month)!
             ride.year = (components.year)!
@@ -417,19 +445,42 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         if let components = GlobalUtils.dateComponentsFromDate(ride.getDepartureTime()){
             ride.hour = (components.hour)!
             ride.minute = (components.minute)!
+        }*/
+        
+        
+        /*ride.date = GlobalUtils.dateFromString(ride.getTimeInServerFormat())*/
+        
+        //var valid = true
+        //Validate time
+        if ride.direction == RideDirection.fromEvent.rawValue {
+            //check if from-event time is before event starts
+            if rideDeptDate.isLessThanDate(ride.eventStartDate) {
+                addTextFieldError(timeLine!)
+                addTextFieldError(dateLine!)
+                showValidationError("Please select a time after the event starts.")
+                return false
+            }
         }
+        else {
+            if rideDeptDate.isGreaterThanDate(ride.eventEndDate) {
+                addTextFieldError(timeLine!)
+                addTextFieldError(dateLine!)
+                showValidationError("Please select a time before the event ends.")
+                return false
+            }
+        }
+        ride.departureDate = rideDeptDate
+        ride.date = rideDeptDate
+        return true
         
-        
-        ride.date = GlobalUtils.dateFromString(ride.getTimeInServerFormat())
-        
-        if (ride.isValidTime() == ""){
+        /*if (ride.isValidTime() == ""){
             return true
         }
         else{
             addTextFieldError(timeLine!)
             showValidationError(ride.isValidTime())
             return false
-        }
+        }*/
     }
     func validateLoc() -> Bool {
         if(convertedDict.count > 0){
@@ -557,9 +608,11 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         ride.eventId = event.id
         ride.eventStartDate = event.startNSDate
         ride.eventEndDate = event.endNSDate
-        ride.departureDay = event.startNSDate
-        ride.departureTime = event.startNSDate.addHours(-1)
         ride.departureDate = event.startNSDate.addHours(-1)
+        
+        let calendar = Calendar.current
+        self.dateComponents = calendar.dateComponents([.year, .month, .day], from: ride.departureDate!)
+        self.timeComponents = calendar.dateComponents([.hour, .minute], from: ride.departureDate!)
         
         //Set the text in the fields
         dateField!.text = ride.getDepartureDay()
@@ -595,21 +648,25 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         }
     }
     
+    // MARK: - Date Handler Function
     //called when a date is chosen
-    func chooseDateHandler(_ month : Int, day : Int, year : Int){
+    func chooseDateHandler(_ date: Date){
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en_US")
         dateFormatter.dateFormat = "MM d yyyy"
         
-        //if date formatter returns nil return the current date/time
-        if let date = dateFormatter.date(from: String(month) + " " + String(day) + " " + String(year)) {
-            ride.date = date
-            ride.monthNum = month
-            ride.day = day
-            ride.year = year
-            ride.departureDay = date
-            self.dateField?.text = ride.getDate()
-        }
+        //let cal = Calender.current
+        let calendar = Calendar.current
+
+        self.dateComponents = calendar.dateComponents([.year, .month, .day], from: date)
+        //ride.date = date
+        ride.monthNum = (dateComponents?.month)!
+        ride.day = (dateComponents?.day)!
+        ride.year = (dateComponents?.year!)!
+        
+        self.dateField?.text = dateFormatter.string(from: date)
+        
+        //self.dateField?.text = ride.getDate()
     }
     
     //called when a time is chosen
@@ -617,12 +674,13 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         let formatter = DateFormatter()
         formatter.dateFormat = "h:mm a"
         timeField!.text = formatter.string(from: obj)
+        
         let calendar = Calendar.current
-        let comp = (calendar as NSCalendar).components([.hour, .minute], from: obj)
-        ride.hour = comp.hour!
-        ride.minute = comp.minute!
+        self.timeComponents = calendar.dateComponents([.hour, .minute], from: obj)
+        
+        ride.hour = timeComponents!.hour!
+        ride.minute = timeComponents!.minute!
         ride.timeStr = (timeField?.text)!
-        ride.departureTime = obj
     }
     
     func dismissLocationPicker(_ sender: UIBarButtonItem) {
@@ -640,7 +698,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         pickupLine.backgroundColor = inactiveGray
     }
     
-    // MARK: Pickup Location Function
+    // MARK: - Pickup Location Function
     //Called when the pickup location text field becomes active
     func presentCustomPicker() {
         let autocompleteController = GMSAutocompleteViewController()

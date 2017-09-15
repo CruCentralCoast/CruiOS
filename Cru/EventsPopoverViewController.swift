@@ -10,10 +10,10 @@ import UIKit
 
 class EventsPopoverViewController: UITableViewController {
     var events = [Event]()
-    var vc: NewOfferRideViewController?
-    var fvc: FilterByEventViewController?
+    weak var vc: NewOfferRideViewController?
+    weak var fvc: FilterByEventViewController?
     //var offerRide: OfferOrEditRideViewController?
-    var offerRide: NewOfferRideViewController?
+    weak var offerRide: NewOfferRideViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
         
