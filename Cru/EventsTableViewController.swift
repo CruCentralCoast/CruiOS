@@ -10,6 +10,7 @@ import UIKit
 import DZNEmptyDataSet
 import MRProgress
 import AlamofireImage
+import Firebase
 
 class EventsTableViewController: UITableViewController, SWRevealViewControllerDelegate, DZNEmptyDataSetDelegate,DZNEmptyDataSetSource {
     
@@ -188,6 +189,9 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
             }
             
             eventDetailViewController.event = selectedEvent
+            
+            //log firebase view change
+            Analytics.logEvent(selectedEvent.name + " Event selected", parameters: nil)
         }
     }
     
@@ -208,7 +212,10 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
                 view.isUserInteractionEnabled = false
             }
         }
+        print("hellllllllo test")
     }
+    
+    
 }
 
 extension EventsTableViewController: UISearchResultsUpdating {

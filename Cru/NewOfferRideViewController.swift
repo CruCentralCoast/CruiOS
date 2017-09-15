@@ -14,7 +14,7 @@ import MRProgress
 import GooglePlaces
 import GooglePlacePicker
 
-class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopoverPresentationControllerDelegate {
+class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     // MARK: Properties
     
@@ -59,6 +59,9 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     var dateComponents: DateComponents?
     var localStorageManager: LocalStorageManager!
     
+    // EVENt PICKER DELCARATION
+    let eventPicker = UIPickerView()
+    
     struct OfferRideConstants{
         static let pageTitle = "Offer Ride"
         static let bottomButton = "Submit"
@@ -90,11 +93,16 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        eventPicker.delegate = self
+        eventPicker.dataSource = self
+        
         //Set the text field delegates to self
         nameField?.delegate = self
         phoneField?.delegate = self
         phoneField?.keyboardType = .numberPad
         eventField?.delegate = self
+        eventField?.inputView = eventPicker
         dateField?.delegate = self
         timeField?.delegate = self
         addressField?.delegate = self
@@ -153,7 +161,17 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             self.phoneField?.text = user[Config.phoneNoKey] as? String ?? ""
         }
         
+        //dimiss keyboard
+        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DismisKeyPadFnc)))
+        
     }
+    
+    // For tapping outside text box
+    func DismisKeyPadFnc(){
+        view.endEditing(true)
+    }
+    
+    
     
     //Asynchronous function that's called to insert an event into the table
     func insertEvent(_ dict : NSDictionary) {
@@ -164,6 +182,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
         if event.rideSharingEnabled == true {
             self.events.insert(event, at: 0)
         }
+        
+        eventPicker.reloadAllComponents()
     }
     
     
@@ -202,9 +222,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             highlightField(phoneLine)
             //phoneLine?.backgroundColor = CruColors.lightBlue
         case eventField!:
-            eventField?.resignFirstResponder()
             highlightField(eventLine)
-            self.performSegue(withIdentifier: OfferRideConstants.chooseEventSegue, sender: self)
             //eventLine?.backgroundColor = CruColors.lightBlue
         case dateField!:
             highlightField(dateLine)
@@ -846,27 +864,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        if segue.identifier == OfferRideConstants.chooseEventSegue{
-            let eventVC = segue.destination as! EventsPopoverViewController
-            eventVC.events = self.events
-            eventVC.offerRide = self
-            
-            eventVC.popoverPresentationController?.sourceView = self.eventField
-            eventVC.preferredContentSize = CGSize(width: self.view.frame.width * 0.75, height: self.view.frame.height * 0.5)
-            eventVC.popoverPresentationController!.sourceRect = CGRect(x: self.view.frame.width / 2, y: 15,width: 0,height: 0)
-            eventVC.popoverPresentationController?.permittedArrowDirections = .up
-            
-            
-            let controller = eventVC.popoverPresentationController
-            
-            if(controller != nil){
-                controller?.delegate = self
-            }
-            
-        }
-        else if(segue.identifier == OfferRideConstants.editRadiusSegue){
+
+        if(segue.identifier == OfferRideConstants.editRadiusSegue){
             let vc = segue.destination as! PickRadiusViewController
             vc.ride = self.ride
             vc.setRadius = setRadius
@@ -888,6 +887,25 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPopov
             }
         }*/
         
+    }
+    
+    
+    // MARK: UIPickerView Delegation
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return events.count
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return events[row].name
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        eventField?.text = events[row].name
     }
     
 

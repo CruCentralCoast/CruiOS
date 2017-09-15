@@ -8,6 +8,10 @@ use_frameworks!
 
 def cru_pods
     pod 'SideMenu', '2.2.0'
+
+    pod 'Firebase/Auth' 
+    pod 'Firebase/RemoteConfig' 
+
     pod 'Firebase/Core'
     pod 'Firebase/Messaging'
     pod 'DatePickerCell'

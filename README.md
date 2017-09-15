@@ -4,10 +4,6 @@ iOS mobile app for Cru Central Coast
 ##How to Build
 * Install CocoaPods
 * Run the command `pod install` in the project directory
-* Open the `Podfile` in the CruiOS directory and add a comment to the line `pod 'Google/CloudMessaging', '1.3.2'`
-* Run `pod install` again
-* Open the `Podfile` in the CruiOS directory and remove the comment you just put in
-* Run `pod install` again
 * Follow the instructions below
 
 ### Notes
