@@ -217,16 +217,12 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
         switch textField {
         case nameField!:
             highlightField(nameLine)
-            //nameLine?.backgroundColor = CruColors.lightBlue
         case phoneField!:
             highlightField(phoneLine)
-            //phoneLine?.backgroundColor = CruColors.lightBlue
         case eventField!:
             highlightField(eventLine)
-            //eventLine?.backgroundColor = CruColors.lightBlue
         case dateField!:
             highlightField(dateLine)
-            //dateLine?.backgroundColor = CruColors.lightBlue
             dateField?.resignFirstResponder()
             TimePicker.pickDate(self, handler: chooseDateHandler)
         case timeField!:
