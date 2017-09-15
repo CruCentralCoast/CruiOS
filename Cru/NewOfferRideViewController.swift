@@ -886,7 +886,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
     }
     
     
-    // MARK: UIPickerView Delegation
+    // MARK: - UIPickerView Delegation
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -902,6 +902,8 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
     
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         eventField?.text = events[row].name
+        event = events[row]
+        syncRideToEvent()
     }
     
 

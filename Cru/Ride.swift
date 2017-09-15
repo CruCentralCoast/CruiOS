@@ -343,7 +343,7 @@ class Ride: Comparable, Equatable, TimeDetail {
     }
     
     func getDate()->String{
-        if(self.departureDate != nil){
+        if(self.departureDate == nil){
             return ""
         }
         else{

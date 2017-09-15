@@ -568,6 +568,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
         ride.monthNum = (dateComponents?.month)!
         ride.day = (dateComponents?.day)!
         ride.year = (dateComponents?.year)!
+        
         self.dateField?.text = dateFormatter.string(from: date)
     }
     
