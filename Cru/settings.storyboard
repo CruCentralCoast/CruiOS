@@ -33,13 +33,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are logged in as:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2y5-u6-yYh">
-                                <rect key="frame" x="219.5" y="191" width="161.5" height="25.5"/>
+                                <rect key="frame" x="219" y="191" width="162" height="26"/>
                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5H-Xb-N4w">
-                                <rect key="frame" x="20" y="224.5" width="560" height="28"/>
+                                <rect key="frame" x="20" y="225" width="560" height="28"/>
                                 <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="24"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -110,13 +110,42 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="campusCell" id="nY6-sZ-CIX">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="campusCell" rowHeight="85" id="nY6-sZ-CIX" customClass="CampusTableViewCell" customModule="Cru" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="85"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nY6-sZ-CIX" id="fhw-zi-5OK">
-                                    <rect key="frame" x="0.0" y="0.0" width="336" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="336" height="85"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CTV-lq-wYs">
+                                            <rect key="frame" x="15" y="10" width="95" height="65"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="65" id="DBL-KJ-cY8"/>
+                                                <constraint firstAttribute="width" constant="95" id="vzR-aa-d6B"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campus Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="4Yf-EO-cIW">
+                                            <rect key="frame" x="125" y="10" width="201" height="65"/>
+                                            <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="CTV-lq-wYs" firstAttribute="leading" secondItem="fhw-zi-5OK" secondAttribute="leading" constant="15" id="B1k-oF-5Ji"/>
+                                        <constraint firstAttribute="trailing" secondItem="4Yf-EO-cIW" secondAttribute="trailing" constant="10" id="H3B-85-Bea"/>
+                                        <constraint firstItem="4Yf-EO-cIW" firstAttribute="top" secondItem="fhw-zi-5OK" secondAttribute="top" constant="10" id="OCk-5n-8Dh"/>
+                                        <constraint firstItem="4Yf-EO-cIW" firstAttribute="leading" secondItem="CTV-lq-wYs" secondAttribute="trailing" constant="15" id="Syu-Bd-KJq"/>
+                                        <constraint firstAttribute="bottom" secondItem="CTV-lq-wYs" secondAttribute="bottom" constant="10" id="Uaa-HS-MHD"/>
+                                        <constraint firstAttribute="bottom" secondItem="4Yf-EO-cIW" secondAttribute="bottom" constant="10" id="VAS-VV-2Ko"/>
+                                        <constraint firstItem="4Yf-EO-cIW" firstAttribute="centerY" secondItem="CTV-lq-wYs" secondAttribute="centerY" id="YhV-Q2-3IQ"/>
+                                        <constraint firstItem="CTV-lq-wYs" firstAttribute="top" secondItem="fhw-zi-5OK" secondAttribute="top" constant="10" id="oJf-gD-fcg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="campusImage" destination="CTV-lq-wYs" id="goV-zE-TI7"/>
+                                    <outlet property="nameLabel" destination="4Yf-EO-cIW" id="zZf-xT-fLT"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -124,9 +153,7 @@
                             <outlet property="delegate" destination="bJN-X4-sJv" id="KpL-qi-2qG"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem title="Item" id="tBv-cz-xeS"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="d4U-vG-YDb">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="lgZ-Hy-HWv">
                             <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -150,7 +177,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NZA-W6-Zbq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2016" y="3712"/>
+            <point key="canvasLocation" x="2015.2" y="3711.9940029985009"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qJn-cj-1gx">
@@ -201,7 +228,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change campuses" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ciJ-bY-VZZ">
-                                                    <rect key="frame" x="86" y="19.5" width="143" height="25.5"/>
+                                                    <rect key="frame" x="86" y="19" width="143" height="26"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -239,7 +266,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change ministries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LXR-rc-Imc">
-                                                    <rect key="frame" x="88" y="19.5" width="141" height="25.5"/>
+                                                    <rect key="frame" x="88" y="19" width="141" height="26"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -264,7 +291,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nV4-Bf-Ip8">
-                                                    <rect key="frame" x="88" y="19.5" width="48.5" height="25.5"/>
+                                                    <rect key="frame" x="88" y="19" width="49" height="26"/>
                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -316,34 +343,35 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ministryCell" rowHeight="86" id="iif-Uw-TNb" customClass="MinistryTableViewCell" customModule="Cru" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="40" width="314" height="86"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ministryCell" rowHeight="80" id="iif-Uw-TNb" customClass="MinistryTableViewCell" customModule="Cru" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="40" width="314" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iif-Uw-TNb" id="iBc-Ff-t7N">
-                                    <rect key="frame" x="0.0" y="0.0" width="314" height="86"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="314" height="80"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="FFL-5f-ZgC">
-                                            <rect key="frame" x="118" y="21" width="182" height="44"/>
-                                            <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="17"/>
+                                            <rect key="frame" x="112" y="10" width="192" height="61"/>
+                                            <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1L6-ev-Vm3">
-                                            <rect key="frame" x="23" y="8" width="80" height="70"/>
+                                            <rect key="frame" x="20" y="10" width="77" height="61"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="80" id="yrS-Eh-Oya"/>
+                                                <constraint firstAttribute="height" constant="61" id="62X-kO-qrB"/>
+                                                <constraint firstAttribute="width" constant="77" id="yrS-Eh-Oya"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="FFL-5f-ZgC" firstAttribute="centerY" secondItem="1L6-ev-Vm3" secondAttribute="centerY" id="0By-vE-Pch"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="1L6-ev-Vm3" secondAttribute="bottom" id="904-hv-MOM"/>
-                                        <constraint firstItem="1L6-ev-Vm3" firstAttribute="leading" secondItem="iBc-Ff-t7N" secondAttribute="leadingMargin" constant="15" id="KMe-DS-wqa"/>
-                                        <constraint firstItem="1L6-ev-Vm3" firstAttribute="top" secondItem="iBc-Ff-t7N" secondAttribute="topMargin" id="QGL-TK-Lr0"/>
-                                        <constraint firstItem="FFL-5f-ZgC" firstAttribute="top" secondItem="iBc-Ff-t7N" secondAttribute="topMargin" constant="13" id="WCd-Ml-TXe"/>
-                                        <constraint firstItem="FFL-5f-ZgC" firstAttribute="centerY" secondItem="iBc-Ff-t7N" secondAttribute="centerY" id="c9M-pG-jh5"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="FFL-5f-ZgC" secondAttribute="trailing" constant="6" id="eKE-z5-VCV"/>
+                                        <constraint firstAttribute="bottom" secondItem="1L6-ev-Vm3" secondAttribute="bottom" constant="10" id="904-hv-MOM"/>
+                                        <constraint firstItem="FFL-5f-ZgC" firstAttribute="top" secondItem="iBc-Ff-t7N" secondAttribute="top" constant="10" id="F6A-sI-jtJ"/>
+                                        <constraint firstItem="1L6-ev-Vm3" firstAttribute="leading" secondItem="iBc-Ff-t7N" secondAttribute="leading" constant="20" id="KMe-DS-wqa"/>
+                                        <constraint firstItem="1L6-ev-Vm3" firstAttribute="top" secondItem="iBc-Ff-t7N" secondAttribute="top" constant="10" id="QGL-TK-Lr0"/>
+                                        <constraint firstAttribute="bottom" secondItem="FFL-5f-ZgC" secondAttribute="bottom" constant="10" id="Uou-67-nXn"/>
+                                        <constraint firstAttribute="trailing" secondItem="FFL-5f-ZgC" secondAttribute="trailing" constant="10" id="eKE-z5-VCV"/>
                                         <constraint firstItem="FFL-5f-ZgC" firstAttribute="leading" secondItem="1L6-ev-Vm3" secondAttribute="trailing" constant="15" id="srG-yv-Jet"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -386,7 +414,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DE7-ks-fZT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2705" y="4246.5"/>
+            <point key="canvasLocation" x="2704" y="4246.3268365817094"/>
         </scene>
         <!--Submit Information View Controller-->
         <scene sceneID="DUi-Jd-ib3">
@@ -456,7 +484,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D5r-eY-rQq">
-                                        <rect key="frame" x="15" y="118" width="86.5" height="16"/>
+                                        <rect key="frame" x="15" y="118" width="87" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="fr2-te-NTJ"/>
                                         </constraints>
@@ -511,7 +539,7 @@
                                         </variation>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="* required field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QNH-Ed-7zH">
-                                        <rect key="frame" x="121.5" y="118" width="166.5" height="16"/>
+                                        <rect key="frame" x="122" y="118" width="166" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="un8-Ex-Iay"/>
                                         </constraints>
@@ -649,7 +677,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pbf-6G-7qj">
-                                <rect key="frame" x="20" y="261" width="66.5" height="20"/>
+                                <rect key="frame" x="20" y="261" width="67" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="d85-XZ-r0A"/>
                                 </constraints>
@@ -676,7 +704,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="* required field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qq1-sv-Ufm">
-                                <rect key="frame" x="106.5" y="261" width="248.5" height="20"/>
+                                <rect key="frame" x="107" y="261" width="248" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="3LR-WJ-sdc"/>
                                 </constraints>

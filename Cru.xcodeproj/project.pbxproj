@@ -304,6 +304,8 @@
 		6DD13BC11F4E3F9A00F60B6B /* ImageUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */; };
 		6DDDAAF01F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */; };
 		6DDDAAF11F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */; };
+		6DE0E4B11F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0E4B01F6C6D6E0092E46B /* CampusTableViewCell.swift */; };
+		6DE0E4B21F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0E4B01F6C6D6E0092E46B /* CampusTableViewCell.swift */; };
 		6DF096FA1D92CED80053741A /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF096F91D92CED80053741A /* about.storyboard */; };
 		6DF096FB1D92CED80053741A /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF096F91D92CED80053741A /* about.storyboard */; };
 		6DF5177A1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */; };
@@ -581,6 +583,7 @@
 		6DD13BBF1F4E3F9A00F60B6B /* ImageUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageUtils.swift; sourceTree = "<group>"; };
 		6DD13BC21F4EA1DD00F60B6B /* Cru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cru.entitlements; sourceTree = "<group>"; };
 		6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmJoinGroupViewController.swift; sourceTree = "<group>"; };
+		6DE0E4B01F6C6D6E0092E46B /* CampusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusTableViewCell.swift; sourceTree = "<group>"; };
 		6DF096F91D92CED80053741A /* about.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTableViewCell.swift; sourceTree = "<group>"; };
 		6DFAAAF71F46622700D706C0 /* CommunityGroupNoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupNoImageCell.swift; sourceTree = "<group>"; };
@@ -968,13 +971,13 @@
 		50ED8FDB1C052AFB002C9E30 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				6DE0E4B31F6C6F0D0092E46B /* Models */,
 				50A38FE81C5F0D960013BFBD /* MinistryTableViewCell.swift */,
 				50ED8FED1C052C65002C9E30 /* settings.storyboard */,
 				C1D9078D1C88F8C800FDC096 /* SettingsTableViewController.swift */,
 				5026094F1C066D1F0019E97C /* CampusesTableViewController.swift */,
+				6DE0E4B01F6C6D6E0092E46B /* CampusTableViewCell.swift */,
 				50FE4D3E1C50CE5100EA9042 /* MinistryTableViewController.swift */,
-				50A341CD1C0C10F3006B73DB /* Campus.swift */,
-				50FE4D461C50D37C00EA9042 /* Ministry.swift */,
 				C151D9B31C7D2D870067A29E /* LoginViewController.swift */,
 				C172470F1C8BDB8A00A794D4 /* LogoutViewController.swift */,
 				C1536D541CFD192400730281 /* SubscriptionProtocol.swift */,
@@ -1133,6 +1136,15 @@
 				6DA330AA1CD95E1200FCC970 /* ResourceTest.swift */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		6DE0E4B31F6C6F0D0092E46B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				50A341CD1C0C10F3006B73DB /* Campus.swift */,
+				50FE4D461C50D37C00EA9042 /* Ministry.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		6DF096FC1D92CEDE0053741A /* About */ = {
@@ -1778,6 +1790,7 @@
 				6D01D8411D845588006A9AC0 /* ResourceTag.swift in Sources */,
 				C185BB391CD2904F00787153 /* FakeServerClient.swift in Sources */,
 				50B1D3CB1CED76D60014EE1B /* CommunityGroup.swift in Sources */,
+				6DE0E4B11F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */,
 				6D01D83E1D8440E5006A9AC0 /* CustomPresentAnimationController.swift in Sources */,
 				6D10D5EF1D92F525008265AD /* AboutViewController.swift in Sources */,
 				C12C0A871C941E9C005751A0 /* DBCollection.swift in Sources */,
@@ -1791,6 +1804,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50FAC0401CFBD68000E93E89 /* RideJoinViewController.swift in Sources */,
+				6DE0E4B21F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */,
 				C1EF49041CDBE08C009439FE /* TimePicker.swift in Sources */,
 				50697BC51CE03B5600776CC5 /* PassengersViewController.swift in Sources */,
 				C12562551CD3E77B002B05D0 /* SWRevealViewController.h in Sources */,

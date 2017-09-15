@@ -7,34 +7,52 @@
 //
 
 import Foundation
+//use to parse community group data to and from keystone db
+struct CampusKeys {
+    static let id = "_id"
+    static let name = "name"
+    static let url = "url"
+    static let imageURL = "imageLink"
+    static let location = "location"
+}
 
 class Campus: NSObject, NSCoding, Comparable {
     let name: String!
     let id: String!
     var feedEnabled: Bool!
+    var imageURL: String!
     
     required init?(coder aDecoder: NSCoder) {
         name = aDecoder.decodeObject(forKey: "name") as! String
         id = aDecoder.decodeObject(forKey: "id") as! String
         feedEnabled = aDecoder.decodeObject(forKey: "feedEnabled") as! Bool
+        if aDecoder.containsValue(forKey: "imageURL") {
+            imageURL = aDecoder.decodeObject(forKey: "imageURL") as! String
+        }
+        else {
+            imageURL = ""
+        }
     }
     
     func encode(with aCoder: NSCoder) {
         aCoder.encode(name, forKey: "name")
         aCoder.encode(id, forKey: "id")
         aCoder.encode(feedEnabled, forKey: "feedEnabled")
+        aCoder.encode(imageURL, forKey: "imageURL")
     }
 
-    init(name: String, id: String, feedEnabled: Bool){
+    init(name: String, id: String, feedEnabled: Bool, imageURL: String){
         self.name = name
         self.id = id
         self.feedEnabled = feedEnabled
+        self.imageURL = imageURL
     }
     
-    init(name: String, id: String){
+    init(name: String, id: String, imageURL: String){
         self.name = name
         self.id = id
         self.feedEnabled = false
+        self.imageURL = imageURL
     }
     
     override func isEqual(_ object: Any?) -> Bool {

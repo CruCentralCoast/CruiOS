@@ -252,7 +252,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int)
     {
         let header = view as! UITableViewHeaderFooterView
-        header.textLabel?.font = UIFont(name: Config.fontName, size: 20)!
+        header.textLabel?.font = UIFont(name: Config.fontBold, size: 20)!
         header.textLabel?.textColor = UIColor.black
     }
     

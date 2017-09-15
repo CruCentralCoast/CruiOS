@@ -8,7 +8,7 @@
 
 import UIKit
 import DZNEmptyDataSet
-
+import AlamofireImage
 
 class CampusesTableViewController: UITableViewController, UISearchResultsUpdating, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource   {
     var campuses = Set<Campus>()
@@ -44,6 +44,8 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
         //setupSearchBar()
         self.tableView.reloadData()
         
+        self.tableView.estimatedRowHeight = 100
+        
     }
     // MARK: - Connection Check and Inserting Data
     func finishConnectionCheck(_ connected: Bool){
@@ -77,10 +79,18 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     func insertCampus(_ dict : NSDictionary) {
         self.tableView.beginUpdates()
         
-        let campusName = dict["name"] as! String
-        let campusId = dict["_id"] as! String
+        let campusName = dict[CampusKeys.name] as! String
+        let campusId = dict[CampusKeys.id] as! String
+        var imageURL = dict[CampusKeys.imageURL] as! String
         
-        let curCamp = Campus(name: campusName, id: campusId)
+        // Manually trim the image url
+        //let imageURL = imgURL.trimmingCharacters(in: .init(charactersIn: String("/")))
+        print(imageURL.substring(to: imageURL.index(imageURL.startIndex, offsetBy: 4)))
+        if imageURL.substring(to: imageURL.index(imageURL.startIndex, offsetBy: 4)) != "http" {
+            imageURL = "http:" + imageURL
+        }
+        
+        let curCamp = Campus(name: campusName, id: campusId, imageURL: imageURL)
         let enabledCampuses = CruClients.getSubscriptionManager().loadCampuses()
         if(enabledCampuses.contains(curCamp)){
             curCamp.feedEnabled = true
@@ -144,14 +154,22 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "campusCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "campusCell", for: indexPath) as! CampusTableViewCell
 
             let thisCampus = campuses[campuses.index(campuses.startIndex, offsetBy: indexPath.row)]
+        
             
-            cell.textLabel?.text = thisCampus.name
-            
+            cell.nameLabel.text = thisCampus.name
+        print("image url: \(thisCampus.imageURL!)")
+            let urlRequest = URLRequest(url: URL(string: thisCampus.imageURL!)!)
+            CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
+                if let image = response.result.value {
+                    cell.campusImage.image = image
+                }
+            }
+        
             //display add-ons
-            cell.textLabel?.font = UIFont(name: Config.fontName, size: 20)
+            //cell.textLabel?.font = UIFont(name: Config.fontName, size: 20)
             //cell.textLabel?.textColor = Config.introModalContentTextColor
             cell.textLabel?.textColor = UIColor.black
             
