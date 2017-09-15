@@ -31,7 +31,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="736"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9Z-Ze-51u">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="532"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="544"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Time/Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0s-zt-xf5">
                                                 <rect key="frame" x="66" y="314" width="106" height="23"/>
@@ -46,14 +46,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Some description of event" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-HW-5q5">
-                                                <rect key="frame" x="28" y="402.5" width="544" height="35.5"/>
+                                                <rect key="frame" x="28" y="403" width="544" height="36"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
                                             </textView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXx-rm-aET" userLabel="SeparatorTop">
-                                                <rect key="frame" x="20" y="392.5" width="560" height="2"/>
+                                                <rect key="frame" x="20" y="393" width="560" height="2"/>
                                                 <color key="backgroundColor" red="0.97647058823529409" green="0.70980392156862748" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -61,7 +61,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ah-5N-RBw" userLabel="SeparatorBottom">
-                                                <rect key="frame" x="20" y="446" width="560" height="2"/>
+                                                <rect key="frame" x="20" y="447" width="560" height="2"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -69,21 +69,21 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time/Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEf-UI-Hk1">
-                                                <rect key="frame" x="66" y="285" width="113.5" height="23"/>
+                                                <rect key="frame" x="66" y="285" width="114" height="23"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZc-AB-fyb">
-                                                <rect key="frame" x="516" y="458" width="64" height="64"/>
+                                                <rect key="frame" x="510" y="459" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="9eA-pS-bMe"/>
-                                                    <constraint firstAttribute="width" constant="64" id="J1y-o6-jwT"/>
+                                                    <constraint firstAttribute="width" constant="70" id="J1y-o6-jwT"/>
                                                     <constraint firstAttribute="width" secondItem="AZc-AB-fyb" secondAttribute="height" multiplier="1:1" id="pSu-uf-XWD"/>
                                                     <constraint firstAttribute="height" constant="80" id="vsq-dB-ao2"/>
-                                                    <constraint firstAttribute="height" constant="64" id="xnd-LG-PeG"/>
+                                                    <constraint firstAttribute="height" constant="70" id="xnd-LG-PeG"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" backgroundImage="facebookIcon">
+                                                <state key="normal" title="Button" image="facebookIcon">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <variation key="default">
@@ -97,15 +97,15 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwr-il-7OQ">
-                                                <rect key="frame" x="20" y="458" width="64" height="64"/>
+                                                <rect key="frame" x="20" y="459" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="3Up-pz-rex"/>
-                                                    <constraint firstAttribute="height" constant="64" id="HOv-hX-rFN"/>
+                                                    <constraint firstAttribute="height" constant="70" id="HOv-hX-rFN"/>
                                                     <constraint firstAttribute="height" constant="80" id="HU2-th-OAS"/>
-                                                    <constraint firstAttribute="width" constant="64" id="TKE-9I-hyS"/>
+                                                    <constraint firstAttribute="width" constant="70" id="TKE-9I-hyS"/>
                                                     <constraint firstAttribute="width" secondItem="pwr-il-7OQ" secondAttribute="height" multiplier="1:1" id="U8w-2N-0j2"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" backgroundImage="add-to-calendar">
+                                                <state key="normal" title="Button" image="add-to-calendar">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <variation key="default">
@@ -119,15 +119,15 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-wO-gTI">
-                                                <rect key="frame" x="92" y="458" width="64" height="64"/>
+                                                <rect key="frame" x="98" y="459" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ghp-wO-gTI" secondAttribute="height" multiplier="1:1" id="Mra-93-MVF"/>
-                                                    <constraint firstAttribute="width" constant="64" id="Va1-tz-Dbx"/>
+                                                    <constraint firstAttribute="width" constant="70" id="Va1-tz-Dbx"/>
                                                     <constraint firstAttribute="width" constant="80" id="cHk-7k-E01"/>
-                                                    <constraint firstAttribute="height" constant="64" id="pC1-sE-Dua"/>
+                                                    <constraint firstAttribute="height" constant="70" id="pC1-sE-Dua"/>
                                                     <constraint firstAttribute="height" constant="80" id="tu6-iS-xET"/>
                                                 </constraints>
-                                                <state key="normal" title="offer ride" backgroundImage="offerRideForEvent">
+                                                <state key="normal" title="offer ride" image="offerRideForEvent">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <variation key="default">
@@ -141,15 +141,15 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Er-G8-5WP">
-                                                <rect key="frame" x="164" y="458" width="64" height="64"/>
+                                                <rect key="frame" x="176" y="459" width="70" height="70"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="64" id="5xq-Qz-HFO"/>
+                                                    <constraint firstAttribute="width" constant="70" id="5xq-Qz-HFO"/>
                                                     <constraint firstAttribute="height" constant="80" id="Sy4-8T-aRJ"/>
                                                     <constraint firstAttribute="width" constant="80" id="Xcn-8l-MdK"/>
-                                                    <constraint firstAttribute="height" constant="64" id="ftk-6y-f2l"/>
+                                                    <constraint firstAttribute="height" constant="70" id="ftk-6y-f2l"/>
                                                     <constraint firstAttribute="width" secondItem="1Er-G8-5WP" secondAttribute="height" multiplier="1:1" id="h92-ld-uXl"/>
                                                 </constraints>
-                                                <state key="normal" title="find ride" backgroundImage="findrideforevent">
+                                                <state key="normal" title="find ride" image="findrideforevent">
                                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <variation key="default">
@@ -196,7 +196,7 @@
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Location" translatesAutoresizingMaskIntoConstraints="NO" id="ZLd-HH-Hma">
-                                                <rect key="frame" x="65" y="345" width="469" height="39.5"/>
+                                                <rect key="frame" x="65" y="345" width="469" height="40"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -211,10 +211,10 @@
                                             <constraint firstItem="aEf-UI-Hk1" firstAttribute="leading" secondItem="u9Z-Ze-51u" secondAttribute="leading" constant="20" id="5bi-bS-2f4"/>
                                             <constraint firstItem="WYR-HW-5q5" firstAttribute="leading" secondItem="u9Z-Ze-51u" secondAttribute="leadingMargin" constant="20" id="8Hi-6k-pKX"/>
                                             <constraint firstItem="pwr-il-7OQ" firstAttribute="top" secondItem="2Ah-5N-RBw" secondAttribute="bottom" constant="10" id="8fP-jy-fhN"/>
-                                            <constraint firstAttribute="bottom" secondItem="1Er-G8-5WP" secondAttribute="bottom" constant="10" id="97d-YN-gUS"/>
+                                            <constraint firstAttribute="bottom" secondItem="1Er-G8-5WP" secondAttribute="bottom" constant="15" id="97d-YN-gUS"/>
                                             <constraint firstItem="Ghp-wO-gTI" firstAttribute="leading" secondItem="pwr-il-7OQ" secondAttribute="trailing" constant="8" id="9TR-YE-wTU"/>
                                             <constraint firstItem="n6P-F9-53s" firstAttribute="top" secondItem="u9Z-Ze-51u" secondAttribute="top" id="ANN-JG-HOF"/>
-                                            <constraint firstAttribute="bottom" secondItem="AZc-AB-fyb" secondAttribute="bottom" constant="10" id="E5s-XF-02l"/>
+                                            <constraint firstAttribute="bottom" secondItem="AZc-AB-fyb" secondAttribute="bottom" constant="15" id="E5s-XF-02l"/>
                                             <constraint firstItem="oFv-fY-KJE" firstAttribute="leading" secondItem="u9Z-Ze-51u" secondAttribute="leading" constant="40" id="EwZ-6j-MzT"/>
                                             <constraint firstItem="g6S-V1-nCH" firstAttribute="leading" secondItem="u9Z-Ze-51u" secondAttribute="leading" constant="36" id="FEw-RN-hsj"/>
                                             <constraint firstItem="1Er-G8-5WP" firstAttribute="top" secondItem="2Ah-5N-RBw" secondAttribute="bottom" constant="10" id="FL4-St-Qci"/>
@@ -236,7 +236,7 @@
                                             <constraint firstItem="AZc-AB-fyb" firstAttribute="leading" secondItem="1Er-G8-5WP" secondAttribute="trailing" constant="10" id="f2D-TK-PCH"/>
                                             <constraint firstItem="Ghp-wO-gTI" firstAttribute="leading" secondItem="pwr-il-7OQ" secondAttribute="trailing" constant="8" id="fM5-lX-e95"/>
                                             <constraint firstAttribute="trailing" secondItem="2Ah-5N-RBw" secondAttribute="trailing" constant="20" id="gHs-6W-GdY"/>
-                                            <constraint firstAttribute="bottom" secondItem="pwr-il-7OQ" secondAttribute="bottom" constant="10" id="gYD-LE-5Rf"/>
+                                            <constraint firstAttribute="bottom" secondItem="pwr-il-7OQ" secondAttribute="bottom" constant="15" id="gYD-LE-5Rf"/>
                                             <constraint firstItem="oFv-fY-KJE" firstAttribute="top" secondItem="ZLd-HH-Hma" secondAttribute="top" constant="8" id="hi1-7a-rOJ"/>
                                             <constraint firstItem="2Ah-5N-RBw" firstAttribute="top" secondItem="WYR-HW-5q5" secondAttribute="bottom" constant="8" id="k7k-n8-nfk"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="WYR-HW-5q5" secondAttribute="trailing" constant="20" id="kUy-Dz-bcn"/>
@@ -246,7 +246,7 @@
                                             <constraint firstItem="Ghp-wO-gTI" firstAttribute="top" secondItem="2Ah-5N-RBw" secondAttribute="bottom" constant="10" id="oTk-mg-9dZ"/>
                                             <constraint firstItem="cXx-rm-aET" firstAttribute="leading" secondItem="u9Z-Ze-51u" secondAttribute="leading" constant="20" id="q9w-VA-sTS"/>
                                             <constraint firstItem="aEf-UI-Hk1" firstAttribute="leading" secondItem="giq-lq-zzL" secondAttribute="trailing" constant="10" id="qe6-BQ-gXb"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ghp-wO-gTI" secondAttribute="bottom" constant="10" id="qlw-CX-0I5"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ghp-wO-gTI" secondAttribute="bottom" constant="15" id="qlw-CX-0I5"/>
                                             <constraint firstAttribute="trailing" secondItem="ZLd-HH-Hma" secondAttribute="trailing" constant="66" id="s20-oi-WE0"/>
                                             <constraint firstItem="WYR-HW-5q5" firstAttribute="top" secondItem="cXx-rm-aET" secondAttribute="bottom" constant="8" id="shQ-Cb-jU1"/>
                                             <constraint firstItem="pwr-il-7OQ" firstAttribute="leading" secondItem="u9Z-Ze-51u" secondAttribute="leading" constant="20" id="thZ-Ux-HO0"/>
@@ -504,7 +504,7 @@
             <objects>
                 <navigationController storyboardIdentifier="eventsStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="9md-EW-UdK" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="y3e-p6-BTq">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="y3e-p6-BTq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -524,14 +524,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add-to-calendar" width="40" height="40"/>
+        <image name="add-to-calendar" width="51" height="79"/>
         <image name="calendar" width="16" height="17"/>
         <image name="event2" width="300" height="150"/>
-        <image name="facebookIcon" width="40" height="40"/>
-        <image name="findrideforevent" width="40" height="40"/>
+        <image name="facebookIcon" width="55" height="79"/>
+        <image name="findrideforevent" width="47" height="76"/>
         <image name="map" width="10" height="15"/>
         <image name="menuIcon" width="27" height="18"/>
-        <image name="offerRideForEvent" width="40" height="40"/>
+        <image name="offerRideForEvent" width="47" height="76"/>
         <image name="time" width="15" height="15"/>
     </resources>
 </document>

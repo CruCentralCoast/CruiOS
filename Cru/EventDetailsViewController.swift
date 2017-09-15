@@ -56,6 +56,10 @@ class EventDetailsViewController: UIViewController {
         //initialize the view
         initializeView()
         setButtonConstraints(UIScreen.main.bounds.width)
+        calendarButton.imageView?.contentMode = .scaleAspectFit
+        findRideButton.imageView?.contentMode = .scaleAspectFit
+        offerRideButton.imageView?.contentMode = .scaleAspectFit
+        fbButton.imageView?.contentMode = .scaleAspectFit
         
         //Disable the ride sharing buttons if user is already driving/is passenger
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
@@ -134,6 +138,8 @@ class EventDetailsViewController: UIViewController {
             locationText = event.getLocationString()
         }
         location2.text = locationText
+        location2.textContainerInset = UIEdgeInsets.zero
+        location2.textContainer.lineFragmentPadding = 0
         
         //If there's no Facebook event, disable the button
         if event.url == "" {
@@ -295,7 +301,7 @@ class EventDetailsViewController: UIViewController {
         
         calendarButton.removeTarget(nil, action: nil, for: UIControlEvents.allEvents)
         calendarButton.addTarget(self, action: Selector(action), for: .touchUpInside)
-        calendarButton.setBackgroundImage(buttonImage, for: UIControlState())
+        calendarButton.setImage(buttonImage, for: UIControlState())
     }
 
     //This function opens the ridesharing section of the application
