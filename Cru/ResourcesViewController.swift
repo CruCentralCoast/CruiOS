@@ -162,6 +162,36 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
 
     }
     
+    //Test to make sure there is a connection then load resources
+    func finishConnectionCheck(_ connected: Bool){
+        if(!connected){
+            hasConnection = false
+            self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
+            self.tableView.emptyDataSetDelegate = self
+            self.tableView.emptyDataSetSource = self
+            self.tableView.reloadData()
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            
+            MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+            overlayRunning = true
+            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
+            //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
+            
+            //Also get resource tags and store them
+            serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
+                //Hide the community leader tag if the user isn't logged in
+                if GlobalUtils.loadString(Config.userID) == "" && GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader){
+                    let index = self.tags.index(where: {$0.title == "Leader (password needed)"})
+                    self.tags.remove(at: index!)
+                    
+                }
+            })
+        }
+        
+    }
+    
     /* Don't load anymore youtube resources */
     override func didReceiveMemoryWarning() {
         memoryWarning = true
@@ -171,14 +201,9 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    func addLeaderTab() {
-        let articleTab = UITabBarItem(title: "Articles", image: UIImage(named: "article"), tag: 0)
-        let videoTab = UITabBarItem(title: "Video", image: UIImage(named: "video"), tag: 1)
-        let audioTab = UITabBarItem(title: "Audio", image: UIImage(named: "audio"), tag: 2)
-        
-        let leaderTab = UITabBarItem(title: "Leader", image: UIImage(named: "community-group-icon"), tag: 3)
-        selectorBar.setItems([articleTab, videoTab, audioTab, leaderTab], animated: true)
-    }
+    
+    
+    // MARK: - Empty Data Set Functions
     
     /* Function for the empty data set */
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
@@ -219,44 +244,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         return noResultsString
     }
     
-    //Test to make sure there is a connection then load resources
-    func finishConnectionCheck(_ connected: Bool){
-        if(!connected){
-            hasConnection = false
-            self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
-            self.tableView.emptyDataSetDelegate = self
-            self.tableView.emptyDataSetSource = self
-            self.tableView.reloadData()
-            //hasConnection = false
-        }else{
-            hasConnection = true
-            
-            MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-            overlayRunning = true
-            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
-            //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
-            
-            //Also get resource tags and store them
-            serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
-                //Hide the community leader tag if the user isn't logged in
-                if GlobalUtils.loadString(Config.userID) == "" && GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader){
-                    let index = self.tags.index(where: {$0.title == "Leader (password needed)"})
-                    self.tags.remove(at: index!)
-                    
-                }
-            })
-        }
-        
-    }
-    
-    func insertResourceTag(_ dict : NSDictionary) {
-        let tag = ResourceTag(dict: dict)!
-        tags.insert(tag, at: 0)
-        
-        
-    }
     
     
+    
+    // MARK: - Tab Bar Functions
     //Code for the bar at the top of the view for filtering resources
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         var newType: ResourceType
@@ -299,6 +290,24 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         self.tableView.reloadData()
     }
     
+    func addLeaderTab() {
+        let articleTab = UITabBarItem(title: "Articles", image: UIImage(named: "article"), tag: 0)
+        let videoTab = UITabBarItem(title: "Video", image: UIImage(named: "video"), tag: 1)
+        let audioTab = UITabBarItem(title: "Audio", image: UIImage(named: "audio"), tag: 2)
+        
+        let leaderTab = UITabBarItem(title: "Leader", image: UIImage(named: "community-group-icon"), tag: 3)
+        selectorBar.setItems([articleTab, videoTab, audioTab, leaderTab], animated: true)
+    }
+    
+    // MARK: - Insert Functions
+    
+    func insertResourceTag(_ dict : NSDictionary) {
+        let tag = ResourceTag(dict: dict)!
+        tags.insert(tag, at: 0)
+        
+        
+    }
+    
     //Get resources from database
     func insertResource(_ dict : NSDictionary) {
         let resource = Resource(dict: dict)!
@@ -328,8 +337,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     /* Creates new Audio object and inserts into table if necessary*/
     fileprivate func insertAudio(_ resource: Resource, completionHandler: (Bool) -> Void) {
-        let newAud = Audio(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, restricted: resource.restricted)!
+        let newAud = Audio(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, restricted: resource.restricted)
+        newAud.prepareAudioFile()
         audioFiles.append(newAud)
+        
         self.tableView.reloadData()
     }
     
@@ -741,7 +752,8 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 
                 cell.date.text = GlobalUtils.stringFromDate(aud.date, format: dateFormatString)
                 cell.title.text = aud.title
-                cell.audioString = aud.url
+                //cell.audioString = aud.url
+                cell.audio = aud
                 
                 cell.card.layer.shadowColor = UIColor.black.cgColor
                 cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)

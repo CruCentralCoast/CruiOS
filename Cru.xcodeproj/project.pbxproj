@@ -306,6 +306,8 @@
 		6DDDAAF11F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */; };
 		6DE0E4B11F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0E4B01F6C6D6E0092E46B /* CampusTableViewCell.swift */; };
 		6DE0E4B21F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0E4B01F6C6D6E0092E46B /* CampusTableViewCell.swift */; };
+		6DE0E4B81F6C959C0092E46B /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0E4B71F6C959C0092E46B /* AudioManager.swift */; };
+		6DE0E4B91F6C959C0092E46B /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE0E4B71F6C959C0092E46B /* AudioManager.swift */; };
 		6DF096FA1D92CED80053741A /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF096F91D92CED80053741A /* about.storyboard */; };
 		6DF096FB1D92CED80053741A /* about.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6DF096F91D92CED80053741A /* about.storyboard */; };
 		6DF5177A1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */; };
@@ -584,6 +586,7 @@
 		6DD13BC21F4EA1DD00F60B6B /* Cru.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cru.entitlements; sourceTree = "<group>"; };
 		6DDDAAEF1F4A3B1A00FD3762 /* ConfirmJoinGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmJoinGroupViewController.swift; sourceTree = "<group>"; };
 		6DE0E4B01F6C6D6E0092E46B /* CampusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusTableViewCell.swift; sourceTree = "<group>"; };
+		6DE0E4B71F6C959C0092E46B /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		6DF096F91D92CED80053741A /* about.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = about.storyboard; sourceTree = "<group>"; };
 		6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeTableViewCell.swift; sourceTree = "<group>"; };
 		6DFAAAF71F46622700D706C0 /* CommunityGroupNoImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupNoImageCell.swift; sourceTree = "<group>"; };
@@ -1022,6 +1025,7 @@
 				50F8251E1C0BB965005396BC /* resources.storyboard */,
 				6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */,
 				6D424DDA1E6E1E0100496301 /* CustomWebViewController.swift */,
+				6DE0E4B71F6C959C0092E46B /* AudioManager.swift */,
 				6D01D8371D81B5D5006A9AC0 /* SearchModalViewController.swift */,
 				6D2B4FC41D854B770009DC2D /* ResourceTagTableView.swift */,
 				6D2B4FC11D8549D00009DC2D /* ResourceTagTableViewCell.swift */,
@@ -1714,6 +1718,7 @@
 				0FC8E3B21C48750A007A7208 /* IntroViewController.swift in Sources */,
 				6D94BD021D2451CA0063CED8 /* ScrollViewController.swift in Sources */,
 				6DBA69FD1F6B01090006036F /* Direction.swift in Sources */,
+				6DE0E4B81F6C959C0092E46B /* AudioManager.swift in Sources */,
 				6D2B4FC21D8549D00009DC2D /* ResourceTagTableViewCell.swift in Sources */,
 				E9CB00341C8F7E04000F7E12 /* SummerMissionDetailController.swift in Sources */,
 				50697BC11CE0303B00776CC5 /* DetailCell.swift in Sources */,
@@ -1805,6 +1810,7 @@
 			files = (
 				50FAC0401CFBD68000E93E89 /* RideJoinViewController.swift in Sources */,
 				6DE0E4B21F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */,
+				6DE0E4B91F6C959C0092E46B /* AudioManager.swift in Sources */,
 				C1EF49041CDBE08C009439FE /* TimePicker.swift in Sources */,
 				50697BC51CE03B5600776CC5 /* PassengersViewController.swift in Sources */,
 				C12562551CD3E77B002B05D0 /* SWRevealViewController.h in Sources */,

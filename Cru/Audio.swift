@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import AVFoundation
 
-class Audio {
+class Audio: NSObject {
     // MARK: Properties
     var title: String!
     var author: String!
@@ -17,19 +18,16 @@ class Audio {
     var date: Date!
     var tags: [String]!
     var restricted: Bool!
+   
+    var audioAsset: AVURLAsset?
+    var playerItem: AVPlayerItem?
+    var curTime = CMTime(seconds: 0, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+    var curTimePosition = 0.0 // Current time in the track in seconds
+    var newTimePosition = 0.0 // Used when going forward or rewinding
+    var duration = 0.0 // The duration of the audio file in seconds
+    var fileLoaded = false
     
-    init?() {
-        self.title = ""
-        self.id = ""
-        self.author = ""
-        self.id = ""
-        self.url = ""
-        self.date = nil
-        self.tags = []
-        self.restricted = false
-    }
-    
-    init?(id: String?, title: String?, url: String?, date: Date?, tags: [String]?, restricted: Bool!) {
+    init(id: String?, title: String?, url: String?, date: Date?, tags: [String]?, restricted: Bool!) {
         // Initialize properties
         self.id = id
         self.title = title
@@ -39,5 +37,72 @@ class Audio {
         self.restricted = restricted
     }
     
+    convenience override init() {
+        self.init(id: "", title: "", url: "", date: nil, tags: [], restricted: false)
+    }
+    
+    func prepareAudioFile() {
+        let audioURL = URL(string: url)
+        if audioURL != nil {
+            audioAsset = AVURLAsset(url: audioURL!)
+            //audioFile = try? AKAudioFile(forReading: audioURL!)
+            //audioFilePlayer = try? AKAudioPlayer(file: audioFile!)
+            let assetKeys = [
+                "playable",
+                "hasProtectedContent"
+            ]
+            
+            if let asset = audioAsset {
+                playerItem = AVPlayerItem(asset: asset, automaticallyLoadedAssetKeys: assetKeys)
+                let durTime = asset.duration
+                duration = CMTimeGetSeconds(durTime)
+                fileLoaded = true
+            }
+            
+            
+            //Get duration of file and display the nicely formatted string
+            
+            //totalTime = ResourceUtils.getStringFromCMTime(durTime)
+            
+            //Display the starting time with correct amount of leading zeros
+            //curPosition.text! = ResourceUtils.getStringFromCMTime((audioPlayer?.currentTime())!)
+            
+        }
+
+    }
+    
     
 }
+
+// MARK: - AVPlayer Item Extension to add Audio variable
+/*public final class ObjectAssociation<T: AnyObject> {
+    
+    private let policy: objc_AssociationPolicy
+    
+    /// - Parameter policy: An association policy that will be used when linking objects.
+    public init(policy: objc_AssociationPolicy = .OBJC_ASSOCIATION_RETAIN_NONATOMIC) {
+        
+        self.policy = policy
+    }
+    
+    /// Accesses associated object.
+    /// - Parameter index: An object whose associated object is to be accessed.
+    public subscript(index: AnyObject) -> T? {
+        
+        get { return objc_getAssociatedObject(index, Unmanaged.passUnretained(self).toOpaque()) as! T? }
+        set { objc_setAssociatedObject(index, Unmanaged.passUnretained(self).toOpaque(), newValue, policy) }
+    }
+}
+
+extension AVPlayerItem {
+    private static let association = ObjectAssociation<Audio>()
+    
+    var audioFile: Audio! {
+        get {
+            return AVPlayerItem.association[self]
+        }
+        set {
+            AVPlayerItem.association[self] = newValue
+        }
+    }
+}*/

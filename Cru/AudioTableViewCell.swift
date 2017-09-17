@@ -9,20 +9,29 @@
 import UIKit
 import AVFoundation
 
-class AudioTableViewCell: UITableViewCell {
+class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
     
-    var audioString: String!
+    var audio: Audio! {
+        didSet {
+            //Set up slider max value to match the audio file when
+            playbackSlider.maximumValue = Float(CMTimeGetSeconds((audio.audioAsset?.duration)!))
+            //Get duration of file and display the nicely formatted string
+            totalTime.text! = ResourceUtils.getStringFromCMTime((audio.audioAsset?.duration)!)
+            //Display the starting time with correct amount of leading zeros
+            curPosition.text! = ResourceUtils.getStringFromCMTime(audio.curTime)
+        }
+    }
+    //var audioString: String!
     var gradientLayer: CAGradientLayer!
     var cardGutterSpace = 8
-    var audioPlayer: AVPlayer?
-    var playerItem:AVPlayerItem?
+    //var audioPlayer: AVPlayer?
+    //var playerItem:AVPlayerItem?
     var formatter = DateFormatter()
     var timer: Timer!
-    var curTimePosition = 0.0 // Current time in the track in seconds
-    var newTimePosition = 0.0 // Used when going forward or rewinding
-    var duration = 0.0 // The duration of the audio file in seconds
+    //var curTimePosition = 0.0 // Current time in the track in seconds
+    //var newTimePosition = 0.0 // Used when going forward or rewinding
+    //var duration = 0.0 // The duration of the audio file in seconds
     
-    var audioFileLoaded = false
     var playImage = UIImage(named: "play")
     var pauseImage = UIImage(named: "pause")
     
@@ -91,27 +100,27 @@ class AudioTableViewCell: UITableViewCell {
         
         playbackSlider.setThumbImage(UIImage(named: "position-indicator"), for: .normal)
         playbackSlider.value = 0
+        playbackSlider.maximumValue = 600
         
     }
     
     //Called in ResourcesViewController once the audioString has been set
-    func prepareAudioFile() {
+    /*func prepareAudioFile() {
         let audioURL = URL(string: audioString)
         if audioURL != nil {
             let audioAsset = AVURLAsset(url: audioURL!)
             //audioFile = try? AKAudioFile(forReading: audioURL!)
             //audioFilePlayer = try? AKAudioPlayer(file: audioFile!)
-            playerItem = AVPlayerItem(asset: audioAsset, automaticallyLoadedAssetKeys: nil)
-            audioPlayer = AVPlayer(playerItem: playerItem)
+            //playerItem = AVPlayerItem(asset: audioAsset, automaticallyLoadedAssetKeys: nil)
+            //AudioManager.sharedInstance.audioPlayer = AVPlayer(playerItem: playerItem)
             
             
             //Get duration of file and display the nicely formatted string
             let durTime = audioAsset.duration
             duration = CMTimeGetSeconds(durTime)
-            totalTime.text! = ResourceUtils.getStringFromCMTime(durTime)
             
-            //Display the starting time with correct amount of leading zeros
-            curPosition.text! = ResourceUtils.getStringFromCMTime((audioPlayer?.currentTime())!)
+            
+            
             
             // Invoke callback every second
             let interval = CMTime(seconds: 1.0,
@@ -132,22 +141,39 @@ class AudioTableViewCell: UITableViewCell {
             //Set up slider max value to match the audio file
             playbackSlider.maximumValue = Float(CMTimeGetSeconds(durTime))
         }
-    }
+    }*/
     
-    //Slider action
+    // MARK: - Audio Manipulation Actions
+    
+    //Changing time via slider
     @IBAction func timeChanged(_ sender: UISlider) {
         let value = playbackSlider.value
-        audioPlayer?.seek(to: CMTime(seconds: Double(value),
-                                     preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+        let seconds = Double(value)
+        
+        if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: self.audio) {
+            AudioManager.sharedInstance.seekTo(seconds: seconds)
+        }
+        
+        // TODO: Update current position text here?
+        self.audio.curTimePosition = seconds
+        self.audio.curTime = CMTime(seconds: seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        self.curPosition.text = ResourceUtils.getStringFromCMTime(self.audio.curTime)
+        
+        //audioPlayer?.seek(to: CMTime(seconds: Double(value), preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
         //playbackSlider.setSliderWithGradientColors(color: CruColors.yellow, color2: CruColors.orange)
     }
+    
     
     //Rewind button 'rapid fire' methods
     func rewindPressed(_ sender: UIButton) {
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AudioTableViewCell.rewind), userInfo: nil, repeats: true)
-        newTimePosition = curTimePosition
-        audioPlayer?.pause()
+        //newTimePosition = curTimePosition
+        self.audio.newTimePosition = self.audio.curTimePosition
+        
+        if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: audio) {
+           AudioManager.sharedInstance.pauseForRewindOrForward()
+        }
         
     }
     
@@ -155,20 +181,28 @@ class AudioTableViewCell: UITableViewCell {
     func rewindUp(_ sender: UIButton) {
         timer.invalidate()
         
-        audioPlayer?.seek(to: CMTime(seconds: newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
-        audioPlayer?.play()
+        if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: audio) {
+            AudioManager.sharedInstance.seekTo(seconds: audio.newTimePosition)
+            if AudioManager.sharedInstance.playAfterPause {
+                AudioManager.sharedInstance.playCurrentItem()
+                AudioManager.sharedInstance.playAfterPause = false
+            }
+        }
+        
+        //audioPlayer?.seek(to: CMTime(seconds: newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+        //audioPlayer?.play()
     }
     
     //Function called continuously while rewinding
     func rewind() {
         //Update slider and label only if starting past the beginning
-        if newTimePosition > 0 {
-            newTimePosition -= 1
+        if audio.newTimePosition > 0 {
+            audio.newTimePosition -= 1
             
             //Update the current position label and slider position
             curPosition.text! = ResourceUtils.getStringFromCMTime(
-                CMTime(seconds: newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
-            playbackSlider.setValue(Float(newTimePosition), animated: false)
+                CMTime(seconds: audio.newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+            playbackSlider.setValue(Float(audio.newTimePosition), animated: false)
             
         } else {
             timer.invalidate()
@@ -179,8 +213,11 @@ class AudioTableViewCell: UITableViewCell {
     func forwardPressed(_ sender: UIButton) {
         
         timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(AudioTableViewCell.forward), userInfo: nil, repeats: true)
-        newTimePosition = curTimePosition
-        audioPlayer?.pause()
+        audio.newTimePosition = audio.curTimePosition
+
+        if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: audio) {
+            AudioManager.sharedInstance.pauseForRewindOrForward()
+        }
         
     }
     
@@ -188,20 +225,25 @@ class AudioTableViewCell: UITableViewCell {
     func forwardUp(_ sender: UIButton) {
         timer.invalidate()
         
-        audioPlayer?.seek(to: CMTime(seconds: newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
-        audioPlayer?.play()
+        if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: self.audio) {
+            AudioManager.sharedInstance.seekTo(seconds: audio.newTimePosition)
+            if AudioManager.sharedInstance.playAfterPause {
+                AudioManager.sharedInstance.playCurrentItem()
+                AudioManager.sharedInstance.playAfterPause = false
+            }
+        }
     }
     
     //Function called continuously while rewinding
     func forward() {
         //Update slider and label only if starting past the beginning
-        if newTimePosition < duration {
-            newTimePosition += 1
+        if audio.newTimePosition < audio.duration {
+            audio.newTimePosition += 1
             
             //Update the current position label and slider position
             curPosition.text! = ResourceUtils.getStringFromCMTime(
-                CMTime(seconds: newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
-            playbackSlider.setValue(Float(newTimePosition), animated: false)
+                CMTime(seconds: audio.newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+            playbackSlider.setValue(Float(audio.newTimePosition), animated: false)
             
         } else {
             timer.invalidate()
@@ -211,22 +253,107 @@ class AudioTableViewCell: UITableViewCell {
     
     //Play/pause button action method
     @IBAction func playPauseButtonClicked(_ sender: UIButton) {
-        
-        if audioFileLoaded == false {
-            prepareAudioFile()
-            audioFileLoaded = true
+        print("CLICKED PLAY")
+        // Handle same audio file
+        if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: self.audio) {
+            
+            //Handle pause
+            if AudioManager.sharedInstance.isPlaying() {
+                // Update and store place
+                if let curTime = AudioManager.sharedInstance.getCurrentTime() {
+                    self.audio.curTime = curTime
+                    self.audio.curTimePosition = CMTimeGetSeconds(curTime)
+                }
+                
+                AudioManager.sharedInstance.pauseItem()
+                playButton!.setImage(playImage, for: .normal)
+            }
+            else {
+                AudioManager.sharedInstance.playCurrentItem()
+            }
         }
-        
-        if audioPlayer?.rate == 0
-        {
-            audioPlayer!.play()
-            //playButton!.setImage(UIImage(named: "player_control_pause_50px.png"), forState: UIControlState.Normal)
+        // Handle playing new item
+        else {
+            AudioManager.sharedInstance.removeStatusObserver()
+            
+            AudioManager.sharedInstance.delegate = self
+            AudioManager.sharedInstance.playNewItem(audioFile: self.audio)
+            AudioManager.sharedInstance.addObserver(obj: self)
             playButton!.setImage(pauseImage, for: .normal)
-        } else {
-            audioPlayer!.pause()
-            //playButton!.setImage(UIImage(named: "player_control_play_50px.png"), forState: UIControlState.Normal)
-            playButton!.setImage(playImage, for: .normal)
         }
     }
+    
+    // MARK: - Audio Player Delegate Function
+    func timerUpdate(_ time: CMTime) {
+        self.curPosition.text! = ResourceUtils.getStringFromCMTime(time)
+        self.playbackSlider.setValue(Float(CMTimeGetSeconds(time)), animated: false)
+        self.audio.curTime = time
+        self.audio.curTimePosition = CMTimeGetSeconds(time)
+    }
+    
+    // MARK: - Observer Functions for Player status
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath == #keyPath(AVPlayerItem.status) {
+            let status: AVPlayerItemStatus
+            let oldStatus: AVPlayerItemStatus
+            // Get the status change from the change dictionary
+            if let statusNumber = change?[.newKey] as? NSNumber {
+                status = AVPlayerItemStatus(rawValue: statusNumber.intValue)!
+            } else {
+                status = .unknown
+            }
+            
+            if let statusNumber = change?[.oldKey] as? NSNumber {
+                oldStatus = AVPlayerItemStatus(rawValue: statusNumber.intValue)!
+            } else {
+                oldStatus = .unknown
+            }
+            
+            // Switch over the status
+            switch status {
+            case .readyToPlay:
+            // Player item is ready to play.
+                print("new status: Ready to play")
+            case .failed:
+            // Player item failed. See error.
+                print("new status: Failed")
+            case .unknown:
+                print("new status: Unkown")
+            }
+            
+            // Switch over the status
+            switch oldStatus {
+            case .readyToPlay:
+                // Player item is ready to play.
+                print("old status: Ready to play")
+            case .failed:
+                // Player item failed. See error.
+                print("old status: Failed")
+            case .unknown:
+                print("old status: Unkown")
+            }
+            
+        }
+        else if keyPath == #keyPath(AVPlayer.rate) {
+            let oldRate: Float
+            let newRate: Float
+            // Get the status change from the change dictionary
+            if let number = change?[.newKey] as? Float {
+                newRate = number
+                print("new rate: \(newRate)")
+            } else {
+                newRate = -5
+            }
+            // Get the status change from the change dictionary
+            if let number = change?[.oldKey] as? Float {
+                oldRate = number
+                print("old rate: \(oldRate)")
+            } else {
+                oldRate = -5
+            }
+        }
 
+        
+    }
 }
