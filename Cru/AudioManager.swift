@@ -30,14 +30,24 @@ class AudioManager {
     // TODO: Implement playing at set time in audio file?
     
     // MARK: - Play Functions
-    func playNewItem(audioFile: Audio) {
+    func playNewItem(audioFile: Audio, newDelegate: AudioPlayerDelegate) {
         if let player = audioPlayer {
             player.pause()
         }
         
         self.audioFile = audioFile
         
-        audioPlayer = AVPlayer(playerItem: audioFile.playerItem)
+        if audioPlayer?.currentItem != nil {
+            self.delegate?.pauseMedia()
+            audioPlayer?.replaceCurrentItem(with: audioFile.playerItem)
+            
+        }
+        
+        else {
+            audioPlayer = AVPlayer(playerItem: audioFile.playerItem)
+        }
+        
+        self.delegate = newDelegate
         audioPlayer?.seek(to: audioFile.curTime)
         audioPlayer?.play()
         startTimer()
@@ -93,20 +103,15 @@ class AudioManager {
     
     // MARK: - Seeking Functions
     func seekTo(seconds: Double) {
-        // If audio is playing when seeking, pause then play after new position is set
-        // else just don't play
-        if isPlaying() {
-            audioPlayer?.pause()
-            audioPlayer?.seek(to: CMTime(seconds: seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
-            audioPlayer?.play()
-        }
-        else {
-            audioPlayer?.seek(to: CMTime(seconds: seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
-        }
-        
+        audioPlayer?.seek(to: CMTime(seconds: seconds, preferredTimescale: CMTimeScale(NSEC_PER_SEC)))
+    }
+    
+    func seekToZero() {
+        audioPlayer?.seek(to: kCMTimeZero)
     }
     
     func startTimer() {
+        delegate?.timerSet()
         // Invoke callback every second
         let interval = CMTime(seconds: 1.0,
                               preferredTimescale: CMTimeScale(NSEC_PER_SEC))
@@ -120,25 +125,8 @@ class AudioManager {
             self?.audioFile?.curTime = curTime
             self?.audioFile?.curTimePosition = CMTimeGetSeconds(curTime)
             self?.delegate?.timerUpdate(curTime)
-            //self?.curPosition.text! = ResourceUtils.getStringFromCMTime(curTime)
-            //self?.playbackSlider.setValue(Float(CMTimeGetSeconds(curTime)), animated: false)
             
         }
-    }
-    
-    // MARK: - KVO Functions for changes in play status
-    func addObserver(obj: NSObject) {
-        curObserver = obj
-        audioPlayer?.currentItem?.addObserver(obj, forKeyPath: "status", options: [.old, .new], context: nil)
-        audioPlayer?.addObserver(obj, forKeyPath: "rate", options: [.old, .new], context: nil)
-    }
-    
-    func removeStatusObserver() {
-        if let obs = curObserver {
-            audioPlayer?.removeObserver(obs, forKeyPath: "status")
-            curObserver = nil
-        }
-        
     }
     
     // MARK: - Getter Functions
@@ -160,4 +148,6 @@ class AudioManager {
 
 protocol AudioPlayerDelegate {
     func timerUpdate(_ time: CMTime)
+    func timerSet()
+    func pauseMedia()
 }

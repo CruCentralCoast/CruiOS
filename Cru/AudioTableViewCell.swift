@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import MRProgress
 
 class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
     
@@ -31,7 +32,7 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
     //var curTimePosition = 0.0 // Current time in the track in seconds
     //var newTimePosition = 0.0 // Used when going forward or rewinding
     //var duration = 0.0 // The duration of the audio file in seconds
-    
+    var activityIndicator: UIActivityIndicatorView?
     var playImage = UIImage(named: "play")
     var pauseImage = UIImage(named: "pause")
     
@@ -50,7 +51,6 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
     
     @IBOutlet weak var playWidth: NSLayoutConstraint!
     @IBOutlet weak var rewindWidth: NSLayoutConstraint!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -72,6 +72,10 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
         forwardButton.addTarget(self, action: #selector(AudioTableViewCell.forwardPressed(_:)), for: .touchDown)
         forwardButton.addTarget(self, action: #selector(AudioTableViewCell.forwardUp(_:)), for: [.touchUpInside, .touchUpOutside])
         
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.audio.playerItem)
     }
     
     //Calculate the exact width of the play/pause, rewind & forward buttons at runtime
@@ -103,45 +107,6 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
         playbackSlider.maximumValue = 600
         
     }
-    
-    //Called in ResourcesViewController once the audioString has been set
-    /*func prepareAudioFile() {
-        let audioURL = URL(string: audioString)
-        if audioURL != nil {
-            let audioAsset = AVURLAsset(url: audioURL!)
-            //audioFile = try? AKAudioFile(forReading: audioURL!)
-            //audioFilePlayer = try? AKAudioPlayer(file: audioFile!)
-            //playerItem = AVPlayerItem(asset: audioAsset, automaticallyLoadedAssetKeys: nil)
-            //AudioManager.sharedInstance.audioPlayer = AVPlayer(playerItem: playerItem)
-            
-            
-            //Get duration of file and display the nicely formatted string
-            let durTime = audioAsset.duration
-            duration = CMTimeGetSeconds(durTime)
-            
-            
-            
-            
-            // Invoke callback every second
-            let interval = CMTime(seconds: 1.0,
-                                  preferredTimescale: CMTimeScale(NSEC_PER_SEC))
-            // Queue on which to invoke the callback
-            let mainQueue = DispatchQueue.main
-            // Add time observer
-            _ = audioPlayer?.addPeriodicTimeObserver(forInterval: interval, queue: mainQueue) {
-                    [weak self] time in
-                    // update player transport UI
-                    let curTime = (self?.audioPlayer?.currentTime())!
-                    self?.curTimePosition = CMTimeGetSeconds(curTime)
-                    self?.curPosition.text! = ResourceUtils.getStringFromCMTime(curTime)
-                    self?.playbackSlider.setValue(Float(CMTimeGetSeconds(curTime)), animated: false)
-                
-            }
-            
-            //Set up slider max value to match the audio file
-            playbackSlider.maximumValue = Float(CMTimeGetSeconds(durTime))
-        }
-    }*/
     
     // MARK: - Audio Manipulation Actions
     
@@ -180,6 +145,7 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
     //Function that is called when the rewind button is released
     func rewindUp(_ sender: UIButton) {
         timer.invalidate()
+        audio.curTime = CMTime(seconds: audio.newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
         
         if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: audio) {
             AudioManager.sharedInstance.seekTo(seconds: audio.newTimePosition)
@@ -225,6 +191,8 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
     func forwardUp(_ sender: UIButton) {
         timer.invalidate()
         
+        audio.curTime = CMTime(seconds: audio.newTimePosition, preferredTimescale: CMTimeScale(NSEC_PER_SEC))
+        
         if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: self.audio) {
             AudioManager.sharedInstance.seekTo(seconds: audio.newTimePosition)
             if AudioManager.sharedInstance.playAfterPause {
@@ -232,6 +200,7 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
                 AudioManager.sharedInstance.playAfterPause = false
             }
         }
+        
     }
     
     //Function called continuously while rewinding
@@ -249,11 +218,9 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
             timer.invalidate()
         }
     }
-
     
     //Play/pause button action method
     @IBAction func playPauseButtonClicked(_ sender: UIButton) {
-        print("CLICKED PLAY")
         // Handle same audio file
         if AudioManager.sharedInstance.isCurrentlyPlaying(audioFile: self.audio) {
             
@@ -274,86 +241,68 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
         }
         // Handle playing new item
         else {
-            AudioManager.sharedInstance.removeStatusObserver()
-            
-            AudioManager.sharedInstance.delegate = self
-            AudioManager.sharedInstance.playNewItem(audioFile: self.audio)
-            AudioManager.sharedInstance.addObserver(obj: self)
-            playButton!.setImage(pauseImage, for: .normal)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.audio.playerItem)
+            AudioManager.sharedInstance.playNewItem(audioFile: self.audio, newDelegate: self)
+            playButton!.setImage(nil, for: .normal)
         }
     }
     
-    // MARK: - Audio Player Delegate Function
+    func playerDidFinishPlaying() {
+        // Your code here
+        DispatchQueue.main.async(){
+            self.playButton!.setImage(self.playImage, for: .normal)
+            self.audio.curTime = kCMTimeZero
+            //AudioManager.sharedInstance.seekToZero()
+        }
+        
+    }
+    
+    // MARK: - Audio Player Delegate Functions
     func timerUpdate(_ time: CMTime) {
+        if let act = activityIndicator {
+            if act.isAnimating {
+                activityIndicator?.stopAnimating()
+                /*DispatchQueue.main.async(){
+                    self.playButton.setImage(self.pauseImage, for: .normal)
+                }*/
+            }
+            
+        }
+        
+        self.playButton.setImage(self.pauseImage, for: .normal)
+        
+        //playButton.setImage(pauseImage, for: .normal)
         self.curPosition.text! = ResourceUtils.getStringFromCMTime(time)
         self.playbackSlider.setValue(Float(CMTimeGetSeconds(time)), animated: false)
         self.audio.curTime = time
         self.audio.curTimePosition = CMTimeGetSeconds(time)
     }
     
-    // MARK: - Observer Functions for Player status
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        
-        if keyPath == #keyPath(AVPlayerItem.status) {
-            let status: AVPlayerItemStatus
-            let oldStatus: AVPlayerItemStatus
-            // Get the status change from the change dictionary
-            if let statusNumber = change?[.newKey] as? NSNumber {
-                status = AVPlayerItemStatus(rawValue: statusNumber.intValue)!
-            } else {
-                status = .unknown
-            }
-            
-            if let statusNumber = change?[.oldKey] as? NSNumber {
-                oldStatus = AVPlayerItemStatus(rawValue: statusNumber.intValue)!
-            } else {
-                oldStatus = .unknown
-            }
-            
-            // Switch over the status
-            switch status {
-            case .readyToPlay:
-            // Player item is ready to play.
-                print("new status: Ready to play")
-            case .failed:
-            // Player item failed. See error.
-                print("new status: Failed")
-            case .unknown:
-                print("new status: Unkown")
-            }
-            
-            // Switch over the status
-            switch oldStatus {
-            case .readyToPlay:
-                // Player item is ready to play.
-                print("old status: Ready to play")
-            case .failed:
-                // Player item failed. See error.
-                print("old status: Failed")
-            case .unknown:
-                print("old status: Unkown")
-            }
-            
+    //set the button to show paused state
+    func pauseMedia() {
+        DispatchQueue.main.async(){
+            self.playButton!.setImage(self.playImage, for: .normal)
         }
-        else if keyPath == #keyPath(AVPlayer.rate) {
-            let oldRate: Float
-            let newRate: Float
-            // Get the status change from the change dictionary
-            if let number = change?[.newKey] as? Float {
-                newRate = number
-                print("new rate: \(newRate)")
-            } else {
-                newRate = -5
+    }
+    
+    func timerSet() {
+        DispatchQueue.main.async(){
+            if self.activityIndicator == nil {
+                self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+                self.activityIndicator?.hidesWhenStopped = true
+                /*activityIndicator.center = activityView.center
+                 activityIndicator.startAnimating()
+                 activityView.addSubview(activityIndicator)*/
+                let halfButtonHeight = self.playButton.bounds.size.height/2
+                let buttonWidth = self.playButton.bounds.size.width
+                self.activityIndicator?.center = CGPoint(x: buttonWidth/2, y: halfButtonHeight)
+                self.playButton.setImage(nil, for: .normal)
+                self.playButton.addSubview(self.activityIndicator!)
+                self.activityIndicator?.startAnimating()
             }
-            // Get the status change from the change dictionary
-            if let number = change?[.oldKey] as? Float {
-                oldRate = number
-                print("old rate: \(oldRate)")
-            } else {
-                oldRate = -5
+            else {
+                self.activityIndicator?.startAnimating()
             }
         }
-
-        
     }
 }
