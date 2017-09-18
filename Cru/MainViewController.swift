@@ -376,7 +376,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.location.text = upcomingEvents[indexPath.row].getLocationString()
             cell.time.text = upcomingEvents[indexPath.row].getStartTime()
             cell.AMorPM.text = upcomingEvents[indexPath.row].getAmOrPm()
-            cell.day.text = upcomingEvents[indexPath.row].getWeekday()
+            cell.day.text = upcomingEvents[indexPath.row].getStartTimeForHome()
             addDropShadow(nil, eventCell: cell)
             
             //Change the alignment so that the day is in the center of the time+am

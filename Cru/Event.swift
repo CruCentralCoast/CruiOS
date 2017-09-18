@@ -139,14 +139,14 @@ class Event: Equatable {
             else {
                 street = "TBD"
             }
-            if let str = location!.object(forKey: "suburb") {
+            /*if let str = location!.object(forKey: "suburb") {
                 suburb = str as! String
             }
             else {
                 suburb = "TBD"
-            }
+            }*/
             
-            return  street + ", " + suburb
+            return  street 
         }
         
         return ""
@@ -180,6 +180,9 @@ class Event: Equatable {
         return GlobalUtils.stringFromDate(startNSDate, format: "h:mm")
     }
     
+    func getStartTimeForHome() -> String {
+        return GlobalUtils.stringFromDate(startNSDate, format: "MMM d").uppercased()
+    }
     func getEndTime() -> String{
         return GlobalUtils.stringFromDate(endNSDate, format: "h:mm")
 
