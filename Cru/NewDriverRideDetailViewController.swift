@@ -114,7 +114,7 @@ class NewDriverRideDetailViewController: UIViewController, UITextFieldDelegate, 
             let formatted = String("\(street), \(city) \(postcode)")
             //print("\n\(street), \(city) \(postcode)\n")
             addressField?.text = formatted
-            validateLoc()
+            _ = validateLoc()
             
         }
     }

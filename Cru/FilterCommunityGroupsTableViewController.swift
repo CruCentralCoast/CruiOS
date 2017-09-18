@@ -119,7 +119,7 @@ extension FilterCommunityGroupsTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(FilterCell.self, for: indexPath)
-        var index = indexPath.section + indexPath.row
+        let index = indexPath.section + indexPath.row
 //        if indexPath.section >= 2 {
 //            index += 1
 //        }
@@ -158,7 +158,7 @@ extension FilterCommunityGroupsTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var index = indexPath.section + indexPath.row
+        let index = indexPath.section + indexPath.row
 //        if indexPath.section >= 2 {
 //            index += 1
 //        }

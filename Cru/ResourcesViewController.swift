@@ -115,7 +115,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.backgroundColor = Colors.googleGray
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 150
+        tableView.estimatedRowHeight = 200
         videoCardHeight = 0
         
         //Set the nav title
@@ -267,7 +267,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     //Code for the bar at the top of the view for filtering resources
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         var newType: ResourceType
-        var oldTypeCount = 0
+        //var oldTypeCount = 0
         var newTypeCount = 0
         
         //print("Selecting item: \(item.title)")
@@ -287,14 +287,14 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             newTypeCount = articles.count
         }
         
-        switch (currentType){
+        /*switch (currentType){
         case .Article:
             oldTypeCount = articles.count
         case .Audio:
             oldTypeCount = audioFiles.count
         case .Video:
             oldTypeCount = videos.count
-        }
+        }*/
         
         
         if(newType == currentType){
@@ -303,6 +303,9 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         else{
             currentType = newType
         }
+        
+        //let indexPath = NSIndexPath(item: 0, section: 0)
+        //self.tableView.scrollToRow(at: indexPath as IndexPath, at: UITableViewScrollPosition.middle, animated: true)
         self.tableView.reloadData()
     }
     
@@ -644,13 +647,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,forRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell,forRowAt indexPath: IndexPath) {
         
         if currentType == .Video{
             let vidCell = cell as! VideoTableViewCell
         }
         
-    }
+    }*/
     
     //Return the number of cards depending on the type of resource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -740,8 +743,12 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 
                 if video.thumbnailURL != "" {
+                    if let imageView = cell.thumbnailView {
+                        imageView.contentMode = .scaleAspectFit
+                    }
                     if let url = video.thumbnailURL {
-                        cell.thumbnailView.load.request(with: url)
+                        // TODO: Find a way to load thumbnail without it crashing
+                        //cell.thumbnailView.load.request(with: url)
                     }
                 }
                 else {
@@ -811,7 +818,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch(currentType) {
         case .Article:
-            return 170
+            return 160
         case .Audio:
             return 200
         case .Video:
@@ -1006,7 +1013,7 @@ extension Dimmable where Self: UIViewController {
             
         case .out:
             UIView.animate(withDuration: speed, animations: { () -> Void in
-                self.view.subviews.last?.alpha = alpha ?? 0
+                self.view.subviews.last?.alpha = alpha
                 }, completion: { (complete) -> Void in
                     self.view.subviews.last?.removeFromSuperview()
             })

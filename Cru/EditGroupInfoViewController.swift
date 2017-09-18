@@ -231,7 +231,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         UserDefaults.standard.set(newGroupData, forKey: Config.CommunityGroupsStorageKey)
         //self.dismiss(animated: true, completion: nil)
         self.delegate?.communityGroupDataResponse(group: group)
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     //Get ministry list from local storage

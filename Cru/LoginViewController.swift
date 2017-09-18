@@ -35,9 +35,7 @@ class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDele
         emailError.text = ""
         passwordError.text = ""
         
-        if let email = GlobalUtils.loadString(Config.email) as? String{
-            emailField.text = email
-        }
+        emailField.text = GlobalUtils.loadString(Config.email)
         
         
         validator.registerField(emailField, errorLabel: emailError, rules: [RequiredRule(), EmailRule()])

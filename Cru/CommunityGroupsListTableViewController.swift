@@ -210,7 +210,7 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     func jumpBackToGetInvolved() {
         for controller in (self.navigationController?.viewControllers)! {
             if controller.isKind(of: GetInvolvedViewController.self) {
-                self.navigationController?.popToViewController(controller, animated: true)
+                _ = self.navigationController?.popToViewController(controller, animated: true)
             }
         }
     }

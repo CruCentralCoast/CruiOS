@@ -306,7 +306,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     
     @IBAction func save(_ sender: UIBarButtonItem) {
         saveCampusSet()
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     /*@IBAction func saveToSettings(sender: UIBarButtonItem) {
         saveCampusSet()
@@ -314,6 +314,6 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     }*/
     
     @IBAction func exitToSettings(_ sender: UIBarButtonItem) {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }

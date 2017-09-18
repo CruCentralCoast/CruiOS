@@ -66,8 +66,10 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
     var location: Location! {
         didSet {
             addressValue.text? = location.address
-            extractLocationFromView()
-            updateOptions()
+            if extractLocationFromView() {
+                updateOptions()
+            }
+            
         }
     }
     var options = [EditableItem]()
@@ -502,7 +504,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
                 return true
             }
             else{
-                ride.isValidPhoneNum(ride.driverNumber)
+                _ = ride.isValidPhoneNum(ride.driverNumber)
                 return false
             }
             

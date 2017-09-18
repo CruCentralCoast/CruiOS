@@ -47,7 +47,7 @@ class PickRadiusViewController: UIViewController, MKMapViewDelegate {
     
     @IBAction func okPressed(_ sender: AnyObject) {
         setRadius!(numMiles)
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func radiusValChanged(_ sender: AnyObject) {

@@ -147,7 +147,7 @@ extension MinistryTeamsCollectionViewController: MinistryTeamSignUpDelegate {
     }
     
     func didSignUpForMinistryTeam(_ ministryTeam: MinistryTeam) {
-        self.navigationController?.popToRootViewController(animated: true)
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
 }
 

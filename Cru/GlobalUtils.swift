@@ -142,7 +142,7 @@ class GlobalUtils {
         do {
             let something = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
             let string1 = NSString(data: something, encoding: String.Encoding.utf8.rawValue)
-            print(string1)
+            //print(string1)
         } catch {
             print("Error writing json body")
         }
@@ -173,7 +173,7 @@ class GlobalUtils {
     }
     
     static func shouldChangeNameTextInRange(_ fieldText: String, range: NSRange, text: String)-> Bool {
-        let currentCharacterCount = fieldText.characters.count ?? 0
+        let currentCharacterCount = fieldText.characters.count
         if (range.length + range.location > currentCharacterCount){
             return false
         }

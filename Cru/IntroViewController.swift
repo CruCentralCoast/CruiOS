@@ -58,7 +58,7 @@ class IntroViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print(self.parent)
+        //print(self.parent)
         displayModal(descriptionModal, fromModal: nil)
     }
     

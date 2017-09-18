@@ -88,7 +88,7 @@ class FakeServerClient: ServerProtocol {
             parObj?[child.name()] = children as AnyObject?
             
             //replace the parent object
-            deleteById(parent, id: parentId)
+             _ = deleteById(parent, id: parentId)
             var parCol = getCollection(parent)
             parCol.append(parObj!)
             fakeDB[parent] = parCol
@@ -120,7 +120,7 @@ class FakeServerClient: ServerProtocol {
             parObj?[child.name()] = children as AnyObject?
 
             //replace the parent object
-            deleteById(parent, id: parentId)
+            _ = deleteById(parent, id: parentId)
             var parCol = getCollection(parent)
             parCol.append(parObj!)
             fakeDB[parent] = parCol
@@ -175,7 +175,7 @@ class FakeServerClient: ServerProtocol {
                 dict?[k] = v as AnyObject?
             }
 
-            overrideData(collection, params: dict!)
+            _ = overrideData(collection, params: dict!)
             completionHandler(dict as NSDictionary?)
         }
     }
@@ -220,7 +220,7 @@ class FakeServerClient: ServerProtocol {
     }
     
     fileprivate func overrideData(_ collection: DBCollection, params: [String: AnyObject]) -> [String:AnyObject] {
-        deleteById(collection, id: params["_id"] as! String)
+        _ = deleteById(collection, id: params["_id"] as! String)
         
         var col = getCollection(collection)
         let dict = params

@@ -87,7 +87,7 @@ class JoinRideViewController: UIViewController, JoinRideDelegate, AlertDelegate 
     private func setupMapView() {
         
         DispatchQueue.global(qos: .userInitiated).async { // 1
-            var storedError: NSError?
+            //var storedError: NSError?
             let downloadGroup = DispatchGroup() // 2
             downloadGroup.enter()
             self.getQueryLocation(self.ride.getCompleteAddress(), handler: {loc in
@@ -272,7 +272,7 @@ class JoinRideViewController: UIViewController, JoinRideDelegate, AlertDelegate 
     }
     
     func successfulJoin(_ success: Bool){
-        var successAlert :UIAlertController?
+        //var successAlert :UIAlertController?
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         let storyboard = UIStoryboard(name: "findride", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "alertVC") as! AlertViewController

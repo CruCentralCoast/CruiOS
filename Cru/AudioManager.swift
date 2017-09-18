@@ -71,7 +71,7 @@ class AudioManager {
     
     func isCurrentlyPlaying(playerItem: AVPlayerItem) -> Bool{
         if let player = audioPlayer {
-            if self.audioPlayer?.currentItem == playerItem {
+            if player.currentItem == playerItem {
                 return true
             }
         }

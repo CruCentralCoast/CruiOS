@@ -219,7 +219,7 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
             dropPinAtLocation(rideLocs[ride.id]!, title: ride.getCompleteAddress(), subtitle: ride.getMapSubtitle(), rideId:  ride.id)
             
             for an in map.annotations{
-                self.mapView(map, viewFor: an)
+                _ = self.mapView(map, viewFor: an)
             }
         }
         
@@ -254,15 +254,15 @@ class MapOfRidesViewController: UIViewController, MKMapViewDelegate {
         
         switch annotation.title!!{
         case event.name:
-            ann.pinColor = .red
+            ann.pinTintColor = .red
         case selectedTitle:
             ann.rightCalloutAccessoryView = selectRideButton()
             ann.rightCalloutAccessoryView?.isUserInteractionEnabled = true
-            ann.pinColor = .green
+            ann.pinTintColor = .green
         default:
             ann.rightCalloutAccessoryView = selectRideButton()
             ann.rightCalloutAccessoryView?.isUserInteractionEnabled = true
-            ann.pinColor = .purple
+            ann.pinTintColor = .purple
         }
         
         

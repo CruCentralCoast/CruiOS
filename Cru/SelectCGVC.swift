@@ -44,7 +44,7 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
     
     fileprivate func insertGroup(_ dict: NSDictionary) {
-        let cell = self.table.dequeueReusableCell(withIdentifier: "cell")!
+        //let cell = self.table.dequeueReusableCell(withIdentifier: "cell")!
         let group = CommunityGroup(dict: dict)
         groups.append(group)
         
@@ -81,7 +81,7 @@ class SelectCGVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     func jumpBackToGetInvolved() {
         for controller in (self.navigationController?.viewControllers)! {
             if controller.isKind(of: GetInvolvedViewController.self) {
-                self.navigationController?.popToViewController(controller, animated: true)
+                _ = self.navigationController?.popToViewController(controller, animated: true)
             }
         }
     }

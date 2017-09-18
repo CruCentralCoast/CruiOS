@@ -107,11 +107,12 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             }
 
             // Configure the cell...
-            if let parentMin = groups[indexPath.row].parentMinistryName as? String {
-                cell.ministryLabel.text = parentMin
+            if groups[indexPath.row].parentMinistryName == "" {
+                
+                cell.ministryLabel.text = "Unknown"
             }
             else {
-                cell.ministryLabel.text = "Unknown"
+                cell.ministryLabel.text = groups[indexPath.row].parentMinistryName
             }
             
             cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
@@ -136,13 +137,14 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
             let cell = tableView.dequeueReusableCell(withIdentifier: "groupCell2", for: indexPath) as! CommunityGroupNoImageTabCell
             
             // Configure the cell...
-            if let parentMin = groups[indexPath.row].parentMinistryName as? String {
-                cell.ministryLabel.text = parentMin
-            }
-            else {
+            let group = groups[indexPath.row]
+            if group.parentMinistryName == "" {
                 cell.ministryLabel.text = "Unknown"
             }
-            
+            else {
+                cell.ministryLabel.text = group.parentMinistryName
+            }
+ 
             cell.meetingTimeLabel.text = groups[indexPath.row].getMeetingTime()
             
             cell.leaderLabel.text = groups[indexPath.row].getLeaderString()

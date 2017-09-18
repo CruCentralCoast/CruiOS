@@ -373,7 +373,7 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
     
     // Helper function for popping the offer rides view controller from the view stack and show the rides table
     func performBackAction(_ action: UIAlertAction) {
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     

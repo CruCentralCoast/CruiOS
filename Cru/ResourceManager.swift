@@ -172,7 +172,7 @@ class ResourceManager {
                             vidURL = vidNode.objectForKeyedSubscript("src") as? String
                         }
                         
-                        let youtubeID = self.getYoutubeID(vidURL)
+                        //let youtubeID = self.getYoutubeID(vidURL)
                         //let embedUrl = URL(string: vidURL)!
                         //let vidwebUrl = URL(string: vidURL)!
                         
@@ -234,9 +234,9 @@ class ResourceManager {
                         // Append the desiredPlaylistItemDataDict dictionary to the videos array.
                         self.videosArray.append(snippetDict as [NSObject : AnyObject])
                         //print("\n\(resultsDict)\n")
-                        let resource = Resource(id: videoID, title: snippetDict["title"] as! String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as! String, tags: nil)!
+                        let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as? String, tags: nil)!
                         
-                        let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as! String, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
+                        let newVid = Video(id: videoID, title: snippetDict["title"] as? String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as? String, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
                         
                         self.resources.append(resource)
                         self.videos.append(newVid!)
@@ -305,15 +305,23 @@ class ResourceManager {
                         
                         // Initialize a new dictionary and store the data of interest.
                         
-                        
+                        //var thumbnailURL = ""
                         let thumbnailURL = ((snippetDict["thumbnails"] as! Dictionary<String, AnyObject>)["default"] as! Dictionary<String, AnyObject>)["url"]
+                        /*if let snip = snippetDict["thumbnails"] {
+                            if let def = snip["default"] {
+                                
+                                if let url = def["url"] {
+                                    thumbnailURL = url as! String
+                                }
+                            }
+                        }*/
                         
                         // Append the desiredPlaylistItemDataDict dictionary to the videos array.
                         self.videosArray.append(snippetDict as [NSObject : AnyObject])
                         
-                        let resource = Resource(id: videoID, title: snippetDict["title"] as! String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as! String, tags: nil)!
+                        let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as? String, tags: nil)!
                         
-                        let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as! String, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
+                        let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as? String, videoURL: resource.url, thumbnailURL: thumbnailURL as? String,restricted: false)
                         
                         self.resources.append(resource)
                         self.videos.append(newVid!)

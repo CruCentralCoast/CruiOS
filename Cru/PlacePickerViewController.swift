@@ -222,8 +222,8 @@ extension PlacePickerViewController: GMSAutocompleteResultsViewControllerDelegat
         searchController?.isActive = false
         
         // Do something with the selected place.
-        print("Place name: ", place.name)
-        print("Place address: ", place.formattedAddress)
+        //print("Place name: ", place.name)
+        //print("Place address: ", place.formattedAddress)
         
         self.coordinate = place.coordinate
         if offerRideVC != nil {

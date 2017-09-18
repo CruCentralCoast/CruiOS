@@ -177,7 +177,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
                 })
             })
         } else {
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -187,11 +187,11 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         let updateAlert = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
         if title == "Failure" {
             updateAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: {(thing) in
-                self.navigationController?.popViewController(animated: true)
+               _ = self.navigationController?.popViewController(animated: true)
             }))
             present(updateAlert, animated: true, completion: nil)
         }
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Table View Delegate Functions
@@ -336,7 +336,7 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
     
     @IBAction func cancelToSettings(_ sender: UIBarButtonItem) {
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     

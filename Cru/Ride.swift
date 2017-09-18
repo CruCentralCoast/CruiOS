@@ -329,10 +329,10 @@ class Ride: Comparable, Equatable, TimeDetail {
         let hour = comps.hour!
         let minute = comps.minute!
         
-        var dayString = String(format: "%02d", day)
-        var hourString = String(format: "%02d", hour)
-        var minuteString = String(format: "%02d", minute)
-        var monthString = String(format: "%02d", month)
+        let dayString = String(format: "%02d", day)
+        let hourString = String(format: "%02d", hour)
+        let minuteString = String(format: "%02d", minute)
+        let monthString = String(format: "%02d", month)
         
         return String(year) + "-" + String(monthString) + "-" + String(dayString) + "T" + hourString + ":" + String(minuteString) + ":00.000Z"
     }
