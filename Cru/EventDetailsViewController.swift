@@ -206,8 +206,17 @@ class EventDetailsViewController: UIViewController {
     //MARK: Actions
     
     //This action allows the user to access the event on facebook
-    @IBAction func facebookLinkButton(_ sender: UIButton) {
-        UIApplication.shared.openURL(URL(string: (event.url))!)
+    @IBAction func facebookLinkButton(_ sender: UIButton){
+        var urlString = event.url
+        if !(urlString.hasPrefix("https://www.") || urlString.hasPrefix("http://www.")){
+            urlString = "http://www." + urlString
+        }
+        
+        guard let url = URL(string: urlString) else {
+            return
+        }
+
+        UIApplication.shared.openURL(url)
     }
     
     //This action is for saving an event to the native calendar
