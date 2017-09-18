@@ -138,8 +138,22 @@ class Event: Equatable {
             return "TBD"
         }
         if location != nil {
-            let street = location!.object(forKey: "street1") as! String
-            let suburb = location!.object(forKey: "suburb") as! String
+            var street: String
+            var suburb: String
+            var country: String
+            
+            if let str = location!.object(forKey: "street1") {
+                street = str as! String
+            }
+            else {
+                street = "TBD"
+            }
+            if let str = location!.object(forKey: "suburb") {
+                suburb = str as! String
+            }
+            else {
+                suburb = "TBD"
+            }
             
             return  street + ", " + suburb
         }
