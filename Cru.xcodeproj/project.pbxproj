@@ -208,6 +208,8 @@
 		6D310AF71F3CE38600ECD0F5 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */; };
 		6D31382D1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
 		6D31382E1E70CCDB002A4A65 /* PlaybackSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */; };
+		6D348AE71F6F1A4D0063179D /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D348AE61F6F1A4D0063179D /* ResourceManager.swift */; };
+		6D348AE81F6F1A4D0063179D /* ResourceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D348AE61F6F1A4D0063179D /* ResourceManager.swift */; };
 		6D3675721D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
 		6D3675731D5531D600272151 /* CurrentCGViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D3675711D5531D600272151 /* CurrentCGViewController.swift */; };
 		6D4119851D6CDBDA00CCD703 /* KeystoneClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */; };
@@ -531,6 +533,7 @@
 		6D310AF21F3CDF3600ECD0F5 /* EditGroupInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditGroupInfoViewController.swift; sourceTree = "<group>"; };
 		6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSlider.swift; sourceTree = "<group>"; };
+		6D348AE61F6F1A4D0063179D /* ResourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
 		6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
 		6D424DD41E6E10A400496301 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
@@ -1023,9 +1026,10 @@
 			isa = PBXGroup;
 			children = (
 				50F8251E1C0BB965005396BC /* resources.storyboard */,
+				6DE0E4B71F6C959C0092E46B /* AudioManager.swift */,
+				6D348AE61F6F1A4D0063179D /* ResourceManager.swift */,
 				6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */,
 				6D424DDA1E6E1E0100496301 /* CustomWebViewController.swift */,
-				6DE0E4B71F6C959C0092E46B /* AudioManager.swift */,
 				6D01D8371D81B5D5006A9AC0 /* SearchModalViewController.swift */,
 				6D2B4FC41D854B770009DC2D /* ResourceTagTableView.swift */,
 				6D2B4FC11D8549D00009DC2D /* ResourceTagTableViewCell.swift */,
@@ -1749,6 +1753,7 @@
 				6D9112B41F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */,
 				5072B4171CB38616001F5BF6 /* TimeDetail.swift in Sources */,
 				6D9379271F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */,
+				6D348AE71F6F1A4D0063179D /* ResourceManager.swift in Sources */,
 				2F851C561F0F4A2700DF9B81 /* MinistryTeamCell.swift in Sources */,
 				2F8FA1A31F12BCE700A60392 /* UITableViewCell+Additions.swift in Sources */,
 				2F5EA1CC1F4C00620098115E /* UITableView+Additions.swift in Sources */,
@@ -1878,6 +1883,7 @@
 				50AC22541CDB033D00427C08 /* EditableItem.swift in Sources */,
 				C13F7DEF1CE28CF50057D0F5 /* TextQuestionCell.swift in Sources */,
 				6D2F38811F36937600E31433 /* CommunityGroupTabCell.swift in Sources */,
+				6D348AE81F6F1A4D0063179D /* ResourceManager.swift in Sources */,
 				50AC22511CDB016800427C08 /* EditCell.swift in Sources */,
 				6D01D8361D81AE59006A9AC0 /* CheckboxButton.swift in Sources */,
 				C1015CD81C942D7F005B559E /* GlobalUtilsTest.swift in Sources */,
