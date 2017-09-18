@@ -135,6 +135,10 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             //Only load if we're on the videos tab and user hasn't received the memory warning
             if self.currentType == .Video && !self.memoryWarning{
+                ResourceManager.sharedInstance.loadYouTubeVideos(completionHandler: { (numNewVids) in
+                    
+                })
+                ResourceManager.sharedInstance.getMoreYoutubeVideos()
                 self.loadYouTubeVideos(completionHandler: { (numNewVids) in
                     let videoCount = self.videos.count
                     let (start, end) = (videoCount, self.newVideos.count + videoCount)
@@ -176,7 +180,16 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             overlayRunning = true
-            serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
+            
+            // TODO: Call Resource Manager here instead of making call to server directly
+            
+            ResourceManager.sharedInstance.loadResources({ articles, audioFiles, videos in
+                self.articles = articles
+                self.audioFiles = audioFiles
+                self.videos = videos
+            })
+            
+            //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
             //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
             
             //Also get resource tags and store them
@@ -309,7 +322,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     //Get resources from database
-    func insertResource(_ dict : NSDictionary) {
+    /*func insertResource(_ dict : NSDictionary) {
         let resource = Resource(dict: dict)!
         resources.insert(resource, at: 0)
         
@@ -590,7 +603,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             
         })
-    }
+    }*/
     
     func finished(_ success: Bool) {
         if success == false {
