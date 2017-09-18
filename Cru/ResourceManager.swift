@@ -42,9 +42,6 @@ class ResourceManager {
         return videos
     }
     
-    func getMoreYoutubeVideos() -> [Video]{
-        
-    }
     
     func loadResources(_ completion: @escaping ([Article], [Audio], [Video]) -> Void){
         if !loadedResources {
@@ -98,6 +95,7 @@ class ResourceManager {
     // MARK: - Article Functions
     /* Helper function to insert an article resource */
     fileprivate func insertArticle(_ resource: Resource,completionHandler: (Bool) -> Void) {
+        print("Inserting article")
         let resUrl = URL(string: resource.url)
         guard let url = resUrl else {
             return
@@ -277,7 +275,7 @@ class ResourceManager {
     
     //Yes, this is similar to the function above but this one has a completion handler
     //Load youtube videos for infinite scrolling
-    func loadYouTubeVideos(completionHandler: @escaping (_ numVideos: Int) -> Void) {
+    func loadYouTubeVideos(completionHandler: @escaping (Int, [Video]) -> Void) {
         self.urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=\(Config.cruChannelID)&maxResults=\(PageSize)&order=date&pageToken=\(nextPageToken)&type=video&key=\(Config.youtubeApiKey)"
         
         self.newVideos = [Video]() //Clear the new videos array
@@ -318,12 +316,13 @@ class ResourceManager {
                         let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as! String, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
                         
                         self.resources.append(resource)
+                        self.videos.append(newVid!)
                         self.newVideos.append(newVid!)
                     }
                     self.pageNum = self.pageNum + 1
                     
                     //self.tableView.tableFooterView = UIView()
-                    completionHandler(self.numNewVideos)
+                    completionHandler(self.numNewVideos, self.newVideos)
                 }
                 catch {
                     print("Error loading videos")

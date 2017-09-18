@@ -135,17 +135,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             //Only load if we're on the videos tab and user hasn't received the memory warning
             if self.currentType == .Video && !self.memoryWarning{
-                ResourceManager.sharedInstance.loadYouTubeVideos(completionHandler: { (numNewVids) in
-                    
-                })
-                ResourceManager.sharedInstance.getMoreYoutubeVideos()
-                self.loadYouTubeVideos(completionHandler: { (numNewVids) in
+                ResourceManager.sharedInstance.loadYouTubeVideos(completionHandler: { (numNewVids, newVideos) in
                     let videoCount = self.videos.count
-                    let (start, end) = (videoCount, self.newVideos.count + videoCount)
+                    let (start, end) = (videoCount, newVideos.count + videoCount)
                     let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
                     
                     // update data source
-                    self.videos.append(contentsOf: self.newVideos)
+                    self.videos.append(contentsOf: newVideos)
                     
                     // make sure you update tableView before calling -finishInfiniteScroll
                     tableView.beginUpdates()
@@ -155,6 +151,11 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                     // finish infinite scroll animation
                     tableView.finishInfiniteScroll()
                 })
+            }
+            else if self.currentType == .Article {
+                self.articles = ResourceManager.sharedInstance.getArticles()
+                tableView.reloadData()
+                tableView.finishInfiniteScroll()
             }
 
         }
@@ -187,6 +188,8 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 self.articles = articles
                 self.audioFiles = audioFiles
                 self.videos = videos
+                self.tableView.reloadData()
+                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             })
             
             //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
@@ -196,7 +199,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             serverClient.getData(DBCollection.ResourceTags, insert: insertResourceTag, completionHandler: {_ in
                 //Hide the community leader tag if the user isn't logged in
                 if GlobalUtils.loadString(Config.userID) == "" && GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader){
-                    let index = self.tags.index(where: {$0.title == "Leader (password needed)"})
+                    let index = self.tags.index(where: {$0.title == "Leader (login required)"})
                     self.tags.remove(at: index!)
                     
                 }
@@ -694,7 +697,13 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
-                cell.date.text = GlobalUtils.stringFromDate(art.date, format: dateFormatString)
+                if let date = art.date {
+                    cell.date.text = GlobalUtils.stringFromDate(date, format: dateFormatString)
+                }
+                else {
+                    cell.date.text = ""
+                }
+                
                 cell.desc.text = art.abstract
                 cell.title.text = art.title
                 
@@ -731,13 +740,17 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 }
                 
                 if video.thumbnailURL != "" {
-                    cell.thumbnailView.load.request(with: video.thumbnailURL)
-                    
+                    if let url = video.thumbnailURL {
+                        cell.thumbnailView.load.request(with: url)
+                    }
                 }
                 else {
                     //Adjust the spacing for title, date, & desc to be flush with card
-                    cell.thumbnailView.isHidden = true
-                    cell.stackLeadingSpace.constant = 10.0
+                    //cell.thumbnailView.isHidden = true
+                    //cell.stackLeadingSpace.constant = 10.0
+                    if let imageView = cell.thumbnailView {
+                        imageView.contentMode = .scaleAspectFit
+                    }
                 }
                 
                 if video.abstract == "" {
@@ -793,6 +806,17 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectedRow = indexPath.row
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch(currentType) {
+        case .Article:
+            return 170
+        case .Audio:
+            return 200
+        case .Video:
+            return 180
+        }
     }
     
     // MARK: Actions

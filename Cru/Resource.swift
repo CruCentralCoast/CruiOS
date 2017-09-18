@@ -9,7 +9,7 @@
 
 import UIKit
 
-enum ResourceType: String{
+public enum ResourceType: String{
     case Article = "article"
     case Audio = "audio"
     case Video = "video"
