@@ -33,6 +33,7 @@ class Event: Equatable {
     var startDate: String
     var startNSDate: Date
     var location: NSDictionary?
+    var locationTBD: Bool
     var image: UIImage!
     var imageUrl: String
     var rideshareEnabled: Bool?
@@ -56,6 +57,7 @@ class Event: Equatable {
         self.image = UIImage(named: "event1")
         self.imageUrl = ""
         self.location = NSDictionary()
+        self.locationTBD = true
         self.rideshareEnabled = false
     }
     
@@ -113,6 +115,10 @@ class Event: Equatable {
         if let dImageLink = dict["imageLink"] {
             self.imageUrl = dImageLink as! String
         }
+        if let dLocationTBD = dict["locationTBD"] {
+            self.locationTBD = dLocationTBD as! Bool
+        }
+        
 //        if let dImage = dict["image"] {
 //            if let imageUrl = dImage.objectForKey("url") {
 //                self.imageUrl = imageUrl as! String
@@ -128,6 +134,9 @@ class Event: Equatable {
     
     //return the location as a string
     func getLocationString() -> String {
+        if locationTBD {
+            return "TBD"
+        }
         if location != nil {
             var street: String
             var suburb: String
