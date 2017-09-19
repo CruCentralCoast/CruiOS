@@ -156,7 +156,7 @@ class RideUtils {
     }
     
     fileprivate func addPassengerToRide(_ rideId: String, passengerId: String, eventId: String, handler : @escaping (Bool)->Void){
-        let body = ["_id": passengerId, "event": eventId]
+        let body = ["passenger_id": passengerId, "event": eventId]
         
         print("Adding Passenger: ")
         print("body: \(body)")

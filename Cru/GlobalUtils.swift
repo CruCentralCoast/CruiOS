@@ -40,6 +40,7 @@ class GlobalUtils {
             menuButton.target = view.revealViewController()
             menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
             view.view.addGestureRecognizer(view.revealViewController().panGestureRecognizer())
+            view.view.addGestureRecognizer(view.revealViewController().tapGestureRecognizer())
             if let vc = view as? SWRevealViewControllerDelegate{
                 view.revealViewController().delegate = vc
             }

@@ -100,12 +100,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem!.setTitleTextAttributes([NSFontAttributeName: UIFont(name: Config.fontName, size: 20)!], for: UIControlState())
         
-        if self.revealViewController() != nil{
-            menuButton.target = self.revealViewController()
-            menuButton.action = #selector(SWRevealViewController.revealToggle(_:))
-            self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-            self.revealViewController().delegate = self
-        }
+        GlobalUtils.setupViewForSideMenu(self, menuButton: self.menuButton)
         
         //Change nav title font
         navigationItem.title = "Home"
@@ -127,10 +122,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         noConnectionEventsString = NSAttributedString(string: "No events available. Check your internet connection.", attributes: attributes)
         
-        self.table!.emptyDataSetSource = self;
-        self.table!.emptyDataSetDelegate = self;
-        self.eventsTable!.emptyDataSetSource = self;
-        self.eventsTable!.emptyDataSetDelegate = self;
+        self.table!.emptyDataSetSource = self
+        self.table!.emptyDataSetDelegate = self
+        self.table!.separatorStyle = .none
+        self.eventsTable!.emptyDataSetSource = self
+        self.eventsTable!.emptyDataSetDelegate = self
+        self.eventsTable!.separatorStyle = .none
         
         //Take this out eventually
         offerVC = NewOfferRideViewController()

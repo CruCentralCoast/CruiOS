@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9t1-Fv-uyz">
-                                        <rect key="frame" x="0.0" y="0.0" width="419" height="635"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="419" height="640"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crumountains" translatesAutoresizingMaskIntoConstraints="NO" id="QRK-Cz-pSs">
                                                 <rect key="frame" x="0.0" y="0.0" width="419" height="215"/>
@@ -57,13 +57,13 @@
                                                 </variation>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Rides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hc6-Bv-K6z">
-                                                <rect key="frame" x="15" y="223" width="389" height="28"/>
+                                                <rect key="frame" x="15" y="223" width="389" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="24"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htN-QS-Ku8">
-                                                <rect key="frame" x="15" y="259" width="389" height="2"/>
+                                                <rect key="frame" x="15" y="261.5" width="389" height="2"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -71,7 +71,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HfV-xA-ZtN">
-                                                <rect key="frame" x="15" y="269" width="389" height="100"/>
+                                                <rect key="frame" x="15" y="271.5" width="389" height="100"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Jyk-3L-Tsw"/>
@@ -89,7 +89,7 @@
                                                                     <rect key="frame" x="8" y="8" width="373" height="84"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIx-3d-SZ9">
-                                                                            <rect key="frame" x="19.5" y="17" width="38" height="21"/>
+                                                                            <rect key="frame" x="22" y="17" width="33" height="21"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="21" id="d4X-XL-0VX"/>
                                                                             </constraints>
@@ -122,7 +122,7 @@
                                                                     </variation>
                                                                 </view>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Driving to Sophmore Social at 3:00 pm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRb-YY-p97">
-                                                                    <rect key="frame" x="85.5" y="29.5" width="285.5" height="42"/>
+                                                                    <rect key="frame" x="83" y="39" width="288" height="23"/>
                                                                     <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -161,13 +161,13 @@
                                                 </connections>
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upcoming Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NPx-Zh-K4y">
-                                                <rect key="frame" x="15" y="379" width="389" height="28"/>
+                                                <rect key="frame" x="15" y="381.5" width="389" height="30.5"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="24"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d0o-uh-smX">
-                                                <rect key="frame" x="15" y="415" width="389" height="2"/>
+                                                <rect key="frame" x="15" y="420" width="389" height="2"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -175,7 +175,7 @@
                                                 </constraints>
                                             </view>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="btd-49-F7H">
-                                                <rect key="frame" x="15" y="425" width="389" height="100"/>
+                                                <rect key="frame" x="15" y="430" width="389" height="100"/>
                                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Ujf-ah-qTB"/>
@@ -281,64 +281,63 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Rv-hs-7WV">
-                                                <rect key="frame" x="0.0" y="565" width="424" height="70"/>
+                                                <rect key="frame" x="0.0" y="570" width="424" height="70"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXn-v8-gs7">
-                                                        <rect key="frame" x="162" y="17" width="31" height="36"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="36" id="T4J-Uu-cwi"/>
-                                                            <constraint firstAttribute="width" constant="31" id="siC-fM-yei"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button" image="instagram-button"/>
-                                                        <connections>
-                                                            <action selector="instagramTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="Uhf-lD-poy"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjE-61-Eov">
-                                                        <rect key="frame" x="233" y="17" width="39" height="36"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="36" id="sZt-7f-ml9"/>
-                                                            <constraint firstAttribute="width" constant="39" id="xW8-RV-H0G"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button" image="youtube-button"/>
-                                                        <connections>
-                                                            <action selector="youtubeTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="9oC-aW-erb"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPf-m3-I1z">
-                                                        <rect key="frame" x="312" y="17" width="34" height="36"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="34" id="C27-Mn-Shb"/>
-                                                            <constraint firstAttribute="height" constant="36" id="Qog-cE-c3W"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button" image="twitter-button"/>
-                                                        <connections>
-                                                            <action selector="twitterTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="GPY-W1-JRS"/>
-                                                        </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lau-Mk-i1w">
-                                                        <rect key="frame" x="101" y="17" width="21" height="36"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="21" id="5ub-RK-mII"/>
-                                                            <constraint firstAttribute="height" constant="36" id="7qv-nZ-LGw"/>
-                                                        </constraints>
-                                                        <state key="normal" title="facebook" image="facebook-button"/>
-                                                        <connections>
-                                                            <action selector="facebookTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="Syg-Ik-9Vy"/>
-                                                        </connections>
-                                                    </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="kTM-Ag-2Kz">
+                                                        <rect key="frame" x="89.5" y="17" width="245" height="36"/>
+                                                        <subviews>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lau-Mk-i1w">
+                                                                <rect key="frame" x="0.0" y="0.0" width="21" height="36"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="21" id="5ub-RK-mII"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="7qv-nZ-LGw"/>
+                                                                </constraints>
+                                                                <state key="normal" image="facebook-button"/>
+                                                                <connections>
+                                                                    <action selector="facebookTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="Syg-Ik-9Vy"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXn-v8-gs7">
+                                                                <rect key="frame" x="61" y="0.0" width="31" height="36"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="36" id="T4J-Uu-cwi"/>
+                                                                    <constraint firstAttribute="width" constant="31" id="siC-fM-yei"/>
+                                                                </constraints>
+                                                                <state key="normal" image="instagram-button"/>
+                                                                <connections>
+                                                                    <action selector="instagramTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="Uhf-lD-poy"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FjE-61-Eov">
+                                                                <rect key="frame" x="132" y="0.0" width="39" height="36"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="36" id="sZt-7f-ml9"/>
+                                                                    <constraint firstAttribute="width" constant="39" id="xW8-RV-H0G"/>
+                                                                </constraints>
+                                                                <state key="normal" image="youtube-button"/>
+                                                                <connections>
+                                                                    <action selector="youtubeTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="9oC-aW-erb"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HPf-m3-I1z">
+                                                                <rect key="frame" x="211" y="0.0" width="34" height="36"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="34" id="C27-Mn-Shb"/>
+                                                                    <constraint firstAttribute="height" constant="36" id="Qog-cE-c3W"/>
+                                                                </constraints>
+                                                                <state key="normal" image="twitter-button"/>
+                                                                <connections>
+                                                                    <action selector="twitterTapped:" destination="SOu-VK-CUe" eventType="touchUpInside" id="GPY-W1-JRS"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="8D9-FK-mtm"/>
-                                                    <constraint firstItem="OXn-v8-gs7" firstAttribute="leading" secondItem="Lau-Mk-i1w" secondAttribute="trailing" constant="40" id="9wI-K4-Ihk"/>
-                                                    <constraint firstItem="FjE-61-Eov" firstAttribute="leading" secondItem="OXn-v8-gs7" secondAttribute="trailing" constant="40" id="JF1-Vt-Pyr"/>
-                                                    <constraint firstItem="FjE-61-Eov" firstAttribute="centerX" secondItem="1Rv-hs-7WV" secondAttribute="centerX" constant="40" id="LNp-DG-odm"/>
-                                                    <constraint firstItem="FjE-61-Eov" firstAttribute="centerY" secondItem="1Rv-hs-7WV" secondAttribute="centerY" id="MYz-Y2-xi8"/>
-                                                    <constraint firstItem="Lau-Mk-i1w" firstAttribute="centerY" secondItem="1Rv-hs-7WV" secondAttribute="centerY" id="Mji-X9-k2j"/>
-                                                    <constraint firstItem="OXn-v8-gs7" firstAttribute="centerY" secondItem="1Rv-hs-7WV" secondAttribute="centerY" id="c2r-yc-wkb"/>
-                                                    <constraint firstItem="HPf-m3-I1z" firstAttribute="leading" secondItem="FjE-61-Eov" secondAttribute="trailing" constant="40" id="ht1-p5-gVA"/>
-                                                    <constraint firstItem="HPf-m3-I1z" firstAttribute="centerY" secondItem="1Rv-hs-7WV" secondAttribute="centerY" id="yEg-3Z-D6f"/>
+                                                    <constraint firstItem="kTM-Ag-2Kz" firstAttribute="centerY" secondItem="1Rv-hs-7WV" secondAttribute="centerY" id="K5Z-xq-QxC"/>
+                                                    <constraint firstItem="kTM-Ag-2Kz" firstAttribute="centerX" secondItem="1Rv-hs-7WV" secondAttribute="centerX" id="acz-WB-oSF"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -554,7 +553,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N6m-Jd-u2t" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="uVJ-hb-Y1a">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" barStyle="black" translucent="NO" id="uVJ-hb-Y1a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
