@@ -891,7 +891,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
         let taggedVideos = videos.filter { vid in
-            if (vid.tags != nil) && vid.tags.isEmpty {
+            if (vid.tags != nil) && !vid.tags.isEmpty {
                 return checkTags(vid.tags!, filteredTags: tags)
             }
             return false
