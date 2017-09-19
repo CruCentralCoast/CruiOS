@@ -127,10 +127,12 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         noConnectionEventsString = NSAttributedString(string: "No events available. Check your internet connection.", attributes: attributes)
         
-        self.table!.emptyDataSetSource = self;
-        self.table!.emptyDataSetDelegate = self;
-        self.eventsTable!.emptyDataSetSource = self;
-        self.eventsTable!.emptyDataSetDelegate = self;
+        self.table!.emptyDataSetSource = self
+        self.table!.emptyDataSetDelegate = self
+        self.table!.separatorStyle = .none
+        self.eventsTable!.emptyDataSetSource = self
+        self.eventsTable!.emptyDataSetDelegate = self
+        self.eventsTable!.separatorStyle = .none
         
         //Take this out eventually
         offerVC = NewOfferRideViewController()
