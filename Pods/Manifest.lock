@@ -3,10 +3,14 @@ PODS:
   - Alamofire (4.3.0)
   - AlamofireImage (3.2.0):
     - Alamofire (~> 4.1)
+  - AmazonS3RequestManager (1.2.0):
+    - Alamofire (~> 4.1)
+    - SWXMLHash (~> 4.1.0)
   - AnimatedTextInput (0.5.1)
   - Appsee (2.3.1)
   - AWSCognito (2.5.10):
     - AWSCore (= 2.5.10)
+  - AWSCognitoAuth (2.5.10)
   - AWSCore (2.5.10)
   - AWSS3 (2.5.10):
     - AWSCore (= 2.5.10)
@@ -126,6 +130,7 @@ PODS:
   - SideMenu (2.2.0)
   - SwiftValidator (4.0.0)
   - SwiftyJSON (3.1.4)
+  - SWXMLHash (4.1.1)
   - UIScrollView-InfiniteScroll (1.0.0)
   - XLPagerTabStrip (7.0.0)
   - YouTubePlayer (0.4.0)
@@ -134,9 +139,11 @@ DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (~> 4.3)
   - AlamofireImage (~> 3.2)
+  - AmazonS3RequestManager
   - AnimatedTextInput (~> 0.5.1)
   - Appsee
   - AWSCognito
+  - AWSCognitoAuth
   - AWSS3
   - Crashlytics
   - DatePickerCell
@@ -180,9 +187,11 @@ SPEC CHECKSUMS:
   ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
   Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
   AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
+  AmazonS3RequestManager: fe0b95154175931b2637303d7a152ef249476362
   AnimatedTextInput: 0fde4c9c8d71dafc032b9b222531a788767536fb
   Appsee: 78b5d4b281ceb83d5fd17d7df18d5ff8c292e031
   AWSCognito: 75de3956984129b9a270f99261c431fa1eb87c26
+  AWSCognitoAuth: e8a157b9c201bbb94bde19f3433fa3bb90a8857e
   AWSCore: 490c988f6af48a10ea113ff06c53a1ef72a3534b
   AWSS3: cd25080951a7637668d4f33393fe24bcb04dfac7
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
@@ -217,10 +226,11 @@ SPEC CHECKSUMS:
   SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SWXMLHash: 2ac748d1b7a429725d5fc99bb1177a685c4b84c7
   UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
   XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
   YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
 
-PODFILE CHECKSUM: b604e1418ad7faea7045e10b71842eb7f17aa65e
+PODFILE CHECKSUM: 89d98d4facd45db6bdf04927479845bf4880aa4a
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

@@ -55,6 +55,9 @@ struct Config {
     static let s3IdentityPoolID = "us-west-2:618b90f8-75e8-459a-9ecc-439a76d0f23c"
     static let s3ImageFolderURL = "images/community-groups"
     
+    static let awsKey = "AKIAIW4GRDWQZBWMZ4NA"
+    static let awsSecret = "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"
+    
     /* Configurations for Events */
     //reuse identifier for event collection cells
     static let eventReuseIdentifier = "event"

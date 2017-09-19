@@ -15,6 +15,8 @@ import Fabric
 import Crashlytics
 import Appsee
 import AWSCognito
+import AWSS3
+import AWSCore
 import UserNotifications
 import Firebase
 import FirebaseInstanceID
@@ -51,10 +53,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Set up AWS S3 stuff
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USWest2, identityPoolId: Config.s3IdentityPoolID)
-        let configuration = AWSServiceConfiguration(region:.USWest1, credentialsProvider:credentialsProvider)
+        let configuration = AWSServiceConfiguration(region:.USWest2, credentialsProvider:credentialsProvider)
         AWSServiceManager.default().defaultServiceConfiguration = configuration
+        let cognitoId = credentialsProvider.identityId
+        print("Cognito id: \(cognitoId)")
+        AWSLogger.default().logLevel = .verbose
+        
+        /*let credentialProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: Config.s3IdentityPoolID)
+        let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialProvider)
+        AWSServiceManager.default().defaultServiceConfiguration = configuration*/
         
         return true
+    }
+    
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        /*
+         Store the completion handler.
+         */
+        AWSS3TransferUtility.interceptApplication(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
     }
     
     func onUserSessionStarted() {

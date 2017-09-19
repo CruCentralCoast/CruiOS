@@ -13,6 +13,7 @@ import DropDown
 import ImagePicker
 import AWSS3
 import MRProgress
+import AmazonS3RequestManager
 
 class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -30,6 +31,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     var group: CommunityGroup!
     var delegate: CommunityGroupDataDelegate?
     var selectedImage: UIImage?
+    var selectedURL: NSURL?
     var oldImage: UIImage?
     var ministries = [Ministry]()
     var stringMinistries = [String]()
@@ -37,6 +39,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     var progressBlock: AWSS3TransferUtilityProgressBlock?
     var circularView: MRProgressOverlayView?
     var progressView: MRProgressOverlayView?
+    var temporaryDirectoryPath: String?
     
     //MARK: - DropDown's
     
@@ -98,7 +101,8 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         group.desc = descriptionView.text
         group.parentMinistryID = ministryTable[chooseMinistryDropDown.selectedItem!]!
         group.parentMinistryName = chooseMinistryDropDown.selectedItem!
-        group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(Config.s3ImageFolderURL)/\(group.id)-image.png"
+        group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(Config.s3ImageFolderURL)/\(group.id)-image.jpeg"
+        //group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(group.id)-image.jpeg"
         
         print("New group info: ")
         print("dayOfWeek: " + group.dayOfWeek)
@@ -118,13 +122,49 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
                 })
             }
             
-            self.uploadImage(with: UIImagePNGRepresentation(image)!)
+            
+            // TODO: Signing AWS request shit
+            
+            /*self.temporaryDirectoryPath = NSTemporaryDirectory() as String
+            let directoryURL = URL(fileURLWithPath: self.temporaryDirectoryPath!)
+            
+            do {
+                try FileManager.default.createDirectory(at: directoryURL, withIntermediateDirectories: true, attributes: nil)
+            }
+            catch {
+                print("*** Error creating temporary directory ***")
+            }
+            
+            if let data = UIImageJPEGRepresentation(image, 0.5) {
+
+                // Manual Signed request way (doesn't work)
+                let request = CruClients.getCommunityGroupUtils().getS3Manager().upload(data, to: "\(Config.s3ImageFolderURL)/\(group.id)-image.jpeg").response {
+                    response in
+                    print("Request: \(response.request)")
+                    print("Response: \(response.response)")
+                    print("Error: \(response.error)")
+                }
+                
+            }*/
+            
+            // AWSS3 upload way that doesn't work
+            self.uploadImage(with: UIImageJPEGRepresentation(image, 0.5)!)
         }
         else {
             progressView = MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             //MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             CruClients.getCommunityGroupUtils().patchGroup(self.group.id, params: [CommunityGroupKeys.dayOfWeek: self.group.dayOfWeek, CommunityGroupKeys.meetingTime: self.group.meetingTime ,CommunityGroupKeys.description: self.group.desc, CommunityGroupKeys.imageURL: self.group.imgURL, CommunityGroupKeys.ministry: self.group.parentMinistryID], handler: self.handlePostResult)
         }
+    }
+    
+    func signAWSRequest() {
+        
+    }
+    
+    func getDocumentsDirectory() -> URL {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
     }
     
     func uploadImage(with data: Data) {
@@ -288,6 +328,8 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         //let croppedImage = info[UIImagePickerControllerEditedImage] as! UIImage
+        selectedURL = info["UIImagePickerControllerReferenceURL"] as! NSURL
+        print(selectedURL?.absoluteString)
         
         //Save old image in case new image can't be uploaded
         self.oldImage = self.groupImage.image

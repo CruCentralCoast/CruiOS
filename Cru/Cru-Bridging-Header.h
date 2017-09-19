@@ -12,4 +12,5 @@
 #import <Firebase/Firebase.h>
 #import "SWRevealViewController.h"
 #import <UIScrollView_InfiniteScroll/UIScrollView+InfiniteScroll.h>
+#import <CommonCrypto/CommonHMAC.h>
 #endif

@@ -7,19 +7,23 @@
 //
 
 import Foundation
+import AmazonS3RequestManager
 
 class CommunityGroupUtils {
     
     var serverClient: ServerProtocol
     var ministries = [Ministry]()
     var ministryTable = [String: String]()
+    private var amazonS3Manager: AmazonS3RequestManager
     
     init() {
         serverClient = CruClients.getServerClient()
+        amazonS3Manager = AmazonS3RequestManager(bucket: Config.s3BucketName, region: .USWest2, accessKey: Config.awsKey, secret: Config.awsSecret)
     }
     
     init(serverProtocol: ServerProtocol) {
         serverClient = serverProtocol
+        amazonS3Manager = AmazonS3RequestManager(bucket: Config.s3BucketName, region: .USWest2, accessKey: Config.awsKey, secret: Config.awsSecret)
     }
     
     func loadGroups(_ inserter: @escaping (NSDictionary)->Void, completionHandler:
@@ -51,7 +55,9 @@ class CommunityGroupUtils {
         
     }
     
-    
+    func getS3Manager() -> AmazonS3RequestManager{
+        return amazonS3Manager
+    }
     
     func patchGroup(_ id: String, params: [String:Any], handler: @escaping (CommunityGroup?)->Void) {
         serverClient.patch(DBCollection.CommunityGroup, params: params, completionHandler: { dict in

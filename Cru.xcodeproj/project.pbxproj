@@ -232,7 +232,6 @@
 		6D5C10371D5E3E81007AC44E /* NewDriverRideDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D5C10351D5E3E81007AC44E /* NewDriverRideDetailViewController.swift */; };
 		6D62D0F91F1571FF008AEE64 /* TableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */; };
 		6D62D0FA1F1571FF008AEE64 /* TableViewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */; };
-		6D679D9C1E91B371006F672C /* CloudMessaging.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */; };
 		6D76CA751C06A40B00F8B007 /* Leitura-Roman 3.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA741C06A40B00F8B007 /* Leitura-Roman 3.otf */; };
 		6D76CA771C06A41900F8B007 /* FreigSanProLig.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6D76CA761C06A41900F8B007 /* FreigSanProLig.otf */; };
 		6D76CA7B1C06AB6900F8B007 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D76CA7A1C06AB6900F8B007 /* Event.swift */; };
@@ -329,7 +328,6 @@
 		C1214DC91CEA63B300E7D25F /* EventUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214DC71CEA63B300E7D25F /* EventUtils.swift */; };
 		C1214DCB1CEA668300E7D25F /* EventUtilsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1214DCA1CEA668300E7D25F /* EventUtilsTest.swift */; };
 		C12562551CD3E77B002B05D0 /* SWRevealViewController.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7C1CBF3A3700EF5EFB /* SWRevealViewController.h */; };
-		C12562561CD3E77B002B05D0 /* CloudMessaging.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */; };
 		C12562571CD3E77B002B05D0 /* CruTests-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 50C6CC7B1CBF3A3600EF5EFB /* CruTests-Bridging-Header.h */; };
 		C12940E61CCD82D4004DACB1 /* CruClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E51CCD82D4004DACB1 /* CruClients.swift */; };
 		C12940E71CCD82D4004DACB1 /* CruClients.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12940E51CCD82D4004DACB1 /* CruClients.swift */; };
@@ -496,7 +494,6 @@
 		50B1D3C41CED6BB10014EE1B /* ChooseMinistryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseMinistryVC.swift; sourceTree = "<group>"; };
 		50B1D3C71CED76910014EE1B /* SelectCGVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCGVC.swift; sourceTree = "<group>"; };
 		50B1D3CA1CED76D60014EE1B /* CommunityGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroup.swift; sourceTree = "<group>"; };
-		50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CloudMessaging.h; path = ../Pods/Google/Headers/GGLCloudMessaging/Public/CloudMessaging.h; sourceTree = "<group>"; };
 		50C6CC7B1CBF3A3600EF5EFB /* CruTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CruTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		50C6CC7C1CBF3A3700EF5EFB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		50C6CC7D1CBF3A3700EF5EFB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
@@ -534,6 +531,7 @@
 		6D310AF51F3CE38600ECD0F5 /* DropDownButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownButton.swift; sourceTree = "<group>"; };
 		6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSlider.swift; sourceTree = "<group>"; };
 		6D348AE61F6F1A4D0063179D /* ResourceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceManager.swift; sourceTree = "<group>"; };
+		6D348AEF1F7086B20063179D /* Cru-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Cru-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D3675711D5531D600272151 /* CurrentCGViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCGViewController.swift; sourceTree = "<group>"; };
 		6D4119841D6CDBDA00CCD703 /* KeystoneClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoneClient.swift; sourceTree = "<group>"; };
 		6D424DD41E6E10A400496301 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
@@ -743,23 +741,24 @@
 		0F8CEF1F1BEC0E13008FC70D /* Cru */ = {
 			isa = PBXGroup;
 			children = (
+				6D348AEF1F7086B20063179D /* Cru-Bridging-Header.h */,
 				6DD13BC21F4EA1DD00F60B6B /* Cru.entitlements */,
-				2F8FA1A11F12BCCF00A60392 /* Extensions */,
+				6DF096FC1D92CEDE0053741A /* About */,
 				C12940E41CCD829E004DACB1 /* Clients */,
-				50C6CC791CBF3A0300EF5EFB /* SWRevealController */,
-				0FC8E3A01C45E99E007A7208 /* Introduction */,
-				0FC8E39B1C3EF2FF007A7208 /* SideMenu */,
 				85EAB8181C0ECC40005C7658 /* Config */,
+				50ED8FDC1C052AFF002C9E30 /* Events */,
+				2F8FA1A11F12BCCF00A60392 /* Extensions */,
+				50ED8FDD1C052B03002C9E30 /* Get Involved */,
+				508B2BD51CCF487D00CD130C /* Home */,
+				0FC8E3A01C45E99E007A7208 /* Introduction */,
+				50ED8FDE1C052B09002C9E30 /* Resources */,
+				50ED8FCF1C05063D002C9E30 /* RideSharing */,
+				50ED8FDB1C052AFB002C9E30 /* Settings */,
+				0FC8E39B1C3EF2FF007A7208 /* SideMenu */,
+				50ED8FDF1C052B3C002C9E30 /* Summer Missions */,
+				50C6CC791CBF3A0300EF5EFB /* SWRevealController */,
 				85C6D1161C0BD5CD006A4F9F /* Utils */,
 				6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */,
-				50ED8FDF1C052B3C002C9E30 /* Summer Missions */,
-				50ED8FDE1C052B09002C9E30 /* Resources */,
-				50ED8FDD1C052B03002C9E30 /* Get Involved */,
-				50ED8FDC1C052AFF002C9E30 /* Events */,
-				6DF096FC1D92CEDE0053741A /* About */,
-				50ED8FDB1C052AFB002C9E30 /* Settings */,
-				50ED8FCF1C05063D002C9E30 /* RideSharing */,
-				508B2BD51CCF487D00CD130C /* Home */,
 				0F8CEF201BEC0E13008FC70D /* AppDelegate.swift */,
 				508B2BD61CCF4C2C00CD130C /* VarietyItemCollectionViewCell.swift */,
 				0F8CEF2A1BEC0E13008FC70D /* Assets.xcassets */,
@@ -952,7 +951,6 @@
 			children = (
 				50C6CC7C1CBF3A3700EF5EFB /* SWRevealViewController.h */,
 				50C6CC7D1CBF3A3700EF5EFB /* SWRevealViewController.m */,
-				50C6CC7A1CBF3A3600EF5EFB /* CloudMessaging.h */,
 				50C6CC7B1CBF3A3600EF5EFB /* CruTests-Bridging-Header.h */,
 			);
 			name = SWRevealController;
@@ -1408,7 +1406,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		3B252AB426AAFCF43E19EE84 /* [CP] Embed Pods Frameworks */ = {
@@ -1514,7 +1512,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		CC2FB366E10012E79D1ECC40 /* [CP] Copy Pods Resources */ = {
@@ -1638,7 +1636,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6D679D9C1E91B371006F672C /* CloudMessaging.h in Sources */,
 				C1536D611CFD3C8D00730281 /* SummerMission.swift in Sources */,
 				507B368A1CE10BDC003D6CF9 /* UpcomingItemCell.swift in Sources */,
 				C1E9DC1A1CF7920B00066C5F /* DisplayCGVC.swift in Sources */,
@@ -1820,7 +1817,6 @@
 				50697BC51CE03B5600776CC5 /* PassengersViewController.swift in Sources */,
 				C12562551CD3E77B002B05D0 /* SWRevealViewController.h in Sources */,
 				6D424DD61E6E10A400496301 /* VideoTableViewCell.swift in Sources */,
-				C12562561CD3E77B002B05D0 /* CloudMessaging.h in Sources */,
 				50697BBF1CE002C500776CC5 /* DirectionTVC.swift in Sources */,
 				C12562571CD3E77B002B05D0 /* CruTests-Bridging-Header.h in Sources */,
 				5072B4281CB38F43001F5BF6 /* PassengerTableViewCell.swift in Sources */,

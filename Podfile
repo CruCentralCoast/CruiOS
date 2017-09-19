@@ -39,7 +39,9 @@ def cru_pods
     pod 'ImagePicker'
     pod 'AWSS3'
     pod 'AWSCognito'
+    pod 'AWSCognitoAuth'
     pod 'AlamofireImage', '~> 3.2'
+    pod 'AmazonS3RequestManager'
 end
 
 def crash_monitor

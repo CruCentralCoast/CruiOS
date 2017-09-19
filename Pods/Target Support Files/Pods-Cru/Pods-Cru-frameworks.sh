@@ -90,11 +90,13 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AWSCognito/AWSCognito.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCognitoAuth/AWSCognitoAuth.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AWSCore/AWSCore.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AWSS3/AWSS3.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AlamofireImage/AlamofireImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AmazonS3RequestManager/AmazonS3RequestManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AnimatedTextInput/AnimatedTextInput.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DatePickerCell/DatePickerCell.framework"
@@ -112,6 +114,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RadioButton/RadioButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReadabilityKit/ReadabilityKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SWXMLHash/SWXMLHash.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SideMenu/SideMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftValidator/SwiftValidator.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
@@ -122,11 +125,13 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AWSCognito/AWSCognito.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AWSCognitoAuth/AWSCognitoAuth.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AWSCore/AWSCore.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AWSS3/AWSS3.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Alamofire/Alamofire.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AlamofireImage/AlamofireImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/AmazonS3RequestManager/AmazonS3RequestManager.framework"
   install_framework "$BUILT_PRODUCTS_DIR/AnimatedTextInput/AnimatedTextInput.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DZNEmptyDataSet/DZNEmptyDataSet.framework"
   install_framework "$BUILT_PRODUCTS_DIR/DatePickerCell/DatePickerCell.framework"
@@ -144,6 +149,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/Protobuf/Protobuf.framework"
   install_framework "$BUILT_PRODUCTS_DIR/RadioButton/RadioButton.framework"
   install_framework "$BUILT_PRODUCTS_DIR/ReadabilityKit/ReadabilityKit.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/SWXMLHash/SWXMLHash.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SideMenu/SideMenu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftValidator/SwiftValidator.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SwiftyJSON/SwiftyJSON.framework"
