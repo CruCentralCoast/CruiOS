@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="azP-Hk-ALJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="azP-Hk-ALJ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -188,38 +188,38 @@
                                                         <rect key="frame" x="0.0" y="28" width="389" height="100"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0sL-Br-quk" id="GgU-wK-gUD">
-                                                            <rect key="frame" x="0.0" y="0.0" width="389" height="99"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="389" height="99.5"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uwm-QX-ImF">
                                                                     <rect key="frame" x="8" y="8" width="373" height="83"/>
                                                                     <subviews>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lY-f2-b8l">
-                                                                            <rect key="frame" x="25" y="17" width="37" height="23"/>
+                                                                            <rect key="frame" x="25.5" y="17" width="40.5" height="21"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                                             <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sx0-Za-h7o">
-                                                                            <rect key="frame" x="20" y="42" width="46" height="23"/>
+                                                                            <rect key="frame" x="20" y="40" width="50.5" height="23"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="20"/>
                                                                             <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CgD-LR-kcm">
-                                                                            <rect key="frame" x="66" y="43.5" width="21.5" height="20.5"/>
+                                                                            <rect key="frame" x="70.5" y="43" width="24.5" height="19"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="16"/>
                                                                             <color key="textColor" red="0.0" green="0.45098039220000002" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name here" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="IzF-nk-iH7">
-                                                                            <rect key="frame" x="92" y="10" width="271" height="25.5"/>
+                                                                            <rect key="frame" x="96" y="10" width="267" height="23.5"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="20"/>
                                                                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="75H-cU-hcX">
-                                                                            <rect key="frame" x="88" y="27.5" width="275" height="54.5"/>
+                                                                            <rect key="frame" x="92" y="25.5" width="271" height="52"/>
                                                                             <color key="textColor" red="0.40000000000000002" green="0.3803921569" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                             <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="15"/>
                                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -454,7 +454,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="105"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yeC-Yc-UZ7" id="lBq-xm-AbC">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="104.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Notification Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B9U-vf-nen">
@@ -574,7 +574,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uyv-RA-mLw" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="bsA-Md-pSI">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="bsA-Md-pSI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.40000000000000002" green="0.37647058823529411" blue="0.38431372549019605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -399,6 +399,13 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let eventVC = UIStoryboard(name: "events", bundle: nil).instantiateViewController(withIdentifier: "eventDetail") as! EventDetailsViewController
+        eventVC.event = upcomingEvents[indexPath.row]
+        self.navigationController?.pushViewController(eventVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if(tableView == self.table) {
             return 100.0
