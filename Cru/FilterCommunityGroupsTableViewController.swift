@@ -16,6 +16,10 @@ class FilterCommunityGroupsTableViewController: UITableViewController {
         var time: Date?
         var grades: [String]
         var gender: String?
+        
+        static let empty: FilterOptions = {
+            return FilterOptions(ministries: [], days: [], time: nil, grades: [], gender: nil)
+        }()
     }
     
     fileprivate enum Row: Int {
@@ -64,18 +68,33 @@ class FilterCommunityGroupsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Configure nav bar
+        self.configureNavBar()
+        self.configureTableView()
+    }
+    
+    fileprivate func configureNavBar() {
         self.title = "Filter"
         self.navigationController?.navigationBar.tintColor = CruColors.yellow
         let filterButton = UIBarButtonItem(title: "Apply", style: .done, target: self, action: #selector(self.applyFilter))
         let cancelButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(self.cancel))
         self.navigationItem.rightBarButtonItem = filterButton
         self.navigationItem.leftBarButtonItem = cancelButton
-        
-        // Configure tableView
+    }
+    
+    fileprivate func configureTableView() {
         self.tableView.registerNib(FilterCell.self)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 44
+        self.tableView.sectionFooterHeight = 0
+        
+        // Configure tableView footer
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        button.setTitle("Reset Filter", for: .normal)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .callout)
+        button.setTitleColor(UIColor.red.withAlphaComponent(0.8), for: .normal)
+        button.setTitleColor(UIColor.red.withAlphaComponent(0.3), for: .highlighted)
+        button.addTarget(self, action: #selector(self.resetFilter), for: .touchUpInside)
+        self.tableView.tableFooterView = button
     }
     
     @objc func applyFilter() {
@@ -99,6 +118,11 @@ class FilterCommunityGroupsTableViewController: UITableViewController {
     
     @objc func datePicked(_ date: Date) {
         self.filterOptions.time = date
+        self.tableView.reloadData()
+    }
+    
+    func resetFilter() {
+        self.filterOptions = FilterOptions.empty
         self.tableView.reloadData()
     }
 }
