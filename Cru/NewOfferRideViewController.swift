@@ -164,8 +164,10 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
         //dimiss keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DismisKeyPadFnc)))
         
-        
-        placesClient?.currentPlace(callback: { (placeLikelihoodList, error) -> Void in
+    }
+    
+    func assignCurrentPlace() {
+        placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
             if let error = error {
                 print("Pick Place error: \(error.localizedDescription)")
                 return
@@ -174,13 +176,6 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
             if let placeLikelihoodList = placeLikelihoodList {
                 let place = placeLikelihoodList.likelihoods.first?.place
                 self.pickedLocation = place
-//                for likelihood in placeLikelihoodList.likelihoods {
-//                    let place = likelihood.place
-//                    print("Current Place name \(place.name) at likelihood \(likelihood.likelihood)")
-//                    print("Current Place address \(place.formattedAddress)")
-//                    print("Current Place attributions \(place.attributions)")
-//                    print("Current PlaceID \(place.placeID)")
-//                }
             }
         })
     }
