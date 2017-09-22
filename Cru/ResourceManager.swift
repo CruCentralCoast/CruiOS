@@ -18,19 +18,46 @@ class ResourceManager {
     private var articles = [Article]()
     private var audioFiles = [Audio]()
     private var videos = [Video]()
+    private var tags = [ResourceTag]()
+    private var filteredTags = [ResourceTag]()
     private var newVideos = [Video]()
-    private var urlString: String!
-    private var videosArray: Array<Dictionary<NSObject, AnyObject>> = []
+    var urlString: String!
+    private var delegates = [ResourceDelegate]()
+    private var articleDelAdded = false
+    private var audioDelAdded = false
+    private var videoDelAdded = false
+    private var leaderDelAdded = false
     private var nextPageToken = ""
     private var pageNum = 1
-    private var loadedResources = false
+    private var loadedResources = false {
+        didSet {
+            for del in delegates {
+                del.resourcesLoaded(loadedResources)
+            }
+            print("Set loaded resources")
+        }
+    }
+    private var loadedResourceTags = false
+    private var youtubeLoaded = false
+    private var hasConnection = true
     private var numUploads: Int!
+    private var downloadGroup: DispatchGroup?
+    private var searchActivated = false
+    private var searchPhrase = ""
+    
     private var numNewVideos: Int! // The number of new youtube videos from infinite scrolling
     
     private init() {
     }
     
     // MARK: - Functions
+    
+    func doesHaveConnection() -> Bool {
+        return hasConnection
+    }
+    func isSearchActivated() -> Bool {
+        return searchActivated
+    }
     
     func getArticles() -> [Article] {
         return articles
@@ -42,23 +69,156 @@ class ResourceManager {
         return videos
     }
     
+    func getResourceTags() -> [ResourceTag] {
+        return tags
+    }
     
-    func loadResources(_ completion: @escaping ([Article], [Audio], [Video]) -> Void){
+    func getFilteredTags() -> [ResourceTag] {
+        return filteredTags
+    }
+    func getSearchPhrase() -> String {
+        return searchPhrase
+    }
+    
+    
+    // MARK: - Set Functions
+    func setFilteredTags(tags: [ResourceTag]) {
+        self.searchActivated = true
+        self.filteredTags = tags
+    }
+    func setSearchPhrase(phrase: String) {
+        self.searchPhrase = phrase
+        self.searchActivated = true
+    }
+    
+    func addObserverForResources(_ obj: NSObject) {
+        UserDefaults.standard.addObserver(obj, forKeyPath: "loadedResources", options: [.old, .new], context: nil)
+    }
+    
+    func removeObserverFromResources(_ obj: NSObject) {
+        UserDefaults.standard.removeObserver(obj, forKeyPath: "loadedResources")
+    }
+    
+    // MARK: - Resource Delegate Functions
+    func addArticleDelegate(_ delegate: ResourceDelegate) {
+        articleDelAdded = true
+        self.delegates.append(delegate)
+    }
+    func hasAddedArticleDelegate() -> Bool {
+        return articleDelAdded
+    }
+    
+    func addAudioDelegate(_ delegate: ResourceDelegate) {
+        audioDelAdded = true
+        self.delegates.append(delegate)
+    }
+    func hasAddedAudioDelegate() -> Bool {
+        return audioDelAdded
+    }
+    
+    func addVideoDelegate(_ delegate: ResourceDelegate) {
+        videoDelAdded = true
+        self.delegates.append(delegate)
+    }
+    func hasAddedVideoDelegate() -> Bool {
+        return videoDelAdded
+    }
+    
+    func addLeaderDelegate(_ delegate: ResourceDelegate) {
+        leaderDelAdded = true
+        self.delegates.append(delegate)
+    }
+    func hasAddedLeaderDelegate() -> Bool {
+        return leaderDelAdded
+    }
+    
+    // MARK: - Loading Resources
+    func loadResourceTags() {
+        if !self.loadedResourceTags {
+            //Also get resource tags and store them
+            CruClients.getServerClient().getData(DBCollection.ResourceTags, insert: self.insertResourceTag, completionHandler: {success in
+                
+                self.loadedResourceTags = success
+            })
+        }
+    }
+    
+    func loadResources(_ completion: @escaping (Bool, Bool) -> Void){
         if !loadedResources {
-            
             CruClients.getServerClient().getData(DBCollection.Resource, insert: self.insertResource, completionHandler: { success in
+                self.loadedResources = success
                 if success {
-                    self.loadedResources = true
                     self.getVideosForChannel({ success in
-                        completion(self.articles, self.audioFiles, self.videos)
+                        self.youtubeLoaded = success
+                        if !success {
+                            print("Could not load youtube videos")
+                        }
+                        completion(self.loadedResources, self.youtubeLoaded)
+                        
                     })
                     
                 }
             })
+            
+            /*if !self.loadedResourceTags {
+                //Also get resource tags and store them
+                CruClients.getServerClient().getData(DBCollection.ResourceTags, insert: self.insertResourceTag, completionHandler: {success in
+                    
+                    self.loadedResourceTags = success
+                })
+                
+                
+            }*/
+            
+            /*DispatchQueue.global(qos: .userInitiated).async { // 1
+                self.downloadGroup = DispatchGroup() // 2
+                
+                CruClients.getServerClient().getData(DBCollection.Resource, insert: self.insertResource, completionHandler: { success in
+                    self.loadedResources = success
+                    if success {
+                        self.getVideosForChannel({ success in
+                            if !success {
+                                print("Could not load youtube videos")
+                            }
+                            
+                        })
+                        
+                    }
+                })
+                
+                if !self.loadedResourceTags {
+                    //Also get resource tags and store them
+                    CruClients.getServerClient().getData(DBCollection.ResourceTags, insert: self.insertResourceTag, completionHandler: {success in
+                        
+                        self.loadedResourceTags = success
+                        
+                        //I don't think that tag exists anymore
+                        //Hide the community leader tag if the user isn't logged in
+                        /*if GlobalUtils.loadString(Config.userID) == "" || !GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader){
+                            let index = self.tags.index(where: {$0.title == "Leader (login required)"})
+                            self.tags.remove(at: index!)
+                            
+                        }*/
+                    })
+                    
+                    
+                }
+                
+                
+                self.downloadGroup?.wait()
+                DispatchQueue.main.async { // 6
+                    
+                    completion(self.loadedResources)
+                }
+                
+            }*/
+            
+            
             //CruClients.getServerClient().getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
         }
         else {
-            completion(articles, audioFiles, videos)
+            
+            completion(self.loadedResources, self.youtubeLoaded)
         }
         
         //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
@@ -69,6 +229,8 @@ class ResourceManager {
     private func insertResource(_ dict : NSDictionary) {
         let resource = Resource(dict: dict)!
         resources.insert(resource, at: 0)
+        // Make sure to call downloadGroup.leave() when each resource has been inserted
+        //downloadGroup?.enter()
         
         if (resource.type == ResourceType.Article) {
             //Can't pass in nil to completion so pass instead print confirmation
@@ -92,6 +254,15 @@ class ResourceManager {
         }
     }
     
+    func insertResourceTag(_ dict : NSDictionary) {
+        //downloadGroup?.enter()
+        let tag = ResourceTag(dict: dict)!
+        tags.insert(tag, at: 0)
+        //downloadGroup?.leave()
+        
+        
+    }
+    
     // MARK: - Article Functions
     /* Helper function to insert an article resource */
     fileprivate func insertArticle(_ resource: Resource,completionHandler: (Bool) -> Void) {
@@ -100,24 +271,40 @@ class ResourceManager {
         guard let url = resUrl else {
             return
         }
+        let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, imgURL: "", restricted: resource.restricted)
+        self.articles.append(newArt!)
         
-        //Use Readability to scrape article for description
-        Readability.parse(url: url) { data in
-            let description = data?.description ?? ""
-            let imageUrl = data?.topImage ?? ""
-            
-            let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, imgURL: imageUrl, restricted: resource.restricted)
-            self.articles.append(newArt!)
+        if resource.description == "" {
+            //Use Readability to scrape article for description
+            Readability.parse(url: url) { data in
+                let description = data?.description ?? ""
+                let imageUrl = data?.topImage ?? ""
+                newArt?.abstract = description
+                NotificationCenter.default.post(name: NSNotification.Name.init("refresh"), object: nil)
+                //NotificationCenter.default.postNotificationName("refresh", object: nil)
+                //let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, imgURL: imageUrl, restricted: resource.restricted)
+                //self.articles.append(newArt!)
+                //self.downloadGroup?.leave()
+            }
         }
+        /*else {
+            let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, imgURL: "", restricted: resource.restricted)
+            self.articles.append(newArt!)
+            //self.downloadGroup?.leave()
+        }*/
+        
+        
+        
     }
     
     // MARK: - Audio Functions
     /* Creates new Audio object and inserts into table if necessary*/
     fileprivate func insertAudio(_ resource: Resource, completionHandler: (Bool) -> Void) {
+        print("Inserting audio")
         let newAud = Audio(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, restricted: resource.restricted)
         newAud.prepareAudioFile()
         audioFiles.append(newAud)
-        
+        //downloadGroup?.leave()
     }
     
     
@@ -141,55 +328,63 @@ class ResourceManager {
         guard let url = resUrl else {
             return
         }
+        print("Inserting video")
         
-        Readability.parse(url: url) { data in
-            
-            let description = data?.description ?? ""
-            let videoUrl = data?.topVideo ?? ""
-            
-            //If Readability doesn't find video URL, scrape HTML and get source from iFrame
-            if videoUrl == "" {
-                Alamofire.request(resource.url, method: .get)
-                    .responseString { responseString in
-                        guard responseString.result.error == nil else {
-                            //completionHandler(responseString.result.error!)
-                            return
+        if resource.description == "" {
+            Readability.parse(url: url) { data in
+                
+                let description = data?.description ?? ""
+                let videoUrl = data?.topVideo ?? ""
+                
+                //If Readability doesn't find video URL, scrape HTML and get source from iFrame
+                if videoUrl == "" {
+                    Alamofire.request(resource.url, method: .get)
+                        .responseString { responseString in
+                            guard responseString.result.error == nil else {
+                                //completionHandler(responseString.result.error!)
+                                return
+                                
+                            }
+                            guard let htmlAsString = responseString.result.value else {
+                                //Future problem: impement better error code with Alamofire 4
+                                print("Error: Could not get HTML as String")
+                                return
+                            }
                             
-                        }
-                        guard let htmlAsString = responseString.result.value else {
-                            //Future problem: impement better error code with Alamofire 4
-                            print("Error: Could not get HTML as String")
-                            return
-                        }
-                        
-                        var vidURL: String!
-                        
-                        let doc = HTMLDocument(string: htmlAsString)
-                        let content = doc.nodes(matchingSelector: "iframe")
-                        
-                        for vidEl in content {
-                            let vidNode = vidEl.firstNode(matchingSelector: "iframe")!
-                            vidURL = vidNode.objectForKeyedSubscript("src") as? String
-                        }
-                        
-                        //let youtubeID = self.getYoutubeID(vidURL)
-                        //let embedUrl = URL(string: vidURL)!
-                        //let vidwebUrl = URL(string: vidURL)!
-                        
-                        let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: vidURL, thumbnailURL: "", restricted: resource.restricted)
-                        
-                        self.videos.append(newVid!)
+                            var vidURL: String!
+                            
+                            let doc = HTMLDocument(string: htmlAsString)
+                            let content = doc.nodes(matchingSelector: "iframe")
+                            
+                            for vidEl in content {
+                                let vidNode = vidEl.firstNode(matchingSelector: "iframe")!
+                                vidURL = vidNode.objectForKeyedSubscript("src") as? String
+                            }
+                            
+                            let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: vidURL, thumbnailURL: "", restricted: resource.restricted)
+                            
+                            self.videos.append(newVid!)
+                            //self.downloadGroup?.leave()
+                    }
+                }
+                else {
+                    let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: videoUrl, thumbnailURL: "", restricted: resource.restricted)
+                    self.videos.append(newVid!)
+                    //self.downloadGroup?.leave()
                 }
             }
-            else {
-                let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: videoUrl, thumbnailURL: "", restricted: resource.restricted)
-                self.videos.append(newVid!)
-            }
         }
+        else {
+            let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, videoURL: "", thumbnailURL: "", restricted: resource.restricted)
+            self.videos.append(newVid!)
+            //self.downloadGroup?.leave()
+        }
+        
     }
     
     //Get the data from Cru Central Coast's youtube channel
     private func getVideosForChannel(_ handler: @escaping (Bool)-> Void) {
+        print("Getting videos from youtube")
         
         self.urlString = "https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=\(Config.cruChannelID)&maxResults=\(PageSize)&order=date&type=video&key=\(Config.youtubeApiKey)"
         
@@ -198,6 +393,8 @@ class ResourceManager {
             //self.urlString = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=\(PageSize)&pageToken=\(nextPageToken)&playlistId=\(Config.cruUploadsID)&key=\(Config.youtubeApiKey)"
             
         }
+        
+        //downloadGroup?.enter()
         
         // Fetch the playlist from Google.
         performGetRequest(URL(string: self.urlString), completion: { (data, HTTPStatusCode, error) -> Void in
@@ -217,32 +414,61 @@ class ResourceManager {
                     
                     // Use a loop to go through all video items.
                     for i in 0 ..< items.count {
+                        self.downloadGroup?.enter()
                         let idDict = (items[i] as Dictionary<String, AnyObject>)["id"] as! Dictionary<String, AnyObject>
                         let videoID = idDict["videoId"] as! String
                         
                         
                         let snippetDict = (items[i] as Dictionary<String, AnyObject>)["snippet"] as! Dictionary<String, AnyObject>
-                        
+                        //self.videosArray.append(snippetDict as [NSObject : AnyObject])
                         // Initialize a new dictionary and store the data of interest.
                         //var thumbnailsDict = Dictionary<String, AnyObject>()
                         
                         
-                        let thumbnailURL = ((snippetDict["thumbnails"] as! Dictionary<String, AnyObject>)["default"] as! Dictionary<String, AnyObject>)["url"]
+                        let thumbnailURL = ((snippetDict["thumbnails"] as! Dictionary<String, Any>)["default"] as! Dictionary<String, Any>)["url"]
                         //desiredPlaylistItemDataDict["videoID"] = (snippetDict["resourceId"] as! Dictionary<String, AnyObject>)["videoId"]
                         //desiredPlaylistItemDataDict["date"] = snippetDict["publishedAt"]
                         
-                        // Append the desiredPlaylistItemDataDict dictionary to the videos array.
-                        self.videosArray.append(snippetDict as [NSObject : AnyObject])
-                        //print("\n\(resultsDict)\n")
-                        let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as? String, tags: nil)!
+                        var title: String
+                        var url: String
+                        var date: String
+                        var desc: String
                         
-                        let newVid = Video(id: videoID, title: snippetDict["title"] as? String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as? String, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
+                        if let t = snippetDict["title"] {
+                            title = t as! String
+                        }
+                        else {
+                            title = "Video"
+                        }
+                        
+                        if let d = snippetDict["publishedAt"] {
+                            date = d as! String
+                        }
+                        else {
+                            date = ""
+                        }
+                        
+                        if let des = snippetDict["description"] {
+                            desc = des as! String
+                        }
+                        else {
+                            desc = ""
+                        }
+                        
+                        url = "https://www.youtube.com/watch?v=\(videoID)"
+                        
+                        
+                        let resource = Resource(id: videoID, title: title, url: url, type: "video", date: date, tags: nil, description: desc)!
+                        
+                        let newVid = Video(id: videoID, title: title, url: resource.url, date: resource.date, tags: nil, abstract: desc, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
                         
                         self.resources.append(resource)
                         self.videos.append(newVid!)
+                        self.downloadGroup?.leave()
                         
                     }
                     self.pageNum = self.pageNum + 1
+                    //self.downloadGroup?.leave()
                     handler(true)
                     //self.tableView.reloadData()
                     
@@ -257,20 +483,25 @@ class ResourceManager {
                     self.tableView.tableFooterView = UIView()*/
                 }
                 catch {
-                    handler(false)
                     print("Error loading videos")
+                    //self.downloadGroup?.leave()
+                    handler(false)
+                    
                 }
                 
             }
                 
             else {
-                handler(false)
+                //self.downloadGroup?.leave()
                 print("HTTP Status Code = \(HTTPStatusCode)\n")
                 print("Error while loading channel videos: \(error)\n")
+                handler(false)
+                
             }
             
             
         })
+        //downloadGroup?.leave()
     }
     
     //Yes, this is similar to the function above but this one has a completion handler
@@ -317,9 +548,18 @@ class ResourceManager {
                         }*/
                         
                         // Append the desiredPlaylistItemDataDict dictionary to the videos array.
-                        self.videosArray.append(snippetDict as [NSObject : AnyObject])
+                        //self.videosArray.append(snippetDict as [NSObject : AnyObject])
                         
-                        let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: "https://www.youtube.com/watch?v=\(videoID)", type: "video", date: snippetDict["publishedAt"] as? String, tags: nil)!
+                        var desc: String
+                        if let d = snippetDict["description"] {
+                            desc = d as! String
+                        }
+                        else {
+                            desc = ""
+                        }
+                        let url = "https://www.youtube.com/watch?v=\(videoID)"
+                        
+                        let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: url, type: "video", date: snippetDict["publishedAt"] as? String, tags: nil, description: desc)!
                         
                         let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as? String, videoURL: resource.url, thumbnailURL: thumbnailURL as? String,restricted: false)
                         
@@ -363,4 +603,8 @@ class ResourceManager {
         task.resume()
     }
     
+}
+
+protocol ResourceDelegate {
+    func resourcesLoaded(_ loaded: Bool)
 }

@@ -40,6 +40,14 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         //If a search query is still active, set the text field text to match
         searchField?.text = prevSearchPhrase
         
+        //Get tags
+        tags = ResourceManager.sharedInstance.getResourceTags()
+        if ResourceManager.sharedInstance.isSearchActivated() {
+            filteredTags = ResourceManager.sharedInstance.getFilteredTags()
+            prevSearchPhrase = ResourceManager.sharedInstance.getSearchPhrase()
+        }
+        
+        
         if prevSearchPhrase == "" {
             resetButton?.isHidden = true
         }

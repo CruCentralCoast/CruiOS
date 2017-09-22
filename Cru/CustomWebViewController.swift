@@ -12,6 +12,7 @@ import MRProgress
 class CustomWebViewController: UIViewController, UIWebViewDelegate {
     var url:URL?
     var urlString:String?
+    var artTitle: String?
     private var webView:UIWebView!
     private var progressShowing = false
 
@@ -29,6 +30,9 @@ class CustomWebViewController: UIViewController, UIWebViewDelegate {
         { 
             url = URL(string: desiredURL)!
             webView.loadRequest(URLRequest(url: url!))
+        }
+        if let aTitle = artTitle {
+            self.navigationController?.title = aTitle
         }
     }
 
@@ -59,10 +63,16 @@ class CustomWebViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
-        if progressShowing {
-            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-            progressShowing = false
+        MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        /*if webView.isLoading {
+            return
         }
+        else {
+            if progressShowing {
+                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+                progressShowing = false
+            }
+        }*/
         
     }
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {

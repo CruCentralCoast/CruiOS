@@ -18,7 +18,7 @@ import ReadabilityKit
 let InitialCount = 20
 let PageSize = 8
 
-class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, Dimmable, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UIPopoverPresentationControllerDelegate {
+class ResourcesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITabBarDelegate, SWRevealViewControllerDelegate, UIViewControllerTransitioningDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, UIPopoverPresentationControllerDelegate {
     //MARK: Properties
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
@@ -184,12 +184,12 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             
             // TODO: Call Resource Manager here instead of making call to server directly
             
-            ResourceManager.sharedInstance.loadResources({ articles, audioFiles, videos in
-                self.articles = articles
+            ResourceManager.sharedInstance.loadResources({ success in
+                /*self.articles = articles
                 self.audioFiles = audioFiles
                 self.videos = videos
                 self.tableView.reloadData()
-                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)*/
             })
             
             //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
@@ -949,7 +949,7 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
                 modalVC.prevSearchPhrase = self.searchPhrase
                 
             }
-            dim(.in, alpha: dimLevel, speed: dimSpeed)
+            //dim(.in, alpha: dimLevel, speed: dimSpeed)
             
         }
         else if segue.identifier == "openWebView" {
@@ -978,45 +978,44 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBAction func unwindFromSecondary(_ segue: UIStoryboardSegue) {
-        dim(.out, speed: dimSpeed)
         modalActive = false
     }
 }
 
-//Code that makes the resources screen go dim when Search modal appears
-enum Direction { case `in`, out }
-
-protocol Dimmable { }
-
-extension Dimmable where Self: UIViewController {
-    
-    func dim(_ direction: Direction, color: UIColor = UIColor.black, alpha: CGFloat = 0.0, speed: Double = 0.0) {
-        
-        switch direction {
-        case .in:
-            
-            // Create and add a dim view
-            let dimView = UIView(frame: view.frame)
-            dimView.backgroundColor = color
-            dimView.alpha = 0.0
-            view.addSubview(dimView)
-            
-            // Deal with Auto Layout
-            dimView.translatesAutoresizingMaskIntoConstraints = false
-            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
-            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
-            
-            // Animate alpha (the actual "dimming" effect)
-            UIView.animate(withDuration: speed, animations: { () -> Void in
-                dimView.alpha = alpha
-            }) 
-            
-        case .out:
-            UIView.animate(withDuration: speed, animations: { () -> Void in
-                self.view.subviews.last?.alpha = alpha
-                }, completion: { (complete) -> Void in
-                    self.view.subviews.last?.removeFromSuperview()
-            })
-        }
-    }
-}
+////Code that makes the resources screen go dim when Search modal appears
+//enum Direction { case `in`, out }
+//
+//protocol Dimmable { }
+//
+//extension Dimmable where Self: UIViewController {
+//    
+//    func dim(_ direction: Direction, color: UIColor = UIColor.black, alpha: CGFloat = 0.0, speed: Double = 0.0) {
+//        
+//        switch direction {
+//        case .in:
+//            
+//            // Create and add a dim view
+//            let dimView = UIView(frame: view.frame)
+//            dimView.backgroundColor = color
+//            dimView.alpha = 0.0
+//            view.addSubview(dimView)
+//            
+//            // Deal with Auto Layout
+//            dimView.translatesAutoresizingMaskIntoConstraints = false
+//            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
+//            view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[dimView]|", options: [], metrics: nil, views: ["dimView": dimView]))
+//            
+//            // Animate alpha (the actual "dimming" effect)
+//            UIView.animate(withDuration: speed, animations: { () -> Void in
+//                dimView.alpha = alpha
+//            }) 
+//            
+//        case .out:
+//            UIView.animate(withDuration: speed, animations: { () -> Void in
+//                self.view.subviews.last?.alpha = alpha
+//                }, completion: { (complete) -> Void in
+//                    self.view.subviews.last?.removeFromSuperview()
+//            })
+//        }
+//    }
+//}

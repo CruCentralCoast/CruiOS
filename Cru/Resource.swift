@@ -25,6 +25,7 @@ class Resource {
     var date: Date!
     var tags: [String]!
     var restricted: Bool!
+    var description: String!
     
     init?() {
         self.title = ""
@@ -36,9 +37,10 @@ class Resource {
         self.date = nil
         self.tags = []
         self.restricted = false
+        self.description = ""
     }
     
-    init?(id: String?, title: String?, url: String?, type: String?, date: String?, tags: [String]?) {
+    init?(id: String?, title: String?, url: String?, type: String?, date: String?, tags: [String]?, description: String?) {
         // Initialize properties
         self.id = id
         self.title = title
@@ -46,6 +48,7 @@ class Resource {
         self.type = ResourceType(rawValue: type!)
         self.date = GlobalUtils.dateFromString(date!)
         self.tags = tags
+        self.description = description
     }
     
     convenience init?(dict : NSDictionary) {
@@ -81,6 +84,10 @@ class Resource {
         
         if let access = dict["restricted"] {
             self.restricted = access as! Bool
+        }
+        
+        if let desc = dict["description"] {
+            self.description = desc as! String
         }
         
         //self.init(id: id, title: title, url: url, type: type, date: date, tags: tags)

@@ -276,6 +276,16 @@
 		6DAD2B761D2D8C6C001F8A1B /* DateUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */; };
 		6DB072FA1E70AF0E00AD6300 /* ResourceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB072F91E70AF0E00AD6300 /* ResourceUtils.swift */; };
 		6DB072FB1E70AF0E00AD6300 /* ResourceUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB072F91E70AF0E00AD6300 /* ResourceUtils.swift */; };
+		6DB8C6401F71D55A00FF47CD /* ArticlesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C63F1F71D55A00FF47CD /* ArticlesTabViewController.swift */; };
+		6DB8C6411F71D55A00FF47CD /* ArticlesTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C63F1F71D55A00FF47CD /* ArticlesTabViewController.swift */; };
+		6DB8C6431F71D57A00FF47CD /* VideosTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C6421F71D57A00FF47CD /* VideosTabViewController.swift */; };
+		6DB8C6441F71D57A00FF47CD /* VideosTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C6421F71D57A00FF47CD /* VideosTabViewController.swift */; };
+		6DB8C6471F71D5E200FF47CD /* ResourcesTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C6461F71D5E200FF47CD /* ResourcesTabVC.swift */; };
+		6DB8C6481F71D5E200FF47CD /* ResourcesTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C6461F71D5E200FF47CD /* ResourcesTabVC.swift */; };
+		6DB8C64A1F71D5F700FF47CD /* AudioTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C6491F71D5F700FF47CD /* AudioTabViewController.swift */; };
+		6DB8C64B1F71D5F700FF47CD /* AudioTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C6491F71D5F700FF47CD /* AudioTabViewController.swift */; };
+		6DB8C64D1F71D60900FF47CD /* LeaderTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C64C1F71D60900FF47CD /* LeaderTabViewController.swift */; };
+		6DB8C64E1F71D60900FF47CD /* LeaderTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DB8C64C1F71D60900FF47CD /* LeaderTabViewController.swift */; };
 		6DB922821C07CE1400C7B120 /* FreigSanProBook.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6DB922811C07CE1400C7B120 /* FreigSanProBook.otf */; };
 		6DBA69FA1F69DBC60006036F /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBA69F91F69DBC60006036F /* AlertViewController.swift */; };
 		6DBA69FB1F69DBC60006036F /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBA69F91F69DBC60006036F /* AlertViewController.swift */; };
@@ -568,6 +578,11 @@
 		6DAB7B5E1F6897DC0080F4A6 /* SubmitRideInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitRideInfoViewController.swift; sourceTree = "<group>"; };
 		6DAD2B741D2D8C6C001F8A1B /* DateUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateUtils.swift; sourceTree = "<group>"; };
 		6DB072F91E70AF0E00AD6300 /* ResourceUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceUtils.swift; sourceTree = "<group>"; };
+		6DB8C63F1F71D55A00FF47CD /* ArticlesTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesTabViewController.swift; sourceTree = "<group>"; };
+		6DB8C6421F71D57A00FF47CD /* VideosTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosTabViewController.swift; sourceTree = "<group>"; };
+		6DB8C6461F71D5E200FF47CD /* ResourcesTabVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesTabVC.swift; sourceTree = "<group>"; };
+		6DB8C6491F71D5F700FF47CD /* AudioTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioTabViewController.swift; sourceTree = "<group>"; };
+		6DB8C64C1F71D60900FF47CD /* LeaderTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LeaderTabViewController.swift; sourceTree = "<group>"; };
 		6DB922811C07CE1400C7B120 /* FreigSanProBook.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FreigSanProBook.otf; sourceTree = "<group>"; };
 		6DBA69F91F69DBC60006036F /* AlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
 		6DBA69FC1F6B01090006036F /* Direction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
@@ -1023,9 +1038,9 @@
 		50ED8FDE1C052B09002C9E30 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6D9994271F730AB9006BF562 /* Models */,
+				6DB8C6451F71D5C700FF47CD /* TabVC */,
 				50F8251E1C0BB965005396BC /* resources.storyboard */,
-				6DE0E4B71F6C959C0092E46B /* AudioManager.swift */,
-				6D348AE61F6F1A4D0063179D /* ResourceManager.swift */,
 				6D31382C1E70CCDB002A4A65 /* PlaybackSlider.swift */,
 				6D424DDA1E6E1E0100496301 /* CustomWebViewController.swift */,
 				6D01D8371D81B5D5006A9AC0 /* SearchModalViewController.swift */,
@@ -1034,14 +1049,9 @@
 				6D01D83A1D843475006A9AC0 /* CustomDismissAnimationController.swift */,
 				6D01D83D1D8440E5006A9AC0 /* CustomPresentAnimationController.swift */,
 				6D01D8341D81AE59006A9AC0 /* CheckboxButton.swift */,
-				6D4B78B51C702FDF00F643CB /* Resource.swift */,
-				6D01D8401D845588006A9AC0 /* ResourceTag.swift */,
 				501085AD1BFBDB6700849CED /* ResourcesViewController.swift */,
 				6DFBF2931D8D735600487F86 /* ResourceTypeExtensions.swift */,
 				6D8F423E1CD80CF60013BB13 /* YoutubeThumbnail.swift */,
-				6D8F423B1CD80C8D0013BB13 /* Article.swift */,
-				6DC46F671D3D5456008BB70A /* Video.swift */,
-				6DC46F6A1D3D5463008BB70A /* Audio.swift */,
 				6D59068D1CE3F0DC00464D57 /* CardTableViewCell.swift */,
 				6DC46F6D1D3D593C008BB70A /* ArticleTableViewCell.swift */,
 				6DF517791E73495B003F637C /* YoutubeTableViewCell.swift */,
@@ -1132,6 +1142,32 @@
 				6D62D0F81F1571FF008AEE64 /* TableViewCellExtension.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6D9994271F730AB9006BF562 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6DE0E4B71F6C959C0092E46B /* AudioManager.swift */,
+				6D348AE61F6F1A4D0063179D /* ResourceManager.swift */,
+				6D8F423B1CD80C8D0013BB13 /* Article.swift */,
+				6DC46F671D3D5456008BB70A /* Video.swift */,
+				6DC46F6A1D3D5463008BB70A /* Audio.swift */,
+				6D4B78B51C702FDF00F643CB /* Resource.swift */,
+				6D01D8401D845588006A9AC0 /* ResourceTag.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		6DB8C6451F71D5C700FF47CD /* TabVC */ = {
+			isa = PBXGroup;
+			children = (
+				6DB8C6461F71D5E200FF47CD /* ResourcesTabVC.swift */,
+				6DB8C63F1F71D55A00FF47CD /* ArticlesTabViewController.swift */,
+				6DB8C6491F71D5F700FF47CD /* AudioTabViewController.swift */,
+				6DB8C6421F71D57A00FF47CD /* VideosTabViewController.swift */,
+				6DB8C64C1F71D60900FF47CD /* LeaderTabViewController.swift */,
+			);
+			name = TabVC;
 			sourceTree = "<group>";
 		};
 		6DC3747B1C925BCA00B3ADB3 /* Resources */ = {
@@ -1659,6 +1695,7 @@
 				50FE4D431C50D0D100EA9042 /* SubscriptionManager.swift in Sources */,
 				50D3166E1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
 				6DFAAAFB1F4672A300D706C0 /* CommunityGroupNoImageTabCell.swift in Sources */,
+				6DB8C6401F71D55A00FF47CD /* ArticlesTabViewController.swift in Sources */,
 				0F5302721CD2AFCF0097F9F2 /* EventsTableViewController.swift in Sources */,
 				0F6862211CE65D4A00138377 /* SummerMissionsTableViewController.swift in Sources */,
 				6D9112B81F0AD215001BCE51 /* CommunityGroupUtils.swift in Sources */,
@@ -1667,6 +1704,7 @@
 				50A341CE1C0C10F3006B73DB /* Campus.swift in Sources */,
 				6DFBF2941D8D735700487F86 /* ResourceTypeExtensions.swift in Sources */,
 				C12940E61CCD82D4004DACB1 /* CruClients.swift in Sources */,
+				6DB8C6471F71D5E200FF47CD /* ResourcesTabVC.swift in Sources */,
 				6D2F38761F3660D200E31433 /* GetInvolvedTabVC.swift in Sources */,
 				6DC46F6B1D3D5463008BB70A /* Audio.swift in Sources */,
 				50AC22501CDB016800427C08 /* EditCell.swift in Sources */,
@@ -1685,6 +1723,7 @@
 				6D434A221D42ABE200661CA8 /* LocationViewController.swift in Sources */,
 				C13F7DF41CE28D2F0057D0F5 /* OptionQuestionCell.swift in Sources */,
 				0F10F0221CC03F7000F478ED /* RidesViewController.swift in Sources */,
+				6DB8C6431F71D57A00FF47CD /* VideosTabViewController.swift in Sources */,
 				2F8FA1A91F12C32F00A60392 /* UICollectionViewCell+Additions.swift in Sources */,
 				50B1D3C51CED6BB10014EE1B /* ChooseMinistryVC.swift in Sources */,
 				C1D9078E1C88F8C800FDC096 /* SettingsTableViewController.swift in Sources */,
@@ -1730,6 +1769,7 @@
 				6D424DD81E6E10AC00496301 /* AudioTableViewCell.swift in Sources */,
 				505722A41CE095A800F87BE4 /* PickRadiusViewController.swift in Sources */,
 				6DA815471D3FF9780087F05B /* NewOfferRideViewController.swift in Sources */,
+				6DB8C64A1F71D5F700FF47CD /* AudioTabViewController.swift in Sources */,
 				C1536D591CFD1DB400730281 /* FakeSubscriptionManager.swift in Sources */,
 				50A9B02F1CFCD74400E759E2 /* RideAnnotation.swift in Sources */,
 				C13F7DEE1CE28CF50057D0F5 /* TextQuestionCell.swift in Sources */,
@@ -1795,6 +1835,7 @@
 				50697BC71CE0456600776CC5 /* PhoneFormatter.swift in Sources */,
 				6DBA69FA1F69DBC60006036F /* AlertViewController.swift in Sources */,
 				6D01D8411D845588006A9AC0 /* ResourceTag.swift in Sources */,
+				6DB8C64D1F71D60900FF47CD /* LeaderTabViewController.swift in Sources */,
 				C185BB391CD2904F00787153 /* FakeServerClient.swift in Sources */,
 				50B1D3CB1CED76D60014EE1B /* CommunityGroup.swift in Sources */,
 				6DE0E4B11F6C6D6E0092E46B /* CampusTableViewCell.swift in Sources */,
@@ -1852,6 +1893,7 @@
 				6D3675731D5531D600272151 /* CurrentCGViewController.swift in Sources */,
 				50697BC21CE0303B00776CC5 /* DetailCell.swift in Sources */,
 				6DA8154E1D4019E70087F05B /* SegmentedControl.swift in Sources */,
+				6DB8C6481F71D5E200FF47CD /* ResourcesTabVC.swift in Sources */,
 				C12940E71CCD82D4004DACB1 /* CruClients.swift in Sources */,
 				C12940EA1CCD833E004DACB1 /* ServerProtocol.swift in Sources */,
 				C1536D691CFD3E2500730281 /* FakeLocalStorageManager.swift in Sources */,
@@ -1864,6 +1906,7 @@
 				6D5C10341D5CE246007AC44E /* FindRideFormViewController.swift in Sources */,
 				C1DCEC471C7681E1009FACE0 /* RideUtils.swift in Sources */,
 				50D316701CFED8990050692B /* CruPhoneNoRule.swift in Sources */,
+				6DB8C64B1F71D5F700FF47CD /* AudioTabViewController.swift in Sources */,
 				505722A51CE095A800F87BE4 /* PickRadiusViewController.swift in Sources */,
 				6D9379281F0994DD00D46FB0 /* CommunityGroupsListTableViewController.swift in Sources */,
 				50B1D3CC1CED76D60014EE1B /* CommunityGroup.swift in Sources */,
@@ -1890,6 +1933,7 @@
 				6DF5177B1E73495B003F637C /* YoutubeTableViewCell.swift in Sources */,
 				6DA815511D413E7E0087F05B /* EventsPopoverViewController.swift in Sources */,
 				50C6CC7F1CBF3A3700EF5EFB /* SWRevealViewController.m in Sources */,
+				6DB8C6411F71D55A00FF47CD /* ArticlesTabViewController.swift in Sources */,
 				C185BB3A1CD2904F00787153 /* FakeServerClient.swift in Sources */,
 				6D2F38771F3660D200E31433 /* GetInvolvedTabVC.swift in Sources */,
 				C14019CE1CBF711000B01203 /* ArrayLocalStorageManager.swift in Sources */,
@@ -1917,6 +1961,7 @@
 				50D3166F1CFECD800050692B /* CGDetailTableViewCell.swift in Sources */,
 				6D9112B51F09BC01001BCE51 /* CommunityGroupTableViewCell.swift in Sources */,
 				6D76CA7C1C06AB6900F8B007 /* Event.swift in Sources */,
+				6DB8C6441F71D57A00FF47CD /* VideosTabViewController.swift in Sources */,
 				6D10D5F01D92F525008265AD /* AboutViewController.swift in Sources */,
 				C1E9DC151CF6B49700066C5F /* CommunityGroupCell.swift in Sources */,
 				0F7CB3C91C919D9D00C8444F /* Config.swift in Sources */,
@@ -1956,6 +2001,7 @@
 				6D4B78B71C702FDF00F643CB /* Resource.swift in Sources */,
 				501038B31CD9655F00CCD7DC /* OfferOrEditRideViewController.swift in Sources */,
 				50B1D3C61CED6BB10014EE1B /* ChooseMinistryVC.swift in Sources */,
+				6DB8C64E1F71D60900FF47CD /* LeaderTabViewController.swift in Sources */,
 				6D310AF71F3CE38600ECD0F5 /* DropDownButton.swift in Sources */,
 				0F1B8C701CCFDB8700CEE24C /* RidesViewController.swift in Sources */,
 				6D01D8391D81B5D5006A9AC0 /* SearchModalViewController.swift in Sources */,
