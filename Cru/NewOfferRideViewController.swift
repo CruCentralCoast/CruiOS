@@ -164,6 +164,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
         //dimiss keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DismisKeyPadFnc)))
         
+        self.assignCurrentPlace()
     }
     
     func assignCurrentPlace() {
