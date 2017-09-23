@@ -176,8 +176,8 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
                 group.leaders.append(leader)
             }
         }, parentId: group.id, completionHandler: {(success) -> Void in
-            self.groups.insert(group, at: 0)
-            self.filteredGroups.insert(group, at: 0)
+            self.groups.append(group)
+            self.filteredGroups.append(group)
             self.tableView.reloadData()
             if success {
                 print("Successfully loaded a leader!")
