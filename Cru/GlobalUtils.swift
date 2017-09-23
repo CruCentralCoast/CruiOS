@@ -25,7 +25,7 @@ class GlobalUtils {
                 locStr += street as! String
             }
             if let city = loc["suburb"] {
-                locStr += " " + (city as! String)
+                locStr += ", " + (city as! String)
             }
             if let state = loc["state"] {
                 locStr += ", " + (state as! String)

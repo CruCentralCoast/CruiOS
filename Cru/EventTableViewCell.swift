@@ -28,7 +28,11 @@ class EventTableViewCell: UITableViewCell {
             let startTime = GlobalUtils.stringFromDate(event.startNSDate, format: timeFormatter)
             let endDate = GlobalUtils.stringFromDate(event.endNSDate, format: dateFormatter)
             let endTime = GlobalUtils.stringFromDate(event.endNSDate, format: timeFormatter)
-            let location = GlobalUtils.stringFromLocation(event.location)
+            var location = GlobalUtils.stringFromLocation(event.location)
+            if location == "" {
+                location = "TBD"
+            }
+            //let location = event.getLocationString()
             
             eventTitleLabel.text = event.name
             if startDate != endDate {
