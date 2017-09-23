@@ -39,9 +39,6 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.ridesPage = self
-        
         ridesTableView.separatorStyle = .none
         
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
@@ -49,7 +46,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
-        self.refreshControl.addTarget(self, action: #selector(refresh(_:)), for: UIControlEvents.valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
         self.ridesTableView.addSubview(self.refreshControl)
         
         MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
@@ -64,6 +61,9 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.ridesTableView.tableFooterView = UIView()
         ridesTableView.rowHeight = UITableViewAutomaticDimension
         ridesTableView.estimatedRowHeight = 75
+        
+        // Listen for remote notifications
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: Config.notificationRidesUpdated, object: nil)
     }
     
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
@@ -118,12 +118,7 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-    func refresh(){
-        self.refresh(self)
-    }
-    
-    func refresh(_ sender:AnyObject)
-    {
+    @objc func refresh() {
         rides.removeAll()
         ridesTableView.emptyDataSetDelegate = nil
         ridesTableView.emptyDataSetSource = nil

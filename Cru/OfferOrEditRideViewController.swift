@@ -631,7 +631,7 @@ class OfferOrEditRideViewController: UIViewController, UITableViewDataSource, UI
             
             
             if(rideVC != nil){
-                self.rideVC.refresh(self)
+                self.rideVC.refresh()
                 presentAlert("Ride Offered", msg: "Thank you! Your offered ride has been created!", handler:  {
                     if let navController = self.navigationController {
                         navController.popViewController(animated: true)
