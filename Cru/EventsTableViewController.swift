@@ -49,11 +49,12 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if searchController.isActive && searchController.searchBar.text != "" {
-            searchController.isActive = false
-            tableView.setContentOffset(CGPoint.zero, animated: false)
-            
-        }
+        // POSSIBLY DO SOMETHING HERE TO FIX OFFSET ISSUE WHEN GOING BACK TO SEARCH ACTIVE TABLEVIEW FROM DETAIL VIEW
+//        if searchController.isActive && searchController.searchBar.text != "" {
+//            searchController.isActive = false
+//            tableView.setContentOffset(CGPoint.zero, animated: false)
+//
+//        }
     }
     
     //Empty data set functions
