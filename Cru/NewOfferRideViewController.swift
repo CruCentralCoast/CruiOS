@@ -164,6 +164,21 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
         //dimiss keyboard
         self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(DismisKeyPadFnc)))
         
+        self.assignCurrentPlace()
+    }
+    
+    func assignCurrentPlace() {
+        placesClient?.currentPlace(callback: { (placeLikelihoodList, error) in
+            if let error = error {
+                print("Pick Place error: \(error.localizedDescription)")
+                return
+            }
+            
+            if let placeLikelihoodList = placeLikelihoodList {
+                let place = placeLikelihoodList.likelihoods.first?.place
+                self.pickedLocation = place
+            }
+        })
     }
     
     // For tapping outside text box
