@@ -244,6 +244,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     //Saves the campuses
     func saveCampusSet(){
         CruClients.getSubscriptionManager().saveCampuses(campusAsArray())
+        
     }
     
     
@@ -306,6 +307,7 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
     
     @IBAction func save(_ sender: UIBarButtonItem) {
         saveCampusSet()
+        CruClients.getSubscriptionManager().saveMinistries(subbedMinistries, updateFCM: true)
         _ = self.navigationController?.popViewController(animated: true)
     }
     /*@IBAction func saveToSettings(sender: UIBarButtonItem) {

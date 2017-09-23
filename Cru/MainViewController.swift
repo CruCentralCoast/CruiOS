@@ -231,7 +231,8 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         case .noRides:
             self.table!.emptyDataSetSource = self
             self.table!.emptyDataSetDelegate = self
-            CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: finishInserting)
+            CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: loadEventsWithoutMinistries)
+            //CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: finishInserting)
             //noRideString = NSAttributedString(string: "Currently no rides available", attributes: [ NSFontAttributeName: UIFont(name: Config.fontName, size: 16)!, NSForegroundColorAttributeName: UIColor.blackColor()])
             
         case .noConnection:
@@ -242,11 +243,19 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             //MRProgressOverlayView.dismissOverlayForView(self.view, animated: true)
             
         default:
-            CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: finishInserting)
+            //CruClients.getServerClient().getData(DBCollection.Event, insert: insertEvent, completionHandler: finishInserting)
+            CruClients.getEventUtils().loadEvents(insertEvent, completionHandler: loadEventsWithoutMinistries)
         }
         
         
         rides.sort()
+    }
+    
+    fileprivate func loadEventsWithoutMinistries(_ success: Bool) {
+        CruClients.getEventUtils().loadEventsWithoutMinistries(insertEvent, completionHandler: finishInserting)
+        /*self.tableView.emptyDataSetSource = self
+         self.tableView.emptyDataSetDelegate = self
+         self.tableView!.reloadData()*/
     }
     
     //Function that inserts the rides and events only if we get all the rides first
