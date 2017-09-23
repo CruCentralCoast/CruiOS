@@ -40,12 +40,12 @@ class Resource {
         self.description = ""
     }
     
-    init?(id: String?, title: String?, url: String?, type: String?, date: String?, tags: [String]?, description: String?) {
+    init?(id: String?, title: String?, url: String?, type: ResourceType?, date: String?, tags: [String]?, description: String?) {
         // Initialize properties
         self.id = id
         self.title = title
         self.url = url
-        self.type = ResourceType(rawValue: type!)
+        self.type = type
         self.date = GlobalUtils.dateFromString(date!)
         self.tags = tags
         self.description = description

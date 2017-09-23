@@ -15,6 +15,9 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
 
     var noResultsString: NSAttributedString!
     var resources = [Resource]()
+    var filteredResources = [Resource]()
+    var hasConnection = false
+    var emptyTableImage: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +28,7 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
-        //CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+        CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,31 +36,171 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Connection & Resource Loading
+    //Test to make sure there is a connection then load resources
+    func finishConnectionCheck(_ connected: Bool){
+        if(!connected){
+            hasConnection = false
+            self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
+            self.tableView.emptyDataSetDelegate = self
+            self.tableView.emptyDataSetSource = self
+            self.tableView.reloadData()
+            //hasConnection = false
+        }else{
+            hasConnection = true
+            
+            MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
+            
+            self.resources = ResourceManager.sharedInstance.getLeaderResources()
+            self.tableView.reloadData()
+            MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
+        }
+        
+    }
+    
     // MARK: - Pager Tab Whatever Delegate Functions
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "LEADERS")
     }
     
+    // MARK: - Empty Data Set Functions
+    
+    /* Function for the empty data set */
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return emptyTableImage
+    }
+    
+    /* Text for the empty search results data set*/
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        //Set up attribute string for empty search results
+        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+        
+        if hasConnection {
+            if ResourceManager.sharedInstance.isSearchActivated() && ResourceManager.sharedInstance.getSearchPhrase() != ""{
+                noResultsString = NSAttributedString(string: "No leader resources found with the phrase \(ResourceManager.sharedInstance.getSearchPhrase())", attributes: attributes)
+            }
+            else {
+                noResultsString = NSAttributedString(string: "No leader resources found", attributes: attributes)
+            }
+        }
+        
+        return noResultsString
+    }
+    
     // MARK: - Table View Delegate Functions
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        if ResourceManager.sharedInstance.isSearchActivated() {
+            return filteredResources.count
+        }
+        return resources.count
     }
     
-    /*
+    
      override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-     
-     // Configure the cell...
-     
-     return cell
+        let dateFormatString = "MMM d, yyyy"
+        
+        var res: Resource
+        if ResourceManager.sharedInstance.isSearchActivated() {
+            res = filteredResources[indexPath.row]
+        }
+        else {
+            res = resources[indexPath.row]
+        }
+        
+        //Should be refactored to be more efficient
+        //Problem for a later dev
+        switch (res.type!){
+        case .Article:
+            // Configure the cell...
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
+            if let date = res.date {
+                cell.date.text = GlobalUtils.stringFromDate(date, format: dateFormatString)
+            }
+            else {
+                cell.date.text = ""
+            }
+            
+            cell.desc.text = res.description
+            cell.title.text = res.title
+            
+            //Set up the cell's button for web view controller
+            cell.tapAction = {(cell) in
+                let vc = CustomWebViewController()
+                vc.urlString = res.url
+                vc.artTitle = res.title
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            cell.card.layer.shadowColor = UIColor.black.cgColor
+            cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.card.layer.shadowOpacity = 0.25
+            cell.card.layer.shadowRadius = 2
+            
+            return cell
+        case .Video:
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableViewCell", for: indexPath) as! VideoTableViewCell
+            cell.date.text = GlobalUtils.stringFromDate(res.date, format: dateFormatString)
+            cell.desc.text = res.description
+            cell.title.text = res.title
+            
+            
+            cell.thumbnailView.image = #imageLiteral(resourceName: "video")
+            cell.thumbnailView.contentMode = .scaleAspectFit
+            
+            cell.card.layer.shadowColor = UIColor.black.cgColor
+            cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.card.layer.shadowOpacity = 0.25
+            cell.card.layer.shadowRadius = 2
+            return cell
+            
+        case .Audio:
+            let newAud = Audio(id: res.id, title: res.title, url: res.url, date: res.date, tags: res.tags, restricted: res.restricted)
+            newAud.prepareAudioFile()
+            
+            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "AudioTableViewCell", for: indexPath) as! AudioTableViewCell
+            
+            cell.date.text = GlobalUtils.stringFromDate(res.date, format: dateFormatString)
+            cell.title.text = res.title
+            //cell.audioString = aud.url
+            cell.audio = newAud
+            
+            cell.card.layer.shadowColor = UIColor.black.cgColor
+            cell.card.layer.shadowOffset = CGSize(width: 0, height: 1)
+            cell.card.layer.shadowOpacity = 0.25
+            cell.card.layer.shadowRadius = 2
+            
+            return cell
+        }
      }
-     */
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        var res: Resource
+        if ResourceManager.sharedInstance.isSearchActivated() {
+            res = filteredResources[indexPath.row]
+        }
+        else {
+            res = resources[indexPath.row]
+        }
+        
+        if res.type == .Article || res.type == .Video {
+            let vc = CustomWebViewController()
+            vc.urlString = res.url
+            vc.artTitle = res.title
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+        
+    }
+    
     
     /*
     // MARK: - Navigation

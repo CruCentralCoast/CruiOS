@@ -18,8 +18,8 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     var filteredArticles = [Article]()
     var hasConnection = true
     var emptyTableImage: UIImage?
-    var searchActivated = false
-    var searchPhrase: String?
+    //var searchActivated = false
+    //var searchPhrase: String?
     var noResultsString: NSAttributedString!
     
     override func viewDidLoad() {
@@ -89,7 +89,7 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if searchActivated {
+        if ResourceManager.sharedInstance.isSearchActivated() {
             return filteredArticles.count
         }
         return articles.count
@@ -102,7 +102,7 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
         
         // Configure the cell...
         var art: Article
-        if searchActivated {
+        if ResourceManager.sharedInstance.isSearchActivated() {
             art = filteredArticles[indexPath.row]
         }
         else {
@@ -134,6 +134,21 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
         
         return cell
      }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var art: Article
+        if ResourceManager.sharedInstance.isSearchActivated() {
+            art = filteredArticles[indexPath.row]
+        }
+        else {
+            art = articles[indexPath.row]
+        }
+        
+        let vc = CustomWebViewController()
+        vc.urlString = art.url
+        vc.artTitle = art.title
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     // MARK: - Empty Data Set Functions
     

@@ -84,7 +84,7 @@ class AudioManager {
     
     func isCurrentlyPlaying(audioFile: Audio) -> Bool{
         if let file = self.audioFile {
-            if file == audioFile {
+            if file.id == audioFile.id {
                 return true
             }
         }

@@ -18,8 +18,8 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
     var filteredAudioFiles = [Audio]()
     var hasConnection = true
     var emptyTableImage: UIImage?
-    var searchActivated = false
-    var searchPhrase: String?
+    //var searchActivated = false
+    //var searchPhrase: String?
     var noResultsString: NSAttributedString!
     
     override func viewDidLoad() {
@@ -83,7 +83,7 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if searchActivated {
+        if ResourceManager.sharedInstance.isSearchActivated() {
             return filteredAudioFiles.count
         }
         return audioFiles.count
@@ -97,7 +97,7 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
         let dateFormatString = "MMM d, yyyy"
         
         var aud: Audio
-        if searchActivated {
+        if ResourceManager.sharedInstance.isSearchActivated() {
             aud = filteredAudioFiles[indexPath.row]
         }
         else {
@@ -130,8 +130,8 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
         
         if hasConnection {
-            if searchActivated && searchPhrase != ""{
-                noResultsString = NSAttributedString(string: "No audio resources found with the phrase \(searchPhrase)", attributes: attributes)
+            if ResourceManager.sharedInstance.isSearchActivated() && ResourceManager.sharedInstance.getSearchPhrase() != ""{
+                noResultsString = NSAttributedString(string: "No audio resources found with the phrase \(ResourceManager.sharedInstance.getSearchPhrase())", attributes: attributes)
             }
             else {
                 noResultsString = NSAttributedString(string: "No audio resources found", attributes: attributes)
