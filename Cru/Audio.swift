@@ -71,6 +71,27 @@ class Audio: NSObject {
 
     }
     
+    // MARK: - Audio Player Delegate Functions
+    /*func timerUpdate(_ time: CMTime) {
+        if let act = activityIndicator {
+            if act.isAnimating {
+                activityIndicator?.stopAnimating()
+                /*DispatchQueue.main.async(){
+                 self.playButton.setImage(self.pauseImage, for: .normal)
+                 }*/
+            }
+            
+        }
+        print("Updating timer")
+        self.playButton.setImage(self.pauseImage, for: .normal)
+        
+        //playButton.setImage(pauseImage, for: .normal)
+        self.curPosition.text! = ResourceUtils.getStringFromCMTime(time)
+        self.playbackSlider.setValue(Float(CMTimeGetSeconds(time)), animated: false)
+        self.audio.curTime = time
+        self.audio.curTimePosition = CMTimeGetSeconds(time)
+    }*/
+    
     
 }
 

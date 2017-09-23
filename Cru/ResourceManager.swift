@@ -159,69 +159,11 @@ class ResourceManager {
                     
                 }
             })
-            
-            /*if !self.loadedResourceTags {
-                //Also get resource tags and store them
-                CruClients.getServerClient().getData(DBCollection.ResourceTags, insert: self.insertResourceTag, completionHandler: {success in
-                    
-                    self.loadedResourceTags = success
-                })
-                
-                
-            }*/
-            
-            /*DispatchQueue.global(qos: .userInitiated).async { // 1
-                self.downloadGroup = DispatchGroup() // 2
-                
-                CruClients.getServerClient().getData(DBCollection.Resource, insert: self.insertResource, completionHandler: { success in
-                    self.loadedResources = success
-                    if success {
-                        self.getVideosForChannel({ success in
-                            if !success {
-                                print("Could not load youtube videos")
-                            }
-                            
-                        })
-                        
-                    }
-                })
-                
-                if !self.loadedResourceTags {
-                    //Also get resource tags and store them
-                    CruClients.getServerClient().getData(DBCollection.ResourceTags, insert: self.insertResourceTag, completionHandler: {success in
-                        
-                        self.loadedResourceTags = success
-                        
-                        //I don't think that tag exists anymore
-                        //Hide the community leader tag if the user isn't logged in
-                        /*if GlobalUtils.loadString(Config.userID) == "" || !GlobalUtils.loadBool(UserKeys.isCommunityGroupLeader){
-                            let index = self.tags.index(where: {$0.title == "Leader (login required)"})
-                            self.tags.remove(at: index!)
-                            
-                        }*/
-                    })
-                    
-                    
-                }
-                
-                
-                self.downloadGroup?.wait()
-                DispatchQueue.main.async { // 6
-                    
-                    completion(self.loadedResources)
-                }
-                
-            }*/
-            
-            
-            //CruClients.getServerClient().getData(DBCollection.Resource, insert: insertResource, completionHandler: getVideosForChannel)
         }
         else {
             
             completion(self.loadedResources, self.youtubeLoaded)
         }
-        
-        //serverClient.getData(DBCollection.Resource, insert: insertResource, completionHandler: finished)
     }
     
     // MARK: - General Resource Handling

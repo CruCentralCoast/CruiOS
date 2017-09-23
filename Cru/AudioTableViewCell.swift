@@ -16,10 +16,13 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
         didSet {
             //Set up slider max value to match the audio file when
             playbackSlider.maximumValue = Float(CMTimeGetSeconds((audio.audioAsset?.duration)!))
+            
+            playbackSlider.value = Float(audio.curTimePosition)
             //Get duration of file and display the nicely formatted string
             totalTime.text! = ResourceUtils.getStringFromCMTime((audio.audioAsset?.duration)!)
             //Display the starting time with correct amount of leading zeros
             curPosition.text! = ResourceUtils.getStringFromCMTime(audio.curTime)
+            AudioManager.sharedInstance.continueIfPlayingItem(audioFile: self.audio, newDelegate: self)
         }
     }
     //var audioString: String!
@@ -76,6 +79,8 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
     
     deinit {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.audio.playerItem)
+        print("De initing")
+        AudioManager.sharedInstance.delegate = nil
     }
     
     //Calculate the exact width of the play/pause, rewind & forward buttons at runtime
@@ -231,19 +236,20 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
                     self.audio.curTime = curTime
                     self.audio.curTimePosition = CMTimeGetSeconds(curTime)
                 }
-                
+                print("Pausing item")
                 AudioManager.sharedInstance.pauseItem()
                 playButton!.setImage(playImage, for: .normal)
             }
             else {
                 AudioManager.sharedInstance.playCurrentItem()
+                playButton!.setImage(pauseImage, for: .normal)
             }
         }
         // Handle playing new item
         else {
             NotificationCenter.default.addObserver(self, selector: #selector(self.playerDidFinishPlaying), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: self.audio.playerItem)
             AudioManager.sharedInstance.playNewItem(audioFile: self.audio, newDelegate: self)
-            playButton!.setImage(nil, for: .normal)
+            playButton!.setImage(pauseImage, for: .normal)
         }
     }
     
@@ -262,14 +268,15 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
         if let act = activityIndicator {
             if act.isAnimating {
                 activityIndicator?.stopAnimating()
+                self.playButton.setImage(self.pauseImage, for: .normal)
                 /*DispatchQueue.main.async(){
                     self.playButton.setImage(self.pauseImage, for: .normal)
                 }*/
             }
             
         }
-        
-        self.playButton.setImage(self.pauseImage, for: .normal)
+        print("Updating timer")
+        //self.playButton.setImage(self.pauseImage, for: .normal)
         
         //playButton.setImage(pauseImage, for: .normal)
         self.curPosition.text! = ResourceUtils.getStringFromCMTime(time)
@@ -285,24 +292,33 @@ class AudioTableViewCell: UITableViewCell, AudioPlayerDelegate {
         }
     }
     
-    func timerSet() {
+    func playMedia() {
         DispatchQueue.main.async(){
-            if self.activityIndicator == nil {
-                self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
-                self.activityIndicator?.hidesWhenStopped = true
-                /*activityIndicator.center = activityView.center
-                 activityIndicator.startAnimating()
-                 activityView.addSubview(activityIndicator)*/
-                let halfButtonHeight = self.playButton.bounds.size.height/2
-                let buttonWidth = self.playButton.bounds.size.width
-                self.activityIndicator?.center = CGPoint(x: buttonWidth/2, y: halfButtonHeight)
-                self.playButton.setImage(nil, for: .normal)
-                self.playButton.addSubview(self.activityIndicator!)
-                self.activityIndicator?.startAnimating()
-            }
-            else {
-                self.activityIndicator?.startAnimating()
+            self.playButton!.setImage(self.pauseImage, for: .normal)
+        }
+    }
+    
+    func timerSet() {
+        if self.audio.curTimePosition == 0 {
+            DispatchQueue.main.async(){
+                if self.activityIndicator == nil {
+                    self.activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+                    self.activityIndicator?.hidesWhenStopped = true
+                    /*activityIndicator.center = activityView.center
+                     activityIndicator.startAnimating()
+                     activityView.addSubview(activityIndicator)*/
+                    let halfButtonHeight = self.playButton.bounds.size.height/2
+                    let buttonWidth = self.playButton.bounds.size.width
+                    self.activityIndicator?.center = CGPoint(x: buttonWidth/2, y: halfButtonHeight)
+                    self.playButton.setImage(nil, for: .normal)
+                    self.playButton.addSubview(self.activityIndicator!)
+                    self.activityIndicator?.startAnimating()
+                }
+                else {
+                    self.activityIndicator?.startAnimating()
+                }
             }
         }
+        
     }
 }

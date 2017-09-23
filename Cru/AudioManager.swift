@@ -50,7 +50,11 @@ class AudioManager {
         self.delegate = newDelegate
         audioPlayer?.seek(to: audioFile.curTime)
         audioPlayer?.play()
+        
+        
         startTimer()
+        //self.delegate?.playMedia()
+        
     }
     
     func playCurrentItem() {
@@ -85,6 +89,16 @@ class AudioManager {
             }
         }
         
+        return false
+    }
+    
+    func continueIfPlayingItem(audioFile: Audio, newDelegate: AudioPlayerDelegate) -> Bool {
+        if isCurrentlyPlaying(audioFile: audioFile) {
+            self.delegate = newDelegate
+            startTimer()
+            self.delegate?.playMedia()
+            return true
+        }
         return false
     }
     
@@ -124,6 +138,7 @@ class AudioManager {
             let curTime = (self?.audioPlayer?.currentTime())!
             self?.audioFile?.curTime = curTime
             self?.audioFile?.curTimePosition = CMTimeGetSeconds(curTime)
+            print("Dinging from periodic timer observer handler in Audio Manager")
             self?.delegate?.timerUpdate(curTime)
             
         }
@@ -150,4 +165,5 @@ protocol AudioPlayerDelegate {
     func timerUpdate(_ time: CMTime)
     func timerSet()
     func pauseMedia()
+    func playMedia()
 }
