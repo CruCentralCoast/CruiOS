@@ -54,7 +54,8 @@ class MinistryTableViewController: UITableViewController, DZNEmptyDataSetDelegat
         else{
             CruClients.getServerClient().getData(.Ministry, insert: insertMinistry, completionHandler: {success in
                 // TODO: handle failure
-                
+                self.table.emptyDataSetDelegate = self
+                self.table.emptyDataSetSource = self
                 self.reloadData()
                 
             })
