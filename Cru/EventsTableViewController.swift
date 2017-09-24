@@ -47,6 +47,16 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // POSSIBLY DO SOMETHING HERE TO FIX OFFSET ISSUE WHEN GOING BACK TO SEARCH ACTIVE TABLEVIEW FROM DETAIL VIEW
+//        if searchController.isActive && searchController.searchBar.text != "" {
+//            searchController.isActive = false
+//            tableView.setContentOffset(CGPoint.zero, animated: false)
+//
+//        }
+    }
+    
     //Empty data set functions
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         if hasConnection == false {
@@ -164,7 +174,12 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let event = events[indexPath.row]
+        var event : Event
+        if searchController.isActive && searchController.searchBar.text != "" {
+            event = filteredEvents[indexPath.row]
+        } else {
+            event = events[indexPath.row]
+        }
         
         if event.imageUrl == "" {
             return 150.0
@@ -192,6 +207,7 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
             
             //log firebase view change
             Analytics.logEvent(selectedEvent.name + " Event selected", parameters: nil)
+            
         }
     }
     
@@ -212,7 +228,6 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
                 view.isUserInteractionEnabled = false
             }
         }
-        print("hellllllllo test")
     }
     
     
