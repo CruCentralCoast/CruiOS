@@ -34,6 +34,9 @@ class NotificationsViewController: UITableViewController {
         
         // Download notifications
         self.downloadNotifications()
+        
+        //log Firebase Analytics Event
+        Analytics.logEvent("Home_loaded", parameters: nil)
     }
     
     @objc fileprivate func downloadNotifications() {

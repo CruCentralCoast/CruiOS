@@ -79,6 +79,9 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         // Listen for remote notifications
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: Config.notificationRidesUpdated, object: nil)
+        
+        //log Firebase Analytics Event
+        Analytics.logEvent("Ridesharing_loaded", parameters: nil)
     }
     
 // Disable ride sharing for release 1.4
