@@ -1286,11 +1286,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esu-K0-LgC">
-<<<<<<< HEAD
-                                        <rect key="frame" x="130.5" y="266" width="39" height="30"/>
-=======
                                         <rect key="frame" x="130.5" y="286" width="39" height="30"/>
->>>>>>> 69a74ab22673c462d6f2a9988f45afe83ca38814
                                         <fontDescription key="fontDescription" name="FreightSansProMedium-Regular" family="FreightSans Pro" pointSize="15"/>
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" red="0.72941176470000002" green="0.0" blue="0.0078431372550000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
