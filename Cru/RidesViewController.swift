@@ -39,45 +39,62 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ridesTableView.separatorStyle = .none
+        // Disable ride sharing for release 1.4
+        // Issue #135 - Enable Ridesharing
+        #if RELEASE
+        self.findRideButton.isHidden = true
+        self.offerRideButton.isHidden = true
+        #endif
         
-        GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
+        // Setup side menu
+        GlobalUtils.setupViewForSideMenu(self, menuButton: self.menuButton)
 
+        // Configure tableview
+        self.ridesTableView.tableFooterView = UIView()
+        self.ridesTableView.rowHeight = UITableViewAutomaticDimension
+        self.ridesTableView.estimatedRowHeight = 75
+        self.ridesTableView.separatorStyle = .none
+        self.ridesTableView.emptyDataSetSource = self
+        self.ridesTableView.emptyDataSetDelegate = self
         
+        // Configure refresh control
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "")
         self.refreshControl.addTarget(self, action: #selector(self.refresh), for: UIControlEvents.valueChanged)
         self.ridesTableView.addSubview(self.refreshControl)
         
+        // Reload data
+        // Disable ride sharing for release 1.4
+        // Issue #135 - Enable Ridesharing
+        #if DEBUG
         MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
+        #endif
         
-        noRideImage = UIImage(named: Config.noRidesImageName)!
+        // Set image and refresh tableview
+        self.noRideImage = UIImage(named: Config.noRidesImageName)!
         
-        
-        passMap = RideUtils.getMyPassengerMaps()
-        
-        
-        self.ridesTableView.tableFooterView = UIView()
-        ridesTableView.rowHeight = UITableViewAutomaticDimension
-        ridesTableView.estimatedRowHeight = 75
+        // Get the ride local storage manager
+        self.passMap = RideUtils.getMyPassengerMaps()
         
         // Listen for remote notifications
         NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: Config.notificationRidesUpdated, object: nil)
     }
     
+// Disable ride sharing for release 1.4
+// Issue #135 - Enable Ridesharing
+#if RELEASE
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "Coming Soon!! 🚙")
+    }
+#else
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return noRideImage
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+#endif
     
     @IBAction func handleOfferRide(_ sender: AnyObject){
         self.performSegue(withIdentifier: "offerridesegue", sender: self)
-        
     }
     
     @IBAction func handleFindRide(_ sender: AnyObject){

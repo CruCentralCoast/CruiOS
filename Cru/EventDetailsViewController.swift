@@ -38,6 +38,12 @@ class EventDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Disable ride sharing for release 1.4
+        // Issue #135 - Enable Ridesharing
+        #if RELEASE
+        self.disableRideSharing()
+        #endif
+        
         //setup local storage manager for events
         eventLocalStorageManager = MapLocalStorageManager(key: Config.eventStorageKey)
         
