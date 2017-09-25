@@ -17,8 +17,8 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
     var filteredVideos = [Video]()
     var hasConnection = true
     var emptyTableImage: UIImage?
-    var searchActivated = false
-    var searchPhrase: String?
+    //var searchActivated = false
+    //var searchPhrase: String?
     var noResultsString: NSAttributedString!
     var memoryWarning = false
     
@@ -112,8 +112,23 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
         return 1
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var vid: Video
+        if ResourceManager.sharedInstance.isSearchActivated() {
+           vid = filteredVideos[indexPath.row]
+        }
+        else {
+            vid = videos[indexPath.row]
+        }
+        
+        let vc = CustomWebViewController()
+        vc.urlString = vid.url
+        vc.artTitle = vid.title
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchActivated {
+        if ResourceManager.sharedInstance.isSearchActivated() {
             return filteredVideos.count
         }
         return videos.count
@@ -124,7 +139,7 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
         let dateFormatString = "MMM d, yyyy"
         
         var video: Video
-        if searchActivated {
+        if ResourceManager.sharedInstance.isSearchActivated() {
             video = filteredVideos[indexPath.row]
         }
         else {
@@ -190,9 +205,9 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
         let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
         
         if hasConnection {
-            if searchActivated && searchPhrase != ""{
+            if ResourceManager.sharedInstance.isSearchActivated() && ResourceManager.sharedInstance.getSearchPhrase() != ""{
                 
-                noResultsString = NSAttributedString(string: "No videos found with the phrase \(searchPhrase)", attributes: attributes)
+                noResultsString = NSAttributedString(string: "No videos found with the phrase \(ResourceManager.sharedInstance.getSearchPhrase())", attributes: attributes)
             }
             else {
                 noResultsString = NSAttributedString(string: "No video resources found", attributes: attributes)

@@ -135,7 +135,7 @@ class RiderRideDetailViewController: UIViewController, UITableViewDataSource, UI
         CruClients.getRideUtils().leaveRidePassenger(ride!, handler: { success in
             if let navController = self.navigationController {
                 navController.popViewController(animated: true)
-                self.rideVC?.refresh(self)
+                self.rideVC?.refresh()
             }
         })
     }

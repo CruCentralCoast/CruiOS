@@ -37,8 +37,7 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         resourceTagTable?.delegate = self
         resourceTagTable?.dataSource = self
         
-        //If a search query is still active, set the text field text to match
-        searchField?.text = prevSearchPhrase
+        
         
         //Get tags
         tags = ResourceManager.sharedInstance.getResourceTags()
@@ -47,12 +46,15 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
             prevSearchPhrase = ResourceManager.sharedInstance.getSearchPhrase()
         }
         
+        //If a search query is still active, set the text field text to match
+        searchField?.text = prevSearchPhrase
+        
         
         if prevSearchPhrase == "" {
             resetButton?.isHidden = true
         }
         
-        self.view.backgroundColor = UIColor.clear
+        //self.view.backgroundColor = UIColor.clear
        
     }
 
@@ -62,6 +64,10 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     
     //MARK: Actions
+    @IBAction func closeModal(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func resetSearch(_ sender: UIButton) {
         resetButton?.isHidden = true
         filteredTags = tags
@@ -113,9 +119,9 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         return true
     }
     
-    func adaptivePresentationStyleForPresentationController(_ controller: UIPresentationController) -> UIModalPresentationStyle {
-        return UIModalPresentationStyle.overCurrentContext
-    }
+    /*func adaptivePresentationStyleForPresentationController(_ controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.currentContext
+    }*/
     
     //MARK: Table View Delegate Methods
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -137,8 +143,7 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         cell.title.text = tag.title
         cell.resourceTag = tag
         
-        //Restore the settings from the last search
-        if filteredTags.count != tags.count {
+        if ResourceManager.sharedInstance.isSearchActivated() {
             if !filteredTags.contains(where: {tag.id == $0.id}) {
                 
                 cell.checkbox.isChecked = false
@@ -149,6 +154,18 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
             cell.setChecked()
             cell.checkbox.isChecked = true
         }
+        //Restore the settings from the last search
+        /*if filteredTags.count != tags.count {
+            if !filteredTags.contains(where: {tag.id == $0.id}) {
+                
+                cell.checkbox.isChecked = false
+                cell.setUnchecked()
+            }
+        }
+        else {
+            cell.setChecked()
+            cell.checkbox.isChecked = true
+        }*/
         return cell
     }
     

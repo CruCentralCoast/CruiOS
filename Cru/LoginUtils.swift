@@ -42,7 +42,7 @@ class LoginUtils {
     class func logout() {
         let url = Config.serverUrl + "api/signout"
         GlobalUtils.saveString(Config.userID, value: "")
-        
+        GlobalUtils.saveBool(UserKeys.isCommunityGroupLeader, value: false)
         Alamofire.request(url, method: .post)
             .responseJSON { response in
         }

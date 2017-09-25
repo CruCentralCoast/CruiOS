@@ -189,7 +189,7 @@ class DriverRideDetailViewController: UIViewController, UITableViewDelegate, UIP
             Cancler.showCancelSuccess(self, handler: { action in
                 if let navController = self.navigationController {
                     navController.popViewController(animated: true)
-                    self.rideVC?.refresh(self)
+                    self.rideVC?.refresh()
                 }
                 
             })

@@ -20,7 +20,7 @@ class ResourcesTabVC: ButtonBarPagerTabStripViewController, SWRevealViewControll
     // MARK: - Properties 
     var hasConnection = true
     var searchActivated = false
-    var modalActive = false {
+    /*var modalActive = false {
         didSet {
             if modalActive == true {
                 searchButton.isEnabled = false
@@ -29,7 +29,7 @@ class ResourcesTabVC: ButtonBarPagerTabStripViewController, SWRevealViewControll
                 searchButton.isEnabled = true
             }
         }
-    }
+    }*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,11 +149,12 @@ class ResourcesTabVC: ButtonBarPagerTabStripViewController, SWRevealViewControll
             
         }*/
         
-        controller.modalPresentationStyle = .currentContext
+        controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
+        
         self.present(controller, animated: true, completion: nil)
         
-        modalActive = true
+        //modalActive = true
         
     }
 

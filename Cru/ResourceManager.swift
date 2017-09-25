@@ -14,6 +14,7 @@ import HTMLReader
 class ResourceManager {
     // MARK: - Shared Instance
     static let sharedInstance = ResourceManager()
+    private var leaderResources = [Resource]()
     private var resources = [Resource]()
     private var articles = [Article]()
     private var audioFiles = [Audio]()
@@ -78,6 +79,10 @@ class ResourceManager {
     }
     func getSearchPhrase() -> String {
         return searchPhrase
+    }
+    
+    func getLeaderResources() -> [Resource] {
+        return leaderResources
     }
     
     
@@ -194,6 +199,10 @@ class ResourceManager {
                 print("done inserting audio")
             })
         }
+        
+        if resource.restricted! {
+            leaderResources.append(resource)
+        }
     }
     
     func insertResourceTag(_ dict : NSDictionary) {
@@ -222,6 +231,7 @@ class ResourceManager {
                 let description = data?.description ?? ""
                 let imageUrl = data?.topImage ?? ""
                 newArt?.abstract = description
+                resource.description = description
                 NotificationCenter.default.post(name: NSNotification.Name.init("refresh"), object: nil)
                 //NotificationCenter.default.postNotificationName("refresh", object: nil)
                 //let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, imgURL: imageUrl, restricted: resource.restricted)
@@ -246,6 +256,7 @@ class ResourceManager {
         let newAud = Audio(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, restricted: resource.restricted)
         newAud.prepareAudioFile()
         audioFiles.append(newAud)
+
         //downloadGroup?.leave()
     }
     
@@ -306,12 +317,14 @@ class ResourceManager {
                             let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: vidURL, thumbnailURL: "", restricted: resource.restricted)
                             
                             self.videos.append(newVid!)
+
                             //self.downloadGroup?.leave()
                     }
                 }
                 else {
                     let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: videoUrl, thumbnailURL: "", restricted: resource.restricted)
                     self.videos.append(newVid!)
+
                     //self.downloadGroup?.leave()
                 }
             }
@@ -319,6 +332,7 @@ class ResourceManager {
         else {
             let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, videoURL: "", thumbnailURL: "", restricted: resource.restricted)
             self.videos.append(newVid!)
+
             //self.downloadGroup?.leave()
         }
         
@@ -400,7 +414,7 @@ class ResourceManager {
                         url = "https://www.youtube.com/watch?v=\(videoID)"
                         
                         
-                        let resource = Resource(id: videoID, title: title, url: url, type: "video", date: date, tags: nil, description: desc)!
+                        let resource = Resource(id: videoID, title: title, url: url, type: ResourceType.Video, date: date, tags: nil, description: desc)!
                         
                         let newVid = Video(id: videoID, title: title, url: resource.url, date: resource.date, tags: nil, abstract: desc, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
                         
@@ -501,7 +515,7 @@ class ResourceManager {
                         }
                         let url = "https://www.youtube.com/watch?v=\(videoID)"
                         
-                        let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: url, type: "video", date: snippetDict["publishedAt"] as? String, tags: nil, description: desc)!
+                        let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: url, type: ResourceType.Video, date: snippetDict["publishedAt"] as? String, tags: nil, description: desc)!
                         
                         let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as? String, videoURL: resource.url, thumbnailURL: thumbnailURL as? String,restricted: false)
                         
