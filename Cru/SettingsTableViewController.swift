@@ -15,17 +15,15 @@ class SettingsTableViewController: UITableViewController, SWRevealViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Setup side menu
         GlobalUtils.setupViewForSideMenu(self, menuButton: menuButton)
 
-        navigationItem.title = "Settings"
-        
+        // Configure nav bar
+        self.navigationItem.title = "Settings"
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        // Configure tableview
+        self.tableView.tableFooterView = UIView()
     }
     override func viewWillAppear(_ animated: Bool) {
         if(GlobalUtils.loadString(Config.userID) == ""){
