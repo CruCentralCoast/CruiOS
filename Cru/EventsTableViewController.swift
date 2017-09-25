@@ -45,6 +45,9 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         tableView.tableHeaderView = searchController.searchBar
         searchController.hidesNavigationBarDuringPresentation = false
         
+        //log Event view loaded to Firebase Analytics
+        Analytics.logEvent("Event_view_loaded", parameters: nil)
+        
         
     }
     
@@ -191,11 +194,9 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
             
             eventDetailViewController.event = selectedEvent
             
-            //log selected event to Firebase
-//            let firEventName = selectedEvent.name.replacingOccurrences(of: " ", with: "_")
-//            Analytics.logEvent(firEventName, parameters: nil)
-//            print("testing FIREBASE....")
-//            print(firEventName + " logged with Firebase")
+            //log selected event to Firebase Analytics
+            let firEventName = selectedEvent.name.replacingOccurrences(of: " ", with: "_")
+            Analytics.logEvent(firEventName, parameters: nil)
         }
     }
     

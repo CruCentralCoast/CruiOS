@@ -26,6 +26,9 @@ class SettingsTableViewController: UITableViewController, SWRevealViewController
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        //log Firebase Analytics Event
+        Analytics.logEvent("Settings_loaded", parameters: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         if(GlobalUtils.loadString(Config.userID) == ""){

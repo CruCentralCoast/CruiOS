@@ -32,6 +32,9 @@ class SummerMissionsTableViewController: UITableViewController, SWRevealViewCont
         navigationItem.title = "Summer Missions"
         
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        
+        //log Firebase Analytics Event
+        Analytics.logEvent("Summer_missions_loaded", parameters: nil)
     }
     
     // MARK: - Helper Functions

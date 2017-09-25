@@ -20,6 +20,9 @@ class AboutViewController: UIViewController, SWRevealViewControllerDelegate {
         navigationItem.title = "About"
         
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        
+        //log Firebase Analytics Event
+        Analytics.logEvent("About_loaded", parameters: nil)
     }
     
     //reveal controller function for disabling the current view

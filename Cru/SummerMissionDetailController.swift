@@ -47,6 +47,9 @@ class SummerMissionDetailController: UIViewController {
             descriptionView.text = mission.description
             descriptionView.sizeToFit()
             //topCoverView.alpha = COVER_ALPHA
+            
+            //log Firebase Analytics Event
+            Analytics.logEvent("Summer_missions_loaded", parameters: nil)
         }
         
         self.image.image = uiImage
