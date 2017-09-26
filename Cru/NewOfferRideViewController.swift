@@ -59,7 +59,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
     var dateComponents: DateComponents?
     var localStorageManager: LocalStorageManager!
     
-    // EVENt PICKER DELCARATION
+    // EVENT PICKER DELCARATION
     let eventPicker = UIPickerView()
     
     struct OfferRideConstants{
@@ -103,6 +103,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
         phoneField?.keyboardType = .numberPad
         eventField?.delegate = self
         eventField?.inputView = eventPicker
+        eventField?.placeholder = "Choose an Event"
         dateField?.delegate = self
         timeField?.delegate = self
         addressField?.delegate = self
@@ -607,7 +608,7 @@ class NewOfferRideViewController: UIViewController, UITextFieldDelegate, UIPicke
             
             
             if(rideVC != nil){
-                self.rideVC.refresh(self)
+                self.rideVC.refresh()
                 presentAlert("Success", msg: "Thank you! Your ride has been created!", handler:  {
                     if let navController = self.navigationController {
                         navController.popViewController(animated: true)

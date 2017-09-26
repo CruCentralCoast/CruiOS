@@ -158,12 +158,13 @@ class CampusesTableViewController: UITableViewController, UISearchResultsUpdatin
 
             let thisCampus = campuses[campuses.index(campuses.startIndex, offsetBy: indexPath.row)]
         
-            
             cell.nameLabel.text = thisCampus.name
         print("image url: \(thisCampus.imageURL!)")
-            let urlRequest = URLRequest(url: URL(string: thisCampus.imageURL!)!)
+            let imageUrl = URL(string: thisCampus.imageURL!)!
+            let urlRequest = URLRequest(url: imageUrl)
+            cell.imageUrl = imageUrl
             CruClients.getImageUtils().getImageDownloader().download(urlRequest) { response in
-                if let image = response.result.value {
+                if let image = response.result.value, cell.imageUrl == response.request?.url {
                     cell.campusImage.image = image
                 }
             }

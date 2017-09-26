@@ -48,6 +48,9 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
             self.campusImage = UIImage(named: Config.campusImage)!
         }
         
+        //log Firebase Event
+        Analytics.logEvent("user_tapped_join_ministry_team", parameters: nil)
+        
         
     }
     

@@ -159,6 +159,11 @@ class ResourcesViewController: UIViewController, UITableViewDelegate, UITableVie
             }
 
         }
+        
+        //log Event view loaded to Firebase Analytics
+        Analytics.logEvent("Resource_view_loaded", parameters: nil)
+        
+        
         // load initial data
         //tableView.beginInfiniteScroll(true)
         

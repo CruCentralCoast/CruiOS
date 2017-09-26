@@ -27,6 +27,18 @@ class Notification: NSObject, NSCoding {
         }
     }
     
+    convenience init?(_ dict: [String: AnyObject]?) {
+        guard let dict = dict else { return nil }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let message = dict["message"] as? String, let time = dict["time"] as? String, let date = dateFormatter.date(from: time) {
+            self.init(title: message, content: message, dateReceived: date)
+        } else {
+            return nil
+        }
+    }
+    
     // MARK: Archiving Paths
     static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("notifications")

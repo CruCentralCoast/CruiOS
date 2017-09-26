@@ -176,7 +176,7 @@ class RideJoinViewController: UIViewController, UITableViewDataSource, UITableVi
             else{
                 if (rideVC != nil){
                     navController.popToViewController(rideVC!, animated: true)
-                    rideVC?.refresh(self)
+                    rideVC?.refresh()
                 }
             }
             

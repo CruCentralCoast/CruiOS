@@ -45,6 +45,10 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
         tableView.tableHeaderView = searchController.searchBar
         searchController.hidesNavigationBarDuringPresentation = false
         
+        //log Event view loaded to Firebase Analytics
+        Analytics.logEvent("Event_view_loaded", parameters: nil)
+        
+        
     }
     
     //Empty data set functions
@@ -190,8 +194,9 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
             
             eventDetailViewController.event = selectedEvent
             
-            //log firebase view change
-            Analytics.logEvent(selectedEvent.name + " Event selected", parameters: nil)
+            //log selected event to Firebase Analytics
+            let firEventName = selectedEvent.name.replacingOccurrences(of: " ", with: "_")
+            Analytics.logEvent(firEventName, parameters: nil)
         }
     }
     
@@ -212,7 +217,6 @@ class EventsTableViewController: UITableViewController, SWRevealViewControllerDe
                 view.isUserInteractionEnabled = false
             }
         }
-        print("hellllllllo test")
     }
     
     

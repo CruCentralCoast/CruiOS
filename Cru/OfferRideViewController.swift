@@ -188,7 +188,7 @@ class OfferRideViewController: UIViewController, ValidationDelegate, UIPopoverPr
             presentAlert("Ride Offered", msg: "Thank you your offered ride has been created!", handler:  {
                 if let navController = self.navigationController {
                     navController.popViewController(animated: true)
-                    self.rideVC?.refresh(self)
+                    self.rideVC?.refresh()
                 }
             })
             

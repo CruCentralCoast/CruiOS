@@ -44,6 +44,9 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
         //Check for connection then load events in the completion function
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         //loadCommunityGroups()
+        
+        //log Firebase Event
+        Analytics.logEvent("user_tapped_join_community_group", parameters: nil)
 
     }
     

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,35 +24,35 @@
                         <viewControllerLayoutGuide type="bottom" id="y2c-A1-M5Z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="yUa-OG-x5d">
-                        <rect key="frame" x="0.0" y="64" width="600" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="736"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xck-zL-c1n">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xck-zL-c1n">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="736"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u9Z-Ze-51u">
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u9Z-Ze-51u">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="543"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Time/Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q0s-zt-xf5">
-                                                <rect key="frame" x="66" y="314" width="106" height="23"/>
+                                                <rect key="frame" x="66" y="312" width="120" height="21"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="0OO-sc-rJO">
-                                                <rect key="frame" x="20" y="237" width="560" height="38"/>
+                                                <rect key="frame" x="20" y="237" width="560" height="35"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="30"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Some description of event" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-HW-5q5">
+                                            <textView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" preservesSuperviewLayoutMargins="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Some description of event" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="WYR-HW-5q5">
                                                 <rect key="frame" x="28" y="402.5" width="544" height="35.5"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
                                             </textView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXx-rm-aET" userLabel="SeparatorTop">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXx-rm-aET" userLabel="SeparatorTop">
                                                 <rect key="frame" x="20" y="392.5" width="560" height="2"/>
                                                 <color key="backgroundColor" red="0.97647058823529409" green="0.70980392156862748" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -60,7 +60,7 @@
                                                     <constraint firstAttribute="height" constant="2" id="ioF-H9-QxZ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ah-5N-RBw" userLabel="SeparatorBottom">
+                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ah-5N-RBw" userLabel="SeparatorBottom">
                                                 <rect key="frame" x="20" y="446" width="560" height="2"/>
                                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -69,12 +69,12 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Time/Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aEf-UI-Hk1">
-                                                <rect key="frame" x="66" y="285" width="113.5" height="23"/>
+                                                <rect key="frame" x="66" y="282" width="127" height="21"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZc-AB-fyb">
+                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="748" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AZc-AB-fyb">
                                                 <rect key="frame" x="510" y="458" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="9eA-pS-bMe"/>
@@ -96,7 +96,7 @@
                                                     <action selector="facebookLinkButton:" destination="wSV-ke-WyD" eventType="touchUpInside" id="jYh-uu-Xkc"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwr-il-7OQ">
+                                            <button opaque="NO" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pwr-il-7OQ">
                                                 <rect key="frame" x="20" y="458" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="3Up-pz-rex"/>
@@ -118,7 +118,7 @@
                                                     <action selector="saveToCalendar:" destination="wSV-ke-WyD" eventType="touchUpInside" id="Hh0-3z-WfO"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-wO-gTI">
+                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="749" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ghp-wO-gTI">
                                                 <rect key="frame" x="98" y="458" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Ghp-wO-gTI" secondAttribute="height" multiplier="1:1" id="Mra-93-MVF"/>
@@ -140,7 +140,7 @@
                                                     <action selector="linkToRideShare:" destination="wSV-ke-WyD" eventType="touchUpInside" id="fMG-d1-UzL"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="748" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Er-G8-5WP">
+                                            <button opaque="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="748" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Er-G8-5WP">
                                                 <rect key="frame" x="176" y="458" width="70" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="70" id="5xq-Qz-HFO"/>
@@ -175,27 +175,27 @@
                                                 </variation>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="oFv-fY-KJE">
-                                                <rect key="frame" x="40" y="345" width="13" height="20"/>
+                                                <rect key="frame" x="40" y="342" width="13" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="13" id="NhA-r8-yk6"/>
                                                     <constraint firstAttribute="height" constant="20" id="WFJ-fF-PIG"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="g6S-V1-nCH">
-                                                <rect key="frame" x="36" y="315" width="20" height="20"/>
+                                                <rect key="frame" x="36" y="312" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="foe-hJ-cwI"/>
                                                     <constraint firstAttribute="width" constant="20" id="rGF-gm-3G2"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="giq-lq-zzL">
-                                                <rect key="frame" x="36" y="285" width="20" height="20"/>
+                                                <rect key="frame" x="36" y="282" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="20" id="8Gq-DA-SG7"/>
                                                     <constraint firstAttribute="height" constant="20" id="dAJ-Hk-FUw"/>
                                                 </constraints>
                                             </imageView>
-                                            <textView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Location" translatesAutoresizingMaskIntoConstraints="NO" id="ZLd-HH-Hma">
+                                            <textView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Location" translatesAutoresizingMaskIntoConstraints="NO" id="ZLd-HH-Hma">
                                                 <rect key="frame" x="65" y="345" width="469" height="39.5"/>
                                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
@@ -341,7 +341,7 @@
             <objects>
                 <tableViewController id="Fwa-Ds-Iux" customClass="EventsTableViewController" customModule="Cru" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="198" sectionHeaderHeight="28" sectionFooterHeight="28" id="zHi-Su-b7e">
-                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
@@ -361,28 +361,28 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="event2" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-WW-mcE">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aNi-WW-mcE">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="150" id="1pz-00-9Dv"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" layoutMarginsFollowReadableWidth="YES" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="KVt-NN-rtr">
-                                                    <rect key="frame" x="24" y="194" width="20" height="20"/>
+                                                    <rect key="frame" x="24" y="192" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="1GC-fk-1hC"/>
                                                         <constraint firstAttribute="width" constant="20" id="2Lt-BX-owq"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time" translatesAutoresizingMaskIntoConstraints="NO" id="85u-aF-aSY">
-                                                    <rect key="frame" x="24" y="224" width="20" height="20"/>
+                                                    <rect key="frame" x="24" y="222" width="20" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="20" id="X5m-Qk-bzg"/>
                                                         <constraint firstAttribute="height" constant="20" id="xOK-5e-YKq"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="map" translatesAutoresizingMaskIntoConstraints="NO" id="Brg-Ex-ZpJ">
-                                                    <rect key="frame" x="28" y="254" width="13" height="20"/>
+                                                    <rect key="frame" x="28" y="252" width="13" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="13" id="GAF-Hr-Ikh"/>
                                                         <constraint firstAttribute="height" constant="20" id="qa4-Fu-wi7"/>
@@ -506,7 +506,7 @@
                 <navigationController storyboardIdentifier="eventsStoryboard" automaticallyAdjustsScrollViewInsets="NO" id="9md-EW-UdK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="y3e-p6-BTq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="barTintColor" red="0.40000000000000002" green="0.37647058820000001" blue="0.38431372549999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -527,7 +527,6 @@
     <resources>
         <image name="add-to-calendar" width="51" height="79"/>
         <image name="calendar" width="16" height="17"/>
-        <image name="event2" width="300" height="150"/>
         <image name="facebookIcon" width="55" height="79"/>
         <image name="findrideforevent" width="47" height="76"/>
         <image name="map" width="10" height="15"/>

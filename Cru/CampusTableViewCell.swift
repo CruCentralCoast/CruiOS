@@ -10,10 +10,11 @@ import UIKit
 
 class CampusTableViewCell: UITableViewCell {
     
-    // MARK: - Outlets
-
     @IBOutlet weak var campusImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    
+    var imageUrl: URL?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,8 +22,6 @@ class CampusTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
 }

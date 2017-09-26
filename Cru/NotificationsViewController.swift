@@ -9,154 +9,88 @@
 import UIKit
 import DZNEmptyDataSet
 
-class NotificationsViewController: UITableViewController, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+class NotificationsViewController: UITableViewController {
     
     var notifications = [Notification]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        tableView.estimatedRowHeight = 105.0
-        tableView.rowHeight = UITableViewAutomaticDimension
-        
-        //Set the empty set delegate and source
+        // Configure tableView
+        self.tableView.estimatedRowHeight = 105.0
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+        self.tableView.reloadData()
 
-        tableView.reloadData()
+        // Configure refresh control
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl!.attributedTitle = NSAttributedString(string: "")
+        self.refreshControl!.addTarget(self, action: #selector(self.downloadNotifications), for: UIControlEvents.valueChanged)
+        self.tableView.addSubview(self.refreshControl!)
         
+        // Configure nav bar
         self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
-        //Set the empty set delegate and source
-        self.tableView.emptyDataSetSource = self
-        self.tableView.emptyDataSetDelegate = self
+        // Download notifications
+        self.downloadNotifications()
         
-        tableView.reloadData()
-        
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
-        
-        
-        if let savedNotifications = loadNotifications() {
-            notifications += savedNotifications
-        }
-        else {
-            // Load the sample data.
-            // loadSampleNotifications()
-        }
-        
-        //Temporary method to test out persisting data
-        saveNotifications()
-        
+        //log Firebase Analytics Event
+        Analytics.logEvent("Home_loaded", parameters: nil)
     }
     
-    //Set the text to be displayed when the table is empty
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        self.tableView.separatorColor = UIColor.clear
-        let attributes = [ NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
-        return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
+    @objc fileprivate func downloadNotifications() {
+        CruClients.getServerClient().getData(.Notification, insert: self.insertNotification(_:), completionHandler: self.finishNotifications(_:))
+    }
+    
+    fileprivate func insertNotification(_ dict: NSDictionary) {
+        if let notification = Notification(dict as? [String: AnyObject]) {
+            self.notifications.append(notification)
+        }
+    }
+    
+    fileprivate func finishNotifications(_ success: Bool) {
+        // Stop animating the refresh control
+        if self.refreshControl?.isRefreshing == true {
+            self.refreshControl?.endRefreshing()
+        }
+        
+        // Add the notifications saved on the phone
+        let savedNotifications = NotificationManager.shared.getSavedNotifications()
+        for notification in savedNotifications {
+            if !self.notifications.contains(notification) {
+                self.notifications.append(notification)
+            }
+        }
+        
+        // Sort the notifications by date and reload the tableView
+        self.notifications.sort { $0.0.dateReceived > $0.1.dateReceived }
+        self.tableView.reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
+    // MARK: Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        print("The current value of notifications.count is \(notifications.count)")
         return notifications.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
         
         let not = notifications[indexPath.row]
 
-        // Configure the cell...
         cell.title.text = not.title
         cell.content.text = not.content
         cell.timeSince.text = not.dateReceived.offsetFrom(Date())
         
-        
-        
         return cell
     }
-    
-    // MARK: NSCoding
-    func saveNotifications() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(notifications, toFile: Notification.ArchiveURL.path)
-        
-        if !isSuccessfulSave {
-            print("Failed to save notifications...")
-        }
+}
+
+// MARK: - DZNEmptyDataSet
+extension NotificationsViewController: DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        self.tableView.separatorColor = UIColor.clear
+        let attributes = [NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
+        return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
     }
-    
-    func loadNotifications() -> [Notification]? {
-        
-        return NSKeyedUnarchiver.unarchiveObject(withFile: Notification.ArchiveURL.path) as? [Notification]
-
-    }
-    
-    
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
