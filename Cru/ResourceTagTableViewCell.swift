@@ -35,12 +35,13 @@ class ResourceTagTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        print("Selected cell in cell class")
         // Configure the view for the selected state
     }
     
     //Sets the text color of the label to light blue
     func setChecked() {
+        self.resourceTag.selected = true
         UIView.transition(with: title, duration: 0.25, options: .transitionCrossDissolve, animations: {
             self.title.textColor = CruColors.lightBlue
             }, completion: nil)
@@ -49,6 +50,7 @@ class ResourceTagTableViewCell: UITableViewCell {
     
     //Sets the text color of the label to gray
     func setUnchecked() {
+        self.resourceTag.selected = false
         UIView.transition(with: title, duration: 0.25, options: .transitionCrossDissolve, animations: {
             self.title.textColor = CruColors.gray
             }, completion: nil)

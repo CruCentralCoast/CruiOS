@@ -149,6 +149,14 @@ class ResourcesTabVC: ButtonBarPagerTabStripViewController, SWRevealViewControll
             
         }*/
         
+        let curVCs = self.viewControllers(for: self)
+        //let curIndex = self.currentIndex
+        print("Current controller index: \(self.currentIndex)")
+        print("search delegate set to \(self.currentIndex)")
+        ResourceManager.sharedInstance.searchDelegate = curVCs[currentIndex] as? ResourceDelegate
+        
+        //controller.delegate = curVCs[currentIndex] as? SearchDelegate
+        
         controller.modalPresentationStyle = .overFullScreen
         controller.modalTransitionStyle = .crossDissolve
         

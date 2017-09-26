@@ -15,15 +15,20 @@ class ResourceManager {
     // MARK: - Shared Instance
     static let sharedInstance = ResourceManager()
     private var leaderResources = [Resource]()
+    private var filteredLeaderResources = [Resource]()
     private var resources = [Resource]()
     private var articles = [Article]()
+    private var filteredArticles = [Article]()
     private var audioFiles = [Audio]()
+    private var filteredAudio = [Audio]()
     private var videos = [Video]()
+    private var filteredVideos = [Video]()
     private var tags = [ResourceTag]()
     private var filteredTags = [ResourceTag]()
     private var newVideos = [Video]()
     var urlString: String!
     private var delegates = [ResourceDelegate]()
+    var searchDelegate: ResourceDelegate?
     private var articleDelAdded = false
     private var audioDelAdded = false
     private var videoDelAdded = false
@@ -61,12 +66,21 @@ class ResourceManager {
     }
     
     func getArticles() -> [Article] {
+        if searchActivated {
+            return filteredArticles
+        }
         return articles
     }
     func getAudio() -> [Audio] {
+        if searchActivated {
+            return filteredAudio
+        }
         return audioFiles
     }
     func getVideos() -> [Video] {
+        if searchActivated {
+            return filteredVideos
+        }
         return videos
     }
     
@@ -74,35 +88,18 @@ class ResourceManager {
         return tags
     }
     
-    func getFilteredTags() -> [ResourceTag] {
-        return filteredTags
-    }
-    func getSearchPhrase() -> String {
-        return searchPhrase
-    }
+    
     
     func getLeaderResources() -> [Resource] {
+        if searchActivated {
+            return filteredLeaderResources
+        }
         return leaderResources
     }
     
     
     // MARK: - Set Functions
-    func setFilteredTags(tags: [ResourceTag]) {
-        self.searchActivated = true
-        self.filteredTags = tags
-    }
-    func setSearchPhrase(phrase: String) {
-        self.searchPhrase = phrase
-        self.searchActivated = true
-    }
     
-    func addObserverForResources(_ obj: NSObject) {
-        UserDefaults.standard.addObserver(obj, forKeyPath: "loadedResources", options: [.old, .new], context: nil)
-    }
-    
-    func removeObserverFromResources(_ obj: NSObject) {
-        UserDefaults.standard.removeObserver(obj, forKeyPath: "loadedResources")
-    }
     
     // MARK: - Resource Delegate Functions
     func addArticleDelegate(_ delegate: ResourceDelegate) {
@@ -135,6 +132,101 @@ class ResourceManager {
     }
     func hasAddedLeaderDelegate() -> Bool {
         return leaderDelAdded
+    }
+    
+    // MARK: - Search Functions
+    func getFilteredTags() -> [ResourceTag] {
+        return filteredTags
+    }
+    func getSearchPhrase() -> String {
+        return searchPhrase
+    }
+    func setFilteredTags(tags: [ResourceTag]) {
+        self.searchActivated = true
+        self.filteredTags = tags
+    }
+    func setSearchPhrase(phrase: String) {
+        self.searchPhrase = phrase
+        self.searchActivated = true
+    }
+    func resetSearch() {
+        self.searchActivated = false
+        self.filteredTags = tags
+        self.searchPhrase = ""
+    }
+    
+    //Search modal calls this when "Apply" is tapped
+    func applyFilters(_ tags: [ResourceTag], searchText: String?) {
+        searchActivated = true
+        filteredTags = tags
+        
+        if searchText != nil {
+            self.searchPhrase = searchText!
+            filterContent(tags, searchText: searchText!)
+        }
+        else {
+            filterContent(tags, searchText: nil)
+        }
+        
+    }
+    //Checks if a filtered Resource has a tag the user selected
+    func resourceHasTag(_ tags: [String], filteredTags: [ResourceTag]) -> Bool{
+        for tag in tags {
+            if filteredTags.index(where: {$0.id == tag}) != nil {
+                return true
+            }
+        }
+        return false
+    }
+    
+    func checkTags(_ resTags: [String], filteredTags: [ResourceTag]) -> Bool{
+        for tag in resTags {
+            for filtTag in filteredTags {
+                if tag == filtTag.id! {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func filterContent(_ tags: [ResourceTag], searchText: String?) {
+        
+        //Filter by tags first
+        let taggedAudio = audioFiles.filter { file in
+            return checkTags(file.tags!, filteredTags: tags)
+        }
+        
+        let taggedArticles = articles.filter { art in
+            return checkTags(art.tags!, filteredTags: tags)
+        }
+        
+        let taggedVideos = videos.filter { vid in
+            if (vid.tags != nil) && !vid.tags.isEmpty {
+                return checkTags(vid.tags!, filteredTags: tags)
+            }
+            return true
+        }
+        
+        if searchText != nil {
+            filteredAudio = taggedAudio.filter { file in
+                return file.title.lowercased().contains(searchText!.lowercased())
+            }
+            
+            filteredArticles = taggedArticles.filter { art in
+                return art.title.lowercased().contains(searchText!.lowercased())
+            }
+            filteredVideos = taggedVideos.filter { vid in
+                return vid.title.lowercased().contains(searchText!.lowercased())
+            }
+        }
+        else {
+            filteredArticles = taggedArticles
+            filteredAudio = taggedAudio
+            filteredVideos = taggedVideos
+        }
+        print("Search delegate refresh data")
+        NotificationCenter.default.post(name: NSNotification.Name.init("searchRefresh"), object: nil)
     }
     
     // MARK: - Loading Resources
@@ -314,7 +406,7 @@ class ResourceManager {
                                 vidURL = vidNode.objectForKeyedSubscript("src") as? String
                             }
                             
-                            let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: vidURL, thumbnailURL: "", restricted: resource.restricted)
+                            let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: vidURL, thumbnailURL: "", restricted: resource.restricted, fromYoutube: false)
                             
                             self.videos.append(newVid!)
 
@@ -322,7 +414,7 @@ class ResourceManager {
                     }
                 }
                 else {
-                    let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: videoUrl, thumbnailURL: "", restricted: resource.restricted)
+                    let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: description, videoURL: videoUrl, thumbnailURL: "", restricted: resource.restricted, fromYoutube: false)
                     self.videos.append(newVid!)
 
                     //self.downloadGroup?.leave()
@@ -330,11 +422,12 @@ class ResourceManager {
             }
         }
         else {
-            let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, videoURL: "", thumbnailURL: "", restricted: resource.restricted)
+            let newVid = Video(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, videoURL: "", thumbnailURL: "", restricted: resource.restricted, fromYoutube: false)
             self.videos.append(newVid!)
-
+            
             //self.downloadGroup?.leave()
         }
+        
         
     }
     
@@ -416,11 +509,11 @@ class ResourceManager {
                         
                         let resource = Resource(id: videoID, title: title, url: url, type: ResourceType.Video, date: date, tags: nil, description: desc)!
                         
-                        let newVid = Video(id: videoID, title: title, url: resource.url, date: resource.date, tags: nil, abstract: desc, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false)
+                        let newVid = Video(id: videoID, title: title, url: resource.url, date: resource.date, tags: nil, abstract: desc, videoURL: resource.url, thumbnailURL: thumbnailURL as! String?,restricted: false, fromYoutube: true)
                         
                         self.resources.append(resource)
                         self.videos.append(newVid!)
-                        self.downloadGroup?.leave()
+                        //self.downloadGroup?.leave()
                         
                     }
                     self.pageNum = self.pageNum + 1
@@ -517,7 +610,7 @@ class ResourceManager {
                         
                         let resource = Resource(id: videoID, title: snippetDict["title"] as? String, url: url, type: ResourceType.Video, date: snippetDict["publishedAt"] as? String, tags: nil, description: desc)!
                         
-                        let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as? String, videoURL: resource.url, thumbnailURL: thumbnailURL as? String,restricted: false)
+                        let newVid = Video(id: videoID, title: snippetDict["title"] as! String, url: resource.url, date: resource.date, tags: nil, abstract: snippetDict["description"] as? String, videoURL: resource.url, thumbnailURL: thumbnailURL as? String,restricted: false, fromYoutube: true)
                         
                         self.resources.append(resource)
                         self.videos.append(newVid!)
@@ -563,4 +656,5 @@ class ResourceManager {
 
 protocol ResourceDelegate {
     func resourcesLoaded(_ loaded: Bool)
+    func refreshData()
 }

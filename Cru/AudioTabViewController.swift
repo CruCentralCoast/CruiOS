@@ -31,7 +31,17 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
+        NotificationCenter.default.addObserver(self, selector: #selector(searchRefresh), name: NSNotification.Name.init("searchRefresh"), object: nil)
+        
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+        
+        ResourceManager.sharedInstance.addAudioDelegate(self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Audio tab will appear")
+        self.audioFiles = ResourceManager.sharedInstance.getAudio()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -42,11 +52,13 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
     // MARK: - Connection & Resource Loading
     //Test to make sure there is a connection then load resources
     func finishConnectionCheck(_ connected: Bool){
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
         if(!connected){
             hasConnection = false
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
-            self.tableView.emptyDataSetDelegate = self
-            self.tableView.emptyDataSetSource = self
+            //self.tableView.emptyDataSetDelegate = self
+            //self.tableView.emptyDataSetSource = self
             self.tableView.reloadData()
             //hasConnection = false
         }else{
@@ -70,6 +82,12 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
         }
     }
     
+    //Refresh table when search is done
+    func searchRefresh(_ notification: NSNotification) {
+        self.audioFiles = ResourceManager.sharedInstance.getAudio()
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Pager Tab Whatever Delegate Functions
     func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
         return IndicatorInfo(title: "AUDIO")
@@ -83,9 +101,7 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if ResourceManager.sharedInstance.isSearchActivated() {
-            return filteredAudioFiles.count
-        }
+
         return audioFiles.count
     }
     
@@ -97,12 +113,14 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
         let dateFormatString = "MMM d, yyyy"
         
         var aud: Audio
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             aud = filteredAudioFiles[indexPath.row]
         }
         else {
             aud = audioFiles[indexPath.row]
-        }
+        }*/
+        
+        aud = audioFiles[indexPath.row]
         
         cell.date.text = GlobalUtils.stringFromDate(aud.date, format: dateFormatString)
         cell.title.text = aud.title
@@ -131,7 +149,7 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
         
         if hasConnection {
             if ResourceManager.sharedInstance.isSearchActivated() && ResourceManager.sharedInstance.getSearchPhrase() != ""{
-                noResultsString = NSAttributedString(string: "No audio resources found with the phrase \(ResourceManager.sharedInstance.getSearchPhrase())", attributes: attributes)
+                noResultsString = NSAttributedString(string: "No audio resources found with the phrase \"\(ResourceManager.sharedInstance.getSearchPhrase())\"", attributes: attributes)
             }
             else {
                 noResultsString = NSAttributedString(string: "No audio resources found", attributes: attributes)
@@ -149,6 +167,11 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
             self.tableView.reloadData()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         }
+    }
+
+    func refreshData() {
+        self.audioFiles = ResourceManager.sharedInstance.getAudio()
+        self.tableView.reloadData()
     }
     
     /*

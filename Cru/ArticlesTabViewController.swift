@@ -11,7 +11,7 @@ import XLPagerTabStrip
 import DZNEmptyDataSet
 import MRProgress
 
-class ArticlesTabViewController: UITableViewController, ResourceDelegate, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class ArticlesTabViewController: UITableViewController, ResourceDelegate, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, SearchDelegate {
 
     // MARK: - Properties
     var articles = [Article]()
@@ -34,8 +34,15 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
         print("Articles Tab VC Initiated")
         //ResourceManager.sharedInstance.addObserverForResources(self)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTable), name: NSNotification.Name.init("refresh"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(searchRefresh), name: NSNotification.Name.init("searchRefresh"), object: nil)
         
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Article tab will appear")
+        self.articles = ResourceManager.sharedInstance.getArticles()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,18 +55,27 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
         self.tableView.reloadData()
     }
     
+    func searchRefresh(_ notification: NSNotification) {
+        self.articles = ResourceManager.sharedInstance.getArticles()
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Connection & Resource Loading
     //Test to make sure there is a connection then load resources
     func finishConnectionCheck(_ connected: Bool){
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
+        
         if(!connected){
             hasConnection = false
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
-            self.tableView.emptyDataSetDelegate = self
-            self.tableView.emptyDataSetSource = self
+            
             self.tableView.reloadData()
             //hasConnection = false
         }else{
             hasConnection = true
+            //self.tableView.emptyDataSetDelegate = self
+            //self.tableView.emptyDataSetSource = self
             
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             
@@ -89,9 +105,6 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if ResourceManager.sharedInstance.isSearchActivated() {
-            return filteredArticles.count
-        }
         return articles.count
     }
     
@@ -102,12 +115,13 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
         
         // Configure the cell...
         var art: Article
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             art = filteredArticles[indexPath.row]
         }
         else {
             art = articles[indexPath.row]
-        }
+        }*/
+        art = articles[indexPath.row]
         
         if let date = art.date {
             cell.date.text = GlobalUtils.stringFromDate(date, format: dateFormatString)
@@ -137,12 +151,13 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var art: Article
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             art = filteredArticles[indexPath.row]
         }
         else {
             art = articles[indexPath.row]
-        }
+        }*/
+        art = articles[indexPath.row]
         
         let vc = CustomWebViewController()
         vc.urlString = art.url
@@ -164,7 +179,7 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
         
         if hasConnection {
             if ResourceManager.sharedInstance.isSearchActivated() && ResourceManager.sharedInstance.getSearchPhrase() != ""{
-                noResultsString = NSAttributedString(string: "No articles found with the phrase \(ResourceManager.sharedInstance.getSearchPhrase())", attributes: attributes)
+                noResultsString = NSAttributedString(string: "No articles found with the phrase \"\(ResourceManager.sharedInstance.getSearchPhrase())\"", attributes: attributes)
             }
             else {
                 noResultsString = NSAttributedString(string: "No article resources found", attributes: attributes)
@@ -183,6 +198,12 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         }
     }
+    
+    func refreshData() {
+        self.articles = ResourceManager.sharedInstance.getArticles()
+        self.tableView.reloadData()
+    }
+    
     
     
     

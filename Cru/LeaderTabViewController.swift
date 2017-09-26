@@ -11,7 +11,7 @@ import XLPagerTabStrip
 import DZNEmptyDataSet
 import MRProgress
 
-class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, ResourceDelegate {
 
     var noResultsString: NSAttributedString!
     var resources = [Resource]()
@@ -28,7 +28,16 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 200
         
+        NotificationCenter.default.addObserver(self, selector: #selector(searchRefresh), name: NSNotification.Name.init("searchRefresh"), object: nil)
+        
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Leader tab will appear")
+        self.resources = ResourceManager.sharedInstance.getLeaderResources()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -39,11 +48,14 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
     // MARK: - Connection & Resource Loading
     //Test to make sure there is a connection then load resources
     func finishConnectionCheck(_ connected: Bool){
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
+        
         if(!connected){
             hasConnection = false
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
-            self.tableView.emptyDataSetDelegate = self
-            self.tableView.emptyDataSetSource = self
+            //self.tableView.emptyDataSetDelegate = self
+            //self.tableView.emptyDataSetSource = self
             self.tableView.reloadData()
             //hasConnection = false
         }else{
@@ -77,7 +89,7 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
         
         if hasConnection {
             if ResourceManager.sharedInstance.isSearchActivated() && ResourceManager.sharedInstance.getSearchPhrase() != ""{
-                noResultsString = NSAttributedString(string: "No leader resources found with the phrase \(ResourceManager.sharedInstance.getSearchPhrase())", attributes: attributes)
+                noResultsString = NSAttributedString(string: "No leader resources found with the phrase \"\(ResourceManager.sharedInstance.getSearchPhrase())\"", attributes: attributes)
             }
             else {
                 noResultsString = NSAttributedString(string: "No leader resources found", attributes: attributes)
@@ -95,9 +107,9 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             return filteredResources.count
-        }
+        }*/
         return resources.count
     }
     
@@ -106,12 +118,14 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
         let dateFormatString = "MMM d, yyyy"
         
         var res: Resource
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             res = filteredResources[indexPath.row]
         }
         else {
             res = resources[indexPath.row]
-        }
+        }*/
+        
+        res = resources[indexPath.row]
         
         //Should be refactored to be more efficient
         //Problem for a later dev
@@ -184,12 +198,13 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         var res: Resource
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             res = filteredResources[indexPath.row]
         }
         else {
             res = resources[indexPath.row]
-        }
+        }*/
+        res = resources[indexPath.row]
         
         if res.type == .Article || res.type == .Video {
             let vc = CustomWebViewController()
@@ -201,6 +216,23 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
         
     }
     
+    // MARK: - Resource Delegate Functions
+    
+    func resourcesLoaded(_ loaded: Bool) {
+        self.resources = ResourceManager.sharedInstance.getLeaderResources()
+        self.tableView.reloadData()
+    }
+    
+    func refreshData() {
+        self.resources = ResourceManager.sharedInstance.getLeaderResources()
+        self.tableView.reloadData()
+    }
+    
+    //Refresh table when search is done
+    func searchRefresh(_ notification: NSNotification) {
+        self.resources = ResourceManager.sharedInstance.getLeaderResources()
+        self.tableView.reloadData()
+    }
     
     /*
     // MARK: - Navigation

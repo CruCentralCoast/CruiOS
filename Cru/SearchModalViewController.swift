@@ -23,6 +23,7 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     var tags = [ResourceTag]()
     var filteredTags = [ResourceTag]()
     var prevSearchPhrase = ""
+    var delegate: SearchDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,15 +76,20 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         searchField?.text = ""
         resourceTagTable?.reloadData()
         
-        parentVC?.searchActivated = false
-        parentVC?.searchPhrase = ""
-        parentVC?.tableView.reloadData()
+        ResourceManager.sharedInstance.resetSearch()
     }
     
     
     @IBAction func applyFilters(_ sender: UIButton) {
         //Get chosen tags
         filteredTags = [ResourceTag]()
+        
+        for tag in tags {
+            if tag.selected! {
+                filteredTags.append(tag)
+            }
+        }
+        /*
         let cells = resourceTagTable?.visibleCells as! [ResourceTagTableViewCell]
         
         for cell in cells {
@@ -91,16 +97,20 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
             if cell.checkbox.isChecked == true {
                 filteredTags.append(cell.resourceTag)
             }
-        }
+        }*/
         
         if searchField != nil && searchField!.hasText {
-            parentVC?.applyFilters(filteredTags, searchText: searchField!.text)
+            ResourceManager.sharedInstance.applyFilters(filteredTags, searchText: searchField!.text)
         }
         else {
-            parentVC?.applyFilters(filteredTags, searchText: nil)
+            ResourceManager.sharedInstance.applyFilters(filteredTags, searchText: nil)
+            //parentVC?.applyFilters(filteredTags, searchText: nil)
         }
 
-        self.dismiss(animated: true, completion: {})
+        self.dismiss(animated: true, completion: {
+            NotificationCenter.default.post(name: NSNotification.Name.init("searchRefresh"), object: nil)
+        
+        })
     }
     
     //MARK: Text Field Delegate Functions
@@ -135,7 +145,6 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tags.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceTagTableViewCell", for: indexPath) as! ResourceTagTableViewCell
         
@@ -144,11 +153,19 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
         cell.resourceTag = tag
         
         if ResourceManager.sharedInstance.isSearchActivated() {
-            if !filteredTags.contains(where: {tag.id == $0.id}) {
-                
+            if !tag.selected {
                 cell.checkbox.isChecked = false
                 cell.setUnchecked()
             }
+            else {
+                cell.setChecked()
+                cell.checkbox.isChecked = true
+            }
+            /*if !filteredTags.contains(where: {tag.id == $0.id}) {
+                
+                cell.checkbox.isChecked = false
+                cell.setUnchecked()
+            }*/
         }
         else {
             cell.setChecked()
@@ -180,4 +197,8 @@ class SearchModalViewController: UIViewController, UITextFieldDelegate, UITableV
     }
     */
 
+}
+
+protocol SearchDelegate {
+    func refreshData()
 }

@@ -33,6 +33,10 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
         
         CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
         
+        ResourceManager.sharedInstance.addVideoDelegate(self)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(searchRefresh), name: NSNotification.Name.init("searchRefresh"), object: nil)
+        
         //Infinite scroll stuff
         // change indicator view style to white
         self.tableView.infiniteScrollIndicatorStyle = .white
@@ -40,8 +44,8 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
         // Add infinite scroll handler
         self.tableView.addInfiniteScroll {(tableView) -> Void in
             
-            //Only load if we're on the videos tab and user hasn't received the memory warning
-            if !self.memoryWarning{
+            //Only load if we're on the videos tab and user hasn't received the memory warning and if search isn't activated
+            if !self.memoryWarning && !ResourceManager.sharedInstance.isSearchActivated() {
                 ResourceManager.sharedInstance.loadYouTubeVideos(completionHandler: { (numNewVids, newVideos) in
                     let videoCount = self.videos.count
                     let (start, end) = (videoCount, newVideos.count + videoCount)
@@ -59,8 +63,16 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
                     tableView.finishInfiniteScroll()
                 })
             }
+            tableView.finishInfiniteScroll()
             
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("Video tab will appear")
+        self.videos = ResourceManager.sharedInstance.getVideos()
+        self.videos.sort { !$0.youtube && $1.youtube }
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -72,11 +84,15 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
     // MARK: - Connection & Resource Loading
     //Test to make sure there is a connection then load resources
     func finishConnectionCheck(_ connected: Bool){
+        
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
+        
         if(!connected){
             hasConnection = false
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
-            self.tableView.emptyDataSetDelegate = self
-            self.tableView.emptyDataSetSource = self
+            //self.tableView.emptyDataSetDelegate = self
+            //self.tableView.emptyDataSetSource = self
             self.tableView.reloadData()
             //hasConnection = false
         }else{
@@ -114,12 +130,14 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var vid: Video
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
            vid = filteredVideos[indexPath.row]
         }
         else {
             vid = videos[indexPath.row]
-        }
+        }*/
+        
+        vid = videos[indexPath.row]
         
         let vc = CustomWebViewController()
         vc.urlString = vid.url
@@ -128,9 +146,9 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             return filteredVideos.count
-        }
+        }*/
         return videos.count
     }
     
@@ -139,12 +157,13 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
         let dateFormatString = "MMM d, yyyy"
         
         var video: Video
-        if ResourceManager.sharedInstance.isSearchActivated() {
+        /*if ResourceManager.sharedInstance.isSearchActivated() {
             video = filteredVideos[indexPath.row]
         }
         else {
             video = videos[indexPath.row]
-        }
+        }*/
+        video = videos[indexPath.row]
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "VideoTableViewCell", for: indexPath) as! VideoTableViewCell
         cell.date.text = GlobalUtils.stringFromDate(video.date, format: dateFormatString)
@@ -207,7 +226,7 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
         if hasConnection {
             if ResourceManager.sharedInstance.isSearchActivated() && ResourceManager.sharedInstance.getSearchPhrase() != ""{
                 
-                noResultsString = NSAttributedString(string: "No videos found with the phrase \(ResourceManager.sharedInstance.getSearchPhrase())", attributes: attributes)
+                noResultsString = NSAttributedString(string: "No videos found with the phrase \"\(ResourceManager.sharedInstance.getSearchPhrase())\"", attributes: attributes)
             }
             else {
                 noResultsString = NSAttributedString(string: "No video resources found", attributes: attributes)
@@ -224,6 +243,18 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
             self.tableView.reloadData()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         }
+    }
+    
+    func refreshData() {
+        self.videos = ResourceManager.sharedInstance.getVideos()
+        self.tableView.reloadData()
+    }
+    
+    //Refresh table when search is done
+    func searchRefresh(_ notification: NSNotification) {
+        self.videos = ResourceManager.sharedInstance.getVideos()
+        self.videos.sort { !$0.youtube && $1.youtube }
+        self.tableView.reloadData()
     }
 
 

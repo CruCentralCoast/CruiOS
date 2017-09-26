@@ -20,6 +20,7 @@ class Video {
     var abstract: String!
     var videoURL: String!
     var thumbnailURL: String!
+    var youtube: Bool!
     
     init?() {
         self.title = ""
@@ -33,9 +34,10 @@ class Video {
         self.abstract = ""
         self.videoURL = ""
         self.thumbnailURL = ""
+        self.youtube = false
     }
     
-    init?(id: String?, title: String?, url: String?, date: Date?, tags: [String]?, abstract: String?, videoURL: String?, thumbnailURL: String?, restricted: Bool!) {
+    init?(id: String?, title: String?, url: String?, date: Date?, tags: [String]?, abstract: String?, videoURL: String?, thumbnailURL: String?, restricted: Bool!, fromYoutube: Bool?) {
         // Initialize properties
         self.id = id
         self.title = title
@@ -46,6 +48,7 @@ class Video {
         self.videoURL = videoURL
         self.restricted = restricted
         self.thumbnailURL = thumbnailURL
+        self.youtube = fromYoutube
     }
     
     
