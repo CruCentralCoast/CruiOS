@@ -103,6 +103,8 @@ class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDele
         //Load community groups and check if they're a leader in any of them
         CruClients.getCommunityGroupUtils().loadGroups(insertGroup, completionHandler: finishInserting)
         
+        // Send the FCM token to the server
+        NotificationManager.shared.saveFCMToken(CruClients.getSubscriptionManager().loadFCMToken())
     }
     
     fileprivate func insertGroup(_ dict: NSDictionary) {

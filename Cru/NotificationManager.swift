@@ -117,9 +117,24 @@ extension NotificationManager {
         // wait for another notification of this type.
         print("Refreshed the Firebase Cloud Messaging token.")
         if let token = InstanceID.instanceID().token() {
-            CruClients.getSubscriptionManager().saveFCMToken(token)
-            CruClients.getSubscriptionManager().subscribeToTopic(Config.globalTopic)
+            self.saveFCMToken(token)
         }
+    }
+    
+    func saveFCMToken(_ token: String) {
+        print("FCM Token: \(token)")
+        CruClients.getSubscriptionManager().saveFCMToken(token)
+        CruClients.getSubscriptionManager().subscribeToTopic(Config.globalTopic)
+        let userID = GlobalUtils.loadString(Config.userID)
+        let userEmail = GlobalUtils.loadString(Config.email)
+        let params: [String: Any] = ["email": userEmail,
+                                     "fcmId": token,
+                                     "isVerified": true,
+                                     "isAdmin": true]
+        print("UserID: \(userID)")
+        CruClients.getServerClient().patch(.User, params: params, completionHandler: { dict in
+            print("FCM token PATCH completion dict: \(dict)")
+        }, id: userID)
     }
     
     func sendDataMessageFailure(notification: Notification) {
@@ -181,9 +196,8 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
 // A protocol to handle events from FCM for devices running iOS 10 or above
 extension NotificationManager: MessagingDelegate {
     func messaging(_ messaging: Messaging, didRefreshRegistrationToken fcmToken: String) {
-        print("Refreshed FCM token: \(fcmToken)")
-        CruClients.getSubscriptionManager().saveFCMToken(fcmToken)
-        CruClients.getSubscriptionManager().subscribeToTopic(Config.globalTopic)
+        print("Refreshed FCM token")
+        self.saveFCMToken(fcmToken)
     }
     
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
@@ -209,9 +223,7 @@ extension NotificationManager {
 extension AppDelegate {
     func application( _ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data ) {
         if let token = InstanceID.instanceID().token() {
-            print("FCM Token: \(token)")
-            CruClients.getSubscriptionManager().saveFCMToken(token)
-            CruClients.getSubscriptionManager().subscribeToTopic(Config.globalTopic)
+            NotificationManager.shared.saveFCMToken(token)
         }
     }
     
