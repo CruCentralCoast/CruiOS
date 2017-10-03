@@ -40,6 +40,7 @@ class NotificationsViewController: UITableViewController {
     }
     
     @objc fileprivate func downloadNotifications() {
+        self.notifications.removeAll()
         CruClients.getServerClient().getData(.Notification, insert: self.insertNotification(_:), completionHandler: self.finishNotifications(_:))
     }
     
@@ -70,17 +71,18 @@ class NotificationsViewController: UITableViewController {
 
     // MARK: Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notifications.count
+        tableView.separatorStyle = self.notifications.count == 0 ? .none : .singleLine
+        return self.notifications.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "notificationCell", for: indexPath) as! NotificationTableViewCell
         
-        let not = notifications[indexPath.row]
+        let not = self.notifications[indexPath.row]
 
         cell.title.text = not.title
         cell.content.text = not.content
-        cell.timeSince.text = not.dateReceived.offsetFrom(Date())
+        cell.timeSince.text = Date().offsetFrom(not.dateReceived)
         
         return cell
     }
@@ -89,7 +91,6 @@ class NotificationsViewController: UITableViewController {
 // MARK: - DZNEmptyDataSet
 extension NotificationsViewController: DZNEmptyDataSetDelegate, DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        self.tableView.separatorColor = UIColor.clear
         let attributes = [NSFontAttributeName: UIFont(name: Config.fontName, size: 18)!, NSForegroundColorAttributeName: UIColor.black]
         return NSAttributedString(string: "You do not have any notifications!", attributes: attributes)
     }

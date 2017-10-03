@@ -110,6 +110,6 @@ extension Date {
             }
             return "\(daysFrom(date)) days ago"
         }
-        return "\(GlobalUtils.stringFromDate(self, format: "h:mm a"))"
+        return "\(GlobalUtils.stringFromDate(date, format: "h:mm a"))"
     }
 }
