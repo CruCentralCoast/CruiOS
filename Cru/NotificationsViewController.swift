@@ -66,7 +66,12 @@ class NotificationsViewController: UITableViewController {
         
         // Sort the notifications by date and reload the tableView
         self.notifications.sort { $0.0.dateReceived > $0.1.dateReceived }
+        
+        // Refresh the table
         self.tableView.reloadData()
+        
+        // Remove the app badge
+        UIApplication.shared.applicationIconBadgeNumber = 0
     }
 
     // MARK: Table view data source
