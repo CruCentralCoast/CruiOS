@@ -111,6 +111,19 @@ class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDele
         //Create group and assign its parent ministry name
         let group = CommunityGroup(dict: dict)
         self.groups.insert(group, at: 0)
+        
+        // Load the leaders for the Community Group
+        CruClients.getCommunityGroupUtils().loadLeaders({ leaderDict in
+            let leader = CommunityGroupLeader(leaderDict)
+            group.leaders.append(leader)
+        }, parentId: group.id, completionHandler: { success in
+            if success {
+                print("Successfully loaded a leader!")
+                self.saveCommunityGroups()
+            } else {
+                print("Nope, try loading the leader again.")
+            }
+        })
     }
     
     //helper function for finishing off inserting group data
