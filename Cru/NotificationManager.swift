@@ -99,15 +99,17 @@ extension NotificationManager {
     func saveNotification(title: String?, body: String?, date: Date = Date()) {
         guard let notification = Notification(title: title, content: body, dateReceived: date) else { return }
 
-        // Append the new notification
+        // Append the new notification if it doesn't already exist
         var notifications = self.getSavedNotifications()
-        notifications.append(notification)
-
-        // Save the updated list of notifications
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(notifications, toFile: Notification.ArchiveURL.path)
-
-        if !isSuccessfulSave {
-            print("Failed to save notifications...")
+        if !notifications.contains(notification) {
+            notifications.append(notification)
+            
+            // Save the updated list of notifications
+            let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(notifications, toFile: Notification.ArchiveURL.path)
+            
+            if !isSuccessfulSave {
+                print("Failed to save notifications...")
+            }
         }
     }
     

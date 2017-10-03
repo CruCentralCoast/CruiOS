@@ -64,4 +64,12 @@ class Notification: NSObject, NSCoding {
         
         self.init(title: title, content: content, dateReceived: dateReceived)
     }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let other = object as? Notification else {
+            return false
+        }
+        
+        return self.title == other.title && self.content == other.content
+    }
 }
