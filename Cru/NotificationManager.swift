@@ -158,13 +158,9 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         print("Will present notification: \(notification.request.content.body)")
         
-        var title: String?
+        let title = notification.request.content.title
         let body = notification.request.content.body
         let userInfo = notification.request.content.userInfo
-        
-        if let titleIndex = notification.request.content.userInfo.index(forKey: "google.c.a.c_l") {
-            title = notification.request.content.userInfo[titleIndex].value as? String
-        }
         
         // Handle the notification
         self.handleNotification(title: title, body: body, userInfo: userInfo)
@@ -177,13 +173,9 @@ extension NotificationManager: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         print("Received notification: \(response.notification.request.content.body)")
         
-        var title: String?
+        let title = response.notification.request.content.title
         let body = response.notification.request.content.body
         let userInfo = response.notification.request.content.userInfo
-        
-        if let titleIndex = response.notification.request.content.userInfo.index(forKey: "google.c.a.c_l") {
-            title = response.notification.request.content.userInfo[titleIndex].value as? String
-        }
         
         // Handle the notification
         self.handleNotification(title: title, body: body, userInfo: userInfo)
