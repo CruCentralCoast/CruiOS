@@ -131,6 +131,7 @@ extension NotificationManager {
         let userEmail = GlobalUtils.loadString(Config.email)
         let params: [String: Any] = ["email": userEmail,
                                      "fcmId": token,
+                                     "deviceType": "iPhone",
                                      "isVerified": true,
                                      "isAdmin": true]
         print("UserID: \(userID)")
