@@ -42,6 +42,7 @@ class NotificationsViewController: UITableViewController {
     @objc fileprivate func downloadNotifications() {
         self.notifications.removeAll()
         CruClients.getServerClient().getData(.Notification, insert: self.insertNotification(_:), completionHandler: self.finishNotifications(_:))
+        CruClients.getServerClient().getData(.UserNotification, insert: self.insertNotification(_:), completionHandler: self.finishNotifications(_:))
     }
     
     fileprivate func insertNotification(_ dict: NSDictionary) {
