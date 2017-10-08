@@ -32,7 +32,7 @@ class Notification: NSObject, NSCoding {
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-        if let message = dict["message"] as? String, let time = dict["time"] as? String, let date = dateFormatter.date(from: time) {
+        if let message = dict["body"] as? String, let time = dict["time"] as? String, let date = dateFormatter.date(from: time) {
             self.init(title: message, content: message, dateReceived: date)
         } else {
             return nil
