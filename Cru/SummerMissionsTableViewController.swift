@@ -71,7 +71,13 @@ class SummerMissionsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 275
+        let mission = self.missions[indexPath.row]
+        
+        if mission.imageLink.isEmpty {
+            return 125
+        } else {
+            return 275
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
