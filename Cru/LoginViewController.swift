@@ -41,10 +41,15 @@ class LoginViewController: UIViewController, ValidationDelegate, UITextFieldDele
         validator.registerField(emailField, errorLabel: emailError, rules: [RequiredRule(), EmailRule()])
         validator.registerField(passwordField, errorLabel: passwordError, rules: [RequiredRule()])
         
-        navigationItem.title = "Log In"
+        self.navigationItem.title = "Log In"
+        self.navigationController?.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
-        
-        self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
     
     func validationSuccessful() {
