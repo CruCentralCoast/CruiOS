@@ -50,15 +50,6 @@ class EventDetailsViewController: UIViewController {
         //setup calendar maanger
         calendarManager = CalendarManager()
         
-        //Set nav title & font
-        navigationItem.title = "Event Details"
-        
-        if self.navigationController != nil {
-            self.navigationController!.navigationBar.titleTextAttributes  = [ NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
-        }
-        
-        
-        
         //initialize the view
         initializeView()
         setButtonConstraints(UIScreen.main.bounds.width)
@@ -109,7 +100,9 @@ class EventDetailsViewController: UIViewController {
         let dateFormatter = "MMM d, yyyy"
         let timeFormatter = "h:mma"
         
+        //Set nav title & font
         navigationItem.title = "Event Details"
+        self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: Config.fontBold, size: 20)!, NSForegroundColorAttributeName: UIColor.white]
         
         //Set the UI elements to the event’s corresponding value
         if event.imageUrl != "" {

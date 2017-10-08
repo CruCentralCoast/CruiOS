@@ -16,8 +16,12 @@ class UpcomingEventCell: UITableViewCell {
     @IBOutlet weak var time: UILabel!
     @IBOutlet weak var AMorPM: UILabel!
     @IBOutlet weak var dayAlignment: NSLayoutConstraint!
-    
     @IBOutlet weak var nameSpacer: NSLayoutConstraint!
-    
     @IBOutlet weak var card: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.card.isUserInteractionEnabled = false
+    }
 }

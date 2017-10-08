@@ -9,8 +9,15 @@
 import UIKit
 
 class UpcomingItemCell: UITableViewCell {
+    
     @IBOutlet weak var day: UILabel!
     @IBOutlet weak var summary: UILabel!
     @IBOutlet weak var month: UILabel!
     @IBOutlet weak var card: UIView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        self.card.isUserInteractionEnabled = false
+    }
 }
