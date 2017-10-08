@@ -134,31 +134,14 @@ class Event: Equatable {
     
     //return the location as a string
     func getLocationString() -> String {
-        if locationTBD {
-            return "TBD"
+        if let location = self.location {
+            let locationString = GlobalUtils.stringFromLocation(location)
+            if locationString.isEmpty {
+                return "TBD"
+            }
+            return locationString
         }
-        if location != nil {
-            var street: String
-            //var suburb: String
-           // var country: String
-            
-            if let str = location!.object(forKey: "street1") {
-                street = str as! String
-            }
-            else {
-                street = "TBD"
-            }
-            /*if let str = location!.object(forKey: "suburb") {
-                suburb = str as! String
-            }
-            else {
-                suburb = "TBD"
-            }*/
-            
-            return  street 
-        }
-        
-        return ""
+        return "TBD"
     }
     
     //Returns address without city, state or zipcode
