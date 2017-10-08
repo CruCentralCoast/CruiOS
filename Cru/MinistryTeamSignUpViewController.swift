@@ -56,6 +56,10 @@ class MinistryTeamSignUpViewController: UIViewController {
             self.fullNameTextInput.text = user[self.fullNameKey] as? String ?? ""
             self.phoneNumberTextInput.text = user[self.phoneNumberKey] as? String ?? ""
         }
+        
+        // Dismiss keyboard when tapping view
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        self.view.addGestureRecognizer(tapGesture)
     }
     
     @IBAction func closePressed() {
@@ -66,6 +70,10 @@ class MinistryTeamSignUpViewController: UIViewController {
         self.fullNameTextInput.resignFirstResponder()
         self.phoneNumberTextInput.resignFirstResponder()
         self.validator.validate(self)
+    }
+    
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 }
 
@@ -80,6 +88,11 @@ extension MinistryTeamSignUpViewController: AnimatedTextInputDelegate {
             return result.shouldChange
         }
         
+        return false
+    }
+    
+    func animatedTextInputShouldReturn(animatedTextInput: AnimatedTextInput) -> Bool {
+        animatedTextInput.resignFirstResponder()
         return false
     }
 }

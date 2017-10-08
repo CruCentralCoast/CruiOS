@@ -130,10 +130,10 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AHk-NM-rNT">
-                                        <rect key="frame" x="268" y="16" width="16" height="16"/>
+                                        <rect key="frame" x="256" y="0.0" width="44" height="44"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="16" id="AYa-PP-c3z"/>
-                                            <constraint firstAttribute="width" constant="16" id="qRc-Wc-HGr"/>
+                                            <constraint firstAttribute="height" constant="44" id="AYa-PP-c3z"/>
+                                            <constraint firstAttribute="width" constant="44" id="qRc-Wc-HGr"/>
                                         </constraints>
                                         <state key="normal" image="close"/>
                                         <connections>
@@ -145,7 +145,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="aB0-I4-LcK" secondAttribute="trailing" constant="8" id="8FE-hu-Ts4"/>
                                     <constraint firstItem="aB0-I4-LcK" firstAttribute="top" secondItem="E3d-Lo-hgo" secondAttribute="bottom" constant="8" id="Aed-va-I8d"/>
-                                    <constraint firstItem="AHk-NM-rNT" firstAttribute="top" secondItem="LMu-VF-VXl" secondAttribute="top" constant="16" id="DXp-hJ-kyz"/>
+                                    <constraint firstItem="AHk-NM-rNT" firstAttribute="top" secondItem="LMu-VF-VXl" secondAttribute="top" id="DXp-hJ-kyz"/>
                                     <constraint firstItem="JBT-5Q-xgN" firstAttribute="centerX" secondItem="LMu-VF-VXl" secondAttribute="centerX" id="HJB-yd-6gc"/>
                                     <constraint firstItem="in6-EN-8Xw" firstAttribute="top" secondItem="LMu-VF-VXl" secondAttribute="top" constant="12" id="HWe-Ks-6S1"/>
                                     <constraint firstAttribute="bottom" secondItem="JBT-5Q-xgN" secondAttribute="bottom" constant="12" id="XHQ-eX-sLF"/>
@@ -154,7 +154,7 @@
                                     <constraint firstItem="E3d-Lo-hgo" firstAttribute="top" secondItem="in6-EN-8Xw" secondAttribute="bottom" constant="4" id="cmo-ZG-QhY"/>
                                     <constraint firstItem="JBT-5Q-xgN" firstAttribute="top" secondItem="aB0-I4-LcK" secondAttribute="bottom" constant="16" id="e5t-1H-UnL"/>
                                     <constraint firstItem="in6-EN-8Xw" firstAttribute="leading" secondItem="LMu-VF-VXl" secondAttribute="leading" constant="16" id="oyk-ex-bWF"/>
-                                    <constraint firstAttribute="trailing" secondItem="AHk-NM-rNT" secondAttribute="trailing" constant="16" id="uGz-Ua-5jx"/>
+                                    <constraint firstAttribute="trailing" secondItem="AHk-NM-rNT" secondAttribute="trailing" id="uGz-Ua-5jx"/>
                                     <constraint firstItem="aB0-I4-LcK" firstAttribute="leading" secondItem="LMu-VF-VXl" secondAttribute="leading" constant="8" id="uNt-rM-0r0"/>
                                     <constraint firstAttribute="trailing" secondItem="E3d-Lo-hgo" secondAttribute="trailing" constant="8" id="zui-3X-p2O"/>
                                 </constraints>
