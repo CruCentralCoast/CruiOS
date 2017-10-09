@@ -287,7 +287,7 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
             self.eventsTable!.reloadData()
         }
         else {
-            self.upcomingEvents.sort { $0.0.startDate < $0.1.startDate }
+            self.upcomingEvents.sort { $0.0.startNSDate < $0.1.startNSDate }
             eventsTableHeight.constant = CGFloat(100)*CGFloat(upcomingEvents.count)
             eventsTable?.reloadData()
         }
