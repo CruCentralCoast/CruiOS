@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -32,19 +33,19 @@
                                 <rect key="frame" x="0.0" y="0.0" width="300" height="390"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dj4-4f-qSb">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="140"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="200"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="140" id="QYp-XE-8CQ"/>
+                                            <constraint firstAttribute="height" constant="200" id="QYp-XE-8CQ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zeD-hQ-5Gi">
-                                        <rect key="frame" x="8" y="148" width="284" height="28"/>
+                                        <rect key="frame" x="8" y="208" width="300" height="26"/>
                                         <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="n7q-Dj-WN8">
-                                        <rect key="frame" x="24" y="184" width="252" height="51"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" alignment="top" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="n7q-Dj-WN8">
+                                        <rect key="frame" x="24" y="242" width="300" height="20"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="leader-icon" translatesAutoresizingMaskIntoConstraints="NO" id="lZj-gJ-Fr7">
                                                 <rect key="frame" x="0.0" y="0.0" width="17" height="20"/>
@@ -54,7 +55,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" ambiguous="YES" text="Leader One, Leader Two, Leader Three" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ify-Mr-SN3">
-                                                <rect key="frame" x="25" y="0.0" width="227" height="51"/>
+                                                <rect key="frame" x="29" y="0.0" width="300" height="20"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -62,7 +63,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" ambiguous="YES" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dW3-qd-Qt3">
-                                        <rect key="frame" x="24" y="243" width="252" height="45.5"/>
+                                        <rect key="frame" x="24" y="270" width="300" height="22"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" ambiguous="YES" image="ministry-icon" translatesAutoresizingMaskIntoConstraints="NO" id="wRE-fY-KRh">
                                                 <rect key="frame" x="0.0" y="0.0" width="21" height="20"/>
@@ -72,7 +73,7 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" ambiguous="YES" text="Ministry with a super crazy rediculous long name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="El9-d8-bOc">
-                                                <rect key="frame" x="29" y="0.0" width="223" height="45.5"/>
+                                                <rect key="frame" x="29" y="0.0" width="300" height="22"/>
                                                 <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -80,13 +81,13 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Description that is really long and takes multiple lines" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5Y-o6-0Xq">
-                                        <rect key="frame" x="16" y="296.5" width="268" height="45.5"/>
+                                        <rect key="frame" x="16" y="300" width="300" height="42"/>
                                         <fontDescription key="fontDescription" name="FreightSansProBook-Regular" family="FreightSans Pro" pointSize="18"/>
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4pY-RM-rg7">
-                                        <rect key="frame" x="70" y="350" width="160" height="40"/>
+                                        <rect key="frame" x="150" y="350" width="160" height="40"/>
                                         <color key="backgroundColor" red="0.97480756044387817" green="0.7139357328414917" blue="0.14304995536804199" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="160" id="1kl-s8-8QU"/>

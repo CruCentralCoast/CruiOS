@@ -48,7 +48,7 @@ class MinistryTeamDetailViewController: UIViewController {
         if !self.ministryTeam.leaders.isEmpty {
             let leaderNames = self.ministryTeam.leaders.map{$0.name}.filter{!$0.isEmpty}
             if !leaderNames.isEmpty {
-                self.leaderLabel.text = leaderNames.reduce(leaderNames.first!) {"\($0), \($1)"}
+                self.leaderLabel.text = leaderNames.joined(separator: ", ")
             }
         }
         

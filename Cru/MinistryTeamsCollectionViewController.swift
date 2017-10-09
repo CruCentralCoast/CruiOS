@@ -35,23 +35,17 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
         self.ministries = CruClients.getSubscriptionManager().loadMinistries()
         
         if !self.ministries.isEmpty {
-            
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-            
-            
-      
-            //Check connection and load teams
+
+            // Check connection and load teams
             CruClients.getServerClient().checkConnection(self.finishConnectionCheck)
-            
         } else {
             print("NO MINISTRIES!!!")
             self.campusImage = UIImage(named: Config.campusImage)!
         }
         
-        //log Firebase Event
+        // Log Firebase Event
         Analytics.logEvent("user_tapped_join_ministry_team", parameters: nil)
-        
-        
     }
     
     private func setupCollectionView() {
@@ -67,17 +61,13 @@ class MinistryTeamsCollectionViewController: UICollectionViewController, UIColle
     func finishConnectionCheck(_ connected: Bool){
         self.collectionView?.emptyDataSetSource = self
         self.collectionView?.emptyDataSetDelegate = self
+        self.hasConnection = connected
         
-        if(!connected){
-            hasConnection = false
-            //Display a message if either of the tables are empty
-            
+        if !connected {
+            // Display a message if either of the tables are empty
             self.collectionView?.reloadData()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-            //hasConnection = false
-        }else{
-            hasConnection = true
-            //API call to load teams
+        } else {
             let ministryIds = ministries.map{$0.id}
             let params: [String:[String: [String]]] = ["parentMinistry":["$in":ministryIds as! Array<String>]]
             CruClients.getServerClient().getData(.MinistryTeam, insert: insertMinistryTeam, completionHandler: finishInserting, params: params)
