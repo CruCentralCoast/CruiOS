@@ -45,11 +45,14 @@ class NotificationsViewController: UITableViewController {
         // Get the subscribed ministry ids
         let ministryIds: [String] = CruClients.getSubscriptionManager().loadMinistries().map { $0.id }
         let params: [String:Any] = ["ministries":["$in":ministryIds]]
+        // Get the user id
+        let userID = GlobalUtils.loadString(Config.userID)
+        let userParams: [String:Any] = ["user":["$in":[userID]]]
 
         // Download global notifications for the appropriate ministries
         CruClients.getServerClient().getData(.Notification, insert: self.insertNotification(_:), completionHandler: self.finishNotifications(_:), params: params)
         // Download user notifications
-        CruClients.getServerClient().getData(.UserNotification, insert: self.insertNotification(_:), completionHandler: self.finishNotifications(_:))
+        CruClients.getServerClient().getData(.UserNotification, insert: self.insertNotification(_:), completionHandler: self.finishNotifications(_:), params: userParams)
     }
     
     fileprivate func insertNotification(_ dict: NSDictionary) {
