@@ -23,7 +23,7 @@ struct UserKeys {
     
 }
 
-class User: NSCoding {
+class User: NSObject, NSCoding {
 
     let name: String!
     let phone: String!
