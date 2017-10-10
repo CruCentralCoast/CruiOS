@@ -70,15 +70,20 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
     
     override func viewWillAppear(_ animated: Bool) {
         print("Video tab will appear")
-        self.videos = ResourceManager.sharedInstance.getVideos()
-        self.videos.sort { !$0.youtube && $1.youtube }
-        self.tableView.reloadData()
+        self.reloadVideos()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         memoryWarning = true
+    }
+    
+    fileprivate func reloadVideos() {
+        self.videos = ResourceManager.sharedInstance.getVideos()
+        self.videos = self.videos.filter { !$0.restricted }
+        self.videos.sort { !$0.youtube && $1.youtube }
+        self.tableView.reloadData()
     }
     
     // MARK: - Connection & Resource Loading
@@ -99,22 +104,9 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
             hasConnection = true
             
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-            self.videos = ResourceManager.sharedInstance.getVideos()
-            self.tableView.reloadData()
+            self.reloadVideos()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-            
-            /*if ResourceManager.sharedInstance.hasAddedVideoDelegate() {
-                self.videos = ResourceManager.sharedInstance.getVideos()
-                self.tableView.reloadData()
-                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-            }
-            else {
-                ResourceManager.sharedInstance.addVideoDelegate(self)
-            }*/
-            
-            
         }
-        
     }
 
     // MARK: - Pager Tab Whatever Delegate Functions
@@ -239,33 +231,17 @@ class VideosTabViewController: UITableViewController, ResourceDelegate, Indicato
     func resourcesLoaded(_ loaded: Bool) {
         print("Notified video VC with resources loaded: \(loaded)")
         if loaded {
-            self.videos = ResourceManager.sharedInstance.getVideos()
-            self.tableView.reloadData()
+            self.reloadVideos()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         }
     }
     
     func refreshData() {
-        self.videos = ResourceManager.sharedInstance.getVideos()
-        self.tableView.reloadData()
+        self.reloadVideos()
     }
     
     //Refresh table when search is done
     func searchRefresh(_ notification: NSNotification) {
-        self.videos = ResourceManager.sharedInstance.getVideos()
-        self.videos.sort { !$0.youtube && $1.youtube }
-        self.tableView.reloadData()
+        self.reloadVideos()
     }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -41,13 +41,19 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     
     override func viewWillAppear(_ animated: Bool) {
         print("Article tab will appear")
-        self.articles = ResourceManager.sharedInstance.getArticles()
-        self.tableView.reloadData()
+        self.reloadArticles()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    fileprivate func reloadArticles() {
+        self.articles = ResourceManager.sharedInstance.getArticles()
+        self.articles = self.articles.filter { !$0.restricted }
+//        self.articles.sort { $0.0.date > $0.1.date }
+        self.tableView.reloadData()
     }
     
     //Refresh table when article's description is finished loading
@@ -56,8 +62,7 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     }
     
     func searchRefresh(_ notification: NSNotification) {
-        self.articles = ResourceManager.sharedInstance.getArticles()
-        self.tableView.reloadData()
+        self.reloadArticles()
     }
     
     // MARK: - Connection & Resource Loading
@@ -65,31 +70,23 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     func finishConnectionCheck(_ connected: Bool){
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
+        self.hasConnection = connected
         
-        if(!connected){
-            hasConnection = false
+        if !connected {
             self.emptyTableImage = UIImage(named: Config.noConnectionImageName)
             
             self.tableView.reloadData()
-            //hasConnection = false
-        }else{
-            hasConnection = true
-            //self.tableView.emptyDataSetDelegate = self
-            //self.tableView.emptyDataSetSource = self
-            
+        } else {
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             
             if ResourceManager.sharedInstance.hasAddedArticleDelegate() {
-                self.articles = ResourceManager.sharedInstance.getArticles()
-                self.tableView.reloadData()
+                self.reloadArticles()
                 MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             }
             else {
                 ResourceManager.sharedInstance.addArticleDelegate(self)
             }
-            
         }
-        
     }
 
     // MARK: - Pager Tab Whatever Delegate Functions
@@ -98,16 +95,9 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     }
 
     // MARK: - Table View Delegate Functions
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return articles.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ArticleTableViewCell", for: indexPath) as! ArticleTableViewCell
@@ -193,28 +183,12 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
     func resourcesLoaded(_ loaded: Bool) {
         print("Notified article VC with resources loaded: \(loaded)")
         if loaded {
-            self.articles = ResourceManager.sharedInstance.getArticles()
-            self.tableView.reloadData()
+            self.reloadArticles()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         }
     }
     
     func refreshData() {
-        self.articles = ResourceManager.sharedInstance.getArticles()
-        self.tableView.reloadData()
+        self.reloadArticles()
     }
-    
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -40,13 +40,19 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
     
     override func viewWillAppear(_ animated: Bool) {
         print("Audio tab will appear")
-        self.audioFiles = ResourceManager.sharedInstance.getAudio()
-        self.tableView.reloadData()
+        self.reloadAudioFiles()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    fileprivate func reloadAudioFiles() {
+        self.audioFiles = ResourceManager.sharedInstance.getAudio()
+        self.audioFiles = self.audioFiles.filter { !$0.restricted }
+        self.audioFiles.sort { $0.0.date > $0.1.date }
+        self.tableView.reloadData()
     }
     
     // MARK: - Connection & Resource Loading
@@ -65,27 +71,14 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
             hasConnection = true
             
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
-            
-            self.audioFiles = ResourceManager.sharedInstance.getAudio()
-            self.tableView.reloadData()
+            self.reloadAudioFiles()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-            
-            /*if ResourceManager.sharedInstance.hasAddedAudioDelegate() {
-                self.audioFiles = ResourceManager.sharedInstance.getAudio()
-                self.tableView.reloadData()
-                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-            }
-            else {
-                ResourceManager.sharedInstance.addAudioDelegate(self)
-            }*/
-            
         }
     }
     
     //Refresh table when search is done
     func searchRefresh(_ notification: NSNotification) {
-        self.audioFiles = ResourceManager.sharedInstance.getAudio()
-        self.tableView.reloadData()
+        self.reloadAudioFiles()
     }
     
     // MARK: - Pager Tab Whatever Delegate Functions
@@ -94,17 +87,9 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
     }
     
     // MARK: - Table View Delegate Functions
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-
         return audioFiles.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     
@@ -163,15 +148,13 @@ class AudioTabViewController: UITableViewController, ResourceDelegate, Indicator
     func resourcesLoaded(_ loaded: Bool) {
         print("Notified audio VC with resources loaded: \(loaded)")
         if loaded {
-            self.audioFiles = ResourceManager.sharedInstance.getAudio()
-            self.tableView.reloadData()
+            self.reloadAudioFiles()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
         }
     }
 
     func refreshData() {
-        self.audioFiles = ResourceManager.sharedInstance.getAudio()
-        self.tableView.reloadData()
+        self.reloadAudioFiles()
     }
     
     /*

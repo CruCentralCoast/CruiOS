@@ -267,7 +267,11 @@ class ResourceManager {
     //Get resources from database
     private func insertResource(_ dict : NSDictionary) {
         let resource = Resource(dict: dict)!
-        resources.insert(resource, at: 0)
+        if resource.restricted! {
+            leaderResources.append(resource)
+        } else {
+            resources.insert(resource, at: 0)
+        }
         // Make sure to call downloadGroup.leave() when each resource has been inserted
         //downloadGroup?.enter()
         
@@ -276,24 +280,14 @@ class ResourceManager {
             insertArticle(resource, completionHandler: {_ in
                 print("done inserting articles")
             })
-            
-        }
-            
-        else if (resource.type == ResourceType.Video) {
+        } else if (resource.type == ResourceType.Video) {
             insertVideo(resource, completionHandler: {_ in
                 print("done inserting videos")
             })
-            
-        }
-            
-        else if (resource.type == ResourceType.Audio) {
+        } else if (resource.type == ResourceType.Audio) {
             insertAudio(resource, completionHandler: {_ in
                 print("done inserting audio")
             })
-        }
-        
-        if resource.restricted! {
-            leaderResources.append(resource)
         }
     }
     
@@ -302,8 +296,6 @@ class ResourceManager {
         let tag = ResourceTag(dict: dict)!
         tags.insert(tag, at: 0)
         //downloadGroup?.leave()
-        
-        
     }
     
     // MARK: - Article Functions
