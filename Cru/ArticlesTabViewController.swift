@@ -120,13 +120,18 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
             cell.date.text = ""
         }
         
-        cell.desc.text = art.abstract
+        cell.desc.text = art.containsHTML ? "" : art.abstract
         cell.title.text = art.title
         
         //Set up the cell's button for web view controller
         cell.tapAction = {(cell) in
             let vc = CustomWebViewController()
-            vc.urlString = art.url
+            if art.containsHTML {
+                vc.html = art.abstract
+                vc.displayLocalHTML = true
+            } else {
+                vc.urlString = art.url
+            }
             vc.artTitle = art.title
             self.navigationController?.pushViewController(vc, animated: true)
         }
@@ -150,7 +155,12 @@ class ArticlesTabViewController: UITableViewController, ResourceDelegate, Indica
         art = articles[indexPath.row]
         
         let vc = CustomWebViewController()
-        vc.urlString = art.url
+        if art.containsHTML {
+            vc.html = art.abstract
+            vc.displayLocalHTML = true
+        } else {
+            vc.urlString = art.url
+        }
         vc.artTitle = art.title
         self.navigationController?.pushViewController(vc, animated: true)
     }

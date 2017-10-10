@@ -242,25 +242,51 @@ class ResourceManager {
     
     func loadResources(_ completion: @escaping (Bool, Bool) -> Void){
         if !loadedResources {
-            CruClients.getServerClient().getData(DBCollection.Resource, insert: self.insertResource, completionHandler: { success in
-                self.loadedResources = success
-                if success {
-                    self.getVideosForChannel({ success in
-                        self.youtubeLoaded = success
-                        if !success {
-                            print("Could not load youtube videos")
-                        }
-                        completion(self.loadedResources, self.youtubeLoaded)
-                        
-                    })
-                    
+            CruClients.getServerClient().getData(.ResourcePages, insert: self.insertResourcePage) { _ in
+                CruClients.getServerClient().getData(.Resource, insert: self.insertResource) { success in
+                    self.loadedResources = success
+                    if success {
+                        self.getVideosForChannel({ success in
+                            self.youtubeLoaded = success
+                            if !success {
+                                print("Could not load youtube videos")
+                            }
+                            completion(self.loadedResources, self.youtubeLoaded)
+                        })
+                    }
                 }
-            })
-        }
-        else {
-            
+            }
+        } else {
             completion(self.loadedResources, self.youtubeLoaded)
         }
+    }
+    
+    fileprivate func insertResourcePage(_ dict : NSDictionary) {
+        let dateFormatter = GlobalUtils.getDefaultDateFormatter()
+        let id = dict["_id"] as? String
+        let title = dict["title"] as? String
+        let url: String? = nil
+        let type = ResourceType.Article
+        let date = dict["publishedDate"] as? String
+        let tags = dict["tags"] as? [String]
+        let description = dict["content"] as? String
+        let restricted = dict["restricted"] as? Bool ?? false
+        let author = dict["author"] as? String
+        
+        // Create a Resource object from the dict
+        let resource = Resource(id: id, title: title, url: url, type: type, date: date, tags: tags, description: description)!
+        resource.restricted = restricted
+        resource.author = author
+        
+        // Add it to our list of resources
+        if restricted {
+            self.leaderResources.append(resource)
+        } else {
+            self.resources.append(resource)
+        }
+        
+        // Extra processing
+        self.insertArticleFromResourcePage(resource)
     }
     
     // MARK: - General Resource Handling
@@ -276,18 +302,11 @@ class ResourceManager {
         //downloadGroup?.enter()
         
         if (resource.type == ResourceType.Article) {
-            //Can't pass in nil to completion so pass instead print confirmation
-            insertArticle(resource, completionHandler: {_ in
-                print("done inserting articles")
-            })
+            insertArticle(resource)
         } else if (resource.type == ResourceType.Video) {
-            insertVideo(resource, completionHandler: {_ in
-                print("done inserting videos")
-            })
+            insertVideo(resource)
         } else if (resource.type == ResourceType.Audio) {
-            insertAudio(resource, completionHandler: {_ in
-                print("done inserting audio")
-            })
+            insertAudio(resource)
         }
     }
     
@@ -300,13 +319,13 @@ class ResourceManager {
     
     // MARK: - Article Functions
     /* Helper function to insert an article resource */
-    fileprivate func insertArticle(_ resource: Resource,completionHandler: (Bool) -> Void) {
+    fileprivate func insertArticle(_ resource: Resource,completionHandler: ((Bool) -> Void)? = nil) {
         print("Inserting article")
         let resUrl = URL(string: resource.url)
         guard let url = resUrl else {
             return
         }
-        let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, imgURL: "", restricted: resource.restricted)
+        let newArt = Article(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, abstract: resource.description, imgURL: "", restricted: resource.restricted, containsHTML: false)
         self.articles.append(newArt!)
         
         if resource.description == "" {
@@ -328,14 +347,17 @@ class ResourceManager {
             self.articles.append(newArt!)
             //self.downloadGroup?.leave()
         }*/
+    }
+    
+    fileprivate func insertArticleFromResourcePage(_ resource: Resource) {
+        let article = Article(id: resource.id, title: resource.title, url: nil, date: resource.date, tags: resource.tags, abstract: resource.description, imgURL: "", restricted: resource.restricted, containsHTML: true)!
         
-        
-        
+        self.articles.append(article)
     }
     
     // MARK: - Audio Functions
     /* Creates new Audio object and inserts into table if necessary*/
-    fileprivate func insertAudio(_ resource: Resource, completionHandler: (Bool) -> Void) {
+    fileprivate func insertAudio(_ resource: Resource, completionHandler: ((Bool) -> Void)? = nil) {
         print("Inserting audio")
         let newAud = Audio(id: resource.id, title: resource.title, url: resource.url, date: resource.date, tags: resource.tags, restricted: resource.restricted)
         newAud.prepareAudioFile()
@@ -360,7 +382,7 @@ class ResourceManager {
     }
     
     //Inserts a video resource
-    fileprivate func insertVideo(_ resource: Resource, completionHandler: (Bool) -> Void) {
+    fileprivate func insertVideo(_ resource: Resource, completionHandler: ((Bool) -> Void)? = nil) {
         let resUrl = URL(string: resource.url)
         guard let url = resUrl else {
             return

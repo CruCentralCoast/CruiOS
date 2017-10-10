@@ -19,6 +19,7 @@ class Article {
     var restricted: Bool!
     var abstract: String!
     var imgURL: String!
+    var containsHTML: Bool
     
     init?() {
         self.title = ""
@@ -31,9 +32,10 @@ class Article {
         self.restricted = false
         self.abstract = ""
         self.imgURL = ""
+        self.containsHTML = false
     }
     
-    init?(id: String?, title: String?, url: String?, date: Date?, tags: [String]?, abstract: String?, imgURL: String?, restricted: Bool!) {
+    init?(id: String?, title: String?, url: String?, date: Date?, tags: [String]?, abstract: String?, imgURL: String?, restricted: Bool!, containsHTML: Bool) {
         // Initialize properties
         self.id = id
         self.title = title
@@ -43,8 +45,6 @@ class Article {
         self.abstract = abstract
         self.imgURL = imgURL
         self.restricted = restricted
+        self.containsHTML = containsHTML
     }
-    
-    
-    
 }

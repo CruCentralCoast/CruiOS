@@ -46,7 +46,9 @@ class Resource {
         self.title = title
         self.url = url
         self.type = type
-        self.date = GlobalUtils.dateFromString(date!)
+        if let date = date {
+            self.date = GlobalUtils.dateFromString(date)
+        }
         self.tags = tags
         self.description = description
     }

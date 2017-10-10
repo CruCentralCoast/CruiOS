@@ -13,6 +13,8 @@ class CustomWebViewController: UIViewController, UIWebViewDelegate {
     var url:URL?
     var urlString:String?
     var artTitle: String?
+    var html: String?
+    var displayLocalHTML = false
     private var webView:UIWebView!
     private var progressShowing = false
 
@@ -26,19 +28,15 @@ class CustomWebViewController: UIViewController, UIWebViewDelegate {
             self.view.addSubview(webView)
         }
 
-        if let desiredURL = urlString
-        { 
+        if self.displayLocalHTML {
+            self.webView.loadHTMLString(self.html!, baseURL: nil)
+        } else if let desiredURL = urlString {
             url = URL(string: desiredURL)!
             webView.loadRequest(URLRequest(url: url!))
         }
         if let aTitle = artTitle {
             self.navigationController?.title = aTitle
         }
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     func setUrl(string: String) {
@@ -54,43 +52,20 @@ class CustomWebViewController: UIViewController, UIWebViewDelegate {
     }
     
     func webViewDidStartLoad(_ webView: UIWebView) {
-        
         if !progressShowing {
             MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
             progressShowing = true
         }
-        
     }
     
     func webViewDidFinishLoad(_ webView: UIWebView) {
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-        /*if webView.isLoading {
-            return
-        }
-        else {
-            if progressShowing {
-                MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-                progressShowing = false
-            }
-        }*/
-        
     }
+    
     func webView(_ webView: UIWebView, didFailLoadWithError error: Error) {
         if progressShowing {
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
             progressShowing = false
         }
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
