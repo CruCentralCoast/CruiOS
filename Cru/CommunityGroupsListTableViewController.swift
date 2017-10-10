@@ -129,22 +129,15 @@ class CommunityGroupsListTableViewController: UITableViewController, DZNEmptyDat
     func finishConnectionCheck(_ connected: Bool){
         self.tableView!.emptyDataSetSource = self
         self.tableView!.emptyDataSetDelegate = self
+        self.hasConnection = connected
         
-        if(!connected){
-            hasConnection = false
-            //Display a message if either of the tables are empty
-            
+        if !connected {
+            // Display a message if either of the tables are empty
             self.tableView!.reloadData()
             MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
-            //hasConnection = false
-        }else{
-            hasConnection = true
-            //API call to load groups
-            CruClients.getCommunityGroupUtils().loadGroups(insertGroup, completionHandler: finishInserting)
-            
-            
+        } else {
+            CruClients.getCommunityGroupUtils().loadGroups(ignoreMinistries: false, inserter: insertGroup, completionHandler: finishInserting)
         }
-        
     }
     
     //Get ministry list from local storage

@@ -103,7 +103,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         group.desc = descriptionView.text
         group.parentMinistryID = ministryTable[chooseMinistryDropDown.selectedItem!]!
         group.parentMinistryName = chooseMinistryDropDown.selectedItem!
-        group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(Config.s3ImageFolderURL)/\(group.id)-image.jpeg"
+        //group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(Config.s3ImageFolderURL)/\(group.id)-image.jpeg"
         //group.imgURL = "\(Config.s3ImageURL)/\(Config.s3BucketName)/\(group.id)-image.jpeg"
         
         print("New group info: ")

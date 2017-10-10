@@ -26,21 +26,14 @@ class CommunityGroupUtils {
         amazonS3Manager = AmazonS3RequestManager(bucket: Config.s3BucketName, region: .USWest2, accessKey: Config.awsKey, secret: Config.awsSecret)
     }
     
-    func loadGroups(_ inserter: @escaping (NSDictionary)->Void, completionHandler:
+    func loadGroups(ignoreMinistries: Bool, inserter: @escaping (NSDictionary)->Void, completionHandler:
         @escaping (Bool)->Void) {
-        //Will load all community groups if user isn't subscribed to any ministries
-        var ministryIds = [String]()
-        let ministries = CruClients.getSubscriptionManager().loadMinistries()
         
-        //print(ministries)
-        ministryIds = ministries.map({min in min.id})
-        
-        let params: [String:Any] = [CommunityGroupKeys.ministry:["$in":ministryIds]]
-        
-        
+        // Get the subscribed ministry ids
+        let ministryIds: [String] = CruClients.getSubscriptionManager().loadMinistries().map { $0.id }
+        let params: [String:Any] = ignoreMinistries ? [:] : [CommunityGroupKeys.ministry:["$in":ministryIds]]
         
         CruClients.getServerClient().getData(.CommunityGroup, insert: inserter, completionHandler: completionHandler, params: params)
-        //CruClients.getServerClient().getData(.CommunityGroup, insert: inserter, completionHandler: completionHandler)
     }
     
     func getMinistryTable() -> [String: String]{
