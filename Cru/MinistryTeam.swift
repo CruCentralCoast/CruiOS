@@ -27,16 +27,10 @@ class MinistryTeam: NSObject, NSCoding {
         self.parentMinistry = dict.object(forKey: "parentMinistry") as? String ?? ""
         self.parentMinistryName = dict.object(forKey: "parentMinistryName") as? String ?? ""
         self.summary = dict.object(forKey: "description") as? String ?? ""
-//        self.image = UIImage(named: "fall-retreat-still")
-        self.imageUrl = ""
-//        self.teamImage = UIImage(named: "event1")
-        self.teamImageUrl = ""
+        self.teamImageUrl = dict.object(forKey: "teamImageLink") as? String ?? ""
+//      self.image = UIImage(named: "fall-retreat-still")
+        self.imageUrl = dict.object(forKey: "teamImageLink") as? String ?? ""
         self.leaders = [User]()
-        
-        // Set the image if it exists
-        if let imageDict = dict.object(forKey: "leadersImage") as? [String:AnyObject], let imageUrl = imageDict["secure_url"] as? String {
-            self.imageUrl = imageUrl
-        }
         
         // Set the leaders if they exist
         if let leaderDicts = dict.object(forKey: "leaders") as? [[String:AnyObject]] {
