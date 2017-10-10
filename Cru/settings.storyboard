@@ -375,7 +375,6 @@
                                         <constraint firstItem="FFL-5f-ZgC" firstAttribute="leading" secondItem="1L6-ev-Vm3" secondAttribute="trailing" constant="15" id="srG-yv-Jet"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="ministryNameLabel" destination="FFL-5f-ZgC" id="VC5-2L-SQw"/>
                                     <outlet property="minstryImage" destination="1L6-ev-Vm3" id="dvp-Co-qsH"/>

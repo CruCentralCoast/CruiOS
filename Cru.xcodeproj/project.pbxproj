@@ -48,7 +48,6 @@
 		0FB6CF511CBF4839007B9F6E /* summermissions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FB6CF501CBF4839007B9F6E /* summermissions.storyboard */; };
 		0FB811851C8F47C600883951 /* Ministry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50FE4D461C50D37C00EA9042 /* Ministry.swift */; };
 		0FB811861C8F47E200883951 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50A341CD1C0C10F3006B73DB /* Campus.swift */; };
-		0FC0B9DE1C5F0F9400D1524C /* ministrytable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0B9DD1C5F0F9400D1524C /* ministrytable.storyboard */; };
 		0FC49DAF1CFE8D9700B4D175 /* CruPhoneNoRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FC49DAE1CFE8D9700B4D175 /* CruPhoneNoRule.swift */; };
 		0FC8E39D1C3EF320007A7208 /* sideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC8E39C1C3EF320007A7208 /* sideMenu.storyboard */; };
 		0FC8E3A61C45EB1A007A7208 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC8E3A51C45EB1A007A7208 /* Intro.storyboard */; };
@@ -112,7 +111,6 @@
 		5072B42B1CB38FEB001F5BF6 /* events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 501D0ABE1C68588700BF243A /* events.storyboard */; };
 		5072B42C1CB38FFE001F5BF6 /* sideMenu.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC8E39C1C3EF320007A7208 /* sideMenu.storyboard */; };
 		5072B42D1CB39022001F5BF6 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC8E3A51C45EB1A007A7208 /* Intro.storyboard */; };
-		5072B42E1CB39022001F5BF6 /* ministrytable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0B9DD1C5F0F9400D1524C /* ministrytable.storyboard */; };
 		5072B42F1CB39022001F5BF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D12525D1C0799EC0039D3C0 /* LaunchScreen.storyboard */; };
 		5072B4311CB39022001F5BF6 /* resources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50F8251E1C0BB965005396BC /* resources.storyboard */; };
 		5072B4321CB39022001F5BF6 /* MinistryTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FAEB9791C86C1D1005C0B4C /* MinistryTeam.storyboard */; };
@@ -439,7 +437,6 @@
 		0FAEB97B1C878FCE005C0B4C /* MinistryTeamsCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeamsCollectionViewController.swift; sourceTree = "<group>"; };
 		0FAEB97F1C8795D0005C0B4C /* MinistryTeam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinistryTeam.swift; sourceTree = "<group>"; };
 		0FB6CF501CBF4839007B9F6E /* summermissions.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = summermissions.storyboard; sourceTree = "<group>"; };
-		0FC0B9DD1C5F0F9400D1524C /* ministrytable.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ministrytable.storyboard; sourceTree = "<group>"; };
 		0FC49DAE1CFE8D9700B4D175 /* CruPhoneNoRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CruPhoneNoRule.swift; sourceTree = "<group>"; };
 		0FC8E39C1C3EF320007A7208 /* sideMenu.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = sideMenu.storyboard; sourceTree = "<group>"; };
 		0FC8E3A51C45EB1A007A7208 /* Intro.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
@@ -842,7 +839,6 @@
 			isa = PBXGroup;
 			children = (
 				0FC8E3A51C45EB1A007A7208 /* Intro.storyboard */,
-				0FC0B9DD1C5F0F9400D1524C /* ministrytable.storyboard */,
 				0FC8E3B11C48750A007A7208 /* IntroViewController.swift */,
 			);
 			name = Introduction;
@@ -1389,7 +1385,6 @@
 				C1EF49071CDBF3AD009439FE /* communitygroups.storyboard in Resources */,
 				6D12525E1C0799EC0039D3C0 /* LaunchScreen.storyboard in Resources */,
 				6D76CA771C06A41900F8B007 /* FreigSanProLig.otf in Resources */,
-				0FC0B9DE1C5F0F9400D1524C /* ministrytable.storyboard in Resources */,
 				50ED8FEE1C052C65002C9E30 /* settings.storyboard in Resources */,
 				0FC8E3A61C45EB1A007A7208 /* Intro.storyboard in Resources */,
 				509DA9191C616C840050CE26 /* driverdetail.storyboard in Resources */,
@@ -1404,7 +1399,6 @@
 			files = (
 				6DF096FB1D92CED80053741A /* about.storyboard in Resources */,
 				5072B42D1CB39022001F5BF6 /* Intro.storyboard in Resources */,
-				5072B42E1CB39022001F5BF6 /* ministrytable.storyboard in Resources */,
 				6DA8154B1D3FFA060087F05B /* newofferride.storyboard in Resources */,
 				5072B42F1CB39022001F5BF6 /* LaunchScreen.storyboard in Resources */,
 				5072B4311CB39022001F5BF6 /* resources.storyboard in Resources */,
