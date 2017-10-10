@@ -55,7 +55,6 @@ class CommunityGroupsTabVC: UIViewController, UITableViewDataSource, UITableView
         }
         
         groups = groupArray
- 
     }
     
     override func viewWillAppear(_ animated: Bool) {

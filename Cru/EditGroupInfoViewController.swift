@@ -264,7 +264,7 @@ class EditGroupInfoViewController: UIViewController, UIImagePickerControllerDele
         
         for cGroup in prevGroupArray {
             if cGroup.id != group.id {
-                comGroupArray.append(group)
+                comGroupArray.append(cGroup)
             }
         }
         
