@@ -140,13 +140,22 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
                 cell.date.text = ""
             }
             
-            cell.desc.text = res.description
+            if res.type == .Article && (res.url == nil || res.url.isEmpty) {
+                cell.desc.text = ""
+            } else {
+                cell.desc.text = res.description
+            }
             cell.title.text = res.title
             
             //Set up the cell's button for web view controller
             cell.tapAction = {(cell) in
                 let vc = CustomWebViewController()
-                vc.urlString = res.url
+                if res.type == .Article && (res.url == nil || res.url.isEmpty) {
+                    vc.html = res.description
+                    vc.displayLocalHTML = true
+                } else {
+                    vc.urlString = res.url
+                }
                 vc.artTitle = res.title
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -208,7 +217,12 @@ class LeaderTabViewController: UITableViewController, IndicatorInfoProvider, DZN
         
         if res.type == .Article || res.type == .Video {
             let vc = CustomWebViewController()
-            vc.urlString = res.url
+            if res.type == .Article && (res.url == nil || res.url.isEmpty) {
+                vc.html = res.description
+                vc.displayLocalHTML = true
+            } else {
+                vc.urlString = res.url
+            }
             vc.artTitle = res.title
             self.navigationController?.pushViewController(vc, animated: true)
         }
