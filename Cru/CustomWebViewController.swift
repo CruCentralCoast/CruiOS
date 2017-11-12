@@ -37,6 +37,12 @@ class CustomWebViewController: UIViewController, UIWebViewDelegate {
         if let aTitle = artTitle {
             self.navigationController?.title = aTitle
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(CustomWebViewController.showStatusBar), name: NSNotification.Name.UIWindowDidBecomeHidden, object: self.view.window)
+    }
+    
+    func showStatusBar() {
+        UIApplication.shared.setStatusBarHidden(false, with: .none)
     }
     
     func setUrl(string: String) {
@@ -68,4 +74,6 @@ class CustomWebViewController: UIViewController, UIWebViewDelegate {
             progressShowing = false
         }
     }
+    
+    
 }
