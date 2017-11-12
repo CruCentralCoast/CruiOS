@@ -39,13 +39,6 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Disable ride sharing for release 1.4
-        // Issue #135 - Enable Ridesharing
-        #if RELEASE
-        self.findRideButton.isHidden = true
-        self.offerRideButton.isHidden = true
-        #endif
-        
         // Setup side menu
         GlobalUtils.setupViewForSideMenu(self, menuButton: self.menuButton)
 
@@ -64,12 +57,8 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.ridesTableView.addSubview(self.refreshControl)
         
         // Reload data
-        // Disable ride sharing for release 1.4
-        // Issue #135 - Enable Ridesharing
-        #if DEBUG
         MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         CruClients.getRideUtils().getMyRides(insertRide, afterFunc: finishRideInsert)
-        #endif
         
         // Set image and refresh tableview
         self.noRideImage = UIImage(named: Config.noRidesImageName)!
@@ -84,17 +73,9 @@ class RidesViewController: UIViewController, UITableViewDelegate, UITableViewDat
         Analytics.logEvent("Ridesharing_loaded", parameters: nil)
     }
     
-// Disable ride sharing for release 1.4
-// Issue #135 - Enable Ridesharing
-#if RELEASE
-    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "Coming Soon!! 🚙")
-    }
-#else
     func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
         return noRideImage
     }
-#endif
     
     @IBAction func handleOfferRide(_ sender: AnyObject){
         self.performSegue(withIdentifier: "offerridesegue", sender: self)

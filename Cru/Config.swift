@@ -9,10 +9,9 @@
 import UIKit
 
 struct Config {
-    //static let serverUrl = "http://ec2-52-39-130-135.us-west-2.compute.amazonaws.com:3001/"
-    static let serverUrl = "http://secure-oasis-4438.herokuapp.com/" // Prod
-    //static let serverUrl = "http://cru-central-coast.herokuapp.com/" // New prod
-    //static let serverURl = "http://127.0.0.1:3000/" // Dev - only works if you're running on local machine
+//    static let serverUrl = "http://cru-central-coast.herokuapp.com/" // Prod server
+    static let serverUrl = "http://cru-central-coast-staging.herokuapp.com/" // Test server
+    //static let serverUrl = "http://127.0.0.1:3000/" // Dev - only works if you're running on local machine
     static let serverEndpoint = serverUrl + "api/"
     static let name = "name"
     static let campusIds = "campuses"
