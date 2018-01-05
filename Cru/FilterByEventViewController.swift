@@ -10,10 +10,14 @@ import UIKit
 import MRProgress
 import DZNEmptyDataSet
 
-class FilterByEventViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIPopoverPresentationControllerDelegate, DZNEmptyDataSetDelegate, DZNEmptyDataSetSource{
+class FilterByEventViewController: UIViewController, UIPopoverPresentationControllerDelegate {
     
-    @IBOutlet weak var rideTable: UITableView!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var selectEventButton: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
+    @IBOutlet weak var eventNameStackView: UIStackView!
+    @IBOutlet weak var requestRideStackView: UIStackView!
+    @IBOutlet weak var mapButton: UIBarButtonItem!
     
     weak var rideVC:RidesViewController?
     weak var eventVC: EventDetailsViewController?
@@ -30,7 +34,12 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     var selectedEvent: Event? {
         didSet {
             if let selectedEvent = selectedEvent {
-                eventNameLabel.text = selectedEvent.name
+                self.eventNameLabel.text = selectedEvent.name
+                self.selectEventButton.isHidden = true
+                self.eventNameStackView.isHidden = false
+                self.mapButton.isEnabled = true
+                self.tableView.isHidden = false
+//                loadRides(selectedEvent)
                 filterRidesByEventId(selectedEvent.id)
             }
         }
@@ -40,52 +49,84 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //make pickerview and tableview recognize this class
-        //as their delegate and data source
-        rideTable.delegate = self
-        rideTable.dataSource = self
+        self.tableView.tableFooterView = UIView()
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
         
-        navigationItem.title = "Find Ride"
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Map View", style: .plain, target: self, action: #selector(FilterByEventViewController.mapView))
-        
-        //Load current user's rides
         loadCurRides()
-        
         loadEvents()
-        if tempEvent == nil {
+        if self.tempEvent == nil {
             loadRides(nil)
         }
     }
     
-//    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
-//        return UIImage(named: Config.noRidesForEvent)
-//    }
+    @IBAction func chooseEvent(_ sender: UIButton) {
+        let eventsVC = UIStoryboard(name: "findride", bundle: nil).instantiateViewController(withIdentifier: "EventsModalTableViewController") as! EventsModalTableViewController
+        
+        eventsVC.events = Event.eventsWithRideShare(events)
+        eventsVC.fvc = self
+        
+        // Set the presentation style
+        eventsVC.modalPresentationStyle = UIModalPresentationStyle.popover
+        
+        // Set up the popover presentation controller
+        eventsVC.popoverPresentationController?.permittedArrowDirections = UIPopoverArrowDirection.any
+        eventsVC.popoverPresentationController?.delegate = self
+        eventsVC.popoverPresentationController?.sourceView = sender
+        eventsVC.popoverPresentationController?.sourceRect = sender.bounds
+        
+        self.present(eventsVC, animated: true)
+    }
     
-    func mapView(){
-        if(selectedEvent != nil){
-            self.performSegue(withIdentifier: "mapView", sender: self)
+    @IBAction func showMap() {
+        let mapVC = UIStoryboard(name: "findride", bundle: nil).instantiateViewController(withIdentifier: "MapOfRidesViewController") as! MapOfRidesViewController
+        
+        mapVC.rides = self.filteredRides
+        mapVC.event = self.selectedEvent
+        mapVC.rideTVC = self.rideVC
+        mapVC.eventVC = self.eventVC
+        mapVC.wasLinkedFromEvents = self.wasLinkedFromEvents
+        
+        self.show(mapVC, sender: self)
+    }
+    
+    func showRideInfo() {
+        let rideVC = UIStoryboard(name: "findride", bundle: nil).instantiateViewController(withIdentifier: "joinRideVC") as! JoinRideViewController
+        
+        rideVC.ride = self.selectedRide
+        rideVC.event = self.selectedEvent
+        if let eVC = self.eventVC {
+            rideVC.popVC = eVC
         }
-        else{
-            let noEventAlert = UIAlertController(title: "Please select an event first", message: "", preferredStyle: UIAlertControllerStyle.alert)
-            noEventAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(noEventAlert, animated: true, completion: nil)
+        if let rVC = self.rideVC {
+            rideVC.popVC = rVC
         }
+        rideVC.wasLinkedFromEvents = self.wasLinkedFromEvents
+        
+        self.show(rideVC, sender: self)
     }
     
     // MARK: - Table view data source
     //Load the user's current rides
     func loadCurRides() {
-        CruClients.getRideUtils().getMyRides(fillRides, afterFunc: { success in
+        CruClients.getRideUtils().getMyRides(processCurRide, afterFunc: { success in
             //Don't need to do anything
         })
     }
     
+    //Insert user's current rides into rides array
+    func processCurRide(_ dict : NSDictionary) {
+        //create ride
+        let newRide = Ride(dict: dict)
+        
+        //insert into ride array
+        curRides.insert(newRide!, at: 0)
+    }
+    
     //Load the available events list
     func loadEvents(){
-        CruClients.getServerClient().getData(.Event, insert: insertEvent, completionHandler:
-            { sucess in
-                //we should be handling failure here
+        CruClients.getServerClient().getData(.Event, insert: insertEvent, completionHandler: { success in
+            //we should be handling failure here
         })
     }
     
@@ -108,18 +149,8 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
         }
     }
     
-    //Insert user's current rides into rides array
-    func fillRides(_ dict : NSDictionary) {
-        //create ride
-        let newRide = Ride(dict: dict)
-        
-        //insert into ride array
-        curRides.insert(newRide!, at: 0)
-    }
-    
-    
     func loadRides(_ event: Event?) {
-        tempEvent = event
+        self.tempEvent = event
         MRProgressOverlayView.showOverlayAdded(to: self.view, animated: true)
         CruClients.getRideUtils().getRidesNotDriving(Config.fcmId(), insert: insertRide, afterFunc: loadRidesCompletionHandler)
     }
@@ -132,32 +163,39 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     fileprivate func loadRidesCompletionHandler(_ success: Bool) {
-        if tempEvent != nil {
-            selectedEvent = tempEvent
+        if self.tempEvent != nil {
+            self.selectedEvent = self.tempEvent
         }
         
         MRProgressOverlayView.dismissOverlay(for: self.view, animated: true)
     }
     
     fileprivate func filterRidesByEventId(_ eventId: String){
-        rideTable.emptyDataSetDelegate = nil
-        rideTable.emptyDataSetSource = nil
-        filteredRides.removeAll()
+        self.filteredRides.removeAll()
         
-        for ride in allRides {
+        for ride in self.allRides {
             if(ride.eventId == eventId && ride.hasSeats()){
-                filteredRides.append(ride)
+                self.filteredRides.append(ride)
             }
         }
         
-        rideTable.emptyDataSetDelegate = self
-        rideTable.emptyDataSetSource = self
-        
-        self.rideTable.reloadData()
+        self.tableView.reloadData()
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}
+
+// MARK: - TableView Methods
+extension FilterByEventViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Rides"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -167,79 +205,20 @@ class FilterByEventViewController: UIViewController, UITableViewDelegate, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "rideCell") as! OfferedRideTableViewCell
         
-        let thisRide = filteredRides[indexPath.row]
-        cell.month.text = thisRide.month
-        cell.day.text = String(thisRide.day)
-        cell.time.text = GlobalUtils.stringFromDate(thisRide.date, format: "h:mma")
-        
-        cell.seatsLeft.text = thisRide.seatsLeftAsString() + " seats left"
-        
-        if(thisRide.seatsLeft() == 1){
-            cell.seatsLeft.textColor = UIColor(red: 0.729, green: 0, blue: 0.008, alpha: 1.0)
- 
-        }
-        else if(thisRide.seatsLeft() == 2){
-            cell.seatsLeft.textColor = UIColor(red: 0.976, green: 0.714, blue: 0.145, alpha: 1.0)
-        }
-        else{
-            cell.seatsLeft.textColor = UIColor(red: 0, green:  0.427, blue: 0.118, alpha: 1.0)
-        }
+        cell.ride = filteredRides[indexPath.row]
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         self.selectedRide = filteredRides[indexPath.row]
-            
-        performSegue(withIdentifier: "joinSegue", sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
+        showRideInfo()
     }
-    
-    // Function for sending the selected event to this view controller.
-    // sets the selected event to the event that was selected in the event table view controller.
-//    func selectVal(event: Event){
-//        self.selectedEvent = event
-//    }
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let vc = segue.destination as? JoinRideViewController, segue.identifier == "joinSegue" {
-            vc.ride = self.selectedRide
-            vc.event = self.selectedEvent
-            if let eVC = self.eventVC {
-                vc.popVC = eVC
-            }
-            if let rVC = self.rideVC {
-                vc.popVC = rVC
-            }
-            vc.wasLinkedFromEvents = self.wasLinkedFromEvents
-        }
-        
-        //check if we're going to event modal
-        if segue.identifier == "pickEvent" {
-            if let destinationVC = segue.destination as? EventsModalTableViewController {
-                destinationVC.events = Event.eventsWithRideShare(events)
-                destinationVC.fvc = self
-            
-                let controller = destinationVC.popoverPresentationController
-                if(controller != nil){
-                    controller?.delegate = self
-                }
-            }
-        }
-        else if segue.identifier == "mapView"{
-            if let vc = segue.destination as? MapOfRidesViewController{
-                vc.rides = filteredRides
-                vc.event = selectedEvent
-                vc.rideTVC = self.rideVC
-                vc.eventVC = self.eventVC
-                vc.wasLinkedFromEvents = self.wasLinkedFromEvents
-            }
-        }
+}
+
+// MARK: - Empty DataSet Methods
+extension FilterByEventViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    func image(forEmptyDataSet scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: Config.noRidesForEvent)
     }
 }
