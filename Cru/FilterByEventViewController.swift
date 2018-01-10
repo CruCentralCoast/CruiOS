@@ -63,7 +63,9 @@ class FilterByEventViewController: UIViewController, UIPopoverPresentationContro
     @IBAction func chooseEvent(_ sender: UIButton) {
         let eventsVC = UIStoryboard(name: "findride", bundle: nil).instantiateViewController(withIdentifier: "EventsModalTableViewController") as! EventsModalTableViewController
         
-        eventsVC.events = Event.eventsWithRideShare(events)
+        eventsVC.events = Event.eventsWithRideShare(events).filter { event -> Bool in
+            return event.startNSDate.isGreaterThanDate(Date())
+        }
         eventsVC.fvc = self
         
         // Set the presentation style
