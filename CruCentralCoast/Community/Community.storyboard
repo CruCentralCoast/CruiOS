@@ -40,7 +40,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sRe-PR-kdo"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Community" image="community_icon.png" id="nNd-pS-h2w"/>
+                    <tabBarItem key="tabBarItem" title="Community" image="community_icon" id="nNd-pS-h2w"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Mv-hT-7V3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -57,6 +57,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="community_icon.png" width="31" height="21"/>
+        <image name="community_icon" width="31" height="21"/>
     </resources>
 </document>

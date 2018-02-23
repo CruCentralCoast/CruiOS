@@ -42,7 +42,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Events" image="events_icon.png" id="XNi-Rx-d5B"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="events_icon" id="XNi-Rx-d5B"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7FP-Gp-z3x" sceneMemberID="firstResponder"/>
             </objects>
@@ -50,6 +50,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="events_icon.png" width="25" height="25"/>
+        <image name="events_icon" width="25" height="25"/>
     </resources>
 </document>

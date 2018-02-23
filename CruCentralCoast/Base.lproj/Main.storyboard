@@ -34,7 +34,7 @@
         <scene sceneID="1wW-QB-xgw">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="HomeVC" storyboardName="Home" id="7HX-fU-alz" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home_icon.png" id="fOp-Za-HO1"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home_icon" id="fOp-Za-HO1"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJN-uL-p5x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -44,7 +44,7 @@
         <scene sceneID="yhK-9C-a5S">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="EventsVC" storyboardName="Events" id="oVo-NX-my7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Events" image="events_icon.png" id="CVz-ut-Z2Y"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="events_icon" id="CVz-ut-Z2Y"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CiP-YB-anl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +54,7 @@
         <scene sceneID="wNS-Ns-a2M">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="CommunityVC" storyboardName="Community" id="eiL-Ov-c8T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Community" image="community_icon.png" id="VJq-LM-TqJ"/>
+                    <tabBarItem key="tabBarItem" title="Community" image="community_icon" id="VJq-LM-TqJ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QfU-xD-X9Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,7 +64,7 @@
         <scene sceneID="gKN-bc-XEb">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="RidesVC" storyboardName="Rides" id="ujn-BK-aUy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Rides" image="rides_icon.png" id="UQO-fo-gwR"/>
+                    <tabBarItem key="tabBarItem" title="Rides" image="rides_icon" id="UQO-fo-gwR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Le-xg-pml" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +74,7 @@
         <scene sceneID="QAq-OE-A1r">
             <objects>
                 <viewControllerPlaceholder storyboardIdentifier="ResourcesVC" storyboardName="Resources" id="if1-ot-TXG" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Resources" image="resources_icon.png" id="r5s-3e-oIg"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="resources_icon" id="r5s-3e-oIg"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swp-gp-H2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -82,10 +82,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="community_icon.png" width="31" height="21"/>
-        <image name="events_icon.png" width="25" height="25"/>
-        <image name="home_icon.png" width="24" height="25"/>
-        <image name="resources_icon.png" width="26" height="22"/>
-        <image name="rides_icon.png" width="26" height="20"/>
+        <image name="community_icon" width="31" height="21"/>
+        <image name="events_icon" width="25" height="25"/>
+        <image name="home_icon" width="24" height="25"/>
+        <image name="resources_icon" width="26" height="22"/>
+        <image name="rides_icon" width="26" height="20"/>
     </resources>
 </document>

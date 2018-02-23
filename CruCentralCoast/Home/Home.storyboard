@@ -41,7 +41,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="n5N-re-Vhi"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" image="home_icon.png" id="uyk-Bs-cbU"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home_icon" id="uyk-Bs-cbU"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jqd-s2-KdE" sceneMemberID="firstResponder"/>
             </objects>
@@ -49,6 +49,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home_icon.png" width="24" height="25"/>
+        <image name="home_icon" width="24" height="25"/>
     </resources>
 </document>

@@ -20,7 +20,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="atx-1w-RF5"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Resources" image="resources_icon.png" id="BMN-AY-xxk"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="resources_icon" id="BMN-AY-xxk"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXk-9r-ks4" sceneMemberID="firstResponder"/>
             </objects>
@@ -28,6 +28,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="resources_icon.png" width="26" height="22"/>
+        <image name="resources_icon" width="26" height="22"/>
     </resources>
 </document>

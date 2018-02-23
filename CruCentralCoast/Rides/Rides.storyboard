@@ -20,7 +20,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VrO-4a-b0x"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rides" image="rides_icon.png" id="rLr-jJ-Pu5"/>
+                    <tabBarItem key="tabBarItem" title="Rides" image="rides_icon" id="rLr-jJ-Pu5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M89-GI-5oX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -28,6 +28,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="rides_icon.png" width="26" height="20"/>
+        <image name="rides_icon" width="26" height="20"/>
     </resources>
 </document>
