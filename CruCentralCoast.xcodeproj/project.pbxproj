@@ -9,15 +9,12 @@
 /* Begin PBXBuildFile section */
 		5E3CAC5020353EA7009D9DFF /* CommunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CAC4F20353EA7009D9DFF /* CommunityCell.swift */; };
 		5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */; };
-		5E8EC8BD202A3785000F86D8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8EC8BC202A3785000F86D8 /* FirstViewController.swift */; };
-		5E8EC8BF202A3785000F86D8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8EC8BE202A3785000F86D8 /* SecondViewController.swift */; };
 		5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8EC8C0202A3785000F86D8 /* Main.storyboard */; };
 		5E8EC8C4202A3785000F86D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8EC8C3202A3785000F86D8 /* Assets.xcassets */; };
 		5E8EC8C7202A3785000F86D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8EC8C5202A3785000F86D8 /* LaunchScreen.storyboard */; };
 		5E8EC8D2202A3785000F86D8 /* CruCentralCoastTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8EC8D1202A3785000F86D8 /* CruCentralCoastTests.swift */; };
 		5E8EC8DD202A3785000F86D8 /* CruCentralCoastUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8EC8DC202A3785000F86D8 /* CruCentralCoastUITests.swift */; };
 		5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8EC900202A8AB5000F86D8 /* CommunityViewController.swift */; };
-		5EBD534520352AA80097A853 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534420352AA80097A853 /* Home.storyboard */; };
 		5EBD534820352C410097A853 /* Events.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534720352C410097A853 /* Events.storyboard */; };
 		5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534920352C9B0097A853 /* Community.storyboard */; };
 		5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534D20352CDD0097A853 /* Rides.storyboard */; };
@@ -51,8 +48,6 @@
 		5E3CAC4F20353EA7009D9DFF /* CommunityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCell.swift; sourceTree = "<group>"; };
 		5E8EC8B7202A3785000F86D8 /* CruCentralCoast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CruCentralCoast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5E8EC8BC202A3785000F86D8 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		5E8EC8BE202A3785000F86D8 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		5E8EC8C1202A3785000F86D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E8EC8C3202A3785000F86D8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E8EC8C6202A3785000F86D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +59,6 @@
 		5E8EC8DC202A3785000F86D8 /* CruCentralCoastUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruCentralCoastUITests.swift; sourceTree = "<group>"; };
 		5E8EC8DE202A3785000F86D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E8EC900202A8AB5000F86D8 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
-		5EBD534420352AA80097A853 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		5EBD534720352C410097A853 /* Events.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Events.storyboard; sourceTree = "<group>"; };
 		5EBD534920352C9B0097A853 /* Community.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Community.storyboard; sourceTree = "<group>"; };
 		5EBD534D20352CDD0097A853 /* Rides.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rides.storyboard; sourceTree = "<group>"; };
@@ -102,6 +96,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F43BF47206460BE0014F9E8 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		5E8EC8AE202A3785000F86D8 = {
 			isa = PBXGroup;
 			children = (
@@ -126,14 +127,12 @@
 			isa = PBXGroup;
 			children = (
 				5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */,
-				5E8EC8BC202A3785000F86D8 /* FirstViewController.swift */,
-				5E8EC8BE202A3785000F86D8 /* SecondViewController.swift */,
 				5E8EC8C0202A3785000F86D8 /* Main.storyboard */,
-				5EBD534320352A8E0097A853 /* Home */,
 				5EBD534620352C1E0097A853 /* Events */,
 				5E8EC8FF202A8A71000F86D8 /* Community */,
-				5EBD534B20352CC70097A853 /* Rides */,
 				5EBD534C20352CCF0097A853 /* Resources */,
+				5EBD534B20352CC70097A853 /* Rides */,
+				2F43BF47206460BE0014F9E8 /* Chat */,
 				5E8EC8C3202A3785000F86D8 /* Assets.xcassets */,
 				5E8EC8C5202A3785000F86D8 /* LaunchScreen.storyboard */,
 				5E8EC8C8202A3785000F86D8 /* Info.plist */,
@@ -169,14 +168,6 @@
 				5EBD535120352FE10097A853 /* CommunityTVC.swift */,
 			);
 			path = Community;
-			sourceTree = "<group>";
-		};
-		5EBD534320352A8E0097A853 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				5EBD534420352AA80097A853 /* Home.storyboard */,
-			);
-			path = Home;
 			sourceTree = "<group>";
 		};
 		5EBD534620352C1E0097A853 /* Events */ = {
@@ -328,7 +319,6 @@
 				5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */,
 				5E8EC8C7202A3785000F86D8 /* LaunchScreen.storyboard in Resources */,
 				5EC413C6203FA86A00E2184D /* Missions.storyboard in Resources */,
-				5EBD534520352AA80097A853 /* Home.storyboard in Resources */,
 				5E8EC8C4202A3785000F86D8 /* Assets.xcassets in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
@@ -361,9 +351,7 @@
 				5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */,
 				5EC413CD203FAF2300E2184D /* MissionCell.swift in Sources */,
 				5EBD535220352FE10097A853 /* CommunityTVC.swift in Sources */,
-				5E8EC8BF202A3785000F86D8 /* SecondViewController.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
-				5E8EC8BD202A3785000F86D8 /* FirstViewController.swift in Sources */,
 				5E3CAC5020353EA7009D9DFF /* CommunityCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
