@@ -12,7 +12,6 @@ import UIKit
 
 class CustomNavigationBar: UINavigationBar {
     
-    //set NavigationBar's height
     var customHeight : CGFloat = 150
     
     required init?(coder aDecoder: NSCoder) {
@@ -21,15 +20,6 @@ class CustomNavigationBar: UINavigationBar {
         if #available(iOS 11, *) {
             self.translatesAutoresizingMaskIntoConstraints = false
         }
-//
-//        let v = UIView()
-//        v.backgroundColor = .green
-//        self.addSubview(v)
-//        v.translatesAutoresizingMaskIntoConstraints = false
-//        v.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        v.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        v.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-//        v.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         
     }
     
@@ -38,7 +28,6 @@ class CustomNavigationBar: UINavigationBar {
         return CGSize(width: UIScreen.main.bounds.width, height: customHeight)
 
     }
-    
     
     override func layoutSubviews() {
         super.layoutSubviews()
