@@ -15,7 +15,7 @@ class AudioResourcesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.dataSource = self
-        self.tableView.rowHeight = 60;
+        self.tableView.rowHeight = 80;
         self.tableView.registerCell(AudioResourcesTableViewCell.self)
     }
     
