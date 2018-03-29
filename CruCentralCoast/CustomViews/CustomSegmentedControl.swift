@@ -73,7 +73,6 @@ class CustomSegmentedControl: UIControl {
         self.buttons[0].setTitleColor(self.selectorTextColor, for: .normal)
         
         let selectorWidth = self.frame.width/CGFloat(buttonTitles.count)
-        print(self.frame.width)
         self.selector = UIView(frame: CGRect(x: 0, y: 0, width: selectorWidth, height: self.frame.height))
         self.selector.layer.cornerRadius = self.frame.height/2
         self.selector.backgroundColor = self.selectorColor

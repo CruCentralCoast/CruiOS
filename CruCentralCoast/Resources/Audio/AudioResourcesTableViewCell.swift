@@ -20,7 +20,7 @@ class AudioResourcesTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         self.progressBar.progress = 0
-        self.currentTimeLabel.text = self.secondsToTimeString(numberOf: 50)
+        self.currentTimeLabel.text = self.secondsToTimeString(numberOf: 0)
         self.endTimeLabel.text = self.secondsToTimeString(numberOf: self.lengthOfAudio)
     }
     
