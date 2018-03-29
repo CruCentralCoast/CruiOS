@@ -13,7 +13,7 @@
         <!--Community-->
         <scene sceneID="RhZ-ob-qfs">
             <objects>
-                <viewController storyboardIdentifier="CommunityVC" id="tkg-eO-mld" customClass="CommunityVC" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommunityVC" id="tkg-eO-mld" customClass="CommunityViewController" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YPG-Td-Q0R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

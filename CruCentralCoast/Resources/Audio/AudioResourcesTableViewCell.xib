@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="68" id="KGk-i7-Jjw" customClass="AudioResourcesTableViewCell" customModule="CruCentralCoast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="68"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="67.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="tDp-cf-c8j">
+                        <rect key="frame" x="8" y="61.5" width="304" height="2"/>
+                        <color key="tintColor" red="0.3791508674621582" green="0.68465965986251831" blue="0.77256500720977783" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </progressView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="currentTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hxe-z5-BsO">
+                        <rect key="frame" x="8" y="49.5" width="48" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="endTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rxd-cH-uol">
+                        <rect key="frame" x="277" y="49.5" width="35" height="10"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSE-Cv-OiO">
+                        <rect key="frame" x="8" y="8" width="30" height="30"/>
+                        <color key="tintColor" red="1" green="0.01164490638" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <state key="normal" image="first"/>
+                        <connections>
+                            <action selector="playPausePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4cJ-nB-CfQ"/>
+                        </connections>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SLH-n9-aAh">
+                        <rect key="frame" x="46" y="8" width="34" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aWd-Xp-5wE">
+                        <rect key="frame" x="46" y="29" width="32.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Hxe-z5-BsO" firstAttribute="leading" secondItem="tDp-cf-c8j" secondAttribute="leading" id="0ZK-9J-o4A"/>
+                    <constraint firstItem="SLH-n9-aAh" firstAttribute="leading" secondItem="OSE-Cv-OiO" secondAttribute="trailing" constant="8" id="0zq-Qy-z9L"/>
+                    <constraint firstItem="aWd-Xp-5wE" firstAttribute="leading" secondItem="SLH-n9-aAh" secondAttribute="leading" id="1H9-Kg-hkt"/>
+                    <constraint firstAttribute="bottom" secondItem="tDp-cf-c8j" secondAttribute="bottom" constant="4" id="4nV-qW-rWo"/>
+                    <constraint firstItem="tDp-cf-c8j" firstAttribute="top" secondItem="Hxe-z5-BsO" secondAttribute="bottom" constant="2" id="5IX-9q-DSS"/>
+                    <constraint firstItem="aWd-Xp-5wE" firstAttribute="top" secondItem="SLH-n9-aAh" secondAttribute="bottom" id="7Sc-ie-2YL"/>
+                    <constraint firstItem="OSE-Cv-OiO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="7e5-4g-R8j"/>
+                    <constraint firstItem="Rxd-cH-uol" firstAttribute="trailing" secondItem="tDp-cf-c8j" secondAttribute="trailing" id="EPl-IJ-8Cg"/>
+                    <constraint firstAttribute="trailing" secondItem="tDp-cf-c8j" secondAttribute="trailing" constant="8" id="ZcO-DY-YLn"/>
+                    <constraint firstItem="tDp-cf-c8j" firstAttribute="leading" secondItem="OSE-Cv-OiO" secondAttribute="leading" id="bq7-x0-PAF"/>
+                    <constraint firstItem="OSE-Cv-OiO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="cNn-zm-XAe"/>
+                    <constraint firstItem="SLH-n9-aAh" firstAttribute="top" secondItem="OSE-Cv-OiO" secondAttribute="top" id="d6f-ao-gMG"/>
+                    <constraint firstItem="tDp-cf-c8j" firstAttribute="top" secondItem="Rxd-cH-uol" secondAttribute="bottom" constant="2" id="ufi-4J-QlC"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="currentTimeLabel" destination="Hxe-z5-BsO" id="j8T-o8-zh3"/>
+                <outlet property="dateLabel" destination="aWd-Xp-5wE" id="UdM-bn-38m"/>
+                <outlet property="endTimeLabel" destination="Rxd-cH-uol" id="bYp-5f-YYx"/>
+                <outlet property="progressBar" destination="tDp-cf-c8j" id="Vgq-ZU-0uE"/>
+                <outlet property="titleLabel" destination="SLH-n9-aAh" id="0BI-ze-v78"/>
+            </connections>
+            <point key="canvasLocation" x="72" y="57"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="first" width="30" height="30"/>
+    </resources>
+</document>
