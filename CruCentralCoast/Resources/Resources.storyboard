@@ -150,8 +150,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fwb-D5-FrQ"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Events" image="events_icon" id="Zb3-5P-Gv0" userLabel="Resources"/>
-                    <navigationItem key="navigationItem" title="Resources" id="0cr-tC-kRh"/>
+                    <tabBarItem key="tabBarItem" title="Resources" image="resources_icon" id="Zb3-5P-Gv0" userLabel="Resources"/>
+                    <navigationItem key="navigationItem" title="Resources" id="yyM-Pw-GEw"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="containerView" destination="lp7-nm-Aw5" id="Cmm-SM-xkK"/>
@@ -185,6 +185,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="events_icon" width="25" height="25"/>
+        <image name="resources_icon" width="26" height="22"/>
     </resources>
 </document>
