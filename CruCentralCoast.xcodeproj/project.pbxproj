@@ -30,7 +30,6 @@
 		AD32AE35206C53D800437601 /* VideosResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE34206C53D800437601 /* VideosResourcesViewController.swift */; };
 		AD32AE37206C53F600437601 /* ArticlesResourcesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE36206C53F600437601 /* ArticlesResourcesViewController.swift */; };
 		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
-		ADB509B6206CC4770067AD95 /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB509B5206CC4770067AD95 /* CustomNavigationBar.swift */; };
 		ADFA56D3206D7BA4006F7099 /* ArticlesResourcesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D1206D7BA4006F7099 /* ArticlesResourcesTableViewCell.swift */; };
 		ADFA56D4206D7BA4006F7099 /* ArticlesResourcesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56D2206D7BA4006F7099 /* ArticlesResourcesTableViewCell.xib */; };
 		ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */; };
@@ -88,7 +87,6 @@
 		AD32AE34206C53D800437601 /* VideosResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosResourcesViewController.swift; sourceTree = "<group>"; };
 		AD32AE36206C53F600437601 /* ArticlesResourcesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesViewController.swift; sourceTree = "<group>"; };
 		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		ADB509B5206CC4770067AD95 /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		ADFA56D1206D7BA4006F7099 /* ArticlesResourcesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesTableViewCell.swift; sourceTree = "<group>"; };
 		ADFA56D2206D7BA4006F7099 /* ArticlesResourcesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesResourcesTableViewCell.xib; sourceTree = "<group>"; };
 		ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeueExtensions.swift; sourceTree = "<group>"; };
@@ -154,6 +152,8 @@
 		5E8EC8B9202A3785000F86D8 /* CruCentralCoast */ = {
 			isa = PBXGroup;
 			children = (
+				ADFA56E5206DADFC006F7099 /* CustomViews */,
+				ADFA56E4206DADF1006F7099 /* Extensions */,
 				5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */,
 				5E8EC8C0202A3785000F86D8 /* Main.storyboard */,
 				5EBD534620352C1E0097A853 /* Events */,
@@ -222,10 +222,6 @@
 				ADFA56D5206D7BC8006F7099 /* Articles */,
 				5EBD534F20352CEF0097A853 /* Resources.storyboard */,
 				AD32AE21206C524500437601 /* ResourcesViewController.swift */,
-				AD32AE38206C546000437601 /* CustomSegmentedControl.swift */,
-				ADB509B5206CC4770067AD95 /* CustomNavigationBar.swift */,
-				ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */,
-				ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -270,6 +266,23 @@
 				ADFA56DF206D82FA006F7099 /* AudioResourcesTableViewCell.xib */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		ADFA56E4206DADF1006F7099 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */,
+				ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ADFA56E5206DADFC006F7099 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				AD32AE38206C546000437601 /* CustomSegmentedControl.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -416,7 +429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADB509B6206CC4770067AD95 /* CustomNavigationBar.swift in Sources */,
 				5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesTableViewCell.swift in Sources */,
 				5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */,
