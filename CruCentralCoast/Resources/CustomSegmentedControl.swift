@@ -73,6 +73,7 @@ class CustomSegmentedControl: UIControl {
         self.buttons[0].setTitleColor(self.selectorTextColor, for: .normal)
         
         let selectorWidth = self.frame.width/CGFloat(buttonTitles.count)
+        print(self.frame.width)
         self.selector = UIView(frame: CGRect(x: 0, y: 0, width: selectorWidth, height: self.frame.height))
         self.selector.layer.cornerRadius = self.frame.height/2
         self.selector.backgroundColor = self.selectorColor
@@ -91,13 +92,16 @@ class CustomSegmentedControl: UIControl {
     }
     
     override func draw(_ rect: CGRect) {
+        // without this line, the "self.frame.width" was only
+        // 375 on the iphone 8 Plus, not 414
+        self.updateView()
+        
         self.layer.cornerRadius = self.frame.height/2
     }
     
     @objc func buttonTapped(sender: UIButton) {
         for (idx, button) in self.buttons.enumerated() {
             button.setTitleColor(self.textColor, for: .normal)
-            
             if button == sender {
                 self.selectedSegmentIndex = idx
                 let selectorStartPosition = self.frame.width/CGFloat(self.buttons.count) * CGFloat(idx)
