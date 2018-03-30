@@ -37,7 +37,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSE-Cv-OiO">
                         <rect key="frame" x="16" y="8" width="30" height="30"/>
-                        <color key="tintColor" red="1" green="0.01164490638" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <state key="normal" image="first"/>
                         <connections>
                             <action selector="playPausePressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4cJ-nB-CfQ"/>
@@ -77,6 +77,7 @@
                 <outlet property="currentTimeLabel" destination="Hxe-z5-BsO" id="YLB-4h-Hs3"/>
                 <outlet property="dateLabel" destination="aWd-Xp-5wE" id="UdM-bn-38m"/>
                 <outlet property="durationLabel" destination="Rxd-cH-uol" id="bYp-5f-YYx"/>
+                <outlet property="playPauseButton" destination="OSE-Cv-OiO" id="hgU-5C-jku"/>
                 <outlet property="progressBar" destination="tDp-cf-c8j" id="Vgq-ZU-0uE"/>
                 <outlet property="titleLabel" destination="SLH-n9-aAh" id="0BI-ze-v78"/>
             </connections>

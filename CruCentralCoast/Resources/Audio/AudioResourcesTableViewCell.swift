@@ -15,6 +15,7 @@ class AudioResourcesTableViewCell: UITableViewCell {
     @IBOutlet weak var currentTimeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
+    @IBOutlet weak var playPauseButton: UIButton!
     
     var currentTime: Float = 3 {
         didSet {
@@ -22,9 +23,22 @@ class AudioResourcesTableViewCell: UITableViewCell {
         }
     }
     var duration: Float = 10
-    var audioIsPlaying: Bool = false
+    var audioIsPlaying: Bool = false {
+        didSet {
+            playPauseButton.tintColor = self.audioIsPlaying ? .gray : .cruBlue
+        }
+    }
     
     override func awakeFromNib() {
+        self.updateView()
+    }
+    
+    override func prepareForReuse() {
+        self.updateView()
+    }
+    
+    private func updateView() {
+        self.audioIsPlaying = false
         self.progressBar.progress = self.currentTime/self.duration
         self.currentTimeLabel.text = self.secondsToTimeString(numberOf: self.currentTime)
         self.durationLabel.text = self.secondsToTimeString(numberOf: self.duration)
@@ -32,7 +46,6 @@ class AudioResourcesTableViewCell: UITableViewCell {
     }
     
     @IBAction func playPausePressed(_ sender: UIButton) {
-        sender.tintColor = sender.tintColor == .cruBlue ? .red : .cruBlue
         self.audioIsPlaying = !self.audioIsPlaying
     }
     
