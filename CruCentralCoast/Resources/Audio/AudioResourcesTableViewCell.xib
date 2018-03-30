@@ -74,9 +74,9 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="currentTimeLabel" destination="Hxe-z5-BsO" id="j8T-o8-zh3"/>
+                <outlet property="currentTimeLabel" destination="Hxe-z5-BsO" id="YLB-4h-Hs3"/>
                 <outlet property="dateLabel" destination="aWd-Xp-5wE" id="UdM-bn-38m"/>
-                <outlet property="endTimeLabel" destination="Rxd-cH-uol" id="bYp-5f-YYx"/>
+                <outlet property="durationLabel" destination="Rxd-cH-uol" id="bYp-5f-YYx"/>
                 <outlet property="progressBar" destination="tDp-cf-c8j" id="Vgq-ZU-0uE"/>
                 <outlet property="titleLabel" destination="SLH-n9-aAh" id="0BI-ze-v78"/>
             </connections>
