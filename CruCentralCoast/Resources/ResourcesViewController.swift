@@ -33,11 +33,8 @@ class ResourcesViewController: UIViewController {
     }()
     lazy var auidioVC: AudioResourcesViewController = {
         let storyboard = UIStoryboard(name: "Resources", bundle: nil)
-        
         var vc = storyboard.instantiateViewController(withIdentifier: String(describing: AudioResourcesViewController.self)) as! AudioResourcesViewController
-        
         self.addViewControllerAsChildViewController(vc)
-        
         return vc
     }()
     
@@ -48,7 +45,6 @@ class ResourcesViewController: UIViewController {
     }
     
     private func showSelectedView(_ index: Int) {
-        
         self.articlesVC.view.isHidden = !(index == 0)
         self.videosVC.view.isHidden = !(index == 1)
         self.auidioVC.view.isHidden = !(index == 2)
@@ -59,8 +55,6 @@ class ResourcesViewController: UIViewController {
         self.containerView.addSubview(childViewController.view)
         childViewController.view.frame = self.containerView.bounds
         childViewController.view.autoresizingMask = [.flexibleWidth,.flexibleHeight]
-        
-        childViewController.didMove(toParentViewController: self)
     }
     
     @IBAction func segmentedControlValueChanged(_ sender: CustomSegmentedControl) {

@@ -25,7 +25,7 @@ class AudioResourcesTableViewCell: UITableViewCell {
     var duration: Float = 10
     var audioIsPlaying: Bool = false {
         didSet {
-            playPauseButton.tintColor = self.audioIsPlaying ? .gray : .cruBlue
+            self.playPauseButton.tintColor = self.audioIsPlaying ? .gray : .cruBlue
         }
     }
     
@@ -50,7 +50,7 @@ class AudioResourcesTableViewCell: UITableViewCell {
     }
     
     private func secondsToTimeString(numberOf seconds: Float) -> String {
-        let (h, m, s) = secondsToHoursMinutesSeconds(seconds: seconds)
+        let (h, m, s) = self.secondsToHoursMinutesSeconds(seconds: seconds)
         return String(format: "%02d:%02d:%02d", Int(h), Int(m), Int(s))
     }
     
