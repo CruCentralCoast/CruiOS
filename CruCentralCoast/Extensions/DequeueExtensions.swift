@@ -1,11 +1,7 @@
 //
-//  DequeueExtensions.swift
-//  SpiceForecast
+// DequeueExtensions.swift
 //
-// These extensions contain functions that guarantee to either give you a cell of the correct type or cause a fatalError.
-//
-//  Created by Michael Cantrell on 8/23/17.
-//  Copyright © 2017 Apple Inc. All rights reserved.
+// Created by Michael Cantrell.
 //
 
 import UIKit

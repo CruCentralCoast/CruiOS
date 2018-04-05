@@ -8,29 +8,27 @@
 
 import UIKit
 
-class VideosResourcesViewController: UIViewController {
-
-    @IBOutlet weak var tableView: UITableView!
+class VideosResources: NSObject {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.rowHeight = 60;
-        self.tableView.registerCell(VideosResourcesTableViewCell.self)
-    }
     
 }
 
-extension VideosResourcesViewController: UITableViewDataSource {
+extension VideosResources: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(VideosResourcesTableViewCell.self, indexPath: indexPath)
+        let cell = tableView.dequeueCell(VideosResourcesCell.self, indexPath: indexPath)
         cell.titleLabel.text = "Video Planning" + String(indexPath.row)
         cell.dateLabel.text = "Mar 17, 2018"
         return cell
+    }
+}
+
+extension VideosResources: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  AudioResourcesTableViewCell.swift
+//  AudioResourcesCell.swift
 //  CruCentralCoast
 //
 //  Created by Michael Cantrell on 3/29/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AudioResourcesTableViewCell: UITableViewCell {
+class AudioResourcesCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

@@ -8,28 +8,26 @@
 
 import UIKit
 
-class AudioResourcesViewController: UIViewController {
-    
-    @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.rowHeight = 80;
-        self.tableView.registerCell(AudioResourcesTableViewCell.self)
-    }
+class AudioResources: NSObject {
     
 }
 
-extension AudioResourcesViewController: UITableViewDataSource {
+extension AudioResources: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(AudioResourcesTableViewCell.self, indexPath: indexPath)
+        let cell = tableView.dequeueCell(AudioResourcesCell.self, indexPath: indexPath)
         cell.titleLabel.text = "Audio Title " + String(indexPath.row)
         cell.dateLabel.text = "Mar 17, 2018"
         return cell
     }
 }
+
+extension AudioResources: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
+}
+

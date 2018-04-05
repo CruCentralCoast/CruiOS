@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VideosResourcesTableViewCell: UITableViewCell {
+class VideosResourcesCell: UITableViewCell {
 
     @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!

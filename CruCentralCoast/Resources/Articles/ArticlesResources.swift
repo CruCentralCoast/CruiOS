@@ -8,28 +8,25 @@
 
 import UIKit
 
-class ArticlesResourcesViewController: UIViewController {
+class ArticlesResources: NSObject {
 
-    @IBOutlet weak var tableView: UITableView!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.rowHeight = 60;
-        self.tableView.registerCell(ArticlesResourcesTableViewCell.self)
-    }
-    
 }
 
-extension ArticlesResourcesViewController: UITableViewDataSource {
+extension ArticlesResources: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 20
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(ArticlesResourcesTableViewCell.self, indexPath: indexPath)
+        let cell = tableView.dequeueCell(ArticlesResourcesCell.self, indexPath: indexPath)
         cell.titleLabel.text = "Article Planning" + String(indexPath.row)
         cell.dateLabel.text = "Mar 17, 2018"
         return cell
+    }
+}
+
+extension ArticlesResources: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
