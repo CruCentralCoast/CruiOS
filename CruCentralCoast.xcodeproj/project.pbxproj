@@ -30,6 +30,7 @@
 		ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450C2075B33800C1EA1B /* ArticlesResources.swift */; };
 		ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450E2075B6E200C1EA1B /* AudioResources.swift */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
+		ADE645132075FE6900C1EA1B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645122075FE6900C1EA1B /* UIViewControllerExtensions.swift */; };
 		ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */; };
 		ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */; };
 		ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */; };
@@ -87,6 +88,7 @@
 		ADE6450C2075B33800C1EA1B /* ArticlesResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesResources.swift; sourceTree = "<group>"; };
 		ADE6450E2075B6E200C1EA1B /* AudioResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioResources.swift; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
+		ADE645122075FE6900C1EA1B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesCell.swift; sourceTree = "<group>"; };
 		ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesResourcesCell.xib; sourceTree = "<group>"; };
 		ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeueExtensions.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 			children = (
 				ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */,
 				ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */,
+				ADE645122075FE6900C1EA1B /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -422,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */,
+				ADE645132075FE6900C1EA1B /* UIViewControllerExtensions.swift in Sources */,
 				ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,

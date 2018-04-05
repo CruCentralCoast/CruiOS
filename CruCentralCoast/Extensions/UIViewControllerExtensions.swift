@@ -1,0 +1,31 @@
+//
+//  UIViewControllerExtensions.swift
+//  CruCentralCoast
+//
+//  Created by Michael Cantrell on 4/4/18.
+//  Copyright © 2018 Landon Gerrits. All rights reserved.
+//
+
+import UIKit
+
+public extension UIViewController {
+    func insertProfileButtonInNavBar(buttonPressed: Selector?) {
+        let largeTitleView = self.navigationController?.navigationBar.subviews.first(where: {
+            String(describing: type(of: $0)) == "_UINavigationBarLargeTitleView"
+        } )
+        let profileButton = UIButton()
+        
+        profileButton.translatesAutoresizingMaskIntoConstraints = false
+        profileButton.setImage(#imageLiteral(resourceName: "profile"), for: .normal)
+        profileButton.tintColor = .black
+        largeTitleView?.addSubview(profileButton)
+        profileButton.centerYAnchor.constraint(equalTo: (largeTitleView?.centerYAnchor)!).isActive = true
+        profileButton.rightAnchor.constraint(equalTo: (largeTitleView?.rightAnchor)!, constant: -10).isActive = true
+        profileButton.heightAnchor.constraint(equalTo: (largeTitleView?.heightAnchor)!, multiplier: 0.65).isActive = true
+        profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor).isActive = true
+        
+        if let selector = buttonPressed {
+            profileButton.addTarget(self, action: selector, for: .touchUpInside)
+        }
+    }
+}

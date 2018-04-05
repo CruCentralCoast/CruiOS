@@ -33,6 +33,12 @@ class ResourcesVC: UIViewController {
         self.tableView.registerCell(AudioResourcesCell.self)
         self.tableView.dataSource = self.articlesVC
         self.tableView.delegate = self.articlesVC
+        
+        self.insertProfileButtonInNavBar(buttonPressed: #selector(pushProfileViewController))
+    }
+    
+    @objc func pushProfileViewController(sender: UIButton) {
+        print("hi")
     }
     
     private func showSelectedView(_ index: Int) {
