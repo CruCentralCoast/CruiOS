@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,20 +20,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="490" height="269"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-cE-Xga">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-cE-Xga">
                         <rect key="frame" x="0.0" y="0.0" width="490" height="210"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="210" id="MTj-qt-53I"/>
+                            <constraint firstAttribute="width" secondItem="gpF-cE-Xga" secondAttribute="height" multiplier="7:3" id="NFc-Ja-wah"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td4-1O-hE4">
-                        <rect key="frame" x="1" y="215" width="51" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mission Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td4-1O-hE4">
+                        <rect key="frame" x="0.0" y="215" width="116" height="24"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm9-ls-2Ab">
-                        <rect key="frame" x="0.0" y="234" width="38" height="22"/>
+                        <rect key="frame" x="0.0" y="239" width="38" height="22"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-dI-Urp">
+                        <rect key="frame" x="400" y="238" width="70" height="22"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -40,16 +47,24 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="gpF-cE-Xga" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8lm-45-43g"/>
-                <constraint firstItem="xm9-ls-2Ab" firstAttribute="top" secondItem="td4-1O-hE4" secondAttribute="bottom" constant="-5" id="OlZ-xf-4aN"/>
-                <constraint firstItem="xm9-ls-2Ab" firstAttribute="leading" secondItem="gpF-cE-Xga" secondAttribute="leading" id="YbG-Kj-DCg"/>
-                <constraint firstItem="td4-1O-hE4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="1" id="aAO-3d-RA2"/>
-                <constraint firstAttribute="trailing" secondItem="gpF-cE-Xga" secondAttribute="trailing" id="krW-B1-ULV"/>
-                <constraint firstItem="gpF-cE-Xga" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="lq2-wo-Iuv"/>
-                <constraint firstItem="td4-1O-hE4" firstAttribute="top" secondItem="gpF-cE-Xga" secondAttribute="bottom" constant="5" id="rkY-tw-dlz"/>
+                <constraint firstItem="gwh-dI-Urp" firstAttribute="top" secondItem="gpF-cE-Xga" secondAttribute="bottom" constant="28" id="D7U-cv-MYM"/>
+                <constraint firstItem="xm9-ls-2Ab" firstAttribute="top" secondItem="td4-1O-hE4" secondAttribute="bottom" id="DY0-UN-bTU"/>
+                <constraint firstAttribute="trailing" secondItem="gwh-dI-Urp" secondAttribute="trailing" constant="20" id="IIj-8d-EFm"/>
+                <constraint firstItem="gpF-cE-Xga" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KKb-iK-Vrg"/>
+                <constraint firstItem="td4-1O-hE4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WYx-La-KvV"/>
+                <constraint firstAttribute="trailing" secondItem="gpF-cE-Xga" secondAttribute="trailing" id="ZYT-8x-AlC"/>
+                <constraint firstItem="gpF-cE-Xga" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mRJ-i3-E6H"/>
+                <constraint firstItem="xm9-ls-2Ab" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xgK-KZ-PUk"/>
+                <constraint firstItem="td4-1O-hE4" firstAttribute="top" secondItem="gpF-cE-Xga" secondAttribute="bottom" constant="5" id="zMB-UX-ho2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="490" height="269"/>
+            <connections>
+                <outlet property="dateLabel" destination="xm9-ls-2Ab" id="1f2-EC-rsO"/>
+                <outlet property="imageView" destination="gpF-cE-Xga" id="hzx-p8-psG"/>
+                <outlet property="locationLabel" destination="gwh-dI-Urp" id="Uor-Eg-0Zd"/>
+                <outlet property="missionTitle" destination="td4-1O-hE4" id="glI-zP-Lo4"/>
+            </connections>
             <point key="canvasLocation" x="-3" y="50.5"/>
         </collectionViewCell>
     </objects>

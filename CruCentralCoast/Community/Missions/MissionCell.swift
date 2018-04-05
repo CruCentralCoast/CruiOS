@@ -9,10 +9,14 @@
 import UIKit
 
 class MissionCell: UICollectionViewCell {
-
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var missionTitle: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.imageView.layer.cornerRadius = 20
     }
 
 }

@@ -8,26 +8,15 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+private let reuseIdentifier = "MissionCell"
 
 class MissionCVC: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
+        self.collectionView?.registerCell(MissionCell.self)
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        self.collectionView?.register(UINib(nibName: "MissionCell", bundle: nil), forCellWithReuseIdentifier: "MissionCell")
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     /*
@@ -41,23 +30,28 @@ class MissionCVC: UICollectionViewController {
     */
 
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return 10
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
+        let cell = collectionView.dequeueCell(MissionCell.self, indexPath: indexPath)
+
         // Configure the cell
-    
+        cell.dateLabel.text = "11/11/11"
+        cell.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
+        cell.locationLabel.text = "test location"
+        cell.missionTitle.text = "test title"
+        
+        print("got here")
+
+
         return cell
     }
 

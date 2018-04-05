@@ -1,15 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tkg-eO-mld">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="c46-yB-qTE">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="k7U-SX-EBH">
+            <objects>
+                <navigationController id="c46-yB-qTE" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="n2G-i7-OKS">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tkg-eO-mld" kind="relationship" relationship="rootViewController" id="E5H-eq-wdc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i6z-cb-QRl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1809" y="-234"/>
+        </scene>
         <!--Community-->
         <scene sceneID="RhZ-ob-qfs">
             <objects>
@@ -33,7 +49,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Missions"/>
                                 <connections>
-                                    <segue destination="ze1-3X-VYR" kind="show" id="JEh-m1-rC0"/>
+                                    <segue destination="45A-yb-EoQ" kind="show" id="8mG-SJ-CHR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -41,19 +57,20 @@
                         <viewLayoutGuide key="safeArea" id="sRe-PR-kdo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Community" image="community_icon" id="nNd-pS-h2w"/>
+                    <navigationItem key="navigationItem" id="D34-dJ-4I6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Mv-hT-7V3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2778.4000000000001" y="-234.33283358320841"/>
         </scene>
-        <!--Storyboard Reference-->
-        <scene sceneID="pma-BJ-Eob">
+        <!--Missions-->
+        <scene sceneID="0me-fD-Z61">
             <objects>
-                <viewControllerPlaceholder id="ze1-3X-VYR" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ElG-8G-Sv7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Missions" id="45A-yb-EoQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2J0-8X-XF1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3450" y="-1"/>
+            <point key="canvasLocation" x="3419" y="53"/>
         </scene>
     </scenes>
     <resources>
