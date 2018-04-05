@@ -26,6 +26,7 @@
 		5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413CC203FAF2300E2184D /* MissionCell.xib */; };
 		5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CF203FB17600E2184D /* MissionCVC.swift */; };
 		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
+		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450A2075B33200C1EA1B /* VideosResources.swift */; };
 		ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450C2075B33800C1EA1B /* ArticlesResources.swift */; };
 		ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450E2075B6E200C1EA1B /* AudioResources.swift */; };
@@ -84,6 +85,7 @@
 		5EC413CC203FAF2300E2184D /* MissionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCell.xib; sourceTree = "<group>"; };
 		5EC413CF203FB17600E2184D /* MissionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCVC.swift; sourceTree = "<group>"; };
 		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE6450A2075B33200C1EA1B /* VideosResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResources.swift; sourceTree = "<group>"; };
 		ADE6450C2075B33800C1EA1B /* ArticlesResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesResources.swift; sourceTree = "<group>"; };
 		ADE6450E2075B6E200C1EA1B /* AudioResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioResources.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */,
 				ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */,
 				ADE645122075FE6900C1EA1B /* UIViewControllerExtensions.swift */,
+				AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				5E3CAC5020353EA7009D9DFF /* CommunityCell.swift in Sources */,
+				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

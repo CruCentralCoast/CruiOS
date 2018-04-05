@@ -12,6 +12,8 @@ class ResourcesVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: CustomSegmentedControl!
+    @IBOutlet weak var fakeBottomNavBar: UIView!
+    private var shadowImageView: UIImageView?
     
     lazy var articlesVC: ArticlesResources = {
         let dataSource = ArticlesResources()
@@ -25,16 +27,42 @@ class ResourcesVC: UIViewController {
         let dataSource = AudioResources()
         return dataSource
     }()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.tableView.registerCell(ArticlesResourcesCell.self)
         self.tableView.registerCell(VideosResourcesCell.self)
         self.tableView.registerCell(AudioResourcesCell.self)
         self.tableView.dataSource = self.articlesVC
         self.tableView.delegate = self.articlesVC
         
-        self.insertProfileButtonInNavBar(buttonPressed: #selector(pushProfileViewController))
+        self.insertProfileButtonInNavBar(buttonPressed: #selector(self.pushProfileViewController))
+        
+        if self.shadowImageView == nil {
+            self.shadowImageView = self.findShadowImage(under: navigationController!.navigationBar)
+        }
+        self.shadowImageView?.isHidden = true
+        
+        self.fakeBottomNavBar.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 1)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.shadowImageView?.isHidden = false
+    }
+    
+    private func findShadowImage(under view: UIView) -> UIImageView? {
+        if view is UIImageView && view.bounds.size.height <= 1 {
+            return (view as! UIImageView)
+        }
+        
+        for subview in view.subviews {
+            if let imageView = self.findShadowImage(under: subview) {
+                return imageView
+            }
+        }
+        return nil
     }
     
     @objc func pushProfileViewController(sender: UIButton) {

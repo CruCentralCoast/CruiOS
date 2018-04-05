@@ -16,4 +16,8 @@ public extension UIColor {
     static var cruBlue: UIColor {
         return UIColor(red: 96/255.0, green: 175/255.0, blue: 197/255.0, alpha: 1)
     }
+    
+    static var navBarLineGray: UIColor {
+        return UIColor(red: 206/255.0, green: 206/255.0, blue: 206/255.0, alpha: 1)
+    }
 }
