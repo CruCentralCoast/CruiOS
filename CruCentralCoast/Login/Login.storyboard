@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-0y-5au">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--LoginVC-->
+        <scene sceneID="czG-vh-mnV">
+            <objects>
+                <viewController storyboardIdentifier="LoginVC" id="omq-0y-5au" customClass="LoginVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TgA-pg-Sq4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gir-2l-neW" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="358.5" width="240" height="50"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="WH2-ID-yx1"/>
+                                    <constraint firstAttribute="height" constant="50" id="Y4o-GA-qgn"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signIn" destination="omq-0y-5au" eventType="touchUpInside" id="E83-GC-HiA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKw-nI-k6g" customClass="CruImageButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="41.5" y="442.5" width="292" height="50"/>
+                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="292" id="2CQ-SN-NVD"/>
+                                    <constraint firstAttribute="height" constant="50" id="eEF-KI-VXS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Sign in with Facebook" image="facebook_icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInWithFacebook" destination="omq-0y-5au" eventType="touchUpInside" id="XnL-yu-q8f"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y97-xz-eKp" customClass="CruImageButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="41.5" y="504.5" width="292" height="50"/>
+                                <color key="backgroundColor" red="0.8666666666666667" green="0.29411764705882354" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="96U-fc-YKh"/>
+                                    <constraint firstAttribute="width" constant="292" id="TXz-7l-dA1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Sign in with Google" image="google_icon">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInWithGoogle" destination="omq-0y-5au" eventType="touchUpInside" id="dNF-TG-ukY"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGr-6e-K8x">
+                                <rect key="frame" x="115" y="425.5" width="145" height="1"/>
+                                <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="3Rb-Wr-Nxj"/>
+                                    <constraint firstAttribute="width" constant="145" id="SxN-cR-nOn"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVT-7j-PU1">
+                                <rect key="frame" x="41.5" y="570.5" width="123" height="30"/>
+                                <state key="normal" title="Forgot password?"/>
+                                <connections>
+                                    <action selector="forgotPassword" destination="omq-0y-5au" eventType="touchUpInside" id="ERn-6E-bbP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwK-nW-XeO">
+                                <rect key="frame" x="202.5" y="570.5" width="131" height="30"/>
+                                <state key="normal" title="New here? Sign Up"/>
+                                <connections>
+                                    <action selector="signUp" destination="omq-0y-5au" eventType="touchUpInside" id="Ltz-0F-xZE"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dHp-tM-h6r">
+                                <rect key="frame" x="87.5" y="36" width="200" height="124.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dHp-tM-h6r" secondAttribute="height" multiplier="360:224" id="4kO-fP-Ej1"/>
+                                    <constraint firstAttribute="width" constant="200" id="xLW-C0-C6W"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8m4-Q6-Isu">
+                                <rect key="frame" x="87.5" y="258.5" width="200" height="32"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="gD2-Yd-ncj"/>
+                                    <constraint firstAttribute="width" constant="200" id="iEH-QM-a1f"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="94I-YA-yE9">
+                                <rect key="frame" x="87.5" y="306.5" width="200" height="32"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="Og2-gr-uz7"/>
+                                    <constraint firstAttribute="width" constant="200" id="igP-cl-ncJ"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OKw-nI-k6g" firstAttribute="top" secondItem="Gir-2l-neW" secondAttribute="bottom" constant="34" id="0IH-Fj-lON"/>
+                            <constraint firstItem="xwK-nW-XeO" firstAttribute="top" secondItem="y97-xz-eKp" secondAttribute="bottom" constant="16" id="0cW-ZB-UIo"/>
+                            <constraint firstItem="y97-xz-eKp" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="1k5-P4-Hhg"/>
+                            <constraint firstItem="94I-YA-yE9" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="37J-qe-moX"/>
+                            <constraint firstItem="8m4-Q6-Isu" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="6BE-0g-DzX"/>
+                            <constraint firstItem="Gir-2l-neW" firstAttribute="top" secondItem="94I-YA-yE9" secondAttribute="bottom" constant="20" id="EwO-YQ-oDU"/>
+                            <constraint firstItem="qGr-6e-K8x" firstAttribute="top" secondItem="Gir-2l-neW" secondAttribute="bottom" constant="17" id="H76-lC-boG"/>
+                            <constraint firstItem="xVT-7j-PU1" firstAttribute="top" secondItem="y97-xz-eKp" secondAttribute="bottom" constant="16" id="LVk-Wu-DD7"/>
+                            <constraint firstItem="y97-xz-eKp" firstAttribute="top" secondItem="OKw-nI-k6g" secondAttribute="bottom" constant="12" id="OYn-Hf-3lD"/>
+                            <constraint firstItem="OKw-nI-k6g" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="Wuh-ly-TlC"/>
+                            <constraint firstItem="qGr-6e-K8x" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="cAE-g0-snN"/>
+                            <constraint firstItem="xVT-7j-PU1" firstAttribute="leading" secondItem="y97-xz-eKp" secondAttribute="leading" id="cCJ-2g-tPc"/>
+                            <constraint firstItem="dHp-tM-h6r" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="fVg-gK-Spj"/>
+                            <constraint firstItem="xwK-nW-XeO" firstAttribute="trailing" secondItem="y97-xz-eKp" secondAttribute="trailing" id="iwh-HP-msJ"/>
+                            <constraint firstItem="94I-YA-yE9" firstAttribute="top" secondItem="8m4-Q6-Isu" secondAttribute="bottom" constant="16" id="l8e-xR-Kme"/>
+                            <constraint firstItem="Gir-2l-neW" firstAttribute="centerY" secondItem="TgA-pg-Sq4" secondAttribute="centerY" constant="50" id="o4u-WB-51a"/>
+                            <constraint firstItem="Gir-2l-neW" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="q46-ww-hmu"/>
+                            <constraint firstItem="dHp-tM-h6r" firstAttribute="top" secondItem="GSo-fN-8Xg" secondAttribute="top" constant="16" id="xqP-NB-FlO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GSo-fN-8Xg"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MoB-3G-lGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5.5999999999999996" y="146.17691154422789"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="cru_logo" width="360" height="224"/>
+        <image name="facebook_icon" width="24" height="24"/>
+        <image name="google_icon" width="24" height="24"/>
+    </resources>
+</document>
