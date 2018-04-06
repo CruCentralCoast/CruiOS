@@ -25,7 +25,7 @@ class AudioResourcesCell: UITableViewCell {
     var duration: Float = 10
     var audioIsPlaying: Bool = false {
         didSet {
-            self.playPauseButton.tintColor = self.audioIsPlaying ? .gray : .cruBlue
+            self.playPauseButton.tintColor = self.audioIsPlaying ? .cruGray : .cruBrightBlue
         }
     }
     
