@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F18085A20795EBF00693C7B /* Chats.storyboard */; };
 		2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2BD98A2075AD6F00512170 /* Login.storyboard */; };
 		2F2BD98D2075B97C00512170 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2BD98C2075B97C00512170 /* LoginVC.swift */; };
 		2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2BD98E2076C0A100512170 /* CruImageButton.swift */; };
@@ -79,6 +80,7 @@
 		077C9B738C28BA8B1DC38487 /* Pods_CruCentralCoastUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoastUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AF97FF6B5F06274FCA5CFBA /* Pods-CruCentralCoast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast.debug.xcconfig"; sourceTree = "<group>"; };
 		24494561B0D08A04FB30B7E1 /* Pods-CruCentralCoastUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.release.xcconfig"; sourceTree = "<group>"; };
+		2F18085A20795EBF00693C7B /* Chats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
 		2F2BD98A2075AD6F00512170 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		2F2BD98C2075B97C00512170 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2F2BD98E2076C0A100512170 /* CruImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruImageButton.swift; sourceTree = "<group>"; };
@@ -176,11 +178,12 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		2F43BF47206460BE0014F9E8 /* Chat */ = {
+		2F43BF47206460BE0014F9E8 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
+				2F18085A20795EBF00693C7B /* Chats.storyboard */,
 			);
-			path = Chat;
+			path = Chats;
 			sourceTree = "<group>";
 		};
 		3D8F449FDC8138C7134BF88F /* Frameworks */ = {
@@ -227,7 +230,7 @@
 				5E8EC8FF202A8A71000F86D8 /* Community */,
 				5EBD534C20352CCF0097A853 /* Resources */,
 				5EBD534B20352CC70097A853 /* Rides */,
-				2F43BF47206460BE0014F9E8 /* Chat */,
+				2F43BF47206460BE0014F9E8 /* Chats */,
 				2F2BD9942077229100512170 /* Assets.xcassets */,
 				5E8EC8C5202A3785000F86D8 /* LaunchScreen.storyboard */,
 				5E8EC8C8202A3785000F86D8 /* Info.plist */,
@@ -526,6 +529,7 @@
 				5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */,
 				5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
+				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
 				5EBD534820352C410097A853 /* Events.storyboard in Resources */,
 			);
