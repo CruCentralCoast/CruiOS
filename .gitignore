@@ -2,6 +2,7 @@
 # Build
 .DS_Store
 build/
+DerivedData/
 
 # Settings
 *.pbxuser
@@ -19,11 +20,12 @@ xcuserdata
 *.moved-aside
 *.xcuserstate
 *.xcscmblueprint
-Cru.xcworkspace/xcuserdata/ericasolum.xcuserdatad/UserInterfaceState.xcuserstate
 
-# Swift specific
+# Obj-C/Swift specific
 *.hmap
 *.ipa
+*.dSYM.zip
+*.dSYM
 
 # Swift package manager
 .build/
