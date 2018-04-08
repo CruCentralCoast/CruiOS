@@ -6,9 +6,9 @@ target 'CruCentralCoast' do
 
   # Pods for CruCentralCoast
   pod 'Firebase/Core'
-  pod 'FirebaseUI/Auth'
-  pod 'FirebaseUI/Google'
-  pod 'FirebaseUI/Facebook'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
 
   target 'CruCentralCoastTests' do
     inherit! :search_paths

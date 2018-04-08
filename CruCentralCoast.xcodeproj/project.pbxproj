@@ -437,8 +437,6 @@
 				5E8EC8C9202A3785000F86D8 /* Sources */,
 				5E8EC8CA202A3785000F86D8 /* Frameworks */,
 				5E8EC8CB202A3785000F86D8 /* Resources */,
-				D3EAD9B8FE9CD3581B321D26 /* [CP] Embed Pods Frameworks */,
-				456E99E7CAFB73DEB16346F3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -458,8 +456,6 @@
 				5E8EC8D4202A3785000F86D8 /* Sources */,
 				5E8EC8D5202A3785000F86D8 /* Frameworks */,
 				5E8EC8D6202A3785000F86D8 /* Resources */,
-				96545916C3BFA61ADC8CBEB6 /* [CP] Embed Pods Frameworks */,
-				9FEB9EBD3BF74C054DD8806F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -568,21 +564,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		456E99E7CAFB73DEB16346F3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		523915615C3AB0ABF6FDDFB5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -608,48 +589,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast-resources.sh",
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
-				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		96545916C3BFA61ADC8CBEB6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9FEB9EBD3BF74C054DD8806F /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B1B1AB36330C38AA297EBF6C /* [CP] Check Pods Manifest.lock */ = {
@@ -668,21 +616,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D3EAD9B8FE9CD3581B321D26 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EC44F41C6787984AFD488141 /* [CP] Embed Pods Frameworks */ = {
