@@ -8,9 +8,6 @@
 
 import UIKit
 import Firebase
-//import FirebaseAuthUI
-//import FirebaseGoogleAuthUI
-//import FirebaseFacebookAuthUI
 import GoogleSignIn
 import FBSDKCoreKit
 
@@ -30,17 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Facebook sign-in
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-//        // Configure Firebase UI
-//        let authUI = FUIAuth.defaultAuthUI()
-//        authUI?.delegate = self
-//        let providers: [FUIAuthProvider] = [
-//            FUIGoogleAuth(),
-//            FUIFacebookAuth(),
-//        ]
-//        authUI?.providers = providers
-        
         // Present login view controller
-//        let authViewController = authUI!.authViewController()
         let authViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(LoginVC.self)
         DispatchQueue.main.async {
             self.window?.rootViewController?.present(authViewController, animated: false, completion: nil)
@@ -72,13 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-//        // Allow Firebase login flows to link back to this app
-//        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as! String?
-//        if FUIAuth.defaultAuthUI()?.handleOpen(url, sourceApplication: sourceApplication) ?? false {
-//            return true
-//        }
-        // other URL handling goes here.
-        
+        // Allow login flows to link back to this app
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         if GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: [:]) {
             return true
@@ -86,15 +67,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
+        // other URL handling goes here.
         return false
     }
 }
-
-//extension AppDelegate: FUIAuthDelegate {
-//    func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-//        // handle user and error as necessary
-//    }
-//}
 
 extension AppDelegate: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {

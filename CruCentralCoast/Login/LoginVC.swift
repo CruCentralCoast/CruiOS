@@ -21,6 +21,8 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Use this to display spinner while waiting for app switch to occur
+        // Need to implement the methods of the delegate protocol
         GIDSignIn.sharedInstance().uiDelegate = self
 //        GIDSignIn.sharedInstance().signIn()
         
