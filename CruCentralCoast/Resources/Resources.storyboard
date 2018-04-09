@@ -18,8 +18,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNm-tU-5Mm">
+                                <rect key="frame" x="0.0" y="150" width="375" height="468"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAD-Lr-w2D" customClass="CustomSegmentedControl" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="116" width="375" height="30"/>
+                                <rect key="frame" x="4" y="116" width="367" height="30"/>
                                 <color key="backgroundColor" red="0.97647720575332642" green="0.9764588475227356" blue="0.97647136449813843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -43,10 +47,6 @@
                                     <action selector="segmentedControlValueChanged:" destination="hVD-ZW-0bX" eventType="valueChanged" id="Rg7-9Z-hqx"/>
                                 </connections>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNm-tU-5Mm">
-                                <rect key="frame" x="0.0" y="150" width="375" height="468"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQW-34-d0E">
                                 <rect key="frame" x="0.0" y="146" width="375" height="4"/>
                                 <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647136450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -60,12 +60,12 @@
                             <constraint firstItem="jQW-34-d0E" firstAttribute="top" secondItem="tAD-Lr-w2D" secondAttribute="bottom" id="4ra-ug-jV5"/>
                             <constraint firstItem="tAD-Lr-w2D" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="7xq-Hx-nFp"/>
                             <constraint firstItem="FNm-tU-5Mm" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="MKh-qF-2fe"/>
-                            <constraint firstItem="tAD-Lr-w2D" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="Qew-iK-h50"/>
+                            <constraint firstItem="tAD-Lr-w2D" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" constant="4" id="Qew-iK-h50"/>
                             <constraint firstItem="FNm-tU-5Mm" firstAttribute="top" secondItem="jQW-34-d0E" secondAttribute="bottom" id="S51-Ue-Tbz"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="jQW-34-d0E" secondAttribute="trailing" id="U2j-fT-Fgg"/>
                             <constraint firstItem="jQW-34-d0E" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="h2f-vc-afr"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="bottom" secondItem="FNm-tU-5Mm" secondAttribute="bottom" id="rGh-B2-oJh"/>
-                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="tAD-Lr-w2D" secondAttribute="trailing" id="yJ3-0s-izV"/>
+                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="tAD-Lr-w2D" secondAttribute="trailing" constant="4" id="yJ3-0s-izV"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="FNm-tU-5Mm" secondAttribute="trailing" id="z9y-Gl-ijr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fwb-D5-FrQ"/>
