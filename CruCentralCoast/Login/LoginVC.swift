@@ -33,13 +33,13 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.authListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
-            print(user?.displayName, user?.email, user?.phoneNumber, user?.photoURL, user?.metadata, user?.providerID)
-            if let user = user {
-                print(user.metadata.creationDate, user.metadata.lastSignInDate)
-                for providerData in user.providerData {
-                    print(providerData.displayName, providerData.email, providerData.phoneNumber, providerData.photoURL, providerData.providerID)
-                }
-            }
+//            print(user?.displayName, user?.email, user?.phoneNumber, user?.photoURL, user?.metadata, user?.providerID)
+//            if let user = user {
+//                print(user.metadata.creationDate, user.metadata.lastSignInDate)
+//                for providerData in user.providerData {
+//                    print(providerData.displayName, providerData.email, providerData.phoneNumber, providerData.photoURL, providerData.providerID)
+//                }
+//            }
         }
     }
     
