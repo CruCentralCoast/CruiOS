@@ -124,6 +124,7 @@ extension LoginVC: UITextFieldDelegate {
     }
 }
 
+// Use this to display a spinner while waiting for app switch to occur
 extension LoginVC: GIDSignInUIDelegate {
     
 }
