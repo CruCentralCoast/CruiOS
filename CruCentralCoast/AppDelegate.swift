@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(LoginVC.self)
         loginVC.fbSignInDelegate = self
         DispatchQueue.main.async {
-            self.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
+            self.window?.rootViewController?.present(loginVC, animated: false, completion: nil)
         }
         
         return true
@@ -85,6 +85,7 @@ extension AppDelegate: GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
         
+        // Sign in user with Firebase
         Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)
@@ -114,6 +115,7 @@ extension AppDelegate: FBSignInDelegate {
         guard let result = result else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: result.token.tokenString)
         
+        // Sign in user with Firebase
         Auth.auth().signIn(with: credential) { (user, error) in
             if let error = error {
                 print(error.localizedDescription)

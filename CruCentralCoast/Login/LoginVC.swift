@@ -30,7 +30,7 @@ class LoginVC: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
         self.view.addGestureRecognizer(tapGesture)
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.authListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
@@ -89,13 +89,10 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signUp() {
-        // push to sign up screen
-//        Auth.auth().createUser(withEmail: "", password: "") { (user, error) in
-//
-//        }
-//        Auth.auth().createUserAndRetrieveData(withEmail: "", password: "") { (data, error) in
-//
-//        }
+        let signUpVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(SignUpVC.self)
+        signUpVC.email = self.emailTextField.text
+        signUpVC.password = self.passwordTextField.text
+        self.show(signUpVC, sender: self)
     }
 }
 

@@ -18,6 +18,11 @@ class CruTextField: UITextField {
         }
     }
     
+    private enum TitleState {
+        case onTop
+        case placeholder
+    }
+    
     private var bottomLine: UIView!
     private let bottomLineColor: UIColor = UIColor.lightGray
     private var titleLabel: UILabel!
@@ -26,6 +31,7 @@ class CruTextField: UITextField {
     private let titleSmallScale: CGFloat = 0.7
     private let titleOffsetY: CGFloat = -20
     private let animationDuration: TimeInterval = 0.15
+    private var titleState: TitleState = .placeholder
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,44 +60,65 @@ class CruTextField: UITextField {
         self.titleLabel.font = UIFont.systemFont(ofSize: 18)
         self.titleLabel.textColor = self.titleTextColor
         self.titleLabel.sizeToFit()
-        self.titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        self.titleLabel.centerXAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         self.titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
         self.titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        // Change the anchor point to make transform animation behave properly
+        self.titleLabel.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
         
         // Remove placeholder if it exists
         self.placeholder = nil
         
-        self.addTarget(self, action: #selector(editingDidBegin), for: UIControlEvents.editingDidBegin)
-        self.addTarget(self, action: #selector(editingDidEnd), for: [UIControlEvents.editingDidEnd, .editingDidEndOnExit])
+        self.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
+        self.addTarget(self, action: #selector(editingDidEnd), for: .editingDidEnd)
     }
     
-    @objc func editingDidBegin() {
+    @objc private func editingDidBegin() {
         // Animate color
         UIView.animate(withDuration: self.animationDuration) {
             self.bottomLine.backgroundColor = self.tintColor
             self.titleLabel.textColor = self.tintColor
         }
-        // Return if the textField is empty
-        if let text = self.text, !text.isEmpty { return }
-        // Animate the transform and keep track of the original transform
-        self.titleTransform = self.titleLabel.transform
-        UIView.animate(withDuration: self.animationDuration) {
-            let xOffset = -self.titleLabel.bounds.width * (1-self.titleSmallScale) * 0.5
-            self.titleLabel.transform = self.titleTransform.translatedBy(x: xOffset, y: self.titleOffsetY).scaledBy(x: self.titleSmallScale, y: self.titleSmallScale)
-        }
+        // Return if the textField is not empty
+        if self.hasText { return }
+        
+        setTitleState(.onTop, animated: true)
     }
     
-    @objc func editingDidEnd() {
+    @objc private func editingDidEnd() {
         // Animate color
         UIView.animate(withDuration: self.animationDuration) {
             self.bottomLine.backgroundColor = self.bottomLineColor
             self.titleLabel.textColor = self.titleTextColor
         }
-        // Return if the textField is empty
-        if let text = self.text, !text.isEmpty { return }
-        // Animate the transform
-        UIView.animate(withDuration: self.animationDuration) {
-            self.titleLabel.transform = self.titleTransform
+        // Return if the textField is not empty
+        if self.hasText { return }
+        
+        setTitleState(.placeholder, animated: true)
+    }
+    
+    private func setTitleState(_ newState: TitleState, animated: Bool) {
+        if self.titleState == newState { return }
+        switch newState {
+        case .onTop:
+            // Animate the transform and keep track of the original transform
+            self.titleTransform = self.titleLabel.transform
+            UIView.animate(withDuration: animated ? self.animationDuration : 0) {
+//                let xOffset = -self.titleLabel.bounds.width * (1-self.titleSmallScale) * 0.5
+                self.titleLabel.transform = self.titleTransform.translatedBy(x: 0, y: self.titleOffsetY).scaledBy(x: self.titleSmallScale, y: self.titleSmallScale)
+            }
+        case .placeholder:
+            // Animate the transform
+            UIView.animate(withDuration: animated ? self.animationDuration : 0) {
+                self.titleLabel.transform = self.titleTransform
+            }
         }
+        self.titleState = newState
+    }
+    
+    func setText(_ text: String?) {
+        self.text = text
+        let isTextEmpty = text == nil || text!.isEmpty
+        setTitleState(isTextEmpty ? .placeholder : .onTop, animated: false)
     }
 }

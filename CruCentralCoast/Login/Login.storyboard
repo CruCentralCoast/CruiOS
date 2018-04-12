@@ -26,7 +26,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Y4o-GA-qgn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Sign In">
+                                <state key="normal" title="Sign in">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -161,7 +161,125 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoB-3G-lGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5.5999999999999996" y="146.17691154422789"/>
+            <point key="canvasLocation" x="34" y="144"/>
+        </scene>
+        <!--Sign UpVC-->
+        <scene sceneID="Tl2-EO-jyG">
+            <objects>
+                <viewController storyboardIdentifier="SignUpVC" modalTransitionStyle="flipHorizontal" id="Rf4-k7-f5s" customClass="SignUpVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HIe-74-mFl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBR-6w-DWX" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="407.5" width="240" height="50"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0qi-ci-DAi"/>
+                                    <constraint firstAttribute="width" constant="240" id="2kg-fV-Uyp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Sign up">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUp" destination="Rf4-k7-f5s" eventType="touchUpInside" id="ams-gO-O0K"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="WcQ-eZ-20y">
+                                <rect key="frame" x="87.5" y="36" width="200" height="124.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="WcQ-eZ-20y" secondAttribute="height" multiplier="360:224" id="3oP-Qx-VFm"/>
+                                    <constraint firstAttribute="width" constant="200" id="vpB-Fc-hln"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fOT-96-mVT" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="258.5" width="200" height="32"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="1hh-j8-fMC"/>
+                                    <constraint firstAttribute="width" constant="200" id="tcr-bu-Ir3"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="Rf4-k7-f5s" id="yT2-UV-Kxd"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xz-x9-81t" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="306.5" width="200" height="32"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="0wc-5f-b0D"/>
+                                    <constraint firstAttribute="width" constant="200" id="WMF-SA-AQR"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Password"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="Rf4-k7-f5s" id="Zsb-m0-IGs"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bDK-pJ-nW7" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="87.5" y="355" width="200" height="32"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="G4S-e4-n1z"/>
+                                    <constraint firstAttribute="height" constant="32" id="da1-sy-d3r"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Confirm Password"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="delegate" destination="Rf4-k7-f5s" id="0EG-tb-iLO"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-5o-taB">
+                                <rect key="frame" x="74" y="473.5" width="226" height="30"/>
+                                <state key="normal" title="Already have an account? Sign in">
+                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signIn" destination="Rf4-k7-f5s" eventType="touchUpInside" id="aTT-qC-geB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bDK-pJ-nW7" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="6CF-mv-DW9"/>
+                            <constraint firstItem="4ml-5o-taB" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="EZn-49-Gbd"/>
+                            <constraint firstItem="5xz-x9-81t" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="KgA-cu-X3K"/>
+                            <constraint firstItem="5xz-x9-81t" firstAttribute="top" secondItem="fOT-96-mVT" secondAttribute="bottom" constant="16" id="OC4-bq-t8C"/>
+                            <constraint firstItem="MBR-6w-DWX" firstAttribute="centerY" secondItem="HIe-74-mFl" secondAttribute="centerY" constant="99" id="SVr-WF-occ"/>
+                            <constraint firstItem="WcQ-eZ-20y" firstAttribute="top" secondItem="NBZ-z6-bfU" secondAttribute="top" constant="16" id="bwh-uX-92B"/>
+                            <constraint firstItem="WcQ-eZ-20y" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="iwm-yz-xKn"/>
+                            <constraint firstItem="fOT-96-mVT" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="odG-lc-Xx5"/>
+                            <constraint firstItem="MBR-6w-DWX" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="vsx-29-pEX"/>
+                            <constraint firstItem="4ml-5o-taB" firstAttribute="top" secondItem="MBR-6w-DWX" secondAttribute="bottom" constant="16" id="xpA-zf-ZjY"/>
+                            <constraint firstItem="MBR-6w-DWX" firstAttribute="top" secondItem="bDK-pJ-nW7" secondAttribute="bottom" constant="20" id="yJk-by-SPt"/>
+                            <constraint firstItem="bDK-pJ-nW7" firstAttribute="top" secondItem="5xz-x9-81t" secondAttribute="bottom" constant="16" id="zex-Gj-vwV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="NBZ-z6-bfU"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmPasswordTextField" destination="bDK-pJ-nW7" id="Hrz-nM-X1I"/>
+                        <outlet property="emailTextField" destination="fOT-96-mVT" id="LST-Nf-Ulx"/>
+                        <outlet property="passwordTextField" destination="5xz-x9-81t" id="ghr-DC-0D8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mju-QJ-Zrg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="753" y="143"/>
         </scene>
     </scenes>
     <resources>
