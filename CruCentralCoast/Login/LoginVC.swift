@@ -27,12 +27,14 @@ class LoginVC: UIViewController {
         // Need to implement the methods of the delegate protocol
         GIDSignIn.sharedInstance().uiDelegate = self
         
+        // Dismiss keyboard if view is tapped
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
         self.view.addGestureRecognizer(tapGesture)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // Check if the user is already logged in
         self.authListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
 //            print(user?.displayName, user?.email, user?.phoneNumber, user?.photoURL, user?.metadata, user?.providerID)
 //            if let user = user {
@@ -50,24 +52,18 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signIn() {
-        guard let email = self.emailTextField.text, !email.isEmpty else {
-//            self.emailTextField.error("Email field cannot be empty.")
-            debugPrint("Email field cannot be empty.")
-            self.presentAlert(title: "Email field cannot be empty.", message: nil)
-            return
-        }
-        guard let password = self.passwordTextField.text, !password.isEmpty else {
-//            self.passwordTextField.error("Password field cannot be empty.")
-            debugPrint("Password field cannot be empty.")
-            self.presentAlert(title: "Password field cannot be empty.", message: nil)
-            return
-        }
+        self.emailTextField.validateHasText()
+        self.passwordTextField.validateHasText()
+        
+        guard let email = self.emailTextField.text, !email.isEmpty,
+            let password = self.passwordTextField.text, !password.isEmpty else { return }
+        
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if let error = error {
-                debugPrint(error.localizedDescription)
+                print(error.localizedDescription)
                 self.presentAlert(title: error.localizedDescription, message: nil)
             } else {
-                debugPrint("Successful login")
+                print("Successful login")
             }
         }
     }
@@ -85,7 +81,8 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func forgotPassword() {
-
+        // TODO
+        self.presentAlert(title: "Coming Soon...", message: nil)
     }
     
     @IBAction func signUp() {
@@ -98,9 +95,9 @@ class LoginVC: UIViewController {
 
 extension LoginVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
+        if textField == self.emailTextField {
+            self.passwordTextField.becomeFirstResponder()
+        } else if textField == self.passwordTextField {
             signIn()
         }
         return true
@@ -109,5 +106,5 @@ extension LoginVC: UITextFieldDelegate {
 
 // Use this to display a spinner while waiting for app switch to occur
 extension LoginVC: GIDSignInUIDelegate {
-    
+
 }

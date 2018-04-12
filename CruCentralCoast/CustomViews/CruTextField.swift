@@ -25,6 +25,9 @@ class CruTextField: UITextField {
     
     private var bottomLine: UIView!
     private let bottomLineColor: UIColor = UIColor.lightGray
+    private var errorLabel: UILabel!
+    private let errorTextColor: UIColor = UIColor.red
+    private var errorText: String?
     private var titleLabel: UILabel!
     private var titleTransform: CGAffineTransform!
     private let titleTextColor: UIColor = UIColor(white: 0.8, alpha: 1)
@@ -54,6 +57,16 @@ class CruTextField: UITextField {
         self.bottomLine.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
         self.bottomLine.translatesAutoresizingMaskIntoConstraints = false
         
+        self.errorLabel = UILabel()
+        self.addSubview(self.errorLabel!)
+        self.errorLabel.text = self.errorText
+        self.errorLabel.textColor = self.errorTextColor
+        self.errorLabel.font = UIFont.systemFont(ofSize: 10, weight: .thin)
+        self.errorLabel.sizeToFit()
+        self.errorLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        self.errorLabel.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        self.errorLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         self.titleLabel = UILabel()
         self.addSubview(self.titleLabel!)
         self.titleLabel.text = self.title
@@ -74,6 +87,7 @@ class CruTextField: UITextField {
     }
     
     @objc private func editingDidBegin() {
+        self.setError(nil)
         // Animate color
         UIView.animate(withDuration: self.animationDuration) {
             self.bottomLine.backgroundColor = self.tintColor
@@ -120,5 +134,17 @@ class CruTextField: UITextField {
         self.text = text
         let isTextEmpty = text == nil || text!.isEmpty
         setTitleState(isTextEmpty ? .placeholder : .onTop, animated: false)
+    }
+    
+    func setError(_ text: String?) {
+        self.errorLabel.text = text
+        let isTextEmpty = text == nil || text!.isEmpty
+        self.errorLabel.alpha = isTextEmpty ? 0 : 1
+    }
+    
+    func validateHasText() {
+        if !self.hasText {
+            self.setError("\(self.title) field cannot be empty")
+        }
     }
 }

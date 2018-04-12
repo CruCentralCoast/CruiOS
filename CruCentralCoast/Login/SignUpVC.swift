@@ -23,46 +23,33 @@ class SignUpVC: UIViewController {
         
         self.emailTextField.setText(self.email)
         self.passwordTextField.setText(self.password)
+        
+        // Dismiss keyboard if view is tapped
+        let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
+        self.view.addGestureRecognizer(tapGesture)
     }
 
     @IBAction func signUp() {
-        guard let email = self.emailTextField.text, !email.isEmpty else {
-            //            self.emailTextField.error("Email field cannot be empty.")
-            debugPrint("Email field cannot be empty.")
-            self.presentAlert(title: "Email field cannot be empty.", message: nil)
-            return
-        }
-        guard let password = self.passwordTextField.text, !password.isEmpty else {
-            //            self.passwordTextField.error("Password field cannot be empty.")
-            debugPrint("Password field cannot be empty.")
-            self.presentAlert(title: "Password field cannot be empty.", message: nil)
-            return
-        }
-        guard let password2 = self.passwordTextField.text, !password.isEmpty else {
-            //            self.confirmPasswordTextField.error("Password field cannot be empty.")
-            debugPrint("Confirm Password field cannot be empty.")
-            self.presentAlert(title: "Confirm Password field cannot be empty.", message: nil)
-            return
-        }
+        self.emailTextField.validateHasText()
+        self.passwordTextField.validateHasText()
+        self.confirmPasswordTextField.validateHasText()
+        
+        guard let email = self.emailTextField.text, !email.isEmpty,
+            let password = self.passwordTextField.text, !password.isEmpty,
+            let password2 = self.confirmPasswordTextField.text, !password2.isEmpty else { return }
         guard password == password2 else {
-            debugPrint("Passwords do not match.")
-            self.presentAlert(title: "Passwords do not match.", message: nil)
+            self.confirmPasswordTextField.setError("Passwords do not match")
             return
         }
-        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+        
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             if let error = error {
-                debugPrint(error.localizedDescription)
+                print(error.localizedDescription)
                 self.presentAlert(title: error.localizedDescription, message: nil)
             } else {
-                debugPrint("Successful login")
+                print("Successful sign-up")
             }
         }
-        //        Auth.auth().createUser(withEmail: "", password: "") { (user, error) in
-        //
-        //        }
-        //        Auth.auth().createUserAndRetrieveData(withEmail: "", password: "") { (data, error) in
-        //
-        //        }
     }
     
     @IBAction func signIn() {
@@ -72,10 +59,10 @@ class SignUpVC: UIViewController {
 
 extension SignUpVC: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == emailTextField {
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            signIn()
+        if textField == self.emailTextField {
+            self.passwordTextField.becomeFirstResponder()
+        } else if textField == self.passwordTextField {
+            signUp()
         }
         return true
     }
