@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E3CAC5020353EA7009D9DFF /* CommunityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3CAC4F20353EA7009D9DFF /* CommunityCell.swift */; };
 		5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */; };
 		5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E8EC8C0202A3785000F86D8 /* Main.storyboard */; };
 		5E8EC8C4202A3785000F86D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E8EC8C3202A3785000F86D8 /* Assets.xcassets */; };
@@ -25,6 +24,14 @@
 		5EC413CD203FAF2300E2184D /* MissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CB203FAF2300E2184D /* MissionCell.swift */; };
 		5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413CC203FAF2300E2184D /* MissionCell.xib */; };
 		5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CF203FB17600E2184D /* MissionCVC.swift */; };
+		5EDBB93E207AC0A0006EDA12 /* MissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDBB93C207AC0A0006EDA12 /* MissionDetailsVC.swift */; };
+		5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */; };
+		5EE2B2D1207ED64000528579 /* MinistryTeamsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2B2CF207ED64000528579 /* MinistryTeamsCVC.swift */; };
+		5EE2B2D2207ED64000528579 /* MinistryTeamsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D0207ED64000528579 /* MinistryTeamsCVC.xib */; };
+		5EE2B2D5207ED6F700528579 /* MinistryTeams.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */; };
+		5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D6207ED75500528579 /* CommunityGroups.storyboard */; };
+		5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D8207ED78600528579 /* CommunityGroupsCVC.swift */; };
+		5EE2B2DB207ED78600528579 /* CommunityGroupsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D9207ED78600528579 /* CommunityGroupsCVC.xib */; };
 		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450A2075B33200C1EA1B /* VideosResources.swift */; };
@@ -60,7 +67,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5E3CAC4F20353EA7009D9DFF /* CommunityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCell.swift; sourceTree = "<group>"; };
 		5E8EC8B7202A3785000F86D8 /* CruCentralCoast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CruCentralCoast.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E8EC8C1202A3785000F86D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +90,14 @@
 		5EC413CB203FAF2300E2184D /* MissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCell.swift; sourceTree = "<group>"; };
 		5EC413CC203FAF2300E2184D /* MissionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCell.xib; sourceTree = "<group>"; };
 		5EC413CF203FB17600E2184D /* MissionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCVC.swift; sourceTree = "<group>"; };
+		5EDBB93C207AC0A0006EDA12 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailsVC.swift; sourceTree = "<group>"; };
+		5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MissionDetails.storyboard; sourceTree = "<group>"; };
+		5EE2B2CF207ED64000528579 /* MinistryTeamsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamsCVC.swift; sourceTree = "<group>"; };
+		5EE2B2D0207ED64000528579 /* MinistryTeamsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinistryTeamsCVC.xib; sourceTree = "<group>"; };
+		5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MinistryTeams.storyboard; sourceTree = "<group>"; };
+		5EE2B2D6207ED75500528579 /* CommunityGroups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroups.storyboard; sourceTree = "<group>"; };
+		5EE2B2D8207ED78600528579 /* CommunityGroupsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupsCVC.swift; sourceTree = "<group>"; };
+		5EE2B2D9207ED78600528579 /* CommunityGroupsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityGroupsCVC.xib; sourceTree = "<group>"; };
 		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE6450A2075B33200C1EA1B /* VideosResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResources.swift; sourceTree = "<group>"; };
@@ -185,9 +199,10 @@
 		5E8EC8FF202A8A71000F86D8 /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				5E8EC900202A8AB5000F86D8 /* CommunityViewController.swift */,
+				5EE2B2DC207ED79300528579 /* CommunityGroups */,
+				5EE2B2D3207ED64E00528579 /* Ministry Teams */,
 				5EC413C4203FA70600E2184D /* Missions */,
-				5E3CAC4F20353EA7009D9DFF /* CommunityCell.swift */,
+				5E8EC900202A8AB5000F86D8 /* CommunityViewController.swift */,
 				5EBD534920352C9B0097A853 /* Community.storyboard */,
 				5EBD535120352FE10097A853 /* CommunityTVC.swift */,
 			);
@@ -226,12 +241,34 @@
 			isa = PBXGroup;
 			children = (
 				5EC413C7203FAD4D00E2184D /* placeholder.jpg */,
+				5EDBB93C207AC0A0006EDA12 /* MissionDetailsVC.swift */,
+				5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */,
 				5EC413C5203FA86A00E2184D /* Missions.storyboard */,
 				5EC413CB203FAF2300E2184D /* MissionCell.swift */,
 				5EC413CF203FB17600E2184D /* MissionCVC.swift */,
 				5EC413CC203FAF2300E2184D /* MissionCell.xib */,
 			);
 			path = Missions;
+			sourceTree = "<group>";
+		};
+		5EE2B2D3207ED64E00528579 /* Ministry Teams */ = {
+			isa = PBXGroup;
+			children = (
+				5EE2B2CF207ED64000528579 /* MinistryTeamsCVC.swift */,
+				5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */,
+				5EE2B2D0207ED64000528579 /* MinistryTeamsCVC.xib */,
+			);
+			path = "Ministry Teams";
+			sourceTree = "<group>";
+		};
+		5EE2B2DC207ED79300528579 /* CommunityGroups */ = {
+			isa = PBXGroup;
+			children = (
+				5EE2B2D6207ED75500528579 /* CommunityGroups.storyboard */,
+				5EE2B2D8207ED78600528579 /* CommunityGroupsCVC.swift */,
+				5EE2B2D9207ED78600528579 /* CommunityGroupsCVC.xib */,
+			);
+			path = CommunityGroups;
 			sourceTree = "<group>";
 		};
 		ADFA56D5206D7BC8006F7099 /* Articles */ = {
@@ -391,15 +428,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
+				5EE2B2D2207ED64000528579 /* MinistryTeamsCVC.xib in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
 				5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */,
 				5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */,
 				5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */,
+				5EE2B2DB207ED78600528579 /* CommunityGroupsCVC.xib in Resources */,
 				5E8EC8C7202A3785000F86D8 /* LaunchScreen.storyboard in Resources */,
 				ADFA56DD206D82E1006F7099 /* VideosResourcesCell.xib in Resources */,
+				5EE2B2D5207ED6F700528579 /* MinistryTeams.storyboard in Resources */,
 				ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */,
 				5EC413C6203FA86A00E2184D /* Missions.storyboard in Resources */,
 				5E8EC8C4202A3785000F86D8 /* Assets.xcassets in Resources */,
+				5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */,
+				5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
 				5EBD534820352C410097A853 /* Events.storyboard in Resources */,
@@ -427,6 +469,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EDBB93E207AC0A0006EDA12 /* MissionDetailsVC.swift in Sources */,
 				5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */,
 				ADE645132075FE6900C1EA1B /* UIViewControllerExtensions.swift in Sources */,
 				ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */,
@@ -441,9 +484,10 @@
 				ADFA56DC206D82E1006F7099 /* VideosResourcesCell.swift in Sources */,
 				AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */,
 				ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */,
+				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
-				5E3CAC5020353EA7009D9DFF /* CommunityCell.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,
+				5EE2B2D1207ED64000528579 /* MinistryTeamsCVC.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,10 +655,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VKT95LEUQ9;
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				INFOPLIST_FILE = CruCentralCoast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Landon-Gerrits.CruCentralCoast";
+				PRODUCT_BUNDLE_IDENTIFIER = "Landon-Gerrit.CruCentralCoast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -626,10 +670,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VKT95LEUQ9;
+				DEVELOPMENT_TEAM = 7F72R928UK;
 				INFOPLIST_FILE = CruCentralCoast/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Landon-Gerrits.CruCentralCoast";
+				PRODUCT_BUNDLE_IDENTIFIER = "Landon-Gerrit.CruCentralCoast";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

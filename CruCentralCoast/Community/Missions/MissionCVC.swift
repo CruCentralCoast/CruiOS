@@ -10,7 +10,20 @@ import UIKit
 
 private let reuseIdentifier = "MissionCell"
 
+struct MissionCellParameters {
+    let title : String
+    let date : String
+    let location : String
+    let description : String
+}
+
+
 class MissionCVC: UICollectionViewController {
+    
+    //test data array
+    var array : [MissionCellParameters] = [MissionCellParameters(title: "test", date: "dataaa", location: "blksDBVs", description: "kajsbfio")]
+    
+    var dataArray: [MissionCellParameters] = [MissionCellParameters(title: "test1", date: "date", location: "location", description: "description"), MissionCellParameters(title: "test2", date: "date", location: "location", description: "description"), MissionCellParameters(title: "test3", date: "date", location: "location", description: "description"), MissionCellParameters(title: "test4", date: "date", location: "location", description: "description"), MissionCellParameters(title: "test5", date: "date", location: "location", description: "description")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,42 +31,42 @@ class MissionCVC: UICollectionViewController {
         self.collectionView?.registerCell(MissionCell.self)
 
     }
+    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
-    
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return dataArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(MissionCell.self, indexPath: indexPath)
 
         // Configure the cell
-        cell.dateLabel.text = "11/11/11"
+        cell.missionTitle.text = dataArray[indexPath.row].title
+        cell.dateLabel.text = dataArray[indexPath.row].date
         cell.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
-        cell.locationLabel.text = "test location"
-        cell.missionTitle.text = "test title"
-        
-        print("got here")
-
+        cell.locationLabel.text = dataArray[indexPath.row].location
 
         return cell
     }
+    
+    //switch from Mission Collection View to Mission Detail
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "MissionDetails", bundle: nil).instantiateViewController(withIdentifier: "MissionDetailsVC") as! MissionDetailsVC
+        
+        
+        
+        self.navigationController?.present(vc, animated: true, completion: {
+            vc.dateLabel.text = self.dataArray[indexPath.row].date
+            vc.locationLabel.text = self.dataArray[indexPath.row].location
+            vc.descriptionText.text = self.dataArray[indexPath.row].description
+        })
+    }
+    
+    
 
     // MARK: UICollectionViewDelegate
 
