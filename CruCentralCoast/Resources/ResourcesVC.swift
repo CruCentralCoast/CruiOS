@@ -10,7 +10,6 @@ import UIKit
 
 @IBDesignable
 class ResourcesVC: UIViewController {
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: CustomSegmentedControl!
     @IBOutlet weak var fakeBottomNavBar: UIView!
