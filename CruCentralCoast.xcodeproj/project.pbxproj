@@ -25,6 +25,7 @@
 		5EC413CD203FAF2300E2184D /* MissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CB203FAF2300E2184D /* MissionCell.swift */; };
 		5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413CC203FAF2300E2184D /* MissionCell.xib */; };
 		5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CF203FB17600E2184D /* MissionCVC.swift */; };
+		AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */; };
 		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450A2075B33200C1EA1B /* VideosResources.swift */; };
@@ -84,6 +85,7 @@
 		5EC413CB203FAF2300E2184D /* MissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCell.swift; sourceTree = "<group>"; };
 		5EC413CC203FAF2300E2184D /* MissionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCell.xib; sourceTree = "<group>"; };
 		5EC413CF203FB17600E2184D /* MissionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCVC.swift; sourceTree = "<group>"; };
+		AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE6450A2075B33200C1EA1B /* VideosResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResources.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				AD32AE38206C546000437601 /* CustomSegmentedControl.swift */,
+				AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				ADE645132075FE6900C1EA1B /* UIViewControllerExtensions.swift in Sources */,
 				ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
+				AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
 				5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */,
 				ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */,
