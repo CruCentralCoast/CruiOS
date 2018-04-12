@@ -16,6 +16,8 @@ class LoginVC: UIViewController {
     @IBOutlet weak var emailTextField: CruTextField!
     @IBOutlet weak var passwordTextField: CruTextField!
     
+    var fbSignInDelegate: FBSignInDelegate?
+    
     private var authListenerHandle: AuthStateDidChangeListenerHandle!
     
     override func viewDidLoad() {
@@ -24,7 +26,6 @@ class LoginVC: UIViewController {
         // Use this to display spinner while waiting for app switch to occur
         // Need to implement the methods of the delegate protocol
         GIDSignIn.sharedInstance().uiDelegate = self
-//        GIDSignIn.sharedInstance().signIn()
         
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
         self.view.addGestureRecognizer(tapGesture)
@@ -72,26 +73,11 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signInWithFacebook() {
+        guard let fbSignInDelegate = self.fbSignInDelegate else { return }
+        
         let fbLoginManager = FBSDKLoginManager.init()
         let readPermissions = ["public_profile", "email"]
-        fbLoginManager.logIn(withReadPermissions: readPermissions, from: self) { (result, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            if let result = result {
-                let credential = FacebookAuthProvider.credential(withAccessToken: result.token.tokenString)
-                
-                Auth.auth().signIn(with: credential) { (user, error) in
-                    if let error = error {
-                        print(error.localizedDescription)
-                        return
-                    }
-                    // User is signed in
-                    print("Successful Facebook sign-in")
-                }
-            }
-        }
+        fbLoginManager.logIn(withReadPermissions: readPermissions, from: self, handler: fbSignInDelegate.didSignIn)
     }
     
     @IBAction func signInWithGoogle() {
@@ -99,7 +85,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func forgotPassword() {
-        
+
     }
     
     @IBAction func signUp() {

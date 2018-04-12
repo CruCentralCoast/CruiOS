@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -28,9 +29,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Present login view controller
-        let authViewController = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(LoginVC.self)
+        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(LoginVC.self)
+        loginVC.fbSignInDelegate = self
         DispatchQueue.main.async {
-            self.window?.rootViewController?.present(authViewController, animated: false, completion: nil)
+            self.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
         }
         
         return true
@@ -95,5 +97,30 @@ extension AppDelegate: GIDSignInDelegate {
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
+    }
+}
+
+protocol FBSignInDelegate {
+    func didSignIn(withResult result: FBSDKLoginManagerLoginResult?, withError error: Error?)
+}
+
+extension AppDelegate: FBSignInDelegate {
+    func didSignIn(withResult result: FBSDKLoginManagerLoginResult?, withError error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        
+        guard let result = result else { return }
+        let credential = FacebookAuthProvider.credential(withAccessToken: result.token.tokenString)
+        
+        Auth.auth().signIn(with: credential) { (user, error) in
+            if let error = error {
+                print(error.localizedDescription)
+                return
+            }
+            // User is signed in
+            print("Successful Facebook sign-in")
+        }
     }
 }
