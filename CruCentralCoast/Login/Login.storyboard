@@ -130,6 +130,14 @@
                                     <outlet property="delegate" destination="omq-0y-5au" id="cQr-17-faG"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-xt-OhS">
+                                <rect key="frame" x="336" y="36" width="19" height="22"/>
+                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="cross"/>
+                                <connections>
+                                    <action selector="dismissLogin" destination="omq-0y-5au" eventType="touchUpInside" id="ikq-iG-OqH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -139,10 +147,12 @@
                             <constraint firstItem="94I-YA-yE9" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="37J-qe-moX"/>
                             <constraint firstItem="8m4-Q6-Isu" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="6BE-0g-DzX"/>
                             <constraint firstItem="Gir-2l-neW" firstAttribute="top" secondItem="94I-YA-yE9" secondAttribute="bottom" constant="20" id="EwO-YQ-oDU"/>
+                            <constraint firstItem="DS8-xt-OhS" firstAttribute="top" secondItem="GSo-fN-8Xg" secondAttribute="top" constant="16" id="FAq-bY-gbE"/>
                             <constraint firstItem="qGr-6e-K8x" firstAttribute="top" secondItem="Gir-2l-neW" secondAttribute="bottom" constant="17" id="H76-lC-boG"/>
                             <constraint firstItem="xVT-7j-PU1" firstAttribute="top" secondItem="y97-xz-eKp" secondAttribute="bottom" constant="16" id="LVk-Wu-DD7"/>
                             <constraint firstItem="y97-xz-eKp" firstAttribute="top" secondItem="OKw-nI-k6g" secondAttribute="bottom" constant="12" id="OYn-Hf-3lD"/>
                             <constraint firstItem="OKw-nI-k6g" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="Wuh-ly-TlC"/>
+                            <constraint firstItem="GSo-fN-8Xg" firstAttribute="trailing" secondItem="DS8-xt-OhS" secondAttribute="trailing" constant="20" id="ara-Jm-Wg7"/>
                             <constraint firstItem="qGr-6e-K8x" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="cAE-g0-snN"/>
                             <constraint firstItem="xVT-7j-PU1" firstAttribute="leading" secondItem="y97-xz-eKp" secondAttribute="leading" id="cCJ-2g-tPc"/>
                             <constraint firstItem="dHp-tM-h6r" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="fVg-gK-Spj"/>
@@ -253,6 +263,14 @@
                                     <action selector="signIn" destination="Rf4-k7-f5s" eventType="touchUpInside" id="aTT-qC-geB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZL-gd-4KX">
+                                <rect key="frame" x="336" y="36" width="19" height="22"/>
+                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="cross"/>
+                                <connections>
+                                    <action selector="dismissLogin" destination="Rf4-k7-f5s" eventType="touchUpInside" id="hXN-mD-yDk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -262,6 +280,8 @@
                             <constraint firstItem="5xz-x9-81t" firstAttribute="top" secondItem="fOT-96-mVT" secondAttribute="bottom" constant="16" id="OC4-bq-t8C"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="centerY" secondItem="HIe-74-mFl" secondAttribute="centerY" constant="99" id="SVr-WF-occ"/>
                             <constraint firstItem="WcQ-eZ-20y" firstAttribute="top" secondItem="NBZ-z6-bfU" secondAttribute="top" constant="16" id="bwh-uX-92B"/>
+                            <constraint firstItem="pZL-gd-4KX" firstAttribute="top" secondItem="NBZ-z6-bfU" secondAttribute="top" constant="16" id="e38-zT-sfU"/>
+                            <constraint firstItem="NBZ-z6-bfU" firstAttribute="trailing" secondItem="pZL-gd-4KX" secondAttribute="trailing" constant="20" id="fu3-HE-7cF"/>
                             <constraint firstItem="WcQ-eZ-20y" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="iwm-yz-xKn"/>
                             <constraint firstItem="fOT-96-mVT" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="odG-lc-Xx5"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="vsx-29-pEX"/>
@@ -283,6 +303,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cross" width="19" height="19"/>
         <image name="cru_logo" width="360" height="224"/>
         <image name="facebook_icon" width="24" height="24"/>
         <image name="google_icon" width="24" height="24"/>

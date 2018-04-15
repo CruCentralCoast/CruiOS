@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 import GoogleSignIn
 import FBSDKCoreKit
-import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,16 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Configure Google sign-in
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        GIDSignIn.sharedInstance().delegate = LoginManager.instance
         
         // Configure Facebook sign-in
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Present login view controller
-        let loginVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(LoginVC.self)
-        loginVC.fbSignInDelegate = self
         DispatchQueue.main.async {
-            self.window?.rootViewController?.present(loginVC, animated: false, completion: nil)
+            LoginManager.instance.presentLogin(from: self.window?.rootViewController, animated: false)
         }
         
         return true
@@ -71,58 +68,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // other URL handling goes here.
         return false
-    }
-}
-
-extension AppDelegate: GIDSignInDelegate {
-    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        
-        guard let authentication = user.authentication else { return }
-        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
-                                                       accessToken: authentication.accessToken)
-        
-        // Sign in user with Firebase
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            // User is signed in
-            print("Successful Google sign-in")
-        }
-    }
-    
-    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        // Perform any operations when the user disconnects from app here.
-    }
-}
-
-protocol FBSignInDelegate {
-    func didSignIn(withResult result: FBSDKLoginManagerLoginResult?, withError error: Error?)
-}
-
-extension AppDelegate: FBSignInDelegate {
-    func didSignIn(withResult result: FBSDKLoginManagerLoginResult?, withError error: Error?) {
-        if let error = error {
-            print(error.localizedDescription)
-            return
-        }
-        
-        guard let result = result, !result.isCancelled else { return }
-        let credential = FacebookAuthProvider.credential(withAccessToken: result.token.tokenString)
-        
-        // Sign in user with Firebase
-        Auth.auth().signIn(with: credential) { (user, error) in
-            if let error = error {
-                print(error.localizedDescription)
-                return
-            }
-            // User is signed in
-            print("Successful Facebook sign-in")
-        }
     }
 }

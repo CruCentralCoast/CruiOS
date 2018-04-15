@@ -35,6 +35,7 @@ class LoginVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Check if the user is already logged in
+        // This is the way Firebase recommends acquiring the currently logged in user
         self.authListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
 //            print(user?.displayName, user?.email, user?.phoneNumber, user?.photoURL, user?.metadata, user?.providerID)
 //            if let user = user {
@@ -64,6 +65,7 @@ class LoginVC: UIViewController {
                 self.presentAlert(title: error.localizedDescription, message: nil)
             } else {
                 print("Successful login")
+                LoginManager.instance.dismissLogin()
             }
         }
     }
@@ -91,6 +93,10 @@ class LoginVC: UIViewController {
         signUpVC.password = self.passwordTextField.text
         self.show(signUpVC, sender: self)
     }
+    
+    @IBAction func dismissLogin() {
+        LoginManager.instance.dismissLogin()
+    }
 }
 
 extension LoginVC: UITextFieldDelegate {
@@ -98,7 +104,7 @@ extension LoginVC: UITextFieldDelegate {
         if textField == self.emailTextField {
             self.passwordTextField.becomeFirstResponder()
         } else if textField == self.passwordTextField {
-            signIn()
+            self.signIn()
         }
         return true
     }

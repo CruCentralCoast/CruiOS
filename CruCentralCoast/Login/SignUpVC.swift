@@ -48,12 +48,17 @@ class SignUpVC: UIViewController {
                 self.presentAlert(title: error.localizedDescription, message: nil)
             } else {
                 print("Successful sign-up")
+                LoginManager.instance.dismissLogin()
             }
         }
     }
     
     @IBAction func signIn() {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func dismissLogin() {
+        LoginManager.instance.dismissLogin()
     }
 }
 
