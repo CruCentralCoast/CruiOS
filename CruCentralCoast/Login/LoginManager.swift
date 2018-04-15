@@ -19,6 +19,8 @@ class LoginManager: NSObject {
     
     static let instance = LoginManager()
     
+    var user: User? { return Auth.auth().currentUser }
+    
     // Use weak to avoid strong retain cycles, which cause memory leaks
     weak var loginScreen: UIViewController?
     

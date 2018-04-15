@@ -18,8 +18,6 @@ class LoginVC: UIViewController {
     
     var fbSignInDelegate: FBSignInDelegate?
     
-    private var authListenerHandle: AuthStateDidChangeListenerHandle!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,26 +28,6 @@ class LoginVC: UIViewController {
         // Dismiss keyboard if view is tapped
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
         self.view.addGestureRecognizer(tapGesture)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // Check if the user is already logged in
-        // This is the way Firebase recommends acquiring the currently logged in user
-        self.authListenerHandle = Auth.auth().addStateDidChangeListener { (auth, user) in
-//            print(user?.displayName, user?.email, user?.phoneNumber, user?.photoURL, user?.metadata, user?.providerID)
-//            if let user = user {
-//                print(user.metadata.creationDate, user.metadata.lastSignInDate)
-//                for providerData in user.providerData {
-//                    print(providerData.displayName, providerData.email, providerData.phoneNumber, providerData.photoURL, providerData.providerID)
-//                }
-//            }
-        }
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        Auth.auth().removeStateDidChangeListener(self.authListenerHandle)
     }
     
     @IBAction func signIn() {
@@ -111,6 +89,4 @@ extension LoginVC: UITextFieldDelegate {
 }
 
 // Use this to display a spinner while waiting for app switch to occur
-extension LoginVC: GIDSignInUIDelegate {
-
-}
+extension LoginVC: GIDSignInUIDelegate {}
