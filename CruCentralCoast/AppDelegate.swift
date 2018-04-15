@@ -112,7 +112,7 @@ extension AppDelegate: FBSignInDelegate {
             return
         }
         
-        guard let result = result else { return }
+        guard let result = result, !result.isCancelled else { return }
         let credential = FacebookAuthProvider.credential(withAccessToken: result.token.tokenString)
         
         // Sign in user with Firebase

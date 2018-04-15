@@ -82,7 +82,7 @@ class LoginVC: UIViewController {
     
     @IBAction func forgotPassword() {
         // TODO
-        self.presentAlert(title: "Coming Soon...", message: nil)
+        self.presentAlert(title: "Forgot Password", message: "Coming Soon...")
     }
     
     @IBAction func signUp() {

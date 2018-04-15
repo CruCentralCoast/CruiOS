@@ -79,7 +79,7 @@ class CruTextField: UITextField {
         // Change the anchor point to make transform animation behave properly
         self.titleLabel.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
         
-        // Remove placeholder if it exists
+        // Remove placeholder if it exists, since title replaces it
         self.placeholder = nil
         
         self.addTarget(self, action: #selector(editingDidBegin), for: .editingDidBegin)
