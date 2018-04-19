@@ -10,18 +10,13 @@ import UIKit
 
 class CommunityViewController: UIViewController {
     
-    
+    // TO-DO changes these names to "didTap" ....
     @IBAction func communityGroupsButton(_ sender: Any) {
         let vc = UIStoryboard(name: "CommunityGroups", bundle: nil).instantiateViewController(withIdentifier: "CommunityGroups")
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func ministryTeamsButton(_ sender: Any) {
-        let vc = UIStoryboard(name: "MinistryTeams", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeams")
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @IBAction func MissionsButton(_ sender: Any) {
+    @IBAction func didTapMissions(_ sender: Any) {
         let vc = UIStoryboard(name: "Missions", bundle: nil).instantiateViewController(withIdentifier: "Missions")
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -39,6 +34,8 @@ class CommunityViewController: UIViewController {
         self.communityGroupsView.layer.cornerRadius = 15
         self.ministryTeamsView.layer.cornerRadius = 15
         self.missionsView.layer.cornerRadius = 15
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

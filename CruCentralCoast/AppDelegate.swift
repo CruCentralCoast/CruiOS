@@ -28,11 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
         // Present login view controller
-//        if LoginManager.instance.user == nil {
-//            DispatchQueue.main.async {
-//                LoginManager.instance.presentLogin(from: self.window?.rootViewController, animated: false)
-//            }
-//        }
+        if LoginManager.instance.user == nil {
+            DispatchQueue.main.async {
+                LoginManager.instance.presentLogin(from: self.window?.rootViewController, animated: false)
+            }
+        }
     
         return true
     }
