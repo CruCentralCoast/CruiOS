@@ -168,6 +168,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="8m4-Q6-Isu" id="P3V-h1-n7G"/>
                         <outlet property="passwordTextField" destination="94I-YA-yE9" id="dJP-DF-l6U"/>
+                        <outlet property="signInButton" destination="Gir-2l-neW" id="Isr-yY-BIY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MoB-3G-lGN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -296,6 +297,7 @@
                         <outlet property="confirmPasswordTextField" destination="bDK-pJ-nW7" id="Hrz-nM-X1I"/>
                         <outlet property="emailTextField" destination="fOT-96-mVT" id="LST-Nf-Ulx"/>
                         <outlet property="passwordTextField" destination="5xz-x9-81t" id="ghr-DC-0D8"/>
+                        <outlet property="signUpButton" destination="MBR-6w-DWX" id="Vbd-ID-Lyn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mju-QJ-Zrg" userLabel="First Responder" sceneMemberID="firstResponder"/>

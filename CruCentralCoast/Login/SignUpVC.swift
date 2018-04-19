@@ -14,6 +14,7 @@ class SignUpVC: UIViewController {
     @IBOutlet weak var emailTextField: CruTextField!
     @IBOutlet weak var passwordTextField: CruTextField!
     @IBOutlet weak var confirmPasswordTextField: CruTextField!
+    @IBOutlet weak var signUpButton: CruButton!
     
     var email: String? { didSet { self.emailTextField?.text = self.email } }
     var password: String?  { didSet { self.passwordTextField?.text = self.password } }
@@ -27,6 +28,29 @@ class SignUpVC: UIViewController {
         // Dismiss keyboard if view is tapped
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
         self.view.addGestureRecognizer(tapGesture)
+        
+        // Listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let buttonPosition = self.signUpButton.frame.origin.y + self.signUpButton.frame.height
+            let keyboardPosition = self.view.frame.height - keyboardSize.height
+            let buffer: CGFloat = 10
+            if buttonPosition + buffer >= keyboardPosition {
+                self.view.frame.origin.y -= buttonPosition + buffer - keyboardPosition
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
     }
 
     @IBAction func signUp() {
