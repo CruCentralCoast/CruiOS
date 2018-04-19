@@ -31,7 +31,7 @@ public extension UIViewController {
         }
     }
     
-    @objc private func touchDownColor(sender: UIButton) {
+    @objc private func touchDownColor(sender: UIButton, forevent event: UIEvent) {
         sender.tintColor = .lightGray
     }
     
