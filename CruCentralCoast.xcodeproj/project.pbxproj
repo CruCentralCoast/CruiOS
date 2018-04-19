@@ -34,17 +34,21 @@
 		5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413C7203FAD4D00E2184D /* placeholder.jpg */; };
 		5EC413CD203FAF2300E2184D /* MissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CB203FAF2300E2184D /* MissionCell.swift */; };
 		5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413CC203FAF2300E2184D /* MissionCell.xib */; };
-		5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CF203FB17600E2184D /* MissionCVC.swift */; };
-		5EDBB93E207AC0A0006EDA12 /* MissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDBB93C207AC0A0006EDA12 /* MissionDetailsVC.swift */; };
 		5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */; };
-		5EE2B2D1207ED64000528579 /* MinistryTeamsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2B2CF207ED64000528579 /* MinistryTeamsCVC.swift */; };
-		5EE2B2D2207ED64000528579 /* MinistryTeamsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D0207ED64000528579 /* MinistryTeamsCVC.xib */; };
 		5EE2B2D5207ED6F700528579 /* MinistryTeams.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */; };
 		5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D6207ED75500528579 /* CommunityGroups.storyboard */; };
 		5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D8207ED78600528579 /* CommunityGroupsCVC.swift */; };
 		5EE2B2DB207ED78600528579 /* CommunityGroupsCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D9207ED78600528579 /* CommunityGroupsCVC.xib */; };
 		6A096E88C6376481F194DB53 /* Pods_CruCentralCoast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */; };
 		A66506F3E10C7BCD2101AF6A /* Pods_CruCentralCoastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077C9B738C28BA8B1DC38487 /* Pods_CruCentralCoastUITests.framework */; };
+		5EEE640520845F1500AACF91 /* MissionCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE640320845F1500AACF91 /* MissionCVC.swift */; };
+		5EEE640620845F1500AACF91 /* MissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE640420845F1500AACF91 /* MissionDetailsVC.swift */; };
+		5EEE64112084912C00AACF91 /* cancel icon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE640F2084912B00AACF91 /* cancel icon.ico */; };
+		5EEE64122084912C00AACF91 /* location icon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE64102084912B00AACF91 /* location icon.ico */; };
+		5EEE64152085238000AACF91 /* MinistryTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE64132085238000AACF91 /* MinistryTeamCell.swift */; };
+		5EEE64162085238000AACF91 /* MinistryTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE64142085238000AACF91 /* MinistryTeamCell.xib */; };
+		5EEE64182085252F00AACF91 /* MinistryTeamCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE64172085252F00AACF91 /* MinistryTeamCVC.swift */; };
+		5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */; };
 		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450A2075B33200C1EA1B /* VideosResources.swift */; };
@@ -117,17 +121,21 @@
 		5EC413C7203FAD4D00E2184D /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		5EC413CB203FAF2300E2184D /* MissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCell.swift; sourceTree = "<group>"; };
 		5EC413CC203FAF2300E2184D /* MissionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCell.xib; sourceTree = "<group>"; };
-		5EC413CF203FB17600E2184D /* MissionCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCVC.swift; sourceTree = "<group>"; };
-		5EDBB93C207AC0A0006EDA12 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionDetailsVC.swift; sourceTree = "<group>"; };
 		5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MissionDetails.storyboard; sourceTree = "<group>"; };
-		5EE2B2CF207ED64000528579 /* MinistryTeamsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamsCVC.swift; sourceTree = "<group>"; };
-		5EE2B2D0207ED64000528579 /* MinistryTeamsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinistryTeamsCVC.xib; sourceTree = "<group>"; };
 		5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MinistryTeams.storyboard; sourceTree = "<group>"; };
 		5EE2B2D6207ED75500528579 /* CommunityGroups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroups.storyboard; sourceTree = "<group>"; };
 		5EE2B2D8207ED78600528579 /* CommunityGroupsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupsCVC.swift; sourceTree = "<group>"; };
 		5EE2B2D9207ED78600528579 /* CommunityGroupsCVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityGroupsCVC.xib; sourceTree = "<group>"; };
 		6CF951D8F2A54B4B44EBA7C0 /* Pods-CruCentralCoastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BD3D47169B5D42EAABD1CAC /* Pods-CruCentralCoastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5EEE640320845F1500AACF91 /* MissionCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MissionCVC.swift; path = ../../../../../Downloads/MissionCVC.swift; sourceTree = "<group>"; };
+		5EEE640420845F1500AACF91 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MissionDetailsVC.swift; path = ../../../../../Downloads/MissionDetailsVC.swift; sourceTree = "<group>"; };
+		5EEE640F2084912B00AACF91 /* cancel icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "cancel icon.ico"; sourceTree = "<group>"; };
+		5EEE64102084912B00AACF91 /* location icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "location icon.ico"; sourceTree = "<group>"; };
+		5EEE64132085238000AACF91 /* MinistryTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamCell.swift; sourceTree = "<group>"; };
+		5EEE64142085238000AACF91 /* MinistryTeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinistryTeamCell.xib; sourceTree = "<group>"; };
+		5EEE64172085252F00AACF91 /* MinistryTeamCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamCVC.swift; sourceTree = "<group>"; };
+		5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamDetailsVC.swift; sourceTree = "<group>"; };
 		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE6450A2075B33200C1EA1B /* VideosResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResources.swift; sourceTree = "<group>"; };
@@ -311,12 +319,14 @@
 		5EC413C4203FA70600E2184D /* Missions */ = {
 			isa = PBXGroup;
 			children = (
+				5EEE640F2084912B00AACF91 /* cancel icon.ico */,
+				5EEE64102084912B00AACF91 /* location icon.ico */,
 				5EC413C7203FAD4D00E2184D /* placeholder.jpg */,
-				5EDBB93C207AC0A0006EDA12 /* MissionDetailsVC.swift */,
 				5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */,
 				5EC413C5203FA86A00E2184D /* Missions.storyboard */,
 				5EC413CB203FAF2300E2184D /* MissionCell.swift */,
-				5EC413CF203FB17600E2184D /* MissionCVC.swift */,
+				5EEE640320845F1500AACF91 /* MissionCVC.swift */,
+				5EEE640420845F1500AACF91 /* MissionDetailsVC.swift */,
 				5EC413CC203FAF2300E2184D /* MissionCell.xib */,
 			);
 			path = Missions;
@@ -325,9 +335,11 @@
 		5EE2B2D3207ED64E00528579 /* Ministry Teams */ = {
 			isa = PBXGroup;
 			children = (
-				5EE2B2CF207ED64000528579 /* MinistryTeamsCVC.swift */,
 				5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */,
-				5EE2B2D0207ED64000528579 /* MinistryTeamsCVC.xib */,
+				5EEE64132085238000AACF91 /* MinistryTeamCell.swift */,
+				5EEE64172085252F00AACF91 /* MinistryTeamCVC.swift */,
+				5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */,
+				5EEE64142085238000AACF91 /* MinistryTeamCell.xib */,
 			);
 			path = "Ministry Teams";
 			sourceTree = "<group>";
@@ -526,7 +538,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
-				5EE2B2D2207ED64000528579 /* MinistryTeamsCVC.xib in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
 				2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */,
 				5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */,
@@ -540,11 +551,14 @@
 				ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */,
 				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
 				5EC413C6203FA86A00E2184D /* Missions.storyboard in Resources */,
-				5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */,
-				5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
+				5EEE64112084912C00AACF91 /* cancel icon.ico in Resources */,
+				5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */,
+				5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */,
+				5EEE64162085238000AACF91 /* MinistryTeamCell.xib in Resources */,
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
+				5EEE64122084912C00AACF91 /* location icon.ico in Resources */,
 				5EBD534820352C410097A853 /* Events.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -675,12 +689,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5EDBB93E207AC0A0006EDA12 /* MissionDetailsVC.swift in Sources */,
 				5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */,
+				5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */,
 				ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */,
+				5EEE640520845F1500AACF91 /* MissionCVC.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
+				5EEE640620845F1500AACF91 /* MissionDetailsVC.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
-				5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */,
 				ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */,
 				2F2BD991207715F000512170 /* CruButton.swift in Sources */,
 				2F2BD98D2075B97C00512170 /* LoginVC.swift in Sources */,
@@ -688,6 +703,7 @@
 				5EBD535220352FE10097A853 /* CommunityTVC.swift in Sources */,
 				ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */,
 				ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */,
+				5EEE64152085238000AACF91 /* MinistryTeamCell.swift in Sources */,
 				ADFA56DC206D82E1006F7099 /* VideosResourcesCell.swift in Sources */,
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
@@ -698,9 +714,9 @@
 				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,
-				5EE2B2D1207ED64000528579 /* MinistryTeamsCVC.swift in Sources */,
 				2F2BD9972077325300512170 /* CruTextField.swift in Sources */,
 				2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */,
+				5EEE64182085252F00AACF91 /* MinistryTeamCVC.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

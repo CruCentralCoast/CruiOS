@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,6 +18,9 @@
                         <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cmh-IX-Nk2">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="tkg-eO-mld" kind="relationship" relationship="rootViewController" id="E5H-eq-wdc"/>
                     </connections>
@@ -30,13 +32,13 @@
         <!--Community-->
         <scene sceneID="RhZ-ob-qfs">
             <objects>
-                <viewController storyboardIdentifier="CommunityVC" id="tkg-eO-mld" customClass="CommunityViewController" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommunityVC" title="Community" id="tkg-eO-mld" customClass="CommunityViewController" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YPG-Td-Q0R">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uq2-pd-6Bg" customClass="UIButton">
-                                <rect key="frame" x="27" y="254" width="320" height="158"/>
+                                <rect key="frame" x="27" y="306" width="320" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ministry Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcA-Wa-hbE">
                                         <rect key="frame" x="45" y="60" width="230" height="39"/>
@@ -48,15 +50,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="320" id="e0i-zr-icT"/>
-                                    <constraint firstAttribute="width" secondItem="Uq2-pd-6Bg" secondAttribute="height" multiplier="160:79" id="kbe-Jn-qGc"/>
+                                    <constraint firstAttribute="height" constant="150" id="P4O-E9-Aiy"/>
+                                    <constraint firstAttribute="width" constant="320" id="Q7f-bG-d7N"/>
                                 </constraints>
                                 <connections>
                                     <action selector="ministryTeamsButton:" destination="tkg-eO-mld" eventType="touchUpInside" id="zAe-ms-RlH"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEx-ut-ddn" customClass="UIButton">
-                                <rect key="frame" x="27" y="433" width="320" height="158"/>
+                                <rect key="frame" x="27" y="476" width="320" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Missions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zzY-uf-DVD">
                                         <rect key="frame" x="92" y="60" width="136" height="39"/>
@@ -68,15 +70,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="iEx-ut-ddn" secondAttribute="height" multiplier="160:79" id="6a7-Pk-FKu"/>
-                                    <constraint firstAttribute="width" constant="320" id="qj2-xX-YoQ"/>
+                                    <constraint firstAttribute="height" constant="150" id="Yhx-T4-z41"/>
+                                    <constraint firstAttribute="width" constant="320" id="adl-Wc-6Ln"/>
                                 </constraints>
                                 <connections>
                                     <action selector="MissionsButton:" destination="tkg-eO-mld" eventType="touchUpInside" id="bDP-Kt-66D"/>
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmh-nb-DGE" customClass="UIButton">
-                                <rect key="frame" x="27" y="75" width="320" height="158"/>
+                                <rect key="frame" x="27" y="136" width="320" height="150"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Community Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdI-P4-Hs7">
                                         <rect key="frame" x="12" y="60" width="296" height="39"/>
@@ -88,8 +90,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Fmh-nb-DGE" secondAttribute="height" multiplier="160:79" id="BhC-jj-NwA"/>
-                                    <constraint firstAttribute="width" constant="320" id="IKs-Yl-wIX"/>
+                                    <constraint firstAttribute="height" constant="150" id="FH9-9s-9fZ"/>
+                                    <constraint firstAttribute="width" constant="320" id="jCe-s4-SuW"/>
                                 </constraints>
                                 <connections>
                                     <action selector="communityGroupsButton:" destination="tkg-eO-mld" eventType="touchUpInside" id="hH7-1L-Zc7"/>
@@ -98,20 +100,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Uq2-pd-6Bg" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="K4K-Rx-AHO"/>
-                            <constraint firstItem="iEx-ut-ddn" firstAttribute="top" secondItem="Uq2-pd-6Bg" secondAttribute="bottom" constant="21" id="M9m-Vn-yGL"/>
-                            <constraint firstItem="Uq2-pd-6Bg" firstAttribute="top" secondItem="Fmh-nb-DGE" secondAttribute="bottom" constant="21" id="czW-HA-xt1"/>
-                            <constraint firstItem="iEx-ut-ddn" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="lVV-ZR-qTe"/>
-                            <constraint firstItem="Fmh-nb-DGE" firstAttribute="top" secondItem="sRe-PR-kdo" secondAttribute="top" constant="55" id="o4J-41-7wS"/>
-                            <constraint firstItem="Fmh-nb-DGE" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="uL9-fS-csL"/>
+                            <constraint firstItem="iEx-ut-ddn" firstAttribute="top" secondItem="Uq2-pd-6Bg" secondAttribute="bottom" constant="20" id="T55-p5-wbz"/>
+                            <constraint firstItem="Uq2-pd-6Bg" firstAttribute="top" secondItem="Fmh-nb-DGE" secondAttribute="bottom" constant="20" id="VgH-TY-bi1"/>
+                            <constraint firstItem="Fmh-nb-DGE" firstAttribute="top" secondItem="sRe-PR-kdo" secondAttribute="top" constant="20" id="gOE-0I-Lwn"/>
+                            <constraint firstItem="Fmh-nb-DGE" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="hJW-0G-X7K"/>
+                            <constraint firstItem="Uq2-pd-6Bg" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="hwx-jp-Ptu"/>
+                            <constraint firstItem="iEx-ut-ddn" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="oPd-kD-RCq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sRe-PR-kdo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Community" image="community_icon" id="nNd-pS-h2w"/>
-                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="D34-dJ-4I6">
+                    <navigationItem key="navigationItem" title="Community" largeTitleDisplayMode="always" id="D34-dJ-4I6">
                         <barButtonItem key="backBarButtonItem" title="Community" id="Ry3-Q4-OcA"/>
                     </navigationItem>
-                    <nil key="simulatedTopBarMetrics"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="communityGroupsView" destination="Fmh-nb-DGE" id="zOk-nL-yzK"/>

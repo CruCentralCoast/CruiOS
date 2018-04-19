@@ -1,8 +1,8 @@
 //
-//  MinistryTeamsCVC.swift
+//  MinistryTeamCVC.swift
 //  CruCentralCoast
 //
-//  Created by Landon Gerrits on 4/11/18.
+//  Created by Landon Gerrits on 4/16/18.
 //  Copyright © 2018 Landon Gerrits. All rights reserved.
 //
 
@@ -10,7 +10,10 @@ import UIKit
 
 private let reuseIdentifier = "MinistryCell"
 
-class MinistryTeamsCVC: UICollectionViewController {
+class MinistryTeamCVC: UICollectionViewController {
+    
+    //test data array
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,5 +93,5 @@ class MinistryTeamsCVC: UICollectionViewController {
     
     }
     */
-    
+
 }
