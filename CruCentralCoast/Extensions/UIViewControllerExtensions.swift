@@ -38,4 +38,10 @@ public extension UIViewController {
     @objc private func touchUpColor(sender: UIButton) {
         sender.tintColor = .black
     }
+    
+    func presentAlert(title: String?, message: String?, animated: Bool = true, completion: (()->Void)? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alertController, animated: animated, completion: completion)
+    }
 }

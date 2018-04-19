@@ -11,79 +11,80 @@ import UIKit
 private let reuseIdentifier = "MissionCell"
 
 class MissionCVC: UICollectionViewController {
-
+    
+    //test data array
+    var dataArray: [MissionCellParameters] = [MissionCellParameters(titleLabel: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), MissionCellParameters(titleLabel: "test2", date: "date", location: "location", description: "description"), MissionCellParameters(titleLabel: "test3", date: "date", location: "location", description: "description"), MissionCellParameters(titleLabel: "test4", date: "date", location: "location", description: "description"), MissionCellParameters(titleLabel: "test5", date: "date", location: "location", description: "description")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
- 
+        
         self.collectionView?.registerCell(MissionCell.self)
-
+        
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
+    
     // MARK: UICollectionViewDataSource
     
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 10
+        return dataArray.count
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(MissionCell.self, indexPath: indexPath)
-
-        // Configure the cell
-        cell.dateLabel.text = "11/11/11"
-        cell.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
-        cell.locationLabel.text = "test location"
-        cell.missionTitle.text = "test title"
         
-        print("got here")
-
-
+        // Configure the cell
+        cell.missionTitle.text = dataArray[indexPath.row].titleLabel
+        cell.dateLabel.text = dataArray[indexPath.row].date
+        cell.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
+        cell.locationLabel.text = dataArray[indexPath.row].location
+        
         return cell
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    //switch from Mission Collection View to Mission Detail
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "MissionDetails", bundle: nil).instantiateViewController(withIdentifier: "MissionDetailsVC") as? MissionDetailsVC else {
+            assertionFailure("Probably used the wrong storyboard name or identifier here")
+            return
+        }
+        vc.configure(with: self.dataArray[indexPath.row])
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
-    */
-
+    
+    
+    
+    // MARK: UICollectionViewDelegate
+    
+    /*
+     // Uncomment this method to specify if the specified item should be highlighted during tracking
+     override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment this method to specify if the specified item should be selected
+     override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+     return true
+     }
+     */
+    
+    /*
+     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
+     override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+     return false
+     }
+     
+     override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+     return false
+     }
+     
+     override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+     
+     }
+     */
+    
 }
+

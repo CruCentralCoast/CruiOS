@@ -20,48 +20,61 @@
                 <rect key="frame" x="0.0" y="0.0" width="490" height="269"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-cE-Xga">
-                        <rect key="frame" x="0.0" y="0.0" width="490" height="210"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5gh-0N-qoC" userLabel="cellMask">
+                        <rect key="frame" x="0.0" y="0.0" width="490" height="269"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gpF-cE-Xga">
+                                <rect key="frame" x="0.0" y="0.0" width="490" height="186"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gpF-cE-Xga" secondAttribute="height" multiplier="245:93" id="qHM-od-Oaz"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mission Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td4-1O-hE4">
+                                <rect key="frame" x="16" y="194" width="116" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-dI-Urp">
+                                <rect key="frame" x="16" y="218" width="70" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm9-ls-2Ab">
+                                <rect key="frame" x="427" y="194" width="38" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="gpF-cE-Xga" secondAttribute="height" multiplier="7:3" id="NFc-Ja-wah"/>
+                            <constraint firstItem="xm9-ls-2Ab" firstAttribute="top" secondItem="gpF-cE-Xga" secondAttribute="bottom" constant="8" id="1V9-0F-3Fb"/>
+                            <constraint firstItem="td4-1O-hE4" firstAttribute="leading" secondItem="5gh-0N-qoC" secondAttribute="leading" constant="16" id="D1q-7k-Rpb"/>
+                            <constraint firstItem="gpF-cE-Xga" firstAttribute="leading" secondItem="5gh-0N-qoC" secondAttribute="leading" id="FaS-Zg-s3x"/>
+                            <constraint firstItem="gpF-cE-Xga" firstAttribute="top" secondItem="5gh-0N-qoC" secondAttribute="top" id="HVe-yB-bPd"/>
+                            <constraint firstItem="td4-1O-hE4" firstAttribute="top" secondItem="gpF-cE-Xga" secondAttribute="bottom" constant="8" id="UB0-pp-2wR"/>
+                            <constraint firstItem="gwh-dI-Urp" firstAttribute="top" secondItem="td4-1O-hE4" secondAttribute="bottom" id="bR1-EP-Lep"/>
+                            <constraint firstAttribute="trailing" secondItem="gpF-cE-Xga" secondAttribute="trailing" id="cD5-lY-Ojh"/>
+                            <constraint firstAttribute="trailing" secondItem="xm9-ls-2Ab" secondAttribute="trailing" constant="25" id="vVd-Lw-g9p"/>
+                            <constraint firstItem="gwh-dI-Urp" firstAttribute="leading" secondItem="5gh-0N-qoC" secondAttribute="leading" constant="16" id="wGm-N5-HOp"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mission Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="td4-1O-hE4">
-                        <rect key="frame" x="0.0" y="215" width="116" height="24"/>
-                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xm9-ls-2Ab">
-                        <rect key="frame" x="0.0" y="239" width="38" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gwh-dI-Urp">
-                        <rect key="frame" x="400" y="238" width="70" height="22"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="gwh-dI-Urp" firstAttribute="top" secondItem="gpF-cE-Xga" secondAttribute="bottom" constant="28" id="D7U-cv-MYM"/>
-                <constraint firstItem="xm9-ls-2Ab" firstAttribute="top" secondItem="td4-1O-hE4" secondAttribute="bottom" id="DY0-UN-bTU"/>
-                <constraint firstAttribute="trailing" secondItem="gwh-dI-Urp" secondAttribute="trailing" constant="20" id="IIj-8d-EFm"/>
-                <constraint firstItem="gpF-cE-Xga" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KKb-iK-Vrg"/>
-                <constraint firstItem="td4-1O-hE4" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WYx-La-KvV"/>
-                <constraint firstAttribute="trailing" secondItem="gpF-cE-Xga" secondAttribute="trailing" id="ZYT-8x-AlC"/>
-                <constraint firstItem="gpF-cE-Xga" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="mRJ-i3-E6H"/>
-                <constraint firstItem="xm9-ls-2Ab" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xgK-KZ-PUk"/>
-                <constraint firstItem="td4-1O-hE4" firstAttribute="top" secondItem="gpF-cE-Xga" secondAttribute="bottom" constant="5" id="zMB-UX-ho2"/>
+                <constraint firstItem="5gh-0N-qoC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="2Mc-lN-m8N"/>
+                <constraint firstItem="5gh-0N-qoC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Lj8-M8-olJ"/>
+                <constraint firstAttribute="bottom" secondItem="5gh-0N-qoC" secondAttribute="bottom" id="Wjf-41-oEz"/>
+                <constraint firstAttribute="trailing" secondItem="5gh-0N-qoC" secondAttribute="trailing" id="iEm-Ig-dhi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="490" height="269"/>
             <connections>
+                <outlet property="cellMask" destination="5gh-0N-qoC" id="AWg-Dl-zEi"/>
                 <outlet property="dateLabel" destination="xm9-ls-2Ab" id="1f2-EC-rsO"/>
-                <outlet property="imageView" destination="gpF-cE-Xga" id="hzx-p8-psG"/>
+                <outlet property="imageView" destination="gpF-cE-Xga" id="NmZ-x7-w5r"/>
                 <outlet property="locationLabel" destination="gwh-dI-Urp" id="Uor-Eg-0Zd"/>
                 <outlet property="missionTitle" destination="td4-1O-hE4" id="glI-zP-Lo4"/>
             </connections>
