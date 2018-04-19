@@ -7,15 +7,33 @@
 //
 
 import UIKit
+import Firebase
+import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        // Configure Firebase
+        FirebaseApp.configure()
+        
+        // Configure Google sign-in
+        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
+        GIDSignIn.sharedInstance().delegate = LoginManager.instance
+        
+        // Configure Facebook sign-in
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        // Present login view controller
+//        if LoginManager.instance.user == nil {
+//            DispatchQueue.main.async {
+//                LoginManager.instance.presentLogin(from: self.window?.rootViewController, animated: false)
+//            }
+//        }
+    
         return true
     }
 
@@ -40,7 +58,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        // Allow login flows to link back to this app
+        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
+        if GIDSignIn.sharedInstance().handle(url, sourceApplication: sourceApplication, annotation: [:]) {
+            return true
+        } else if FBSDKApplicationDelegate.sharedInstance().application(app, open: url, sourceApplication: sourceApplication, annotation: [:]) {
+            return true
+        }
+        
+        // other URL handling goes here.
+        return false
+    }
 }
-
