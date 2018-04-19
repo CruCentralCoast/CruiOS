@@ -31,6 +31,7 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func signIn() {
+        self.view.endEditing(true)
         self.emailTextField.validateHasText()
         self.passwordTextField.validateHasText()
         
@@ -82,6 +83,7 @@ extension LoginVC: UITextFieldDelegate {
         if textField == self.emailTextField {
             self.passwordTextField.becomeFirstResponder()
         } else if textField == self.passwordTextField {
+            self.passwordTextField.resignFirstResponder()
             self.signIn()
         }
         return true

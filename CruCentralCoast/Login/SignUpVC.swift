@@ -30,6 +30,7 @@ class SignUpVC: UIViewController {
     }
 
     @IBAction func signUp() {
+        self.view.endEditing(true)
         self.emailTextField.validateHasText()
         self.passwordTextField.validateHasText()
         self.confirmPasswordTextField.validateHasText()
@@ -67,6 +68,9 @@ extension SignUpVC: UITextFieldDelegate {
         if textField == self.emailTextField {
             self.passwordTextField.becomeFirstResponder()
         } else if textField == self.passwordTextField {
+            self.confirmPasswordTextField.becomeFirstResponder()
+        } else if textField == self.confirmPasswordTextField {
+            self.confirmPasswordTextField.resignFirstResponder()
             signUp()
         }
         return true
