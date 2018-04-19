@@ -20,15 +20,25 @@ public extension UIViewController {
             largeTitleView.addSubview(profileButton)
             profileButton.bottomAnchor.constraint(equalTo: largeTitleView.bottomAnchor, constant: -10).isActive = true
             profileButton.rightAnchor.constraint(equalTo: largeTitleView.rightAnchor, constant: -10).isActive = true
-            profileButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
+            profileButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
             profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor).isActive = true
             
             if let selector = buttonPressed {
                 profileButton.addTarget(self, action: selector, for: .touchUpInside)
+                profileButton.addTarget(self, action: #selector(self.touchDownColor), for: .touchDown)
+                profileButton.addTarget(self, action: #selector(self.touchUpColor), for: [.touchUpInside,.touchCancel,.touchUpOutside])
             }
         }
     }
-
+    
+    @objc private func touchDownColor(sender: UIButton, forevent event: UIEvent) {
+        sender.tintColor = .lightGray
+    }
+    
+    @objc private func touchUpColor(sender: UIButton) {
+        sender.tintColor = .black
+    }
+    
     func presentAlert(title: String?, message: String?, animated: Bool = true, completion: (()->Void)? = nil) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
