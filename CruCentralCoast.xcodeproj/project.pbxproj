@@ -33,6 +33,8 @@
 		ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450E2075B6E200C1EA1B /* AudioResources.swift */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
 		ADE645132075FE6900C1EA1B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645122075FE6900C1EA1B /* UIViewControllerExtensions.swift */; };
+		ADE91F2420883732004C12B5 /* SegmentedControlInNavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE91F2320883732004C12B5 /* SegmentedControlInNavBarView.xib */; };
+		ADE91F26208838C6004C12B5 /* SegmentedControlInNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE91F25208838C6004C12B5 /* SegmentedControlInNavBarView.swift */; };
 		ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */; };
 		ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */; };
 		ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */; };
@@ -93,6 +95,8 @@
 		ADE6450E2075B6E200C1EA1B /* AudioResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioResources.swift; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
 		ADE645122075FE6900C1EA1B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		ADE91F2320883732004C12B5 /* SegmentedControlInNavBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedControlInNavBarView.xib; sourceTree = "<group>"; };
+		ADE91F25208838C6004C12B5 /* SegmentedControlInNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlInNavBarView.swift; sourceTree = "<group>"; };
 		ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesCell.swift; sourceTree = "<group>"; };
 		ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesResourcesCell.xib; sourceTree = "<group>"; };
 		ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeueExtensions.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 				ADFA56D5206D7BC8006F7099 /* Articles */,
 				5EBD534F20352CEF0097A853 /* Resources.storyboard */,
 				ADE645102075BA6600C1EA1B /* ResourcesVC.swift */,
+				ADE91F2320883732004C12B5 /* SegmentedControlInNavBarView.xib */,
+				ADE91F25208838C6004C12B5 /* SegmentedControlInNavBarView.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADE91F2420883732004C12B5 /* SegmentedControlInNavBarView.xib in Resources */,
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
 				5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */,
@@ -436,6 +443,7 @@
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
+				ADE91F26208838C6004C12B5 /* SegmentedControlInNavBarView.swift in Sources */,
 				5EC413D0203FB17600E2184D /* MissionCVC.swift in Sources */,
 				ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */,
 				5EC413CD203FAF2300E2184D /* MissionCell.swift in Sources */,

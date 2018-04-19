@@ -19,53 +19,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNm-tU-5Mm">
-                                <rect key="frame" x="0.0" y="150" width="375" height="468"/>
+                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tAD-Lr-w2D" customClass="CustomSegmentedControl" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="4" y="116" width="367" height="30"/>
-                                <color key="backgroundColor" red="0.97647720575332642" green="0.9764588475227356" blue="0.97647136449813843" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.8431430459" green="0.84312713149999996" blue="0.84313791989999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="commaSeparatedButtonTitles" value="Articles,Vidoes,Audio"/>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
-                                        <color key="value" red="0.51765072349999997" green="0.51764053109999997" blue="0.51764744519999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorColor">
-                                        <color key="value" red="0.81629067659999999" green="0.50918740029999998" blue="0.21166020629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorTextColor">
-                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="segmentedControlValueChanged:" destination="hVD-ZW-0bX" eventType="valueChanged" id="Rg7-9Z-hqx"/>
-                                </connections>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jQW-34-d0E">
-                                <rect key="frame" x="0.0" y="146" width="375" height="4"/>
-                                <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647136450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="4" id="bjM-J9-Kby"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="jQW-34-d0E" firstAttribute="top" secondItem="tAD-Lr-w2D" secondAttribute="bottom" id="4ra-ug-jV5"/>
-                            <constraint firstItem="tAD-Lr-w2D" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="7xq-Hx-nFp"/>
                             <constraint firstItem="FNm-tU-5Mm" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="MKh-qF-2fe"/>
-                            <constraint firstItem="tAD-Lr-w2D" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" constant="4" id="Qew-iK-h50"/>
-                            <constraint firstItem="FNm-tU-5Mm" firstAttribute="top" secondItem="jQW-34-d0E" secondAttribute="bottom" id="S51-Ue-Tbz"/>
-                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="jQW-34-d0E" secondAttribute="trailing" id="U2j-fT-Fgg"/>
-                            <constraint firstItem="jQW-34-d0E" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="h2f-vc-afr"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="bottom" secondItem="FNm-tU-5Mm" secondAttribute="bottom" id="rGh-B2-oJh"/>
-                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="tAD-Lr-w2D" secondAttribute="trailing" constant="4" id="yJ3-0s-izV"/>
+                            <constraint firstItem="FNm-tU-5Mm" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="x2x-bw-uZc"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="FNm-tU-5Mm" secondAttribute="trailing" id="z9y-Gl-ijr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fwb-D5-FrQ"/>
@@ -74,8 +36,6 @@
                     <navigationItem key="navigationItem" title="Resources" id="yyM-Pw-GEw"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="fakeBottomNavBar" destination="jQW-34-d0E" id="ovX-Ji-QW5"/>
-                        <outlet property="segmentedControl" destination="tAD-Lr-w2D" id="UcG-dI-mnx"/>
                         <outlet property="tableView" destination="FNm-tU-5Mm" id="cKl-nC-avW"/>
                     </connections>
                 </viewController>

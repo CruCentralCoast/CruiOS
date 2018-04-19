@@ -11,9 +11,9 @@ import UIKit
 @IBDesignable
 class ResourcesVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var segmentedControl: CustomSegmentedControl!
-    @IBOutlet weak var fakeBottomNavBar: UIView!
     private var shadowImageView: UIImageView?
+    var segmentedControlInNavBarView: SegmentedControlInNavBarView = UINib(nibName: "SegmentedControlInNavBarView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! SegmentedControlInNavBarView
+    private var segmentedControlIndex: Int = 0
     
     lazy var articlesResources: ArticlesResources = {
         let dataSource = ArticlesResources()
@@ -36,7 +36,9 @@ class ResourcesVC: UIViewController {
         self.tableView.registerCell(VideosResourcesCell.self)
         self.tableView.registerCell(AudioResourcesCell.self)
         self.tableView.dataSource = self.articlesResources
-        self.tableView.delegate = self.articlesResources
+        self.tableView.delegate = self
+        
+        self.segmentedControlInNavBarView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,8 +47,6 @@ class ResourcesVC: UIViewController {
             self.shadowImageView = self.findShadowImage(under: self.navigationController!.navigationBar)
         }
         self.shadowImageView?.isHidden = true
-
-        self.fakeBottomNavBar.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -72,17 +72,18 @@ class ResourcesVC: UIViewController {
         print("Profile Button Pressed")
     }
     
-    private func showSelectedView(_ index: Int) {
+}
+
+extension ResourcesVC: SegmentedControlInNavBarViewProtocol {
+    func segmentedControlValueChanged(_ index: Int) {
+        self.segmentedControlIndex = index
         switch index {
         case 0:
             self.tableView.dataSource = self.articlesResources
-            self.tableView.delegate = self.articlesResources
         case 1:
             self.tableView.dataSource = self.videosResources
-            self.tableView.delegate = self.videosResources
         case 2:
             self.tableView.dataSource = self.audioResources
-            self.tableView.delegate = self.audioResources
         default:
             return
         }
@@ -90,7 +91,23 @@ class ResourcesVC: UIViewController {
         self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
     }
     
-    @IBAction func segmentedControlValueChanged(_ sender: CustomSegmentedControl) {
-        self.showSelectedView(sender.selectedSegmentIndex)
-    }
+}
+
+extension ResourcesVC: UITableViewDelegate {
+        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+            switch self.segmentedControlIndex {
+            case 0:
+                return 60
+            case 1:
+                return 60
+            case 2:
+                return 80
+            default:
+                return 44
+            }
+        }
+    
+        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+            return self.segmentedControlInNavBarView
+        }
 }

@@ -24,9 +24,3 @@ extension ArticlesResources: UITableViewDataSource {
         return cell
     }
 }
-
-extension ArticlesResources: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-}
