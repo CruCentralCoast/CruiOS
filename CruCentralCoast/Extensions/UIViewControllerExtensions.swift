@@ -15,7 +15,8 @@ public extension UIViewController {
             
             let profileButton = UIButton()
             profileButton.translatesAutoresizingMaskIntoConstraints = false
-            profileButton.setImage(#imageLiteral(resourceName: "profile"), for: .normal)
+            profileButton.setImage(#imageLiteral(resourceName: "profile_icon")
+                , for: .normal)
             profileButton.tintColor = .black
             largeTitleView.addSubview(profileButton)
             profileButton.bottomAnchor.constraint(equalTo: largeTitleView.bottomAnchor, constant: -10).isActive = true

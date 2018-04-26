@@ -11,13 +11,16 @@ import UIKit
 enum ProfileTableViewCellType {
     case email
     case notifications
+    case changeCampus
+    case changeMinistry
+    case loginLogout
 }
 
 class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let tableViewLayout: [ProfileTableViewCellType] = [.email, .notifications]
+    let tableViewLayout: [ProfileTableViewCellType] = [.email, .notifications, .changeCampus, .changeMinistry, .loginLogout]
     let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
     private var shadowImageView: UIImageView?
     
@@ -27,6 +30,10 @@ class ProfileVC: UIViewController {
         self.tableView.delegate = self
         self.tableView.registerCell(ProfileEmailCell.self)
         self.tableView.registerCell(ProfileNotificationsCell.self)
+        self.tableView.registerCell(ProfileSelectableTextCell.self)
+        
+        // get rid of lines below the cells
+        self.tableView.tableFooterView = UIView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,12 +72,27 @@ extension ProfileVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
-        let type = self.tableViewLayout[indexPath.row]
-        switch type {
+        switch self.tableViewLayout[indexPath.row] {
         case .email:
             cell = tableView.dequeueCell(ProfileEmailCell.self, indexPath: indexPath)
         case .notifications:
             cell = tableView.dequeueCell(ProfileNotificationsCell.self, indexPath: indexPath)
+        case .changeCampus:
+            cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
+            if let loginLogoutCell = cell as? ProfileSelectableTextCell {
+                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Change Campus")
+            }
+        case .changeMinistry:
+            cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
+            if let loginLogoutCell = cell as? ProfileSelectableTextCell {
+                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Change Ministry")
+            }
+        case .loginLogout:
+            cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
+            let userIsLoggedIn = true
+            if let loginLogoutCell = cell as? ProfileSelectableTextCell {
+                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: userIsLoggedIn ? "Logout" : "Logout")
+            }
         }
         return cell
     }
@@ -78,12 +100,8 @@ extension ProfileVC: UITableViewDataSource {
 
 extension ProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let type = self.tableViewLayout[indexPath.row]
-        
-        switch type {
-        case .email:
-            return 44
-        case .notifications:
+        switch self.tableViewLayout[indexPath.row] {
+        case .email, .notifications, .changeCampus, .changeMinistry, .loginLogout:
             return 44
         }
     }
@@ -95,6 +113,22 @@ extension ProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         // this should be the exact height of the "ProfileHeaderView"
         return 172
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch self.tableViewLayout[indexPath.row] {
+        case .notifications:
+            self.show(UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(NotificationsVC.self), sender: self)
+        case .changeCampus:
+            break
+        case .changeMinistry:
+            break
+        case .loginLogout:
+            break
+        default:
+            return
+        }
+        tableView.cellForRow(at: indexPath)?.isSelected = false
     }
     
 }

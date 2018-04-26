@@ -58,6 +58,9 @@
 		AD24E8C920917D6B0089E370 /* ProfileEmailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8C720917D6B0089E370 /* ProfileEmailCell.xib */; };
 		AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8CA20917FFD0089E370 /* ProfileHeaderView.swift */; };
 		AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8CC209180060089E370 /* ProfileHeaderView.xib */; };
+		AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8D820919C510089E370 /* ProfileSelectableTextCell.swift */; };
+		AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8D920919C510089E370 /* ProfileSelectableTextCell.xib */; };
+		AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8DC20919C670089E370 /* NotificationsVC.swift */; };
 		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450A2075B33200C1EA1B /* VideosResources.swift */; };
@@ -156,6 +159,9 @@
 		AD24E8C720917D6B0089E370 /* ProfileEmailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEmailCell.xib; sourceTree = "<group>"; };
 		AD24E8CA20917FFD0089E370 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		AD24E8CC209180060089E370 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		AD24E8D820919C510089E370 /* ProfileSelectableTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSelectableTextCell.swift; sourceTree = "<group>"; };
+		AD24E8D920919C510089E370 /* ProfileSelectableTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSelectableTextCell.xib; sourceTree = "<group>"; };
+		AD24E8DC20919C670089E370 /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
 		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE6450A2075B33200C1EA1B /* VideosResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResources.swift; sourceTree = "<group>"; };
@@ -382,6 +388,7 @@
 		AD24E8B820916B1A0089E370 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				AD24E8DC20919C670089E370 /* NotificationsVC.swift */,
 				AD24E8C3209172970089E370 /* Cells */,
 				AD24E8B920916B470089E370 /* ProfileVC.swift */,
 				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
@@ -392,6 +399,8 @@
 		AD24E8C3209172970089E370 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AD24E8D820919C510089E370 /* ProfileSelectableTextCell.swift */,
+				AD24E8D920919C510089E370 /* ProfileSelectableTextCell.xib */,
 				AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */,
 				AD24E8C02091728F0089E370 /* ProfileNotificationsCell.xib */,
 				AD24E8C620917D6B0089E370 /* ProfileEmailCell.swift */,
@@ -589,6 +598,7 @@
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				ADE91F2420883732004C12B5 /* SegmentedControlInNavBarView.xib in Resources */,
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
+				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
 				2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */,
 				5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */,
@@ -751,6 +761,7 @@
 				AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
 				ADE91F26208838C6004C12B5 /* SegmentedControlInNavBarView.swift in Sources */,
+				AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */,
 				ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */,
 				2F2BD991207715F000512170 /* CruButton.swift in Sources */,
 				2F2BD98D2075B97C00512170 /* LoginVC.swift in Sources */,
@@ -770,6 +781,7 @@
 				ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */,
 				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
+				AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,
 				2F2BD9972077325300512170 /* CruTextField.swift in Sources */,

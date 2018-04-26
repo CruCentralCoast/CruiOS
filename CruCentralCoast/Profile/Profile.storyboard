@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ydK-tv-5WB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,23 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="gDE-U3-qaw">
-            <objects>
-                <navigationController id="ydK-tv-5WB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Eql-9Z-W5Y">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="aNR-5Y-JWV" kind="relationship" relationship="rootViewController" id="qvs-wC-JGn"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wpT-iK-Ud8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-380" y="-560"/>
-        </scene>
-        <!--Profile-->
+        <!--ProfileVC-->
         <scene sceneID="aJN-Dj-iGX">
             <objects>
                 <viewController storyboardIdentifier="ProfileVC" id="aNR-5Y-JWV" customClass="ProfileVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
@@ -34,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLd-AF-aVP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableView>
                         </subviews>
@@ -47,7 +31,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m3P-al-aAk"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" largeTitleDisplayMode="never" id="DWx-dZ-mbt"/>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="DWx-dZ-mbt"/>
                     <connections>
                         <outlet property="tableView" destination="pLd-AF-aVP" id="TD7-Wc-fv7"/>
                     </connections>
@@ -55,6 +39,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RV6-q2-P4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="532" y="-561"/>
+        </scene>
+        <!--Notifications-->
+        <scene sceneID="7UH-vb-mGe">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsVC" id="ZTZ-UF-c77" customClass="NotificationsVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ekt-lY-QT6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NuH-R6-vUi">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="NuH-R6-vUi" firstAttribute="leading" secondItem="ekt-lY-QT6" secondAttribute="leading" id="CmE-hr-KUK"/>
+                            <constraint firstItem="gmk-kd-y3D" firstAttribute="bottom" secondItem="NuH-R6-vUi" secondAttribute="bottom" id="EkG-EY-bEZ"/>
+                            <constraint firstItem="NuH-R6-vUi" firstAttribute="top" secondItem="gmk-kd-y3D" secondAttribute="top" id="ObI-ui-a86"/>
+                            <constraint firstItem="gmk-kd-y3D" firstAttribute="trailing" secondItem="NuH-R6-vUi" secondAttribute="trailing" id="pv4-LU-RIn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gmk-kd-y3D"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Notifications" id="puI-VW-m0D"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nc0-gN-3DE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="-561"/>
         </scene>
     </scenes>
 </document>

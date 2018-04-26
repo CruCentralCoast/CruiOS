@@ -40,7 +40,7 @@
                             <color key="value" red="0.51765072349999997" green="0.51764053109999997" blue="0.51764744519999994" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="selectorColor">
-                            <color key="value" red="0.81629067659999999" green="0.50918740029999998" blue="0.21166020629999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="value" red="0.8666666666666667" green="0.49019607843137253" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="color" keyPath="selectorTextColor">
                             <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,7 +51,6 @@
                     </connections>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="yBY-ba-fwd" firstAttribute="trailing" secondItem="7YP-Uo-Hzz" secondAttribute="trailing" id="35v-qQ-SaC"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="7YP-Uo-Hzz" secondAttribute="trailing" id="Myf-Fe-Xig"/>
