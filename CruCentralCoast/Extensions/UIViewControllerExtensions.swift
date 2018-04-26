@@ -25,17 +25,17 @@ public extension UIViewController {
             
             if let selector = buttonPressed {
                 profileButton.addTarget(self, action: selector, for: .touchUpInside)
-                profileButton.addTarget(self, action: #selector(self.touchDownColor), for: .touchDown)
-                profileButton.addTarget(self, action: #selector(self.touchUpColor), for: [.touchUpInside,.touchCancel,.touchUpOutside])
+                profileButton.addTarget(self, action: #selector(self.setColorLightGray), for: [.touchDown, .touchDragEnter])
+                profileButton.addTarget(self, action: #selector(self.setColorBlack), for: [.touchUpInside,.touchCancel,.touchUpOutside, .touchDragExit])
             }
         }
     }
     
-    @objc private func touchDownColor(sender: UIButton, forevent event: UIEvent) {
+    @objc private func setColorLightGray(sender: UIButton, forevent event: UIEvent) {
         sender.tintColor = .lightGray
     }
     
-    @objc private func touchUpColor(sender: UIButton) {
+    @objc private func setColorBlack(sender: UIButton) {
         sender.tintColor = .black
     }
     
