@@ -70,7 +70,7 @@ class CruTextField: UITextField {
         self.titleLabel = UILabel()
         self.addSubview(self.titleLabel!)
         self.titleLabel.text = self.title
-        self.titleLabel.font = UIFont.systemFont(ofSize: 18)
+        self.titleLabel.font = UIFont.systemFont(ofSize: 20)
         self.titleLabel.textColor = self.titleTextColor
         self.titleLabel.sizeToFit()
         self.titleLabel.centerXAnchor.constraint(equalTo: self.leadingAnchor).isActive = true

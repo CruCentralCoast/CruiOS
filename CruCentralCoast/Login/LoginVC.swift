@@ -15,6 +15,7 @@ class LoginVC: UIViewController {
     
     @IBOutlet weak var emailTextField: CruTextField!
     @IBOutlet weak var passwordTextField: CruTextField!
+    @IBOutlet weak var signInButton: CruButton!
     
     var fbSignInDelegate: FBSignInDelegate?
     
@@ -28,9 +29,33 @@ class LoginVC: UIViewController {
         // Dismiss keyboard if view is tapped
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
         self.view.addGestureRecognizer(tapGesture)
+        
+        // Listen for keyboard events
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            let buttonPosition = self.signInButton.frame.origin.y + self.signInButton.frame.height
+            let keyboardPosition = self.view.frame.height - keyboardSize.height
+            let buffer: CGFloat = 10
+            if buttonPosition + buffer >= keyboardPosition {
+                self.view.frame.origin.y -= buttonPosition + buffer - keyboardPosition
+            }
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
     }
     
     @IBAction func signIn() {
+        self.view.endEditing(true)
         self.emailTextField.validateHasText()
         self.passwordTextField.validateHasText()
         
@@ -82,6 +107,7 @@ extension LoginVC: UITextFieldDelegate {
         if textField == self.emailTextField {
             self.passwordTextField.becomeFirstResponder()
         } else if textField == self.passwordTextField {
+            self.passwordTextField.resignFirstResponder()
             self.signIn()
         }
         return true
