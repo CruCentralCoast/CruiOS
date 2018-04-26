@@ -36,7 +36,6 @@
 		5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413C7203FAD4D00E2184D /* placeholder.jpg */; };
 		5EC413CD203FAF2300E2184D /* MissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC413CB203FAF2300E2184D /* MissionCell.swift */; };
 		5EC413CE203FAF2300E2184D /* MissionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413CC203FAF2300E2184D /* MissionCell.xib */; };
-		AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */; };
 		5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */; };
 		5EE2B2D5207ED6F700528579 /* MinistryTeams.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */; };
 		5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EE2B2D6207ED75500528579 /* CommunityGroups.storyboard */; };
@@ -50,6 +49,15 @@
 		5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */; };
 		6A096E88C6376481F194DB53 /* Pods_CruCentralCoast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */; };
 		A66506F3E10C7BCD2101AF6A /* Pods_CruCentralCoastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077C9B738C28BA8B1DC38487 /* Pods_CruCentralCoastUITests.framework */; };
+		AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */; };
+		AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8B920916B470089E370 /* ProfileVC.swift */; };
+		AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8BD20916BE00089E370 /* Profile.storyboard */; };
+		AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */; };
+		AD24E8C22091728F0089E370 /* ProfileNotificationsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8C02091728F0089E370 /* ProfileNotificationsCell.xib */; };
+		AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8C620917D6B0089E370 /* ProfileEmailCell.swift */; };
+		AD24E8C920917D6B0089E370 /* ProfileEmailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8C720917D6B0089E370 /* ProfileEmailCell.xib */; };
+		AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8CA20917FFD0089E370 /* ProfileHeaderView.swift */; };
+		AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8CC209180060089E370 /* ProfileHeaderView.xib */; };
 		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450A2075B33200C1EA1B /* VideosResources.swift */; };
@@ -126,7 +134,6 @@
 		5EC413C7203FAD4D00E2184D /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		5EC413CB203FAF2300E2184D /* MissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCell.swift; sourceTree = "<group>"; };
 		5EC413CC203FAF2300E2184D /* MissionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MissionCell.xib; sourceTree = "<group>"; };
-		AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MissionDetails.storyboard; sourceTree = "<group>"; };
 		5EE2B2D4207ED6F700528579 /* MinistryTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MinistryTeams.storyboard; sourceTree = "<group>"; };
 		5EE2B2D6207ED75500528579 /* CommunityGroups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroups.storyboard; sourceTree = "<group>"; };
@@ -140,6 +147,15 @@
 		5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamDetailsVC.swift; sourceTree = "<group>"; };
 		6CF951D8F2A54B4B44EBA7C0 /* Pods-CruCentralCoastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BD3D47169B5D42EAABD1CAC /* Pods-CruCentralCoastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
+		AD24E8B920916B470089E370 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
+		AD24E8BD20916BE00089E370 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationsCell.swift; sourceTree = "<group>"; };
+		AD24E8C02091728F0089E370 /* ProfileNotificationsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileNotificationsCell.xib; sourceTree = "<group>"; };
+		AD24E8C620917D6B0089E370 /* ProfileEmailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEmailCell.swift; sourceTree = "<group>"; };
+		AD24E8C720917D6B0089E370 /* ProfileEmailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileEmailCell.xib; sourceTree = "<group>"; };
+		AD24E8CA20917FFD0089E370 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		AD24E8CC209180060089E370 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
 		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE6450A2075B33200C1EA1B /* VideosResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResources.swift; sourceTree = "<group>"; };
@@ -244,6 +260,7 @@
 		5E8EC8B9202A3785000F86D8 /* CruCentralCoast */ = {
 			isa = PBXGroup;
 			children = (
+				AD24E8B820916B1A0089E370 /* Profile */,
 				ADFA56E5206DADFC006F7099 /* CustomViews */,
 				ADFA56E4206DADF1006F7099 /* Extensions */,
 				5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */,
@@ -360,6 +377,29 @@
 				5EE2B2D9207ED78600528579 /* CommunityGroupsCVC.xib */,
 			);
 			path = CommunityGroups;
+			sourceTree = "<group>";
+		};
+		AD24E8B820916B1A0089E370 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				AD24E8C3209172970089E370 /* Cells */,
+				AD24E8B920916B470089E370 /* ProfileVC.swift */,
+				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		AD24E8C3209172970089E370 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */,
+				AD24E8C02091728F0089E370 /* ProfileNotificationsCell.xib */,
+				AD24E8C620917D6B0089E370 /* ProfileEmailCell.swift */,
+				AD24E8C720917D6B0089E370 /* ProfileEmailCell.xib */,
+				AD24E8CA20917FFD0089E370 /* ProfileHeaderView.swift */,
+				AD24E8CC209180060089E370 /* ProfileHeaderView.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		ADFA56D5206D7BC8006F7099 /* Articles */ = {
@@ -546,6 +586,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				ADE91F2420883732004C12B5 /* SegmentedControlInNavBarView.xib in Resources */,
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
@@ -555,14 +596,17 @@
 				5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */,
 				5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */,
 				5EE2B2DB207ED78600528579 /* CommunityGroupsCVC.xib in Resources */,
+				AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */,
 				5E8EC8C7202A3785000F86D8 /* LaunchScreen.storyboard in Resources */,
 				ADFA56DD206D82E1006F7099 /* VideosResourcesCell.xib in Resources */,
 				5EE2B2D5207ED6F700528579 /* MinistryTeams.storyboard in Resources */,
+				AD24E8C920917D6B0089E370 /* ProfileEmailCell.xib in Resources */,
 				ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */,
 				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
 				5EC413C6203FA86A00E2184D /* Missions.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
+				AD24E8C22091728F0089E370 /* ProfileNotificationsCell.xib in Resources */,
 				5EEE64112084912C00AACF91 /* cancel icon.ico in Resources */,
 				5EE2B2D7207ED75500528579 /* CommunityGroups.storyboard in Resources */,
 				5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */,
@@ -701,6 +745,7 @@
 			files = (
 				5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */,
 				5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */,
+				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */,
@@ -719,15 +764,18 @@
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
 				2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */,
+				AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */,
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
 				AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */,
 				ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */,
 				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
+				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,
 				2F2BD9972077325300512170 /* CruTextField.swift in Sources */,
 				2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */,
 				5E5416D72088269600A56279 /* MissionCVC.swift in Sources */,
+				AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */,
 				5EEE64182085252F00AACF91 /* MinistryTeamCVC.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
 			);

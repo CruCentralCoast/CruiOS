@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ProfileHeaderView" customModule="CruCentralCoast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="196"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAB-hg-XZn">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="172"/>
+                    <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0U1-H6-xDe">
+                    <rect key="frame" x="137" y="16" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="6by-Yo-J8u"/>
+                        <constraint firstAttribute="width" secondItem="0U1-H6-xDe" secondAttribute="height" multiplier="1:1" id="E1w-aI-Tvx"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Doe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xBw-KL-vfP">
+                    <rect key="frame" x="126" y="126" width="123.5" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bAB-hg-XZn" secondAttribute="trailing" id="3Wl-fA-HJ3"/>
+                <constraint firstItem="bAB-hg-XZn" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="GHD-gc-A0D"/>
+                <constraint firstItem="0U1-H6-xDe" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="JfZ-m3-hvW"/>
+                <constraint firstItem="0U1-H6-xDe" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="16" id="RBn-YU-3c2"/>
+                <constraint firstItem="bAB-hg-XZn" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="dix-Sz-Rk3"/>
+                <constraint firstItem="bAB-hg-XZn" firstAttribute="bottom" secondItem="xBw-KL-vfP" secondAttribute="bottom" constant="10" id="eEs-TY-KdN"/>
+                <constraint firstItem="xBw-KL-vfP" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="ecO-Zz-g0Y"/>
+                <constraint firstItem="xBw-KL-vfP" firstAttribute="top" secondItem="0U1-H6-xDe" secondAttribute="bottom" constant="10" id="uCz-kP-NvX"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="fakeBottomOfNavBar" destination="bAB-hg-XZn" id="CY1-Ve-1Xv"/>
+                <outlet property="imageLabel" destination="0U1-H6-xDe" id="hQu-6G-efe"/>
+                <outlet property="nameLabel" destination="xBw-KL-vfP" id="DtZ-pb-dk7"/>
+            </connections>
+            <point key="canvasLocation" x="75.5" y="-113"/>
+        </view>
+    </objects>
+</document>
