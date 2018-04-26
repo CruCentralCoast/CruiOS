@@ -11,7 +11,7 @@ import UIKit
 class EventsCVC: UICollectionViewController {
     
     //some data for testing
-    var dataArray: [EventCellParameters] = [EventCellParameters(titleLabel: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), EventCellParameters(titleLabel: "test2", date: "date", location: "location", description: "description"), EventCellParameters(titleLabel: "test3", date: "date", location: "location", description: "description"), EventCellParameters(titleLabel: "test4", date: "date", location: "location", description: "description"), EventCellParameters(titleLabel: "test5", date: "date", location: "location", description: "description")]
+    var dataArray: [EventCellParameters] = [EventCellParameters(title: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), EventCellParameters(title: "test2", date: "date", location: "location", description: "description"), EventCellParameters(title: "test3", date: "date", location: "location", description: "description"), EventCellParameters(title: "test4", date: "date", location: "location", description: "description"), EventCellParameters(title: "test5", date: "date", location: "location", description: "description")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +32,7 @@ class EventsCVC: UICollectionViewController {
         
         //set the cells
         cell.dateLabel.text = dataArray[indexPath.item].date
-        cell.descriptionLabel.text = dataArray[indexPath.item].titleLabel
+        cell.titleLabel.text = dataArray[indexPath.item].title
         cell.imageView.image = #imageLiteral(resourceName: "night-at-the-oscars")
     
         return cell

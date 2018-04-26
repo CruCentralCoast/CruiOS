@@ -145,7 +145,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="FBButton:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="6rB-Er-cEu"/>
+                                            <action selector="facebookButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="abh-MR-Ft4"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -188,10 +188,10 @@
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="Odd-9O-O3u" id="tKu-c6-WSm"/>
-                        <outlet property="descriptionText" destination="3lv-CQ-HAd" id="vab-2M-7LH"/>
-                        <outlet property="eventTitleLabel" destination="LkD-pk-Jlf" id="YT8-sd-be1"/>
+                        <outlet property="descriptionLabel" destination="3lv-CQ-HAd" id="HL2-Vy-gvP"/>
                         <outlet property="imageView" destination="UYN-ct-CuI" id="aSQ-16-FIh"/>
                         <outlet property="locationLabel" destination="Zsl-gL-xUs" id="OFS-AR-8sg"/>
+                        <outlet property="titleLabel" destination="LkD-pk-Jlf" id="Jih-Ss-FeQ"/>
                         <outlet property="widthConstraint" destination="WRF-uQ-VbZ" id="jXZ-39-bBs"/>
                     </connections>
                 </viewController>

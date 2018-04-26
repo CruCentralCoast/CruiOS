@@ -75,8 +75,8 @@
             <connections>
                 <outlet property="cellMask" destination="Jfy-fQ-Nti" id="Jl2-8N-cTc"/>
                 <outlet property="dateLabel" destination="elv-hc-oGS" id="xtj-ff-EAm"/>
-                <outlet property="descriptionLabel" destination="HaG-Hl-K8e" id="DgE-Cn-otb"/>
                 <outlet property="imageView" destination="Cja-62-qAg" id="FHM-PN-0B9"/>
+                <outlet property="titleLabel" destination="HaG-Hl-K8e" id="Hmp-nv-aQI"/>
                 <outlet property="widthConstraint" destination="etp-qG-0X7" id="4QZ-WM-de6"/>
             </connections>
             <point key="canvasLocation" x="150" y="50"/>
