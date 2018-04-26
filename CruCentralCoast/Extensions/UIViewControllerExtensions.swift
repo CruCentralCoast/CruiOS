@@ -9,13 +9,14 @@
 import UIKit
 
 public extension UIViewController {
-    func insertProfileButtonInNavBar(buttonPressed: Selector?) {
+    func insertProfileButtonInNavBar() {
         if let largeTitleView = self.navigationController?.navigationBar.subviews.first(where: {
             String(describing: type(of: $0)) == "_UINavigationBarLargeTitleView" } ) {
             
             let profileButton = UIButton()
             profileButton.translatesAutoresizingMaskIntoConstraints = false
-            profileButton.setImage(#imageLiteral(resourceName: "profile"), for: .normal)
+            profileButton.setImage(#imageLiteral(resourceName: "profile_icon")
+                , for: .normal)
             profileButton.tintColor = .black
             largeTitleView.addSubview(profileButton)
             profileButton.bottomAnchor.constraint(equalTo: largeTitleView.bottomAnchor, constant: -10).isActive = true
@@ -23,20 +24,23 @@ public extension UIViewController {
             profileButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
             profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor).isActive = true
             
-            if let selector = buttonPressed {
-                profileButton.addTarget(self, action: selector, for: .touchUpInside)
-                profileButton.addTarget(self, action: #selector(self.touchDownColor), for: .touchDown)
-                profileButton.addTarget(self, action: #selector(self.touchUpColor), for: [.touchUpInside,.touchCancel,.touchUpOutside])
-            }
+            profileButton.addTarget(self, action: #selector(self.pushProfileViewController), for: .touchUpInside)
+            profileButton.addTarget(self, action: #selector(self.setColorLightGray), for: [.touchDown, .touchDragEnter])
+            profileButton.addTarget(self, action: #selector(self.setColorBlack), for: [.touchUpInside,.touchCancel,.touchUpOutside, .touchDragExit])
         }
     }
     
-    @objc private func touchDownColor(sender: UIButton, forevent event: UIEvent) {
+    @objc private func setColorLightGray(sender: UIButton, forevent event: UIEvent) {
         sender.tintColor = .lightGray
     }
     
-    @objc private func touchUpColor(sender: UIButton) {
+    @objc private func setColorBlack(sender: UIButton) {
         sender.tintColor = .black
+    }
+    
+    @objc private func pushProfileViewController(sender: UIButton) {
+        let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(ProfileVC.self)
+        self.show(vc, sender: self)
     }
     
     func presentAlert(title: String?, message: String?, animated: Bool = true, completion: (()->Void)? = nil) {

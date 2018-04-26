@@ -31,7 +31,7 @@ class ResourcesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.insertProfileButtonInNavBar(buttonPressed: #selector(self.pushProfileViewController))
+        self.insertProfileButtonInNavBar()
         self.tableView.registerCell(ArticlesResourcesCell.self)
         self.tableView.registerCell(VideosResourcesCell.self)
         self.tableView.registerCell(AudioResourcesCell.self)
@@ -66,10 +66,6 @@ class ResourcesVC: UIViewController {
             }
         }
         return nil
-    }
-    
-    @objc func pushProfileViewController(sender: UIButton) {
-        print("Profile Button Pressed")
     }
     
 }
