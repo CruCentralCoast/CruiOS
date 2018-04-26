@@ -67,8 +67,7 @@
 		E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094400E2075ACE40057AC83 /* EventsCVC.swift */; };
 		E09440122075AEC40057AC83 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09440102075AEC40057AC83 /* EventCell.swift */; };
 		E09440132075AEC40057AC83 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09440112075AEC40057AC83 /* EventCell.xib */; };
-		E0C81C0A207EED5800A00645 /* EventsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C81C08207EED5800A00645 /* EventsDetailVC.swift */; };
-		E0C81C0B207EED5800A00645 /* EventsDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0C81C09207EED5800A00645 /* EventsDetailVC.xib */; };
+		E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C81C08207EED5800A00645 /* EventDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,8 +159,7 @@
 		E094400E2075ACE40057AC83 /* EventsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCVC.swift; sourceTree = "<group>"; };
 		E09440102075AEC40057AC83 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		E09440112075AEC40057AC83 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
-		E0C81C08207EED5800A00645 /* EventsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsDetailVC.swift; sourceTree = "<group>"; };
-		E0C81C09207EED5800A00645 /* EventsDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsDetailVC.xib; sourceTree = "<group>"; };
+		E0C81C08207EED5800A00645 /* EventDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsVC.swift; sourceTree = "<group>"; };
 		E4E2E2445612ECE64B34F5FD /* Pods-CruCentralCoastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.release.xcconfig"; sourceTree = "<group>"; };
 		E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -305,8 +303,7 @@
 				E094400E2075ACE40057AC83 /* EventsCVC.swift */,
 				E09440102075AEC40057AC83 /* EventCell.swift */,
 				E09440112075AEC40057AC83 /* EventCell.xib */,
-				E0C81C08207EED5800A00645 /* EventsDetailVC.swift */,
-				E0C81C09207EED5800A00645 /* EventsDetailVC.xib */,
+				E0C81C08207EED5800A00645 /* EventDetailsVC.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -566,7 +563,6 @@
 				ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */,
 				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
 				E09440132075AEC40057AC83 /* EventCell.xib in Resources */,
-				E0C81C0B207EED5800A00645 /* EventsDetailVC.xib in Resources */,
 				5EC413C6203FA86A00E2184D /* Missions.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
@@ -736,7 +732,7 @@
 				5E5416D72088269600A56279 /* MissionCVC.swift in Sources */,
 				5EEE64182085252F00AACF91 /* MinistryTeamCVC.swift in Sources */,
 				E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */,
-				E0C81C0A207EED5800A00645 /* EventsDetailVC.swift in Sources */,
+				E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

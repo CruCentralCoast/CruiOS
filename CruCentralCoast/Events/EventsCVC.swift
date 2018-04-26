@@ -10,26 +10,40 @@ import UIKit
 
 class EventsCVC: UICollectionViewController {
     
+    //some data for testing
+    var dataArray: [EventCellParameters] = [EventCellParameters(titleLabel: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), EventCellParameters(titleLabel: "test2", date: "date", location: "location", description: "description"), EventCellParameters(titleLabel: "test3", date: "date", location: "location", description: "description"), EventCellParameters(titleLabel: "test4", date: "date", location: "location", description: "description"), EventCellParameters(titleLabel: "test5", date: "date", location: "location", description: "description")]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
+        }
+        
         self.collectionView?.registerCell(EventCell.self)
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return dataArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(EventCell.self, indexPath: indexPath)
-        cell.descriptionLabel.text = "Night at the Oscars"
-        cell.dateLabel.text = "Mar 17, 2018"
+        
+        //set the cells
+        cell.dateLabel.text = dataArray[indexPath.item].date
+        cell.descriptionLabel.text = dataArray[indexPath.item].titleLabel
         cell.imageView.image = #imageLiteral(resourceName: "night-at-the-oscars")
     
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let eventsVC = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventsDetailsVC")
-        self.show(eventsVC, sender: nil)
+        guard let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventDetailsVC") as? EventDetailsVC else {
+            assertionFailure("Probably used the wrong storyboard name or identifier here")
+            return
+        }
+        vc.configure(with: self.dataArray[indexPath.item])
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 }
