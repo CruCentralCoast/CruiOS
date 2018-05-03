@@ -22,7 +22,7 @@
                         <constraint firstAttribute="height" constant="4" id="sVp-NA-fLu"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-Uo-Hzz" customClass="CustomSegmentedControl" customModule="CruCentralCoast" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7YP-Uo-Hzz" customClass="CruSegmentedControl" customModule="CruCentralCoast" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
                     <color key="backgroundColor" red="0.97647720579999997" green="0.9764588475" blue="0.97647136450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>

@@ -1,5 +1,5 @@
 //
-//  CustomSegmentedControl.swift
+//  CruSegmentedControl.swift
 //  CruCentralCoast
 //
 //  Created by Michael Cantrell on 3/28/18.
@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class CustomSegmentedControl: UIControl {
+class CruSegmentedControl: UIControl {
     var buttons = [UIButton]()
     var selector: UIView!
     var selectedSegmentIndex = 0
@@ -91,8 +91,8 @@ class CustomSegmentedControl: UIControl {
     }
     
     override func draw(_ rect: CGRect) {
-        // without this line, the "self.frame.width" was only
-        // 375 on the iphone 8 Plus, not 414
+        // this line is here because of a simulator glitch which bases sizes of things off of the storyboard "View As (device)" option
+        // for release, I don't think this line will be necesary
         self.updateView()
         
         self.layer.cornerRadius = self.frame.height/2

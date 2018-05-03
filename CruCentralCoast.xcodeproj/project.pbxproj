@@ -49,7 +49,6 @@
 		5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */; };
 		6A096E88C6376481F194DB53 /* Pods_CruCentralCoast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */; };
 		A66506F3E10C7BCD2101AF6A /* Pods_CruCentralCoastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077C9B738C28BA8B1DC38487 /* Pods_CruCentralCoastUITests.framework */; };
-		AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */; };
 		AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8B920916B470089E370 /* ProfileVC.swift */; };
 		AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8BD20916BE00089E370 /* Profile.storyboard */; };
 		AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */; };
@@ -61,7 +60,9 @@
 		AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8D820919C510089E370 /* ProfileSelectableTextCell.swift */; };
 		AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8D920919C510089E370 /* ProfileSelectableTextCell.xib */; };
 		AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8DC20919C670089E370 /* NotificationsVC.swift */; };
-		AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD32AE38206C546000437601 /* CustomSegmentedControl.swift */; };
+		AD55A0E4209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD55A0E2209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift */; };
+		AD55A0E5209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD55A0E3209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib */; };
+		AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE6450B2075B33200C1EA1B /* VideosResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450A2075B33200C1EA1B /* VideosResources.swift */; };
 		ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE6450C2075B33800C1EA1B /* ArticlesResources.swift */; };
@@ -76,6 +77,8 @@
 		ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56DE206D82FA006F7099 /* AudioResourcesCell.swift */; };
 		ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56DF206D82FA006F7099 /* AudioResourcesCell.xib */; };
 		ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */; };
+		ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8B820927A39009D5BC6 /* CustomSegmentedControl.swift */; };
+		ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */; };
 		B925A4D486A6853802C549FA /* Pods_CruCentralCoastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */; };
 		E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */; };
 		E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094400E2075ACE40057AC83 /* EventsCVC.swift */; };
@@ -154,7 +157,6 @@
 		5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamDetailsVC.swift; sourceTree = "<group>"; };
 		6CF951D8F2A54B4B44EBA7C0 /* Pods-CruCentralCoastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BD3D47169B5D42EAABD1CAC /* Pods-CruCentralCoastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileButton.swift; sourceTree = "<group>"; };
 		AD24E8B920916B470089E370 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AD24E8BD20916BE00089E370 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationsCell.swift; sourceTree = "<group>"; };
@@ -166,7 +168,9 @@
 		AD24E8D820919C510089E370 /* ProfileSelectableTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSelectableTextCell.swift; sourceTree = "<group>"; };
 		AD24E8D920919C510089E370 /* ProfileSelectableTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSelectableTextCell.xib; sourceTree = "<group>"; };
 		AD24E8DC20919C670089E370 /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
-		AD32AE38206C546000437601 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		AD55A0E2209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCampusOrMinistryCell.swift; sourceTree = "<group>"; };
+		AD55A0E3209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeCampusOrMinistryCell.xib; sourceTree = "<group>"; };
+		AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE6450A2075B33200C1EA1B /* VideosResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResources.swift; sourceTree = "<group>"; };
 		ADE6450C2075B33800C1EA1B /* ArticlesResources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticlesResources.swift; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 		ADFA56DE206D82FA006F7099 /* AudioResourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioResourcesCell.swift; sourceTree = "<group>"; };
 		ADFA56DF206D82FA006F7099 /* AudioResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioResourcesCell.xib; sourceTree = "<group>"; };
 		ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
+		ADFCD8B820927A39009D5BC6 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
+		ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCampusOrMinistryVC.swift; sourceTree = "<group>"; };
 		B5BF33BE152889DED4A13ABF /* Pods-CruCentralCoast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoast.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast.release.xcconfig"; sourceTree = "<group>"; };
 		B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResourcesCell.swift; sourceTree = "<group>"; };
@@ -404,6 +410,9 @@
 				AD24E8C3209172970089E370 /* Cells */,
 				AD24E8B920916B470089E370 /* ProfileVC.swift */,
 				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
+				ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */,
+				AD55A0E2209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift */,
+				AD55A0E3209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -461,6 +470,7 @@
 				AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */,
 				2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */,
 				2F180861207980F100693C7B /* UIViewControllerExtensions.swift */,
+				AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -468,8 +478,7 @@
 		ADFA56E5206DADFC006F7099 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				AD32AE38206C546000437601 /* CustomSegmentedControl.swift */,
-				AD00F1C5207EFAEA0049EA11 /* ProfileButton.swift */,
+				ADFCD8B820927A39009D5BC6 /* CustomSegmentedControl.swift */,
 				2F2BD98E2076C0A100512170 /* CruImageButton.swift */,
 				2F2BD990207715F000512170 /* CruButton.swift */,
 				2F2BD9962077325300512170 /* CruTextField.swift */,
@@ -628,6 +637,7 @@
 				E09440132075AEC40057AC83 /* EventCell.xib in Resources */,
 				5EC413C6203FA86A00E2184D /* Missions.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
+				AD55A0E5209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib in Resources */,
 				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
 				AD24E8C22091728F0089E370 /* ProfileNotificationsCell.xib in Resources */,
 				5EEE64112084912C00AACF91 /* cancel icon.ico in Resources */,
@@ -771,7 +781,6 @@
 				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				ADE6450F2075B6E200C1EA1B /* AudioResources.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
-				AD00F1C6207EFAEA0049EA11 /* ProfileButton.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
 				ADE91F26208838C6004C12B5 /* SegmentedControlInNavBarView.swift in Sources */,
 				AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */,
@@ -787,12 +796,15 @@
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
 				2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */,
+				AD55A0E4209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift in Sources */,
 				AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */,
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
+				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
-				AD32AE39206C546000437601 /* CustomSegmentedControl.swift in Sources */,
 				ADE6450D2075B33800C1EA1B /* ArticlesResources.swift in Sources */,
+				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
 				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
+				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
 				AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,

@@ -20,7 +20,7 @@ class SegmentedControlInNavBarView: UITableViewHeaderFooterView {
     }
 
     
-    @IBAction func segmentedControlValueChanged(_ sender: CustomSegmentedControl) {
+    @IBAction func segmentedControlValueChanged(_ sender: CruSegmentedControl) {
         self.delegate?.segmentedControlValueChanged(sender.selectedSegmentIndex)
     }
 }
