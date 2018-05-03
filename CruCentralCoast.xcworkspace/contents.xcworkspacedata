@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/landongerrits/Documents/CruiOS/CruCentralCoast/Community/Ministry Teams/MinistryTeamDetails.storyboard">
-   </FileRef>
-   <FileRef
       location = "group:CruCentralCoast.xcodeproj">
    </FileRef>
    <FileRef
