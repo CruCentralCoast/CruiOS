@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,29 +13,26 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="MinistryCell" customModule="CruCentralCoast" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="457" height="338"/>
+            <rect key="frame" x="0.0" y="0.0" width="457" height="308"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="457" height="338"/>
+                <rect key="frame" x="0.0" y="0.0" width="457" height="308"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RII-sa-9mD" userLabel="cellMask">
-                        <rect key="frame" x="0.0" y="0.0" width="457" height="338"/>
+                        <rect key="frame" x="0.0" y="0.0" width="457" height="308"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xW5-3b-jN2">
-                                <rect key="frame" x="0.0" y="0.0" width="457" height="220"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="xW5-3b-jN2" secondAttribute="height" multiplier="457:220" id="Dh0-fa-Gk8"/>
-                                </constraints>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xW5-3b-jN2">
+                                <rect key="frame" x="0.0" y="0.0" width="457" height="215.5"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Team Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg7-v8-fa4">
-                                <rect key="frame" x="14" y="235" width="258" height="33"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Team Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg7-v8-fa4">
+                                <rect key="frame" x="14" y="230.5" width="257.5" height="32.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Leader Name Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNd-ug-whw">
-                                <rect key="frame" x="14" y="276" width="235" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Leader Name Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNd-ug-whw">
+                                <rect key="frame" x="14" y="271" width="235" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
                                 <color key="textColor" red="0.21682661802030456" green="0.21682661802030456" blue="0.21682661802030456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
@@ -43,32 +40,34 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="xW5-3b-jN2" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" id="B39-P9-ux8"/>
-                            <constraint firstAttribute="trailing" secondItem="xW5-3b-jN2" secondAttribute="trailing" id="Jot-nb-WSa"/>
-                            <constraint firstItem="xW5-3b-jN2" firstAttribute="top" secondItem="RII-sa-9mD" secondAttribute="top" id="Jwp-6Y-u6Z"/>
-                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="Zw0-j3-FST"/>
-                            <constraint firstItem="cNd-ug-whw" firstAttribute="top" secondItem="Tg7-v8-fa4" secondAttribute="bottom" constant="8" id="bjC-YN-5OT"/>
-                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="top" secondItem="xW5-3b-jN2" secondAttribute="bottom" constant="15" id="cWp-5m-fHB"/>
-                            <constraint firstItem="cNd-ug-whw" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="qcm-np-8fN"/>
+                            <constraint firstItem="cNd-ug-whw" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="4l5-tb-L2U"/>
+                            <constraint firstItem="xW5-3b-jN2" firstAttribute="top" secondItem="RII-sa-9mD" secondAttribute="top" id="6Ap-Fw-3Kc"/>
+                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="Fgu-b7-QkO"/>
+                            <constraint firstAttribute="trailing" secondItem="xW5-3b-jN2" secondAttribute="trailing" id="M2v-Lo-g85"/>
+                            <constraint firstItem="xW5-3b-jN2" firstAttribute="height" secondItem="RII-sa-9mD" secondAttribute="height" multiplier="0.7" id="Qph-rF-o5d"/>
+                            <constraint firstItem="xW5-3b-jN2" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" id="UhS-Vv-9Ks"/>
+                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="top" secondItem="xW5-3b-jN2" secondAttribute="bottom" constant="15" id="VQD-cW-vxa"/>
+                            <constraint firstItem="xW5-3b-jN2" firstAttribute="width" secondItem="RII-sa-9mD" secondAttribute="width" id="gqo-EJ-EhW"/>
+                            <constraint firstItem="cNd-ug-whw" firstAttribute="top" secondItem="Tg7-v8-fa4" secondAttribute="bottom" constant="8" id="lyj-ep-zq5"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="RII-sa-9mD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="8hg-7x-iPt"/>
-                <constraint firstAttribute="trailing" secondItem="RII-sa-9mD" secondAttribute="trailing" id="IIl-OJ-Zf7"/>
-                <constraint firstItem="RII-sa-9mD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iwt-uc-wgK"/>
-                <constraint firstAttribute="bottom" secondItem="RII-sa-9mD" secondAttribute="bottom" id="z7d-Me-4Y6"/>
+                <constraint firstAttribute="bottom" secondItem="RII-sa-9mD" secondAttribute="bottom" id="M77-Tz-boF"/>
+                <constraint firstAttribute="trailing" secondItem="RII-sa-9mD" secondAttribute="trailing" id="Q51-vt-Xsu"/>
+                <constraint firstItem="RII-sa-9mD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aCc-ix-EVN"/>
+                <constraint firstItem="RII-sa-9mD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="laJ-b5-VAc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="457" height="338"/>
+            <size key="customSize" width="457" height="308"/>
             <connections>
                 <outlet property="cellMask" destination="RII-sa-9mD" id="nMd-gb-Pre"/>
                 <outlet property="imageView" destination="xW5-3b-jN2" id="lyD-Ky-6Pg"/>
                 <outlet property="ministryTeamLabel" destination="Tg7-v8-fa4" id="1aN-Tl-ssK"/>
                 <outlet property="ministryTeamLeaderLabel" destination="cNd-ug-whw" id="NTo-Kx-9Gk"/>
             </connections>
-            <point key="canvasLocation" x="14.5" y="62"/>
+            <point key="canvasLocation" x="14.5" y="47"/>
         </collectionViewCell>
     </objects>
     <resources>

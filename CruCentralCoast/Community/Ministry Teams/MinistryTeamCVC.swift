@@ -10,14 +10,14 @@ import UIKit
 
 private let reuseIdentifier = "MinistryCell"
 
-class MinistryTeamCVC: UICollectionViewController {
+class MinistryTeamCVC: UICollectionViewController, UICollectionViewDelegateFlowLayout{
     
     //test data array
     var testDataArray: [MinistryCellParameters] = [MinistryCellParameters(teamTitle: "Software Dev Team", teamLeaders: ["Landon Gerrits", "Tyler Dahl"], teamDescription: "description..."), MinistryCellParameters(teamTitle: "Graphic Design Team", teamLeaders: ["Annamarie"], teamDescription: "description...")]
     
-     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
 
         self.collectionView?.registerCell(MinistryCell.self)
 
@@ -39,6 +39,12 @@ class MinistryTeamCVC: UICollectionViewController {
     */
 
     // MARK: UICollectionViewDataSource
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.view.frame.width - 20.0
+        return CGSize(width: width, height: width*0.8)
+
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items

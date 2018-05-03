@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -53,7 +53,6 @@
                             <constraint firstAttribute="trailing" secondItem="Cja-62-qAg" secondAttribute="trailing" id="1qj-h2-lOY"/>
                             <constraint firstItem="Cja-62-qAg" firstAttribute="leading" secondItem="Jfy-fQ-Nti" secondAttribute="leading" id="4bT-U6-vIm"/>
                             <constraint firstItem="elv-hc-oGS" firstAttribute="top" secondItem="HaG-Hl-K8e" secondAttribute="bottom" constant="4" id="6Fb-O8-QJb"/>
-                            <constraint firstAttribute="width" constant="414" id="etp-qG-0X7"/>
                             <constraint firstItem="HaG-Hl-K8e" firstAttribute="top" secondItem="Cja-62-qAg" secondAttribute="bottom" constant="8" id="ifp-Wa-Iiq"/>
                             <constraint firstAttribute="bottom" secondItem="uYv-Sg-71F" secondAttribute="bottom" constant="18" id="lp9-rc-zH5"/>
                             <constraint firstAttribute="bottom" secondItem="elv-hc-oGS" secondAttribute="bottom" constant="8" id="m7Q-CH-HR8"/>
@@ -77,7 +76,6 @@
                 <outlet property="dateLabel" destination="elv-hc-oGS" id="xtj-ff-EAm"/>
                 <outlet property="imageView" destination="Cja-62-qAg" id="FHM-PN-0B9"/>
                 <outlet property="titleLabel" destination="HaG-Hl-K8e" id="Hmp-nv-aQI"/>
-                <outlet property="widthConstraint" destination="etp-qG-0X7" id="4QZ-WM-de6"/>
             </connections>
             <point key="canvasLocation" x="150" y="50"/>
         </collectionViewCell>

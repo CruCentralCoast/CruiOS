@@ -14,16 +14,12 @@ class EventCell: UICollectionViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cellMask: UIView!
-    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
     
     let screenPadding: CGFloat = 20
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        let screenWidth = UIScreen.main.bounds.width
-        
-        widthConstraint.constant = screenWidth - screenPadding
+                
         self.cellMask.layer.cornerRadius = 20
         self.cellMask.layer.shadowColor = UIColor.black.cgColor
         self.cellMask.layer.shadowOpacity = 0.2

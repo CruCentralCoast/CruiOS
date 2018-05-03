@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1oP-vH-uIc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="e7C-d3-Zsl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,29 +9,29 @@
     </dependencies>
     <scenes>
         <!--Ministry Teams-->
-        <scene sceneID="CcY-h5-x1Z">
+        <scene sceneID="Wz3-cA-C74">
             <objects>
-                <collectionViewController storyboardIdentifier="MinistryTeams" title="Ministry Teams" id="1oP-vH-uIc" customClass="MinistryTeamCVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="byY-4t-Ror">
+                <collectionViewController storyboardIdentifier="MinistryTeams" title="Ministry Teams" id="e7C-d3-Zsl" customClass="MinistryTeamCVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="oci-BI-eDl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aL6-Vm-TFv">
-                            <size key="itemSize" width="50" height="50"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="0SY-6K-vpE">
+                            <size key="itemSize" width="100" height="100"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells/>
                         <connections>
-                            <outlet property="dataSource" destination="1oP-vH-uIc" id="szW-4F-GWG"/>
-                            <outlet property="delegate" destination="1oP-vH-uIc" id="lim-kh-m46"/>
+                            <outlet property="dataSource" destination="e7C-d3-Zsl" id="h2z-X3-uca"/>
+                            <outlet property="delegate" destination="e7C-d3-Zsl" id="JC2-sO-ALb"/>
                         </connections>
                     </collectionView>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="f83-Bi-zfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zwq-eS-ib0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="617" y="-262"/>
+            <point key="canvasLocation" x="1442" y="-262"/>
         </scene>
     </scenes>
 </document>

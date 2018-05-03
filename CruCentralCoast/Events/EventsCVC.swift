@@ -16,11 +16,13 @@ class EventsCVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
-        }
-        
         self.collectionView?.registerCell(EventCell.self)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.view.frame.width - 20.0
+        return CGSize(width: width, height: width*0.5)
+        
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
