@@ -4,20 +4,19 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Ministry TeamsCVC-->
+        <!--Ministry Teams-->
         <scene sceneID="CcY-h5-x1Z">
             <objects>
-                <collectionViewController storyboardIdentifier="MinistryTeams" id="1oP-vH-uIc" customClass="MinistryTeamsCVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MinistryTeams" title="Ministry Teams" id="1oP-vH-uIc" customClass="MinistryTeamCVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="byY-4t-Ror">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lS4-Bb-cgu">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aL6-Vm-TFv">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>

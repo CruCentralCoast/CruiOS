@@ -10,31 +10,34 @@ import UIKit
 
 class CommunityViewController: UIViewController {
     
+    @IBOutlet weak var communityGroupButton: UIButton!
+    @IBOutlet weak var ministryTeamButton: UIButton!
+    @IBOutlet weak var missionsButton: UIButton!
+    
     // TO-DO changes these names to "didTap" ....
-    @IBAction func communityGroupsButton(_ sender: Any) {
+    
+    @IBAction func didTapCommunityGroups(_ sender: Any) {
         let vc = UIStoryboard(name: "CommunityGroups", bundle: nil).instantiateViewController(withIdentifier: "CommunityGroups")
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+    @IBAction func didTapMinistryTeams(_ sender: Any) {
+        let vc = UIStoryboard(name: "MinistryTeams", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeams")
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func didTapMissions(_ sender: Any) {
         let vc = UIStoryboard(name: "Missions", bundle: nil).instantiateViewController(withIdentifier: "Missions")
         self.navigationController?.pushViewController(vc, animated: true)
     }
+
     
     
-    @IBOutlet weak var communityGroupsView: UIView!
-    @IBOutlet weak var ministryTeamsView: UIView!
-    @IBOutlet weak var missionsView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        
-        self.communityGroupsView.layer.cornerRadius = 15
-        self.ministryTeamsView.layer.cornerRadius = 15
-        self.missionsView.layer.cornerRadius = 15
-        
+        communityGroupButton.layer.cornerRadius = 15
+        ministryTeamButton.layer.cornerRadius = 15
+        missionsButton.layer.cornerRadius = 15
         
     }
 

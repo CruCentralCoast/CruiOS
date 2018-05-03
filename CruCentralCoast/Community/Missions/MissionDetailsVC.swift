@@ -13,6 +13,15 @@ struct MissionCellParameters {
     let date : String
     let location : String
     let description : String
+    let image : UIImage
+    
+    init(titleLabel: String, date: String, location: String, description: String,image: UIImage = #imageLiteral(resourceName: "placeholder.jpg")) {
+        self.titleLabel = titleLabel
+        self.date = date
+        self.location = location
+        self.description = description
+        self.image = image
+    }
 }
 
 class MissionDetailsVC: UIViewController {
@@ -33,6 +42,8 @@ class MissionDetailsVC: UIViewController {
     @IBAction func didTapCloseButton(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
+    
+    override var prefersStatusBarHidden: Bool {return true}
     
     override func viewDidLoad() {
         super.viewDidLoad()

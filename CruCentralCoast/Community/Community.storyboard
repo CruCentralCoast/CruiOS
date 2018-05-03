@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -36,80 +37,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uq2-pd-6Bg" customClass="UIButton">
-                                <rect key="frame" x="27" y="306" width="320" height="150"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Ministry Teams" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KcA-Wa-hbE">
-                                        <rect key="frame" x="45" y="60" width="230" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDO-Fu-1O8">
+                                <rect key="frame" x="27" y="291" width="320" height="150"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="P4O-E9-Aiy"/>
-                                    <constraint firstAttribute="width" constant="320" id="Q7f-bG-d7N"/>
+                                    <constraint firstAttribute="height" constant="150" id="GNM-ku-4wy"/>
+                                    <constraint firstAttribute="width" secondItem="oDO-Fu-1O8" secondAttribute="height" multiplier="32:15" id="I7d-pw-6iF"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="Ministry Teams">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="ministryTeamsButton:" destination="tkg-eO-mld" eventType="touchUpInside" id="zAe-ms-RlH"/>
+                                    <action selector="didTapMinistryTeams:" destination="tkg-eO-mld" eventType="touchUpInside" id="iNh-wk-Ro4"/>
                                 </connections>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iEx-ut-ddn" customClass="UIButton">
-                                <rect key="frame" x="27" y="476" width="320" height="150"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUa-Q2-dtk">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
-                                        <state key="normal" title="Missions">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didTapMissions:" destination="tkg-eO-mld" eventType="touchUpInside" id="9TO-m0-csC"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c17-Ss-cbL">
+                                <rect key="frame" x="27" y="127" width="320" height="150"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="Yhx-T4-z41"/>
-                                    <constraint firstAttribute="width" constant="320" id="adl-Wc-6Ln"/>
+                                    <constraint firstAttribute="height" constant="150" id="6xI-mW-wNx"/>
+                                    <constraint firstAttribute="width" secondItem="c17-Ss-cbL" secondAttribute="height" multiplier="32:15" id="eX7-9Q-ceJ"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="Community Groups">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="MissionsButton:" destination="tkg-eO-mld" eventType="touchUpInside" id="bDP-Kt-66D"/>
+                                    <action selector="didTapCommunityGroups:" destination="tkg-eO-mld" eventType="touchUpInside" id="dWw-Gw-3Z0"/>
                                 </connections>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmh-nb-DGE" customClass="UIButton">
-                                <rect key="frame" x="27" y="136" width="320" height="150"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Community Groups" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdI-P4-Hs7">
-                                        <rect key="frame" x="12" y="60" width="296" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
-                                        <color key="textColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUa-Q2-dtk">
+                                <rect key="frame" x="27" y="455" width="320" height="150"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="FH9-9s-9fZ"/>
-                                    <constraint firstAttribute="width" constant="320" id="jCe-s4-SuW"/>
+                                    <constraint firstAttribute="width" secondItem="fUa-Q2-dtk" secondAttribute="height" multiplier="32:15" id="E3z-Bw-BCL"/>
+                                    <constraint firstAttribute="height" constant="150" id="Pw0-fF-rO5"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="32"/>
+                                <state key="normal" title="Missions">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
-                                    <action selector="communityGroupsButton:" destination="tkg-eO-mld" eventType="touchUpInside" id="hH7-1L-Zc7"/>
+                                    <action selector="didTapMissions:" destination="tkg-eO-mld" eventType="touchUpInside" id="eu7-B2-WPd"/>
                                 </connections>
-                            </view>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="iEx-ut-ddn" firstAttribute="top" secondItem="Uq2-pd-6Bg" secondAttribute="bottom" constant="20" id="T55-p5-wbz"/>
-                            <constraint firstItem="Uq2-pd-6Bg" firstAttribute="top" secondItem="Fmh-nb-DGE" secondAttribute="bottom" constant="20" id="VgH-TY-bi1"/>
-                            <constraint firstItem="Fmh-nb-DGE" firstAttribute="top" secondItem="sRe-PR-kdo" secondAttribute="top" constant="20" id="gOE-0I-Lwn"/>
-                            <constraint firstItem="Fmh-nb-DGE" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="hJW-0G-X7K"/>
-                            <constraint firstItem="Uq2-pd-6Bg" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="hwx-jp-Ptu"/>
-                            <constraint firstItem="iEx-ut-ddn" firstAttribute="leading" secondItem="sRe-PR-kdo" secondAttribute="leading" constant="27" id="oPd-kD-RCq"/>
+                            <constraint firstItem="fUa-Q2-dtk" firstAttribute="top" secondItem="oDO-Fu-1O8" secondAttribute="bottom" constant="14" id="1en-C2-nS6"/>
+                            <constraint firstItem="c17-Ss-cbL" firstAttribute="centerX" secondItem="sRe-PR-kdo" secondAttribute="centerX" id="6ph-Er-oQ3"/>
+                            <constraint firstItem="fUa-Q2-dtk" firstAttribute="centerX" secondItem="sRe-PR-kdo" secondAttribute="centerX" id="7jd-YB-99o"/>
+                            <constraint firstItem="oDO-Fu-1O8" firstAttribute="centerX" secondItem="sRe-PR-kdo" secondAttribute="centerX" id="gP5-zA-AYZ"/>
+                            <constraint firstItem="c17-Ss-cbL" firstAttribute="top" secondItem="sRe-PR-kdo" secondAttribute="top" constant="11" id="mFz-H6-eiE"/>
+                            <constraint firstItem="oDO-Fu-1O8" firstAttribute="top" secondItem="c17-Ss-cbL" secondAttribute="bottom" constant="14" id="sb2-Fa-Ycz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sRe-PR-kdo"/>
                     </view>
@@ -119,9 +100,9 @@
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="communityGroupsView" destination="Fmh-nb-DGE" id="zOk-nL-yzK"/>
-                        <outlet property="ministryTeamsView" destination="Uq2-pd-6Bg" id="Xhh-oE-w5p"/>
-                        <outlet property="missionsView" destination="iEx-ut-ddn" id="iHJ-Eo-BmW"/>
+                        <outlet property="communityGroupButton" destination="c17-Ss-cbL" id="Wbj-cH-7QC"/>
+                        <outlet property="ministryTeamButton" destination="oDO-Fu-1O8" id="Myw-G8-yo2"/>
+                        <outlet property="missionsButton" destination="fUa-Q2-dtk" id="XNF-zb-TPk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Mv-hT-7V3" userLabel="First Responder" sceneMemberID="firstResponder"/>

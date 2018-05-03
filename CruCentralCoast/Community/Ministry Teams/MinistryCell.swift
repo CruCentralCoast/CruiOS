@@ -8,13 +8,13 @@
 
 import UIKit
 
-class MinistryTeamCell: UICollectionViewCell {
-
-    @IBOutlet weak var ministryTeamLabel: UILabel!
-    @IBOutlet weak var cellMask: UIView!
+class MinistryCell: UICollectionViewCell {
+    
     @IBOutlet weak var imageView: UIImageView!
-    
-    
+    @IBOutlet weak var cellMask: UIView!
+    @IBOutlet weak var ministryTeamLabel: UILabel!
+    @IBOutlet weak var ministryTeamLeaderLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

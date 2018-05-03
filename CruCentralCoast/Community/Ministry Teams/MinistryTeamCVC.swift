@@ -13,18 +13,14 @@ private let reuseIdentifier = "MinistryCell"
 class MinistryTeamCVC: UICollectionViewController {
     
     //test data array
+    var testDataArray: [MinistryCellParameters] = [MinistryCellParameters(teamTitle: "Software Dev Team", teamLeaders: ["Landon Gerrits", "Tyler Dahl"], teamDescription: "description..."), MinistryCellParameters(teamTitle: "Graphic Design Team", teamLeaders: ["Annamarie"], teamDescription: "description...")]
     
-    
+     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        self.collectionView?.registerCell(MinistryCell.self)
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,23 +40,35 @@ class MinistryTeamCVC: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        
+        print(testDataArray.count)
+        return testDataArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueCell(MinistryCell.self, indexPath: indexPath)
     
         // Configure the cell
+        cell.ministryTeamLabel.text = testDataArray[indexPath.row].teamTitle
+        cell.imageView.image = testDataArray[indexPath.row].teamImage
+            //only returning first team name
+        cell.ministryTeamLeaderLabel.text = testDataArray[indexPath.row].teamLeaders[0]
+        
     
         return cell
+    }
+    
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "MinistryTeamDetails", bundle: nil).instantiateViewController(withIdentifier: "MinistryTeamDetailsVC") as? MinistryTeamDetailsVC else {
+            assertionFailure("Probably used the wrong storyboard name or identifier here")
+            return
+        }
+        
+        vc.configure(with: self.testDataArray[indexPath.row])
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 
     // MARK: UICollectionViewDelegate

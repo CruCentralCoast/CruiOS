@@ -13,7 +13,7 @@ private let reuseIdentifier = "MissionCell"
 class MissionCVC: UICollectionViewController {
     
     //test data array
-    var dataArray: [MissionCellParameters] = [MissionCellParameters(titleLabel: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), MissionCellParameters(titleLabel: "test2", date: "date", location: "location", description: "description"), MissionCellParameters(titleLabel: "test3", date: "date", location: "location", description: "description"), MissionCellParameters(titleLabel: "test4", date: "date", location: "location", description: "description"), MissionCellParameters(titleLabel: "test5", date: "date", location: "location", description: "description")]
+    var dataArray: [MissionCellParameters] = [MissionCellParameters(titleLabel: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), MissionCellParameters(titleLabel: "test2", date: "date2", location: "location2", description: "description..."), MissionCellParameters(titleLabel: "test3", date: "date3", location: "location3", description: "description..."), MissionCellParameters(titleLabel: "test4", date: "date4", location: "location4", description: "description..."), MissionCellParameters(titleLabel: "test5", date: "date5", location: "location5", description: "description...")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,6 @@ class MissionCVC: UICollectionViewController {
         return cell
     }
     
-    //switch from Mission Collection View to Mission Detail
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let vc = UIStoryboard(name: "MissionDetails", bundle: nil).instantiateViewController(withIdentifier: "MissionDetailsVC") as? MissionDetailsVC else {
             assertionFailure("Probably used the wrong storyboard name or identifier here")
