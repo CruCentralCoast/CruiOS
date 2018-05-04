@@ -17,17 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FNm-tU-5Mm">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ylm-rb-kdK">
                                 <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </tableView>
+                                <collectionViewLayout key="collectionViewLayout" id="8y5-Fm-ffI" customClass="ResourcesCollectionViewLayout" customModule="CruCentralCoast" customModuleProvider="target"/>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="FNm-tU-5Mm" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="MKh-qF-2fe"/>
-                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="bottom" secondItem="FNm-tU-5Mm" secondAttribute="bottom" id="rGh-B2-oJh"/>
-                            <constraint firstItem="FNm-tU-5Mm" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="x2x-bw-uZc"/>
-                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="FNm-tU-5Mm" secondAttribute="trailing" id="z9y-Gl-ijr"/>
+                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="Ylm-rb-kdK" secondAttribute="trailing" id="0Kr-eI-TQF"/>
+                            <constraint firstItem="Ylm-rb-kdK" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="1ec-5H-8KX"/>
+                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="bottom" secondItem="Ylm-rb-kdK" secondAttribute="bottom" id="9d9-af-hm1"/>
+                            <constraint firstItem="Ylm-rb-kdK" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="Syp-2p-11J"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fwb-D5-FrQ"/>
                     </view>
@@ -35,7 +37,7 @@
                     <navigationItem key="navigationItem" title="Resources" id="yyM-Pw-GEw"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="tableView" destination="FNm-tU-5Mm" id="cKl-nC-avW"/>
+                        <outlet property="collectionView" destination="Ylm-rb-kdK" id="eWS-oB-hiW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bx3-6V-Soa" sceneMemberID="firstResponder"/>

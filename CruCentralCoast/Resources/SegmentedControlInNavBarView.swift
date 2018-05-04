@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SegmentedControlInNavBarView: UITableViewHeaderFooterView {
+class SegmentedControlInNavBarView: UICollectionReusableView {
     
     @IBOutlet weak var fakeBottomOfNavBar: UIView!
     

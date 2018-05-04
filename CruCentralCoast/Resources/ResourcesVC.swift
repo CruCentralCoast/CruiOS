@@ -10,34 +10,19 @@ import UIKit
 
 @IBDesignable
 class ResourcesVC: UIViewController {
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     private var shadowImageView: UIImageView?
     var segmentedControlInNavBarView: SegmentedControlInNavBarView = UINib(nibName: "SegmentedControlInNavBarView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! SegmentedControlInNavBarView
     private var segmentedControlIndex: Int = 0
-    
-    lazy var articlesResources: ArticlesResources = {
-        let dataSource = ArticlesResources()
-        return dataSource
-    }()
-    lazy var videosResources: VideosResources = {
-        let dataSource = VideosResources()
-        return dataSource
-    }()
-    lazy var audioResources: AudioResources = {
-        let dataSource = AudioResources()
-        return dataSource
-    }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.insertProfileButtonInNavBar()
-        self.tableView.registerCell(ArticlesResourcesCell.self)
-        self.tableView.registerCell(VideosResourcesCell.self)
-        self.tableView.registerCell(AudioResourcesCell.self)
-        self.tableView.dataSource = self.articlesResources
-        self.tableView.delegate = self
-        
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
+        self.collectionView.registerCell(ResourcesTableViewCollectionViewCell.self)
+        self.collectionView.register(UINib(nibName: "SegmentedControlInNavBarView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SegmentedControlInNavBarView")
         self.segmentedControlInNavBarView.delegate = self
     }
     
@@ -73,37 +58,46 @@ class ResourcesVC: UIViewController {
 extension ResourcesVC: SegmentedControlInNavBarViewProtocol {
     func segmentedControlValueChanged(_ index: Int) {
         self.segmentedControlIndex = index
-        switch index {
-        case 0:
-            self.tableView.dataSource = self.articlesResources
-        case 1:
-            self.tableView.dataSource = self.videosResources
-        case 2:
-            self.tableView.dataSource = self.audioResources
-        default:
-            return
-        }
-        self.tableView.reloadData()
-        self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
     }
     
 }
 
-extension ResourcesVC: UITableViewDelegate {
-        func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            switch self.segmentedControlIndex {
-            case 0:
-                return 60
-            case 1:
-                return 60
-            case 2:
-                return 80
-            default:
-                return 44
-            }
-        }
+extension ResourcesVC: UICollectionViewDataSource {
     
-        func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            return self.segmentedControlInNavBarView
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueCell(ResourcesTableViewCollectionViewCell.self, indexPath: indexPath)
+        
+        switch self.segmentedControlIndex {
+        case 0:
+            cell.type = .articles
+        case 1:
+            cell.type = .videos
+        case 2:
+            cell.type = .audio
+        default:
+            break
         }
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SegmentedControlInNavBarView", for: indexPath)
+    }
+}
+
+extension ResourcesVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return collectionView.frame.size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 100)
+    }
+    
 }
