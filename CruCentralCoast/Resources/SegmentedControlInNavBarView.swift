@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SegmentedControlInNavBarView: UICollectionReusableView {
+class SegmentedControlInNavBarView: UIView {
     
     @IBOutlet weak var fakeBottomOfNavBar: UIView!
     
@@ -16,9 +16,8 @@ class SegmentedControlInNavBarView: UICollectionReusableView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-         self.fakeBottomOfNavBar.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
+        self.fakeBottomOfNavBar.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
     }
-
     
     @IBAction func segmentedControlValueChanged(_ sender: CruSegmentedControl) {
         self.delegate?.segmentedControlValueChanged(sender.selectedSegmentIndex)

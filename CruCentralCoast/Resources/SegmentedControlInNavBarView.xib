@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SegmentedControlInNavBarView" customModule="CruCentralCoast" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SegmentedControlInNavBarView" customModule="CruCentralCoast" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="34"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yBY-ba-fwd">
@@ -62,9 +62,9 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
-                <outlet property="fakeBottomOfNavBar" destination="yBY-ba-fwd" id="T4L-LJ-F30"/>
+                <outlet property="fakeBottomOfNavBar" destination="yBY-ba-fwd" id="cVw-JR-YAA"/>
             </connections>
-            <point key="canvasLocation" x="-127.5" y="-185"/>
+            <point key="canvasLocation" x="-127.5" y="-193"/>
         </view>
     </objects>
 </document>

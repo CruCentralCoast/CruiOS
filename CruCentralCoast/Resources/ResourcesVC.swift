@@ -13,6 +13,9 @@ class ResourcesVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     private var shadowImageView: UIImageView?
     var segmentedControlInNavBarView: SegmentedControlInNavBarView = UINib(nibName: "SegmentedControlInNavBarView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! SegmentedControlInNavBarView
+
+    @IBOutlet weak var segmentedControlContainerView: UIView!
+    
     private var segmentedControlIndex: Int = 0
 
     override func viewDidLoad() {
@@ -22,7 +25,11 @@ class ResourcesVC: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.registerCell(ResourcesTableViewCollectionViewCell.self)
-        self.collectionView.register(UINib(nibName: "SegmentedControlInNavBarView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "SegmentedControlInNavBarView")
+        self.segmentedControlContainerView.addSubview(self.segmentedControlInNavBarView)
+        segmentedControlContainerView.bottomAnchor.constraint(equalTo: segmentedControlInNavBarView.bottomAnchor).isActive = true
+        segmentedControlContainerView.rightAnchor.constraint(equalTo: segmentedControlInNavBarView.rightAnchor).isActive = true
+        segmentedControlContainerView.leftAnchor.constraint(equalTo: segmentedControlInNavBarView.leftAnchor).isActive = true
+        segmentedControlContainerView.topAnchor.constraint(equalTo: segmentedControlInNavBarView.topAnchor).isActive = true
         self.segmentedControlInNavBarView.delegate = self
     }
     
@@ -72,7 +79,7 @@ extension ResourcesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(ResourcesTableViewCollectionViewCell.self, indexPath: indexPath)
         
-        switch self.segmentedControlIndex {
+        switch indexPath.item {
         case 0:
             cell.type = .articles
         case 1:
@@ -86,8 +93,9 @@ extension ResourcesVC: UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SegmentedControlInNavBarView", for: indexPath)
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let index = Int(scrollView.contentOffset.x/self.collectionView.frame.width)
+        self.segmentedControlIndex = index
     }
 }
 
@@ -95,9 +103,4 @@ extension ResourcesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 100)
-    }
-    
 }

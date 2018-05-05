@@ -18,18 +18,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ylm-rb-kdK">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewLayout key="collectionViewLayout" id="8y5-Fm-ffI" customClass="ResourcesCollectionViewLayout" customModule="CruCentralCoast" customModuleProvider="target"/>
+                                <rect key="frame" x="0.0" y="150" width="375" height="468"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Sfv-L5-c9Y">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmn-hJ-0Dp">
+                                <rect key="frame" x="0.0" y="116" width="375" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="wuU-rv-Muj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="Ylm-rb-kdK" secondAttribute="trailing" id="0Kr-eI-TQF"/>
                             <constraint firstItem="Ylm-rb-kdK" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="1ec-5H-8KX"/>
+                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="Tmn-hJ-0Dp" secondAttribute="trailing" id="92T-A2-oA3"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="bottom" secondItem="Ylm-rb-kdK" secondAttribute="bottom" id="9d9-af-hm1"/>
-                            <constraint firstItem="Ylm-rb-kdK" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="Syp-2p-11J"/>
+                            <constraint firstItem="Tmn-hJ-0Dp" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="niv-xR-ak1"/>
+                            <constraint firstItem="Tmn-hJ-0Dp" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="qfa-VR-WX9"/>
+                            <constraint firstItem="Ylm-rb-kdK" firstAttribute="top" secondItem="Tmn-hJ-0Dp" secondAttribute="bottom" id="sCV-pl-gdb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fwb-D5-FrQ"/>
                     </view>
@@ -38,6 +51,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Ylm-rb-kdK" id="eWS-oB-hiW"/>
+                        <outlet property="segmentedControlContainerView" destination="Tmn-hJ-0Dp" id="10a-xw-lMc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bx3-6V-Soa" sceneMemberID="firstResponder"/>
