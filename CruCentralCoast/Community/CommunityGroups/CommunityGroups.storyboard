@@ -4,15 +4,14 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Community GroupsCVC-->
+        <!--Community Groups-->
         <scene sceneID="ijf-dl-dib">
             <objects>
-                <collectionViewController storyboardIdentifier="CommunityGroups" id="Uu3-WI-GVG" customClass="CommunityGroupsCVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="CommunityGroups" title="Community Groups" id="Uu3-WI-GVG" customClass="CommunityGroupsCVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="6PH-bt-FGU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

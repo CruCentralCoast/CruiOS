@@ -47,11 +47,12 @@ class MinistryTeamDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Do any additional setup after loading the view.
+        
+        ministyTitleLabel.text = ministryTitle
+        movementLabel.text = movementTitle
+        teamLeaderNamesLabel.text = leaderNames.compactMap({$0}).joined(separator: " ")
+        ministryDescription.text = desc
+        
         
         
         self.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
@@ -61,6 +62,11 @@ class MinistryTeamDetailsVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func didTapCloseButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     func configure(with cellParameters: MinistryCellParameters) {
         self.ministryTitle = cellParameters.teamTitle

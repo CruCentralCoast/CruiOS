@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fK2-uN-95h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hGw-uB-C9c">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -11,84 +11,103 @@
     </dependencies>
     <scenes>
         <!--MinistryTeamDetails-->
-        <scene sceneID="601-uK-igk">
+        <scene sceneID="yX6-j0-Ifl">
             <objects>
-                <viewController storyboardIdentifier="MinistryTeamDetailsVC" title="MinistryTeamDetails" id="fK2-uN-95h" customClass="MinistryTeamDetailsVC" customModule="CruCentralCoast" sceneMemberID="viewController">
-                    <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" id="2VQ-XI-10m">
+                <viewController storyboardIdentifier="MinistryTeamDetailsVC" title="MinistryTeamDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hGw-uB-C9c" customClass="MinistryTeamDetailsVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xrd-F4-2GC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LGC-N6-nF4">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2i-df-bvA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LGC-N6-nF4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="LGC-N6-nF4" secondAttribute="height" multiplier="374:219" id="C25-Bg-XcZ"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmu-rR-Nz9">
+                                        <rect key="frame" x="317" y="27" width="39" height="30"/>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="didTapCloseButton:" destination="hGw-uB-C9c" eventType="touchUpInside" id="M45-Xb-wFS"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vl5-Ey-haI">
+                                        <rect key="frame" x="16" y="318" width="339" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movement Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-wq-LQ0">
+                                        <rect key="frame" x="16" y="266" width="116" height="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Leader Names Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3Q-b3-li8">
+                                        <rect key="frame" x="16" y="292" width="184" height="18"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ0-Pf-Tqa">
+                                        <rect key="frame" x="16" y="234" width="123" height="24"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwn-1s-NAM">
+                                        <rect key="frame" x="123" y="380.5" width="128" height="30"/>
+                                        <state key="normal" title="Join Ministry Team"/>
+                                    </button>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="LGC-N6-nF4" secondAttribute="height" multiplier="75:44" id="zSf-zC-Wtw"/>
+                                    <constraint firstAttribute="trailing" secondItem="Vl5-Ey-haI" secondAttribute="trailing" constant="20" id="604-dt-S9v"/>
+                                    <constraint firstItem="LGC-N6-nF4" firstAttribute="centerX" secondItem="w2i-df-bvA" secondAttribute="centerX" id="6Fh-2e-BZp"/>
+                                    <constraint firstItem="Vl5-Ey-haI" firstAttribute="top" secondItem="O3Q-b3-li8" secondAttribute="bottom" constant="8" id="CU1-Nq-J7t"/>
+                                    <constraint firstItem="DuK-wq-LQ0" firstAttribute="top" secondItem="nJ0-Pf-Tqa" secondAttribute="bottom" constant="8" id="FxH-Gb-8s9"/>
+                                    <constraint firstItem="O3Q-b3-li8" firstAttribute="top" secondItem="DuK-wq-LQ0" secondAttribute="bottom" constant="8" id="H1U-gk-nYX"/>
+                                    <constraint firstItem="nJ0-Pf-Tqa" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="IR7-6j-iPq"/>
+                                    <constraint firstItem="DuK-wq-LQ0" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="IqR-3n-cYi"/>
+                                    <constraint firstItem="LGC-N6-nF4" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" id="K3g-7c-TLG"/>
+                                    <constraint firstItem="LGC-N6-nF4" firstAttribute="centerX" secondItem="Iwn-1s-NAM" secondAttribute="centerX" id="Lx8-cm-2fo"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iwn-1s-NAM" secondAttribute="bottom" constant="25" id="UVQ-3a-fXU"/>
+                                    <constraint firstItem="O3Q-b3-li8" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="a6m-tc-hTh"/>
+                                    <constraint firstAttribute="width" constant="375" id="eq3-Cm-E6l"/>
+                                    <constraint firstAttribute="bottom" secondItem="Vl5-Ey-haI" secondAttribute="bottom" constant="100" id="jLS-oa-QBm"/>
+                                    <constraint firstItem="Iwn-1s-NAM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Vl5-Ey-haI" secondAttribute="bottom" constant="20" id="oVe-jh-caf"/>
+                                    <constraint firstAttribute="trailing" secondItem="LGC-N6-nF4" secondAttribute="trailing" id="tLp-R3-MPI"/>
+                                    <constraint firstItem="LGC-N6-nF4" firstAttribute="top" secondItem="w2i-df-bvA" secondAttribute="top" id="wmB-1O-pQq"/>
+                                    <constraint firstItem="nJ0-Pf-Tqa" firstAttribute="top" secondItem="LGC-N6-nF4" secondAttribute="bottom" constant="14" id="x7k-6m-Xkr"/>
+                                    <constraint firstItem="Vl5-Ey-haI" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="zuC-k5-Xwf"/>
                                 </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gmu-rR-Nz9">
-                                <rect key="frame" x="317" y="27" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vl5-Ey-haI">
-                                <rect key="frame" x="16" y="318" width="76.5" height="17.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movement Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-wq-LQ0">
-                                <rect key="frame" x="16" y="266" width="119" height="18"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Leader Names Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3Q-b3-li8">
-                                <rect key="frame" x="16" y="292" width="184" height="18"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
-                                <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwn-1s-NAM">
-                                <rect key="frame" x="123" y="568" width="128" height="30"/>
-                                <state key="normal" title="Join Ministry Team"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ0-Pf-Tqa">
-                                <rect key="frame" x="16" y="234" width="123" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </scrollView>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LGC-N6-nF4" firstAttribute="trailing" secondItem="DbO-7D-qjX" secondAttribute="trailing" id="6yt-kM-BHH"/>
-                            <constraint firstItem="nJ0-Pf-Tqa" firstAttribute="leading" secondItem="DbO-7D-qjX" secondAttribute="leading" constant="16" id="Eqh-rL-NBD"/>
-                            <constraint firstItem="gmu-rR-Nz9" firstAttribute="leading" secondItem="LGC-N6-nF4" secondAttribute="trailing" constant="-58" id="F0q-KR-uT8"/>
-                            <constraint firstItem="Vl5-Ey-haI" firstAttribute="leading" secondItem="DbO-7D-qjX" secondAttribute="leading" constant="16" id="J1w-Is-f5F"/>
-                            <constraint firstItem="nJ0-Pf-Tqa" firstAttribute="top" secondItem="LGC-N6-nF4" secondAttribute="bottom" constant="14" id="Jgw-uI-jIA"/>
-                            <constraint firstItem="O3Q-b3-li8" firstAttribute="top" secondItem="DuK-wq-LQ0" secondAttribute="bottom" constant="8" id="QQe-mF-lYU"/>
-                            <constraint firstItem="LGC-N6-nF4" firstAttribute="top" secondItem="gmu-rR-Nz9" secondAttribute="bottom" constant="-57" id="Sg8-qS-grN"/>
-                            <constraint firstItem="O3Q-b3-li8" firstAttribute="leading" secondItem="DbO-7D-qjX" secondAttribute="leading" constant="16" id="Y7Y-r9-PKJ"/>
-                            <constraint firstItem="DbO-7D-qjX" firstAttribute="bottom" secondItem="Iwn-1s-NAM" secondAttribute="bottom" constant="69" id="bFb-YL-J4f"/>
-                            <constraint firstItem="LGC-N6-nF4" firstAttribute="top" secondItem="2VQ-XI-10m" secondAttribute="top" id="e6S-Yd-pN9"/>
-                            <constraint firstItem="Iwn-1s-NAM" firstAttribute="centerX" secondItem="DbO-7D-qjX" secondAttribute="centerX" id="hjF-nv-sH2"/>
-                            <constraint firstItem="DuK-wq-LQ0" firstAttribute="top" secondItem="nJ0-Pf-Tqa" secondAttribute="bottom" constant="8" id="j52-VA-tlK"/>
-                            <constraint firstItem="Vl5-Ey-haI" firstAttribute="top" secondItem="O3Q-b3-li8" secondAttribute="bottom" constant="8" id="ovm-IH-fu6"/>
-                            <constraint firstItem="LGC-N6-nF4" firstAttribute="leading" secondItem="DbO-7D-qjX" secondAttribute="leading" id="rog-0b-swM"/>
-                            <constraint firstItem="DuK-wq-LQ0" firstAttribute="leading" secondItem="DbO-7D-qjX" secondAttribute="leading" constant="16" id="uSi-Bo-fC8"/>
+                            <constraint firstItem="w2i-df-bvA" firstAttribute="top" secondItem="Xrd-F4-2GC" secondAttribute="top" id="03l-66-831"/>
+                            <constraint firstItem="gmu-rR-Nz9" firstAttribute="top" secondItem="dSK-HD-oVb" secondAttribute="top" constant="7" id="R2N-BM-Ky0"/>
+                            <constraint firstItem="w2i-df-bvA" firstAttribute="leading" secondItem="Xrd-F4-2GC" secondAttribute="leading" id="XxG-cU-Ort"/>
+                            <constraint firstItem="dSK-HD-oVb" firstAttribute="trailing" secondItem="gmu-rR-Nz9" secondAttribute="trailing" constant="19" id="Zjf-7d-e5R"/>
+                            <constraint firstItem="w2i-df-bvA" firstAttribute="bottom" secondItem="dSK-HD-oVb" secondAttribute="bottom" id="bWO-no-Ckh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="DbO-7D-qjX"/>
-                    </scrollView>
+                        <viewLayoutGuide key="safeArea" id="dSK-HD-oVb"/>
+                    </view>
                     <connections>
-                        <outlet property="closeButton" destination="gmu-rR-Nz9" id="z3C-cD-84H"/>
-                        <outlet property="imageView" destination="LGC-N6-nF4" id="FyT-zC-Tzy"/>
-                        <outlet property="joinMinistyTeamButton" destination="Iwn-1s-NAM" id="Ys7-kM-USD"/>
-                        <outlet property="ministryDescription" destination="Vl5-Ey-haI" id="aPk-Gr-P1i"/>
-                        <outlet property="ministyTitleLabel" destination="nJ0-Pf-Tqa" id="hIQ-UN-icF"/>
-                        <outlet property="movementLabel" destination="DuK-wq-LQ0" id="4xN-T3-gBw"/>
-                        <outlet property="teamLeaderNamesLabel" destination="O3Q-b3-li8" id="Md6-dD-5WS"/>
+                        <outlet property="closeButton" destination="gmu-rR-Nz9" id="2Tm-yM-Xml"/>
+                        <outlet property="imageView" destination="LGC-N6-nF4" id="145-FU-QTa"/>
+                        <outlet property="joinMinistyTeamButton" destination="Iwn-1s-NAM" id="fat-iW-zoP"/>
+                        <outlet property="ministryDescription" destination="Vl5-Ey-haI" id="ZXg-Gg-wWI"/>
+                        <outlet property="ministyTitleLabel" destination="nJ0-Pf-Tqa" id="nuP-bk-6kQ"/>
+                        <outlet property="movementLabel" destination="DuK-wq-LQ0" id="W3c-kC-VLB"/>
+                        <outlet property="teamLeaderNamesLabel" destination="O3Q-b3-li8" id="yLD-ui-l6l"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xcx-bt-0Eo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kwE-gT-LXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-87.200000000000003" y="190.25487256371815"/>
+            <point key="canvasLocation" x="663.20000000000005" y="190.25487256371815"/>
         </scene>
     </scenes>
 </document>

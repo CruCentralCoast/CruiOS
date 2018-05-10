@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,33 +22,34 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RII-sa-9mD" userLabel="cellMask">
                         <rect key="frame" x="0.0" y="0.0" width="457" height="308"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xW5-3b-jN2">
-                                <rect key="frame" x="0.0" y="0.0" width="457" height="215.5"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="xW5-3b-jN2">
+                                <rect key="frame" x="0.0" y="0.0" width="457" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xW5-3b-jN2" secondAttribute="height" multiplier="457:180" id="WbP-PQ-AuG"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Team Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tg7-v8-fa4">
-                                <rect key="frame" x="14" y="230.5" width="257.5" height="32.5"/>
+                                <rect key="frame" x="14" y="188" width="257.5" height="32.5"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Leader Name Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNd-ug-whw">
-                                <rect key="frame" x="14" y="271" width="235" height="24"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="20"/>
+                                <rect key="frame" x="14" y="223.5" width="164.5" height="17"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.21682661802030456" green="0.21682661802030456" blue="0.21682661802030456" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="cNd-ug-whw" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="4l5-tb-L2U"/>
-                            <constraint firstItem="xW5-3b-jN2" firstAttribute="top" secondItem="RII-sa-9mD" secondAttribute="top" id="6Ap-Fw-3Kc"/>
-                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="Fgu-b7-QkO"/>
-                            <constraint firstAttribute="trailing" secondItem="xW5-3b-jN2" secondAttribute="trailing" id="M2v-Lo-g85"/>
-                            <constraint firstItem="xW5-3b-jN2" firstAttribute="height" secondItem="RII-sa-9mD" secondAttribute="height" multiplier="0.7" id="Qph-rF-o5d"/>
-                            <constraint firstItem="xW5-3b-jN2" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" id="UhS-Vv-9Ks"/>
-                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="top" secondItem="xW5-3b-jN2" secondAttribute="bottom" constant="15" id="VQD-cW-vxa"/>
-                            <constraint firstItem="xW5-3b-jN2" firstAttribute="width" secondItem="RII-sa-9mD" secondAttribute="width" id="gqo-EJ-EhW"/>
-                            <constraint firstItem="cNd-ug-whw" firstAttribute="top" secondItem="Tg7-v8-fa4" secondAttribute="bottom" constant="8" id="lyj-ep-zq5"/>
+                            <constraint firstItem="xW5-3b-jN2" firstAttribute="top" secondItem="RII-sa-9mD" secondAttribute="top" id="35X-dy-AHD"/>
+                            <constraint firstAttribute="trailing" secondItem="xW5-3b-jN2" secondAttribute="trailing" id="AG4-jo-ovV"/>
+                            <constraint firstItem="cNd-ug-whw" firstAttribute="top" secondItem="Tg7-v8-fa4" secondAttribute="bottom" constant="3" id="E6c-vw-8k5"/>
+                            <constraint firstItem="xW5-3b-jN2" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" id="FWl-DL-L1v"/>
+                            <constraint firstItem="cNd-ug-whw" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="P7G-fD-rhc"/>
+                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="top" secondItem="xW5-3b-jN2" secondAttribute="bottom" constant="8" id="ZW6-QN-3dW"/>
+                            <constraint firstItem="Tg7-v8-fa4" firstAttribute="leading" secondItem="RII-sa-9mD" secondAttribute="leading" constant="14" id="oPi-ae-nOb"/>
                         </constraints>
                     </view>
                 </subviews>
