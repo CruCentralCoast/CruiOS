@@ -67,8 +67,6 @@
 		AD55A0EB209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD55A0E9209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
-		ADE91F2420883732004C12B5 /* SegmentedControlInNavBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADE91F2320883732004C12B5 /* SegmentedControlInNavBarView.xib */; };
-		ADE91F26208838C6004C12B5 /* SegmentedControlInNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE91F25208838C6004C12B5 /* SegmentedControlInNavBarView.swift */; };
 		ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */; };
 		ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */; };
 		ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */; };
@@ -174,8 +172,6 @@
 		AD55A0E9209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourcesTableViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
-		ADE91F2320883732004C12B5 /* SegmentedControlInNavBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SegmentedControlInNavBarView.xib; sourceTree = "<group>"; };
-		ADE91F25208838C6004C12B5 /* SegmentedControlInNavBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlInNavBarView.swift; sourceTree = "<group>"; };
 		ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesCell.swift; sourceTree = "<group>"; };
 		ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesResourcesCell.xib; sourceTree = "<group>"; };
 		ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeueExtensions.swift; sourceTree = "<group>"; };
@@ -357,8 +353,6 @@
 				ADFA56D5206D7BC8006F7099 /* Articles */,
 				5EBD534F20352CEF0097A853 /* Resources.storyboard */,
 				ADE645102075BA6600C1EA1B /* ResourcesVC.swift */,
-				ADE91F25208838C6004C12B5 /* SegmentedControlInNavBarView.swift */,
-				ADE91F2320883732004C12B5 /* SegmentedControlInNavBarView.xib */,
 				AD55A0E8209B759D009F62FB /* ResourcesTableViewCollectionViewCell.swift */,
 				AD55A0E9209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib */,
 			);
@@ -614,7 +608,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
-				ADE91F2420883732004C12B5 /* SegmentedControlInNavBarView.xib in Resources */,
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
@@ -779,7 +772,6 @@
 				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
-				ADE91F26208838C6004C12B5 /* SegmentedControlInNavBarView.swift in Sources */,
 				AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */,
 				AD55A0EA209B759D009F62FB /* ResourcesTableViewCollectionViewCell.swift in Sources */,
 				ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */,

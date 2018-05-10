@@ -9,7 +9,6 @@
 import UIKit
 
 class VideosResourcesCell: UITableViewCell {
-
     @IBOutlet weak var previewImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

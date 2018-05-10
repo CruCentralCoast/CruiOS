@@ -15,7 +15,6 @@ enum ResourcesTableViewType {
 }
 
 class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
-
     @IBOutlet weak var tableView: UITableView!
     
     var type: ResourcesTableViewType = .audio {
@@ -33,7 +32,6 @@ class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
         self.tableView.registerCell(ArticlesResourcesCell.self)
     }
 }
-
 
 extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

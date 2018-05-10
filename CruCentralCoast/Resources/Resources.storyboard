@@ -17,6 +17,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrX-Is-5TO">
+                                <rect key="frame" x="0.0" y="146" width="375" height="4"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="4" id="pE5-m3-Sdp"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Ylm-rb-kdK">
                                 <rect key="frame" x="0.0" y="150" width="375" height="468"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Sfv-L5-c9Y">
@@ -27,22 +34,47 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmn-hJ-0Dp">
-                                <rect key="frame" x="0.0" y="116" width="375" height="34"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tmn-hJ-0Dp" customClass="CruSegmentedControl" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="116" width="375" height="30"/>
+                                <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="34" id="wuU-rv-Muj"/>
+                                    <constraint firstAttribute="height" constant="30" id="wuU-rv-Muj"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="commaSeparatedButtonTitles" value="Articles,Videos,Audio"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.84313725490196079" green="0.84313725490196079" blue="0.84313725490196079" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="textColor">
+                                        <color key="value" red="0.51764705882352935" green="0.51764705882352935" blue="0.51764705882352935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorColor">
+                                        <color key="value" red="0.8666666666666667" green="0.49019607843137253" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="selectorTextColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="valueDidChange:" destination="hVD-ZW-0bX" eventType="valueChanged" id="OGb-F2-HyE"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="Ylm-rb-kdK" secondAttribute="trailing" id="0Kr-eI-TQF"/>
                             <constraint firstItem="Ylm-rb-kdK" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="1ec-5H-8KX"/>
+                            <constraint firstItem="Ylm-rb-kdK" firstAttribute="top" secondItem="nrX-Is-5TO" secondAttribute="bottom" id="3eQ-8m-xbG"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="Tmn-hJ-0Dp" secondAttribute="trailing" id="92T-A2-oA3"/>
                             <constraint firstItem="Fwb-D5-FrQ" firstAttribute="bottom" secondItem="Ylm-rb-kdK" secondAttribute="bottom" id="9d9-af-hm1"/>
+                            <constraint firstItem="nrX-Is-5TO" firstAttribute="top" secondItem="Tmn-hJ-0Dp" secondAttribute="bottom" id="AFb-vk-ode"/>
+                            <constraint firstItem="nrX-Is-5TO" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="Yp9-bu-Pnc"/>
+                            <constraint firstItem="Fwb-D5-FrQ" firstAttribute="trailing" secondItem="nrX-Is-5TO" secondAttribute="trailing" id="blH-FS-dxd"/>
                             <constraint firstItem="Tmn-hJ-0Dp" firstAttribute="top" secondItem="Fwb-D5-FrQ" secondAttribute="top" id="niv-xR-ak1"/>
                             <constraint firstItem="Tmn-hJ-0Dp" firstAttribute="leading" secondItem="Fwb-D5-FrQ" secondAttribute="leading" id="qfa-VR-WX9"/>
-                            <constraint firstItem="Ylm-rb-kdK" firstAttribute="top" secondItem="Tmn-hJ-0Dp" secondAttribute="bottom" id="sCV-pl-gdb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fwb-D5-FrQ"/>
                     </view>
@@ -51,7 +83,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Ylm-rb-kdK" id="eWS-oB-hiW"/>
-                        <outlet property="segmentedControlContainerView" destination="Tmn-hJ-0Dp" id="10a-xw-lMc"/>
+                        <outlet property="cruSegmentedControl" destination="Tmn-hJ-0Dp" id="nDR-xP-4qm"/>
+                        <outlet property="fakeBottomOfNavBarView" destination="nrX-Is-5TO" id="nBl-H6-UtK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bx3-6V-Soa" sceneMemberID="firstResponder"/>

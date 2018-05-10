@@ -11,11 +11,10 @@ import UIKit
 @IBDesignable
 class ResourcesVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var cruSegmentedControl: CruSegmentedControl!
+    @IBOutlet weak var fakeBottomOfNavBarView: UIView!
+    
     private var shadowImageView: UIImageView?
-    var segmentedControlInNavBarView: SegmentedControlInNavBarView = UINib(nibName: "SegmentedControlInNavBarView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! SegmentedControlInNavBarView
-
-    @IBOutlet weak var segmentedControlContainerView: UIView!
-    var segmentedControlUpdateOnScrollDelegate: UpdateSegmentedControlDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,13 +23,7 @@ class ResourcesVC: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.registerCell(ResourcesTableViewCollectionViewCell.self)
-        self.segmentedControlContainerView.addSubview(self.segmentedControlInNavBarView)
-        segmentedControlContainerView.bottomAnchor.constraint(equalTo: segmentedControlInNavBarView.bottomAnchor).isActive = true
-        segmentedControlContainerView.rightAnchor.constraint(equalTo: segmentedControlInNavBarView.rightAnchor).isActive = true
-        segmentedControlContainerView.leftAnchor.constraint(equalTo: segmentedControlInNavBarView.leftAnchor).isActive = true
-        segmentedControlContainerView.topAnchor.constraint(equalTo: segmentedControlInNavBarView.topAnchor).isActive = true
-        self.segmentedControlInNavBarView.delegate = self
-        self.segmentedControlUpdateOnScrollDelegate = self.segmentedControlInNavBarView
+        self.fakeBottomOfNavBarView.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +36,6 @@ class ResourcesVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
         self.shadowImageView?.isHidden = false
     }
     
@@ -59,14 +51,9 @@ class ResourcesVC: UIViewController {
         }
         return nil
     }
-    
-}
-
-extension ResourcesVC: SegmentedControlInNavBarViewProtocol {
-    func segmentedControlValueChanged(_ index: Int) {
-        self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
+    @IBAction func valueDidChange(_ sender: CruSegmentedControl) {
+        self.collectionView.scrollToItem(at: IndexPath(item: sender.selectedSegmentIndex, section: 0), at: .left, animated: true)
     }
-    
 }
 
 extension ResourcesVC: UICollectionViewDataSource {
@@ -93,7 +80,7 @@ extension ResourcesVC: UICollectionViewDataSource {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x/self.collectionView.frame.width)
-        self.segmentedControlUpdateOnScrollDelegate?.setSegmentedControlValue(index)
+        self.cruSegmentedControl.selectedSegmentIndex = index
     }
 }
 
@@ -101,8 +88,4 @@ extension ResourcesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
-}
-
-protocol UpdateSegmentedControlDelegate {
-    func setSegmentedControlValue(_ index: Int) -> Void
 }
