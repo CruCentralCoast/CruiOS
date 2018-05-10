@@ -15,8 +15,7 @@ class ResourcesVC: UIViewController {
     var segmentedControlInNavBarView: SegmentedControlInNavBarView = UINib(nibName: "SegmentedControlInNavBarView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! SegmentedControlInNavBarView
 
     @IBOutlet weak var segmentedControlContainerView: UIView!
-    
-    private var segmentedControlIndex: Int = 0
+    var segmentedControlUpdateOnScrollDelegate: UpdateSegmentedControlDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +30,7 @@ class ResourcesVC: UIViewController {
         segmentedControlContainerView.leftAnchor.constraint(equalTo: segmentedControlInNavBarView.leftAnchor).isActive = true
         segmentedControlContainerView.topAnchor.constraint(equalTo: segmentedControlInNavBarView.topAnchor).isActive = true
         self.segmentedControlInNavBarView.delegate = self
+        self.segmentedControlUpdateOnScrollDelegate = self.segmentedControlInNavBarView
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +64,6 @@ class ResourcesVC: UIViewController {
 
 extension ResourcesVC: SegmentedControlInNavBarViewProtocol {
     func segmentedControlValueChanged(_ index: Int) {
-        self.segmentedControlIndex = index
         self.collectionView.scrollToItem(at: IndexPath(item: index, section: 0), at: .left, animated: true)
     }
     
@@ -78,7 +77,6 @@ extension ResourcesVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(ResourcesTableViewCollectionViewCell.self, indexPath: indexPath)
-        
         switch indexPath.item {
         case 0:
             cell.type = .articles
@@ -95,7 +93,7 @@ extension ResourcesVC: UICollectionViewDataSource {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x/self.collectionView.frame.width)
-        self.segmentedControlIndex = index
+        self.segmentedControlUpdateOnScrollDelegate?.setSegmentedControlValue(index)
     }
 }
 
@@ -103,4 +101,8 @@ extension ResourcesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
+}
+
+protocol UpdateSegmentedControlDelegate {
+    func setSegmentedControlValue(_ index: Int) -> Void
 }

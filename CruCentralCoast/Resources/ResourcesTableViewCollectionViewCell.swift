@@ -17,6 +17,7 @@ enum ResourcesTableViewType {
 class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var type: ResourcesTableViewType = .audio {
         didSet {
             self.tableView.reloadData()
@@ -30,8 +31,8 @@ class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
         self.tableView.registerCell(AudioResourcesCell.self)
         self.tableView.registerCell(VideosResourcesCell.self)
         self.tableView.registerCell(ArticlesResourcesCell.self)
-        }
     }
+}
 
 
 extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
@@ -64,6 +65,11 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
             cell.dateLabel.text = "Mar 17, 2018"
             return cell
         }
+    }
+    
+    //  Credit to https://stackoverflow.com/questions/40667985/how-to-hide-the-navigation-bar-and-toolbar-as-scroll-down-swift-like-mybridge
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        // possibly put code here to switch between  large and small nav bar
     }
 }
 

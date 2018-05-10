@@ -12,7 +12,11 @@ import UIKit
 class CruSegmentedControl: UIControl {
     var buttons = [UIButton]()
     var selector: UIView!
-    var selectedSegmentIndex = 0
+    var selectedSegmentIndex = 0 {
+        didSet {
+            self.updateIndex(self.selectedSegmentIndex)
+        }
+    }
     
     @IBInspectable
     var borderWidth: CGFloat = 0 {
@@ -100,9 +104,17 @@ class CruSegmentedControl: UIControl {
     
     @objc func buttonTapped(sender: UIButton) {
         for (idx, button) in self.buttons.enumerated() {
-            button.setTitleColor(self.textColor, for: .normal)
             if button == sender {
                 self.selectedSegmentIndex = idx
+                return
+            }
+        }
+    }
+    
+    private func updateIndex(_ index: Int) {
+        for (idx, button) in self.buttons.enumerated() {
+            button.setTitleColor(self.textColor, for: .normal)
+            if idx == index {
                 let selectorStartPosition = self.frame.width/CGFloat(self.buttons.count) * CGFloat(idx)
                 UIView.animate(withDuration: 0.3, animations: {
                     self.selector.frame.origin.x = selectorStartPosition

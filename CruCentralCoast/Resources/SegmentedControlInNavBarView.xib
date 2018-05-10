@@ -62,6 +62,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="cruSegmentedControl" destination="7YP-Uo-Hzz" id="GjZ-HL-lmF"/>
                 <outlet property="fakeBottomOfNavBar" destination="yBY-ba-fwd" id="cVw-JR-YAA"/>
             </connections>
             <point key="canvasLocation" x="-127.5" y="-193"/>

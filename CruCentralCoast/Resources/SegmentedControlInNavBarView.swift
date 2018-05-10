@@ -13,6 +13,7 @@ class SegmentedControlInNavBarView: UIView {
     @IBOutlet weak var fakeBottomOfNavBar: UIView!
     
     var delegate: SegmentedControlInNavBarViewProtocol?
+    @IBOutlet weak var cruSegmentedControl: CruSegmentedControl!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +23,14 @@ class SegmentedControlInNavBarView: UIView {
     @IBAction func segmentedControlValueChanged(_ sender: CruSegmentedControl) {
         self.delegate?.segmentedControlValueChanged(sender.selectedSegmentIndex)
     }
+}
+
+extension SegmentedControlInNavBarView: UpdateSegmentedControlDelegate {
+    func setSegmentedControlValue(_ index: Int) {
+        self.cruSegmentedControl.selectedSegmentIndex = index
+    }
+    
+    
 }
 
 protocol SegmentedControlInNavBarViewProtocol {
