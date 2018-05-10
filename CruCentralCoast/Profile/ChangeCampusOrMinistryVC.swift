@@ -18,8 +18,6 @@ class ChangeCampusOrMinistryVC: UIViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.registerCell(ChangeCampusOrMinistryCell.self)
-        
-        
     }
     
     @IBAction func doneButtonPressed(_ sender: UIBarButtonItem) {
