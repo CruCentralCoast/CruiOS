@@ -59,11 +59,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwn-1s-NAM">
-                                        <rect key="frame" x="123" y="380.5" width="128" height="30"/>
+                                        <rect key="frame" x="123" y="355.5" width="128" height="30"/>
                                         <state key="normal" title="Join Ministry Team"/>
                                     </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="Iwn-1s-NAM" firstAttribute="top" secondItem="Vl5-Ey-haI" secondAttribute="bottom" constant="20" id="1dD-jg-CLT"/>
+                                    <constraint firstItem="Iwn-1s-NAM" firstAttribute="centerX" secondItem="w2i-df-bvA" secondAttribute="centerX" id="5FR-rH-0lE"/>
                                     <constraint firstAttribute="trailing" secondItem="Vl5-Ey-haI" secondAttribute="trailing" constant="20" id="604-dt-S9v"/>
                                     <constraint firstItem="LGC-N6-nF4" firstAttribute="centerX" secondItem="w2i-df-bvA" secondAttribute="centerX" id="6Fh-2e-BZp"/>
                                     <constraint firstItem="Vl5-Ey-haI" firstAttribute="top" secondItem="O3Q-b3-li8" secondAttribute="bottom" constant="8" id="CU1-Nq-J7t"/>
@@ -72,12 +74,9 @@
                                     <constraint firstItem="nJ0-Pf-Tqa" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="IR7-6j-iPq"/>
                                     <constraint firstItem="DuK-wq-LQ0" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="IqR-3n-cYi"/>
                                     <constraint firstItem="LGC-N6-nF4" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" id="K3g-7c-TLG"/>
-                                    <constraint firstItem="LGC-N6-nF4" firstAttribute="centerX" secondItem="Iwn-1s-NAM" secondAttribute="centerX" id="Lx8-cm-2fo"/>
-                                    <constraint firstAttribute="bottom" secondItem="Iwn-1s-NAM" secondAttribute="bottom" constant="25" id="UVQ-3a-fXU"/>
                                     <constraint firstItem="O3Q-b3-li8" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="a6m-tc-hTh"/>
                                     <constraint firstAttribute="width" constant="375" id="eq3-Cm-E6l"/>
-                                    <constraint firstAttribute="bottom" secondItem="Vl5-Ey-haI" secondAttribute="bottom" constant="100" id="jLS-oa-QBm"/>
-                                    <constraint firstItem="Iwn-1s-NAM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Vl5-Ey-haI" secondAttribute="bottom" constant="20" id="oVe-jh-caf"/>
+                                    <constraint firstAttribute="bottom" secondItem="Iwn-1s-NAM" secondAttribute="bottom" constant="35" id="p2e-T7-Jc0"/>
                                     <constraint firstAttribute="trailing" secondItem="LGC-N6-nF4" secondAttribute="trailing" id="tLp-R3-MPI"/>
                                     <constraint firstItem="LGC-N6-nF4" firstAttribute="top" secondItem="w2i-df-bvA" secondAttribute="top" id="wmB-1O-pQq"/>
                                     <constraint firstItem="nJ0-Pf-Tqa" firstAttribute="top" secondItem="LGC-N6-nF4" secondAttribute="bottom" constant="14" id="x7k-6m-Xkr"/>
@@ -91,7 +90,7 @@
                             <constraint firstItem="gmu-rR-Nz9" firstAttribute="top" secondItem="dSK-HD-oVb" secondAttribute="top" constant="7" id="R2N-BM-Ky0"/>
                             <constraint firstItem="w2i-df-bvA" firstAttribute="leading" secondItem="Xrd-F4-2GC" secondAttribute="leading" id="XxG-cU-Ort"/>
                             <constraint firstItem="dSK-HD-oVb" firstAttribute="trailing" secondItem="gmu-rR-Nz9" secondAttribute="trailing" constant="19" id="Zjf-7d-e5R"/>
-                            <constraint firstItem="w2i-df-bvA" firstAttribute="bottom" secondItem="dSK-HD-oVb" secondAttribute="bottom" id="bWO-no-Ckh"/>
+                            <constraint firstItem="w2i-df-bvA" firstAttribute="bottom" secondItem="Xrd-F4-2GC" secondAttribute="bottom" id="bWO-no-Ckh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dSK-HD-oVb"/>
                     </view>
