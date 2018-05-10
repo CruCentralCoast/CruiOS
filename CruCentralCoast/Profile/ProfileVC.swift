@@ -89,9 +89,9 @@ extension ProfileVC: UITableViewDataSource {
             }
         case .loginLogout:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
-            let userIsLoggedIn = true
+            let userIsLoggedIn = LoginManager.instance.user != nil
             if let loginLogoutCell = cell as? ProfileSelectableTextCell {
-                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: userIsLoggedIn ? "Logout" : "Logout")
+                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: userIsLoggedIn ? "Logout" : "Login")
             }
         }
         return cell
@@ -120,8 +120,16 @@ extension ProfileVC: UITableViewDelegate {
         case .notifications:
             self.show(UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(NotificationsVC.self), sender: self)
         case .changeCampus:
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ChangeCampusOrMinistryVC")
+            vc.title = "Change Campus"
+            let navVC = UINavigationController(rootViewController: vc)
+            self.present(navVC, animated: true, completion: nil)
             break
         case .changeMinistry:
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ChangeCampusOrMinistryVC")
+            vc.title = "Change Ministry"
+            let navVC = UINavigationController(rootViewController: vc)
+            self.present(navVC, animated: true, completion: nil)
             break
         case .loginLogout:
             break

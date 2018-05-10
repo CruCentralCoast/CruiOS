@@ -66,7 +66,51 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nc0-gN-3DE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1409" y="-561"/>
+            <point key="canvasLocation" x="1298" y="-562"/>
+        </scene>
+        <!--Change ____-->
+        <scene sceneID="E4D-30-g1q">
+            <objects>
+                <viewController storyboardIdentifier="ChangeCampusOrMinistryVC" id="aTf-uh-d7p" customClass="ChangeCampusOrMinistryVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PiI-gM-Iw2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="H7x-6C-mxa">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ne3-2b-1iA">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="16" minY="4" maxX="16" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="H7x-6C-mxa" secondAttribute="trailing" id="PAg-U7-ior"/>
+                            <constraint firstItem="H7x-6C-mxa" firstAttribute="top" secondItem="P2I-VB-yy8" secondAttribute="top" id="W8R-vK-Bpa"/>
+                            <constraint firstAttribute="bottom" secondItem="H7x-6C-mxa" secondAttribute="bottom" id="exN-ha-cOs"/>
+                            <constraint firstItem="H7x-6C-mxa" firstAttribute="leading" secondItem="P2I-VB-yy8" secondAttribute="leading" id="tQu-JY-EpG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="P2I-VB-yy8"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Change ____" id="mAe-Fa-WVK">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="kS9-gJ-hBL">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="aTf-uh-d7p" id="5gE-2h-GPv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="H7x-6C-mxa" id="8Ld-0x-PvI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rte-Pm-cdk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2102" y="160"/>
         </scene>
     </scenes>
 </document>

@@ -9,7 +9,6 @@
 import UIKit
 
 class AudioResourcesCell: UITableViewCell {
-
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var currentTimeLabel: UILabel!
