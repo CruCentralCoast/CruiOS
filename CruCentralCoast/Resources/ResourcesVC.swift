@@ -78,6 +78,10 @@ extension ResourcesVC: UICollectionViewDataSource {
         return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.cruSegmentedControl.updateSelectorPosition(offset: scrollView.contentOffset.x)
+    }
+    
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let index = Int(scrollView.contentOffset.x/self.collectionView.frame.width)
         self.cruSegmentedControl.selectedSegmentIndex = index
