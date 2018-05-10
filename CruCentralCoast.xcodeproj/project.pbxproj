@@ -125,7 +125,7 @@
 		2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePaths.swift; sourceTree = "<group>"; };
 		2FD4ACF4207EFFA7001BB0A6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		2FEA0538208405AA00F1491C /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MinistryTeamDetails.storyboard; path = "/Users/michaelcantrell/Documents/CruiOS/CruCentralCoast/Community/Ministry Teams/MinistryTeamDetails.storyboard"; sourceTree = "<absolute>"; };
+		5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MinistryTeamDetails.storyboard; path = "/Users/camstocker/CRU_iOS/CruiOS/CruCentralCoast/Community/Ministry Teams/MinistryTeamDetails.storyboard"; sourceTree = "<absolute>"; };
 		5E5416D52088269600A56279 /* MissionCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionCVC.swift; sourceTree = "<group>"; };
 		5E5416D62088269600A56279 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionDetailsVC.swift; sourceTree = "<group>"; };
 		5E8EC8B7202A3785000F86D8 /* CruCentralCoast.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CruCentralCoast.app; sourceTree = BUILT_PRODUCTS_DIR; };
