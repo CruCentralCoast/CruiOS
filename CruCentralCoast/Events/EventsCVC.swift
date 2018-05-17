@@ -11,12 +11,19 @@ import UIKit
 class EventsCVC: UICollectionViewController {
     
     //some data for testing
-    var dataArray: [EventCellParameters] = [EventCellParameters(title: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), EventCellParameters(title: "test2", date: "date", location: "location", description: "description"), EventCellParameters(title: "test3", date: "date", location: "location", description: "description"), EventCellParameters(title: "test4", date: "date", location: "location", description: "description"), EventCellParameters(title: "test5", date: "date", location: "location", description: "description")]
+    var dataArray = [Event]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.insertProfileButtonInNavBar()
         self.collectionView?.registerCell(EventCell.self)
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let width = collectionView!.bounds.width - layout.sectionInset.left - layout.sectionInset.right
+        layout.itemSize = CGSize(width: width, height: width * 0.55)
+        DatabaseManager.instance.getEvents { (events) in
+            self.dataArray = events
+            self.collectionView?.reloadData()
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -25,12 +32,7 @@ class EventsCVC: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(EventCell.self, indexPath: indexPath)
-        
-        //set the cells
-        cell.dateLabel.text = dataArray[indexPath.item].date
-        cell.titleLabel.text = dataArray[indexPath.item].title
-        cell.imageView.image = #imageLiteral(resourceName: "night-at-the-oscars")
-    
+        cell.event = dataArray[indexPath.item]
         return cell
     }
 
@@ -41,12 +43,5 @@ class EventsCVC: UICollectionViewController {
         }
         vc.configure(with: self.dataArray[indexPath.item])
         self.navigationController?.present(vc, animated: true, completion: nil)
-    }
-}
-
-extension EventsCVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.bounds.width - 20.0
-        return CGSize(width: width, height: width*0.55)
     }
 }

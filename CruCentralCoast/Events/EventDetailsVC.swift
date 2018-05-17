@@ -29,8 +29,8 @@ class EventDetailsVC: UIViewController {
     var eventTitle: String?
     var eventDate: String?
     var eventLocation: String?
-    var eventDesc: String?
-    
+    var eventSummary: String?
+    var eventImage: UIImage?
     
     @IBAction func dismissDetail(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -63,17 +63,18 @@ class EventDetailsVC: UIViewController {
         self.titleLabel.text = self.eventTitle
         self.dateLabel.text = self.eventDate
         self.locationLabel.text = self.eventLocation
-        self.descriptionLabel.text = self.eventDesc
-        
-        self.imageView.image = #imageLiteral(resourceName: "night-at-the-oscars")
+        self.descriptionLabel.text = self.eventSummary
+        self.imageView.image = self.eventImage
         // Do any additional setup after loading the view.
     }
     
-    func configure(with cellParameters: EventCellParameters) {
+    func configure(with cellParameters: Event) {
+        let dateFormatter = DateFormatter()
+        self.eventImage = cellParameters.image
         self.eventTitle = cellParameters.title
-        self.eventDate = cellParameters.date
+        self.eventDate = dateFormatter.string(from: cellParameters.startDate)
         self.eventLocation = cellParameters.location
-        self.eventDesc = cellParameters.description
+        self.eventSummary = cellParameters.summary
     }
 
 }

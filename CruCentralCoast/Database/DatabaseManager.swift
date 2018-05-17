@@ -37,6 +37,10 @@ class DatabaseManager {
     func getMinistries(_ completion: @escaping ([Ministry])->Void) {
         getData(completion)
     }
+    
+    func getEvents(_ completion: @escaping ([Event])->Void) {
+        getData(completion)
+    }
 }
 
 protocol DatabaseObject: DatabasePath {

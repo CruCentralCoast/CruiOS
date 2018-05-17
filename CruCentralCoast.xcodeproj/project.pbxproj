@@ -81,11 +81,12 @@
 		ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8B820927A39009D5BC6 /* CustomSegmentedControl.swift */; };
 		ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */; };
 		B925A4D486A6853802C549FA /* Pods_CruCentralCoastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */; };
-		E082D8D4209AC32200FDECC1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E082D8D3209AC32200FDECC1 /* Event.swift */; };
 		E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */; };
 		E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094400E2075ACE40057AC83 /* EventsCVC.swift */; };
 		E09440122075AEC40057AC83 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09440102075AEC40057AC83 /* EventCell.swift */; };
 		E09440132075AEC40057AC83 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09440112075AEC40057AC83 /* EventCell.xib */; };
+		E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FA20AD0C3600B2EF40 /* Event.swift */; };
+		E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */; };
 		E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C81C08207EED5800A00645 /* EventDetailsVC.swift */; };
 /* End PBXBuildFile section */
 
@@ -197,6 +198,8 @@
 		E094400E2075ACE40057AC83 /* EventsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCVC.swift; sourceTree = "<group>"; };
 		E09440102075AEC40057AC83 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		E09440112075AEC40057AC83 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		E0AFD0FA20AD0C3600B2EF40 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		E0C81C08207EED5800A00645 /* EventDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsVC.swift; sourceTree = "<group>"; };
 		E4E2E2445612ECE64B34F5FD /* Pods-CruCentralCoastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.release.xcconfig"; sourceTree = "<group>"; };
 		E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -244,6 +247,7 @@
 		2F43AEC2209AD9BD009BC362 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				E0AFD0FA20AD0C3600B2EF40 /* Event.swift */,
 				2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */,
 				2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */,
 				2F43AEC5209ADA41009BC362 /* Ministry.swift */,
@@ -485,6 +489,7 @@
 				2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */,
 				2F180861207980F100693C7B /* UIViewControllerExtensions.swift */,
 				AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */,
+				E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -814,6 +819,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */,
+				E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */,
 				5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */,
 				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
@@ -835,6 +841,7 @@
 				AD55A0E4209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift in Sources */,
 				AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */,
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
+				E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */,
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
 				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
@@ -842,7 +849,6 @@
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
 				AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */,
-				E082D8D4209AC32200FDECC1 /* Event.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,
 				2F2BD9972077325300512170 /* CruTextField.swift in Sources */,
