@@ -19,6 +19,8 @@ class ResourcesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(self.popToRootViewController), name: MainTabBarController.tabBarChangedNotification, object: nil)
+        
         self.insertProfileButtonInNavBar()
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -51,6 +53,7 @@ class ResourcesVC: UIViewController {
         }
         return nil
     }
+    
     @IBAction func valueDidChange(_ sender: CruSegmentedControl) {
         self.collectionView.scrollToItem(at: IndexPath(item: sender.selectedSegmentIndex, section: 0), at: .left, animated: true)
     }

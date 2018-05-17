@@ -67,7 +67,7 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
     
     //  Credit to https://stackoverflow.com/questions/40667985/how-to-hide-the-navigation-bar-and-toolbar-as-scroll-down-swift-like-mybridge
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        // possibly put code here to switch between  large and small nav bar
+        // possibly put code here to animate between  large and small nav bar
     }
 }
 
