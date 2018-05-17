@@ -13,6 +13,8 @@ public extension UIViewController {
         if let largeTitleView = self.navigationController?.navigationBar.subviews.first(where: {
             String(describing: type(of: $0)) == "_UINavigationBarLargeTitleView" } ) {
             
+            NotificationCenter.default.addObserver(self, selector: #selector(self.popToRootViewController), name: MainTabBarController.tabBarChangedNotification, object: nil)
+            
             let profileButton = UIButton()
             profileButton.translatesAutoresizingMaskIntoConstraints = false
             profileButton.setImage(#imageLiteral(resourceName: "profile_icon")

@@ -19,8 +19,6 @@ class ResourcesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.popToRootViewController), name: MainTabBarController.tabBarChangedNotification, object: nil)
-        
         self.insertProfileButtonInNavBar()
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
