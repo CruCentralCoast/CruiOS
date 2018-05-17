@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit
 
 struct EventCellParameters {
     let title : String
@@ -39,6 +40,20 @@ class EventDetailsVC: UIViewController {
         self.presentAlert(title: "Link not set up yet!!", message: "Coming soon")
     }
 
+    /* future function for calendar button on events Details Screen
+    @IBAction func calendarButtonPressed(_ sender: Any) {
+        let eventStore : EKEventStore = EKEventStore()
+        
+        eventStore.requestAccess(to: .event, completion: { (granted, error) in
+            if (granted) && (error == nil) {
+                let event = EKEvent(eventStore: eventStore)
+                event.title = self.titleLabel.text
+            }
+            
+        })
+    }
+    */
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -15,16 +15,10 @@ class EventsCVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.collectionView?.registerCell(EventCell.self)
+        self.insertProfileButtonInNavBar()
+        self.collectionView?.registerCell(EventCell.self)
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.frame.width - 20.0
-        return CGSize(width: width, height: width*0.5)
-        
-    }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return dataArray.count
     }
@@ -47,5 +41,12 @@ class EventsCVC: UICollectionViewController {
         }
         vc.configure(with: self.dataArray[indexPath.item])
         self.navigationController?.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension EventsCVC: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.view.bounds.width - 20.0
+        return CGSize(width: width, height: width*0.55)
     }
 }

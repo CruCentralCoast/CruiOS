@@ -81,6 +81,7 @@
 		ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8B820927A39009D5BC6 /* CustomSegmentedControl.swift */; };
 		ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */; };
 		B925A4D486A6853802C549FA /* Pods_CruCentralCoastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */; };
+		E082D8D4209AC32200FDECC1 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E082D8D3209AC32200FDECC1 /* Event.swift */; };
 		E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */; };
 		E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094400E2075ACE40057AC83 /* EventsCVC.swift */; };
 		E09440122075AEC40057AC83 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09440102075AEC40057AC83 /* EventCell.swift */; };
@@ -191,6 +192,7 @@
 		ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCampusOrMinistryVC.swift; sourceTree = "<group>"; };
 		B5BF33BE152889DED4A13ABF /* Pods-CruCentralCoast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoast.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast.release.xcconfig"; sourceTree = "<group>"; };
 		B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E082D8D3209AC32200FDECC1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResourcesCell.swift; sourceTree = "<group>"; };
 		E094400E2075ACE40057AC83 /* EventsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCVC.swift; sourceTree = "<group>"; };
 		E09440102075AEC40057AC83 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				5E8EC8B8202A3785000F86D8 /* Products */,
 				F067E0C206467763E8F4D1A0 /* Pods */,
 				3D8F449FDC8138C7134BF88F /* Frameworks */,
+				E06596A420AD048200C24FAB /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -495,6 +498,14 @@
 				2F2BD9962077325300512170 /* CruTextField.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		E06596A420AD048200C24FAB /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E082D8D3209AC32200FDECC1 /* Event.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		F067E0C206467763E8F4D1A0 /* Pods */ = {
@@ -831,6 +842,7 @@
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
 				AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */,
+				E082D8D4209AC32200FDECC1 /* Event.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,
 				2F2BD9972077325300512170 /* CruTextField.swift in Sources */,
