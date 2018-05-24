@@ -11,9 +11,14 @@ import UIKit
 class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tableView: UITableView!
     
+    var resources: [Resource] = []
+    var resourcePresentingDelegate: ResourcePresentingDelegate?
     var type: ResourceType = .audio {
         didSet {
-            self.tableView.reloadData()
+            DatabaseManager.instance.getResources(ofType: self.type) {resources in
+                self.resources = resources
+                self.tableView.reloadData()
+            }
         }
     }
     
@@ -29,39 +34,34 @@ class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
 
 extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch self.type {
-        case .audio:
-            return 20
-        case .videos:
-            return 20
-        case .articles:
-            return 20
-        }
+        return self.resources.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let resource = self.resources[indexPath.row]
         switch self.type {
         case .audio:
             let cell = tableView.dequeueCell(AudioResourcesCell.self, indexPath: indexPath)
-            cell.titleLabel.text = "Audio " + String(indexPath.row)
-            cell.dateLabel.text = "Mar 17, 2018"
+            cell.titleLabel.text = resource.title
+            cell.dateLabel.text = resource.date.description
             return cell
-        case .videos:
+        case .video:
             let cell = tableView.dequeueCell(VideosResourcesCell.self, indexPath: indexPath)
-            cell.titleLabel.text = "Video " + String(indexPath.row)
-            cell.dateLabel.text = "Mar 17, 2018"
+            cell.titleLabel.text = resource.title
+            cell.dateLabel.text = resource.date.description
             return cell
-        case .articles:
+        case .article:
             let cell = tableView.dequeueCell(ArticlesResourcesCell.self, indexPath: indexPath)
-            cell.titleLabel.text = "Article " + String(indexPath.row)
-            cell.dateLabel.text = "Mar 17, 2018"
+            cell.titleLabel.text = resource.title
+            cell.dateLabel.text = resource.date.description
             return cell
         }
     }
     
-    //  Credit to https://stackoverflow.com/questions/40667985/how-to-hide-the-navigation-bar-and-toolbar-as-scroll-down-swift-like-mybridge
-    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-        // possibly put code here to animate between  large and small nav bar
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.isSelected = false
+        let resource = self.resources[indexPath.row]
+        self.resourcePresentingDelegate?.presentResource(of: self.type, resource: resource)
     }
 }
 
@@ -70,9 +70,9 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDelegate {
         switch self.type {
         case .audio:
             return 68
-        case .videos:
+        case .video:
             return 53
-        case .articles:
+        case .article:
             return 66
         }
     }

@@ -6,26 +6,62 @@
 //  Copyright © 2018 Landon Gerrits. All rights reserved.
 //
 
-import Firebase
+import Foundation
 
 enum ResourceType {
     case audio
-    case videos
-    case articles
+    case video
+    case article
 }
 
 class Resource: DatabaseObject {
     var author: String
+    var title: String
     var date: Date
+    var url: String
+    var type: ResourceType
     
     required init?(dict: NSDictionary) {
         guard let author = dict["author"] as? String else {
             return nil
         }
         self.author = author
-        guard let timeStamp = dict["date"] as? TimeStamp else {
+        guard let title = dict["title"] as? String else {
             return nil
         }
-        self.date = timeStamp.date()
+        self.title = title
+        guard let date = dict["date"] as? Date else {
+            return nil
+        }
+        self.date = date
+        guard let url = dict["url"] as? String else {
+            return nil
+        }
+        self.url = url
+        guard let type = dict["type"] as? String else {
+            return nil
+        }
+        switch type {
+        case "audio":
+            self.type = .audio
+        case "video":
+            self.type = .video
+        default: //case "article":
+            self.type = .article
+        }
+    }
+    
+    static func createResource(dict: NSDictionary) -> Resource? {
+        guard let type = dict["type"] as? String else {
+            return nil
+        }
+        switch type {
+        case "audio":
+            return AudioResource(dict: dict)
+        case "video":
+            return VideoResource(dict: dict)
+        default: //case "article":
+            return ArticleResource(dict: dict)
+        }
     }
 }

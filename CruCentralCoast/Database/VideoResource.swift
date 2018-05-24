@@ -1,5 +1,5 @@
 //
-//  ArticleResource.swift
+//  VideoResource.swift
 //  CruCentralCoast
 //
 //  Created by Michael Cantrell on 5/23/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ArticleResource: Resource {
+class VideoResource: Resource {
     var description: String
     
     required init?(dict: NSDictionary) {

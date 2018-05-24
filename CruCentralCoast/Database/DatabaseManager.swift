@@ -33,6 +33,38 @@ class DatabaseManager {
     func getMinistries(_ completion: @escaping ([Ministry])->Void) {
         getData(completion)
     }
+    
+    private func getArticleResources(_ completion: @escaping ([ArticleResource])->Void) {
+        self.getData(completion)
+    }
+    
+    private func getVideoResources(_ completion: @escaping ([VideoResource])->Void) {
+        self.getData(completion)
+    }
+    
+    private func getAudioResources(_ completion: @escaping ([AudioResource])->Void) {
+        self.getData(completion)
+    }
+    
+    func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
+        let typeString: String
+        switch type {
+        case .article:
+            typeString = "article"
+        case .video:
+            typeString = "video"
+        case .audio:
+            typeString = "audio"
+        }
+        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: typeString).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting resources from database: \(error)")
+            } else {
+                let resources = querySnapshot?.documents.compactMap { Resource.createResource(dict: $0.data() as NSDictionary) } ?? []
+                completion(resources)
+            }
+        }
+    }
 }
 
 protocol DatabaseObject: DatabasePath {

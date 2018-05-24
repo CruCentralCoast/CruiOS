@@ -6,7 +6,7 @@
 //  Copyright © 2018 Landon Gerrits. All rights reserved.
 //
 
-import UIKit
+import AVKit
 
 @IBDesignable
 class ResourcesVC: UIViewController {
@@ -65,17 +65,17 @@ extension ResourcesVC: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(ResourcesTableViewCollectionViewCell.self, indexPath: indexPath)
+        cell.resourcePresentingDelegate = self
         switch indexPath.item {
         case 0:
-            cell.type = .articles
+            cell.type = .article
         case 1:
-            cell.type = .videos
+            cell.type = .video
         case 2:
             cell.type = .audio
         default:
             break
         }
-        
         return cell
     }
     
@@ -93,4 +93,31 @@ extension ResourcesVC: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return collectionView.frame.size
     }
+}
+
+extension ResourcesVC: ResourcePresentingDelegate {
+    func presentResource(of type: ResourceType, resource: Resource) {
+        switch type {
+        case .audio:
+            if let audioResource = resource as? AudioResource {
+                // TODO
+            }
+        case .video:
+            if let videoResource = resource as? VideoResource {
+                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(ArticleResourceDetailVC.self)
+                vc.resource = videoResource
+                self.show(vc, sender: self)
+            }
+        case .article:
+            if let articleResource = resource as? ArticleResource {
+                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(ArticleResourceDetailVC.self)
+                vc.resource = articleResource
+                self.show(vc, sender: self)
+            }
+        }
+    }
+}
+
+protocol ResourcePresentingDelegate {
+    func presentResource(of type: ResourceType, resource: Resource)
 }

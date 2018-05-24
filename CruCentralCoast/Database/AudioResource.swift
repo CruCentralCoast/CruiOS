@@ -1,5 +1,5 @@
 //
-//  ArticleResource.swift
+//  File.swift
 //  CruCentralCoast
 //
 //  Created by Michael Cantrell on 5/23/18.
@@ -8,14 +8,10 @@
 
 import Foundation
 
-class ArticleResource: Resource {
-    var description: String
+class AudioResource: Resource {
     
     required init?(dict: NSDictionary) {
-        guard let description = dict["description"] as? String else {
-            return nil
-        }
-        self.description = description
+        // initialize other stuff here
         
         super.init(dict: dict)
     }
