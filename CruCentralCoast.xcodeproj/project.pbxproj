@@ -71,6 +71,8 @@
 		AD55A0EB209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD55A0E9209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib */; };
 		AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
+		AD652AA620B65990002FF565 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AA520B65990002FF565 /* Resource.swift */; };
+		AD652AA820B65CC9002FF565 /* ArticleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AA720B65CC9002FF565 /* ArticleResource.swift */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
 		ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */; };
 		ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */; };
@@ -181,6 +183,8 @@
 		AD55A0E9209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourcesTableViewCollectionViewCell.xib; sourceTree = "<group>"; };
 		AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		AD652AA520B65990002FF565 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
+		AD652AA720B65CC9002FF565 /* ArticleResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleResource.swift; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
 		ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesCell.swift; sourceTree = "<group>"; };
 		ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesResourcesCell.xib; sourceTree = "<group>"; };
@@ -247,6 +251,8 @@
 				2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */,
 				2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */,
 				2F43AEC5209ADA41009BC362 /* Ministry.swift */,
+				AD652AA520B65990002FF565 /* Resource.swift */,
+				AD652AA720B65CC9002FF565 /* ArticleResource.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -810,6 +816,7 @@
 				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
+				AD652AA820B65CC9002FF565 /* ArticleResource.swift in Sources */,
 				AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */,
 				AD55A0EA209B759D009F62FB /* ResourcesTableViewCollectionViewCell.swift in Sources */,
 				ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */,
@@ -830,6 +837,7 @@
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
+				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
 				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
 				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,

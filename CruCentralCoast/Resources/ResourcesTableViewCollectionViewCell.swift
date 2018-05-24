@@ -8,16 +8,10 @@
 
 import UIKit
 
-enum ResourcesTableViewType {
-    case audio
-    case videos
-    case articles
-}
-
 class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tableView: UITableView!
     
-    var type: ResourcesTableViewType = .audio {
+    var type: ResourceType = .audio {
         didSet {
             self.tableView.reloadData()
         }
