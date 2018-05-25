@@ -6,7 +6,7 @@
 //  Copyright © 2018 Landon Gerrits. All rights reserved.
 //
 
-import UIKit
+import WebKit
 
 public extension UIViewController {
     func insertProfileButtonInNavBar() {
@@ -53,5 +53,26 @@ public extension UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         self.present(alertController, animated: animated, completion: completion)
+    }
+    
+    func showWebView(from url: String, withActivityIndicator: Bool = false, navigationDelegate: WKNavigationDelegate?) {
+        let webView = WKWebView()
+        if let url = URL(string: url) {
+            webView.load(URLRequest(url: url))
+        }
+        let vc = UIViewController()
+        vc.view = webView
+        webView.navigationDelegate = navigationDelegate
+        if (withActivityIndicator) {
+            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+            activityIndicator.hidesWhenStopped = true
+            activityIndicator.color = .gray
+            webView.addSubview(activityIndicator)
+            activityIndicator.startAnimating()
+            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+            activityIndicator.centerXAnchor.constraint(equalTo: webView.centerXAnchor).isActive = true
+            activityIndicator.centerYAnchor.constraint(equalTo: webView.centerYAnchor).isActive = true
+        }
+        self.show(vc, sender: self)
     }
 }

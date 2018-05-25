@@ -100,11 +100,13 @@ extension ResourcesVC: ResourcePresentingDelegate {
         switch type {
         case .audio:
             if let audioResource = resource as? AudioResource {
-                // TODO
+                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(AudioResourceDetailVC.self)
+                vc.resource = audioResource
+                self.show(vc, sender: self)
             }
         case .video:
             if let videoResource = resource as? VideoResource {
-                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(ArticleResourceDetailVC.self)
+                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(VideoResourceDetailVC.self)
                 vc.resource = videoResource
                 self.show(vc, sender: self)
             }
