@@ -26,6 +26,7 @@ class ArticleResourceDetailVC: UIViewController {
     
     @IBAction func readArticleButtonPressed(_ sender: Any) {
         if let resourceURLString = self.resource?.url {
+            print(resourceURLString)
             self.showWebView(from: resourceURLString, withActivityIndicator: true, navigationDelegate: self)
         }
     }

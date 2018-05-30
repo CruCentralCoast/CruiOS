@@ -49,6 +49,13 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
             let cell = tableView.dequeueCell(VideosResourcesCell.self, indexPath: indexPath)
             cell.titleLabel.text = resource.title
             cell.dateLabel.text = resource.date.description
+            if let videoResource = resource as? VideoResource {
+                if let url = URL(string: videoResource.imageURL) {
+                    cell.imageView?.downloadedFrom(url: url)
+                } else {
+                    cell.imageView?.image = #imageLiteral(resourceName: "second")
+                }
+            }
             return cell
         case .article:
             let cell = tableView.dequeueCell(ArticlesResourcesCell.self, indexPath: indexPath)
@@ -69,11 +76,11 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch self.type {
         case .audio:
-            return 68
+            return 53
         case .video:
             return 53
         case .article:
-            return 66
+            return 53
         }
     }
 }

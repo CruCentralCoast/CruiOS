@@ -78,6 +78,8 @@
 		AD652AB620B69CE7002FF565 /* AudioResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AB520B69CE6002FF565 /* AudioResourceDetailVC.swift */; };
 		AD652AB820B69D04002FF565 /* ArticleResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AB720B69D04002FF565 /* ArticleResourceDetailVC.swift */; };
 		AD652ABA20B6B292002FF565 /* VideoResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AB920B6B292002FF565 /* VideoResourceDetailVC.swift */; };
+		ADA9539620BDCCCB00294CEA /* CruAudioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9539520BDCCCB00294CEA /* CruAudioControl.swift */; };
+		ADA9539820BDF38100294CEA /* CruAudioControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA9539720BDF38100294CEA /* CruAudioControl.xib */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
 		ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */; };
 		ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */; };
@@ -195,6 +197,8 @@
 		AD652AB520B69CE6002FF565 /* AudioResourceDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioResourceDetailVC.swift; sourceTree = "<group>"; };
 		AD652AB720B69D04002FF565 /* ArticleResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleResourceDetailVC.swift; sourceTree = "<group>"; };
 		AD652AB920B6B292002FF565 /* VideoResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResourceDetailVC.swift; sourceTree = "<group>"; };
+		ADA9539520BDCCCB00294CEA /* CruAudioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruAudioControl.swift; sourceTree = "<group>"; };
+		ADA9539720BDF38100294CEA /* CruAudioControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CruAudioControl.xib; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
 		ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesCell.swift; sourceTree = "<group>"; };
 		ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesResourcesCell.xib; sourceTree = "<group>"; };
@@ -517,6 +521,8 @@
 				2F2BD98E2076C0A100512170 /* CruImageButton.swift */,
 				2F2BD990207715F000512170 /* CruButton.swift */,
 				2F2BD9962077325300512170 /* CruTextField.swift */,
+				ADA9539520BDCCCB00294CEA /* CruAudioControl.swift */,
+				ADA9539720BDF38100294CEA /* CruAudioControl.xib */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -651,6 +657,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADA9539820BDF38100294CEA /* CruAudioControl.xib in Resources */,
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
@@ -869,6 +876,7 @@
 				E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */,
 				2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */,
 				5E5416D72088269600A56279 /* MissionCVC.swift in Sources */,
+				ADA9539620BDCCCB00294CEA /* CruAudioControl.swift in Sources */,
 				AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */,
 				5EEE64182085252F00AACF91 /* MinistryTeamCVC.swift in Sources */,
 				E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */,

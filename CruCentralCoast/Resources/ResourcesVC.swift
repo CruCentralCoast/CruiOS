@@ -15,6 +15,9 @@ class ResourcesVC: UIViewController {
     @IBOutlet weak var fakeBottomOfNavBarView: UIView!
     
     private var shadowImageView: UIImageView?
+    private var collectionViewCellLayout: [ResourceType] = [.article, .video, .audio]
+    private var audioController: CruAudioControl = UINib(nibName: String(describing: CruAudioControl.self), bundle: nil).instantiate(withOwner: self, options: nil)[0] as! CruAudioControl
+    private var miniAudioPlayerBottomConstraint : NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +27,17 @@ class ResourcesVC: UIViewController {
         self.collectionView.delegate = self
         self.collectionView.registerCell(ResourcesTableViewCollectionViewCell.self)
         self.fakeBottomOfNavBarView.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
+        
+        self.view.addSubview(self.audioController)
+        self.view.bringSubview(toFront: self.audioController)
+        self.audioController.translatesAutoresizingMaskIntoConstraints = false
+        self.miniAudioPlayerBottomConstraint = self.audioController.bottomAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 60)
+        self.miniAudioPlayerBottomConstraint?.isActive = true
+        self.audioController.leftAnchor.constraint(equalTo: self.collectionView.leftAnchor, constant: 8).isActive = true
+        self.audioController.rightAnchor.constraint(equalTo: self.collectionView.rightAnchor, constant: -8).isActive = true
+        self.audioController.heightAnchor.constraint(equalToConstant: 65).isActive = true
+        
+        self.audioController.audioResourceDelegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,16 +80,7 @@ extension ResourcesVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(ResourcesTableViewCollectionViewCell.self, indexPath: indexPath)
         cell.resourcePresentingDelegate = self
-        switch indexPath.item {
-        case 0:
-            cell.type = .article
-        case 1:
-            cell.type = .video
-        case 2:
-            cell.type = .audio
-        default:
-            break
-        }
+        cell.type = self.collectionViewCellLayout[indexPath.item]
         return cell
     }
     
@@ -102,6 +107,7 @@ extension ResourcesVC: ResourcePresentingDelegate {
             if let audioResource = resource as? AudioResource {
                 let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(AudioResourceDetailVC.self)
                 vc.resource = audioResource
+                vc.audioResourceDelegate = self
                 self.show(vc, sender: self)
             }
         case .video:
@@ -118,6 +124,42 @@ extension ResourcesVC: ResourcePresentingDelegate {
             }
         }
     }
+}
+
+extension ResourcesVC: AudioResourceDelegate {
+    func playAudioFromURL(url: URL, title: String) {
+        self.audioController.playAudioFromURL(url: url)
+        self.audioController.titleLabel.text = title
+        self.revealMiniAudioPlayer()
+    }
+    
+    func dismissMiniAudioPlayer() {
+        UIView.animate(withDuration: 0.3) {
+            self.miniAudioPlayerBottomConstraint?.constant = 60
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func revealMiniAudioPlayer() {
+        UIView.animate(withDuration: 0.3) {
+            self.miniAudioPlayerBottomConstraint?.constant = -8
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    func showAVPlayerViewController(player: AVPlayer) {
+        let vc = AVPlayerViewController()
+        vc.player = player
+        vc.addObserver(self.audioController, forKeyPath: #keyPath(AVPlayerViewController.view.frame), options: [], context: nil)
+        self.present(vc, animated: true, completion: nil)
+    }
+}
+
+protocol AudioResourceDelegate {
+    func playAudioFromURL(url: URL, title: String)
+    func dismissMiniAudioPlayer()
+    func revealMiniAudioPlayer()
+    func showAVPlayerViewController(player: AVPlayer)
 }
 
 protocol ResourcePresentingDelegate {

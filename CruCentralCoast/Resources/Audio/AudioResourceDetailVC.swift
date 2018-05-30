@@ -14,6 +14,8 @@ class AudioResourceDetailVC: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     
     var resource: AudioResource?
+    var audioResourceDelegate: AudioResourceDelegate?
+    var audioPlayer: AVPlayer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +25,9 @@ class AudioResourceDetailVC: UIViewController {
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {
-        if let videoResourceString = self.resource?.url, let url = URL(string: videoResourceString) {
-            let player = AVPlayer(url: url)
-            let vcPlayer = AVPlayerViewController()
-            vcPlayer.player = player
-            self.present(vcPlayer, animated: true, completion: nil)
+        if let audioResource = resource, let url = URL(string: audioResource.url) {
+            self.audioResourceDelegate?.playAudioFromURL(url: url, title: audioResource.title)
+            self.navigationController?.popViewController(animated: true)
         }
     }
 }

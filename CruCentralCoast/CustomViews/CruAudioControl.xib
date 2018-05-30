@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CruAudioControl" customModule="CruCentralCoast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="currentTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfD-Rt-woh">
+                    <rect key="frame" x="16" y="39" width="48" height="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.30000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="C8v-XE-iCL">
+                    <rect key="frame" x="16" y="53" width="343" height="2"/>
+                </progressView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="endTime" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKi-AJ-OXv">
+                    <rect key="frame" x="324" y="39" width="35" height="10"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title that is really really long" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Guc-Z7-qJs">
+                    <rect key="frame" x="16" y="8" width="213" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKa-eR-sqM">
+                    <rect key="frame" x="172.5" y="25" width="30" height="30"/>
+                    <state key="normal" image="first"/>
+                    <connections>
+                        <action selector="pauseButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="FEb-Nn-CVV"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UTP-dw-jWn">
+                    <rect key="frame" x="177.5" y="29.5" width="20" height="20"/>
+                </activityIndicatorView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v40-y4-ycN">
+                    <rect key="frame" x="340" y="8" width="19" height="19"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="tintColor" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="cross"/>
+                    <connections>
+                        <action selector="closeButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="EPH-qz-F3d"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="v40-y4-ycN" firstAttribute="top" secondItem="Guc-Z7-qJs" secondAttribute="top" id="0fV-d6-SyR"/>
+                <constraint firstItem="UTP-dw-jWn" firstAttribute="centerY" secondItem="BKa-eR-sqM" secondAttribute="centerY" id="1aJ-ar-UN8"/>
+                <constraint firstItem="kKi-AJ-OXv" firstAttribute="trailing" secondItem="C8v-XE-iCL" secondAttribute="trailing" id="95o-yh-EzB"/>
+                <constraint firstItem="Guc-Z7-qJs" firstAttribute="leading" secondItem="SfD-Rt-woh" secondAttribute="leading" id="9Da-MF-5v8"/>
+                <constraint firstItem="BKa-eR-sqM" firstAttribute="top" secondItem="Guc-Z7-qJs" secondAttribute="bottom" constant="-4" id="Ca5-ln-jc0"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="C8v-XE-iCL" secondAttribute="trailing" constant="16" id="T9x-WK-t8m"/>
+                <constraint firstItem="C8v-XE-iCL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="TgM-yf-Sby"/>
+                <constraint firstItem="SfD-Rt-woh" firstAttribute="top" secondItem="Guc-Z7-qJs" secondAttribute="bottom" constant="10" id="Xup-kY-poQ"/>
+                <constraint firstItem="SfD-Rt-woh" firstAttribute="leading" secondItem="C8v-XE-iCL" secondAttribute="leading" id="YkZ-cz-Wll"/>
+                <constraint firstItem="C8v-XE-iCL" firstAttribute="top" secondItem="SfD-Rt-woh" secondAttribute="bottom" constant="4" id="ZqU-5v-vD4"/>
+                <constraint firstItem="BKa-eR-sqM" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="fIl-Xy-Rmb"/>
+                <constraint firstItem="Guc-Z7-qJs" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="iSz-JB-ohI"/>
+                <constraint firstItem="C8v-XE-iCL" firstAttribute="top" secondItem="kKi-AJ-OXv" secondAttribute="bottom" constant="4" id="mnC-av-1YE"/>
+                <constraint firstItem="UTP-dw-jWn" firstAttribute="centerX" secondItem="BKa-eR-sqM" secondAttribute="centerX" id="rTk-RT-JOn"/>
+                <constraint firstItem="v40-y4-ycN" firstAttribute="trailing" secondItem="kKi-AJ-OXv" secondAttribute="trailing" id="yCm-rq-Yxk"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="activityIndicator" destination="UTP-dw-jWn" id="EhZ-5X-lv0"/>
+                <outlet property="currentTimeLabel" destination="SfD-Rt-woh" id="M8E-zj-EFu"/>
+                <outlet property="endTimeLabel" destination="kKi-AJ-OXv" id="UQi-Rx-p7f"/>
+                <outlet property="pauseButton" destination="BKa-eR-sqM" id="klf-gL-W0m"/>
+                <outlet property="progressView" destination="C8v-XE-iCL" id="K0n-8U-uqL"/>
+                <outlet property="titleLabel" destination="Guc-Z7-qJs" id="ZEa-8f-eZv"/>
+            </connections>
+            <point key="canvasLocation" x="33.5" y="357"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cross" width="19" height="19"/>
+        <image name="first" width="30" height="30"/>
+    </resources>
+</document>

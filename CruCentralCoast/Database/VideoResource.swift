@@ -10,12 +10,17 @@ import Foundation
 
 class VideoResource: Resource {
     var description: String
+    var imageURL: String
     
     required init?(dict: NSDictionary) {
         guard let description = dict["description"] as? String else {
             return nil
         }
         self.description = description
+        guard let imageURL = dict["imageLink"] as? String else {
+            return nil
+        }
+        self.imageURL = imageURL
         
         super.init(dict: dict)
     }

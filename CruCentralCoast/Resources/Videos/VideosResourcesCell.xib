@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Rb-t5-gDz">
-                        <rect key="frame" x="88" y="8" width="34" height="21"/>
+                        <rect key="frame" x="88" y="8" width="198" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJY-su-5hj">
-                        <rect key="frame" x="88" y="26.5" width="33" height="18"/>
+                        <rect key="frame" x="88" y="28.5" width="33" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -40,12 +39,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="9Pq-OF-D9f" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="CDM-gA-z0c"/>
+                    <constraint firstAttribute="trailing" secondItem="7Rb-t5-gDz" secondAttribute="trailing" id="EC0-bR-XM2"/>
                     <constraint firstItem="7Rb-t5-gDz" firstAttribute="leading" secondItem="9Pq-OF-D9f" secondAttribute="trailing" constant="8" id="Taj-AG-ue6"/>
                     <constraint firstAttribute="bottom" secondItem="9Pq-OF-D9f" secondAttribute="bottom" id="Vyp-gf-g2b"/>
                     <constraint firstItem="9Pq-OF-D9f" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bec-Sj-7aU"/>
                     <constraint firstItem="7Rb-t5-gDz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="fhm-1H-9SI"/>
                     <constraint firstItem="mJY-su-5hj" firstAttribute="leading" secondItem="7Rb-t5-gDz" secondAttribute="leading" id="rUH-JC-6Vi"/>
-                    <constraint firstAttribute="bottom" secondItem="mJY-su-5hj" secondAttribute="bottom" constant="8" id="zIN-Mq-iV7"/>
+                    <constraint firstItem="mJY-su-5hj" firstAttribute="top" secondItem="7Rb-t5-gDz" secondAttribute="bottom" id="sod-VV-7XB"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
