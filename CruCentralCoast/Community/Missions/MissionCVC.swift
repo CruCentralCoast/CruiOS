@@ -17,8 +17,10 @@ class MissionCVC: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.collectionView?.registerCell(MissionCell.self)
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let width = collectionView!.bounds.width - layout.sectionInset.left - layout.sectionInset.right
+        layout.itemSize = CGSize(width: width, height: width * 0.55)
+        self.collectionView?.registerCell(CommunityCell.self)
         
     }
     
@@ -32,13 +34,13 @@ class MissionCVC: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(MissionCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeueCell(CommunityCell.self, indexPath: indexPath)
         
         // Configure the cell
-        cell.missionTitle.text = dataArray[indexPath.row].titleLabel
-        cell.dateLabel.text = dataArray[indexPath.row].date
+        cell.bigLabel.text = dataArray[indexPath.row].titleLabel
+        cell.smallLabel1.text = dataArray[indexPath.row].date
         cell.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
-        cell.locationLabel.text = dataArray[indexPath.row].location
+        cell.smallLabel2.text = dataArray[indexPath.row].location
         
         return cell
     }

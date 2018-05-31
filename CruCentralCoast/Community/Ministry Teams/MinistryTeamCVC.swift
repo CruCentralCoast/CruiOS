@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let reuseIdentifier = "MinistryCell"
+private let reuseIdentifier = "CommunityCell"
 
 class MinistryTeamCVC: UICollectionViewController{
     
@@ -17,9 +17,10 @@ class MinistryTeamCVC: UICollectionViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-
-        self.collectionView?.registerCell(MinistryCell.self)
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let width = collectionView!.bounds.width - layout.sectionInset.left - layout.sectionInset.right
+        layout.itemSize = CGSize(width: width, height: width * 0.55)
+        self.collectionView?.registerCell(CommunityCell.self)
 
     }
 
@@ -40,12 +41,6 @@ class MinistryTeamCVC: UICollectionViewController{
 
     // MARK: UICollectionViewDataSource
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = self.view.frame.width - 20.0
-        return CGSize(width: width, height: width*0.8)
-
-    }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
         
@@ -54,13 +49,13 @@ class MinistryTeamCVC: UICollectionViewController{
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(MinistryCell.self, indexPath: indexPath)
+        let cell = collectionView.dequeueCell(CommunityCell.self, indexPath: indexPath)
     
         // Configure the cell
-        cell.ministryTeamLabel.text = testDataArray[indexPath.row].teamTitle
+        cell.bigLabel.text = testDataArray[indexPath.row].teamTitle
         cell.imageView.image = testDataArray[indexPath.row].teamImage
             //only returning first team name
-        cell.ministryTeamLeaderLabel.text = testDataArray[indexPath.row].teamLeaders[0]
+        cell.smallLabel1.text = testDataArray[indexPath.row].teamLeaders[0]
         
     
         return cell
