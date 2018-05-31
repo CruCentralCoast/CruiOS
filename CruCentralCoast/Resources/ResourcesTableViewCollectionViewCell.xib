@@ -22,8 +22,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="355" height="446"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tableView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VKg-Kv-GQR">
+                        <rect key="frame" x="159" y="205" width="37" height="37"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="color" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </activityIndicatorView>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="5RG-5N-X3M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BgE-LC-Rbk"/>
                 <constraint firstAttribute="bottom" secondItem="5RG-5N-X3M" secondAttribute="bottom" id="Kl9-Ee-cBJ"/>
@@ -33,6 +39,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="355" height="446"/>
             <connections>
+                <outlet property="activityIndicator" destination="VKg-Kv-GQR" id="iZP-99-OlX"/>
                 <outlet property="tableView" destination="5RG-5N-X3M" id="Rs8-7b-38D"/>
             </connections>
             <point key="canvasLocation" x="186.5" y="252"/>

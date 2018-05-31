@@ -29,9 +29,8 @@ class ResourcesVC: UIViewController {
         self.fakeBottomOfNavBarView.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
         
         self.view.addSubview(self.audioController)
-        self.view.bringSubview(toFront: self.audioController)
         self.audioController.translatesAutoresizingMaskIntoConstraints = false
-        self.miniAudioPlayerBottomConstraint = self.audioController.bottomAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 60)
+        self.miniAudioPlayerBottomConstraint = self.audioController.bottomAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 70)
         self.miniAudioPlayerBottomConstraint?.isActive = true
         self.audioController.leftAnchor.constraint(equalTo: self.collectionView.leftAnchor, constant: 8).isActive = true
         self.audioController.rightAnchor.constraint(equalTo: self.collectionView.rightAnchor, constant: -8).isActive = true
@@ -135,7 +134,7 @@ extension ResourcesVC: AudioResourceDelegate {
     
     func dismissMiniAudioPlayer() {
         UIView.animate(withDuration: 0.3) {
-            self.miniAudioPlayerBottomConstraint?.constant = 60
+            self.miniAudioPlayerBottomConstraint?.constant = 70
             self.view.layoutIfNeeded()
         }
     }

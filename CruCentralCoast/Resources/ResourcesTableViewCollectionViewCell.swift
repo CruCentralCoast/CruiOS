@@ -10,14 +10,19 @@ import UIKit
 
 class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var resources: [Resource] = []
     var resourcePresentingDelegate: ResourcePresentingDelegate?
     var type: ResourceType = .audio {
         didSet {
+            self.activityIndicator.startAnimating()
+            self.tableView.isHidden = true
             DatabaseManager.instance.getResources(ofType: self.type) {resources in
                 self.resources = resources
                 self.tableView.reloadData()
+                self.activityIndicator.stopAnimating()
+                self.tableView.isHidden = false
             }
         }
     }
