@@ -88,6 +88,7 @@
 		E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FA20AD0C3600B2EF40 /* Event.swift */; };
 		E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */; };
 		E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C81C08207EED5800A00645 /* EventDetailsVC.swift */; };
+		E0E1494D20B6671800E6472B /* EventDetailsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +202,7 @@
 		E0AFD0FA20AD0C3600B2EF40 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		E0C81C08207EED5800A00645 /* EventDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsVC.swift; sourceTree = "<group>"; };
+		E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsTransition.swift; sourceTree = "<group>"; };
 		E4E2E2445612ECE64B34F5FD /* Pods-CruCentralCoastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.release.xcconfig"; sourceTree = "<group>"; };
 		E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -360,6 +362,7 @@
 				E09440102075AEC40057AC83 /* EventCell.swift */,
 				E09440112075AEC40057AC83 /* EventCell.xib */,
 				E0C81C08207EED5800A00645 /* EventDetailsVC.swift */,
+				E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -848,6 +851,7 @@
 				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
+				E0E1494D20B6671800E6472B /* EventDetailsTransition.swift in Sources */,
 				AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,

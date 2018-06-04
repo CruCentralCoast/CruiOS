@@ -65,7 +65,6 @@ class EventDetailsVC: UIViewController {
         self.locationLabel.text = self.eventLocation
         self.descriptionLabel.text = self.eventSummary
         self.imageView.image = self.eventImage
-        // Do any additional setup after loading the view.
     }
     
     func configure(with cellParameters: Event) {

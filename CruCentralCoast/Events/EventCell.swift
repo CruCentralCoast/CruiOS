@@ -21,11 +21,6 @@ class EventCell: UICollectionViewCell {
             self.dateLabel.text = dateFormatter.string(for: self.event.startDate)
             self.titleLabel.text = self.event.title
             self.imageView.image = self.event.image
-            
-//            let _ = event.observe(\.image) { (object, change) in
-//                print("anything")
-//                self.imageView.image = self.event.image
-//            }
         }
     }
     
