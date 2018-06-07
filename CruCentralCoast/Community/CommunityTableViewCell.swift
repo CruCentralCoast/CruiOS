@@ -21,11 +21,12 @@ class CommunityTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     
+    
         self.cellMask.layer.cornerRadius = 20
         self.cellMask.layer.shadowColor = UIColor.black.cgColor
-        self.cellMask.layer.shadowOpacity = 0.2
+        self.cellMask.layer.shadowOpacity = 0.1
         self.cellMask.layer.shadowOffset = CGSize.zero
-        self.cellMask.layer.shadowRadius = 6
+        self.cellMask.layer.shadowRadius = 10
     
         self.bannerImage.layer.cornerRadius = 20
         self.bannerImage.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
