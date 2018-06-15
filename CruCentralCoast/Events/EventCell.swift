@@ -8,14 +8,14 @@
 
 import UIKit
 
-class EventCell: UICollectionViewCell {
+@objc class EventCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cellMask: UIView!
     
-    var event: Event! {
+    @objc var event: Event! {
         didSet {
             let dateFormatter = DateFormatter()
             self.dateLabel.text = dateFormatter.string(for: self.event.startDate)

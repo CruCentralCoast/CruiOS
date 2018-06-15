@@ -10,9 +10,28 @@ import UIKit
 
 class EventsCVC: UICollectionViewController {
     var selectedCell: UIView?
+    var originFrame: CGRect?
     
     //some data for testing
     var dataArray = [Event]()
+    
+    var statusBarIsHidden: Bool = false {
+        didSet{
+            UIView.animate(withDuration: 0.25) { () -> Void in
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+        }
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return statusBarIsHidden
+        }
+    }
+    
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +42,16 @@ class EventsCVC: UICollectionViewController {
         layout.itemSize = CGSize(width: width, height: width * 0.55)
         DatabaseManager.instance.getEvents { (events) in
             self.dataArray = events
+            for event in self.dataArray {
+                UIImage.downloadedFrom(link: event.imageLink, completion: { (image) in
+                    event.image = image
+                    DispatchQueue.main.async {
+                        self.collectionView?.reloadData()
+                    }
+                })
+            }
             self.collectionView?.reloadData()
         }
-        
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -58,6 +84,8 @@ extension EventsCVC: UIViewControllerTransitioningDelegate {
         guard let relativeFrame = selectedCell.superview?.convert((selectedCell.frame), to: nil) else {
             return nil
         }
+        self.statusBarIsHidden = true
+        self.originFrame = relativeFrame;
         let transition = EventDetailsTransition(originFrame: relativeFrame)
         transition.presenting = true
 //        selectedCell.isHidden = true
@@ -65,13 +93,15 @@ extension EventsCVC: UIViewControllerTransitioningDelegate {
         return transition
     }
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let selectedCell = self.selectedCell else {
-            return nil
-        }
-        guard let relativeFrame = selectedCell.superview?.convert((selectedCell.frame), to: nil) else {
-            return nil
-        }
-        let transition = EventDetailsTransition(originFrame: relativeFrame)
+//        guard let selectedCell = self.selectedCell else {
+//            return nil
+//        }
+//        guard let relativeFrame = selectedCell.superview?.convert((selectedCell.frame), to: nil) else {
+//            return nil
+//        }
+        
+        self.statusBarIsHidden = false
+        let transition = EventDetailsTransition(originFrame: self.originFrame!)
         transition.presenting = false
         return transition
     }

@@ -14,6 +14,8 @@ class EventDetailsTransition : NSObject, UIViewControllerAnimatedTransitioning {
     var presenting = true
     var originFrame = CGRect.zero
     
+    
+    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }
@@ -25,8 +27,12 @@ class EventDetailsTransition : NSObject, UIViewControllerAnimatedTransitioning {
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         
         let containerView = transitionContext.containerView
+        let fromView = transitionContext.view(forKey: .from)
         let toView = transitionContext.view(forKey: .to)
-        let detailView = presenting ? toView : transitionContext.view(forKey: .from)!
+        let detailView = presenting ? toView : fromView
+        
+        containerView.addSubview(toView!)
+        containerView.addSubview(detailView!)
         
         guard let initialFrame = presenting ? originFrame : detailView?.frame else {
             return
@@ -40,15 +46,19 @@ class EventDetailsTransition : NSObject, UIViewControllerAnimatedTransitioning {
             detailView?.frame.size.width = (initialFrame.width)
             detailView?.center = CGPoint(x: (initialFrame.midX), y: (initialFrame.midY))
             detailView?.clipsToBounds = true
+            detailView?.layer.cornerRadius = 20
         }
         
-        containerView.addSubview(toView!)
-        containerView.bringSubview(toFront: detailView!)
-        
-        UIView.animate(withDuration: duration, delay: 0, options: [], animations: {
-            detailView?.frame.size.height = (finalFrame.height)
-            detailView?.frame.size.width = (finalFrame.width)
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: [], animations: {
+            detailView?.frame.size.height = finalFrame.height
+            detailView?.frame.size.width = finalFrame.width
             detailView?.center = CGPoint(x: (finalFrame.midX), y: (finalFrame.midY))
+            if self.presenting {
+                detailView?.layer.cornerRadius = 0
+            } else {
+                detailView?.layer.cornerRadius = 20
+            }
+            detailView?.superview?.layoutIfNeeded()
         }) { _ in
             transitionContext.completeTransition(true)
         }

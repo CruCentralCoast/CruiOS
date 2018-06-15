@@ -24,7 +24,7 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet weak var widthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     var eventTitle: String?
     var eventDate: String?
@@ -32,7 +32,27 @@ class EventDetailsVC: UIViewController {
     var eventSummary: String?
     var eventImage: UIImage?
     
+    var statusBarIsHidden: Bool = true {
+        didSet{
+            UIView.animate(withDuration: 0.25) { () -> Void in
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+        }
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return self.statusBarIsHidden
+        }
+    }
+
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
+        return .slide
+    }
+    
     @IBAction func dismissDetail(_ sender: Any) {
+        self.statusBarIsHidden = false
+        self.topConstraint.constant = -20
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -56,9 +76,6 @@ class EventDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        let screenWidth = UIScreen.main.bounds.width
-        widthConstraint.constant = screenWidth
         
         self.titleLabel.text = self.eventTitle
         self.dateLabel.text = self.eventDate
@@ -75,5 +92,4 @@ class EventDetailsVC: UIViewController {
         self.eventLocation = cellParameters.location
         self.eventSummary = cellParameters.summary
     }
-
 }

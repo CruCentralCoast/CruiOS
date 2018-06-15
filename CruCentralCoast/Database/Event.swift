@@ -16,10 +16,7 @@ class Event: NSObject, DatabaseObject {
     var summary: String
     var location: String?
     var imageLink: String
-    @objc dynamic lazy var image: UIImage? = {
-        UIImage.downloadedFrom(link: imageLink) { self.image = $0 }
-        return nil
-    }()
+    @objc dynamic var image: UIImage?
     
     required init?(dict: NSDictionary) {
         guard let title = dict["name"] as? String else {

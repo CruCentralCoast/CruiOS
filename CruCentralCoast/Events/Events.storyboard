@@ -78,12 +78,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6PY-eE-fEO">
-                                <rect key="frame" x="0.0" y="20" width="414" height="716"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UYN-ct-CuI">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="165.66666666666666"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="414" id="WRF-uQ-VbZ"/>
                                             <constraint firstAttribute="width" secondItem="UYN-ct-CuI" secondAttribute="height" multiplier="350:140" id="jMC-Lt-MV3"/>
                                         </constraints>
                                     </imageView>
@@ -201,6 +200,7 @@
                                     <constraint firstAttribute="bottom" secondItem="knk-lC-Fu0" secondAttribute="bottom" constant="30" id="oec-Aj-O7M"/>
                                     <constraint firstAttribute="trailing" secondItem="UYN-ct-CuI" secondAttribute="trailing" id="oiq-ut-XsQ"/>
                                     <constraint firstItem="Zsl-gL-xUs" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="4" id="ouV-Ff-TsQ"/>
+                                    <constraint firstItem="UYN-ct-CuI" firstAttribute="width" secondItem="6PY-eE-fEO" secondAttribute="width" id="wlP-nx-R4y"/>
                                     <constraint firstItem="OXe-05-0Hx" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" constant="30" id="y7k-AJ-bba"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="width" secondItem="glu-cR-yHR" secondAttribute="height" multiplier="13:9" id="z3W-gW-CKm"/>
                                 </constraints>
@@ -208,20 +208,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6PY-eE-fEO" firstAttribute="top" secondItem="oIP-Hd-mrk" secondAttribute="top" id="6du-e3-thF"/>
                             <constraint firstItem="6PY-eE-fEO" firstAttribute="trailing" secondItem="oIP-Hd-mrk" secondAttribute="trailing" id="9rL-sb-I7F"/>
                             <constraint firstItem="6PY-eE-fEO" firstAttribute="leading" secondItem="oIP-Hd-mrk" secondAttribute="leading" id="D76-FN-L0I"/>
                             <constraint firstItem="6PY-eE-fEO" firstAttribute="bottom" secondItem="oIP-Hd-mrk" secondAttribute="bottom" id="aL0-zr-eGd"/>
+                            <constraint firstItem="6PY-eE-fEO" firstAttribute="top" secondItem="1sP-j8-lqt" secondAttribute="top" id="pNq-Y6-S0l"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oIP-Hd-mrk"/>
                     </view>
                     <connections>
                         <outlet property="dateLabel" destination="Odd-9O-O3u" id="tKu-c6-WSm"/>
                         <outlet property="descriptionLabel" destination="3lv-CQ-HAd" id="HL2-Vy-gvP"/>
-                        <outlet property="imageView" destination="UYN-ct-CuI" id="aSQ-16-FIh"/>
+                        <outlet property="imageView" destination="UYN-ct-CuI" id="BB6-ny-EKf"/>
                         <outlet property="locationLabel" destination="Zsl-gL-xUs" id="OFS-AR-8sg"/>
                         <outlet property="titleLabel" destination="LkD-pk-Jlf" id="Jih-Ss-FeQ"/>
-                        <outlet property="widthConstraint" destination="WRF-uQ-VbZ" id="jXZ-39-bBs"/>
+                        <outlet property="topConstraint" destination="pNq-Y6-S0l" id="YMi-Sq-1eC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KyN-TT-efI" userLabel="First Responder" sceneMemberID="firstResponder"/>
