@@ -18,7 +18,7 @@ class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
         didSet {
             self.activityIndicator.startAnimating()
             self.tableView.isHidden = true
-            DatabaseManager.instance.getResources(ofType: self.type) {resources in
+            ResourceManager.instance.getResources(ofType: self.type) { resources in
                 self.resources = resources
                 self.tableView.reloadData()
                 self.activityIndicator.stopAnimating()
@@ -79,14 +79,6 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
 
 extension ResourcesTableViewCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        switch self.type {
-//        case .audio:
-//            return 53
-//        case .video:
-//            return 53
-//        case .article:
-//            return 53
-//        }
         return UITableViewAutomaticDimension
     }
 }
