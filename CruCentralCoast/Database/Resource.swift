@@ -21,6 +21,14 @@ class Resource: DatabaseObject {
     var url: String
     var type: ResourceType
     
+    var formattedDate: String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: self.date)
+    }
+    
     required init?(dict: NSDictionary) {
         guard let author = dict["author"] as? String else {
             return nil

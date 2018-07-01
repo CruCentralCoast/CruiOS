@@ -48,24 +48,24 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
         case .audio:
             let cell = tableView.dequeueCell(AudioResourcesCell.self, indexPath: indexPath)
             cell.titleLabel.text = resource.title
-            cell.dateLabel.text = resource.date.description
+            cell.dateLabel.text = resource.formattedDate
             return cell
         case .video:
             let cell = tableView.dequeueCell(VideosResourcesCell.self, indexPath: indexPath)
             cell.titleLabel.text = resource.title
-            cell.dateLabel.text = resource.date.description
+            cell.dateLabel.text = resource.formattedDate
             if let videoResource = resource as? VideoResource {
                 if let url = URL(string: videoResource.imageURL) {
-                    cell.imageView?.downloadedFrom(url: url)
+                    cell.previewImage.downloadedFrom(url: url)
                 } else {
-                    cell.imageView?.image = #imageLiteral(resourceName: "second")
+                    cell.imageWidthConstraint.constant = 0
                 }
             }
             return cell
         case .article:
             let cell = tableView.dequeueCell(ArticlesResourcesCell.self, indexPath: indexPath)
             cell.titleLabel.text = resource.title
-            cell.dateLabel.text = resource.date.description
+            cell.dateLabel.text = resource.formattedDate
             return cell
         }
     }
@@ -79,13 +79,14 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
 
 extension ResourcesTableViewCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch self.type {
-        case .audio:
-            return 53
-        case .video:
-            return 53
-        case .article:
-            return 53
-        }
+//        switch self.type {
+//        case .audio:
+//            return 53
+//        case .video:
+//            return 53
+//        case .article:
+//            return 53
+//        }
+        return UITableViewAutomaticDimension
     }
 }
