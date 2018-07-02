@@ -17,6 +17,7 @@ class ResourceManager {
     
     private init() {}
     
+    // This method calls the respective Database Manager method no matter what and replaces its current resources of the specified type with the new resources of that types provided by the Database Manager
     func refreshResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
         self.resources = self.resources.filter { $0.type != type }
         DatabaseManager.instance.getResources(ofType: type) { resources in
@@ -26,6 +27,7 @@ class ResourceManager {
         self.retrievedResources.insert(type)
     }
     
+    // This method only calls the respective Database Manager method if it has not already downloaded the resources of the specified type
     func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
         if retrievedResources.contains(type) {
             completion(self.resources.filter { $0.type == type })

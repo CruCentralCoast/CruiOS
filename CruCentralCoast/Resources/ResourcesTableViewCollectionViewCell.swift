@@ -34,6 +34,19 @@ class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
         self.tableView.registerCell(AudioResourcesCell.self)
         self.tableView.registerCell(VideosResourcesCell.self)
         self.tableView.registerCell(ArticlesResourcesCell.self)
+        
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(self.refreshResources(_:)), for: .valueChanged)
+    }
+    
+    @objc private func refreshResources(_ refreshControl: UIRefreshControl) {
+        ResourceManager.instance.refreshResources(ofType: self.type) { resources in
+            UIView.animate(withDuration: 0.3) {
+                self.resources = resources
+                self.tableView.reloadData()
+                refreshControl.endRefreshing()
+            }
+        }
     }
 }
 
