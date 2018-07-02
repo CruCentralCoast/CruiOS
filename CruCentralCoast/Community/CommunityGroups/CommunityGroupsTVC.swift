@@ -15,13 +15,15 @@ class CommunityGroupsTVC: UITableViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-
+        
         let nib = UINib.init(nibName: "CommunityTableViewCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "comCell")
         

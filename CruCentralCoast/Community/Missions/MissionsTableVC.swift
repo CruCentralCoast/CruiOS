@@ -15,6 +15,8 @@ class MissionsTableVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
 
         // Configure the cell...
         let nib = UINib.init(nibName: "CommunityTableViewCell", bundle: nil)

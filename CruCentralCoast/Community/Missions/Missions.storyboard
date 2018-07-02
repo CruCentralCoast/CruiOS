@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="J8B-nZ-7kn">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YfW-IO-Qf9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,9 +9,25 @@
     </dependencies>
     <scenes>
         <!--Missions-->
+        <scene sceneID="zU8-53-U1I">
+            <objects>
+                <navigationController title="Missions" id="YfW-IO-Qf9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kwX-ao-EZo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="J8B-nZ-7kn" kind="relationship" relationship="rootViewController" id="eWd-Ul-Rg4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6AT-ax-qCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-882" y="376"/>
+        </scene>
+        <!--Missions-->
         <scene sceneID="ObZ-Fy-0QT">
             <objects>
-                <tableViewController storyboardIdentifier="Missions" title="Missions" id="J8B-nZ-7kn" customClass="MissionsTableVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Missions" id="J8B-nZ-7kn" customClass="MissionsTableVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="o0o-N5-CZn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -31,6 +47,7 @@
                             <outlet property="delegate" destination="J8B-nZ-7kn" id="U3A-cl-EEj"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Missions" id="Ghf-zR-6Tu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hR-h5-QPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
