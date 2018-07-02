@@ -42,7 +42,7 @@
                         <constraint firstAttribute="height" constant="30" id="NvP-lh-Uxv"/>
                         <constraint firstAttribute="width" constant="30" id="lfT-0E-E0j"/>
                     </constraints>
-                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" image="pause"/>
                     <connections>
                         <action selector="pauseButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="FEb-Nn-CVV"/>
