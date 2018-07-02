@@ -21,10 +21,10 @@ class CruAudioControl: UIView {
     private var isPaused = true {
         didSet {
             if self.isPaused {
-                self.pauseButton.setImage(#imageLiteral(resourceName: "second"), for: .normal)
+                self.pauseButton.setImage(#imageLiteral(resourceName: "play"), for: .normal)
                 self.audioPlayer?.pause()
             } else {
-                self.pauseButton.setImage(#imageLiteral(resourceName: "first"), for: .normal)
+                self.pauseButton.setImage(#imageLiteral(resourceName: "pause"), for: .normal)
                 self.audioPlayer?.play()
             }
         }

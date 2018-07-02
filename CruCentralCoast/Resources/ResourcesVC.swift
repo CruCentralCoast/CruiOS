@@ -17,7 +17,7 @@ class ResourcesVC: UIViewController {
     private var shadowImageView: UIImageView?
     private var collectionViewCellLayout: [ResourceType] = [.article, .video, .audio]
     private var audioController: CruAudioControl = UINib(nibName: String(describing: CruAudioControl.self), bundle: nil).instantiate(withOwner: self, options: nil)[0] as! CruAudioControl
-    private var miniAudioPlayerBottomConstraint : NSLayoutConstraint?
+    private var miniAudioPlayerTopConstraint : NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +30,10 @@ class ResourcesVC: UIViewController {
         
         self.view.addSubview(self.audioController)
         self.audioController.translatesAutoresizingMaskIntoConstraints = false
-        self.miniAudioPlayerBottomConstraint = self.audioController.bottomAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 70)
-        self.miniAudioPlayerBottomConstraint?.isActive = true
         self.audioController.leftAnchor.constraint(equalTo: self.collectionView.leftAnchor, constant: 8).isActive = true
         self.audioController.rightAnchor.constraint(equalTo: self.collectionView.rightAnchor, constant: -8).isActive = true
-        self.audioController.heightAnchor.constraint(equalToConstant: 65).isActive = true
+        self.miniAudioPlayerTopConstraint = self.audioController.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 0)
+        self.miniAudioPlayerTopConstraint?.isActive = true
         
         self.audioController.audioResourceDelegate = self
     }
@@ -134,14 +133,14 @@ extension ResourcesVC: AudioResourceDelegate {
     
     func dismissMiniAudioPlayer() {
         UIView.animate(withDuration: 0.3) {
-            self.miniAudioPlayerBottomConstraint?.constant = 70
+            self.miniAudioPlayerTopConstraint?.constant = 0
             self.view.layoutIfNeeded()
         }
     }
     
     func revealMiniAudioPlayer() {
         UIView.animate(withDuration: 0.3) {
-            self.miniAudioPlayerBottomConstraint?.constant = -8
+            self.miniAudioPlayerTopConstraint?.constant = -self.audioController.bounds.height
             self.view.layoutIfNeeded()
         }
     }
