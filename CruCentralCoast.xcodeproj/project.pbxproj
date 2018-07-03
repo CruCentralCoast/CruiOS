@@ -87,6 +87,7 @@
 		E09440132075AEC40057AC83 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09440112075AEC40057AC83 /* EventCell.xib */; };
 		E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FA20AD0C3600B2EF40 /* Event.swift */; };
 		E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */; };
+		E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */; };
 		E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C81C08207EED5800A00645 /* EventDetailsVC.swift */; };
 		E0D2A85320E9D69200192360 /* EventsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2A85220E9D69200192360 /* EventsTVC.swift */; };
 		E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2A86C20EAB65400192360 /* EventsTableCell.swift */; };
@@ -204,6 +205,7 @@
 		E09440112075AEC40057AC83 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		E0AFD0FA20AD0C3600B2EF40 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		E0C81C08207EED5800A00645 /* EventDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsVC.swift; sourceTree = "<group>"; };
 		E0D2A85220E9D69200192360 /* EventsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTVC.swift; sourceTree = "<group>"; };
 		E0D2A86C20EAB65400192360 /* EventsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableCell.swift; sourceTree = "<group>"; };
@@ -502,6 +504,7 @@
 				2F180861207980F100693C7B /* UIViewControllerExtensions.swift */,
 				AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */,
 				E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */,
+				E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -860,6 +863,7 @@
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
 				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
+				E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */,
 				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,

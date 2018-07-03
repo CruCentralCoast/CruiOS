@@ -85,10 +85,9 @@ class EventDetailsVC: UIViewController {
     }
     
     func configure(with cellParameters: Event) {
-        let dateFormatter = DateFormatter()
         self.eventImage = cellParameters.image
         self.eventTitle = cellParameters.title
-        self.eventDate = dateFormatter.string(from: cellParameters.startDate)
+        self.eventDate = cellParameters.startDate.toString(dateFormat: "MMM-dd-yyyy")
         self.eventLocation = cellParameters.location
         self.eventSummary = cellParameters.summary
     }

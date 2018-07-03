@@ -13,11 +13,10 @@ import UIKit
     @IBOutlet weak var cellMask: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var imageCellView: UIImageView!
+    @IBOutlet weak var imageCellView: UIImageView! //named imageCellView because imageView was already a variable name used by the tableView
     @objc var event: Event! {
         didSet {
-            let dateFormatter = DateFormatter()
-            self.dateLabel.text = dateFormatter.string(for: self.event.startDate)
+            self.dateLabel.text = event.startDate.toString(dateFormat: "MMM-dd-yyyy")
             self.descriptionLabel.text = self.event.title
             self.imageCellView.image = self.event.image
         }
@@ -37,12 +36,6 @@ import UIKit
         
         self.clipsToBounds = false
         
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
 }
