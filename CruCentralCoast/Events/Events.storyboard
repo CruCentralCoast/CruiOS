@@ -9,12 +9,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HelveticaNeue.ttc">
-            <string>HelveticaNeue-Bold</string>
-            <string>HelveticaNeue-Medium</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="hYL-5t-D2k">
@@ -54,6 +48,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="345" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </view>
+                                <gestureRecognizers/>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -85,6 +80,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -117,21 +113,27 @@
                                             <constraint firstAttribute="width" secondItem="UYN-ct-CuI" secondAttribute="height" multiplier="350:140" id="jMC-Lt-MV3"/>
                                         </constraints>
                                     </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-9O-O3u">
+                                        <rect key="frame" x="8" y="209" width="398" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description textbox:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lv-CQ-HAd">
-                                        <rect key="frame" x="8" y="250.00000000000003" width="398" height="20.333333333333343"/>
+                                        <rect key="frame" x="8" y="259" width="398" height="20.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location icon.ico" translatesAutoresizingMaskIntoConstraints="NO" id="glu-cR-yHR">
-                                        <rect key="frame" x="8" y="230" width="23" height="16"/>
+                                        <rect key="frame" x="8" y="239" width="23" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="glu-cR-yHR" secondAttribute="height" multiplier="13:9" id="pd5-sW-Ooa"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkD-pk-Jlf">
-                                        <rect key="frame" x="8" y="173" width="398" height="31"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="26"/>
+                                        <rect key="frame" x="8" y="173.66666666666666" width="398" height="31.333333333333343"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -145,14 +147,8 @@
                                             <action selector="dismissDetail:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="Paa-1S-Kmy"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Location Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsl-gL-xUs">
-                                        <rect key="frame" x="35" y="233" width="371" height="15.666666666666657"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="knk-lC-Fu0">
-                                        <rect key="frame" x="52" y="300.33333333333331" width="310" height="40"/>
+                                        <rect key="frame" x="52" y="309.33333333333331" width="310" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu5-Zb-0Vs" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
@@ -202,9 +198,9 @@
                                             <constraint firstAttribute="bottom" secondItem="IJy-Si-BSE" secondAttribute="bottom" id="Jqx-lu-Kvu"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-9O-O3u">
-                                        <rect key="frame" x="8" y="208" width="398" height="18"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsl-gL-xUs">
+                                        <rect key="frame" x="35" y="239" width="371" height="15.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -217,6 +213,7 @@
                                     <constraint firstAttribute="trailing" secondItem="LkD-pk-Jlf" secondAttribute="trailing" constant="8" id="6e6-PD-7af"/>
                                     <constraint firstAttribute="trailing" secondItem="3lv-CQ-HAd" secondAttribute="trailing" constant="8" id="Dru-La-dVE"/>
                                     <constraint firstAttribute="trailing" secondItem="Odd-9O-O3u" secondAttribute="trailing" constant="8" id="DxY-ZA-swE"/>
+                                    <constraint firstItem="Zsl-gL-xUs" firstAttribute="top" secondItem="glu-cR-yHR" secondAttribute="top" id="OaM-C0-N4k"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="glu-cR-yHR" secondAttribute="bottom" constant="4" id="Oqp-Zh-vyc"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="8" id="P31-Fk-DuG"/>
                                     <constraint firstAttribute="trailing" secondItem="Zsl-gL-xUs" secondAttribute="trailing" constant="8" id="Qa1-pO-Qg0"/>
@@ -229,7 +226,7 @@
                                     <constraint firstAttribute="bottom" secondItem="knk-lC-Fu0" secondAttribute="bottom" constant="30" id="oec-Aj-O7M"/>
                                     <constraint firstAttribute="trailing" secondItem="UYN-ct-CuI" secondAttribute="trailing" id="oiq-ut-XsQ"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="8" id="rdr-jd-DZW"/>
-                                    <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="4" id="uyt-ln-7eU"/>
+                                    <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="12" id="uyt-ln-7eU"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="width" secondItem="6PY-eE-fEO" secondAttribute="width" id="wlP-nx-R4y"/>
                                     <constraint firstItem="OXe-05-0Hx" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" constant="30" id="y7k-AJ-bba"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="width" secondItem="glu-cR-yHR" secondAttribute="height" multiplier="13:9" id="z3W-gW-CKm"/>
