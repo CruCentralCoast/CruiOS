@@ -22,16 +22,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="355" height="446"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tableView>
-                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VKg-Kv-GQR">
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="VKg-Kv-GQR">
                         <rect key="frame" x="159" y="205" width="37" height="37"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="color" red="0.51764705879999995" green="0.51764705879999995" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </activityIndicatorView>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="VKg-Kv-GQR" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="AMu-qn-KKe"/>
                 <constraint firstItem="5RG-5N-X3M" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="BgE-LC-Rbk"/>
+                <constraint firstItem="VKg-Kv-GQR" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="HQP-er-db4"/>
                 <constraint firstAttribute="bottom" secondItem="5RG-5N-X3M" secondAttribute="bottom" id="Kl9-Ee-cBJ"/>
                 <constraint firstItem="5RG-5N-X3M" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="d9W-Gq-NAZ"/>
                 <constraint firstAttribute="trailing" secondItem="5RG-5N-X3M" secondAttribute="trailing" id="e5N-bL-K87"/>
