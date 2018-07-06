@@ -50,7 +50,7 @@ class MinistryTeamDetailsVC: UIViewController {
         
         ministyTitleLabel.text = ministryTitle
         movementLabel.text = movementTitle
-        teamLeaderNamesLabel.text = leaderNames.compactMap({$0}).joined(separator: " ")
+        //teamLeaderNamesLabel.text = leaderNames.compactMap({$0}).joined(separator: " ")
         ministryDescription.text = desc
         
         
