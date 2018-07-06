@@ -154,7 +154,6 @@
 		5EBD534F20352CEF0097A853 /* Resources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resources.storyboard; sourceTree = "<group>"; };
 		5EC413C7203FAD4D00E2184D /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupsTVC.swift; sourceTree = "<group>"; };
-		5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroupDetailsVC.storyboard; sourceTree = "<group>"; };
 		5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MissionDetails.storyboard; sourceTree = "<group>"; };
 		5EEE640F2084912B00AACF91 /* cancel icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "cancel icon.ico"; sourceTree = "<group>"; };
 		5EEE64102084912B00AACF91 /* location icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "location icon.ico"; sourceTree = "<group>"; };
@@ -430,7 +429,6 @@
 			isa = PBXGroup;
 			children = (
 				5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */,
-				5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */,
 				5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */,
 			);
 			path = CommunityGroups;
