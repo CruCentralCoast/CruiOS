@@ -1,30 +1,32 @@
 //
-//  TestViewController.swift
+//  CommunityGroupsTVC.swift
 //  CruCentralCoast
 //
-//  Created by Landon Gerrits on 2/14/18.
+//  Created by Landon Gerrits on 5/16/18.
 //  Copyright © 2018 Landon Gerrits. All rights reserved.
 //
 
 import UIKit
 
-
-class CommunityTVC: UITableViewController {
-
+class CommunityGroupsTVC: UITableViewController {
+    
+    
+    var dataArray: [MissionCellParameters] = [MissionCellParameters(titleLabel: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), MissionCellParameters(titleLabel: "test2", date: "date2", location: "location2", description: "description..."), MissionCellParameters(titleLabel: "test3", date: "date3", location: "location3", description: "description..."), MissionCellParameters(titleLabel: "test4", date: "date4", location: "location4", description: "description..."), MissionCellParameters(titleLabel: "test5", date: "date5", location: "location5", description: "description...")]
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.prefersLargeTitles = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        let nib = UINib.init(nibName: "CommunityTableViewCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "comCell")
+        
     }
 
     // MARK: - Table view data source
@@ -36,17 +38,37 @@ class CommunityTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 10
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 260
+    }
+    
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        guard let vc = UIStoryboard(name: "CommunityGroupDetails", bundle: nil).instantiateViewController(withIdentifier: "CommunityGroupDetailsVC") as CommunityGroupDetailsVC else {
+//            assertionFailure("Probably used the wrong storyboard name or identifier here")
+//        }
+//        return
+//    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "comCell", for: indexPath) as! CommunityTableViewCell
 
         // Configure the cell...
+        
+        cell.bannerImage.image = #imageLiteral(resourceName: "placeholder.jpg")
+        cell.bigLabel.text = "big label"
+        cell.smallLabel1.text = "label1"
+        cell.smallLabel2.text = "label2"
+        
+        
 
         return cell
     }
+    
+    
     
 
     /*
@@ -93,5 +115,5 @@ class CommunityTVC: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
 }

@@ -24,7 +24,11 @@ class DatabaseManager {
             if let error = error {
                 print("Error getting objects from database: \(error)")
             } else {
+                #if swift(>=4.1)
                 let objects = querySnapshot?.documents.compactMap { T.init(dict: $0.data() as NSDictionary) } ?? []
+                #else
+                let objects = querySnapshot?.documents.flatMap { T.init(dict: $0.data() as NSDictionary) } ?? []
+                #endif
                 completion(objects)
             }
         }

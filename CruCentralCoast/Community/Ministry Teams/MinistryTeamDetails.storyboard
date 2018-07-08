@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LGC-N6-nF4">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="LGC-N6-nF4" secondAttribute="height" multiplier="374:219" id="C25-Bg-XcZ"/>
                                         </constraints>
@@ -35,31 +35,31 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vl5-Ey-haI">
-                                        <rect key="frame" x="16" y="318" width="339" height="17.5"/>
+                                        <rect key="frame" x="16" y="317.5" width="339" height="17.5"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movement Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DuK-wq-LQ0">
-                                        <rect key="frame" x="16" y="266" width="116" height="18"/>
+                                        <rect key="frame" x="16" y="265.5" width="116" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Leader Names Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O3Q-b3-li8">
-                                        <rect key="frame" x="16" y="292" width="184" height="18"/>
+                                        <rect key="frame" x="16" y="291.5" width="184" height="18"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ministry Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nJ0-Pf-Tqa">
-                                        <rect key="frame" x="16" y="234" width="123" height="24"/>
+                                        <rect key="frame" x="16" y="233.5" width="123" height="24"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Iwn-1s-NAM">
-                                        <rect key="frame" x="123" y="355.5" width="128" height="30"/>
+                                        <rect key="frame" x="123.5" y="355" width="128" height="30"/>
                                         <state key="normal" title="Join Ministry Team"/>
                                     </button>
                                 </subviews>
@@ -75,7 +75,6 @@
                                     <constraint firstItem="DuK-wq-LQ0" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="IqR-3n-cYi"/>
                                     <constraint firstItem="LGC-N6-nF4" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" id="K3g-7c-TLG"/>
                                     <constraint firstItem="O3Q-b3-li8" firstAttribute="leading" secondItem="w2i-df-bvA" secondAttribute="leading" constant="16" id="a6m-tc-hTh"/>
-                                    <constraint firstAttribute="width" constant="375" id="eq3-Cm-E6l"/>
                                     <constraint firstAttribute="bottom" secondItem="Iwn-1s-NAM" secondAttribute="bottom" constant="35" id="p2e-T7-Jc0"/>
                                     <constraint firstAttribute="trailing" secondItem="LGC-N6-nF4" secondAttribute="trailing" id="tLp-R3-MPI"/>
                                     <constraint firstItem="LGC-N6-nF4" firstAttribute="top" secondItem="w2i-df-bvA" secondAttribute="top" id="wmB-1O-pQq"/>
@@ -87,10 +86,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="w2i-df-bvA" firstAttribute="top" secondItem="Xrd-F4-2GC" secondAttribute="top" id="03l-66-831"/>
+                            <constraint firstItem="dSK-HD-oVb" firstAttribute="trailing" secondItem="w2i-df-bvA" secondAttribute="trailing" id="Pg5-T4-gQx"/>
                             <constraint firstItem="gmu-rR-Nz9" firstAttribute="top" secondItem="dSK-HD-oVb" secondAttribute="top" constant="7" id="R2N-BM-Ky0"/>
                             <constraint firstItem="w2i-df-bvA" firstAttribute="leading" secondItem="Xrd-F4-2GC" secondAttribute="leading" id="XxG-cU-Ort"/>
                             <constraint firstItem="dSK-HD-oVb" firstAttribute="trailing" secondItem="gmu-rR-Nz9" secondAttribute="trailing" constant="19" id="Zjf-7d-e5R"/>
                             <constraint firstItem="w2i-df-bvA" firstAttribute="bottom" secondItem="Xrd-F4-2GC" secondAttribute="bottom" id="bWO-no-Ckh"/>
+                            <constraint firstItem="w2i-df-bvA" firstAttribute="leading" secondItem="dSK-HD-oVb" secondAttribute="leading" id="stM-4N-7Nu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="dSK-HD-oVb"/>
                     </view>
