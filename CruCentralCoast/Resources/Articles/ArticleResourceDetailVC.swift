@@ -15,6 +15,8 @@ class ArticleResourceDetailVC: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    private var activityIndicator = UIActivityIndicatorView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,15 +29,13 @@ class ArticleResourceDetailVC: UIViewController {
     @IBAction func readArticleButtonPressed(_ sender: Any) {
         if let resourceURLString = self.resource?.url {
             print(resourceURLString)
-            self.showWebView(from: resourceURLString, withActivityIndicator: true, navigationDelegate: self)
+            self.showWebView(from: resourceURLString, with: self.activityIndicator, navigationDelegate: self)
         }
     }
 }
 
 extension ArticleResourceDetailVC: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        if let activityIndicator = webView.subviews.first(where: { String(describing: type(of: $0)) == "UIActivityIndicatorView" }) as? UIActivityIndicatorView {
-            activityIndicator.stopAnimating()
-        }
+        self.activityIndicator.stopAnimating()
     }
 }

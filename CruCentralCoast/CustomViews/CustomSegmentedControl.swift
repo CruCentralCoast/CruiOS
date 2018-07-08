@@ -89,10 +89,12 @@ class CruSegmentedControl: UIControl {
         stackView.distribution = .fillEqually
         self.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        stackView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        stackView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            stackView.topAnchor.constraint(equalTo: self.topAnchor),
+            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            stackView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            stackView.rightAnchor.constraint(equalTo: self.rightAnchor)
+        ])
     }
     
     override func draw(_ rect: CGRect) {

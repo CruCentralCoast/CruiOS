@@ -30,25 +30,17 @@ class Resource: DatabaseObject {
     }
     
     required init?(dict: NSDictionary) {
-        guard let author = dict["author"] as? String else {
+        guard let author = dict["author"] as? String,
+        let title = dict["title"] as? String,
+        let date = dict["date"] as? Date,
+        let url = dict["url"] as? String,
+        let type = dict["type"] as? String else {
             return nil
         }
         self.author = author
-        guard let title = dict["title"] as? String else {
-            return nil
-        }
         self.title = title
-        guard let date = dict["date"] as? Date else {
-            return nil
-        }
         self.date = date
-        guard let url = dict["url"] as? String else {
-            return nil
-        }
         self.url = url
-        guard let type = dict["type"] as? String else {
-            return nil
-        }
         switch type {
         case "audio":
             self.type = .audio

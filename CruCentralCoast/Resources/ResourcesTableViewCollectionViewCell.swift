@@ -41,11 +41,9 @@ class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
     
     @objc private func refreshResources(_ refreshControl: UIRefreshControl) {
         ResourceManager.instance.refreshResources(ofType: self.type) { resources in
-            UIView.animate(withDuration: 0.3) {
-                self.resources = resources
-                self.tableView.reloadData()
-                refreshControl.endRefreshing()
-            }
+            self.resources = resources
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
         }
     }
 }

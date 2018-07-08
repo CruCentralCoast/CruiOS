@@ -19,13 +19,13 @@ class AudioResourceDetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = resource?.title
-        self.titleLabel.text = resource?.title
-        self.authorLabel.text = "by \(resource?.author ?? "Unknown")"
+        self.navigationItem.title = self.resource?.title
+        self.titleLabel.text = self.resource?.title
+        self.authorLabel.text = "by \(self.resource?.author ?? "Unknown")"
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {
-        if let audioResource = resource, let url = URL(string: audioResource.url) {
+        if let audioResource = self.resource, let url = URL(string: audioResource.url) {
             self.audioResourceDelegate?.playAudioFromURL(url: url, title: audioResource.title)
             self.navigationController?.popViewController(animated: true)
         }

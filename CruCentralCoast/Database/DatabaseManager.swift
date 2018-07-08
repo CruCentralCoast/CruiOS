@@ -34,18 +34,6 @@ class DatabaseManager {
         getData(completion)
     }
     
-    private func getArticleResources(_ completion: @escaping ([ArticleResource])->Void) {
-        self.getData(completion)
-    }
-    
-    private func getVideoResources(_ completion: @escaping ([VideoResource])->Void) {
-        self.getData(completion)
-    }
-    
-    private func getAudioResources(_ completion: @escaping ([AudioResource])->Void) {
-        self.getData(completion)
-    }
-    
     func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
         let typeString: String
         switch type {

@@ -16,6 +16,7 @@ class VideoResourceDetailVC: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     
     var resource: VideoResource?
+    private var activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,15 +29,14 @@ class VideoResourceDetailVC: UIViewController {
     
     @IBAction func playButtonPressed(_ sender: Any) {
         if let videoResourceURLString = self.resource?.url {
-            self.showWebView(from: videoResourceURLString, withActivityIndicator: true, navigationDelegate: self)
+            self.showWebView(from: videoResourceURLString, with: self.activityIndicator, navigationDelegate: self)
         }
     }
 }
 
 extension VideoResourceDetailVC: WKNavigationDelegate {
+    
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        if let activityIndicator = webView.subviews.first(where: { String(describing: type(of: $0)) == "UIActivityIndicatorView" }) as? UIActivityIndicatorView {
-            activityIndicator.stopAnimating()
-        }
+        self.activityIndicator.stopAnimating()
     }
 }

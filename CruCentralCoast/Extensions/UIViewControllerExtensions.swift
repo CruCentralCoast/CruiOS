@@ -16,15 +16,17 @@ public extension UIViewController {
             NotificationCenter.default.addObserver(self, selector: #selector(self.popToRootViewController), name: MainTabBarController.tabBarChangedNotification, object: nil)
             
             let profileButton = UIButton()
-            profileButton.translatesAutoresizingMaskIntoConstraints = false
             profileButton.setImage(#imageLiteral(resourceName: "profile_icon")
                 , for: .normal)
             profileButton.tintColor = .black
             largeTitleView.addSubview(profileButton)
-            profileButton.bottomAnchor.constraint(equalTo: largeTitleView.bottomAnchor, constant: -10).isActive = true
-            profileButton.rightAnchor.constraint(equalTo: largeTitleView.rightAnchor, constant: -10).isActive = true
-            profileButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-            profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor).isActive = true
+            profileButton.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                profileButton.bottomAnchor.constraint(equalTo: largeTitleView.bottomAnchor, constant: -10),
+                profileButton.rightAnchor.constraint(equalTo: largeTitleView.rightAnchor, constant: -10),
+                profileButton.heightAnchor.constraint(equalToConstant: 30),
+                profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
+            ])
             
             profileButton.addTarget(self, action: #selector(self.pushProfileViewController), for: .touchUpInside)
             profileButton.addTarget(self, action: #selector(self.setColorLightGray), for: [.touchDown, .touchDragEnter])
@@ -55,7 +57,7 @@ public extension UIViewController {
         self.present(alertController, animated: animated, completion: completion)
     }
     
-    func showWebView(from url: String, withActivityIndicator: Bool = false, navigationDelegate: WKNavigationDelegate?) {
+    func showWebView(from url: String, with activityIndicator: UIActivityIndicatorView? = nil, navigationDelegate: WKNavigationDelegate?) {
         let webView = WKWebView()
         if let url = URL(string: url) {
             webView.load(URLRequest(url: url))
@@ -63,15 +65,17 @@ public extension UIViewController {
         let vc = UIViewController()
         vc.view = webView
         webView.navigationDelegate = navigationDelegate
-        if (withActivityIndicator) {
-            let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
-            activityIndicator.hidesWhenStopped = true
-            activityIndicator.color = .gray
-            webView.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-            activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-            activityIndicator.centerXAnchor.constraint(equalTo: webView.centerXAnchor).isActive = true
-            activityIndicator.centerYAnchor.constraint(equalTo: webView.centerYAnchor).isActive = true
+        if let indicator = activityIndicator {
+            indicator.activityIndicatorViewStyle = .whiteLarge
+            indicator.hidesWhenStopped = true
+            indicator.color = .gray
+            webView.addSubview(indicator)
+            indicator.startAnimating()
+            indicator.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                indicator.centerXAnchor.constraint(equalTo: webView.centerXAnchor),
+                indicator.centerYAnchor.constraint(equalTo: webView.centerYAnchor)
+            ])
         }
         self.show(vc, sender: self)
     }

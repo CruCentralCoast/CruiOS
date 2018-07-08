@@ -31,8 +31,7 @@ class ResourceManager {
     func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
         if retrievedResources.contains(type) {
             completion(self.resources.filter { $0.type == type })
-        }
-        else {
+        } else {
             DatabaseManager.instance.getResources(ofType: type) { resources in
                 self.resources.append(contentsOf: resources)
                 completion(resources)

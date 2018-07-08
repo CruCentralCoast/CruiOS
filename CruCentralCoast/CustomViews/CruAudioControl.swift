@@ -94,8 +94,13 @@ class CruAudioControl: UIView {
 
 extension CruAudioControl : AVPlayerViewControllerDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if !self.isPaused && self.audioPlayer?.rate == 0 {
-            self.audioPlayer?.play()
+        switch keyPath {
+        case #keyPath(AVPlayerViewController.view.frame):
+            if !self.isPaused && self.audioPlayer?.rate == 0 {
+                self.audioPlayer?.play()
+            }
+        default:
+            break
         }
     }
 }
