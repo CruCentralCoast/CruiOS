@@ -8,6 +8,10 @@
 
 import AVKit
 
+fileprivate extension CGFloat {
+    static let miniAudioPlayerOffsetFromBottom: CGFloat = 8
+}
+
 @IBDesignable
 class ResourcesVC: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
@@ -30,10 +34,10 @@ class ResourcesVC: UIViewController {
         
         self.view.addSubview(self.audioController)
         self.audioController.translatesAutoresizingMaskIntoConstraints = false
-        let miniAudioPlayerPositionConstraint = self.audioController.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 0)
+        let miniAudioPlayerPositionConstraint = self.audioController.topAnchor.constraint(equalTo: self.view.bottomAnchor)
         NSLayoutConstraint.activate([
-            self.audioController.leftAnchor.constraint(equalTo: self.collectionView.leftAnchor, constant: 8),
-            self.audioController.rightAnchor.constraint(equalTo: self.collectionView.rightAnchor, constant: -8),
+            self.audioController.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor),
+            self.audioController.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor),
             miniAudioPlayerPositionConstraint
         ])
         self.miniAudioPlayerPositionConstraint = miniAudioPlayerPositionConstraint
@@ -143,7 +147,7 @@ extension ResourcesVC: AudioResourceDelegate {
     
     func revealMiniAudioPlayer() {
         UIView.animate(withDuration: 0.3) {
-            self.miniAudioPlayerPositionConstraint?.constant = -self.audioController.bounds.height
+            self.miniAudioPlayerPositionConstraint?.constant = -(self.audioController.bounds.height + .miniAudioPlayerOffsetFromBottom)
             self.view.layoutIfNeeded()
         }
     }
