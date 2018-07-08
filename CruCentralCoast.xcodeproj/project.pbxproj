@@ -41,9 +41,7 @@
 		5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534D20352CDD0097A853 /* Rides.storyboard */; };
 		5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534F20352CEF0097A853 /* Resources.storyboard */; };
 		5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413C7203FAD4D00E2184D /* placeholder.jpg */; };
-		5ED81115209A943E00234E7E /* MinistryTeamDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */; };
 		5EDA143420AD150F0040EC22 /* CommunityGroupsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */; };
-		5EDA143B20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */; };
 		5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */; };
 		5EEE64112084912C00AACF91 /* cancel icon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE640F2084912B00AACF91 /* cancel icon.ico */; };
 		5EEE64122084912C00AACF91 /* location icon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE64102084912B00AACF91 /* location icon.ico */; };
@@ -133,13 +131,11 @@
 		2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePaths.swift; sourceTree = "<group>"; };
 		2FD4ACF4207EFFA7001BB0A6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		2FEA0538208405AA00F1491C /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
-		5E5416D52088269600A56279 /* MissionCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionCVC.swift; sourceTree = "<group>"; };
 		5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroups.storyboard; sourceTree = "<group>"; };
 		5E0C2F2120BF56A3001E6F7C /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
 		5E0C2F2220BF56A3001E6F7C /* CommunityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityTableViewCell.swift; sourceTree = "<group>"; };
 		5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MinistryTeams.storyboard; sourceTree = "<group>"; };
 		5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamsTVC.swift; sourceTree = "<group>"; };
-		5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MinistryTeamDetails.storyboard; path = "/Users/landongerrits/Documents/CruiOS/CruCentralCoast/Community/Ministry Teams/MinistryTeamDetails.storyboard"; sourceTree = "<absolute>"; };
 		5E5416D62088269600A56279 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionDetailsVC.swift; sourceTree = "<group>"; };
 		5E888EB420C8C21000F534DF /* Missions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Missions.storyboard; sourceTree = "<group>"; };
 		5E888EB820C8C2CE00F534DF /* MissionsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsTableVC.swift; sourceTree = "<group>"; };
@@ -161,7 +157,6 @@
 		5EBD534F20352CEF0097A853 /* Resources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resources.storyboard; sourceTree = "<group>"; };
 		5EC413C7203FAD4D00E2184D /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupsTVC.swift; sourceTree = "<group>"; };
-		5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroupDetailsVC.storyboard; sourceTree = "<group>"; };
 		5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MissionDetails.storyboard; sourceTree = "<group>"; };
 		5EEE640F2084912B00AACF91 /* cancel icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "cancel icon.ico"; sourceTree = "<group>"; };
 		5EEE64102084912B00AACF91 /* location icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "location icon.ico"; sourceTree = "<group>"; };
@@ -427,7 +422,6 @@
 		5EE2B2D3207ED64E00528579 /* Ministry Teams */ = {
 			isa = PBXGroup;
 			children = (
-				5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */,
 				5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */,
 				5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */,
 				5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */,
@@ -439,7 +433,6 @@
 			isa = PBXGroup;
 			children = (
 				5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */,
-				5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */,
 				5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */,
 			);
 			path = CommunityGroups;
@@ -665,7 +658,6 @@
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
-				5EDA143B20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard in Resources */,
 				2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */,
 				2F2BD9952077250400512170 /* Assets.xcassets in Resources */,
 				5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */,
@@ -678,7 +670,6 @@
 				ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */,
 				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
 				E09440132075AEC40057AC83 /* EventCell.xib in Resources */,
-				5ED81115209A943E00234E7E /* MinistryTeamDetails.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				AD55A0E5209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib in Resources */,
 				5E0C2F2320BF56A4001E6F7C /* CommunityTableViewCell.xib in Resources */,
@@ -850,8 +841,6 @@
 				2F7E20D020A3C24B00745A9B /* DatabasePaths.swift in Sources */,
 				5E0C2F2420BF56A4001E6F7C /* CommunityTableViewCell.swift in Sources */,
 				2F2BD98D2075B97C00512170 /* LoginVC.swift in Sources */,
-				5EC413CD203FAF2300E2184D /* MissionCell.swift in Sources */,
-				5EBD535220352FE10097A853 /* CommunityTVC.swift in Sources */,
 				AD652ABA20B6B292002FF565 /* VideoResourceDetailVC.swift in Sources */,
 				5E0C2F2820BFC843001E6F7C /* MinistryTeamsTVC.swift in Sources */,
 				ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */,
@@ -870,7 +859,6 @@
 				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
 				AD652AB820B69D04002FF565 /* ArticleResourceDetailVC.swift in Sources */,
 				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
-				5EE2B2DA207ED78600528579 /* CommunityGroupsCVC.swift in Sources */,
 				AD652AAA20B66487002FF565 /* AudioResource.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
@@ -880,7 +868,6 @@
 				2F2BD9972077325300512170 /* CruTextField.swift in Sources */,
 				E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */,
 				2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */,
-				5E5416D72088269600A56279 /* MissionCVC.swift in Sources */,
 				ADA9539620BDCCCB00294CEA /* CruAudioControl.swift in Sources */,
 				AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */,
 				E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */,
