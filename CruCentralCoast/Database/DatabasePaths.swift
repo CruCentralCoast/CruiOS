@@ -13,3 +13,7 @@ protocol DatabasePath {
 extension Ministry: DatabasePath {
     static var databasePath: String = "ministries"
 }
+
+extension Event: DatabasePath {
+    static var databasePath: String = "events"
+}

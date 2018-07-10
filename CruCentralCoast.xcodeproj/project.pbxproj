@@ -41,15 +41,14 @@
 		5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534D20352CDD0097A853 /* Rides.storyboard */; };
 		5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534F20352CEF0097A853 /* Resources.storyboard */; };
 		5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5EC413C7203FAD4D00E2184D /* placeholder.jpg */; };
-		5ED81115209A943E00234E7E /* MinistryTeamDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */; };
 		5EDA143420AD150F0040EC22 /* CommunityGroupsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */; };
-		5EDA143B20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */; };
 		5EDBB941207AC34A006EDA12 /* MissionDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */; };
 		5EEE64112084912C00AACF91 /* cancel icon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE640F2084912B00AACF91 /* cancel icon.ico */; };
 		5EEE64122084912C00AACF91 /* location icon.ico in Resources */ = {isa = PBXBuildFile; fileRef = 5EEE64102084912B00AACF91 /* location icon.ico */; };
 		5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */; };
 		6A096E88C6376481F194DB53 /* Pods_CruCentralCoast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */; };
 		A66506F3E10C7BCD2101AF6A /* Pods_CruCentralCoastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077C9B738C28BA8B1DC38487 /* Pods_CruCentralCoastUITests.framework */; };
+		AD14A1EA20EF1AD800E66679 /* MinistryTeamDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD14A1E920EF1AD800E66679 /* MinistryTeamDetails.storyboard */; };
 		AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8B920916B470089E370 /* ProfileVC.swift */; };
 		AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8BD20916BE00089E370 /* Profile.storyboard */; };
 		AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */; };
@@ -82,7 +81,14 @@
 		E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094400E2075ACE40057AC83 /* EventsCVC.swift */; };
 		E09440122075AEC40057AC83 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09440102075AEC40057AC83 /* EventCell.swift */; };
 		E09440132075AEC40057AC83 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09440112075AEC40057AC83 /* EventCell.xib */; };
+		E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FA20AD0C3600B2EF40 /* Event.swift */; };
+		E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */; };
+		E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */; };
 		E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C81C08207EED5800A00645 /* EventDetailsVC.swift */; };
+		E0D2A85320E9D69200192360 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2A85220E9D69200192360 /* EventsVC.swift */; };
+		E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2A86C20EAB65400192360 /* EventsTableCell.swift */; };
+		E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D2A86D20EAB65400192360 /* EventsTableCell.xib */; };
+		E0E1494D20B6671800E6472B /* EventDetailsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -127,7 +133,6 @@
 		5E0C2F2220BF56A3001E6F7C /* CommunityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityTableViewCell.swift; sourceTree = "<group>"; };
 		5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MinistryTeams.storyboard; sourceTree = "<group>"; };
 		5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamsTVC.swift; sourceTree = "<group>"; };
-		5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MinistryTeamDetails.storyboard; path = "/Users/landongerrits/Documents/CruiOS/CruCentralCoast/Community/Ministry Teams/MinistryTeamDetails.storyboard"; sourceTree = "<absolute>"; };
 		5E5416D62088269600A56279 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionDetailsVC.swift; sourceTree = "<group>"; };
 		5E888EB420C8C21000F534DF /* Missions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Missions.storyboard; sourceTree = "<group>"; };
 		5E888EB820C8C2CE00F534DF /* MissionsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsTableVC.swift; sourceTree = "<group>"; };
@@ -149,13 +154,13 @@
 		5EBD534F20352CEF0097A853 /* Resources.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Resources.storyboard; sourceTree = "<group>"; };
 		5EC413C7203FAD4D00E2184D /* placeholder.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = placeholder.jpg; sourceTree = "<group>"; };
 		5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupsTVC.swift; sourceTree = "<group>"; };
-		5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroupDetailsVC.storyboard; sourceTree = "<group>"; };
 		5EDBB940207AC34A006EDA12 /* MissionDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MissionDetails.storyboard; sourceTree = "<group>"; };
 		5EEE640F2084912B00AACF91 /* cancel icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "cancel icon.ico"; sourceTree = "<group>"; };
 		5EEE64102084912B00AACF91 /* location icon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; path = "location icon.ico"; sourceTree = "<group>"; };
 		5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamDetailsVC.swift; sourceTree = "<group>"; };
 		6CF951D8F2A54B4B44EBA7C0 /* Pods-CruCentralCoastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BD3D47169B5D42EAABD1CAC /* Pods-CruCentralCoastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		AD14A1E920EF1AD800E66679 /* MinistryTeamDetails.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MinistryTeamDetails.storyboard; sourceTree = "<group>"; };
 		AD24E8B920916B470089E370 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AD24E8BD20916BE00089E370 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationsCell.swift; sourceTree = "<group>"; };
@@ -185,11 +190,19 @@
 		ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCampusOrMinistryVC.swift; sourceTree = "<group>"; };
 		B5BF33BE152889DED4A13ABF /* Pods-CruCentralCoast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoast.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast.release.xcconfig"; sourceTree = "<group>"; };
 		B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E082D8D3209AC32200FDECC1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResourcesCell.swift; sourceTree = "<group>"; };
 		E094400E2075ACE40057AC83 /* EventsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCVC.swift; sourceTree = "<group>"; };
 		E09440102075AEC40057AC83 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
 		E09440112075AEC40057AC83 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
+		E0AFD0FA20AD0C3600B2EF40 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		E0C81C08207EED5800A00645 /* EventDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsVC.swift; sourceTree = "<group>"; };
+		E0D2A85220E9D69200192360 /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
+		E0D2A86C20EAB65400192360 /* EventsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableCell.swift; sourceTree = "<group>"; };
+		E0D2A86D20EAB65400192360 /* EventsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTableCell.xib; sourceTree = "<group>"; };
+		E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsTransition.swift; sourceTree = "<group>"; };
 		E4E2E2445612ECE64B34F5FD /* Pods-CruCentralCoastTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.release.xcconfig"; sourceTree = "<group>"; };
 		E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoastTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -236,6 +249,7 @@
 		2F43AEC2209AD9BD009BC362 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				E0AFD0FA20AD0C3600B2EF40 /* Event.swift */,
 				2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */,
 				2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */,
 				2F43AEC5209ADA41009BC362 /* Ministry.swift */,
@@ -279,6 +293,7 @@
 				5E8EC8B8202A3785000F86D8 /* Products */,
 				F067E0C206467763E8F4D1A0 /* Pods */,
 				3D8F449FDC8138C7134BF88F /* Frameworks */,
+				E06596A420AD048200C24FAB /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -351,11 +366,14 @@
 		5EBD534620352C1E0097A853 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				E03F7E4E20F577BB00C47E62 /* old Events */,
 				5EBD534720352C410097A853 /* Events.storyboard */,
-				E094400E2075ACE40057AC83 /* EventsCVC.swift */,
-				E09440102075AEC40057AC83 /* EventCell.swift */,
 				E09440112075AEC40057AC83 /* EventCell.xib */,
 				E0C81C08207EED5800A00645 /* EventDetailsVC.swift */,
+				E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */,
+				E0D2A85220E9D69200192360 /* EventsVC.swift */,
+				E0D2A86C20EAB65400192360 /* EventsTableCell.swift */,
+				E0D2A86D20EAB65400192360 /* EventsTableCell.xib */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -398,7 +416,7 @@
 		5EE2B2D3207ED64E00528579 /* Ministry Teams */ = {
 			isa = PBXGroup;
 			children = (
-				5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */,
+				AD14A1E920EF1AD800E66679 /* MinistryTeamDetails.storyboard */,
 				5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */,
 				5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */,
 				5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */,
@@ -410,7 +428,6 @@
 			isa = PBXGroup;
 			children = (
 				5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */,
-				5EDA143A20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard */,
 				5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */,
 			);
 			path = CommunityGroups;
@@ -481,6 +498,8 @@
 				2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */,
 				2F180861207980F100693C7B /* UIViewControllerExtensions.swift */,
 				AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */,
+				E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */,
+				E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -494,6 +513,23 @@
 				2F2BD9962077325300512170 /* CruTextField.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		E03F7E4E20F577BB00C47E62 /* old Events */ = {
+			isa = PBXGroup;
+			children = (
+				E094400E2075ACE40057AC83 /* EventsCVC.swift */,
+				E09440102075AEC40057AC83 /* EventCell.swift */,
+			);
+			path = "old Events";
+			sourceTree = "<group>";
+		};
+		E06596A420AD048200C24FAB /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				E082D8D3209AC32200FDECC1 /* Event.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		F067E0C206467763E8F4D1A0 /* Pods */ = {
@@ -628,12 +664,13 @@
 			files = (
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
+				E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
-				5EDA143B20AD18A50040EC22 /* CommunityGroupDetailsVC.storyboard in Resources */,
 				2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */,
 				2F2BD9952077250400512170 /* Assets.xcassets in Resources */,
 				5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */,
+				AD14A1EA20EF1AD800E66679 /* MinistryTeamDetails.storyboard in Resources */,
 				5E0C2F2620BFC80A001E6F7C /* MinistryTeams.storyboard in Resources */,
 				5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */,
 				AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */,
@@ -643,7 +680,6 @@
 				ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */,
 				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
 				E09440132075AEC40057AC83 /* EventCell.xib in Resources */,
-				5ED81115209A943E00234E7E /* MinistryTeamDetails.storyboard in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				AD55A0E5209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib in Resources */,
 				5E0C2F2320BF56A4001E6F7C /* CommunityTableViewCell.xib in Resources */,
@@ -801,6 +837,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E8EC901202A8AB5000F86D8 /* CommunityViewController.swift in Sources */,
+				E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */,
 				5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */,
 				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				5EDA143420AD150F0040EC22 /* CommunityGroupsTVC.swift in Sources */,
@@ -818,15 +855,20 @@
 				5E5416D82088269600A56279 /* MissionDetailsVC.swift in Sources */,
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
+				E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */,
 				2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */,
 				AD55A0E4209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift in Sources */,
 				AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */,
+				E0D2A85320E9D69200192360 /* EventsVC.swift in Sources */,
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
+				E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */,
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
 				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
+				E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
+				E0E1494D20B6671800E6472B /* EventDetailsTransition.swift in Sources */,
 				AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */,
 				5E8EC8BB202A3785000F86D8 /* AppDelegate.swift in Sources */,
 				AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */,

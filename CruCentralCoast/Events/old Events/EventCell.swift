@@ -8,14 +8,21 @@
 
 import UIKit
 
-class EventCell: UICollectionViewCell {
+@objc class EventCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cellMask: UIView!
     
-    let screenPadding: CGFloat = 20
+    @objc var event: Event! {
+        didSet {
+            let dateFormatter = DateFormatter()
+            self.dateLabel.text = dateFormatter.string(for: self.event.startDate)
+            self.titleLabel.text = self.event.title
+            self.imageView.image = self.event.image
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +32,6 @@ class EventCell: UICollectionViewCell {
         self.cellMask.layer.shadowOpacity = 0.2
         self.cellMask.layer.shadowOffset = CGSize.zero
         self.cellMask.layer.shadowRadius = 6
-        
         self.imageView.layer.cornerRadius = 20
         self.imageView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         
