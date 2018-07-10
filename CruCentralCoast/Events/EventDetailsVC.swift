@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EventKit
 
 struct EventCellParameters {
     let title : String

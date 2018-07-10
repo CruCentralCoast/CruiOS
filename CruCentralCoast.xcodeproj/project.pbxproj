@@ -85,7 +85,7 @@
 		E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */; };
 		E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */; };
 		E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C81C08207EED5800A00645 /* EventDetailsVC.swift */; };
-		E0D2A85320E9D69200192360 /* EventsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2A85220E9D69200192360 /* EventsTVC.swift */; };
+		E0D2A85320E9D69200192360 /* EventsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2A85220E9D69200192360 /* EventsVC.swift */; };
 		E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0D2A86C20EAB65400192360 /* EventsTableCell.swift */; };
 		E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0D2A86D20EAB65400192360 /* EventsTableCell.xib */; };
 		E0E1494D20B6671800E6472B /* EventDetailsTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */; };
@@ -199,7 +199,7 @@
 		E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
 		E0C81C08207EED5800A00645 /* EventDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsVC.swift; sourceTree = "<group>"; };
-		E0D2A85220E9D69200192360 /* EventsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTVC.swift; sourceTree = "<group>"; };
+		E0D2A85220E9D69200192360 /* EventsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsVC.swift; sourceTree = "<group>"; };
 		E0D2A86C20EAB65400192360 /* EventsTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsTableCell.swift; sourceTree = "<group>"; };
 		E0D2A86D20EAB65400192360 /* EventsTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsTableCell.xib; sourceTree = "<group>"; };
 		E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailsTransition.swift; sourceTree = "<group>"; };
@@ -366,13 +366,12 @@
 		5EBD534620352C1E0097A853 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				E03F7E4E20F577BB00C47E62 /* old Events */,
 				5EBD534720352C410097A853 /* Events.storyboard */,
-				E094400E2075ACE40057AC83 /* EventsCVC.swift */,
-				E09440102075AEC40057AC83 /* EventCell.swift */,
 				E09440112075AEC40057AC83 /* EventCell.xib */,
 				E0C81C08207EED5800A00645 /* EventDetailsVC.swift */,
 				E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */,
-				E0D2A85220E9D69200192360 /* EventsTVC.swift */,
+				E0D2A85220E9D69200192360 /* EventsVC.swift */,
 				E0D2A86C20EAB65400192360 /* EventsTableCell.swift */,
 				E0D2A86D20EAB65400192360 /* EventsTableCell.xib */,
 			);
@@ -514,6 +513,15 @@
 				2F2BD9962077325300512170 /* CruTextField.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		E03F7E4E20F577BB00C47E62 /* old Events */ = {
+			isa = PBXGroup;
+			children = (
+				E094400E2075ACE40057AC83 /* EventsCVC.swift */,
+				E09440102075AEC40057AC83 /* EventCell.swift */,
+			);
+			path = "old Events";
 			sourceTree = "<group>";
 		};
 		E06596A420AD048200C24FAB /* Recovered References */ = {
@@ -851,7 +859,7 @@
 				2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */,
 				AD55A0E4209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift in Sources */,
 				AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */,
-				E0D2A85320E9D69200192360 /* EventsTVC.swift in Sources */,
+				E0D2A85320E9D69200192360 /* EventsVC.swift in Sources */,
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
 				E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */,
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,

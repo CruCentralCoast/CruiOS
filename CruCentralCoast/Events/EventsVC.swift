@@ -50,7 +50,7 @@ class EventsTVC: UITableViewController {
         }
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
-        longPressGestureRecognizer.minimumPressDuration = 0.1
+        longPressGestureRecognizer.minimumPressDuration = 0.3
         longPressGestureRecognizer.delegate = self
         self.tableView.addGestureRecognizer(longPressGestureRecognizer)
     }
@@ -64,8 +64,7 @@ class EventsTVC: UITableViewController {
                     cell?.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
                 })
             }
-        }
-        if gestureRecognizer.state == .ended {
+        } else if gestureRecognizer.state == .ended {
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 let cell = tableView.cellForRow(at: indexPath)
                 guard let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventDetailsVC") as? EventDetailsVC else {
@@ -81,9 +80,7 @@ class EventsTVC: UITableViewController {
                     self.navigationController?.present(vc, animated: true, completion: nil)
                 })
             }
-        }
-        
-        if gestureRecognizer.state == .cancelled {
+        } else if gestureRecognizer.state == .cancelled {
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 let cell = tableView.cellForRow(at: indexPath)
                 UIView.animate(withDuration: 0.2, animations: {
@@ -111,17 +108,6 @@ class EventsTVC: UITableViewController {
         cell.selectionStyle = .none
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventDetailsVC") as? EventDetailsVC else {
-//            assertionFailure("Probably used the wrong storyboard name or identifier here")
-//            return
-//        }
-//        vc.configure(with: self.dataArray[indexPath.item])
-//        vc.transitioningDelegate = self
-//        self.selectedCell = tableView.cellForRow(at: indexPath) as? EventsTableCell
-//        self.navigationController?.present(vc, animated: true, completion: nil)
-//    }
 }
 
 extension EventsTVC: UIViewControllerTransitioningDelegate {
@@ -141,14 +127,18 @@ extension EventsTVC: UIViewControllerTransitioningDelegate {
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        guard let originFrame = self.originFrame else {
+            return nil
+        }
         self.statusBarIsHidden = false
-        let transition = EventDetailsTransition(originFrame: self.originFrame!)
+        let transition = EventDetailsTransition(originFrame: originFrame)
         transition.presenting = false
         return transition
     }
 }
 
 extension EventsTVC: UIGestureRecognizerDelegate {
+    //used so scrolling and longPressGesture can be detected simultaneously
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

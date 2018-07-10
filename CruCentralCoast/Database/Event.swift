@@ -19,29 +19,17 @@ class Event: NSObject, DatabaseObject {
     @objc dynamic var image: UIImage?
     
     required init?(dict: NSDictionary) {
-        guard let title = dict["name"] as? String else {
+        guard let title = dict["name"] as? String,
+        let summary = dict["description"] as? String,
+        let startDate = dict["startDate"] as? Date,
+        let imageLink = dict["imageLink"] as? String
+        else {
             return nil
         }
         self.title = title
-        
-        guard let summary = dict["description"] as? String else {
-            return nil
-        }
         self.summary = summary
-        
-        guard let startDate = dict["startDate"] as? Date else {
-            return nil
-        }
         self.startDate = startDate
-        
-//        super.init()
-        guard let imageLink = dict["imageLink"] as? String else {
-            return nil
-        }
         self.imageLink = imageLink
-//        defer { UIImage.downloadedFrom(link: imageLink) { self.image = $0 } }
-        
-        
         self.endDate = (dict["endDate"] as? Timestamp)?.approximateDateValue()
         self.location = dict["locations"] as? String
         

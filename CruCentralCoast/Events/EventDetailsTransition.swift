@@ -14,8 +14,6 @@ class EventDetailsTransition : NSObject, UIViewControllerAnimatedTransitioning {
     var presenting = true
     var originFrame = CGRect.zero
     
-    
-    
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return duration
     }

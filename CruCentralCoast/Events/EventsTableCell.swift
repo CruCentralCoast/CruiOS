@@ -35,8 +35,5 @@ import UIKit
         self.imageCellView.layer.masksToBounds = true
         
         self.clipsToBounds = false
-        
     }
-    
-    
 }
