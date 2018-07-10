@@ -24,10 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = LoginManager.instance
         
-        DatabaseManager.instance.getMinistries { (ministries) in
-            print(ministries)
-        }
-        
         // Configure Facebook sign-in
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
