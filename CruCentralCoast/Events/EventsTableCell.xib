@@ -17,14 +17,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" userLabel="content View">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="260"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="259.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUs-wa-c5i" userLabel="cellMask">
                         <rect key="frame" x="20" y="11" width="374" height="238"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9R4-fk-mQg">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9R4-fk-mQg">
                         <rect key="frame" x="20" y="11" width="374" height="149.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="9R4-fk-mQg" secondAttribute="height" multiplier="350:140" id="APX-90-aHp"/>
@@ -37,15 +37,18 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kb2-LK-3Qj">
-                        <rect key="frame" x="28" y="204" width="32.5" height="18"/>
+                        <rect key="frame" x="353.5" y="189" width="32.5" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5U-Eh-qeq">
-                        <rect key="frame" x="339" y="188.5" width="47" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location icon.ico" translatesAutoresizingMaskIntoConstraints="NO" id="S5B-l3-mQO">
+                        <rect key="frame" x="24" y="204" width="23" height="16"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvD-Zq-eVf">
+                        <rect key="frame" x="51" y="204" width="89" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -53,16 +56,19 @@
                     <constraint firstItem="fZK-YH-ocJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="1v0-wb-c3W"/>
                     <constraint firstAttribute="trailingMargin" secondItem="9R4-fk-mQg" secondAttribute="trailing" id="4A1-bf-1XV"/>
                     <constraint firstItem="yUs-wa-c5i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4qq-ID-jOJ"/>
+                    <constraint firstItem="S5B-l3-mQO" firstAttribute="top" secondItem="fZK-YH-ocJ" secondAttribute="bottom" constant="4" id="5ax-9b-ZDr"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yUs-wa-c5i" secondAttribute="bottom" id="699-3P-T7x"/>
-                    <constraint firstItem="S5U-Eh-qeq" firstAttribute="top" secondItem="9R4-fk-mQg" secondAttribute="bottom" constant="28" id="BpN-ua-vlV"/>
+                    <constraint firstItem="HvD-Zq-eVf" firstAttribute="leading" secondItem="S5B-l3-mQO" secondAttribute="trailing" constant="4" id="Alc-IQ-QUf"/>
+                    <constraint firstItem="HvD-Zq-eVf" firstAttribute="top" secondItem="fZK-YH-ocJ" secondAttribute="bottom" constant="4" id="Ca3-qP-FhW"/>
                     <constraint firstItem="fZK-YH-ocJ" firstAttribute="top" secondItem="9R4-fk-mQg" secondAttribute="bottom" constant="8" id="Dxj-YA-xth"/>
-                    <constraint firstItem="Kb2-LK-3Qj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="Gk9-5g-rkL"/>
-                    <constraint firstAttribute="trailing" secondItem="S5U-Eh-qeq" secondAttribute="trailing" constant="28" id="JTS-NR-ACW"/>
-                    <constraint firstItem="Kb2-LK-3Qj" firstAttribute="top" secondItem="fZK-YH-ocJ" secondAttribute="bottom" constant="4" id="LHQ-tc-j4N"/>
+                    <constraint firstItem="S5B-l3-mQO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="YAm-ao-mG3"/>
                     <constraint firstItem="9R4-fk-mQg" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="gXN-6d-gBh"/>
+                    <constraint firstAttribute="trailing" secondItem="Kb2-LK-3Qj" secondAttribute="trailing" constant="28" id="jjf-1B-9Zs"/>
+                    <constraint firstItem="S5B-l3-mQO" firstAttribute="width" secondItem="S5B-l3-mQO" secondAttribute="height" multiplier="13:9" id="kng-7t-sEH"/>
                     <constraint firstItem="9R4-fk-mQg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="pSY-Os-XSb"/>
                     <constraint firstItem="yUs-wa-c5i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="s2z-s9-5LJ"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yUs-wa-c5i" secondAttribute="trailing" id="vnb-eF-54F"/>
+                    <constraint firstItem="Kb2-LK-3Qj" firstAttribute="top" secondItem="9R4-fk-mQg" secondAttribute="bottom" constant="28" id="xij-LB-8Cc"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -71,8 +77,12 @@
                 <outlet property="dateLabel" destination="Kb2-LK-3Qj" id="mBE-kx-LgX"/>
                 <outlet property="descriptionLabel" destination="fZK-YH-ocJ" id="wi4-Ga-25y"/>
                 <outlet property="imageCellView" destination="9R4-fk-mQg" id="8bQ-sg-6MU"/>
+                <outlet property="locationLabel" destination="HvD-Zq-eVf" id="1l9-BS-5gb"/>
             </connections>
             <point key="canvasLocation" x="34" y="73"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="location icon.ico" width="16" height="16"/>
+    </resources>
 </document>

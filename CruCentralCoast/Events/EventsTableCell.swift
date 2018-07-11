@@ -13,12 +13,14 @@ import UIKit
     @IBOutlet weak var cellMask: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var imageCellView: UIImageView! //named imageCellView because imageView was already a variable name used by the tableView
     @objc var event: Event! {
         didSet {
             self.dateLabel.text = event.startDate.toString(dateFormat: "MMM-dd-yyyy")
             self.descriptionLabel.text = self.event.title
             self.imageCellView.image = self.event.image
+            self.locationLabel.text = self.event.location
         }
     }
     

@@ -24,6 +24,7 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -54,6 +55,7 @@ class EventDetailsVC: UIViewController {
     @IBAction func dismissDetail(_ sender: Any) {
         self.statusBarIsHidden = false
         self.topConstraint.constant = -20
+        closeButton.removeFromSuperview()
         self.dismiss(animated: true, completion: nil)
     }
     
