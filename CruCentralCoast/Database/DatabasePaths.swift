@@ -17,3 +17,7 @@ extension Ministry: DatabasePath {
 extension Resource: DatabasePath {
     static var databasePath: String = "resources"
 }
+
+extension Event: DatabasePath {
+    static var databasePath: String = "events"
+}

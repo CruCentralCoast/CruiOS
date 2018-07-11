@@ -50,7 +50,11 @@ class MinistryTeamDetailsVC: UIViewController {
         
         ministyTitleLabel.text = ministryTitle
         movementLabel.text = movementTitle
+        #if swift(>=4.1)
         teamLeaderNamesLabel.text = leaderNames.compactMap({$0}).joined(separator: " ")
+        #else
+        teamLeaderNamesLabel.text = leaderNames.flatMap({$0}).joined(separator: " ")
+        #endif
         ministryDescription.text = desc
         
         

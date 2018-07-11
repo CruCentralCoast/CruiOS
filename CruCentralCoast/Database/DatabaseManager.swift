@@ -57,6 +57,10 @@ class DatabaseManager {
             }
         }
     }
+
+    func getEvents(_ completion: @escaping ([Event])->Void) {
+        getData(completion)
+    }
 }
 
 protocol DatabaseObject: DatabasePath {
