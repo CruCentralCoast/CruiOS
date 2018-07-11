@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EventKit //used for the add to calendar button
 
 struct EventCellParameters {
     let title : String
@@ -16,6 +17,7 @@ struct EventCellParameters {
 }
 
 class EventDetailsVC: UIViewController {
+    var event : Event?
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -59,19 +61,33 @@ class EventDetailsVC: UIViewController {
         self.presentAlert(title: "Link not set up yet!!", message: "Coming soon")
     }
 
-    /* future function for calendar button on events Details Screen
-    @IBAction func calendarButtonPressed(_ sender: Any) {
+    @IBAction func addToCalendarButtonPressed(_ sender: Any) {
         let eventStore : EKEventStore = EKEventStore()
         
-        eventStore.requestAccess(to: .event, completion: { (granted, error) in
+        eventStore.requestAccess(to: .event) { (granted, error) in
             if (granted) && (error == nil) {
-                let event = EKEvent(eventStore: eventStore)
-                event.title = self.titleLabel.text
+                print("granted \(granted)")
+                print("error \(error)")
+                
+                let event:EKEvent = EKEvent(eventStore: eventStore)
+                event.title = self.event?.title
+                event.startDate = self.event?.startDate
+                if self.event?.endDate != nil {
+                    event.endDate = self.event?.endDate
+                }
+                event.notes = self.event?.description
+                event.calendar = eventStore.defaultCalendarForNewEvents
+                do {
+                    try eventStore.save(event,span: .thisEvent)
+                } catch let error as NSError {
+                    print("Error : \(error)")
+                }
+                print("Save Event")
+            } else {
+                print("error : \(error)")
             }
-            
-        })
+        }
     }
-    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +100,7 @@ class EventDetailsVC: UIViewController {
     }
     
     func configure(with cellParameters: Event) {
+        self.event = cellParameters
         self.eventImage = cellParameters.image
         self.eventTitle = cellParameters.title
         self.eventDate = cellParameters.startDate.toString(dateFormat: "MMM-dd-yyyy")

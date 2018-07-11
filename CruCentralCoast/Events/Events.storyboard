@@ -168,7 +168,7 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="calendarButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="9te-yk-IVB"/>
+                                                    <action selector="addToCalendarButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="wa5-83-LlQ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Si-BSE" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
