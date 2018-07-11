@@ -27,6 +27,7 @@ class ResourcesVC: UIViewController {
         super.viewDidLoad()
         
         self.insertProfileButtonInNavBar()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.popToRootViewController), name: MainTabBarController.tabBarChangedNotification, object: nil)
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         self.collectionView.registerCell(ResourcesTableViewCollectionViewCell.self)
@@ -60,7 +61,7 @@ class ResourcesVC: UIViewController {
     
     private func findShadowImage(under view: UIView) -> UIImageView? {
         if view is UIImageView && view.bounds.size.height <= 1 {
-            return (view as! UIImageView)
+            return (view as? UIImageView)
         }
         
         for subview in view.subviews {

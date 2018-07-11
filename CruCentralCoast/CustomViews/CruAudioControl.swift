@@ -96,8 +96,9 @@ extension CruAudioControl : AVPlayerViewControllerDelegate {
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         switch keyPath {
         case #keyPath(AVPlayerViewController.view.frame):
-            if !self.isPaused && self.audioPlayer?.rate == 0 {
-                self.audioPlayer?.play()
+            // if the audioplayer is set to pause somehow with the AVPlayerViewController, make sure the button is correct
+            if self.audioPlayer?.rate == 0 {
+                self.isPaused = true
             }
         default:
             break
