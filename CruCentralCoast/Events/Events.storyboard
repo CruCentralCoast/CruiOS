@@ -114,7 +114,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-9O-O3u">
-                                        <rect key="frame" x="332.66666666666669" y="193.66666666666666" width="73.333333333333314" height="18"/>
+                                        <rect key="frame" x="332.66666666666669" y="181.66666666666666" width="73.333333333333314" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -219,7 +219,7 @@
                                     <constraint firstAttribute="trailing" secondItem="OXe-05-0Hx" secondAttribute="trailing" constant="30" id="WMR-11-caQ"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="4" id="Z8r-j1-Yxf"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="4" id="Zae-oj-2Za"/>
-                                    <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="28" id="g2w-Ka-6AM"/>
+                                    <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="16" id="g2w-Ka-6AM"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" id="ghP-Sf-gPf"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="8" id="jsy-SD-dew"/>
                                     <constraint firstAttribute="bottom" secondItem="knk-lC-Fu0" secondAttribute="bottom" constant="30" id="oec-Aj-O7M"/>

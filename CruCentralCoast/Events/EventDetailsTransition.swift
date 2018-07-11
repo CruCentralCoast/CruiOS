@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class EventDetailsTransition : NSObject, UIViewControllerAnimatedTransitioning {
-    private let duration = 0.5
+    private let duration = 0.7
     var presenting = true
     var originFrame = CGRect.zero
     

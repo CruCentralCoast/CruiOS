@@ -74,9 +74,7 @@ class EventDetailsVC: UIViewController {
                 let event:EKEvent = EKEvent(eventStore: eventStore)
                 event.title = self.event?.title
                 event.startDate = self.event?.startDate
-                if self.event?.endDate != nil {
-                    event.endDate = self.event?.endDate
-                }
+                event.endDate = self.event?.endDate
                 event.notes = self.event?.description
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
