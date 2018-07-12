@@ -45,12 +45,13 @@ class CommunityGroupsTVC: UITableViewController {
         return 260
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let vc = UIStoryboard(name: "CommunityGroupDetails", bundle: nil).instantiateViewController(withIdentifier: "CommunityGroupDetailsVC") as CommunityGroupDetailsVC else {
-//            assertionFailure("Probably used the wrong storyboard name or identifier here")
-//        }
-//        return
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "CommunityGroupDetails", bundle: nil).instantiateViewController(withIdentifier: "CommunityGroupDetails") as? CommunityGroupDetailsVC else {
+            assertionFailure("Probably used the wrong storyboard name or identifier here")
+            return
+        }
+         self.navigationController?.present(vc, animated: true, completion: nil)
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
