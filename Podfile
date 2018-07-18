@@ -10,6 +10,7 @@ target 'CruCentralCoast' do
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
+  pod 'RealmSwift'
 
   target 'CruCentralCoastTests' do
     inherit! :search_paths
