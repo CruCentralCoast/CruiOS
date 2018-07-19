@@ -54,9 +54,12 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
             }
             self.tableView.reloadData()
         }
-        
+        createLongPressGesture()
+    }
+    
+    func createLongPressGesture() {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
-        longPressGestureRecognizer.minimumPressDuration = 0.005
+        longPressGestureRecognizer.minimumPressDuration = 0.05
         longPressGestureRecognizer.delegate = self
         self.tableView.addGestureRecognizer(longPressGestureRecognizer)
     }
@@ -138,7 +141,6 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
 }
 
 extension EventsTVC: UIViewControllerTransitioningDelegate {
-    
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let selectedCell = self.selectedCell else {
             return nil
