@@ -78,9 +78,6 @@
 		ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */; };
 		B925A4D486A6853802C549FA /* Pods_CruCentralCoastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */; };
 		E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */; };
-		E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094400E2075ACE40057AC83 /* EventsCVC.swift */; };
-		E09440122075AEC40057AC83 /* EventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09440102075AEC40057AC83 /* EventCell.swift */; };
-		E09440132075AEC40057AC83 /* EventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E09440112075AEC40057AC83 /* EventCell.xib */; };
 		E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FA20AD0C3600B2EF40 /* Event.swift */; };
 		E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */; };
 		E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */; };
@@ -192,9 +189,6 @@
 		B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E082D8D3209AC32200FDECC1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideosResourcesCell.swift; sourceTree = "<group>"; };
-		E094400E2075ACE40057AC83 /* EventsCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsCVC.swift; sourceTree = "<group>"; };
-		E09440102075AEC40057AC83 /* EventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCell.swift; sourceTree = "<group>"; };
-		E09440112075AEC40057AC83 /* EventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCell.xib; sourceTree = "<group>"; };
 		E0AFD0FA20AD0C3600B2EF40 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensions.swift; sourceTree = "<group>"; };
@@ -366,9 +360,7 @@
 		5EBD534620352C1E0097A853 /* Events */ = {
 			isa = PBXGroup;
 			children = (
-				E03F7E4E20F577BB00C47E62 /* old Events */,
 				5EBD534720352C410097A853 /* Events.storyboard */,
-				E09440112075AEC40057AC83 /* EventCell.xib */,
 				E0C81C08207EED5800A00645 /* EventDetailsVC.swift */,
 				E0E1494C20B6671800E6472B /* EventDetailsTransition.swift */,
 				E0D2A85220E9D69200192360 /* EventsVC.swift */,
@@ -513,15 +505,6 @@
 				2F2BD9962077325300512170 /* CruTextField.swift */,
 			);
 			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		E03F7E4E20F577BB00C47E62 /* old Events */ = {
-			isa = PBXGroup;
-			children = (
-				E094400E2075ACE40057AC83 /* EventsCVC.swift */,
-				E09440102075AEC40057AC83 /* EventCell.swift */,
-			);
-			path = "old Events";
 			sourceTree = "<group>";
 		};
 		E06596A420AD048200C24FAB /* Recovered References */ = {
@@ -679,7 +662,6 @@
 				AD24E8C920917D6B0089E370 /* ProfileEmailCell.xib in Resources */,
 				ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */,
 				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
-				E09440132075AEC40057AC83 /* EventCell.xib in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
 				AD55A0E5209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib in Resources */,
 				5E0C2F2320BF56A4001E6F7C /* CommunityTableViewCell.xib in Resources */,
@@ -863,7 +845,6 @@
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
 				E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */,
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
-				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
 				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
 				E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
@@ -876,7 +857,6 @@
 				E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */,
 				2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */,
 				AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */,
-				E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */,
 				5E888EB920C8C2CE00F534DF /* MissionsTableVC.swift in Sources */,
 				2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */,
 				E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */,
