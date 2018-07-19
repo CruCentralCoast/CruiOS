@@ -17,6 +17,7 @@ class Event: NSObject, DatabaseObject {
     var locationDict : NSDictionary
     var location: String = ""
     var imageLink: String
+    var facebookURL: String
     @objc dynamic var image: UIImage?
     
     required init?(dict: NSDictionary) {
@@ -25,7 +26,8 @@ class Event: NSObject, DatabaseObject {
             let startDate = dict["startDate"] as? Date,
             let endDate = dict["endDate"] as? Date,
             let locationDict = dict["location"] as? NSDictionary,
-            let imageLink = dict["imageLink"] as? String
+            let imageLink = dict["imageLink"] as? String,
+            let facebookURL = dict["url"] as? String
         else {
             return nil
         }
@@ -35,6 +37,7 @@ class Event: NSObject, DatabaseObject {
         self.imageLink = imageLink
         self.endDate = endDate
         self.locationDict = locationDict
+        self.facebookURL = facebookURL
         
         guard let street = locationDict.value(forKey: "street1") as? String
         else {

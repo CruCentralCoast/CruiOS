@@ -8,6 +8,7 @@
 
 import UIKit
 import EventKit //used for the add to calendar button
+import SafariServices //used for the facebookButton
 
 struct EventCellParameters {
     let title : String
@@ -59,8 +60,19 @@ class EventDetailsVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    //found at https://www.hackingwithswift.com/read/32/3/how-to-use-sfsafariviewcontroller-to-browse-a-web-page
     @IBAction func facebookButtonPressed(_ sender: Any) {
-        self.presentAlert(title: "Link not set up yet!!", message: "Coming soon")
+        guard let facebookURL = event?.facebookURL else {
+            return
+        }
+        
+        if let url = URL(string: facebookURL) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
     }
 
     @IBAction func addToCalendarButtonPressed(_ sender: Any) {
@@ -89,10 +101,12 @@ class EventDetailsVC: UIViewController {
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.titleLabel.text = self.eventTitle
+        self.titleLabel.sizeToFit()
         self.dateLabel.text = self.eventDate
         self.locationLabel.text = self.eventLocation
         self.descriptionLabel.text = self.eventSummary

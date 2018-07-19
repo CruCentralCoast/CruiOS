@@ -55,6 +55,7 @@
                 <constraints>
                     <constraint firstItem="fZK-YH-ocJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="1v0-wb-c3W"/>
                     <constraint firstAttribute="trailingMargin" secondItem="9R4-fk-mQg" secondAttribute="trailing" id="4A1-bf-1XV"/>
+                    <constraint firstAttribute="bottom" secondItem="HvD-Zq-eVf" secondAttribute="bottom" constant="39.5" id="4az-RJ-grn"/>
                     <constraint firstItem="yUs-wa-c5i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4qq-ID-jOJ"/>
                     <constraint firstItem="S5B-l3-mQO" firstAttribute="top" secondItem="fZK-YH-ocJ" secondAttribute="bottom" constant="4" id="5ax-9b-ZDr"/>
                     <constraint firstAttribute="bottomMargin" secondItem="yUs-wa-c5i" secondAttribute="bottom" id="699-3P-T7x"/>
