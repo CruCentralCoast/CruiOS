@@ -91,6 +91,9 @@ class EventDetailsVC: UIViewController {
                 event.calendar = eventStore.defaultCalendarForNewEvents
                 do {
                     try eventStore.save(event,span: .thisEvent)
+                        let alert = UIAlertController(title: "Calendar", message: "Event Successfully added to calendar", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true)
                 } catch let error as NSError {
                     print("Error : \(error)")
                 }
