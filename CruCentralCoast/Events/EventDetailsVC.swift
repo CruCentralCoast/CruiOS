@@ -53,6 +53,16 @@ class EventDetailsVC: UIViewController {
         return .slide
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.titleLabel.text = self.eventTitle
+        self.dateLabel.text = self.eventDate
+        self.locationLabel.text = self.eventLocation
+        self.descriptionLabel.text = self.eventSummary
+        self.imageView.image = self.eventImage
+    }
+    
     @IBAction func dismissDetail(_ sender: Any) {
         self.statusBarIsHidden = false
         self.topConstraint.constant = -20
@@ -80,9 +90,6 @@ class EventDetailsVC: UIViewController {
         
         eventStore.requestAccess(to: .event) { (granted, error) in
             if (granted) && (error == nil) {
-                print("granted \(granted)")
-                print("error \(error)")
-                
                 let event:EKEvent = EKEvent(eventStore: eventStore)
                 event.title = self.event?.title
                 event.startDate = self.event?.startDate
@@ -99,21 +106,9 @@ class EventDetailsVC: UIViewController {
                 }
                 print("Save Event")
             } else {
-                print("error : \(error)")
+                print("error : \(String(describing: error))")
             }
         }
-    }
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.titleLabel.text = self.eventTitle
-        self.titleLabel.sizeToFit()
-        self.dateLabel.text = self.eventDate
-        self.locationLabel.text = self.eventLocation
-        self.descriptionLabel.text = self.eventSummary
-        self.imageView.image = self.eventImage
     }
     
     func configure(with cellParameters: Event) {

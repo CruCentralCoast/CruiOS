@@ -14,7 +14,7 @@ class Event: NSObject, DatabaseObject {
     var startDate: Date
     var endDate: Date
     var summary: String
-    var locationDict : NSDictionary
+    var locationDict: NSDictionary
     var location: String = ""
     var imageLink: String
     var facebookURL: String
