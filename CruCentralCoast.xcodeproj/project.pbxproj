@@ -28,6 +28,8 @@
 		5E0C2F2620BFC80A001E6F7C /* MinistryTeams.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */; };
 		5E0C2F2820BFC843001E6F7C /* MinistryTeamsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */; };
 		5E108E9321018BD200213B3B /* CommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E108E9221018BD200213B3B /* CommunityGroup.swift */; };
+		5E19D3CB20EF0F1000075A32 /* CommunityGroupDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E19D3C920EF0F1000075A32 /* CommunityGroupDetailsVC.swift */; };
+		5E19D3CE20EF1AE000075A32 /* CommunityGroupDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E19D3CD20EF1AE000075A32 /* CommunityGroupDetails.storyboard */; };
 		5E5416D82088269600A56279 /* MissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5416D62088269600A56279 /* MissionDetailsVC.swift */; };
 		5E888EB520C8C21000F534DF /* Missions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E888EB420C8C21000F534DF /* Missions.storyboard */; };
 		5E888EB920C8C2CE00F534DF /* MissionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E888EB820C8C2CE00F534DF /* MissionsTableVC.swift */; };
@@ -146,6 +148,9 @@
 		5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MinistryTeams.storyboard; sourceTree = "<group>"; };
 		5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamsTVC.swift; sourceTree = "<group>"; };
 		5E108E9221018BD200213B3B /* CommunityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroup.swift; sourceTree = "<group>"; };
+		5E19D3C920EF0F1000075A32 /* CommunityGroupDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupDetailsVC.swift; sourceTree = "<group>"; };
+		5E19D3CD20EF1AE000075A32 /* CommunityGroupDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroupDetails.storyboard; sourceTree = "<group>"; };
+		5E26186D209169FC005B8C60 /* MinistryTeamDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MinistryTeamDetails.storyboard; path = "/Users/landongerrits/Documents/CruiOS/CruCentralCoast/Community/Ministry Teams/MinistryTeamDetails.storyboard"; sourceTree = "<absolute>"; };
 		5E5416D62088269600A56279 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionDetailsVC.swift; sourceTree = "<group>"; };
 		5E888EB420C8C21000F534DF /* Missions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Missions.storyboard; sourceTree = "<group>"; };
 		5E888EB820C8C2CE00F534DF /* MissionsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsTableVC.swift; sourceTree = "<group>"; };
@@ -460,6 +465,8 @@
 			children = (
 				5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */,
 				5EDA143220AD150F0040EC22 /* CommunityGroupsTVC.swift */,
+				5E19D3C920EF0F1000075A32 /* CommunityGroupDetailsVC.swift */,
+				5E19D3CD20EF1AE000075A32 /* CommunityGroupDetails.storyboard */,
 			);
 			path = CommunityGroups;
 			sourceTree = "<group>";
@@ -728,6 +735,7 @@
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
 				5EEE64122084912C00AACF91 /* location icon.ico in Resources */,
 				AD55A0EB209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib in Resources */,
+				5E19D3CE20EF1AE000075A32 /* CommunityGroupDetails.storyboard in Resources */,
 				5EBD534820352C410097A853 /* Events.storyboard in Resources */,
 				5E888EB520C8C21000F534DF /* Missions.storyboard in Resources */,
 			);
@@ -907,6 +915,7 @@
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
 				E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */,
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
+				5E19D3CB20EF0F1000075A32 /* CommunityGroupDetailsVC.swift in Sources */,
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
 				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
 				AD652AB820B69D04002FF565 /* ArticleResourceDetailVC.swift in Sources */,
