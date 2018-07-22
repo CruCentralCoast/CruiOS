@@ -70,9 +70,12 @@ class CommunityGroupsTVC: UITableViewController {
         // i think i need to do a compact map or something here to get all strings in leader array
         cell.bigLabel.text = dataArray[indexPath.row].name
         
-        cell.smallLabel1.text = dataArray[indexPath.row].dayOfWeek
+        let array = [dataArray[indexPath.row].dayOfWeek, dataArray[indexPath.row].meetingTime]
+        let dayAndTime = array.compactMap { $0 }
+        cell.smallLabel1.text = dayAndTime.joined(separator: ", ")
         cell.smallLabel2.text = dataArray[indexPath.row].type
         
+        //test
         
         cell.selectionStyle = .none
 

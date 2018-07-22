@@ -11,6 +11,7 @@ import UIKit
 class CommunityGroup: NSObject,DatabaseObject {
     
     var dayOfWeek: String?
+    var meetingTime: String?
     var leaderDescription: String
     var gender: String
     var type: String
@@ -36,6 +37,7 @@ class CommunityGroup: NSObject,DatabaseObject {
         self.type = type
         self.name = name
         self.imageLink = imageLink
+        self.meetingTime = dict["meetingTime"] as? String
         self.dayOfWeek = dict["dayOfWeek"] as? String
         
     }
