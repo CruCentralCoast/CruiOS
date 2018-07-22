@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-0y-5au">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-0y-5au">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,65 +16,78 @@
             <objects>
                 <viewController storyboardIdentifier="LoginVC" id="omq-0y-5au" customClass="LoginVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TgA-pg-Sq4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gir-2l-neW" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="358.5" width="240" height="50"/>
+                                <rect key="frame" x="62" y="443" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="WH2-ID-yx1"/>
                                     <constraint firstAttribute="height" constant="50" id="Y4o-GA-qgn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <state key="normal" title="Sign in">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signIn" destination="omq-0y-5au" eventType="touchUpInside" id="E83-GC-HiA"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKw-nI-k6g" customClass="CruImageButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="41.5" y="442.5" width="292" height="50"/>
+                                <rect key="frame" x="62" y="513" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="292" id="2CQ-SN-NVD"/>
+                                    <constraint firstAttribute="width" constant="290" id="2CQ-SN-NVD"/>
                                     <constraint firstAttribute="height" constant="50" id="eEF-KI-VXS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Sign in with Facebook" image="facebook_icon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInWithFacebook" destination="omq-0y-5au" eventType="touchUpInside" id="XnL-yu-q8f"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y97-xz-eKp" customClass="CruImageButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="41.5" y="504.5" width="292" height="50"/>
+                                <rect key="frame" x="62" y="568" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.8666666666666667" green="0.29411764705882354" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="96U-fc-YKh"/>
-                                    <constraint firstAttribute="width" constant="292" id="TXz-7l-dA1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Sign in with Google" image="google_icon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInWithGoogle" destination="omq-0y-5au" eventType="touchUpInside" id="dNF-TG-ukY"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGr-6e-K8x">
-                                <rect key="frame" x="115" y="425.5" width="145" height="1"/>
+                                <rect key="frame" x="62" y="503" width="290" height="1"/>
                                 <color key="backgroundColor" red="0.78431372549019607" green="0.78431372549019607" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="3Rb-Wr-Nxj"/>
-                                    <constraint firstAttribute="width" constant="145" id="SxN-cR-nOn"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVT-7j-PU1">
-                                <rect key="frame" x="41.5" y="570.5" width="123" height="30"/>
-                                <state key="normal" title="Forgot password?">
+                                <rect key="frame" x="62" y="628" width="126" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Forgot Password?">
                                     <color key="titleColor" red="0.24313725490196078" green="0.69411764705882351" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
@@ -82,8 +95,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwK-nW-XeO">
-                                <rect key="frame" x="202.5" y="570.5" width="131" height="30"/>
-                                <state key="normal" title="New here? Sign Up">
+                                <rect key="frame" x="296" y="628" width="56" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.24313725490196078" green="0.69411764705882351" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -91,18 +105,17 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dHp-tM-h6r">
-                                <rect key="frame" x="87.5" y="67" width="200" height="124.5"/>
+                                <rect key="frame" x="94.666666666666686" y="136" width="225" height="140"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dHp-tM-h6r" secondAttribute="height" multiplier="360:224" id="4kO-fP-Ej1"/>
-                                    <constraint firstAttribute="width" constant="200" id="xLW-C0-C6W"/>
+                                    <constraint firstAttribute="width" constant="225" id="xLW-C0-C6W"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8m4-Q6-Isu" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="258.5" width="240" height="32"/>
+                                <rect key="frame" x="62" y="343" width="290" height="32"/>
                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="gD2-Yd-ncj"/>
-                                    <constraint firstAttribute="width" constant="240" id="iEH-QM-a1f"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -115,11 +128,10 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="94I-YA-yE9" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="306.5" width="240" height="32"/>
+                                <rect key="frame" x="62" y="391" width="290" height="32"/>
                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Og2-gr-uz7"/>
-                                    <constraint firstAttribute="width" constant="240" id="igP-cl-ncJ"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -132,7 +144,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-xt-OhS">
-                                <rect key="frame" x="336" y="36" width="19" height="22"/>
+                                <rect key="frame" x="375" y="36" width="19" height="22"/>
                                 <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="cross"/>
                                 <connections>
@@ -142,26 +154,35 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OKw-nI-k6g" firstAttribute="top" secondItem="Gir-2l-neW" secondAttribute="bottom" constant="34" id="0IH-Fj-lON"/>
-                            <constraint firstItem="xwK-nW-XeO" firstAttribute="top" secondItem="y97-xz-eKp" secondAttribute="bottom" constant="16" id="0cW-ZB-UIo"/>
+                            <constraint firstItem="xwK-nW-XeO" firstAttribute="top" secondItem="y97-xz-eKp" secondAttribute="bottom" constant="10" id="0cW-ZB-UIo"/>
+                            <constraint firstItem="GSo-fN-8Xg" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xVT-7j-PU1" secondAttribute="bottom" constant="20" id="1ce-Fw-wrr"/>
                             <constraint firstItem="y97-xz-eKp" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="1k5-P4-Hhg"/>
+                            <constraint firstItem="GSo-fN-8Xg" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="xwK-nW-XeO" secondAttribute="bottom" constant="20" id="26b-py-neI"/>
                             <constraint firstItem="94I-YA-yE9" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="37J-qe-moX"/>
                             <constraint firstItem="8m4-Q6-Isu" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="6BE-0g-DzX"/>
+                            <constraint firstItem="94I-YA-yE9" firstAttribute="width" secondItem="OKw-nI-k6g" secondAttribute="width" id="EeU-FP-rNe"/>
                             <constraint firstItem="Gir-2l-neW" firstAttribute="top" secondItem="94I-YA-yE9" secondAttribute="bottom" constant="20" id="EwO-YQ-oDU"/>
                             <constraint firstItem="DS8-xt-OhS" firstAttribute="top" secondItem="GSo-fN-8Xg" secondAttribute="top" constant="16" id="FAq-bY-gbE"/>
-                            <constraint firstItem="qGr-6e-K8x" firstAttribute="top" secondItem="Gir-2l-neW" secondAttribute="bottom" constant="17" id="H76-lC-boG"/>
-                            <constraint firstItem="xVT-7j-PU1" firstAttribute="top" secondItem="y97-xz-eKp" secondAttribute="bottom" constant="16" id="LVk-Wu-DD7"/>
-                            <constraint firstItem="y97-xz-eKp" firstAttribute="top" secondItem="OKw-nI-k6g" secondAttribute="bottom" constant="12" id="OYn-Hf-3lD"/>
+                            <constraint firstItem="qGr-6e-K8x" firstAttribute="top" secondItem="Gir-2l-neW" secondAttribute="bottom" constant="10" id="H76-lC-boG"/>
+                            <constraint firstItem="xVT-7j-PU1" firstAttribute="top" secondItem="y97-xz-eKp" secondAttribute="bottom" constant="10" id="LVk-Wu-DD7"/>
+                            <constraint firstItem="OKw-nI-k6g" firstAttribute="top" secondItem="qGr-6e-K8x" secondAttribute="top" constant="10" id="Mp3-7l-5ra"/>
+                            <constraint firstItem="y97-xz-eKp" firstAttribute="top" secondItem="OKw-nI-k6g" secondAttribute="bottom" constant="5" id="OYn-Hf-3lD"/>
+                            <constraint firstItem="Gir-2l-neW" firstAttribute="width" secondItem="OKw-nI-k6g" secondAttribute="width" id="PXs-zo-0VX"/>
+                            <constraint firstItem="y97-xz-eKp" firstAttribute="width" secondItem="OKw-nI-k6g" secondAttribute="width" id="REx-e3-U4g"/>
                             <constraint firstItem="OKw-nI-k6g" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="Wuh-ly-TlC"/>
+                            <constraint firstItem="GSo-fN-8Xg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="OKw-nI-k6g" secondAttribute="trailing" constant="20" id="Yj1-fp-iyH"/>
                             <constraint firstItem="GSo-fN-8Xg" firstAttribute="trailing" secondItem="DS8-xt-OhS" secondAttribute="trailing" constant="20" id="ara-Jm-Wg7"/>
                             <constraint firstItem="qGr-6e-K8x" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="cAE-g0-snN"/>
                             <constraint firstItem="xVT-7j-PU1" firstAttribute="leading" secondItem="y97-xz-eKp" secondAttribute="leading" id="cCJ-2g-tPc"/>
                             <constraint firstItem="dHp-tM-h6r" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="fVg-gK-Spj"/>
                             <constraint firstItem="xwK-nW-XeO" firstAttribute="trailing" secondItem="y97-xz-eKp" secondAttribute="trailing" id="iwh-HP-msJ"/>
+                            <constraint firstItem="qGr-6e-K8x" firstAttribute="width" secondItem="OKw-nI-k6g" secondAttribute="width" id="jOR-37-wHb"/>
                             <constraint firstItem="94I-YA-yE9" firstAttribute="top" secondItem="8m4-Q6-Isu" secondAttribute="bottom" constant="16" id="l8e-xR-Kme"/>
-                            <constraint firstItem="Gir-2l-neW" firstAttribute="centerY" secondItem="TgA-pg-Sq4" secondAttribute="centerY" constant="50" id="o4u-WB-51a"/>
+                            <constraint firstItem="Gir-2l-neW" firstAttribute="centerY" secondItem="TgA-pg-Sq4" secondAttribute="centerY" priority="750" constant="100" id="o4u-WB-51a"/>
                             <constraint firstItem="Gir-2l-neW" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="q46-ww-hmu"/>
-                            <constraint firstItem="dHp-tM-h6r" firstAttribute="centerY" secondItem="8m4-Q6-Isu" secondAttribute="top" multiplier="0.5" id="yOW-72-uxL"/>
+                            <constraint firstItem="OKw-nI-k6g" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GSo-fN-8Xg" secondAttribute="leading" constant="20" id="vqT-Ct-bDl"/>
+                            <constraint firstItem="8m4-Q6-Isu" firstAttribute="width" secondItem="OKw-nI-k6g" secondAttribute="width" id="xuL-eu-LLK"/>
+                            <constraint firstItem="dHp-tM-h6r" firstAttribute="centerY" secondItem="8m4-Q6-Isu" secondAttribute="top" multiplier="0.6" id="yOW-72-uxL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GSo-fN-8Xg"/>
                     </view>
@@ -180,37 +201,41 @@
             <objects>
                 <viewController storyboardIdentifier="SignUpVC" modalTransitionStyle="flipHorizontal" id="Rf4-k7-f5s" customClass="SignUpVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HIe-74-mFl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBR-6w-DWX" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="407.5" width="240" height="50"/>
+                                <rect key="frame" x="62" y="491" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0qi-ci-DAi"/>
-                                    <constraint firstAttribute="width" constant="240" id="2kg-fV-Uyp"/>
+                                    <constraint firstAttribute="width" constant="290" id="2kg-fV-Uyp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signUp" destination="Rf4-k7-f5s" eventType="touchUpInside" id="ams-gO-O0K"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="WcQ-eZ-20y">
-                                <rect key="frame" x="87.5" y="67" width="200" height="124.5"/>
+                                <rect key="frame" x="94.666666666666686" y="144.66666666666666" width="225" height="139.99999999999997"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WcQ-eZ-20y" secondAttribute="height" multiplier="360:224" id="3oP-Qx-VFm"/>
-                                    <constraint firstAttribute="width" constant="200" id="vpB-Fc-hln"/>
+                                    <constraint firstAttribute="width" constant="225" id="vpB-Fc-hln"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fOT-96-mVT" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="258.5" width="240" height="32"/>
+                                <rect key="frame" x="62" y="342" width="290" height="32"/>
                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="1hh-j8-fMC"/>
-                                    <constraint firstAttribute="width" constant="240" id="tcr-bu-Ir3"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -223,11 +248,10 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5xz-x9-81t" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="306.5" width="240" height="32"/>
+                                <rect key="frame" x="62" y="390" width="290" height="32"/>
                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="0wc-5f-b0D"/>
-                                    <constraint firstAttribute="width" constant="240" id="WMF-SA-AQR"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -240,10 +264,9 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bDK-pJ-nW7" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="355" width="240" height="32"/>
+                                <rect key="frame" x="62" y="438.66666666666669" width="290" height="32"/>
                                 <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="G4S-e4-n1z"/>
                                     <constraint firstAttribute="height" constant="32" id="da1-sy-d3r"/>
                                 </constraints>
                                 <nil key="textColor"/>
@@ -257,7 +280,8 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-5o-taB">
-                                <rect key="frame" x="74.5" y="473.5" width="226" height="30"/>
+                                <rect key="frame" x="91" y="557" width="232" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Already have an account? Sign in">
                                     <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -266,7 +290,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZL-gd-4KX">
-                                <rect key="frame" x="336" y="36" width="19" height="22"/>
+                                <rect key="frame" x="375" y="36" width="19" height="22"/>
                                 <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="cross"/>
                                 <connections>
@@ -279,14 +303,20 @@
                             <constraint firstItem="bDK-pJ-nW7" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="6CF-mv-DW9"/>
                             <constraint firstItem="4ml-5o-taB" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="EZn-49-Gbd"/>
                             <constraint firstItem="5xz-x9-81t" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="KgA-cu-X3K"/>
+                            <constraint firstItem="NBZ-z6-bfU" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MBR-6w-DWX" secondAttribute="trailing" constant="20" id="Nd8-ON-jlI"/>
                             <constraint firstItem="5xz-x9-81t" firstAttribute="top" secondItem="fOT-96-mVT" secondAttribute="bottom" constant="16" id="OC4-bq-t8C"/>
-                            <constraint firstItem="WcQ-eZ-20y" firstAttribute="centerY" secondItem="fOT-96-mVT" secondAttribute="top" multiplier="0.5" id="Q7u-jt-HB8"/>
-                            <constraint firstItem="MBR-6w-DWX" firstAttribute="centerY" secondItem="HIe-74-mFl" secondAttribute="centerY" constant="99" id="SVr-WF-occ"/>
+                            <constraint firstItem="bDK-pJ-nW7" firstAttribute="width" secondItem="MBR-6w-DWX" secondAttribute="width" id="SHh-An-2vd"/>
+                            <constraint firstItem="MBR-6w-DWX" firstAttribute="centerY" secondItem="HIe-74-mFl" secondAttribute="centerY" constant="148" id="SVr-WF-occ"/>
+                            <constraint firstItem="WcQ-eZ-20y" firstAttribute="centerY" secondItem="fOT-96-mVT" secondAttribute="centerY" multiplier="0.6" id="TIQ-44-wf7"/>
+                            <constraint firstItem="MBR-6w-DWX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NBZ-z6-bfU" secondAttribute="leading" constant="20" id="dCl-Dt-Akc"/>
                             <constraint firstItem="pZL-gd-4KX" firstAttribute="top" secondItem="NBZ-z6-bfU" secondAttribute="top" constant="16" id="e38-zT-sfU"/>
                             <constraint firstItem="NBZ-z6-bfU" firstAttribute="trailing" secondItem="pZL-gd-4KX" secondAttribute="trailing" constant="20" id="fu3-HE-7cF"/>
                             <constraint firstItem="WcQ-eZ-20y" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="iwm-yz-xKn"/>
+                            <constraint firstItem="NBZ-z6-bfU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="4ml-5o-taB" secondAttribute="bottom" constant="20" id="jiY-RD-7Rl"/>
                             <constraint firstItem="fOT-96-mVT" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="odG-lc-Xx5"/>
+                            <constraint firstItem="5xz-x9-81t" firstAttribute="width" secondItem="MBR-6w-DWX" secondAttribute="width" id="tC1-gE-fdY"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="vsx-29-pEX"/>
+                            <constraint firstItem="fOT-96-mVT" firstAttribute="width" secondItem="MBR-6w-DWX" secondAttribute="width" id="xFH-y0-Vj4"/>
                             <constraint firstItem="4ml-5o-taB" firstAttribute="top" secondItem="MBR-6w-DWX" secondAttribute="bottom" constant="16" id="xpA-zf-ZjY"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="top" secondItem="bDK-pJ-nW7" secondAttribute="bottom" constant="20" id="yJk-by-SPt"/>
                             <constraint firstItem="bDK-pJ-nW7" firstAttribute="top" secondItem="5xz-x9-81t" secondAttribute="bottom" constant="16" id="zex-Gj-vwV"/>
