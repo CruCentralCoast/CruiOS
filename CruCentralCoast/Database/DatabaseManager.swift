@@ -61,6 +61,10 @@ class DatabaseManager {
     func getEvents(_ completion: @escaping ([Event])->Void) {
         getData(completion)
     }
+    
+    func getCommunityGroup(_ completion: @escaping ([CommunityGroup])->Void) {
+        getData(completion)
+    }
 }
 
 protocol DatabaseObject: DatabasePath {

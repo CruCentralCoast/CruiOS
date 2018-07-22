@@ -20,7 +20,7 @@ class MissionsTableVC: UITableViewController {
 
         // Configure the cell...
         let nib = UINib.init(nibName: "CommunityTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "comCell")
+        self.tableView.register(nib, forCellReuseIdentifier: "CommunityTableViewCell")
 
     }
 
@@ -55,7 +55,7 @@ class MissionsTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "comCell", for: indexPath) as! CommunityTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CommunityTableViewCell", for: indexPath) as! CommunityTableViewCell
         
         
         // Configure the cell

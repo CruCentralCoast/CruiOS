@@ -14,6 +14,10 @@ extension Ministry: DatabasePath {
     static var databasePath: String = "ministries"
 }
 
+extension CommunityGroup: DatabasePath {
+    static var databasePath: String = "communitygroups"
+}
+
 extension Resource: DatabasePath {
     static var databasePath: String = "resources"
 }

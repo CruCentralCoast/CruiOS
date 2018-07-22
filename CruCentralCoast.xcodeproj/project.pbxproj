@@ -27,6 +27,7 @@
 		5E0C2F2420BF56A4001E6F7C /* CommunityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2220BF56A3001E6F7C /* CommunityTableViewCell.swift */; };
 		5E0C2F2620BFC80A001E6F7C /* MinistryTeams.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */; };
 		5E0C2F2820BFC843001E6F7C /* MinistryTeamsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */; };
+		5E108E9321018BD200213B3B /* CommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E108E9221018BD200213B3B /* CommunityGroup.swift */; };
 		5E5416D82088269600A56279 /* MissionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5416D62088269600A56279 /* MissionDetailsVC.swift */; };
 		5E888EB520C8C21000F534DF /* Missions.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E888EB420C8C21000F534DF /* Missions.storyboard */; };
 		5E888EB920C8C2CE00F534DF /* MissionsTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E888EB820C8C2CE00F534DF /* MissionsTableVC.swift */; };
@@ -144,6 +145,7 @@
 		5E0C2F2220BF56A3001E6F7C /* CommunityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityTableViewCell.swift; sourceTree = "<group>"; };
 		5E0C2F2520BFC80A001E6F7C /* MinistryTeams.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MinistryTeams.storyboard; sourceTree = "<group>"; };
 		5E0C2F2720BFC843001E6F7C /* MinistryTeamsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamsTVC.swift; sourceTree = "<group>"; };
+		5E108E9221018BD200213B3B /* CommunityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroup.swift; sourceTree = "<group>"; };
 		5E5416D62088269600A56279 /* MissionDetailsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MissionDetailsVC.swift; sourceTree = "<group>"; };
 		5E888EB420C8C21000F534DF /* Missions.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Missions.storyboard; sourceTree = "<group>"; };
 		5E888EB820C8C2CE00F534DF /* MissionsTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionsTableVC.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */,
 				2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */,
 				2F43AEC5209ADA41009BC362 /* Ministry.swift */,
+				5E108E9221018BD200213B3B /* CommunityGroup.swift */,
 				AD652AA520B65990002FF565 /* Resource.swift */,
 				AD652AA720B65CC9002FF565 /* ArticleResource.swift */,
 				AD652AA920B66487002FF565 /* AudioResource.swift */,
@@ -891,6 +894,7 @@
 				ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */,
 				5E5416D82088269600A56279 /* MissionDetailsVC.swift in Sources */,
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
+				5E108E9321018BD200213B3B /* CommunityGroup.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
 				AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */,
 				E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */,
