@@ -44,7 +44,7 @@
         <scene sceneID="2aQ-0c-LA0">
             <objects>
                 <viewControllerPlaceholder storyboardName="CommunityGroups" id="XfT-hN-Ktt" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Community" image="community_icon" id="6mu-MP-erd"/>
+                    <tabBarItem key="tabBarItem" title="Community" image="community_icon" selectedImage="community_icon" id="6mu-MP-erd"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWH-Ma-84G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +54,7 @@
         <scene sceneID="dQE-ae-MHQ">
             <objects>
                 <viewControllerPlaceholder storyboardName="MinistryTeams" id="Htr-Ra-lEm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ministry" image="community_icon" id="yI1-eu-P8V"/>
+                    <tabBarItem key="tabBarItem" title="Ministry" image="community_icon" selectedImage="community_icon" id="yI1-eu-P8V"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGi-i4-HUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,7 +64,7 @@
         <scene sceneID="TmF-dp-Jz1">
             <objects>
                 <viewControllerPlaceholder storyboardName="Missions" id="ezS-hD-Jq0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Missions" image="community_icon" id="S3m-lI-fpH"/>
+                    <tabBarItem key="tabBarItem" title="Missions" image="community_icon" selectedImage="community_icon" id="S3m-lI-fpH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfU-TN-U0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

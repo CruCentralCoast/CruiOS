@@ -11,21 +11,29 @@ import UIKit
 class CommunityGroupsTVC: UITableViewController {
     
     
-    var dataArray: [MissionCellParameters] = [MissionCellParameters(titleLabel: "Oasis", date: "March 17-26", location: "TBD", description: "ACM, the world's largest educational and scientific computing society, delivers resources that advance computing as a science and a profession. ACM provides the computing field's premier Digital Library and serves its members and the computing profession with leading-edge publications, conferences, and career resources."), MissionCellParameters(titleLabel: "test2", date: "date2", location: "location2", description: "description..."), MissionCellParameters(titleLabel: "test3", date: "date3", location: "location3", description: "description..."), MissionCellParameters(titleLabel: "test4", date: "date4", location: "location4", description: "description..."), MissionCellParameters(titleLabel: "test5", date: "date5", location: "location5", description: "description...")]
+    
+    var dataArray = [CommunityGroup]()
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        let nib = UINib.init(nibName: "CommunityTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "comCell")
+        self.tableView.registerCell(CommunityTableViewCell.self)
+        
+        DatabaseManager.instance.getCommunityGroup { (communityGroups) in
+            self.dataArray = communityGroups
+            for communityGroup in self.dataArray {
+                UIImage.downloadedFrom(link: communityGroup.imageLink, completion: { (image) in
+                    communityGroup.image = image
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+            self.tableView.reloadData()
+        }
+        
         
     }
 
@@ -38,32 +46,36 @@ class CommunityGroupsTVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 10
+        return dataArray.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 260
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let vc = UIStoryboard(name: "CommunityGroupDetails", bundle: nil).instantiateViewController(withIdentifier: "CommunityGroupDetailsVC") as CommunityGroupDetailsVC else {
-//            assertionFailure("Probably used the wrong storyboard name or identifier here")
-//        }
-//        return
-//    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = UIStoryboard(name: "CommunityGroupDetails", bundle: nil).instantiateViewController(withIdentifier: "CommunityGroupDetails") as? CommunityGroupDetailsVC else {
+            assertionFailure("Probably used the wrong storyboard name or identifier here")
+            return
+        }
+         self.navigationController?.present(vc, animated: true, completion: nil)
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "comCell", for: indexPath) as! CommunityTableViewCell
-
-        // Configure the cell...
+        let cell = tableView.dequeueCell(CommunityTableViewCell.self, indexPath: indexPath)        
         
-        cell.bannerImage.image = #imageLiteral(resourceName: "placeholder.jpg")
-        cell.bigLabel.text = "big label"
-        cell.smallLabel1.text = "label1"
-        cell.smallLabel2.text = "label2"
+        //cell.bannerImage.image = UIImage(named: dataArray[indexPath.row].imageLink!)
         
+        // i think i need to do a compact map or something here to get all strings in leader array
+        cell.bigLabel.text = dataArray[indexPath.row].name
         
+        let array = [dataArray[indexPath.row].dayOfWeek, dataArray[indexPath.row].meetingTime]
+        let dayAndTime = array.compactMap { $0 }
+        cell.smallLabel1.text = dayAndTime.joined(separator: ", ")
+        cell.smallLabel2.text = dataArray[indexPath.row].type
+                
+        cell.selectionStyle = .none
 
         return cell
     }

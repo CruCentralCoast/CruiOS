@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RTd-eR-vE1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Community Group DetailsVC-->
+        <scene sceneID="0Xt-y3-hpg">
+            <objects>
+                <viewController storyboardIdentifier="CommunityGroupDetails" id="RTd-eR-vE1" customClass="CommunityGroupDetailsVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i56-cP-hcb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AYb-G2-RLi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zjD-Ol-5QN">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="227"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="zjD-Ol-5QN" secondAttribute="height" multiplier="375:227" id="OrU-Hc-ZMV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meeting Times" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epY-yB-fDF">
+                                        <rect key="frame" x="17" y="247" width="113" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leader Names" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ThL-hO-9Wi">
+                                        <rect key="frame" x="17" y="282" width="111" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cr-Mg-JqZ">
+                                        <rect key="frame" x="17" y="311" width="342" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xpM-aZ-sJC">
+                                        <rect key="frame" x="303" y="28" width="39" height="30"/>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="didTapClose:" destination="RTd-eR-vE1" eventType="touchUpInside" id="rBK-Mf-1P8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bC1-cn-JJf">
+                                        <rect key="frame" x="144" y="382" width="86" height="30"/>
+                                        <state key="normal" title="Get Involved"/>
+                                        <connections>
+                                            <action selector="didTapClose:" destination="RTd-eR-vE1" eventType="touchUpInside" id="CHr-wd-imn"/>
+                                            <action selector="didTapGetInvolved:" destination="RTd-eR-vE1" eventType="touchUpInside" id="iha-Cg-h1b"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="zjD-Ol-5QN" secondAttribute="bottom" constant="440" id="6F1-OR-jdf"/>
+                                    <constraint firstAttribute="trailing" secondItem="1cr-Mg-JqZ" secondAttribute="trailing" constant="16" id="907-hZ-RfJ"/>
+                                    <constraint firstItem="bC1-cn-JJf" firstAttribute="top" secondItem="1cr-Mg-JqZ" secondAttribute="bottom" constant="50" id="KA9-UJ-i2x"/>
+                                    <constraint firstItem="ThL-hO-9Wi" firstAttribute="top" secondItem="epY-yB-fDF" secondAttribute="bottom" constant="14" id="Kvb-a7-Krd"/>
+                                    <constraint firstAttribute="trailing" secondItem="zjD-Ol-5QN" secondAttribute="trailing" id="PkM-nc-1bW"/>
+                                    <constraint firstItem="xpM-aZ-sJC" firstAttribute="leading" secondItem="zjD-Ol-5QN" secondAttribute="trailing" constant="-72" id="SNJ-tZ-oLN"/>
+                                    <constraint firstItem="1cr-Mg-JqZ" firstAttribute="top" secondItem="ThL-hO-9Wi" secondAttribute="bottom" constant="8" id="U50-J8-bGu"/>
+                                    <constraint firstItem="zjD-Ol-5QN" firstAttribute="centerX" secondItem="AYb-G2-RLi" secondAttribute="centerX" id="UjY-Y6-oIt"/>
+                                    <constraint firstItem="ThL-hO-9Wi" firstAttribute="leading" secondItem="AYb-G2-RLi" secondAttribute="leading" constant="17" id="aEx-lA-B83"/>
+                                    <constraint firstItem="bC1-cn-JJf" firstAttribute="centerX" secondItem="AYb-G2-RLi" secondAttribute="centerX" id="dv0-Ro-iR3"/>
+                                    <constraint firstItem="epY-yB-fDF" firstAttribute="leading" secondItem="AYb-G2-RLi" secondAttribute="leading" constant="17" id="hqQ-ZM-EsG"/>
+                                    <constraint firstItem="zjD-Ol-5QN" firstAttribute="leading" secondItem="AYb-G2-RLi" secondAttribute="leading" id="iwL-6b-DYj"/>
+                                    <constraint firstItem="zjD-Ol-5QN" firstAttribute="top" secondItem="xpM-aZ-sJC" secondAttribute="bottom" constant="-58" id="qiS-HL-Pwx"/>
+                                    <constraint firstItem="1cr-Mg-JqZ" firstAttribute="leading" secondItem="AYb-G2-RLi" secondAttribute="leading" constant="17" id="tx8-yv-nqL"/>
+                                    <constraint firstItem="epY-yB-fDF" firstAttribute="top" secondItem="zjD-Ol-5QN" secondAttribute="bottom" constant="20" id="wlc-cz-Qzh"/>
+                                    <constraint firstItem="zjD-Ol-5QN" firstAttribute="top" secondItem="AYb-G2-RLi" secondAttribute="top" id="xe1-N7-IjX"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AYb-G2-RLi" firstAttribute="leading" secondItem="rcp-F2-9n7" secondAttribute="leading" id="Kkn-sn-AG4"/>
+                            <constraint firstItem="AYb-G2-RLi" firstAttribute="trailing" secondItem="rcp-F2-9n7" secondAttribute="trailing" id="SVE-OU-77h"/>
+                            <constraint firstItem="AYb-G2-RLi" firstAttribute="top" secondItem="i56-cP-hcb" secondAttribute="top" id="n2M-a9-IXP"/>
+                            <constraint firstItem="AYb-G2-RLi" firstAttribute="bottom" secondItem="rcp-F2-9n7" secondAttribute="bottom" id="nbr-pk-bMp"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rcp-F2-9n7"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="1cr-Mg-JqZ" id="V32-Pv-2cU"/>
+                        <outlet property="imageView" destination="zjD-Ol-5QN" id="qI7-RU-LyB"/>
+                        <outlet property="leaderNamesLabel" destination="ThL-hO-9Wi" id="wDp-tH-cba"/>
+                        <outlet property="meetingTimeLabel" destination="epY-yB-fDF" id="JiF-Vn-uYW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6jC-J7-cfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114.40000000000001" y="62.518740629685162"/>
+        </scene>
+    </scenes>
+</document>

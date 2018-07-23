@@ -10,6 +10,12 @@ import UIKit
 
 class CommunityGroupDetailsVC: UIViewController {
 
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var meetingTimeLabel: UILabel!
+    @IBOutlet weak var leaderNamesLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +26,15 @@ class CommunityGroupDetailsVC: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func didTapGetInvolved(_ sender: Any) {
+        print("get involved")
+    }
+    
+    @IBAction func didTapClose(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 
     /*

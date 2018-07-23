@@ -18,6 +18,7 @@ class Ministry: DatabaseObject {
         guard let name = dict["name"] as? String else {
             return nil
         }
+        
         self.name = name
         self.description = dict["discription"] as? String
         self.imageLink = dict["imageLink"] as? String

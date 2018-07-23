@@ -55,6 +55,7 @@ class MinistryTeamDetailsVC: UIViewController {
         #else
         teamLeaderNamesLabel.text = leaderNames.flatMap({$0}).joined(separator: " ")
         #endif
+        //teamLeaderNamesLabel.text = leaderNames.compactMap({$0}).joined(separator: " ")
         ministryDescription.text = desc
         
         

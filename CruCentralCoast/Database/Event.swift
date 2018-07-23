@@ -30,7 +30,7 @@ class Event: NSObject, DatabaseObject {
         self.summary = summary
         self.startDate = startDate
         self.imageLink = imageLink
-        self.endDate = (dict["endDate"] as? Timestamp)?.approximateDateValue()
+        //self.endDate = (dict["endDate"] as? Timestamp)?.approximateDateValue()
         self.location = dict["locations"] as? String
         
         super.init()
