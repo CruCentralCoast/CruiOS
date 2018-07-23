@@ -40,6 +40,7 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(EventsTableCell.self)
+        self.tableView.setContentOffset(tableView.contentOffset, animated: false)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
