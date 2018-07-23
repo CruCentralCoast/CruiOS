@@ -12,7 +12,9 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
     var selectedCell: EventsTableCell?
     var originFrame: CGRect?
     var longPressIndexPath: IndexPath!
-    var longPressChanged: Bool = false
+    var longPressCancelled: Bool = false
+    var longPressFailed: Bool = false
+    var longPressGestureRecognizer: UILongPressGestureRecognizer?
     
     var dataArray = [Event]()
     
@@ -58,8 +60,12 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
     }
     
     func createLongPressGesture() {
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
+        self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
+        guard let longPressGestureRecognizer = self.longPressGestureRecognizer else {
+            return
+        }
         longPressGestureRecognizer.minimumPressDuration = 0.05
+        longPressGestureRecognizer.allowableMovement = 0
         longPressGestureRecognizer.delegate = self
         self.tableView.addGestureRecognizer(longPressGestureRecognizer)
     }
@@ -67,7 +73,8 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
     @objc internal func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
         let touchPoint = gestureRecognizer.location(in: self.view)
         if gestureRecognizer.state == .began {
-            self.longPressChanged = false
+            self.longPressCancelled = false
+            self.longPressFailed = false
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 self.longPressIndexPath = indexPath
                 self.longPressGestureBegan(indexPath: indexPath)
@@ -80,8 +87,14 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
                     self.longPressGestureCancelled(indexPath: self.longPressIndexPath)
                 }
             }
-        } else if gestureRecognizer.state == .cancelled || gestureRecognizer.state == .changed {
-            self.longPressChanged = true
+        } else if gestureRecognizer.state == .cancelled {
+            self.longPressCancelled = true
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                self.longPressGestureCancelled(indexPath: indexPath)
+            }
+        }
+        else if gestureRecognizer.state == .failed {
+            self.longPressFailed = true
             if let indexPath = tableView.indexPathForRow(at: touchPoint) {
                 self.longPressGestureCancelled(indexPath: indexPath)
             }
@@ -101,7 +114,7 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
             assertionFailure("Probably used the wrong storyboard name or identifier here")
             return
         }
-        if self.longPressChanged == false {
+        if self.longPressCancelled == false && self.longPressFailed == false {
             UIView.animate(withDuration: 0.05, animations: {
                 cell?.transform = CGAffineTransform.identity
             }, completion: { (finish) in
@@ -120,13 +133,25 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
         })
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+    //code is commented out for the time being but will be used in the future
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if gestureRecognizer == self.tableView.panGestureRecognizer && otherGestureRecognizer == self.longPressGestureRecognizer {
+//            return true
+//        }
+//        gestureRecognizer.cancelsTouchesInView = true
+//        return false
+//    }
+//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+//        if gestureRecognizer == self.tableView.panGestureRecognizer && otherGestureRecognizer == self.longPressGestureRecognizer {
+//            return true
+//        }
+//        return false
+//    }
+    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
