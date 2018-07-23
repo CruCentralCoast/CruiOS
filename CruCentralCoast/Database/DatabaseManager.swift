@@ -65,6 +65,14 @@ class DatabaseManager {
     func getCommunityGroup(_ completion: @escaping ([CommunityGroup])->Void) {
         getData(completion)
     }
+    
+    func getMinistryTeam(_ completion: @escaping ([MinistryTeam])->Void) {
+        getData(completion)
+    }
+    
+    func getMission(_ completion: @escaping ([Missions])->Void) {
+        getData(completion)
+    }
 }
 
 protocol DatabaseObject: DatabasePath {

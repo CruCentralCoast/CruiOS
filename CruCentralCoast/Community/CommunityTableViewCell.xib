@@ -29,7 +29,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Big Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JDj-eS-Bfb">
-                                <rect key="frame" x="20" y="161" width="89.5" height="24"/>
+                                <rect key="frame" x="20" y="161" width="278" height="24"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -50,6 +50,7 @@
                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="JDj-eS-Bfb" firstAttribute="leading" secondItem="GYh-CY-riq" secondAttribute="leading" constant="20" id="0FQ-Dw-jYY"/>
+                            <constraint firstAttribute="trailing" secondItem="JDj-eS-Bfb" secondAttribute="trailing" constant="20" id="3yv-Pf-6p6"/>
                             <constraint firstItem="z4r-1h-22H" firstAttribute="leading" secondItem="GYh-CY-riq" secondAttribute="leading" constant="20" id="IUH-WE-p2R"/>
                             <constraint firstItem="mZX-qI-QF9" firstAttribute="leading" secondItem="GYh-CY-riq" secondAttribute="leading" id="SfL-qd-EZ5"/>
                             <constraint firstItem="z4r-1h-22H" firstAttribute="top" secondItem="JDj-eS-Bfb" secondAttribute="bottom" constant="5" id="l3f-DZ-Rdg"/>

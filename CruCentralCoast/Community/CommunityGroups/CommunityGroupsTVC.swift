@@ -74,9 +74,7 @@ class CommunityGroupsTVC: UITableViewController {
         let dayAndTime = array.compactMap { $0 }
         cell.smallLabel1.text = dayAndTime.joined(separator: ", ")
         cell.smallLabel2.text = dataArray[indexPath.row].type
-        
-        //test
-        
+                
         cell.selectionStyle = .none
 
         return cell

@@ -31,8 +31,9 @@ class CommunityTableViewCell: UITableViewCell {
         self.bannerImage.layer.cornerRadius = 20
         self.bannerImage.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         self.bannerImage.clipsToBounds = true
-    
+        self.bannerImage.contentMode = .scaleAspectFill
         self.cellMask.clipsToBounds = false
+        
         
         
     }
