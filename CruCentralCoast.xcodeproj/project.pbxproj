@@ -61,8 +61,6 @@
 		AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8D820919C510089E370 /* ProfileSelectableTextCell.swift */; };
 		AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8D920919C510089E370 /* ProfileSelectableTextCell.xib */; };
 		AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8DC20919C670089E370 /* NotificationsVC.swift */; };
-		AD55A0E4209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD55A0E2209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift */; };
-		AD55A0E5209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD55A0E3209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib */; };
 		AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */; };
 		AD55A0EA209B759D009F62FB /* ResourcesTableViewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD55A0E8209B759D009F62FB /* ResourcesTableViewCollectionViewCell.swift */; };
 		AD55A0EB209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD55A0E9209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib */; };
@@ -77,6 +75,12 @@
 		AD652ABA20B6B292002FF565 /* VideoResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AB920B6B292002FF565 /* VideoResourceDetailVC.swift */; };
 		ADA9539620BDCCCB00294CEA /* CruAudioControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADA9539520BDCCCB00294CEA /* CruAudioControl.swift */; };
 		ADA9539820BDF38100294CEA /* CruAudioControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA9539720BDF38100294CEA /* CruAudioControl.xib */; };
+		ADAC30492104E5B800DBCA89 /* CampusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */; };
+		ADAC304B210568FF00DBCA89 /* ChooseCampusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */; };
+		ADAC304D2105696900DBCA89 /* CampusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */; };
+		ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */; };
+		ADAC305321056EE000DBCA89 /* MovementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */; };
+		ADAC305421056EE000DBCA89 /* MovementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
 		ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */; };
 		ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */; };
@@ -86,7 +90,6 @@
 		ADFA56E1206D82FA006F7099 /* AudioResourcesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADFA56DF206D82FA006F7099 /* AudioResourcesCell.xib */; };
 		ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */; };
 		ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8B820927A39009D5BC6 /* CustomSegmentedControl.swift */; };
-		ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */; };
 		B925A4D486A6853802C549FA /* Pods_CruCentralCoastTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E56F4C2FCD8141BF71A327A5 /* Pods_CruCentralCoastTests.framework */; };
 		E091E95B20882F1C0022BE0D /* VideosResourcesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E091E95A20882F1C0022BE0D /* VideosResourcesCell.swift */; };
 		E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094400E2075ACE40057AC83 /* EventsCVC.swift */; };
@@ -184,8 +187,6 @@
 		AD24E8D820919C510089E370 /* ProfileSelectableTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSelectableTextCell.swift; sourceTree = "<group>"; };
 		AD24E8D920919C510089E370 /* ProfileSelectableTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSelectableTextCell.xib; sourceTree = "<group>"; };
 		AD24E8DC20919C670089E370 /* NotificationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsVC.swift; sourceTree = "<group>"; };
-		AD55A0E2209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCampusOrMinistryCell.swift; sourceTree = "<group>"; };
-		AD55A0E3209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChangeCampusOrMinistryCell.xib; sourceTree = "<group>"; };
 		AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		AD55A0E8209B759D009F62FB /* ResourcesTableViewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesTableViewCollectionViewCell.swift; sourceTree = "<group>"; };
 		AD55A0E9209B759D009F62FB /* ResourcesTableViewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourcesTableViewCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -200,6 +201,12 @@
 		AD652AB920B6B292002FF565 /* VideoResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResourceDetailVC.swift; sourceTree = "<group>"; };
 		ADA9539520BDCCCB00294CEA /* CruAudioControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruAudioControl.swift; sourceTree = "<group>"; };
 		ADA9539720BDF38100294CEA /* CruAudioControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CruAudioControl.xib; sourceTree = "<group>"; };
+		ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampusTableViewCell.xib; sourceTree = "<group>"; };
+		ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCampusVC.swift; sourceTree = "<group>"; };
+		ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusTableViewCell.swift; sourceTree = "<group>"; };
+		ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMovementVC.swift; sourceTree = "<group>"; };
+		ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementTableViewCell.swift; sourceTree = "<group>"; };
+		ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementTableViewCell.xib; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
 		ADFA56D1206D7BA4006F7099 /* ArticlesResourcesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesResourcesCell.swift; sourceTree = "<group>"; };
 		ADFA56D2206D7BA4006F7099 /* ArticlesResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArticlesResourcesCell.xib; sourceTree = "<group>"; };
@@ -209,7 +216,6 @@
 		ADFA56DF206D82FA006F7099 /* AudioResourcesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AudioResourcesCell.xib; sourceTree = "<group>"; };
 		ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		ADFCD8B820927A39009D5BC6 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
-		ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeCampusOrMinistryVC.swift; sourceTree = "<group>"; };
 		B5BF33BE152889DED4A13ABF /* Pods-CruCentralCoast.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoast.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast.release.xcconfig"; sourceTree = "<group>"; };
 		B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CruCentralCoast.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E082D8D3209AC32200FDECC1 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
@@ -464,13 +470,11 @@
 		AD24E8B820916B1A0089E370 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				ADAC305021056D3400DBCA89 /* ChooseCampusOrMinistry */,
 				AD24E8DC20919C670089E370 /* NotificationsVC.swift */,
 				AD24E8C3209172970089E370 /* Cells */,
 				AD24E8B920916B470089E370 /* ProfileVC.swift */,
 				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
-				ADFCD8BA20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift */,
-				AD55A0E2209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift */,
-				AD55A0E3209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -488,6 +492,19 @@
 				AD24E8CC209180060089E370 /* ProfileHeaderView.xib */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		ADAC305021056D3400DBCA89 /* ChooseCampusOrMinistry */ = {
+			isa = PBXGroup;
+			children = (
+				ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */,
+				ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */,
+				ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */,
+				ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */,
+				ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */,
+				ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */,
+			);
+			path = ChooseCampusOrMinistry;
 			sourceTree = "<group>";
 		};
 		ADFA56D5206D7BC8006F7099 /* Articles */ = {
@@ -699,12 +716,14 @@
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				5EBD534A20352C9B0097A853 /* Community.storyboard in Resources */,
 				E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */,
+				ADAC305421056EE000DBCA89 /* MovementTableViewCell.xib in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				ADFA56D4206D7BA4006F7099 /* ArticlesResourcesCell.xib in Resources */,
 				2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */,
 				2F2BD9952077250400512170 /* Assets.xcassets in Resources */,
 				5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */,
 				AD14A1EC20F2A54100E66679 /* MinistryTeamDetails.storyboard in Resources */,
+				ADAC30492104E5B800DBCA89 /* CampusTableViewCell.xib in Resources */,
 				5E0C2F2620BFC80A001E6F7C /* MinistryTeams.storyboard in Resources */,
 				5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */,
 				AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */,
@@ -715,7 +734,6 @@
 				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
 				E09440132075AEC40057AC83 /* EventCell.xib in Resources */,
 				5EBD535020352CEF0097A853 /* Resources.storyboard in Resources */,
-				AD55A0E5209A9F26009F62FB /* ChangeCampusOrMinistryCell.xib in Resources */,
 				5E0C2F2320BF56A4001E6F7C /* CommunityTableViewCell.xib in Resources */,
 				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
 				5E0C2F1C20BF5084001E6F7C /* CommunityGroups.storyboard in Resources */,
@@ -892,11 +910,12 @@
 				5E5416D82088269600A56279 /* MissionDetailsVC.swift in Sources */,
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
+				ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */,
+				ADAC304D2105696900DBCA89 /* CampusTableViewCell.swift in Sources */,
 				AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */,
 				E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */,
 				2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */,
 				AD1E45B320E996BB00160B8F /* ResourceManager.swift in Sources */,
-				AD55A0E4209A9F26009F62FB /* ChangeCampusOrMinistryCell.swift in Sources */,
 				AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */,
 				AD652AB620B69CE7002FF565 /* AudioResourceDetailVC.swift in Sources */,
 				E0D2A85320E9D69200192360 /* EventsVC.swift in Sources */,
@@ -906,7 +925,6 @@
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
 				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
 				AD652AB820B69D04002FF565 /* ArticleResourceDetailVC.swift in Sources */,
-				ADFCD8BB20927FFF009D5BC6 /* ChangeCampusOrMinistryVC.swift in Sources */,
 				AD652AAA20B66487002FF565 /* AudioResource.swift in Sources */,
 				E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
@@ -921,11 +939,13 @@
 				ADA9539620BDCCCB00294CEA /* CruAudioControl.swift in Sources */,
 				AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */,
 				E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */,
+				ADAC304B210568FF00DBCA89 /* ChooseCampusVC.swift in Sources */,
 				5E888EB920C8C2CE00F534DF /* MissionsTableVC.swift in Sources */,
 				2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */,
 				E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */,
 				2F43AEC6209ADA41009BC362 /* Ministry.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
+				ADAC305321056EE000DBCA89 /* MovementTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

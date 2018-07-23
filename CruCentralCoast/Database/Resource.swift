@@ -14,6 +14,19 @@ enum ResourceType {
     case article
 }
 
+extension ResourceType {
+    var string: String {
+        switch self {
+        case .audio:
+            return "audio"
+        case .video:
+            return "video"
+        case .article:
+            return "article"
+        }
+    }
+}
+
 class Resource: DatabaseObject {
     var author: String
     var title: String

@@ -39,16 +39,7 @@ class DatabaseManager {
     }
     
     func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
-        let typeString: String
-        switch type {
-        case .article:
-            typeString = "article"
-        case .video:
-            typeString = "video"
-        case .audio:
-            typeString = "audio"
-        }
-        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: typeString).getDocuments { (querySnapshot, error) in
+        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: type.string).getDocuments { (querySnapshot, error) in
             if let error = error {
                 print("Error getting resources from database: \(error)")
             } else {
