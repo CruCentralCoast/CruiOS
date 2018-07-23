@@ -105,10 +105,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dHp-tM-h6r">
-                                <rect key="frame" x="94.666666666666686" y="136" width="225" height="140"/>
+                                <rect key="frame" x="107.33333333333331" y="109.33333333333331" width="200" height="124.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dHp-tM-h6r" secondAttribute="height" multiplier="360:224" id="4kO-fP-Ej1"/>
-                                    <constraint firstAttribute="width" constant="225" id="xLW-C0-C6W"/>
+                                    <constraint firstAttribute="width" constant="200" id="xLW-C0-C6W"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8m4-Q6-Isu" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
@@ -182,7 +182,7 @@
                             <constraint firstItem="Gir-2l-neW" firstAttribute="centerX" secondItem="TgA-pg-Sq4" secondAttribute="centerX" id="q46-ww-hmu"/>
                             <constraint firstItem="OKw-nI-k6g" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="GSo-fN-8Xg" secondAttribute="leading" constant="20" id="vqT-Ct-bDl"/>
                             <constraint firstItem="8m4-Q6-Isu" firstAttribute="width" secondItem="OKw-nI-k6g" secondAttribute="width" id="xuL-eu-LLK"/>
-                            <constraint firstItem="dHp-tM-h6r" firstAttribute="centerY" secondItem="8m4-Q6-Isu" secondAttribute="top" multiplier="0.6" id="yOW-72-uxL"/>
+                            <constraint firstItem="dHp-tM-h6r" firstAttribute="centerY" secondItem="8m4-Q6-Isu" secondAttribute="top" multiplier="0.5" id="yOW-72-uxL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GSo-fN-8Xg"/>
                     </view>
@@ -225,10 +225,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="WcQ-eZ-20y">
-                                <rect key="frame" x="94.666666666666686" y="144" width="225" height="140"/>
+                                <rect key="frame" x="107.33333333333331" y="116.33333333333331" width="200" height="124.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WcQ-eZ-20y" secondAttribute="height" multiplier="360:224" id="3oP-Qx-VFm"/>
-                                    <constraint firstAttribute="width" constant="225" id="vpB-Fc-hln"/>
+                                    <constraint firstAttribute="width" constant="200" id="vpB-Fc-hln"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fOT-96-mVT" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
@@ -280,9 +280,9 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-5o-taB">
-                                <rect key="frame" x="91" y="556" width="232" height="30"/>
+                                <rect key="frame" x="95.666666666666686" y="556" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                <state key="normal" title="Already have an account? Sign in">
+                                <state key="normal" title="Already have an account? Login">
                                     <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -307,7 +307,7 @@
                             <constraint firstItem="5xz-x9-81t" firstAttribute="top" secondItem="fOT-96-mVT" secondAttribute="bottom" constant="16" id="OC4-bq-t8C"/>
                             <constraint firstItem="bDK-pJ-nW7" firstAttribute="width" secondItem="MBR-6w-DWX" secondAttribute="width" id="SHh-An-2vd"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="centerY" secondItem="HIe-74-mFl" secondAttribute="centerY" constant="147" id="SVr-WF-occ"/>
-                            <constraint firstItem="WcQ-eZ-20y" firstAttribute="centerY" secondItem="fOT-96-mVT" secondAttribute="centerY" multiplier="0.6" id="TIQ-44-wf7"/>
+                            <constraint firstItem="WcQ-eZ-20y" firstAttribute="centerY" secondItem="fOT-96-mVT" secondAttribute="centerY" multiplier="0.5" id="TIQ-44-wf7"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NBZ-z6-bfU" secondAttribute="leading" constant="20" id="dCl-Dt-Akc"/>
                             <constraint firstItem="pZL-gd-4KX" firstAttribute="top" secondItem="NBZ-z6-bfU" secondAttribute="top" constant="16" id="e38-zT-sfU"/>
                             <constraint firstItem="NBZ-z6-bfU" firstAttribute="trailing" secondItem="pZL-gd-4KX" secondAttribute="trailing" constant="20" id="fu3-HE-7cF"/>
