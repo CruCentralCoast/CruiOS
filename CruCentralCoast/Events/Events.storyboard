@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yfe-vv-gbm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yfe-vv-gbm">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -160,12 +160,14 @@
                                             <constraint firstAttribute="bottom" secondItem="IJy-Si-BSE" secondAttribute="bottom" id="Jqx-lu-Kvu"/>
                                         </constraints>
                                     </stackView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zsl-gL-xUs">
-                                        <rect key="frame" x="31" y="209" width="375" height="15.666666666666657"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
+                                        <rect key="frame" x="31" y="203" width="375" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <state key="normal" title="location Button"/>
+                                        <connections>
+                                            <action selector="locationButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="b6I-SJ-g3E"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="knk-lC-Fu0" firstAttribute="top" secondItem="3lv-CQ-HAd" secondAttribute="bottom" constant="30" id="0Ai-R2-sF8"/>
@@ -173,12 +175,11 @@
                                     <constraint firstItem="knk-lC-Fu0" firstAttribute="centerX" secondItem="6PY-eE-fEO" secondAttribute="centerX" id="2X7-id-KmE"/>
                                     <constraint firstAttribute="trailing" secondItem="3lv-CQ-HAd" secondAttribute="trailing" constant="8" id="Dru-La-dVE"/>
                                     <constraint firstAttribute="trailing" secondItem="Odd-9O-O3u" secondAttribute="trailing" constant="8" id="DxY-ZA-swE"/>
-                                    <constraint firstItem="Zsl-gL-xUs" firstAttribute="top" secondItem="glu-cR-yHR" secondAttribute="top" id="OaM-C0-N4k"/>
+                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="leading" secondItem="glu-cR-yHR" secondAttribute="trailing" constant="4" id="O42-KV-zSb"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="glu-cR-yHR" secondAttribute="bottom" constant="12" id="Oqp-Zh-vyc"/>
-                                    <constraint firstAttribute="trailing" secondItem="Zsl-gL-xUs" secondAttribute="trailing" constant="8" id="Qa1-pO-Qg0"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" id="R56-sQ-hrV"/>
-                                    <constraint firstItem="Zsl-gL-xUs" firstAttribute="leading" secondItem="glu-cR-yHR" secondAttribute="trailing" constant="4" id="SRr-vx-d91"/>
                                     <constraint firstAttribute="trailing" secondItem="OXe-05-0Hx" secondAttribute="trailing" constant="30" id="WMR-11-caQ"/>
+                                    <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="6" id="X3C-OL-Ffk"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="4" id="Z8r-j1-Yxf"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="4" id="Zae-oj-2Za"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="16" id="g2w-Ka-6AM"/>
@@ -188,6 +189,7 @@
                                     <constraint firstAttribute="trailing" secondItem="UYN-ct-CuI" secondAttribute="trailing" id="oiq-ut-XsQ"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="8" id="rdr-jd-DZW"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="width" secondItem="6PY-eE-fEO" secondAttribute="width" id="wlP-nx-R4y"/>
+                                    <constraint firstAttribute="trailing" secondItem="7k4-Tz-JY1" secondAttribute="trailing" constant="8" id="x8N-3b-qF1"/>
                                     <constraint firstItem="OXe-05-0Hx" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" constant="30" id="y7k-AJ-bba"/>
                                 </constraints>
                             </scrollView>
@@ -206,7 +208,7 @@
                         <outlet property="dateLabel" destination="Odd-9O-O3u" id="tKu-c6-WSm"/>
                         <outlet property="descriptionLabel" destination="3lv-CQ-HAd" id="HL2-Vy-gvP"/>
                         <outlet property="imageView" destination="UYN-ct-CuI" id="BB6-ny-EKf"/>
-                        <outlet property="locationLabel" destination="Zsl-gL-xUs" id="OFS-AR-8sg"/>
+                        <outlet property="locationButton" destination="7k4-Tz-JY1" id="OX7-IW-7yv"/>
                         <outlet property="titleLabel" destination="LkD-pk-Jlf" id="Jih-Ss-FeQ"/>
                         <outlet property="topConstraint" destination="pNq-Y6-S0l" id="YMi-Sq-1eC"/>
                     </connections>

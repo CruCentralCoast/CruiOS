@@ -9,6 +9,7 @@
 import UIKit
 import EventKit //used for the add to calendar button
 import SafariServices //used for the facebookButton
+import MapKit
 
 struct EventCellParameters {
     let title : String
@@ -23,17 +24,20 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var locationButton: UIButton!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     var eventTitle: String?
     var eventDate: String?
-    var eventLocation: String?
     var eventSummary: String?
     var eventImage: UIImage?
+    
+    //two location vars because one is only the partial location that is viewed by the user
+    var eventViewableLocation: String?
+    var eventLocation: String?
     
     var statusBarIsHidden: Bool = true {
         didSet{
@@ -58,9 +62,11 @@ class EventDetailsVC: UIViewController {
         
         self.titleLabel.text = self.eventTitle
         self.dateLabel.text = self.eventDate
-        self.locationLabel.text = self.eventLocation
         self.descriptionLabel.text = self.eventSummary
         self.imageView.image = self.eventImage
+//        self.locationButton.titleLabel?.text = self.eventViewableLocation
+        self.locationButton.setTitle(self.eventViewableLocation, for: .normal)
+//        print(self.locationButton.titleLabel?.text)
     }
     
     @IBAction func dismissDetail(_ sender: Any) {
@@ -69,6 +75,47 @@ class EventDetailsVC: UIViewController {
         closeButton.removeFromSuperview()
         self.dismiss(animated: true, completion: nil)
     }
+    
+    
+    @IBAction func locationButtonPressed(_ sender: Any) {
+        guard let eventLocation = self.eventLocation else {
+            print("error1")
+            return
+        }
+        
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(eventLocation) { (placemarks, error) in
+            guard let clPlacemark = placemarks?.first
+            else {
+                print("location not found")
+                //handle no location found
+                return
+            }
+            
+            guard
+                let lat = clPlacemark.location?.coordinate.latitude,
+                let lon = clPlacemark.location?.coordinate.longitude
+            else {
+                return
+            }
+            let regionDistance: CLLocationDistance = 1000
+            let coordinates = CLLocationCoordinate2DMake(lat, lon)
+            let regionSpan = MKCoordinateRegionMakeWithDistance(coordinates, regionDistance, regionDistance)
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: regionSpan.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)
+            ]
+            let mkPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: mkPlacemark)
+            mapItem.name = self.eventViewableLocation
+            mapItem.openInMaps(launchOptions: options)
+        }
+    }
+    
+//    func getCoordinate(eventLocation: String) -> (CLLocationDegrees, CLLocationDegrees){
+//
+//        return (lat, lon)
+//    }
     
     //found at https://www.hackingwithswift.com/read/32/3/how-to-use-sfsafariviewcontroller-to-browse-a-web-page
     @IBAction func facebookButtonPressed(_ sender: Any) {
@@ -116,6 +163,7 @@ class EventDetailsVC: UIViewController {
         self.eventImage = cellParameters.image
         self.eventTitle = cellParameters.title
         self.eventDate = cellParameters.startDate.toString(dateFormat: "MMM-dd-yyyy")
+        self.eventViewableLocation = cellParameters.locationButtonTitle
         self.eventLocation = cellParameters.location
         self.eventSummary = cellParameters.summary
     }

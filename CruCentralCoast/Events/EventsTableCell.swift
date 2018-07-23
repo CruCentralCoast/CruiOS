@@ -20,7 +20,7 @@ import UIKit
             self.dateLabel.text = event.startDate.toString(dateFormat: "MMM-dd-yyyy")
             self.descriptionLabel.text = self.event.title
             self.imageCellView.image = self.event.image
-            self.locationLabel.text = self.event.location
+            self.locationLabel.text = self.event.locationButtonTitle
         }
     }
     

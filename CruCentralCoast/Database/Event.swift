@@ -15,6 +15,7 @@ class Event: NSObject, DatabaseObject {
     var endDate: Date
     var summary: String
     var locationDict: NSDictionary
+    var locationButtonTitle: String = "" //empty quotes bc it is concatinated later
     var location: String = ""
     var imageLink: String
     var facebookURL: String
@@ -39,12 +40,16 @@ class Event: NSObject, DatabaseObject {
         self.locationDict = locationDict
         self.facebookURL = facebookURL
         
-        guard let street = locationDict.value(forKey: "street1") as? String
+        guard let street = locationDict.value(forKey: "street1") as? String,
+            let city = locationDict.value(forKey: "suburb") as? String,
+            let state = locationDict.value(forKey: "state") as? String,
+            let postcode = locationDict.value(forKey: "postcode") as? String
         else {
             return nil
         }
         
-        self.location = self.location + street
+        self.locationButtonTitle += street //format of the viewable Address
+        self.location += (street + ", " + city + ", " + state + " " + postcode) //format of the full address
         
         super.init()
     }
