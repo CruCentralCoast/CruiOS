@@ -7,7 +7,6 @@ target 'CruCentralCoast' do
   # Pods for CruCentralCoast
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
-  pod 'Firebase/Database'
   pod 'Firebase/Firestore'
   pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
