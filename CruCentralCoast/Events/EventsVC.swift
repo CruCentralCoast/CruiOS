@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EventsTVC: UITableViewController {
     var selectedCell: EventsTableCell?
@@ -31,6 +32,9 @@ class EventsTVC: UITableViewController {
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
     }
+    
+    var campuses: Results<Campus>!
+    var movements: Results<Movement>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +52,10 @@ class EventsTVC: UITableViewController {
             }
             self.tableView.reloadData()
         }
+        
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.campuses = DatabaseManager.instance.getCampuses()
+        self.movements = DatabaseManager.instance.getMovements()
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
         longPressGestureRecognizer.minimumPressDuration = 0.3
@@ -141,5 +149,14 @@ extension EventsTVC: UIGestureRecognizerDelegate {
     //used so scrolling and longPressGesture can be detected simultaneously
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+extension EventsTVC: DatabaseListenerProtocol {
+    func updatedCampuses() {
+        print("updated campuses")
+    }
+    func updatedMovements() {
+        print("updated movements")
     }
 }
