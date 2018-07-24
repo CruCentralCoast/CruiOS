@@ -30,7 +30,7 @@
                             <constraint firstAttribute="width" secondItem="9R4-fk-mQg" secondAttribute="height" multiplier="350:140" id="APX-90-aHp"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZK-YH-ocJ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZK-YH-ocJ">
                         <rect key="frame" x="28" y="168.5" width="212" height="31.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="212" id="Ym3-aF-1fu"/>
