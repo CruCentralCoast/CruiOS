@@ -1,63 +1,23 @@
-project 'Cru.xcodeproj'
+platform :ios, '11.0'
 
-# Uncomment this line to define a global platform for your project
-platform :ios, '9.0'
+target 'CruCentralCoast' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
 
-# Uncomment this line if you're using Swift
-use_frameworks!
+  # Pods for CruCentralCoast
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
 
-def cru_pods
-    pod 'SideMenu', '2.2.0'
+  target 'CruCentralCoastTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 
-    pod 'Firebase/Auth' 
-    pod 'Firebase/RemoteConfig' 
-
-    pod 'Firebase/Core'
-    pod 'Firebase/Messaging'
-    pod 'DatePickerCell'
-    pod 'LocationPickerViewController', '3.0.0'
-    pod 'IQKeyboardManagerSwift', '4.0.8'
-    pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
-    pod 'MRProgress'
-    pod 'Alamofire', '~> 4.3'
-    pod 'RadioButton'
-    pod 'ActionSheetPicker-3.0'
-    pod 'DZNEmptyDataSet'
-    pod 'ImageLoader'
-    pod 'HTMLReader', '~> 1.0'
-    pod 'SwiftyJSON', '3.1.4'
-    pod 'LocationPicker'
-    pod 'GooglePlaces'
-    pod 'GooglePlacePicker'
-    pod 'GoogleMaps'
-    pod 'ReadabilityKit'
-    pod 'XLPagerTabStrip', '~> 7.0'
-    pod 'YouTubePlayer'
-    pod 'UIScrollView-InfiniteScroll', '~> 1.0'
-    pod 'DropDown'
-    pod 'AnimatedTextInput', '~> 0.5.1'
-    pod 'ImagePicker'
-    pod 'AWSS3'
-    pod 'AWSCognito'
-    pod 'AWSCognitoAuth'
-    pod 'AlamofireImage', '~> 3.2'
-    pod 'AmazonS3RequestManager'
+  target 'CruCentralCoastUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 end
-
-def crash_monitor
-    pod 'Fabric'
-    pod 'Crashlytics'
-    pod 'Appsee'
-end
-
-target 'Cru' do
-    cru_pods
-    crash_monitor
-end
-
-target 'CruTests' do
-    cru_pods
-    crash_monitor
-end
-
-
