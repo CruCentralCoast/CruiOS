@@ -134,7 +134,6 @@ class DatabaseManager {
                     // Add the second object to the existing relation list
                     if let relationList = firstObject.value(forKey: property) as? List<T> {
                         relationList.append(secondObject)
-                        firstObject.setValue(relationList, forKey: property)
                     } else {
                         print("WARN: Relation list could not be found on \(firstObject.className()) named: \(property)")
                     }
@@ -148,7 +147,6 @@ class DatabaseManager {
                         // Add the second object to the existing relation list
                         if let relationList = firstObject.value(forKey: property) as? List<T> {
                             relationList.append(secondObject)
-                            firstObject.setValue(relationList, forKey: property)
                         } else {
                             print("WARN: Relation list could not be found on \(firstObject.className()) named: \(property)")
                         }
@@ -201,14 +199,8 @@ class DatabaseManager {
 
 extension DatabaseManager {
     func subscribeToDatabaseUpdates(_ subscriber: DatabaseListener) {
-        let alreadyExists = self.listeners.contains { weakRef -> Bool in
-            if let value = weakRef.value {
-                return value == subscriber
-            }
-            return false
-        }
-        
-        if !alreadyExists {
+        // Add subscriber if not already in list
+        if !(self.listeners.contains { return ($0.value != nil) && ($0.value! == subscriber) }) {
             self.listeners.append(WeakRef(subscriber))
         }
     }
