@@ -14,47 +14,155 @@ class DatabaseManager {
     
     static let instance = DatabaseManager()
     
-    lazy var database: Firestore! = {
+    lazy private var database: Firestore! = {
         return Firestore.firestore()
     }()
     
+    // Firebase listeners for each data type
+    private var personListener: ListenerRegistration?
+    private var campusListener: ListenerRegistration?
+    private var movementListener: ListenerRegistration?
+    private var eventListener: ListenerRegistration?
+    private var resourceListener: ListenerRegistration?
+    private var communityGroupListener: ListenerRegistration?
+    private var ministryTeamListener: ListenerRegistration?
+    private var missionListener: ListenerRegistration?
+    
+    // Objects listening to changes in the database
+    private var listeners: [WeakRef<DatabaseListener>] = []
+    
     private init() {}
     
-    func getData<T: DatabaseObject>(_ completion: @escaping ([T])->Void) {
-        self.database.collection(T.databasePath).getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting objects from database: \(error)")
-            } else {
-                #if swift(>=4.1)
-                let objects = querySnapshot?.documents.compactMap { T.init(dict: $0.data() as NSDictionary) } ?? []
-                #else
-                let objects = querySnapshot?.documents.flatMap { T.init(dict: $0.data() as NSDictionary) } ?? []
-                #endif
-                completion(objects)
+    /// Creates a Firebase listener on a collection of elements. Every time one of these elements is modified in Firebase,
+    /// the app is immediately notified and the realm database is updated.
+    /// - parameter classType: The type of the elements within the collection.
+    /// - parameter callback: An escaping block which is executed upon propagation of updates to the realm database.
+    private func listenForChangesInCollection<T: RealmObject>(_ classType: T.Type, callback: @escaping ()->Void) -> ListenerRegistration {
+        return self.database.collection(T.databasePath).addSnapshotListener { (querySnapshot, error) in
+            // Handle failure
+            guard let snapshot = querySnapshot else {
+                print("ERROR: Failed to fetch Firebase snapshot: \(error!)")
+                return
+            }
+            
+            // Get the default realm database
+            let realm = try! Realm()
+            
+            // Handle changes to each Firebase object
+            snapshot.documentChanges.forEach { diff in
+                switch diff.type {
+                case .added, .modified:
+                    print("New/Modified Firebase/Realm object: \(diff.document.data())")
+                    
+                    // Add the document id to the properties dict
+                    var dict = diff.document.data()
+                    dict["id"] = diff.document.documentID
+                    
+                    // Find the existing realm object or create a new one
+                    if let realmObject = (realm.objects(T.self).filter { $0.id == diff.document.documentID }.first) {
+                        // Update the object's properties
+                        try! realm.write {
+                            realmObject.set(with: dict)
+                        }
+                        
+                        // Update the object's relations
+                        realmObject.relate?(with: dict)
+                    } else {
+                        // Create the realm object and set its properties
+                        let realmObject = T()
+                        realmObject.set(with: dict)
+                        
+                        // Update the object's relations
+                        realmObject.relate?(with: dict)
+                        
+                        // Add the new object to the realm database
+                        try! realm.write {
+                            realm.add(realmObject)
+                        }
+                    }
+                case .removed:
+                    print("Deleting Firebase/Realm object: \(diff.document.data())")
+                    
+                    // Find the existing realm object and delete it
+                    if let realmObject = (realm.objects(T.self).filter { $0.id == diff.document.documentID }.first) {
+                        try! realm.write {
+                            realm.delete(realmObject)
+                        }
+                    } else {
+                        print("WARN: Could not delete realm object with id: \(diff.document.documentID). It may have already been deleted.")
+                    }
+                }
+            }
+            
+            // Trigger callback
+            callback()
+        }
+    }
+    
+    func assignRelation<T: RealmObject>(_ property: String, on firstObject: RealmObject, with documentReference: DocumentReference, ofType secondObjectType: T.Type) {
+        // Get the default realm database
+        let realm = try! Realm()
+        
+        // Try to find the second object in the realm database or download it
+        if let secondObject = (realm.objects(T.self).filter { $0.id == documentReference.documentID }.first) {
+            // Assign the relation on the first object
+            try! realm.write {
+                firstObject.setValue(secondObject, forKey: property)
+            }
+        } else {
+            print("Could not find realm object with id: \(documentReference.documentID). Downloading it now.")
+            // Download the object from Firebase
+            self.downloadObject(T.self, document: documentReference) { secondObject in
+                // Assign the relation on the first object
+                try! realm.write {
+                    firstObject.setValue(secondObject, forKey: property)
+                }
             }
         }
     }
     
-    func getMinistries(_ completion: @escaping ([Ministry])->Void) {
-        getData(completion)
-    }
-    
-    func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
-        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: type.string).getDocuments { (querySnapshot, error) in
-            if let error = error {
-                print("Error getting resources from database: \(error)")
+    func assignRelationList<T: RealmObject>(_ property: String, on firstObject: RealmObject, with array: [DocumentReference], ofType secondObjectType: T.Type) {
+        // Get the default realm database
+        let realm = try! Realm()
+        
+        // Assign each object separately since some may need to be downloaded
+        for documentReference in array {
+            // Try to find the second object in the realm database or download it
+            if let secondObject = (realm.objects(T.self).filter { $0.id == documentReference.documentID }.first) {
+                // Update the relation on the first object
+                try! realm.write {
+                    // Add the second object to the existing relation list
+                    if let relationList = firstObject.value(forKey: property) as? List<T> {
+                        relationList.append(secondObject)
+                        firstObject.setValue(relationList, forKey: property)
+                    } else {
+                        print("WARN: Relation list could not be found on \(firstObject.className()) named: \(property)")
+                    }
+                }
             } else {
-                let resources = querySnapshot?.documents.compactMap { Resource.createResource(dict: $0.data() as NSDictionary) } ?? []
-                completion(resources)
+                print("Could not find realm object with id: \(documentReference.documentID). Downloading it now.")
+                // Download the object from Firebase
+                self.downloadObject(T.self, document: documentReference) { secondObject in
+                    // Update the relation on the first object
+                    try! realm.write {
+                        // Add the second object to the existing relation list
+                        if let relationList = firstObject.value(forKey: property) as? List<T> {
+                            relationList.append(secondObject)
+                            firstObject.setValue(relationList, forKey: property)
+                        } else {
+                            print("WARN: Relation list could not be found on \(firstObject.className()) named: \(property)")
+                        }
+                    }
+                }
             }
         }
     }
-
-    func getEvents(_ completion: @escaping ([Event])->Void) {
-        getData(completion)
-    }
     
-    func downloadObject<T: RealmObject>(_ classType: T.Type, document: DocumentReference, completion: ((T)->Void)? = nil) {
+    /// Download a single object from Firebase. Once downloaded, update the associated Realm object
+    /// or create a new one. Only the Realm object's properties are updated here, not its relations.
+    /// This method should NOT be used to download a collection of objects since relations are not
+    /// updated. See the listenForChangesInCollection() method for downloading collections.
+    private func downloadObject<T: RealmObject>(_ classType: T.Type, document: DocumentReference, completion: ((T)->Void)? = nil) {
         document.getDocument { (document, error) in
             // Handle failure
             guard let document = document else {
@@ -89,10 +197,9 @@ class DatabaseManager {
             }
         }
     }
-    
-    // Objects listening to changes in the database
-    var listeners: [WeakRef<DatabaseListener>] = []
-    
+}
+
+extension DatabaseManager {
     func subscribeToDatabaseUpdates(_ subscriber: DatabaseListener) {
         let alreadyExists = self.listeners.contains { weakRef -> Bool in
             if let value = weakRef.value {
@@ -105,15 +212,6 @@ class DatabaseManager {
             self.listeners.append(WeakRef(subscriber))
         }
     }
-    
-    var personListener: ListenerRegistration?
-    var campusListener: ListenerRegistration?
-    var movementListener: ListenerRegistration?
-    var eventListener: ListenerRegistration?
-    var resourceListener: ListenerRegistration?
-    var communityGroupListener: ListenerRegistration?
-    var ministryTeamListener: ListenerRegistration?
-    var missionListener: ListenerRegistration?
     
     func getCampuses() -> Results<Campus> {
         // Get the default realm database
@@ -149,115 +247,35 @@ class DatabaseManager {
         return movements
     }
     
-//    func getEvents2() -> Results<Event> { return self.getObjects() }
-//
-//    private func getObjects<T: RealmObject>(_ classType: T.Type) -> Results<T> {
-//        // Get the default realm database
-//        let realm = try! Realm()
-//        // Get an always up-to-date list of realm objects of the given type
-//        let realmObjects = realm.objects(T.self)
-//
-//        // Ensure only one listener is created
-//        if self.movementListener == nil {
-//            // Listen for Firebase updates on this collection
-//            self.movementListener = self.listenForChangesInCollection(T.self) {
-//                // Attempt to call the appropriate callback on each listener
-//                self.listeners.forEach { $0.value?.updatedMovements?() }
-//            }
-//        }
-//        return realmObjects
-//    }
-    
-    /// Creates a Firebase listener on a collection of elements. Every time one of these elements is modified in Firebase,
-    /// the app is immediately notified and the realm database is updated.
-    /// - parameter classType: The type of the elements within the collection.
-    /// - parameter callback: An escaping block which is executed upon propagation of updates to the realm database.
-    private func listenForChangesInCollection<T: RealmObject>(_ classType: T.Type, callback: @escaping ()->Void) -> ListenerRegistration {
-        return self.database.collection(T.databasePath).addSnapshotListener { (querySnapshot, error) in
-            // Handle failure
-            guard let snapshot = querySnapshot else {
-                print("ERROR: Failed to fetch Firebase snapshot: \(error!)")
-                return
-            }
-            
-            // Get the default realm database
-            let realm = try! Realm()
-            
-            // Handle changes to each Firebase object
-            snapshot.documentChanges.forEach { diff in
-                switch diff.type {
-                case .added, .modified:
-                    print("New/Modified Firebase/Realm object: \(diff.document.data())")
-                    
-                    // Add the document id to the properties dict
-                    var dict = diff.document.data()
-                    dict["id"] = diff.document.documentID
-                    
-                    // Find the existing realm object or create a new one
-                    if let realmObject = (realm.objects(T.self).filter { $0.id == diff.document.documentID }.first) {
-                        // Update the object's properties
-                        try! realm.write {
-                            realmObject.set(with: dict)
-                        }
-                        
-                        // Link the object with other realm objects
-                        realmObject.link?(from: dict)
-                    } else {
-                        // Create the realm object and set its properties
-                        let realmObject = T()
-                        realmObject.set(with: dict)
-                        
-                        // Link the object with other realm objects
-                        realmObject.link?(from: dict)
-                        
-                        // Add the new object to the realm database
-                        try! realm.write {
-                            realm.add(realmObject)
-                        }
-                    }
-                case .removed:
-                    print("Deleting Firebase/Realm object: \(diff.document.data())")
-                    
-                    // Find the existing realm object and delete it
-                    if let realmObject = (realm.objects(T.self).filter { $0.id == diff.document.documentID }.first) {
-                        try! realm.write {
-                            realm.delete(realmObject)
-                        }
-                    } else {
-                        print("WARN: Could not delete realm object with id: \(diff.document.documentID). It may have already been deleted.")
-                    }
-                }
-            }
-            
-            // Trigger callback
-            callback()
-        }
-    }
-    
-    func linkObject<T: RealmObject>(_ object: RealmObject, withProperty property: String, to classType: T.Type, at documentReference: DocumentReference) {
+    func getEvents() -> Results<Event> {
         // Get the default realm database
         let realm = try! Realm()
+        // Get an always up-to-date list of realm objects of the given type
+        let events = realm.objects(Event.self)
         
-        // Try to find the existing realm object or download it
-        if let realmObject = (realm.objects(T.self).filter { $0.id == documentReference.documentID }.first) {
-            // Update the property on the original realm object
-            try! realm.write {
-                object.setValue(realmObject, forKey: property)
-            }
-        } else {
-            print("Could not find realm object with id: \(documentReference.documentID). Downloading it now.")
-            // Download the object from Firebase
-            self.downloadObject(T.self, document: documentReference) { realmObject in
-                // Update the property on the original realm object
-                try! realm.write {
-                    object.setValue(realmObject, forKey: property)
-                }
+        // Ensure only one listener is created
+        if self.eventListener == nil {
+            // Listen for Firebase updates on this collection
+            self.eventListener = self.listenForChangesInCollection(Event.self) {
+                // Attempt to call the appropriate callback on each listener
+                self.listeners.forEach { $0.value?.updatedEvents?() }
             }
         }
+        return events
     }
+    
+    
+//    func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
+//        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: type.string).getDocuments { (querySnapshot, error) in
+//            if let error = error {
+//                print("Error getting resources from database: \(error)")
+//            } else {
+//                let resources = querySnapshot?.documents.compactMap { Resource.createResource(dict: $0.data() as NSDictionary) } ?? []
+//                completion(resources)
+//            }
+//        }
+//    }
 }
-
-typealias DatabaseListener = UIViewController & DatabaseListenerProtocol
 
 final class WeakRef<A: AnyObject> {
     weak var value: A?
@@ -266,6 +284,8 @@ final class WeakRef<A: AnyObject> {
         self.value = value
     }
 }
+
+typealias DatabaseListener = UIViewController & DatabaseListenerProtocol
 
 @objc protocol DatabaseListenerProtocol: AnyObject {
     @objc optional func updatedPeople()
@@ -278,15 +298,13 @@ final class WeakRef<A: AnyObject> {
     @objc optional func updatedMissions()
 }
 
-protocol DatabaseObject: DatabasePath {
-    init?(dict: NSDictionary)
-}
+typealias RealmObject = Object & RealmObjectProtocol
 
 @objc protocol RealmObjectProtocol: DatabasePath {
     var id: String! { get set }
     
+    /// Set the properties on a Realm object.
     func set(with dict: [String: Any])
-    @objc optional func link(from dict: [String: Any])
+    /// Set the relations on a Realm object.
+    @objc optional func relate(with dict: [String: Any])
 }
-
-typealias RealmObject = Object & RealmObjectProtocol

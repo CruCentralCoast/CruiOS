@@ -8,31 +8,45 @@
 
 import Foundation
 import Firebase
+import RealmSwift
 
-class Event: NSObject, DatabaseObject {
-    var title: String
-    var startDate: Date
-    var endDate: Date?
-    var summary: String
-    var location: String?
-    var imageLink: String
-    @objc dynamic var image: UIImage?
+class Event: RealmObject {
     
-    required init?(dict: NSDictionary) {
-        guard let title = dict["name"] as? String,
-        let summary = dict["description"] as? String,
-        let startDate = dict["startDate"] as? Date,
-        let imageLink = dict["imageLink"] as? String
-        else {
-            return nil
-        }
+    // Properties
+    @objc dynamic var id: String!
+    @objc dynamic var title: String!
+    @objc dynamic var summary: String!
+    @objc dynamic var startDate: Date!
+    @objc dynamic var endDate: Date!
+    @objc dynamic var imageLink: String?
+    @objc dynamic var facebookUrl: String?
+    @objc dynamic var location: Location?
+    
+    // Relations
+    let movements = List<Movement>()
+    
+    var image: UIImage?
+    
+    func set(with dict: [String: Any]) {
+        guard let id = dict["id"] as? String,
+            let title = dict["name"] as? String,
+            let summary = dict["description"] as? String,
+            let startDate = dict["startDate"] as? Date,
+            let endDate = dict["endDate"] as? Date else { return }
+        
+        self.id = id
         self.title = title
         self.summary = summary
         self.startDate = startDate
-        self.imageLink = imageLink
-        self.endDate = (dict["endDate"] as? Timestamp)?.approximateDateValue()
-        self.location = dict["locations"] as? String
-        
-        super.init()
+        self.endDate = endDate
+        self.location = Location(dict: dict["location"] as? NSDictionary)
+        self.imageLink = dict["imageLink"] as? String
+        self.facebookUrl = dict["url"] as? String
+    }
+    
+    func relate(with dict: [String: Any]) {
+        if let movementsArray = dict["ministries"] as? [DocumentReference] {
+            DatabaseManager.instance.assignRelationList("movements", on: self, with: movementsArray, ofType: Movement.self)
+        }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import FirebaseFirestore
+import RealmSwift
 
 class Movement: RealmObject {
     
@@ -19,6 +20,8 @@ class Movement: RealmObject {
     
     // Relations
     @objc dynamic var campus: Campus?
+    /// Inverse relationship that is auto-updated
+    let events = LinkingObjects(fromType: Event.self, property: "movements")
     
     func set(with dict: [String: Any]) {
         guard let id = dict["id"] as? String,
@@ -30,9 +33,9 @@ class Movement: RealmObject {
         self.imageLink = dict["imageLink"] as? String
     }
     
-    func link(from dict: [String: Any]) {
+    func relate(with dict: [String: Any]) {
         if let campusReference = dict["campus"] as? DocumentReference {
-            DatabaseManager.instance.linkObject(self, withProperty: "campus", to: Campus.self, at: campusReference)
+            DatabaseManager.instance.assignRelation("campus", on: self, with: campusReference, ofType: Campus.self)
         }
     }
 }

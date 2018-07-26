@@ -18,11 +18,12 @@
 		2F2BD9952077250400512170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2BD9942077229100512170 /* Assets.xcassets */; };
 		2F2BD9972077325300512170 /* CruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2BD9962077325300512170 /* CruTextField.swift */; };
 		2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */; };
-		2F43AEC6209ADA41009BC362 /* Ministry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F43AEC5209ADA41009BC362 /* Ministry.swift */; };
 		2F7E20D020A3C24B00745A9B /* DatabasePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */; };
 		2FA9FE8621070716007A8658 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9FE8521070716007A8658 /* Campus.swift */; };
 		2FA9FE882107073E007A8658 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9FE872107073E007A8658 /* Movement.swift */; };
 		2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4ACF4207EFFA7001BB0A6 /* SignUpVC.swift */; };
+		2FE8BBEB21092EDD00AF9E57 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBEA21092EDD00AF9E57 /* Location.swift */; };
+		2FE8BBED21093A4B00AF9E57 /* ObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBEC21093A4B00AF9E57 /* ObjectExtensions.swift */; };
 		2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA0538208405AA00F1491C /* LoginManager.swift */; };
 		5E0C2F1C20BF5084001E6F7C /* CommunityGroups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */; };
 		5E0C2F2320BF56A4001E6F7C /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2120BF56A3001E6F7C /* CommunityTableViewCell.xib */; };
@@ -140,11 +141,12 @@
 		2F2BD9942077229100512170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F2BD9962077325300512170 /* CruTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruTextField.swift; sourceTree = "<group>"; };
 		2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		2F43AEC5209ADA41009BC362 /* Ministry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ministry.swift; sourceTree = "<group>"; };
 		2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePaths.swift; sourceTree = "<group>"; };
 		2FA9FE8521070716007A8658 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
 		2FA9FE872107073E007A8658 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		2FD4ACF4207EFFA7001BB0A6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
+		2FE8BBEA21092EDD00AF9E57 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		2FE8BBEC21093A4B00AF9E57 /* ObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectExtensions.swift; sourceTree = "<group>"; };
 		2FEA0538208405AA00F1491C /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroups.storyboard; sourceTree = "<group>"; };
 		5E0C2F2120BF56A3001E6F7C /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
@@ -285,12 +287,12 @@
 				2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */,
 				2FA9FE8521070716007A8658 /* Campus.swift */,
 				2FA9FE872107073E007A8658 /* Movement.swift */,
-				2F43AEC5209ADA41009BC362 /* Ministry.swift */,
 				E0AFD0FA20AD0C3600B2EF40 /* Event.swift */,
 				AD652AA520B65990002FF565 /* Resource.swift */,
 				AD652AA720B65CC9002FF565 /* ArticleResource.swift */,
 				AD652AA920B66487002FF565 /* AudioResource.swift */,
 				AD652AAB20B675B9002FF565 /* VideoResource.swift */,
+				2FE8BBEA21092EDD00AF9E57 /* Location.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -546,6 +548,7 @@
 		ADFA56E4206DADF1006F7099 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2FE8BBEC21093A4B00AF9E57 /* ObjectExtensions.swift */,
 				ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */,
 				ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */,
 				AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */,
@@ -920,6 +923,7 @@
 				ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */,
 				5E5416D82088269600A56279 /* MissionDetailsVC.swift in Sources */,
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
+				2FE8BBEB21092EDD00AF9E57 /* Location.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
 				ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */,
 				ADAC304D2105696900DBCA89 /* CampusTableViewCell.swift in Sources */,
@@ -951,11 +955,11 @@
 				ADA9539620BDCCCB00294CEA /* CruAudioControl.swift in Sources */,
 				AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */,
 				E094400F2075ACE40057AC83 /* EventsCVC.swift in Sources */,
+				2FE8BBED21093A4B00AF9E57 /* ObjectExtensions.swift in Sources */,
 				ADAC304B210568FF00DBCA89 /* ChooseCampusVC.swift in Sources */,
 				5E888EB920C8C2CE00F534DF /* MissionsTableVC.swift in Sources */,
 				2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */,
 				E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */,
-				2F43AEC6209ADA41009BC362 /* Ministry.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
 				ADAC305321056EE000DBCA89 /* MovementTableViewCell.swift in Sources */,
 			);

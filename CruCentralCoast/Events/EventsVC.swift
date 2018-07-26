@@ -13,7 +13,9 @@ class EventsTVC: UITableViewController {
     var selectedCell: EventsTableCell?
     var originFrame: CGRect?
     
-    var dataArray = [Event]()
+    var dataArray: Results<Event>!
+    var campuses: Results<Campus>!
+    var movements: Results<Movement>!
     
     var statusBarIsHidden: Bool = false {
         didSet{
@@ -32,30 +34,16 @@ class EventsTVC: UITableViewController {
     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
         return .slide
     }
-    
-    var campuses: Results<Campus>!
-    var movements: Results<Movement>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(EventsTableCell.self)
-        DatabaseManager.instance.getEvents { (events) in
-            self.dataArray = events
-            for event in self.dataArray {
-                UIImage.downloadedFrom(link: event.imageLink, completion: { (image) in
-                    event.image = image
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                })
-            }
-            self.tableView.reloadData()
-        }
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.campuses = DatabaseManager.instance.getCampuses()
         self.movements = DatabaseManager.instance.getMovements()
+        self.dataArray = DatabaseManager.instance.getEvents()
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
         longPressGestureRecognizer.minimumPressDuration = 0.3
@@ -158,5 +146,19 @@ extension EventsTVC: DatabaseListenerProtocol {
     }
     func updatedMovements() {
         print("updated movements")
+    }
+    func updatedEvents() {
+        print("Events were updated - refreshing UI")
+        for event in self.dataArray {
+            if let imageLink = event.imageLink {
+                UIImage.downloadedFrom(link: imageLink, completion: { (image) in
+                    event.image = image
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                })
+            }
+        }
+        self.tableView.reloadData()
     }
 }

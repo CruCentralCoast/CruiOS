@@ -16,10 +16,6 @@ extension Campus: DatabasePath {
     static var databasePath: String = "campus"
 }
 
-extension Ministry: DatabasePath {
-    static var databasePath: String = "ministries"
-}
-
 extension Movement: DatabasePath {
     static var databasePath: String = "ministries"
 }
