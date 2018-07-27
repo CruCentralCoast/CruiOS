@@ -205,6 +205,23 @@ extension DatabaseManager {
         }
     }
     
+    func getPeople() -> Results<Person> {
+        // Get the default realm database
+        let realm = try! Realm()
+        // Get an always up-to-date list of realm objects of the given type
+        let people = realm.objects(Person.self)
+        
+        // Ensure only one listener is created
+        if self.personListener == nil {
+            // Listen for Firebase updates on this collection
+            self.personListener = self.listenForChangesInCollection(Person.self) {
+                // Attempt to call the appropriate callback on each listener
+                self.listeners.forEach { $0.value?.updatedPeople?() }
+            }
+        }
+        return people
+    }
+    
     func getCampuses() -> Results<Campus> {
         // Get the default realm database
         let realm = try! Realm()
@@ -254,6 +271,57 @@ extension DatabaseManager {
             }
         }
         return events
+    }
+    
+    func getCommunityGroups() -> Results<CommunityGroup> {
+        // Get the default realm database
+        let realm = try! Realm()
+        // Get an always up-to-date list of realm objects of the given type
+        let communityGroups = realm.objects(CommunityGroup.self)
+        
+        // Ensure only one listener is created
+        if self.communityGroupListener == nil {
+            // Listen for Firebase updates on this collection
+            self.communityGroupListener = self.listenForChangesInCollection(CommunityGroup.self) {
+                // Attempt to call the appropriate callback on each listener
+                self.listeners.forEach { $0.value?.updatedCommunityGroups?() }
+            }
+        }
+        return communityGroups
+    }
+    
+    func getMinistryTeams() -> Results<MinistryTeam> {
+        // Get the default realm database
+        let realm = try! Realm()
+        // Get an always up-to-date list of realm objects of the given type
+        let ministryTeams = realm.objects(MinistryTeam.self)
+        
+        // Ensure only one listener is created
+        if self.ministryTeamListener == nil {
+            // Listen for Firebase updates on this collection
+            self.ministryTeamListener = self.listenForChangesInCollection(MinistryTeam.self) {
+                // Attempt to call the appropriate callback on each listener
+                self.listeners.forEach { $0.value?.updatedMinistryTeams?() }
+            }
+        }
+        return ministryTeams
+    }
+    
+    func getMissions() -> Results<Mission> {
+        // Get the default realm database
+        let realm = try! Realm()
+        // Get an always up-to-date list of realm objects of the given type
+        let missions = realm.objects(Mission.self)
+        
+        // Ensure only one listener is created
+        if self.missionListener == nil {
+            // Listen for Firebase updates on this collection
+            self.missionListener = self.listenForChangesInCollection(Mission.self) {
+                // Attempt to call the appropriate callback on each listener
+                self.listeners.forEach { $0.value?.updatedMissions?() }
+            }
+        }
+        return missions
     }
     
     

@@ -22,6 +22,10 @@ class Movement: RealmObject {
     @objc dynamic var campus: Campus?
     /// Inverse relationship that is auto-updated
     let events = LinkingObjects(fromType: Event.self, property: "movements")
+    /// Inverse relationship that is auto-updated
+    let communityGroups = LinkingObjects(fromType: CommunityGroup.self, property: "movement")
+    /// Inverse relationship that is auto-updated
+    let ministryTeams = LinkingObjects(fromType: MinistryTeam.self, property: "movement")
     
     func set(with dict: [String: Any]) {
         guard let id = dict["id"] as? String,

@@ -24,6 +24,10 @@
 		2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FD4ACF4207EFFA7001BB0A6 /* SignUpVC.swift */; };
 		2FE8BBEB21092EDD00AF9E57 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBEA21092EDD00AF9E57 /* Location.swift */; };
 		2FE8BBED21093A4B00AF9E57 /* ObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBEC21093A4B00AF9E57 /* ObjectExtensions.swift */; };
+		2FE8BBEF210954E500AF9E57 /* CommunityGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBEE210954E500AF9E57 /* CommunityGroup.swift */; };
+		2FE8BBF12109552000AF9E57 /* MinistryTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBF02109552000AF9E57 /* MinistryTeam.swift */; };
+		2FE8BBF32109552900AF9E57 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBF22109552900AF9E57 /* Mission.swift */; };
+		2FE8BBF5210955C000AF9E57 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBF4210955C000AF9E57 /* Person.swift */; };
 		2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA0538208405AA00F1491C /* LoginManager.swift */; };
 		5E0C2F1C20BF5084001E6F7C /* CommunityGroups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */; };
 		5E0C2F2320BF56A4001E6F7C /* CommunityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2120BF56A3001E6F7C /* CommunityTableViewCell.xib */; };
@@ -147,6 +151,10 @@
 		2FD4ACF4207EFFA7001BB0A6 /* SignUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpVC.swift; sourceTree = "<group>"; };
 		2FE8BBEA21092EDD00AF9E57 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		2FE8BBEC21093A4B00AF9E57 /* ObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectExtensions.swift; sourceTree = "<group>"; };
+		2FE8BBEE210954E500AF9E57 /* CommunityGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroup.swift; sourceTree = "<group>"; };
+		2FE8BBF02109552000AF9E57 /* MinistryTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeam.swift; sourceTree = "<group>"; };
+		2FE8BBF22109552900AF9E57 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
+		2FE8BBF4210955C000AF9E57 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		2FEA0538208405AA00F1491C /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroups.storyboard; sourceTree = "<group>"; };
 		5E0C2F2120BF56A3001E6F7C /* CommunityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityTableViewCell.xib; sourceTree = "<group>"; };
@@ -285,9 +293,13 @@
 			children = (
 				2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */,
 				2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */,
+				2FE8BBF4210955C000AF9E57 /* Person.swift */,
 				2FA9FE8521070716007A8658 /* Campus.swift */,
 				2FA9FE872107073E007A8658 /* Movement.swift */,
 				E0AFD0FA20AD0C3600B2EF40 /* Event.swift */,
+				2FE8BBEE210954E500AF9E57 /* CommunityGroup.swift */,
+				2FE8BBF02109552000AF9E57 /* MinistryTeam.swift */,
+				2FE8BBF22109552900AF9E57 /* Mission.swift */,
 				AD652AA520B65990002FF565 /* Resource.swift */,
 				AD652AA720B65CC9002FF565 /* ArticleResource.swift */,
 				AD652AA920B66487002FF565 /* AudioResource.swift */,
@@ -910,6 +922,9 @@
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
 				AD652AA820B65CC9002FF565 /* ArticleResource.swift in Sources */,
+				2FE8BBEF210954E500AF9E57 /* CommunityGroup.swift in Sources */,
+				2FE8BBF5210955C000AF9E57 /* Person.swift in Sources */,
+				2FE8BBF32109552900AF9E57 /* Mission.swift in Sources */,
 				AD24E8DA20919C510089E370 /* ProfileSelectableTextCell.swift in Sources */,
 				AD55A0EA209B759D009F62FB /* ResourcesTableViewCollectionViewCell.swift in Sources */,
 				ADFA56E0206D82FA006F7099 /* AudioResourcesCell.swift in Sources */,
@@ -940,6 +955,7 @@
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
 				E09440122075AEC40057AC83 /* EventCell.swift in Sources */,
 				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
+				2FE8BBF12109552000AF9E57 /* MinistryTeam.swift in Sources */,
 				AD652AB820B69D04002FF565 /* ArticleResourceDetailVC.swift in Sources */,
 				AD652AAA20B66487002FF565 /* AudioResource.swift in Sources */,
 				E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */,
