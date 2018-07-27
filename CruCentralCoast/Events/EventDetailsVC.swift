@@ -87,7 +87,7 @@ class EventDetailsVC: UIViewController {
         self.eventImage = cellParameters.image
         self.eventTitle = cellParameters.title
         self.eventDate = cellParameters.startDate.toString(dateFormat: "MMM-dd-yyyy")
-        self.eventLocation = cellParameters.location
+        self.eventLocation = cellParameters.location?.string
         self.eventSummary = cellParameters.summary
     }
 }

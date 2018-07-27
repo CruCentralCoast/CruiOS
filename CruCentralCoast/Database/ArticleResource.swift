@@ -9,14 +9,15 @@
 import Foundation
 
 class ArticleResource: Resource {
-    var description: String
     
-    required init?(dict: NSDictionary) {
-        guard let description = dict["description"] as? String else {
-            return nil
-        }
-        self.description = description
+    // Properties
+    @objc dynamic var summary: String!
+    
+    override func set(with dict: [String : Any]) {
+        super.set(with: dict)
         
-        super.init(dict: dict)
+        guard let summary = dict["description"] as? String else { return }
+        
+        self.summary = summary
     }
 }

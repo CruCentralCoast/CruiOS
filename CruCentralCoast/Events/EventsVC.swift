@@ -20,7 +20,7 @@ class EventsTVC: UITableViewController {
     var communityGroups: Results<CommunityGroup>!
     var ministryTeams: Results<MinistryTeam>!
     var missions: Results<Mission>!
-//    var resources: Results<Resources>!
+    var resources: Results<Resource>!
     
     var statusBarIsHidden: Bool = false {
         didSet{
@@ -53,7 +53,7 @@ class EventsTVC: UITableViewController {
         self.communityGroups = DatabaseManager.instance.getCommunityGroups()
         self.ministryTeams = DatabaseManager.instance.getMinistryTeams()
         self.missions = DatabaseManager.instance.getMissions()
-//        self.resources = DatabaseManager.instance.getResources()
+        self.resources = DatabaseManager.instance.getResources()
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
         longPressGestureRecognizer.minimumPressDuration = 0.3

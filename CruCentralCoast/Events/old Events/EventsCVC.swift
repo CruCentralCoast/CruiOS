@@ -40,18 +40,18 @@ class EventsCVC: UICollectionViewController {
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         let width = collectionView!.bounds.width - layout.sectionInset.left - layout.sectionInset.right
         layout.itemSize = CGSize(width: width, height: width * 0.55)
-        DatabaseManager.instance.getEvents { (events) in
-            self.dataArray = events
-            for event in self.dataArray {
-                UIImage.downloadedFrom(link: event.imageLink, completion: { (image) in
-                    event.image = image
-                    DispatchQueue.main.async {
-                        self.collectionView?.reloadData()
-                    }
-                })
-            }
-            self.collectionView?.reloadData()
-        }
+//        DatabaseManager.instance.getEvents { (events) in
+//            self.dataArray = events
+//            for event in self.dataArray {
+//                UIImage.downloadedFrom(link: event.imageLink, completion: { (image) in
+//                    event.image = image
+//                    DispatchQueue.main.async {
+//                        self.collectionView?.reloadData()
+//                    }
+//                })
+//            }
+//            self.collectionView?.reloadData()
+//        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

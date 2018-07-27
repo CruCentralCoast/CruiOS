@@ -9,17 +9,18 @@
 import Foundation
 
 class VideoResource: Resource {
-    var description: String
-    var imageURL: String
     
-    required init?(dict: NSDictionary) {
-        guard let description = dict["description"] as? String,
-        let imageURL = dict["imageLink"] as? String else {
-            return nil
-        }
-        self.description = description
-        self.imageURL = imageURL
+    // Properties
+    @objc dynamic var summary: String!
+    @objc dynamic var imageLink: String!
+    
+    override func set(with dict: [String : Any]) {
+        super.set(with: dict)
         
-        super.init(dict: dict)
+        guard let summary = dict["description"] as? String,
+            let imageLink = dict["imageLink"] as? String else { return }
+        
+        self.summary = summary
+        self.imageLink = imageLink
     }
 }

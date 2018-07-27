@@ -324,6 +324,22 @@ extension DatabaseManager {
         return missions
     }
     
+    func getResources() -> Results<Resource> {
+        // Get the default realm database
+        let realm = try! Realm()
+        // Get an always up-to-date list of realm objects of the given type
+        let resources = realm.objects(Resource.self)
+        
+        // Ensure only one listener is created
+        if self.resourceListener == nil {
+            // Listen for Firebase updates on this collection
+            self.resourceListener = self.listenForChangesInCollection(Resource.self) {
+                // Attempt to call the appropriate callback on each listener
+                self.listeners.forEach { $0.value?.updatedResources?() }
+            }
+        }
+        return resources
+    }
     
 //    func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
 //        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: type.string).getDocuments { (querySnapshot, error) in
@@ -345,7 +361,7 @@ final class WeakRef<A: AnyObject> {
     }
 }
 
-typealias DatabaseListener = UIViewController & DatabaseListenerProtocol
+typealias DatabaseListener = NSObject & DatabaseListenerProtocol
 
 @objc protocol DatabaseListenerProtocol: AnyObject {
     @objc optional func updatedPeople()

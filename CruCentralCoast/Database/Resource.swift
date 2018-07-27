@@ -7,74 +7,53 @@
 //
 
 import Foundation
+import RealmSwift
 
-enum ResourceType {
-    case audio
-    case video
-    case article
-}
-
-extension ResourceType {
-    var string: String {
-        switch self {
-        case .audio:
-            return "audio"
-        case .video:
-            return "video"
-        case .article:
-            return "article"
-        }
-    }
-}
-
-class Resource: DatabaseObject {
-    var author: String
-    var title: String
-    var date: Date
-    var url: String
-    var type: ResourceType
+class Resource: RealmObject {
     
-    var formattedDate: String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .none
-        dateFormatter.locale = Locale(identifier: "en_US")
-        return dateFormatter.string(from: self.date)
-    }
+    // Properties
+    @objc dynamic var id: String!
+    @objc dynamic var title: String!
+    @objc dynamic var author: String!
+    @objc dynamic var date: Date!
+    @objc dynamic var url: String!
+    @objc dynamic private var typeString: String!
     
-    required init?(dict: NSDictionary) {
-        guard let author = dict["author"] as? String,
-        let title = dict["title"] as? String,
-        let date = dict["date"] as? Date,
-        let url = dict["url"] as? String,
-        let type = dict["type"] as? String else {
-            return nil
-        }
-        self.author = author
+    var type: ResourceType { return ResourceType(rawValue: self.typeString) ?? .article }
+    var formattedDate: String { return self.date.toString(dateStyle: .medium, timeStyle: .none) }
+    
+    func set(with dict: [String: Any]) {
+        guard let id = dict["id"] as? String,
+            let title = dict["title"] as? String,
+            let author = dict["author"] as? String,
+            let date = dict["date"] as? Date,
+            let url = dict["url"] as? String,
+            let typeString = dict["type"] as? String else { return }
+        
+        self.id = id
         self.title = title
+        self.author = author
         self.date = date
         self.url = url
-        switch type {
-        case "audio":
-            self.type = .audio
-        case "video":
-            self.type = .video
-        default: //case "article":
-            self.type = .article
-        }
+        self.typeString = typeString
     }
     
     static func createResource(dict: NSDictionary) -> Resource? {
-        guard let type = dict["type"] as? String else {
-            return nil
-        }
+        guard let type = dict["type"] as? String else { return nil }
+        
+        let resource: Resource
         switch type {
-        case "audio":
-            return AudioResource(dict: dict)
-        case "video":
-            return VideoResource(dict: dict)
-        default: //case "article":
-            return ArticleResource(dict: dict)
+        case "audio": resource = AudioResource()
+        case "video": resource = VideoResource()
+        default: resource = ArticleResource()
         }
+        resource.set(with: dict as! [String: Any])
+        return resource
     }
+}
+
+enum ResourceType: String {
+    case audio = "audio"
+    case video = "video"
+    case article = "article"
 }
