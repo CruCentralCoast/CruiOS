@@ -14,8 +14,13 @@ class EventsTVC: UITableViewController {
     var originFrame: CGRect?
     
     var dataArray: Results<Event>!
+    var people: Results<Person>!
     var campuses: Results<Campus>!
     var movements: Results<Movement>!
+    var communityGroups: Results<CommunityGroup>!
+    var ministryTeams: Results<MinistryTeam>!
+    var missions: Results<Mission>!
+//    var resources: Results<Resources>!
     
     var statusBarIsHidden: Bool = false {
         didSet{
@@ -41,9 +46,14 @@ class EventsTVC: UITableViewController {
         self.tableView.registerCell(EventsTableCell.self)
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.people = DatabaseManager.instance.getPeople()
         self.campuses = DatabaseManager.instance.getCampuses()
         self.movements = DatabaseManager.instance.getMovements()
         self.dataArray = DatabaseManager.instance.getEvents()
+        self.communityGroups = DatabaseManager.instance.getCommunityGroups()
+        self.ministryTeams = DatabaseManager.instance.getMinistryTeams()
+        self.missions = DatabaseManager.instance.getMissions()
+//        self.resources = DatabaseManager.instance.getResources()
         
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
         longPressGestureRecognizer.minimumPressDuration = 0.3
@@ -141,11 +151,14 @@ extension EventsTVC: UIGestureRecognizerDelegate {
 }
 
 extension EventsTVC: DatabaseListenerProtocol {
+    func updatedPeople() {
+        print("People were updated - refreshing UI")
+    }
     func updatedCampuses() {
-        print("updated campuses")
+        print("Campuses were updated - refreshing UI")
     }
     func updatedMovements() {
-        print("updated movements")
+        print("Movements were updated - refreshing UI")
     }
     func updatedEvents() {
         print("Events were updated - refreshing UI")
@@ -160,5 +173,17 @@ extension EventsTVC: DatabaseListenerProtocol {
             }
         }
         self.tableView.reloadData()
+    }
+    func updatedCommunityGroups() {
+        print("CommunityGroups were updated - refreshing UI")
+    }
+    func updatedMinistryTeams() {
+        print("MinistryTeams were updated - refreshing UI")
+    }
+    func updatedMissions() {
+        print("Missions were updated - refreshing UI")
+    }
+    func updatedResources() {
+        print("Resources were updated - refreshing UI")
     }
 }
