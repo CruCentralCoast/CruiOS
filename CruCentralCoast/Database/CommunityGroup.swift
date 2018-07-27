@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 import RealmSwift
 
 class CommunityGroup: RealmObject {
@@ -46,7 +47,12 @@ class CommunityGroup: RealmObject {
     }
     
     func relate(with dict: [String : Any]) {
-        // TODO
+        if let movementReference = dict["parentMinistry"] as? DocumentReference {
+            DatabaseManager.instance.assignRelation("movement", on: self, with: movementReference, ofType: Movement.self)
+        }
+        if let leadersArray = dict["leaders"] as? [DocumentReference] {
+            DatabaseManager.instance.assignRelationList("leaders", on: self, with: leadersArray, ofType: Person.self)
+        }
     }
 }
 
