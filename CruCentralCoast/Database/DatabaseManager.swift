@@ -52,7 +52,7 @@ class DatabaseManager {
             snapshot.documentChanges.forEach { diff in
                 switch diff.type {
                 case .added, .modified:
-                    print("New/Modified Firebase/Realm object: \(diff.document.data())")
+                    print("New/Modified Firebase/Realm object: \(T.className())")
                     
                     // Add the document id to the properties dict
                     var dict = diff.document.data()
@@ -81,7 +81,7 @@ class DatabaseManager {
                         }
                     }
                 case .removed:
-                    print("Deleting Firebase/Realm object: \(diff.document.data())")
+                    print("Deleting Firebase/Realm object: \(T.className())")
                     
                     // Find the existing realm object and delete it
                     if let realmObject = (realm.objects(T.self).filter { $0.id == diff.document.documentID }.first) {
@@ -89,7 +89,7 @@ class DatabaseManager {
                             realm.delete(realmObject)
                         }
                     } else {
-                        print("WARN: Could not delete realm object with id: \(diff.document.documentID). It may have already been deleted.")
+                        print("WARN: Could not delete realm object \(T.className()) with id: \(diff.document.documentID). It may have already been deleted.")
                     }
                 }
             }

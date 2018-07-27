@@ -22,9 +22,6 @@ class Mission: RealmObject {
     
     // Relations
     @objc dynamic var movement: Movement?
-    let leaders = List<Person>()
-    /// Inverse relationship that is auto-updated
-    let members = LinkingObjects(fromType: Person.self, property: "ministryTeams")
     
     func set(with dict: [String : Any]) {
         guard let id = dict["id"] as? String,
@@ -39,7 +36,7 @@ class Mission: RealmObject {
         self.startDate = startDate
         self.endDate = endDate
         self.location = Location(dict: dict["location"] as? NSDictionary)
-        self.imageLink = dict["teamImageLink"] as? String
+        self.imageLink = dict["imageLink"] as? String
     }
     
     func relate(with dict: [String : Any]) {
