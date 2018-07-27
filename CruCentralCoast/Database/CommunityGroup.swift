@@ -16,9 +16,9 @@ class CommunityGroup: RealmObject {
     @objc dynamic var id: String!
     @objc dynamic var name: String!
     @objc dynamic var summary: String?
-    @objc dynamic var gender: String!
-    @objc dynamic var year: String!
-    @objc dynamic var weekDay: String!
+    @objc dynamic private var genderString: String!
+    @objc dynamic private var yearString: String!
+    @objc dynamic private var weekDayString: String!
     @objc dynamic var time: String!
     @objc dynamic var imageLink: String?
     
@@ -28,20 +28,24 @@ class CommunityGroup: RealmObject {
     /// Inverse relationship that is auto-updated
     let members = LinkingObjects(fromType: Person.self, property: "communityGroups")
     
+    var gender: Gender { return Gender(rawValue: self.genderString) ?? .mixed }
+    var year: Year { return Year(rawValue: self.yearString) ?? .mixed }
+    var weekDay: WeekDay { return WeekDay(rawValue: self.weekDayString) ?? .sunday }
+    
     func set(with dict: [String : Any]) {
         guard let id = dict["id"] as? String,
             let name = dict["name"] as? String,
-            let gender = dict["gender"] as? String,
-            let year = dict["type"] as? String,
-            let weekDay = dict["dayOfWeek"] as? String,
+            let genderString = dict["gender"] as? String,
+            let yearString = dict["type"] as? String,
+            let weekDayString = dict["dayOfWeek"] as? String,
             let time = dict["meetingTime"] as? String else { return }
         
         self.id = id
         self.name = name
         self.summary = dict["discription"] as? String
-        self.gender = gender
-        self.year = year
-        self.weekDay = weekDay
+        self.genderString = genderString.lowercased()
+        self.yearString = yearString.lowercased()
+        self.weekDayString = weekDayString.lowercased()
         self.time = time
         self.imageLink = dict["imageLink"] as? String
     }
