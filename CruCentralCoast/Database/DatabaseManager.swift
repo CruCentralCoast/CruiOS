@@ -38,6 +38,17 @@ class DatabaseManager {
         getData(completion)
     }
     
+    func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
+        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: type.string).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print("Error getting resources from database: \(error)")
+            } else {
+                let resources = querySnapshot?.documents.compactMap { Resource.createResource(dict: $0.data() as NSDictionary) } ?? []
+                completion(resources)
+            }
+        }
+    }
+
     func getEvents(_ completion: @escaping ([Event])->Void) {
         getData(completion)
     }
