@@ -104,7 +104,7 @@ class EventDetailsVC: UIViewController {
             config.entersReaderIfAvailable = true
             
             let vc = SFSafariViewController(url: url, configuration: config)
-            present(vc, animated: true)
+            self.present(vc, animated: true)
         }
     }
 
