@@ -8,7 +8,7 @@
 
 import UIKit
 
-class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
+class EventsVC: UITableViewController {
     var selectedCell: EventsTableCell?
     var originFrame: CGRect?
     var longPressIndexPath: IndexPath!
@@ -57,7 +57,7 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
             }
             self.tableView.reloadData()
         }
-        createLongPressGesture()
+        self.createLongPressGesture()
     }
     
     func createLongPressGesture() {
@@ -102,37 +102,7 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
         }
     }
     
-    func longPressGestureBegan(indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.2, animations: {
-            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        })
-    }
     
-    func longPressGestureEnded(indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        guard let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(withIdentifier: "EventDetailsVC") as? EventDetailsVC else {
-            assertionFailure("Probably used the wrong storyboard name or identifier here")
-            return
-        }
-        if self.longPressCancelled == false && self.longPressFailed == false {
-            UIView.animate(withDuration: 0.05, animations: {
-                cell?.transform = CGAffineTransform.identity
-            }, completion: { (finish) in
-                vc.configure(with: self.dataArray[indexPath.item])
-                vc.transitioningDelegate = self
-                self.selectedCell = self.tableView.cellForRow(at: indexPath) as? EventsTableCell
-                self.navigationController?.present(vc, animated: true, completion: nil)
-            })
-        }
-    }
-    
-    func longPressGestureCancelled(indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.2, animations: {
-            cell?.transform = CGAffineTransform.identity
-        })
-    }
     
     //code is commented out for the time being but will be used in the future
 //    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
@@ -170,7 +140,38 @@ class EventsTVC: UITableViewController, UIGestureRecognizerDelegate {
     }
 }
 
-extension EventsTVC: UIViewControllerTransitioningDelegate {
+extension EventsVC: UIGestureRecognizerDelegate {
+    func longPressGestureBegan(indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.2, animations: {
+            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+        })
+    }
+    
+    func longPressGestureEnded(indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(EventDetailsVC.self) as EventDetailsVC
+        if self.longPressCancelled == false && self.longPressFailed == false {
+            UIView.animate(withDuration: 0.05, animations: {
+                cell?.transform = CGAffineTransform.identity
+            }, completion: { (finish) in
+                vc.configure(with: self.dataArray[indexPath.item])
+                vc.transitioningDelegate = self
+                self.selectedCell = self.tableView.cellForRow(at: indexPath) as? EventsTableCell
+                self.navigationController?.present(vc, animated: true, completion: nil)
+            })
+        }
+    }
+    
+    func longPressGestureCancelled(indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        UIView.animate(withDuration: 0.2, animations: {
+            cell?.transform = CGAffineTransform.identity
+        })
+    }
+}
+
+extension EventsVC: UIViewControllerTransitioningDelegate {
     func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         guard let selectedCell = self.selectedCell else {
             return nil

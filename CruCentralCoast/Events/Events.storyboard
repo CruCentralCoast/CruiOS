@@ -29,7 +29,7 @@
         <!--Events-->
         <scene sceneID="4qe-8Z-5bX">
             <objects>
-                <tableViewController id="g82-Hc-wZh" customClass="EventsTVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="g82-Hc-wZh" customClass="EventsVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3NN-nQ-wYI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -105,10 +105,13 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-05-0Hx">
-                                        <rect key="frame" x="301" y="30" width="44" height="32"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
-                                        <state key="normal" title="Close">
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-05-0Hx">
+                                        <rect key="frame" x="327" y="16" width="32" height="32"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="R2v-Db-4Ej"/>
+                                            <constraint firstAttribute="width" constant="32" id="haO-74-4Og"/>
+                                        </constraints>
+                                        <state key="normal" title="Close" image="cancel icon.ico">
                                             <color key="titleColor" red="0.30566988119999999" green="0.30566988119999999" blue="0.30566988119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
@@ -184,11 +187,12 @@
                                     <constraint firstAttribute="leading" secondItem="LkD-pk-Jlf" secondAttribute="trailing" constant="-220" id="JVX-DX-Tte"/>
                                     <constraint firstItem="7k4-Tz-JY1" firstAttribute="leading" secondItem="glu-cR-yHR" secondAttribute="trailing" constant="4" id="O42-KV-zSb"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="glu-cR-yHR" secondAttribute="bottom" constant="12" id="Oqp-Zh-vyc"/>
+                                    <constraint firstItem="OXe-05-0Hx" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" constant="16" id="Pvx-QL-nSj"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" id="R56-sQ-hrV"/>
-                                    <constraint firstAttribute="trailing" secondItem="OXe-05-0Hx" secondAttribute="trailing" constant="30" id="WMR-11-caQ"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="6" id="X3C-OL-Ffk"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="4" id="Z8r-j1-Yxf"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="4" id="Zae-oj-2Za"/>
+                                    <constraint firstAttribute="trailing" secondItem="OXe-05-0Hx" secondAttribute="trailing" constant="16" id="agf-Z7-hfM"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="16" id="g2w-Ka-6AM"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" id="ghP-Sf-gPf"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="8" id="jsy-SD-dew"/>
@@ -197,7 +201,6 @@
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="8" id="rdr-jd-DZW"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="width" secondItem="6PY-eE-fEO" secondAttribute="width" id="wlP-nx-R4y"/>
                                     <constraint firstAttribute="trailing" secondItem="7k4-Tz-JY1" secondAttribute="trailing" constant="8" id="x8N-3b-qF1"/>
-                                    <constraint firstItem="OXe-05-0Hx" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" constant="30" id="y7k-AJ-bba"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
@@ -226,6 +229,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cancel icon.ico" width="48" height="48"/>
         <image name="events_icon" width="25" height="25"/>
         <image name="facebook_icon" width="24" height="24"/>
         <image name="location icon.ico" width="16" height="16"/>

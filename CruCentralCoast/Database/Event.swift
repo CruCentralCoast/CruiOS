@@ -40,10 +40,10 @@ class Event: NSObject, DatabaseObject {
         self.locationDict = locationDict
         self.facebookURL = facebookURL
         
-        guard let street = locationDict.value(forKey: "street1") as? String,
-            let city = locationDict.value(forKey: "suburb") as? String,
-            let state = locationDict.value(forKey: "state") as? String,
-            let postcode = locationDict.value(forKey: "postcode") as? String
+        guard let street = locationDict["street1"] as? String,
+            let city = locationDict["suburb"] as? String,
+            let state = locationDict["state"] as? String,
+            let postcode = locationDict["postcode"] as? String
         else {
             return nil
         }
