@@ -11,8 +11,7 @@ import UIKit
 enum ProfileTableViewCellType {
     case email
     case notifications
-    case changeCampus
-    case changeMinistry
+    case chooseMovements
     case loginLogout
 }
 
@@ -20,7 +19,7 @@ class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let tableViewLayout: [ProfileTableViewCellType] = [.email, .notifications, .changeCampus, .changeMinistry, .loginLogout]
+    let tableViewLayout: [ProfileTableViewCellType] = [.email, .notifications, .chooseMovements, .loginLogout]
     let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
     private var shadowImageView: UIImageView?
     
@@ -77,15 +76,10 @@ extension ProfileVC: UITableViewDataSource {
             cell = tableView.dequeueCell(ProfileEmailCell.self, indexPath: indexPath)
         case .notifications:
             cell = tableView.dequeueCell(ProfileNotificationsCell.self, indexPath: indexPath)
-        case .changeCampus:
+        case .chooseMovements:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
-            if let loginLogoutCell = cell as? ProfileSelectableTextCell {
-                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Change Campus")
-            }
-        case .changeMinistry:
-            cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
-            if let loginLogoutCell = cell as? ProfileSelectableTextCell {
-                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Change Ministry")
+            if let cell = cell as? ProfileSelectableTextCell {
+                cell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Choose Movement")
             }
         case .loginLogout:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
@@ -100,10 +94,7 @@ extension ProfileVC: UITableViewDataSource {
 
 extension ProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch self.tableViewLayout[indexPath.row] {
-        case .email, .notifications, .changeCampus, .changeMinistry, .loginLogout:
-            return 44
-        }
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -111,23 +102,16 @@ extension ProfileVC: UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        // this should be the exact height of the "ProfileHeaderView"
-        return 172
+        return self.profileHeaderView.frame.height
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch self.tableViewLayout[indexPath.row] {
         case .notifications:
-            self.show(UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(NotificationsVC.self), sender: self)
-        case .changeCampus:
-            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ChangeCampusOrMinistryVC")
-            vc.title = "Change Campus"
-            let navVC = UINavigationController(rootViewController: vc)
-            self.present(navVC, animated: true, completion: nil)
-            break
-        case .changeMinistry:
-            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(withIdentifier: "ChangeCampusOrMinistryVC")
-            vc.title = "Change Ministry"
+            self.show(NotificationsVC(), sender: self)
+        case .chooseMovements:
+            let vc = ChooseCampusVC()
+            vc.title = "Choose Campus"
             let navVC = UINavigationController(rootViewController: vc)
             self.present(navVC, animated: true, completion: nil)
             break
