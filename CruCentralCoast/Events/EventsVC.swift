@@ -43,7 +43,7 @@ class EventsVC: UITableViewController {
         self.tableView.setContentOffset(tableView.contentOffset, animated: false)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 140
+        self.tableView.estimatedRowHeight = 140;
         
         DatabaseManager.instance.getEvents { (events) in
             self.dataArray = events
@@ -181,6 +181,7 @@ extension EventsVC: UIViewControllerTransitioningDelegate {
         }
         self.statusBarIsHidden = true
         self.originFrame = relativeFrame
+        
         let transition = EventDetailsTransition(originFrame: relativeFrame)
         transition.presenting = true
         return transition
