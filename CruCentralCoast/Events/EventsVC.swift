@@ -9,12 +9,6 @@
 import UIKit
 
 class EventsVC: UITableViewController {
-    var selectedCell: EventsTableCell?
-    var originFrame: CGRect?
-    var longPressIndexPath: IndexPath!
-    var longPressCancelled: Bool = false
-    var longPressFailed: Bool = false
-    var longPressGestureRecognizer: UILongPressGestureRecognizer?
     
     var dataArray = [Event]()
     
@@ -57,72 +51,7 @@ class EventsVC: UITableViewController {
             }
             self.tableView.reloadData()
         }
-        self.createLongPressGesture()
     }
-    
-    func createLongPressGesture() {
-        self.longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPressGesture(gestureRecognizer:)))
-        guard let longPressGestureRecognizer = self.longPressGestureRecognizer else {
-            return
-        }
-        longPressGestureRecognizer.minimumPressDuration = 0.05
-        longPressGestureRecognizer.allowableMovement = 0
-        longPressGestureRecognizer.delegate = self
-        self.tableView.addGestureRecognizer(longPressGestureRecognizer)
-    }
-    
-    @objc internal func handleLongPressGesture(gestureRecognizer: UILongPressGestureRecognizer) {
-        let touchPoint = gestureRecognizer.location(in: self.view)
-        if gestureRecognizer.state == .began {
-            self.longPressCancelled = false
-            self.longPressFailed = false
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                self.longPressIndexPath = indexPath
-                self.longPressGestureBegan(indexPath: indexPath)
-            }
-        } else if gestureRecognizer.state == .ended {
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                if indexPath == self.longPressIndexPath {
-                    self.longPressGestureEnded(indexPath: indexPath)
-                } else {
-                    self.longPressGestureCancelled(indexPath: self.longPressIndexPath)
-                }
-            }
-        } else if gestureRecognizer.state == .cancelled {
-            self.longPressCancelled = true
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                self.longPressGestureCancelled(indexPath: indexPath)
-            }
-        }
-        else if gestureRecognizer.state == .failed {
-            self.longPressFailed = true
-            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
-                self.longPressGestureCancelled(indexPath: indexPath)
-            }
-        }
-    }
-    
-    
-    
-    //code is commented out for the time being but will be used in the future
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return true
-//    }
-    
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if gestureRecognizer == self.tableView.panGestureRecognizer && otherGestureRecognizer == self.longPressGestureRecognizer {
-//            return true
-//        }
-//        gestureRecognizer.cancelsTouchesInView = true
-//        return false
-//    }
-//    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-//        if gestureRecognizer == self.tableView.panGestureRecognizer && otherGestureRecognizer == self.longPressGestureRecognizer {
-//            return true
-//        }
-//        return false
-//    }
-    
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -138,62 +67,10 @@ class EventsVC: UITableViewController {
         cell.selectionStyle = .none
         return cell
     }
-}
-
-extension EventsVC: UIGestureRecognizerDelegate {
-    func longPressGestureBegan(indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.2, animations: {
-            cell?.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-        })
-    }
     
-    func longPressGestureEnded(indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(EventDetailsVC.self) as EventDetailsVC
-        if self.longPressCancelled == false && self.longPressFailed == false {
-            UIView.animate(withDuration: 0.05, animations: {
-                cell?.transform = CGAffineTransform.identity
-            }, completion: { (finish) in
-                vc.configure(with: self.dataArray[indexPath.item])
-                vc.transitioningDelegate = self
-                self.selectedCell = self.tableView.cellForRow(at: indexPath) as? EventsTableCell
-                self.navigationController?.present(vc, animated: true, completion: nil)
-            })
-        }
-    }
-    
-    func longPressGestureCancelled(indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        UIView.animate(withDuration: 0.2, animations: {
-            cell?.transform = CGAffineTransform.identity
-        })
-    }
-}
-
-extension EventsVC: UIViewControllerTransitioningDelegate {
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let selectedCell = self.selectedCell else {
-            return nil
-        }
-        guard let relativeFrame = selectedCell.cellMask.superview?.convert((selectedCell.cellMask.frame), to: nil) else {
-            return nil
-        }
-        self.statusBarIsHidden = true
-        self.originFrame = relativeFrame
-        
-        let transition = EventDetailsTransition(originFrame: relativeFrame)
-        transition.presenting = true
-        return transition
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        guard let originFrame = self.originFrame else {
-            return nil
-        }
-        self.statusBarIsHidden = false
-        let transition = EventDetailsTransition(originFrame: originFrame)
-        transition.presenting = false
-        return transition
+        vc.configure(with: self.dataArray[indexPath.item])
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 }
