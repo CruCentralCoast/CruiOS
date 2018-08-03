@@ -12,12 +12,15 @@ import UIKit
     
     @IBOutlet weak var cellMask: UIView!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var shortDescription: UILabel!
     @IBOutlet weak var imageCellView: UIImageView! //named imageCellView because imageView was already a variable name used by the tableView
+    
     @objc var event: Event! {
         didSet {
             self.dateLabel.text = event.startDate.toString(dateFormat: "MMM-dd-yyyy")
-            self.descriptionLabel.text = self.event.title
+            self.titleLabel.text = self.event.title
+            self.shortDescription.text = self.event.summary
             self.imageCellView.image = self.event.image
         }
     }
@@ -27,9 +30,9 @@ import UIKit
         
         self.cellMask.layer.cornerRadius = 20
         self.cellMask.layer.shadowColor = UIColor.black.cgColor
-        self.cellMask.layer.shadowOpacity = 0.2
+        self.cellMask.layer.shadowOpacity = 0.2 // used to be 0.2
         self.cellMask.layer.shadowOffset = CGSize.zero
-        self.cellMask.layer.shadowRadius = 6
+        self.cellMask.layer.shadowRadius = 10 // used to be 6
         self.imageCellView.layer.cornerRadius = 20
         self.imageCellView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         self.imageCellView.layer.masksToBounds = true
