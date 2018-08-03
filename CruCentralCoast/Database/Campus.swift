@@ -20,12 +20,17 @@ class Campus: RealmObject {
     /// Inverse relationship that is auto-updated
     let movements = LinkingObjects(fromType: Movement.self, property: "campus")
     
-    func set(with dict: [String: Any]) {
+    func set(with dict: [String: Any]) -> Bool {
         guard let id = dict["id"] as? String,
-            let name = dict["name"] as? String else { return }
+            let name = dict["name"] as? String
+        else {
+            assertionFailure("Client and Server data models don't agree: \(self.className())")
+            return false
+        }
         
         self.id = id
         self.name = name
         self.imageLink = dict["imageLink"] as? String
+        return true
     }
 }

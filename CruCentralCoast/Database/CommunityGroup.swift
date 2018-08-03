@@ -28,30 +28,37 @@ class CommunityGroup: RealmObject {
     /// Inverse relationship that is auto-updated
     let members = LinkingObjects(fromType: Person.self, property: "communityGroups")
     
+    // Computed Properties
     var gender: Gender { return Gender(rawValue: self.genderString) ?? .mixed }
     var year: Year { return Year(rawValue: self.yearString) ?? .mixed }
     var weekDay: WeekDay { return WeekDay(rawValue: self.weekDayString) ?? .sunday }
     
-    func set(with dict: [String : Any]) {
+    func set(with dict: [String : Any]) -> Bool {
         guard let id = dict["id"] as? String,
-            let name = dict["name"] as? String,
-            let genderString = dict["gender"] as? String,
-            let yearString = dict["type"] as? String,
-            let weekDayString = dict["dayOfWeek"] as? String,
-            let time = dict["meetingTime"] as? String else { return }
+            let name = dict["name"] as? String
+        else {
+            assertionFailure("Client and Server data models don't agree: \(self.className())")
+            return false
+        }
+        // TODO: Uncomment these lines when the properties become required on the backend
+//            let genderString = dict["gender"] as? String,
+//            let yearString = dict["type"] as? String,
+//            let weekDayString = dict["dayOfWeek"] as? String,
+//            let time = dict["meetingTime"] as? String else { fatalError("Client and Server data models don't agree: \(self.className())") }
         
         self.id = id
         self.name = name
         self.summary = dict["discription"] as? String
-        self.genderString = genderString.lowercased()
-        self.yearString = yearString.lowercased()
-        self.weekDayString = weekDayString.lowercased()
-        self.time = time
+        self.genderString = (dict["gender"] as? String ?? "").lowercased()//genderString.lowercased()
+        self.yearString = (dict["type"] as? String ?? "").lowercased()//yearString.lowercased()
+        self.weekDayString = (dict["dayOfWeek"] as? String ?? "").lowercased()//weekDayString.lowercased()
+        self.time = (dict["meetingTime"] as? String ?? "").lowercased()//time
         self.imageLink = dict["imageLink"] as? String
+        return true
     }
     
     func relate(with dict: [String : Any]) {
-        if let movementReference = dict["parentMinistry"] as? DocumentReference {
+        if let movementReference = dict["ministry"] as? DocumentReference {
             DatabaseManager.instance.assignRelation("movement", on: self, with: movementReference, ofType: Movement.self)
         }
         if let leadersArray = dict["leaders"] as? [DocumentReference] {

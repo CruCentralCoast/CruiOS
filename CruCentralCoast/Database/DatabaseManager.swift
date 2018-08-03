@@ -60,24 +60,29 @@ class DatabaseManager {
                     
                     // Find the existing realm object or create a new one
                     if let realmObject = (realm.objects(T.self).filter { $0.id == diff.document.documentID }.first) {
-                        // Update the object's properties
+                        // Try to update the object's properties
                         try! realm.write {
-                            realmObject.set(with: dict)
+                            if !realmObject.set(with: dict) {
+                                print("WARN: \(T.className())'s properties could not be updated.")
+                            }
                         }
                         
                         // Update the object's relations
                         realmObject.relate?(with: dict)
                     } else {
-                        // Create the realm object and set its properties
+                        // Try to create the realm object and set its properties
                         let realmObject = T()
-                        realmObject.set(with: dict)
+                        if realmObject.set(with: dict) {
                         
-                        // Update the object's relations
-                        realmObject.relate?(with: dict)
-                        
-                        // Add the new object to the realm database
-                        try! realm.write {
-                            realm.add(realmObject)
+                            // Update the object's relations
+                            realmObject.relate?(with: dict)
+                            
+                            // Add the new object to the realm database
+                            try! realm.write {
+                                realm.add(realmObject)
+                            }
+                        } else {
+                            print("WARN: New \(T.className())'s properties could not be updated.")
                         }
                     }
                 case .removed:
@@ -112,7 +117,7 @@ class DatabaseManager {
         } else {
             print("Could not find realm object with id: \(documentReference.documentID). Downloading it now.")
             // Download the object from Firebase
-            self.downloadObject(T.self, document: documentReference) { secondObject in
+            self.downloadObject(T.self, reference: documentReference) { secondObject in
                 // Assign the relation on the first object
                 try! realm.write {
                     firstObject.setValue(secondObject, forKey: property)
@@ -141,7 +146,7 @@ class DatabaseManager {
             } else {
                 print("Could not find realm object with id: \(documentReference.documentID). Downloading it now.")
                 // Download the object from Firebase
-                self.downloadObject(T.self, document: documentReference) { secondObject in
+                self.downloadObject(T.self, reference: documentReference) { secondObject in
                     // Update the relation on the first object
                     try! realm.write {
                         // Add the second object to the existing relation list
@@ -160,11 +165,15 @@ class DatabaseManager {
     /// or create a new one. Only the Realm object's properties are updated here, not its relations.
     /// This method should NOT be used to download a collection of objects since relations are not
     /// updated. See the listenForChangesInCollection() method for downloading collections.
-    private func downloadObject<T: RealmObject>(_ classType: T.Type, document: DocumentReference, completion: ((T)->Void)? = nil) {
-        document.getDocument { (document, error) in
+    private func downloadObject<T: RealmObject>(_ classType: T.Type, reference: DocumentReference, completion: ((T)->Void)? = nil) {
+        reference.getDocument { (document, error) in
             // Handle failure
             guard let document = document else {
-                print("Error downloading object from database: \(error!)")
+                print("ERROR: Failed to download \(T.className()) reference \(reference.documentID) from database: \(error!)")
+                return
+            }
+            guard document.exists else {
+                print("WARN: \(T.className()) reference \(document.documentID) does not exist in database.")
                 return
             }
             
@@ -176,22 +185,28 @@ class DatabaseManager {
             let realm = try! Realm()
             
             // Find the existing realm object or create a new one
-            if let realmObject = (realm.objects(T.self).filter { $0.id == document.documentID }.first) {
+            let objects = realm.objects(T.self)
+            if let realmObject = (objects.filter { $0.id == document.documentID }.first) {
+                // Try to update the object's properties
                 try! realm.write {
-                    // Update the object's properties
-                    realmObject.set(with: dict)
+                    if !realmObject.set(with: dict) {
+                        print("WARN: \(T.className())'s properties could not be updated.")
+                    }
                 }
                 completion?(realmObject)
             } else {
-                // Create the realm object and set its properties
+                // Try to create the realm object and set its properties
                 let realmObject = T()
-                realmObject.set(with: dict)
+                if realmObject.set(with: dict) {
                 
-                // Add the new object to the realm database
-                try! realm.write {
-                    realm.add(realmObject)
+                    // Add the new object to the realm database
+                    try! realm.write {
+                        realm.add(realmObject)
+                    }
+                    completion?(realmObject)
+                } else {
+                    print("WARN: New \(T.className())'s properties could not be updated.")
                 }
-                completion?(realmObject)
             }
         }
     }
@@ -340,17 +355,6 @@ extension DatabaseManager {
         }
         return resources
     }
-    
-//    func getResources(ofType type: ResourceType, _ completion: @escaping ([Resource])->Void) {
-//        self.database.collection(Resource.databasePath).whereField("type", isEqualTo: type.string).getDocuments { (querySnapshot, error) in
-//            if let error = error {
-//                print("Error getting resources from database: \(error)")
-//            } else {
-//                let resources = querySnapshot?.documents.compactMap { Resource.createResource(dict: $0.data() as NSDictionary) } ?? []
-//                completion(resources)
-//            }
-//        }
-//    }
 }
 
 final class WeakRef<A: AnyObject> {
@@ -380,7 +384,7 @@ typealias RealmObject = Object & RealmObjectProtocol
     var id: String! { get set }
     
     /// Set the properties on a Realm object.
-    func set(with dict: [String: Any])
+    func set(with dict: [String: Any]) -> Bool
     /// Set the relations on a Realm object.
     @objc optional func relate(with dict: [String: Any])
 }

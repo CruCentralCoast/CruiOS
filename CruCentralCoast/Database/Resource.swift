@@ -19,16 +19,21 @@ class Resource: RealmObject {
     @objc dynamic var url: String!
     @objc dynamic private var typeString: String!
     
+    // Computed Properties
     var type: ResourceType { return ResourceType(rawValue: self.typeString) ?? .article }
     var formattedDate: String { return self.date.toString(dateStyle: .medium, timeStyle: .none) }
     
-    func set(with dict: [String: Any]) {
+    func set(with dict: [String: Any]) -> Bool {
         guard let id = dict["id"] as? String,
             let title = dict["title"] as? String,
             let author = dict["author"] as? String,
             let date = dict["date"] as? Date,
             let url = dict["url"] as? String,
-            let typeString = dict["type"] as? String else { return }
+            let typeString = dict["type"] as? String
+        else {
+            assertionFailure("Client and Server data models don't agree: \(self.className())")
+            return false
+        }
         
         self.id = id
         self.title = title
@@ -36,6 +41,7 @@ class Resource: RealmObject {
         self.date = date
         self.url = url
         self.typeString = typeString
+        return true
     }
     
     static func createResource(dict: NSDictionary) -> Resource? {
@@ -47,8 +53,8 @@ class Resource: RealmObject {
         case "video": resource = VideoResource()
         default: resource = ArticleResource()
         }
-        resource.set(with: dict as! [String: Any])
-        return resource
+        // If it fails to set the object's properties, return nil
+        return resource.set(with: dict as! [String: Any]) ? resource : nil
     }
 }
 

@@ -24,15 +24,20 @@ class MinistryTeam: RealmObject {
     /// Inverse relationship that is auto-updated
     let members = LinkingObjects(fromType: Person.self, property: "ministryTeams")
     
-    func set(with dict: [String : Any]) {
+    func set(with dict: [String : Any]) -> Bool {
         guard let id = dict["id"] as? String,
             let name = dict["name"] as? String,
-            let summary = dict["description"] as? String else { return }
+            let summary = dict["description"] as? String
+        else {
+            assertionFailure("Client and Server data models don't agree: \(self.className())")
+            return false
+        }
         
         self.id = id
         self.name = name
         self.summary = summary
         self.imageLink = dict["teamImageLink"] as? String
+        return true
     }
     
     func relate(with dict: [String : Any]) {

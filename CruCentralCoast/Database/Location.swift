@@ -17,6 +17,7 @@ class Location: Object {
     @objc dynamic var state: String?
     @objc dynamic var postcode: String?
     
+    // Computed Properties
     var string: String {
         var locationString = ""
         if let street = self.street, !street.isEmpty, street != "TBD" {

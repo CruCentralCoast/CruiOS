@@ -25,14 +25,19 @@ class Event: RealmObject {
     // Relations
     let movements = List<Movement>()
     
+    // TODO: Remove this property when an ImageManager is setup
     var image: UIImage?
     
-    func set(with dict: [String: Any]) {
+    func set(with dict: [String: Any]) -> Bool {
         guard let id = dict["id"] as? String,
             let title = dict["name"] as? String,
             let summary = dict["description"] as? String,
             let startDate = dict["startDate"] as? Date,
-            let endDate = dict["endDate"] as? Date else { return }
+            let endDate = dict["endDate"] as? Date
+        else {
+            assertionFailure("Client and Server data models don't agree: \(self.className())")
+            return false
+        }
         
         self.id = id
         self.title = title
@@ -42,6 +47,7 @@ class Event: RealmObject {
         self.imageLink = dict["imageLink"] as? String
         self.facebookUrl = dict["url"] as? String
         self.location = Location(dict: dict["location"] as? NSDictionary)
+        return true
     }
     
     func relate(with dict: [String: Any]) {

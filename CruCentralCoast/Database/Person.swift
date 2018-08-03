@@ -27,10 +27,14 @@ class Person: RealmObject {
     let ministryTeams = List<MinistryTeam>()
     let missions = List<Mission>()
     
-    func set(with dict: [String : Any]) {
+    func set(with dict: [String : Any]) -> Bool {
         guard let id = dict["id"] as? String,
             let nameDict = dict["name"] as? NSDictionary,
-            let firstName = nameDict["first"] as? String else { return }
+            let firstName = nameDict["first"] as? String
+        else {
+            assertionFailure("Client and Server data models don't agree: \(self.className())")
+            return false
+        }
         
         self.id = id
         self.name = firstName
@@ -39,6 +43,7 @@ class Person: RealmObject {
         }
         self.email = dict["email"] as? String
         self.phone = dict["phone"] as? String
+        return true
     }
     
     func relate(with dict: [String: Any]) {
@@ -48,8 +53,9 @@ class Person: RealmObject {
         if let ministryTeamsArray = dict["ministryTeams"] as? [DocumentReference] {
             DatabaseManager.instance.assignRelationList("ministryTeams", on: self, with: ministryTeamsArray, ofType: MinistryTeam.self)
         }
-        if let missionsArray = dict["summerMissions"] as? [DocumentReference] {
-            DatabaseManager.instance.assignRelationList("missions", on: self, with: missionsArray, ofType: Mission.self)
-        }
+        // TODO: Uncomment when User missions are fixed on backend
+//        if let missionsArray = dict["summerMissions"] as? [DocumentReference] {
+//            DatabaseManager.instance.assignRelationList("missions", on: self, with: missionsArray, ofType: Mission.self)
+//        }
     }
 }
