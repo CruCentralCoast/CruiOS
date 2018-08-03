@@ -48,7 +48,7 @@ class EventDetailsVC: UIViewController {
         self.dateLabel.text = self.event?.startDate.toString(dateFormat: "MMM-dd-yyyy")
         self.descriptionLabel.text = self.event?.summary
         self.imageView.image = self.event?.image
-        self.locationButton.setTitle(self.event?.locationButtonTitle, for: .normal)
+        self.locationButton.setTitle(self.event?.location?.street, for: .normal)
     }
     
     @IBAction func dismissDetail(_ sender: Any) {
@@ -58,11 +58,8 @@ class EventDetailsVC: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
     @IBAction func locationButtonPressed(_ sender: Any) {
-        guard let eventLocation = self.event?.location else {
-            return
-        }
+        guard let eventLocation = self.event?.location?.string else { return }
         
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(eventLocation) { (placemarks, error) in
@@ -88,16 +85,14 @@ class EventDetailsVC: UIViewController {
             ]
             let mkPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: mkPlacemark)
-            mapItem.name = self.event?.locationButtonTitle
+            mapItem.name = self.event?.location?.street
             mapItem.openInMaps(launchOptions: options)
         }
     }
     
     //found at https://www.hackingwithswift.com/read/32/3/how-to-use-sfsafariviewcontroller-to-browse-a-web-page
     @IBAction func facebookButtonPressed(_ sender: Any) {
-        guard let facebookURL = event?.facebookURL else {
-            return
-        }
+        guard let facebookURL = event?.facebookUrl else { return }
         
         if let url = URL(string: facebookURL) {
             let config = SFSafariViewController.Configuration()
@@ -112,23 +107,28 @@ class EventDetailsVC: UIViewController {
         let eventStore: EKEventStore = EKEventStore()
         
         eventStore.requestAccess(to: .event) { (granted, error) in
-            if (granted) && (error == nil) {
-                let event: EKEvent = EKEvent(eventStore: eventStore)
-                event.title = self.event?.title
-                event.startDate = self.event?.startDate
-                event.endDate = self.event?.endDate
-                event.notes = self.event?.description
-                event.calendar = eventStore.defaultCalendarForNewEvents
-                do {
-                    try eventStore.save(event,span: .thisEvent)
-                        self.presentAlert(title: "Calendar", message: "Event Successfully added to calendar")
-                } catch let error as NSError {
-                    print("Error : \(error)")
-                }
-                print("Save Event")
-            } else {
-                print("error : \(error))")
+            if let error = error {
+                print(error)
+                return
             }
+            if !granted {
+                print("Calender access denied.")
+                return
+            }
+
+            let event: EKEvent = EKEvent(eventStore: eventStore)
+            event.title = self.event?.title
+            event.startDate = self.event?.startDate
+            event.endDate = self.event?.endDate
+            event.notes = self.event?.description
+            event.calendar = eventStore.defaultCalendarForNewEvents
+            do {
+                try eventStore.save(event,span: .thisEvent)
+                self.presentAlert(title: "Calendar", message: "Event Successfully added to calendar")
+            } catch let error as NSError {
+                print(error)
+            }
+            print("Save Event")
         }
     }
     
