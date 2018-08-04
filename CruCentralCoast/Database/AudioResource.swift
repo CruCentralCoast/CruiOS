@@ -8,11 +8,4 @@
 
 import Foundation
 
-class AudioResource: Resource {
-    
-    required init?(dict: NSDictionary) {
-        // initialize other stuff here
-        
-        super.init(dict: dict)
-    }
-}
+class AudioResource: Resource { }

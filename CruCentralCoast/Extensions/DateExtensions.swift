@@ -14,4 +14,12 @@ public extension Date {
         dateFormatter.dateFormat = format
         return dateFormatter.string(from: self)
     }
+    
+    func toString(dateStyle: DateFormatter.Style = .medium, timeStyle: DateFormatter.Style = .short) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = dateStyle
+        dateFormatter.timeStyle = timeStyle
+        dateFormatter.locale = Locale(identifier: "en_US")
+        return dateFormatter.string(from: self)
+    }
 }

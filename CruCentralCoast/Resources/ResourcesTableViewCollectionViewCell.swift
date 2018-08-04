@@ -7,23 +7,23 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var resources: [Resource] = []
+    var resources: Results<Resource>!
+    var filteredResources: [Resource]!
     var resourcePresentingDelegate: ResourcePresentingDelegate?
     var type: ResourceType = .audio {
         didSet {
             self.activityIndicator.startAnimating()
             self.tableView.isHidden = true
-            ResourceManager.instance.getResources(ofType: self.type) { resources in
-                self.resources = resources
-                self.tableView.reloadData()
-                self.activityIndicator.stopAnimating()
-                self.tableView.isHidden = false
-            }
+            self.filteredResources = self.resources.filter { $0.type == self.type }
+            self.tableView.reloadData()
+            self.activityIndicator.stopAnimating()
+            self.tableView.isHidden = false
         }
     }
     
@@ -37,24 +37,25 @@ class ResourcesTableViewCollectionViewCell: UICollectionViewCell {
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(self.refreshResources(_:)), for: .valueChanged)
+        
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.resources = DatabaseManager.instance.getResources()
     }
     
     @objc private func refreshResources(_ refreshControl: UIRefreshControl) {
-        ResourceManager.instance.refreshResources(ofType: self.type) { resources in
-            self.resources = resources
-            self.tableView.reloadData()
-            refreshControl.endRefreshing()
-        }
+        self.filteredResources = self.resources.filter { $0.type == self.type }
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
     }
 }
 
 extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.resources.count
+        return self.filteredResources.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let resource = self.resources[indexPath.row]
+        let resource = self.filteredResources[indexPath.row]
         switch self.type {
         case .audio:
             let cell = tableView.dequeueCell(AudioResourcesCell.self, indexPath: indexPath)
@@ -66,7 +67,7 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
             cell.titleLabel.text = resource.title
             cell.dateLabel.text = resource.formattedDate
             if let videoResource = resource as? VideoResource {
-                if let url = URL(string: videoResource.imageURL) {
+                if let url = URL(string: videoResource.imageLink) {
                     cell.previewImage.downloadedFrom(url: url)
                 } else {
                     cell.imageWidthConstraint.constant = 0
@@ -83,7 +84,7 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.cellForRow(at: indexPath)?.isSelected = false
-        let resource = self.resources[indexPath.row]
+        let resource = self.filteredResources[indexPath.row]
         self.resourcePresentingDelegate?.presentResource(of: self.type, resource: resource)
     }
 }
@@ -91,5 +92,12 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
 extension ResourcesTableViewCollectionViewCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+}
+
+extension ResourcesTableViewCollectionViewCell: DatabaseListenerProtocol {
+    func updatedResources() {
+        print("Resources were updated - refreshing UI")
+        self.refreshResources(self.tableView.refreshControl!)
     }
 }

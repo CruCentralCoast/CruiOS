@@ -7,50 +7,49 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseFirestore
+import RealmSwift
 
-class Event: NSObject, DatabaseObject {
-    var title: String
-    var startDate: Date
-    var endDate: Date
-    var summary: String
-    var locationDict: NSDictionary
-    var locationButtonTitle: String = "" //empty quotes bc it is concatinated later
-    var location: String = ""
-    var imageLink: String
-    var facebookURL: String
-    @objc dynamic var image: UIImage?
+class Event: RealmObject {
     
-    required init?(dict: NSDictionary) {
-        guard let title = dict["name"] as? String,
+    // Properties
+    @objc dynamic var id: String!
+    @objc dynamic var title: String!
+    @objc dynamic var summary: String!
+    @objc dynamic var startDate: Date!
+    @objc dynamic var endDate: Date!
+    @objc dynamic var imageLink: String?
+    @objc dynamic var facebookUrl: String?
+    @objc dynamic var location: Location?
+    
+    // Relations
+    let movements = List<Movement>()
+    
+    func set(with dict: [String: Any]) -> Bool {
+        guard let id = dict["id"] as? String,
+            let title = dict["name"] as? String,
             let summary = dict["description"] as? String,
             let startDate = dict["startDate"] as? Date,
-            let endDate = dict["endDate"] as? Date,
-            let locationDict = dict["location"] as? NSDictionary,
-            let imageLink = dict["imageLink"] as? String,
-            let facebookURL = dict["url"] as? String
+            let endDate = dict["endDate"] as? Date
         else {
-            return nil
+            assertionFailure("Client and Server data models don't agree: \(self.className())")
+            return false
         }
+        
+        self.id = id
         self.title = title
         self.summary = summary
         self.startDate = startDate
-        self.imageLink = imageLink
         self.endDate = endDate
-        self.locationDict = locationDict
-        self.facebookURL = facebookURL
-        
-        guard let street = locationDict["street1"] as? String,
-            let city = locationDict["suburb"] as? String,
-            let state = locationDict["state"] as? String,
-            let postcode = locationDict["postcode"] as? String
-        else {
-            return nil
+        self.imageLink = dict["imageLink"] as? String
+        self.facebookUrl = dict["url"] as? String
+        self.location = Location(dict: dict["location"] as? NSDictionary)
+        return true
+    }
+    
+    func relate(with dict: [String: Any]) {
+        if let movementsArray = dict["ministries"] as? [DocumentReference] {
+            DatabaseManager.instance.assignRelationList("movements", on: self, with: movementsArray, ofType: Movement.self)
         }
-        
-        self.locationButtonTitle += street //format of the viewable Address
-        self.location += (street + ", " + city + ", " + state + " " + postcode) //format of the full address
-        
-        super.init()
     }
 }

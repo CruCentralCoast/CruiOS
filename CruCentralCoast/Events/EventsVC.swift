@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EventsVC: UITableViewController {
     
-    var dataArray = [Event]()
+    var dataArray: Results<Event>!
     
     var statusBarIsHidden: Bool = false {
         didSet{
@@ -34,23 +35,14 @@ class EventsVC: UITableViewController {
         super.viewDidLoad()
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(EventsTableCell.self)
+        
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.dataArray = DatabaseManager.instance.getEvents()
+
         self.tableView.setContentOffset(tableView.contentOffset, animated: false)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 140;
-        
-        DatabaseManager.instance.getEvents { (events) in
-            self.dataArray = events
-            for event in self.dataArray {
-                UIImage.downloadedFrom(link: event.imageLink, completion: { (image) in
-                    event.image = image
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                })
-            }
-            self.tableView.reloadData()
-        }
+        self.tableView.estimatedRowHeight = 140
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -72,5 +64,12 @@ class EventsVC: UITableViewController {
         let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(EventDetailsVC.self) as EventDetailsVC
         vc.configure(with: self.dataArray[indexPath.item])
         self.navigationController?.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension EventsVC: DatabaseListenerProtocol {
+    func updatedEvents() {
+        print("Events were updated - refreshing UI")
+        self.tableView.reloadData()
     }
 }
