@@ -25,9 +25,6 @@ class Event: RealmObject {
     // Relations
     let movements = List<Movement>()
     
-    // TODO: Remove this property when an ImageManager is setup
-    var image: UIImage?
-    
     func set(with dict: [String: Any]) -> Bool {
         guard let id = dict["id"] as? String,
             let title = dict["name"] as? String,

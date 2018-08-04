@@ -16,12 +16,22 @@ import UIKit
     @IBOutlet weak var shortDescription: UILabel!
     @IBOutlet weak var imageCellView: UIImageView! //named imageCellView because imageView was already a variable name used by the tableView
     
+    private var currentImageLink: String?
     @objc var event: Event! {
         didSet {
             self.dateLabel.text = event.startDate.toString(dateFormat: "MMM-dd-yyyy")
             self.titleLabel.text = self.event.title
             self.shortDescription.text = self.event.summary
-            self.imageCellView.image = self.event.image
+            self.currentImageLink = self.event.imageLink
+            if let imageLink = self.event.imageLink {
+                ImageManager.instance.fetch(imageLink) { [weak self] image in
+                    if let currentImageLink = self?.currentImageLink, currentImageLink == imageLink {
+                        DispatchQueue.main.async {
+                            self?.imageCellView.image = image
+                        }
+                    }
+                }
+            }
         }
     }
     

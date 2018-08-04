@@ -44,14 +44,14 @@ class EventsVC: UITableViewController {
         self.tableView.registerCell(EventsTableCell.self)
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
-        self.people = DatabaseManager.instance.getPeople()
-        self.campuses = DatabaseManager.instance.getCampuses()
-        self.movements = DatabaseManager.instance.getMovements()
+//        self.people = DatabaseManager.instance.getPeople()
+//        self.campuses = DatabaseManager.instance.getCampuses()
+//        self.movements = DatabaseManager.instance.getMovements()
         self.dataArray = DatabaseManager.instance.getEvents()
-        self.communityGroups = DatabaseManager.instance.getCommunityGroups()
-        self.ministryTeams = DatabaseManager.instance.getMinistryTeams()
-        self.missions = DatabaseManager.instance.getMissions()
-        self.resources = DatabaseManager.instance.getResources()
+//        self.communityGroups = DatabaseManager.instance.getCommunityGroups()
+//        self.ministryTeams = DatabaseManager.instance.getMinistryTeams()
+//        self.missions = DatabaseManager.instance.getMissions()
+//        self.resources = DatabaseManager.instance.getResources()
 
         self.tableView.setContentOffset(tableView.contentOffset, animated: false)
         
@@ -93,16 +93,16 @@ extension EventsVC: DatabaseListenerProtocol {
     }
     func updatedEvents() {
         print("Events were updated - refreshing UI")
-        for event in self.dataArray {
-            if let imageLink = event.imageLink {
-                UIImage.downloadedFrom(link: imageLink, completion: { (image) in
-                    event.image = image
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                })
-            }
-        }
+//        for event in self.dataArray {
+//            if let imageLink = event.imageLink {
+//                UIImage.downloadedFrom(link: imageLink, completion: { (image) in
+//                    event.image = image
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                    }
+//                })
+//            }
+//        }
         self.tableView.reloadData()
     }
     func updatedCommunityGroups() {

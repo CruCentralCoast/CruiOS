@@ -23,6 +23,8 @@ class EventDetailsVC: UIViewController {
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
+    private var currentImageLink: String?
+    
     var statusBarIsHidden: Bool = true {
         didSet {
             UIView.animate(withDuration: 0.25) { () -> Void in
@@ -47,8 +49,17 @@ class EventDetailsVC: UIViewController {
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateFormat: "MMM-dd-yyyy")
         self.descriptionLabel.text = self.event?.summary
-        self.imageView.image = self.event?.image
         self.locationButton.setTitle(self.event?.location?.street, for: .normal)
+        self.currentImageLink = self.event?.imageLink
+        if let imageLink = self.event?.imageLink {
+            ImageManager.instance.fetch(imageLink) { [weak self] image in
+                if let currentImageLink = self?.currentImageLink, currentImageLink == imageLink {
+                    DispatchQueue.main.async {
+                        self?.imageView.image = image
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func dismissDetail(_ sender: Any) {
