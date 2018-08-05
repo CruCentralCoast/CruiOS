@@ -12,8 +12,8 @@
         <scene sceneID="zU8-53-U1I">
             <objects>
                 <navigationController title="Missions" id="YfW-IO-Qf9" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kwX-ao-EZo">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="kwX-ao-EZo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -41,7 +41,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hR-h5-QPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-80" y="362"/>
+            <point key="canvasLocation" x="18" y="376"/>
         </scene>
     </scenes>
 </document>
