@@ -66,8 +66,8 @@ extension ResourcesTableViewCollectionViewCell: UITableViewDataSource {
             let cell = tableView.dequeueCell(VideosResourcesCell.self, indexPath: indexPath)
             cell.titleLabel.text = resource.title
             cell.dateLabel.text = resource.formattedDate
-            if let videoResource = resource as? VideoResource {
-                if let url = URL(string: videoResource.imageLink) {
+            if let imageLink = resource.imageLink {
+                if let url = URL(string: imageLink) {
                     cell.previewImage.downloadedFrom(url: url)
                 } else {
                     cell.imageWidthConstraint.constant = 0

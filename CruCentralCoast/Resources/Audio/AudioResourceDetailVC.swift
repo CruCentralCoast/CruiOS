@@ -13,7 +13,7 @@ class AudioResourceDetailVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
     
-    var resource: AudioResource?
+    var resource: Resource?
     var audioResourceDelegate: AudioResourceDelegate?
     var audioPlayer: AVPlayer?
     
