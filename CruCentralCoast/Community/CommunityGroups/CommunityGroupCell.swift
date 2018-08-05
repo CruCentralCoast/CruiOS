@@ -1,5 +1,5 @@
 //
-//  CommunityTableViewCell.swift
+//  CommunityGroupCell.swift
 //  CruCentralCoast
 //
 //  Created by Landon Gerrits on 5/22/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CommunityTableViewCell: UITableViewCell {
+class CommunityGroupCell: UITableViewCell {
 
     @IBOutlet weak var cellMask: UIView!
     @IBOutlet weak var bannerImage: UIImageView!
@@ -19,8 +19,6 @@ class CommunityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    
     
         self.cellMask.layer.cornerRadius = 20
         self.cellMask.layer.shadowColor = UIColor.black.cgColor
@@ -33,8 +31,5 @@ class CommunityTableViewCell: UITableViewCell {
         self.bannerImage.clipsToBounds = true
     
         self.cellMask.clipsToBounds = false
-        
-        
     }
-    
 }

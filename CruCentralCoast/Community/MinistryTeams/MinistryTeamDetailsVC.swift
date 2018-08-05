@@ -80,5 +80,7 @@ class MinistryTeamDetailsVC: UIViewController {
         
     }
 
-
+    func configure(with ministryTeam: MinistryTeam) {
+        
+    }
 }
