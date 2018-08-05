@@ -29,18 +29,18 @@ class MinistryTeamsVC: UITableViewController {
         return self.dataArray.count
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = UIStoryboard(name: "MinistryTeamDetails", bundle: nil).instantiateViewController(MinistryTeamDetailsVC.self)
-        vc.configure(with: self.dataArray[indexPath.row])
-        self.navigationController?.present(vc, animated: true, completion: nil)
-    }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(MinistryTeamCell.self, indexPath: indexPath)
 
         cell.configure(with: self.dataArray[indexPath.row])
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "MinistryTeams", bundle: nil).instantiateViewController(MinistryTeamDetailsVC.self)
+        vc.configure(with: self.dataArray[indexPath.row])
+        self.navigationController?.present(vc, animated: true, completion: nil)
     }
 }
 

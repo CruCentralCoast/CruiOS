@@ -20,6 +20,9 @@ class CommunityGroupsVC: UITableViewController {
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.dataArray = DatabaseManager.instance.getCommunityGroups()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,11 +32,21 @@ class CommunityGroupsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(CommunityGroupCell.self, indexPath: indexPath)
         
-        cell.bannerImage.image = #imageLiteral(resourceName: "placeholder.jpg")
-        cell.bigLabel.text = "big label"
-        cell.smallLabel1.text = "label1"
-        cell.smallLabel2.text = "label2"
+        cell.configure(with: self.dataArray[indexPath.row])
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = UIStoryboard(name: "CommunityGroups", bundle: nil).instantiateViewController(CommunityGroupDetailsVC.self)
+        vc.configure(with: self.dataArray[indexPath.row])
+        self.navigationController?.present(vc, animated: true, completion: nil)
+    }
+}
+
+extension CommunityGroupsVC: DatabaseListenerProtocol {
+    func updatedCommunityGroups() {
+        print("Community Groups were updated - refreshing UI")
+        self.tableView.reloadData()
     }
 }

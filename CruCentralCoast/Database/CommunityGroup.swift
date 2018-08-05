@@ -32,6 +32,7 @@ class CommunityGroup: RealmObject {
     var gender: Gender { return Gender(rawValue: self.genderString) ?? .mixed }
     var year: Year { return Year(rawValue: self.yearString) ?? .mixed }
     var weekDay: WeekDay { return WeekDay(rawValue: self.weekDayString) ?? .sunday }
+    var leaderNames: String? { return self.leaders.compactMap { $0.name }.joined(separator: ", ") }
     
     func set(with dict: [String : Any]) -> Bool {
         guard let id = dict["id"] as? String,
