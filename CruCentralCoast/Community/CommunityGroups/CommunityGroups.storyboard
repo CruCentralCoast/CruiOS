@@ -40,7 +40,9 @@
                             <outlet property="delegate" destination="Wgi-iH-tIW" id="8SZ-Zf-h2a"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Community" image="community_icon" id="L1o-3A-1ta"/>
                     <navigationItem key="navigationItem" title="Community Groups" id="peq-9V-3BZ"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wWR-eV-eoA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -191,4 +193,7 @@
             <point key="canvasLocation" x="669.60000000000002" y="169.56521739130437"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="community_icon" width="31" height="21"/>
+    </resources>
 </document>

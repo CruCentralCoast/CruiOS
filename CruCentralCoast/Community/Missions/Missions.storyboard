@@ -39,7 +39,9 @@
                             <outlet property="delegate" destination="J8B-nZ-7kn" id="U3A-cl-EEj"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Missions" image="earth" id="vMK-Ss-1TN"/>
                     <navigationItem key="navigationItem" title="Missions" id="Ghf-zR-6Tu"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hR-h5-QPn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -151,4 +153,7 @@
             <point key="canvasLocation" x="813.60000000000002" y="375.56221889055473"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="earth" width="24" height="24"/>
+    </resources>
 </document>

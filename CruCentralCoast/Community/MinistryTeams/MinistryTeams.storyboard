@@ -39,7 +39,9 @@
                             <outlet property="delegate" destination="9w3-hs-ucw" id="Qzm-hp-A4R"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="Ministry" image="ministry" id="GnA-j2-d6F"/>
                     <navigationItem key="navigationItem" title="Ministry Teams" id="ves-Ki-rqf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q90-qB-Z3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -150,4 +152,7 @@
             <point key="canvasLocation" x="901.60000000000002" y="-320.68965517241384"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ministry" width="26" height="25"/>
+    </resources>
 </document>
