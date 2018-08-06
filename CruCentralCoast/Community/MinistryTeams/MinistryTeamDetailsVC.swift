@@ -8,79 +8,38 @@
 
 import UIKit
 
-private let reuseIdentifier = "MinistryCell"
-
-struct MinistryCellParameters {
-    let teamTitle : String
-    let teamMovement: String
-    let teamImage : UIImage
-    let teamLeaders : [String]
-    let teamDescription : String
-    
-    init(teamTitle: String, teamMovement: String = "Cru Calpoly",teamImage: UIImage = #imageLiteral(resourceName: "placeholder.jpg"), teamLeaders: [String], teamDescription: String) {
-        self.teamTitle = teamTitle
-        self.teamMovement = teamMovement
-        self.teamImage = teamImage
-        self.teamDescription = teamDescription
-        self.teamLeaders = teamLeaders
-    }
-}
-
 class MinistryTeamDetailsVC: UIViewController {
     
-    
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var ministyTitleLabel: UILabel!
-    @IBOutlet var movementLabel: UILabel!
-    @IBOutlet var teamLeaderNamesLabel: UILabel!
-    @IBOutlet var ministryDescription: UILabel!
-    
-    @IBOutlet var joinMinistyTeamButton: UIButton!
-    @IBOutlet var closeButton: UIButton!
-    
-    var ministryTitle: String?
-    var movementTitle: String?
-    var leaderNames: [String?] = []
-    var desc: String?
-    
-    override var prefersStatusBarHidden: Bool {return true}
+    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var movementLabel: UILabel!
+    @IBOutlet weak var leaderNamesLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ministyTitleLabel.text = ministryTitle
-        movementLabel.text = movementTitle
-        #if swift(>=4.1)
-        teamLeaderNamesLabel.text = leaderNames.compactMap({$0}).joined(separator: " ")
-        #else
-        teamLeaderNamesLabel.text = leaderNames.flatMap({$0}).joined(separator: " ")
-        #endif
-        ministryDescription.text = desc
-        
-        
-        
-        self.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
+        self.navigationItem.largeTitleDisplayMode = .never
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func didTapCloseButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    func configure(with cellParameters: MinistryCellParameters) {
-        self.ministryTitle = cellParameters.teamTitle
-        self.movementTitle = cellParameters.teamMovement
-        self.desc = cellParameters.teamDescription
-        self.leaderNames = cellParameters.teamLeaders
+    @IBAction func joinMinistryTeam() {
         
     }
-
+    
     func configure(with ministryTeam: MinistryTeam) {
-        
+        DispatchQueue.main.async {
+            self.nameLabel.text = ministryTeam.name
+            self.movementLabel.text = ministryTeam.movement?.name
+            self.leaderNamesLabel.text = "Leaders: \(ministryTeam.leaderNames ?? "N/A")"
+            self.summaryLabel.text = ministryTeam.summary
+            // Try to download the image, but only display it if this cell has not been reused
+            if let imageLink = ministryTeam.imageLink {
+                ImageManager.instance.fetch(imageLink) { [weak self] image in
+                    DispatchQueue.main.async {
+                        self?.bannerImageView.image = image
+                    }
+                }
+            }
+        }
     }
 }
