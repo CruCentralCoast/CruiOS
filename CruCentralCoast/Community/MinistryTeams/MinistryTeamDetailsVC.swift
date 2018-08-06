@@ -23,7 +23,8 @@ class MinistryTeamDetailsVC: UIViewController {
     }
 
     @IBAction func joinMinistryTeam() {
-        
+        // TODO
+        self.presentAlert(title: "Join Ministry Team", message: "Coming Soon...")
     }
     
     func configure(with ministryTeam: MinistryTeam) {

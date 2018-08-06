@@ -28,7 +28,8 @@ class CommunityGroupDetailsVC: UIViewController {
     }
     
     @IBAction func joinCommunityGroup() {
-        
+        // TODO
+        self.presentAlert(title: "Join Community Group", message: "Coming Soon...")
     }
     
     func configure(with communityGroup: CommunityGroup) {
