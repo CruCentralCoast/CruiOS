@@ -33,7 +33,7 @@ class MinistryTeamDetailsVC: UIViewController {
             self.movementLabel.text = ministryTeam.movement?.name
             self.leaderNamesLabel.text = "Leaders: \(ministryTeam.leaderNames ?? "N/A")"
             self.summaryLabel.text = ministryTeam.summary
-            // Try to download the image, but only display it if this cell has not been reused
+            // Fetch the image from local storage or download it
             if let imageLink = ministryTeam.imageLink {
                 ImageManager.instance.fetch(imageLink) { [weak self] image in
                     DispatchQueue.main.async {

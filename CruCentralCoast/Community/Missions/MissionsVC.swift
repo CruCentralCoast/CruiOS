@@ -40,7 +40,7 @@ class MissionsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Missions", bundle: nil).instantiateViewController(MissionDetailsVC.self)
         vc.configure(with: self.dataArray[indexPath.row])
-        self.navigationController?.present(vc, animated: true, completion: nil)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

@@ -44,7 +44,7 @@ class CommunityGroupDetailsVC: UIViewController {
             self.summaryLabel.text = communityGroup.summary
             // If no image link exists, remove the image's size constraint
             self.imageViewAspectRatioConstraint.isActive = (communityGroup.imageLink != nil && !communityGroup.imageLink!.isEmpty)
-            // Try to download the image, but only display it if this cell has not been reused
+            // Fetch the image from local storage or download it
             if let imageLink = communityGroup.imageLink {
                 ImageManager.instance.fetch(imageLink) { [weak self] image in
                     DispatchQueue.main.async {

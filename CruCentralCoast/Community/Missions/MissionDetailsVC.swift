@@ -8,68 +8,39 @@
 
 import UIKit
 
-struct MissionCellParameters {
-    let titleLabel : String
-    let date : String
-    let location : String
-    let description : String
-    let image : UIImage
-    
-    init(titleLabel: String, date: String, location: String, description: String,image: UIImage = #imageLiteral(resourceName: "placeholder.jpg")) {
-        self.titleLabel = titleLabel
-        self.date = date
-        self.location = location
-        self.description = description
-        self.image = image
-    }
-}
-
 class MissionDetailsVC: UIViewController {
     
-    @IBOutlet weak var missionTitleLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var descriptionText: UILabel!
-    
-    var titleLabel: String?
-    var date: String?
-    var location: String?
-    var desc: String?
-    
-    
-    
-    @IBAction func didTapCloseButton(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    override var prefersStatusBarHidden: Bool {return true}
+    @IBOutlet weak var summaryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: actually set up all of the view properties you need and set them here
-        self.missionTitleLabel.text = self.titleLabel
-        self.dateLabel.text = self.date
-        self.locationLabel.text = self.location
-        self.descriptionText.text = self.description
-        
-        self.imageView.image = #imageLiteral(resourceName: "placeholder.jpg")
+        self.navigationItem.largeTitleDisplayMode = .never
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func configure(with cellParameters: MissionCellParameters) {
-        self.titleLabel = cellParameters.titleLabel
-        self.date = cellParameters.date
-        self.location = cellParameters.location
-        self.desc = cellParameters.description
+
+    @IBAction func learnMore() {
+        // TODO
+        self.presentAlert(title: "Learn More", message: "Coming Soon...")
     }
     
     func configure(with mission: Mission) {
-        
+        DispatchQueue.main.async {
+            self.dateLabel.text = (mission.startDate.toString(dateStyle: .medium, timeStyle: .none) + " - " + mission.endDate.toString(dateStyle: .medium, timeStyle: .none)).uppercased()
+            self.nameLabel.text = mission.name
+            self.locationLabel.text = mission.location?.string
+            self.summaryLabel.text = mission.summary
+            // Fetch the image from local storage or download it
+            if let imageLink = mission.imageLink {
+                ImageManager.instance.fetch(imageLink) { [weak self] image in
+                    DispatchQueue.main.async {
+                        self?.bannerImageView.image = image
+                    }
+                }
+            }
+        }
     }
 }
