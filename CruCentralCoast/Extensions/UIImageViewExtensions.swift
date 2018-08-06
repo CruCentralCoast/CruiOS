@@ -13,7 +13,9 @@ extension UIImageView {
     func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
         contentMode = mode
         ImageManager.instance.fetch(url) { [weak self] image in
-            self?.image = image
+            DispatchQueue.main.async {
+                self?.image = image
+            }
         }
     }
     func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
