@@ -32,6 +32,7 @@ class MinistryTeamCell: UITableViewCell {
     func configure(with ministryTeam: MinistryTeam) {
         self.nameLabel.text = ministryTeam.name
         self.currentImageLink = ministryTeam.imageLink
+        self.bannerImageView.image = nil
         // Try to download the image, but only display it if this cell has not been reused
         if let imageLink = ministryTeam.imageLink {
             ImageManager.instance.fetch(imageLink) { [weak self] image in

@@ -23,6 +23,7 @@ import UIKit
             self.titleLabel.text = self.event.title
             self.shortDescription.text = self.event.summary
             self.currentImageLink = self.event.imageLink
+            self.imageCellView.image = nil
             // Try to download the image, but only display it if this cell has not been reused
             if let imageLink = self.event.imageLink {
                 ImageManager.instance.fetch(imageLink) { [weak self] image in

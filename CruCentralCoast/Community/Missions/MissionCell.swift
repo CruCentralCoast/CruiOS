@@ -34,6 +34,7 @@ class MissionCell: UITableViewCell {
         self.dateLabel.text = (mission.startDate.toString(dateStyle: .medium, timeStyle: .none) + " - " + mission.endDate.toString(dateStyle: .medium, timeStyle: .none)).uppercased()
         self.nameLabel.text = mission.name
         self.currentImageLink = mission.imageLink
+        self.bannerImageView.image = nil
         // Try to download the image, but only display it if this cell has not been reused
         if let imageLink = mission.imageLink {
             ImageManager.instance.fetch(imageLink) { [weak self] image in

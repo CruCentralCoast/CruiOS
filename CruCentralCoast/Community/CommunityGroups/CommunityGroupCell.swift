@@ -40,6 +40,7 @@ class CommunityGroupCell: UITableViewCell {
         self.timeLabel.text = communityGroup.time
         self.nameLabel.text = communityGroup.name
         self.currentImageLink = communityGroup.imageLink
+        self.bannerImageView.image = nil
         self.setImageVisibility(communityGroup.imageLink != nil && !communityGroup.imageLink!.isEmpty)
         // Try to download the image, but only display it if this cell has not been reused
         if let imageLink = communityGroup.imageLink {
