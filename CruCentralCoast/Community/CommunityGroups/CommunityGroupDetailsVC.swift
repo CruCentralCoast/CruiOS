@@ -10,26 +10,41 @@ import UIKit
 
 class CommunityGroupDetailsVC: UIViewController {
 
+    @IBOutlet weak var bannerImageView: UIImageView!
+    @IBOutlet weak var genderLabel: UILabel!
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var movementLabel: UILabel!
+    @IBOutlet weak var leaderNamesLabel: UILabel!
+    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var imageViewAspectRatioConstraint: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func joinCommunityGroup() {
+        // TODO
+        self.presentAlert(title: "Join Community Group", message: "Coming Soon...")
     }
-    */
-
+    
+    func configure(with communityGroup: CommunityGroup) {
+        DispatchQueue.main.async {
+            self.genderLabel.text = communityGroup.gender.rawValue.uppercased()
+            self.dayLabel.text = communityGroup.weekDay.rawValue.uppercased()
+            self.timeLabel.text = communityGroup.time
+            self.nameLabel.text = communityGroup.name
+            self.yearLabel.text = communityGroup.year.rawValue.uppercased()
+            self.movementLabel.text = communityGroup.movement?.name
+            self.leaderNamesLabel.text = "Leaders: \(communityGroup.leaderNames ?? "N/A")"
+            self.summaryLabel.text = communityGroup.summary
+            self.bannerImageView.downloadedFrom(link: communityGroup.imageLink, contentMode: .scaleAspectFill)
+            // If no image link exists, remove the image's size constraint
+            self.imageViewAspectRatioConstraint.isActive = (communityGroup.imageLink != nil && !communityGroup.imageLink!.isEmpty)
+        }
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  EventsTVC.swift
+//  EventsVC.swift
 //  CruCentralCoast
 //
 //  Created by Cam Stocker on 7/1/18.
@@ -23,7 +23,7 @@ class EventsVC: UITableViewController {
     
     override var prefersStatusBarHidden: Bool {
         get {
-            return statusBarIsHidden
+            return self.statusBarIsHidden
         }
     }
     
@@ -35,14 +35,13 @@ class EventsVC: UITableViewController {
         super.viewDidLoad()
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(EventsTableCell.self)
-        
-        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
-        self.dataArray = DatabaseManager.instance.getEvents()
-
-        self.tableView.setContentOffset(tableView.contentOffset, animated: false)
+        self.tableView.setContentOffset(self.tableView.contentOffset, animated: false)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.dataArray = DatabaseManager.instance.getEvents()
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -50,12 +49,12 @@ class EventsVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataArray.count
+        return self.dataArray.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(EventsTableCell.self, indexPath: indexPath)
-        cell.event = dataArray[indexPath.item]
+        cell.event = self.dataArray[indexPath.item]
         cell.selectionStyle = .none
         return cell
     }

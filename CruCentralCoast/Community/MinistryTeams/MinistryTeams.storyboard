@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="IW2-JH-wh6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Ministry-->
+        <scene sceneID="A5U-mV-JTn">
+            <objects>
+                <navigationController title="Ministry" id="IW2-JH-wh6" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="4kr-9I-Alx">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9w3-hs-ucw" kind="relationship" relationship="rootViewController" id="uTS-6a-uwX"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dXN-4o-9Ub" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-770" y="-319"/>
+        </scene>
+        <!--Ministry Teams-->
+        <scene sceneID="3tJ-St-89P">
+            <objects>
+                <tableViewController storyboardIdentifier="MinistryTeamsVC" id="9w3-hs-ucw" customClass="MinistryTeamsVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Cf3-V4-d2Q">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="9w3-hs-ucw" id="PWW-fO-8Ci"/>
+                            <outlet property="delegate" destination="9w3-hs-ucw" id="Qzm-hp-A4R"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Ministry" image="ministry" id="GnA-j2-d6F"/>
+                    <navigationItem key="navigationItem" title="Ministry Teams" id="ves-Ki-rqf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q90-qB-Z3z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="92" y="-318"/>
+        </scene>
+        <!--Ministry Team DetailsVC-->
+        <scene sceneID="Vmi-ar-PWj">
+            <objects>
+                <viewController storyboardIdentifier="MinistryTeamDetailsVC" id="psw-UK-nB4" customClass="MinistryTeamDetailsVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QO5-ET-v3t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbe-DD-PfN">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kgh-aF-OmD">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="211"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="kgh-aF-OmD" secondAttribute="height" multiplier="16:9" id="2is-xX-5dc"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="Yd7-dF-Hdj">
+                                        <rect key="frame" x="20" y="223" width="335" height="29"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summary" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GR7-2u-vv6">
+                                        <rect key="frame" x="20" y="311" width="335" height="21.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbZ-p6-tpG" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="372.5" width="295" height="50"/>
+                                        <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="G2A-cm-lVm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <state key="normal" title="Join Ministry Team">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="joinMinistryTeam" destination="psw-UK-nB4" eventType="touchUpInside" id="E6a-X7-Dqo"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MOVEMENT" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lf2-DB-0JC">
+                                        <rect key="frame" x="20" y="256" width="91" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEADERS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZE-3z-Fk4">
+                                        <rect key="frame" x="20" y="279.5" width="70.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="vbZ-p6-tpG" firstAttribute="centerX" secondItem="vbe-DD-PfN" secondAttribute="centerX" id="14q-9s-aVX"/>
+                                    <constraint firstItem="lf2-DB-0JC" firstAttribute="top" secondItem="Yd7-dF-Hdj" secondAttribute="bottom" constant="4" id="2n3-c0-n1h"/>
+                                    <constraint firstItem="XZE-3z-Fk4" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" constant="20" id="57g-fq-EYI"/>
+                                    <constraint firstItem="XZE-3z-Fk4" firstAttribute="top" secondItem="lf2-DB-0JC" secondAttribute="bottom" constant="4" id="75d-CL-sXb"/>
+                                    <constraint firstAttribute="trailing" secondItem="kgh-aF-OmD" secondAttribute="trailing" id="8zG-g3-vxa"/>
+                                    <constraint firstItem="GR7-2u-vv6" firstAttribute="top" secondItem="XZE-3z-Fk4" secondAttribute="bottom" constant="12" id="IIM-2c-DiZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="Yd7-dF-Hdj" secondAttribute="trailing" constant="20" id="JJf-Lq-9gz"/>
+                                    <constraint firstItem="kgh-aF-OmD" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" id="MJH-ct-y6z"/>
+                                    <constraint firstItem="Yd7-dF-Hdj" firstAttribute="top" secondItem="kgh-aF-OmD" secondAttribute="bottom" constant="12" id="RLy-EW-ohP"/>
+                                    <constraint firstItem="GR7-2u-vv6" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" constant="20" id="RY6-Uw-ILw"/>
+                                    <constraint firstItem="Yd7-dF-Hdj" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" constant="20" id="SmD-Az-W5u"/>
+                                    <constraint firstAttribute="trailing" secondItem="GR7-2u-vv6" secondAttribute="trailing" constant="20" id="TaZ-Zt-mfo"/>
+                                    <constraint firstItem="kgh-aF-OmD" firstAttribute="top" secondItem="vbe-DD-PfN" secondAttribute="top" id="Uag-uq-L43"/>
+                                    <constraint firstItem="vbZ-p6-tpG" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" constant="40" id="XcD-KD-YJl"/>
+                                    <constraint firstAttribute="bottom" secondItem="vbZ-p6-tpG" secondAttribute="bottom" constant="40" id="fw7-30-J2d"/>
+                                    <constraint firstItem="lf2-DB-0JC" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" constant="20" id="hed-Z8-HSs"/>
+                                    <constraint firstItem="vbZ-p6-tpG" firstAttribute="top" secondItem="GR7-2u-vv6" secondAttribute="bottom" constant="40" id="hsK-Xz-3qB"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="kgh-aF-OmD" firstAttribute="width" secondItem="GUc-Ra-SLF" secondAttribute="width" id="2IQ-SE-7qL"/>
+                            <constraint firstItem="vbe-DD-PfN" firstAttribute="leading" secondItem="GUc-Ra-SLF" secondAttribute="leading" id="7Un-qL-d9P"/>
+                            <constraint firstItem="vbe-DD-PfN" firstAttribute="bottom" secondItem="GUc-Ra-SLF" secondAttribute="bottom" id="8JH-yG-6ib"/>
+                            <constraint firstItem="vbe-DD-PfN" firstAttribute="top" secondItem="GUc-Ra-SLF" secondAttribute="top" id="Hhd-2e-cxy"/>
+                            <constraint firstItem="vbe-DD-PfN" firstAttribute="trailing" secondItem="GUc-Ra-SLF" secondAttribute="trailing" id="Hpk-Ok-ir4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GUc-Ra-SLF"/>
+                    </view>
+                    <connections>
+                        <outlet property="bannerImageView" destination="kgh-aF-OmD" id="Khl-5c-naZ"/>
+                        <outlet property="leaderNamesLabel" destination="XZE-3z-Fk4" id="Rqn-a2-G0f"/>
+                        <outlet property="movementLabel" destination="lf2-DB-0JC" id="iyh-JD-oAj"/>
+                        <outlet property="nameLabel" destination="Yd7-dF-Hdj" id="Usj-z4-O7Q"/>
+                        <outlet property="summaryLabel" destination="GR7-2u-vv6" id="Q6C-Le-8zZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1AL-0d-bLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="901.60000000000002" y="-320.68965517241384"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ministry" width="26" height="25"/>
+    </resources>
+</document>

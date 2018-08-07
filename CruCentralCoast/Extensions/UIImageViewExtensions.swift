@@ -18,8 +18,8 @@ extension UIImageView {
             }
         }
     }
-    func downloadedFrom(link: String, contentMode mode: UIViewContentMode = .scaleAspectFit) {
-        guard let url = URL(string: link) else { return }
+    func downloadedFrom(link: String?, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let link = link, let url = URL(string: link) else { return }
         self.downloadedFrom(url: url, contentMode: mode)
     }
 }

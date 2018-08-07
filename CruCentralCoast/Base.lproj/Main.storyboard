@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -38,7 +38,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CiP-YB-anl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="-344"/>
+            <point key="canvasLocation" x="634" y="-125"/>
         </scene>
         <!--CommunityGroups-->
         <scene sceneID="2aQ-0c-LA0">
@@ -48,27 +48,27 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWH-Ma-84G" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="-207"/>
+            <point key="canvasLocation" x="692" y="-64"/>
         </scene>
         <!--MinistryTeams-->
         <scene sceneID="dQE-ae-MHQ">
             <objects>
                 <viewControllerPlaceholder storyboardName="MinistryTeams" id="Htr-Ra-lEm" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Ministry" image="community_icon" id="yI1-eu-P8V"/>
+                    <tabBarItem key="tabBarItem" title="Ministry" image="ministry" id="yI1-eu-P8V"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wGi-i4-HUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="-87"/>
+            <point key="canvasLocation" x="673" y="-1"/>
         </scene>
         <!--Missions-->
         <scene sceneID="TmF-dp-Jz1">
             <objects>
                 <viewControllerPlaceholder storyboardName="Missions" id="ezS-hD-Jq0" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Missions" image="community_icon" id="S3m-lI-fpH"/>
+                    <tabBarItem key="tabBarItem" title="Missions" image="earth" id="S3m-lI-fpH"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FfU-TN-U0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="715" y="58"/>
+            <point key="canvasLocation" x="645" y="60"/>
         </scene>
         <!--Resources-->
         <scene sceneID="QAq-OE-A1r">
@@ -78,12 +78,14 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="swp-gp-H2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="694" y="287"/>
+            <point key="canvasLocation" x="653" y="124"/>
         </scene>
     </scenes>
     <resources>
         <image name="community_icon" width="31" height="21"/>
+        <image name="earth" width="26" height="26"/>
         <image name="events_icon" width="25" height="25"/>
+        <image name="ministry" width="26" height="25"/>
         <image name="resources_icon" width="26" height="22"/>
     </resources>
 </document>

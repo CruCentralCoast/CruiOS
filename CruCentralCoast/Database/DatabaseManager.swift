@@ -130,6 +130,13 @@ class DatabaseManager {
         // Get the default realm database
         let realm = try! Realm()
         
+        // Reset the list
+        try! realm.write {
+            if let relationList = firstObject.value(forKey: property) as? List<T> {
+                relationList.removeAll()
+            }
+        }
+        
         // Assign each object separately since some may need to be downloaded
         for documentReference in array {
             // Try to find the second object in the realm database or download it

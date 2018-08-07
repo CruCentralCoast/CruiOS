@@ -24,6 +24,9 @@ class MinistryTeam: RealmObject {
     /// Inverse relationship that is auto-updated
     let members = LinkingObjects(fromType: Person.self, property: "ministryTeams")
     
+    // Computed Properties
+    var leaderNames: String? { return self.leaders.compactMap { $0.name }.joined(separator: ", ") }
+    
     func set(with dict: [String : Any]) -> Bool {
         guard let id = dict["id"] as? String,
             let name = dict["name"] as? String,
