@@ -9,7 +9,8 @@
 import WebKit
 
 class ArticleResourceDetailVC: UIViewController {
-    var resource: ArticleResource?
+    
+    var resource: Resource?
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var authorLabel: UILabel!
@@ -23,7 +24,7 @@ class ArticleResourceDetailVC: UIViewController {
         self.navigationItem.title = self.resource?.title
         self.titleLabel.text = self.resource?.title
         self.authorLabel.text = "by \(self.resource?.author ?? "Unknown")"
-        self.descriptionLabel.text = self.resource?.description
+        self.descriptionLabel.text = self.resource?.summary
     }
     
     @IBAction func readArticleButtonPressed(_ sender: Any) {

@@ -15,8 +15,9 @@ class VideoResourceDetailVC: UIViewController {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    var resource: VideoResource?
     private var activityIndicator = UIActivityIndicatorView()
+    
+    var resource: Resource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,7 +25,7 @@ class VideoResourceDetailVC: UIViewController {
         self.navigationItem.title = resource?.title
         self.titleLabel.text = resource?.title
         self.authorLabel.text = "by \(resource?.author ?? "Unknown")"
-        self.descriptionLabel.text = self.resource?.description
+        self.descriptionLabel.text = self.resource?.summary
     }
     
     @IBAction func playButtonPressed(_ sender: Any) {
