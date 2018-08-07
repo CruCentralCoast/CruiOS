@@ -33,14 +33,7 @@ class MissionDetailsVC: UIViewController {
             self.nameLabel.text = mission.name
             self.locationLabel.text = mission.location?.string
             self.summaryLabel.text = mission.summary
-            // Fetch the image from local storage or download it
-            if let imageLink = mission.imageLink {
-                ImageManager.instance.fetch(imageLink) { [weak self] image in
-                    DispatchQueue.main.async {
-                        self?.bannerImageView.image = image
-                    }
-                }
-            }
+            self.bannerImageView.downloadedFrom(link: mission.imageLink, contentMode: .scaleAspectFill)
         }
     }
 }

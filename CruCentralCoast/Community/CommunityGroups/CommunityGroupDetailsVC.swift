@@ -42,16 +42,9 @@ class CommunityGroupDetailsVC: UIViewController {
             self.movementLabel.text = communityGroup.movement?.name
             self.leaderNamesLabel.text = "Leaders: \(communityGroup.leaderNames ?? "N/A")"
             self.summaryLabel.text = communityGroup.summary
+            self.bannerImageView.downloadedFrom(link: communityGroup.imageLink, contentMode: .scaleAspectFill)
             // If no image link exists, remove the image's size constraint
             self.imageViewAspectRatioConstraint.isActive = (communityGroup.imageLink != nil && !communityGroup.imageLink!.isEmpty)
-            // Fetch the image from local storage or download it
-            if let imageLink = communityGroup.imageLink {
-                ImageManager.instance.fetch(imageLink) { [weak self] image in
-                    DispatchQueue.main.async {
-                        self?.bannerImageView.image = image
-                    }
-                }
-            }
         }
     }
 }
