@@ -75,9 +75,6 @@
 		AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		AD652AA620B65990002FF565 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AA520B65990002FF565 /* Resource.swift */; };
-		AD652AA820B65CC9002FF565 /* ArticleResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AA720B65CC9002FF565 /* ArticleResource.swift */; };
-		AD652AAA20B66487002FF565 /* AudioResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AA920B66487002FF565 /* AudioResource.swift */; };
-		AD652AAC20B675B9002FF565 /* VideoResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AAB20B675B9002FF565 /* VideoResource.swift */; };
 		AD652AB620B69CE7002FF565 /* AudioResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AB520B69CE6002FF565 /* AudioResourceDetailVC.swift */; };
 		AD652AB820B69D04002FF565 /* ArticleResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AB720B69D04002FF565 /* ArticleResourceDetailVC.swift */; };
 		AD652ABA20B6B292002FF565 /* VideoResourceDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AB920B6B292002FF565 /* VideoResourceDetailVC.swift */; };
@@ -205,9 +202,6 @@
 		AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		AD652AA520B65990002FF565 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		AD652AA720B65CC9002FF565 /* ArticleResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleResource.swift; sourceTree = "<group>"; };
-		AD652AA920B66487002FF565 /* AudioResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioResource.swift; sourceTree = "<group>"; };
-		AD652AAB20B675B9002FF565 /* VideoResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResource.swift; sourceTree = "<group>"; };
 		AD652AB520B69CE6002FF565 /* AudioResourceDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioResourceDetailVC.swift; sourceTree = "<group>"; };
 		AD652AB720B69D04002FF565 /* ArticleResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleResourceDetailVC.swift; sourceTree = "<group>"; };
 		AD652AB920B6B292002FF565 /* VideoResourceDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoResourceDetailVC.swift; sourceTree = "<group>"; };
@@ -295,9 +289,6 @@
 				2FE8BBF02109552000AF9E57 /* MinistryTeam.swift */,
 				2FE8BBF22109552900AF9E57 /* Mission.swift */,
 				AD652AA520B65990002FF565 /* Resource.swift */,
-				AD652AA720B65CC9002FF565 /* ArticleResource.swift */,
-				AD652AA920B66487002FF565 /* AudioResource.swift */,
-				AD652AAB20B675B9002FF565 /* VideoResource.swift */,
 				2FE8BBEA21092EDD00AF9E57 /* Location.swift */,
 			);
 			path = Database;
@@ -897,12 +888,10 @@
 				E0AFD0FB20AD0C3600B2EF40 /* Event.swift in Sources */,
 				2FC07F432117922100DDCE0B /* MissionCell.swift in Sources */,
 				5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */,
-				AD652AAC20B675B9002FF565 /* VideoResource.swift in Sources */,
 				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				5EDA143420AD150F0040EC22 /* CommunityGroupsVC.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				ADFA56D3206D7BA4006F7099 /* ArticlesResourcesCell.swift in Sources */,
-				AD652AA820B65CC9002FF565 /* ArticleResource.swift in Sources */,
 				2FE8BBEF210954E500AF9E57 /* CommunityGroup.swift in Sources */,
 				2FE8BBF5210955C000AF9E57 /* Person.swift in Sources */,
 				2FE8BBF32109552900AF9E57 /* Mission.swift in Sources */,
@@ -939,7 +928,6 @@
 				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
 				2FE8BBF12109552000AF9E57 /* MinistryTeam.swift in Sources */,
 				AD652AB820B69D04002FF565 /* ArticleResourceDetailVC.swift in Sources */,
-				AD652AAA20B66487002FF565 /* AudioResource.swift in Sources */,
 				E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,

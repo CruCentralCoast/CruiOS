@@ -18,6 +18,8 @@ class Resource: RealmObject {
     @objc dynamic var date: Date!
     @objc dynamic var url: String!
     @objc dynamic private var typeString: String!
+    @objc dynamic var summary: String?
+    @objc dynamic var imageLink: String?
     
     // Computed Properties
     var type: ResourceType { return ResourceType(rawValue: self.typeString) ?? .article }
@@ -41,20 +43,9 @@ class Resource: RealmObject {
         self.date = date
         self.url = url
         self.typeString = typeString
+        self.summary = dict["description"] as? String
+        self.imageLink = dict["imageLink"] as? String
         return true
-    }
-    
-    static func createResource(dict: NSDictionary) -> Resource? {
-        guard let type = dict["type"] as? String else { return nil }
-        
-        let resource: Resource
-        switch type {
-        case "audio": resource = AudioResource()
-        case "video": resource = VideoResource()
-        default: resource = ArticleResource()
-        }
-        // If it fails to set the object's properties, return nil
-        return resource.set(with: dict as! [String: Any]) ? resource : nil
     }
 }
 

@@ -110,24 +110,18 @@ extension ResourcesVC: ResourcePresentingDelegate {
     func presentResource(of type: ResourceType, resource: Resource) {
         switch type {
         case .audio:
-            if let audioResource = resource as? AudioResource {
-                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(AudioResourceDetailVC.self)
-                vc.resource = audioResource
-                vc.audioResourceDelegate = self
-                self.show(vc, sender: self)
-            }
+            let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(AudioResourceDetailVC.self)
+            vc.resource = resource
+            vc.audioResourceDelegate = self
+            self.show(vc, sender: self)
         case .video:
-            if let videoResource = resource as? VideoResource {
-                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(VideoResourceDetailVC.self)
-                vc.resource = videoResource
-                self.show(vc, sender: self)
-            }
+            let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(VideoResourceDetailVC.self)
+            vc.resource = resource
+            self.show(vc, sender: self)
         case .article:
-            if let articleResource = resource as? ArticleResource {
-                let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(ArticleResourceDetailVC.self)
-                vc.resource = articleResource
-                self.show(vc, sender: self)
-            }
+            let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(ArticleResourceDetailVC.self)
+            vc.resource = resource
+            self.show(vc, sender: self)
         }
     }
 }
