@@ -16,7 +16,7 @@ public extension UIViewController {
             let profileButton = UIButton()
             profileButton.setImage(#imageLiteral(resourceName: "profile_icon")
                 , for: .normal)
-            profileButton.tintColor = .black
+            profileButton.tintColor = .cruBrightBlue
             largeTitleView.addSubview(profileButton)
             profileButton.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
@@ -26,7 +26,7 @@ public extension UIViewController {
                 profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
             ])
             
-            profileButton.addTarget(self, action: #selector(self.pushProfileViewController), for: .touchUpInside)
+            profileButton.addTarget(self, action: #selector(self.presentProfileViewController), for: .touchUpInside)
             profileButton.addTarget(self, action: #selector(self.setColorLightGray), for: [.touchDown, .touchDragEnter])
             profileButton.addTarget(self, action: #selector(self.setColorBlack), for: [.touchUpInside,.touchCancel,.touchUpOutside, .touchDragExit])
         }
@@ -44,9 +44,9 @@ public extension UIViewController {
         sender.tintColor = .black
     }
     
-    @objc private func pushProfileViewController(sender: UIButton) {
+    @objc private func presentProfileViewController(sender: UIButton) {
         let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(ProfileVC.self)
-        self.show(vc, sender: self)
+        self.present(vc, animated: true)
     }
     
     func presentAlert(title: String?, message: String?, animated: Bool = true, completion: (()->Void)? = nil) {
@@ -75,6 +75,7 @@ public extension UIViewController {
                 indicator.centerYAnchor.constraint(equalTo: webView.centerYAnchor)
             ])
         }
+        vc.navigationItem.largeTitleDisplayMode = .never
         self.show(vc, sender: self)
     }
 }
