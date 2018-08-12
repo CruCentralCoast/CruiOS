@@ -55,7 +55,7 @@ public extension UIViewController {
         self.present(alertController, animated: animated, completion: completion)
     }
     
-    func showWebView(from url: String, with activityIndicator: UIActivityIndicatorView? = nil, navigationDelegate: WKNavigationDelegate?) {
+    func showWebView(from url: String, with activityIndicator: UIActivityIndicatorView? = nil, navigationDelegate: WKNavigationDelegate? = nil) {
         let webView = WKWebView()
         if let url = URL(string: url) {
             webView.load(URLRequest(url: url))

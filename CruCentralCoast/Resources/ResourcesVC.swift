@@ -7,16 +7,20 @@
 //
 
 import UIKit
+import RealmSwift
 
 @IBDesignable
 class ResourcesVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
-    let resources = ["asljf", "asdfasdf", "asdfkljahsdf"]
+    var dataArray: Results<Resource>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureTableView()
+        
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.dataArray = DatabaseManager.instance.getResources()
     }
     
     private func configureTableView() {
@@ -30,19 +34,31 @@ class ResourcesVC: UIViewController {
 extension ResourcesVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(ResourceTableViewCell.self, indexPath: indexPath)
-        let resource = self.resources[indexPath.row]
-        cell.authorLabel.text = resource
-        cell.titleLabel.text = resource
+        let resource = self.dataArray[indexPath.row]
+        cell.authorLabel.text = resource.author
+        cell.titleLabel.text = resource.title
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.resources.count
+        return self.dataArray.count
     }
 }
 
 extension ResourcesVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        <#code#>
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isSelected = false
+        let resource = self.dataArray[indexPath.row]
+        if let resourceURLString = resource.url {
+            self.showWebView(from: resourceURLString)
+        }
+    }
+}
+
+extension ResourcesVC: DatabaseListenerProtocol {
+    func updatedResources() {
+        print("Resources were updated - refreshing UI")
+        self.tableView.reloadData()
     }
 }
