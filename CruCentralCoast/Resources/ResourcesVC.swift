@@ -29,7 +29,7 @@ class ResourcesVC: UIViewController {
         super.viewDidLoad()
         self.configureTableView()
         self.configureSearch()
-        
+        self.insertProfileButtonInNavBar()
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.resources = DatabaseManager.instance.getResources()
     }
