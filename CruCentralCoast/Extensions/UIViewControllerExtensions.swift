@@ -32,10 +32,6 @@ public extension UIViewController {
         }
     }
     
-    @objc func popToRootViewController(notification: Notification) {
-        navigationController?.popToRootViewController(animated: false)
-    }
-    
     @objc private func setColorLightGray(sender: UIButton, forevent event: UIEvent) {
         sender.tintColor = .lightGray
     }
