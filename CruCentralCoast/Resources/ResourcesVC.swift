@@ -6,7 +6,7 @@
 //  Copyright © 2018 Landon Gerrits. All rights reserved.
 //
 
-import UIKit
+import WebKit
 import RealmSwift
 
 @IBDesignable
@@ -14,6 +14,8 @@ class ResourcesVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var dataArray: Results<Resource>!
+    
+    private var activityIndicator = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +53,7 @@ extension ResourcesVC: UITableViewDelegate {
         cell?.isSelected = false
         let resource = self.dataArray[indexPath.row]
         if let resourceURLString = resource.url {
-            self.showWebView(from: resourceURLString)
+            self.showWebView(from: resourceURLString, with: self.activityIndicator, navigationDelegate: self)
         }
     }
 }
@@ -60,5 +62,11 @@ extension ResourcesVC: DatabaseListenerProtocol {
     func updatedResources() {
         print("Resources were updated - refreshing UI")
         self.tableView.reloadData()
+    }
+}
+
+extension ResourcesVC: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        self.activityIndicator.stopAnimating()
     }
 }
