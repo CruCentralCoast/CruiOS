@@ -6,162 +6,166 @@
 //  Copyright © 2018 Landon Gerrits. All rights reserved.
 //
 
-import AVKit
+import WebKit
+import RealmSwift
 
-fileprivate extension CGFloat {
-    static let miniAudioPlayerOffsetFromBottom: CGFloat = 8
+enum Scope: String {
+    case all = "All"
+    case audio = "Audio"
+    case videos = "Videos"
+    case articles = "Articles"
 }
 
-@IBDesignable
 class ResourcesVC: UIViewController {
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var cruSegmentedControl: CruSegmentedControl!
-    @IBOutlet weak var fakeBottomOfNavBarView: UIView!
+    @IBOutlet weak var tableView: UITableView!
     
-    private var shadowImageView: UIImageView?
-    private var collectionViewCellLayout: [ResourceType] = [.article, .video, .audio]
-    private var audioController: CruAudioControl = UINib(nibName: String(describing: CruAudioControl.self), bundle: nil).instantiate(withOwner: self, options: nil)[0] as! CruAudioControl
-    private var miniAudioPlayerPositionConstraint : NSLayoutConstraint?
-
+    private var resources: Results<Resource>!
+    private var filteredResources = [Resource]()
+    
+    private var activityIndicator = UIActivityIndicatorView()
+    private let searchController = UISearchController(searchResultsController: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.configureTableView()
+        self.configureSearch()
         self.insertProfileButtonInNavBar()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.popToRootViewController), name: MainTabBarController.tabBarChangedNotification, object: nil)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
-        self.collectionView.registerCell(ResourcesTableViewCollectionViewCell.self)
-        self.fakeBottomOfNavBarView.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
-        
-        self.view.addSubview(self.audioController)
-        self.audioController.translatesAutoresizingMaskIntoConstraints = false
-        let miniAudioPlayerPositionConstraint = self.audioController.topAnchor.constraint(equalTo: self.view.bottomAnchor)
-        NSLayoutConstraint.activate([
-            self.audioController.leftAnchor.constraint(equalTo: self.view.layoutMarginsGuide.leftAnchor),
-            self.audioController.rightAnchor.constraint(equalTo: self.view.layoutMarginsGuide.rightAnchor),
-            miniAudioPlayerPositionConstraint
-        ])
-        self.miniAudioPlayerPositionConstraint = miniAudioPlayerPositionConstraint
-        
-        self.audioController.audioResourceDelegate = self
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.resources = DatabaseManager.instance.getResources()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if self.shadowImageView == nil {
-            self.shadowImageView = self.findShadowImage(under: self.navigationController!.navigationBar)
+    private func configureSearch() {
+        // Setup the Search Controller
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.navigationItem.searchController = self.searchController
+        self.definesPresentationContext = true
+        // Setup the Scope Bar
+        self.searchController.searchBar.scopeButtonTitles = [Scope.all.rawValue, Scope.audio.rawValue, Scope.videos.rawValue, Scope.articles.rawValue]
+        self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.tintColor = .cruBrightBlue
+    }
+    
+    private func configureTableView() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.registerCell(ResourceTableViewCell.self)
+    }
+    
+    private func scopeStringFrom(_ resourceType: ResourceType) -> String {
+        switch resourceType {
+        case .article:
+            return Scope.articles.rawValue
+        case .video:
+            return Scope.videos.rawValue
+        case .audio:
+            return Scope.audio.rawValue
         }
-        self.shadowImageView?.isHidden = true
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        self.shadowImageView?.isHidden = false
-    }
-    
-    private func findShadowImage(under view: UIView) -> UIImageView? {
-        if view is UIImageView && view.bounds.size.height <= 1 {
-            return (view as? UIImageView)
-        }
-        
-        for subview in view.subviews {
-            if let imageView = self.findShadowImage(under: subview) {
-                return imageView
+    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        self.filteredResources = self.resources.filter({( resource : Resource) -> Bool in
+            let doesCategoryMatch = (scope == "All") || (self.scopeStringFrom(resource.type) == scope)
+            
+            if self.searchBarIsEmpty() {
+                return doesCategoryMatch
+            } else {
+                return doesCategoryMatch && resource.title.lowercased().contains(searchText.lowercased())
             }
-        }
-        return nil
+        })
+        self.tableView.reloadData()
     }
     
-    @IBAction func valueDidChange(_ sender: CruSegmentedControl) {
-        self.collectionView.scrollToItem(at: IndexPath(item: sender.selectedSegmentIndex, section: 0), at: .left, animated: true)
+    private func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return self.searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    private func isFiltering() -> Bool {
+        let searchBarScopeIsFiltering = self.searchController.searchBar.selectedScopeButtonIndex != 0
+        return self.searchController.isActive && (!self.searchBarIsEmpty() || searchBarScopeIsFiltering)
+    }
+    
+    private func resourceAt(_ indexPath: IndexPath) -> Resource {
+        if self.isFiltering() {
+            return self.filteredResources[indexPath.row]
+        } else {
+            return self.resources[indexPath.row]
+        }
     }
 }
 
-extension ResourcesVC: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueCell(ResourcesTableViewCollectionViewCell.self, indexPath: indexPath)
-        cell.resourcePresentingDelegate = self
-        cell.type = self.collectionViewCellLayout[indexPath.item]
+extension ResourcesVC: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(ResourceTableViewCell.self, indexPath: indexPath)
+        let resource = self.resourceAt(indexPath)
+        
+        var typeText: String = " | "
+        switch resource.type {
+        case .article:
+            typeText += "Article"
+        case .video:
+            typeText += "Video"
+        case .audio:
+            typeText += "Audio"
+        }
+        
+        cell.titleLabel.text = resource.title
+        cell.authorLabel.text = resource.author + typeText
         return cell
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        self.cruSegmentedControl.updateSelectorPosition(offset: scrollView.contentOffset.x)
-    }
-    
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let index = Int(scrollView.contentOffset.x/self.collectionView.frame.width)
-        self.cruSegmentedControl.selectedSegmentIndex = index
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.isFiltering() {
+            return self.filteredResources.count
+        }
+        return self.resources.count
     }
 }
 
-extension ResourcesVC: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return collectionView.frame.size
-    }
-}
-
-extension ResourcesVC: ResourcePresentingDelegate {
-    func presentResource(of type: ResourceType, resource: Resource) {
-        switch type {
-        case .audio:
-            let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(AudioResourceDetailVC.self)
-            vc.resource = resource
-            vc.audioResourceDelegate = self
-            self.show(vc, sender: self)
-        case .video:
-            let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(VideoResourceDetailVC.self)
-            vc.resource = resource
-            self.show(vc, sender: self)
-        case .article:
-            let vc = UIStoryboard(name: "Resources", bundle: nil).instantiateViewController(ArticleResourceDetailVC.self)
-            vc.resource = resource
-            self.show(vc, sender: self)
+extension ResourcesVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.isSelected = false
+        let resource = self.resourceAt(indexPath)
+        if let resourceURLString = resource.url {
+            self.showWebView(from: resourceURLString, with: self.activityIndicator, navigationDelegate: self)
         }
     }
 }
 
-extension ResourcesVC: AudioResourceDelegate {
-    func playAudioFromURL(url: URL, title: String) {
-        self.audioController.playAudioFromURL(url: url)
-        self.audioController.titleLabel.text = title
-        self.revealMiniAudioPlayer()
-    }
-    
-    func dismissMiniAudioPlayer() {
-        UIView.animate(withDuration: 0.3) {
-            self.miniAudioPlayerPositionConstraint?.constant = 0
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func revealMiniAudioPlayer() {
-        UIView.animate(withDuration: 0.3) {
-            self.miniAudioPlayerPositionConstraint?.constant = -(self.audioController.bounds.height + .miniAudioPlayerOffsetFromBottom)
-            self.view.layoutIfNeeded()
-        }
-    }
-    
-    func showAVPlayerViewController(player: AVPlayer) {
-        let vc = AVPlayerViewController()
-        vc.player = player
-        vc.addObserver(self.audioController, forKeyPath: #keyPath(AVPlayerViewController.view.frame), options: [], context: nil)
-        self.present(vc, animated: true, completion: nil)
+extension ResourcesVC: DatabaseListenerProtocol {
+    func updatedResources() {
+        print("Resources were updated - refreshing UI")
+        self.tableView.reloadData()
     }
 }
 
-protocol AudioResourceDelegate {
-    func playAudioFromURL(url: URL, title: String)
-    func dismissMiniAudioPlayer()
-    func revealMiniAudioPlayer()
-    func showAVPlayerViewController(player: AVPlayer)
+extension ResourcesVC: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        self.activityIndicator.stopAnimating()
+    }
 }
 
-protocol ResourcePresentingDelegate {
-    func presentResource(of type: ResourceType, resource: Resource)
+extension ResourcesVC: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        guard let searchText = searchBar.text,
+        let scopeButtonTitles = searchBar.scopeButtonTitles else {
+            return
+        }
+        let scope = scopeButtonTitles[searchBar.selectedScopeButtonIndex]
+        self.filterContentForSearchText(searchText, scope: scope)
+    }
+}
+
+extension ResourcesVC: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+        guard let searchText = searchBar.text,
+            let scopeButtonTitles = searchBar.scopeButtonTitles else {
+                return
+        }
+        self.filterContentForSearchText(searchText, scope: scopeButtonTitles[selectedScope])
+    }
 }
