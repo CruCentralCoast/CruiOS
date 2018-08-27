@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YfW-IO-Qf9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YfW-IO-Qf9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -55,7 +55,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqr-4x-vZM">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" delaysContentTouches="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fqr-4x-vZM">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e8m-sO-ElP">
@@ -129,12 +129,26 @@
                                     <constraint firstItem="e8m-sO-ElP" firstAttribute="leading" secondItem="Fqr-4x-vZM" secondAttribute="leading" id="zXD-bE-B08"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-YG-kN7">
+                                <rect key="frame" x="327" y="36" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="tEv-Gk-Sun"/>
+                                    <constraint firstAttribute="height" constant="32" id="uqO-5m-IiV"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="close_button"/>
+                                <connections>
+                                    <action selector="didPressCloseButton" destination="pl3-ud-y6d" eventType="touchUpInside" id="8sh-Hj-fjA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Fqr-4x-vZM" firstAttribute="trailing" secondItem="8gV-k8-HYg" secondAttribute="trailing" id="EZC-4z-l2D"/>
                             <constraint firstItem="Fqr-4x-vZM" firstAttribute="bottom" secondItem="8gV-k8-HYg" secondAttribute="bottom" id="Fi5-Bd-J06"/>
                             <constraint firstItem="Fqr-4x-vZM" firstAttribute="leading" secondItem="8gV-k8-HYg" secondAttribute="leading" id="NVF-Qj-F8k"/>
+                            <constraint firstItem="8gV-k8-HYg" firstAttribute="trailing" secondItem="PLb-YG-kN7" secondAttribute="trailing" constant="16" id="gRd-O2-UHa"/>
+                            <constraint firstItem="PLb-YG-kN7" firstAttribute="top" secondItem="8gV-k8-HYg" secondAttribute="top" constant="16" id="jT8-wW-n9g"/>
                             <constraint firstItem="Fqr-4x-vZM" firstAttribute="top" secondItem="8gV-k8-HYg" secondAttribute="top" id="qG5-w9-cBB"/>
                             <constraint firstItem="e8m-sO-ElP" firstAttribute="width" secondItem="8gV-k8-HYg" secondAttribute="width" id="wqc-Pd-Mhl"/>
                         </constraints>
@@ -154,6 +168,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="earth" width="24" height="24"/>
+        <image name="close_button" width="50" height="50"/>
+        <image name="earth" width="26" height="26"/>
     </resources>
 </document>
