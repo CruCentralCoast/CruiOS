@@ -16,12 +16,18 @@ class MinistryTeamDetailsVC: UIViewController {
     @IBOutlet weak var leaderNamesLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
+    override var prefersStatusBarHidden: Bool { return true }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.largeTitleDisplayMode = .never
     }
-
+    
+    @IBAction func didPressCloseButton() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func joinMinistryTeam() {
         // TODO
         self.presentAlert(title: "Join Ministry Team", message: "Coming Soon...")
