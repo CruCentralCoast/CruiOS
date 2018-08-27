@@ -36,7 +36,7 @@ class MinistryTeamDetailsVC: UIViewController {
     func configure(with ministryTeam: MinistryTeam) {
         DispatchQueue.main.async {
             self.nameLabel.text = ministryTeam.name
-            self.movementLabel.text = ministryTeam.movement?.name
+            self.movementLabel.text = ministryTeam.movement?.name.uppercased()
             self.leaderNamesLabel.text = "Leaders: \(ministryTeam.leaderNames ?? "N/A")"
             self.summaryLabel.text = ministryTeam.summary
             self.bannerImageView.downloadedFrom(link: ministryTeam.imageLink, contentMode: .scaleAspectFill)
