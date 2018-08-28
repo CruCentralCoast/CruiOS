@@ -448,11 +448,11 @@
 		AD24E8B820916B1A0089E370 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
+				AD24E8B920916B470089E370 /* ProfileVC.swift */,
 				ADAC305021056D3400DBCA89 /* ChooseCampusOrMinistry */,
 				AD24E8DC20919C670089E370 /* NotificationsVC.swift */,
 				AD24E8C3209172970089E370 /* Cells */,
-				AD24E8B920916B470089E370 /* ProfileVC.swift */,
-				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
 			);
 			path = Profile;
 			sourceTree = "<group>";

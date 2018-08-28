@@ -14,30 +14,29 @@ public extension UIViewController {
             String(describing: type(of: $0)) == "_UINavigationBarLargeTitleView" } ) {
             
             let profileButton = UIButton()
-            profileButton.setImage(#imageLiteral(resourceName: "profile_icon")
-                , for: .normal)
-            profileButton.tintColor = .cruBrightBlue
+            profileButton.setImage(#imageLiteral(resourceName: "profile_icon"), for: .normal)
+            profileButton.tintColor = .appTint
             largeTitleView.addSubview(profileButton)
             profileButton.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
                 profileButton.bottomAnchor.constraint(equalTo: largeTitleView.bottomAnchor, constant: -10),
-                profileButton.rightAnchor.constraint(equalTo: largeTitleView.rightAnchor, constant: -10),
-                profileButton.heightAnchor.constraint(equalToConstant: 30),
+                profileButton.rightAnchor.constraint(equalTo: largeTitleView.rightAnchor, constant: -20),
+                profileButton.heightAnchor.constraint(equalToConstant: 32),
                 profileButton.widthAnchor.constraint(equalTo: profileButton.heightAnchor)
             ])
             
             profileButton.addTarget(self, action: #selector(self.presentProfileViewController), for: .touchUpInside)
-            profileButton.addTarget(self, action: #selector(self.setColorLightGray), for: [.touchDown, .touchDragEnter])
-            profileButton.addTarget(self, action: #selector(self.setColorBlack), for: [.touchUpInside,.touchCancel,.touchUpOutside, .touchDragExit])
+            profileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: [.touchDown, .touchDragEnter])
+            profileButton.addTarget(self, action: #selector(self.profileButtonReleased), for: [.touchUpInside,.touchCancel,.touchUpOutside, .touchDragExit])
         }
     }
     
-    @objc private func setColorLightGray(sender: UIButton, forevent event: UIEvent) {
-        sender.tintColor = .lightGray
+    @objc private func profileButtonPressed(sender: UIButton, forevent event: UIEvent) {
+        sender.tintColor = UIColor.appTint.withAlphaComponent(0.7)
     }
     
-    @objc private func setColorBlack(sender: UIButton) {
-        sender.tintColor = .black
+    @objc private func profileButtonReleased(sender: UIButton) {
+        sender.tintColor = .appTint
     }
     
     @objc private func presentProfileViewController(sender: UIButton) {
