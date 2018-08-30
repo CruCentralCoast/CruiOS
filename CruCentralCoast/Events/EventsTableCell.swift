@@ -13,7 +13,6 @@ import UIKit
     @IBOutlet weak var cellMask: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var shortDescription: UILabel!
     @IBOutlet weak var imageCellView: UIImageView! //named imageCellView because imageView was already a variable name used by the tableView
     
     private var currentImageLink: String?
@@ -21,7 +20,6 @@ import UIKit
         didSet {
             self.dateLabel.text = event.startDate.toString(dateFormat: "MMM-dd-yyyy")
             self.titleLabel.text = self.event.title
-            self.shortDescription.text = self.event.summary
             self.currentImageLink = self.event.imageLink
             self.imageCellView.image = nil
             // Try to download the image, but only display it if this cell has not been reused
