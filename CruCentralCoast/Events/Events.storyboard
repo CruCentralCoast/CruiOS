@@ -6,7 +6,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -31,7 +30,7 @@
         <scene sceneID="4qe-8Z-5bX">
             <objects>
                 <tableViewController id="g82-Hc-wZh" customClass="EventsVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3NN-nQ-wYI">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3NN-nQ-wYI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,19 +88,6 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-05-0Hx">
-                                        <rect key="frame" x="366" y="32" width="32" height="32"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="32" id="R2v-Db-4Ej"/>
-                                            <constraint firstAttribute="width" constant="32" id="haO-74-4Og"/>
-                                        </constraints>
-                                        <state key="normal" title="Close" image="cancel icon.ico">
-                                            <color key="titleColor" red="0.30566988119999999" green="0.30566988119999999" blue="0.30566988119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="dismissDetail:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="Paa-1S-Kmy"/>
-                                        </connections>
-                                    </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="knk-lC-Fu0">
                                         <rect key="frame" x="52" y="405.66666666666669" width="310" height="40"/>
                                         <subviews>
@@ -170,9 +156,7 @@
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" id="R56-sQ-hrV"/>
                                     <constraint firstItem="7k4-Tz-JY1" firstAttribute="centerY" secondItem="glu-cR-yHR" secondAttribute="centerY" id="STd-MU-cQg"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="8" id="Wuy-9A-fwa"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="OXe-05-0Hx" secondAttribute="trailing" constant="8" id="a5y-lb-8WX"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" id="ghP-Sf-gPf"/>
-                                    <constraint firstItem="OXe-05-0Hx" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="topMargin" constant="4" id="iDt-jy-IgE"/>
                                     <constraint firstAttribute="bottom" secondItem="knk-lC-Fu0" secondAttribute="bottom" constant="183" id="iqE-fn-tE9"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="8" id="jHi-Gh-b5n"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="jsy-SD-dew"/>
@@ -184,11 +168,26 @@
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="zs7-me-8Sy"/>
                                 </constraints>
                             </scrollView>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-05-0Hx">
+                                <rect key="frame" x="366" y="36" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="R2v-Db-4Ej"/>
+                                    <constraint firstAttribute="width" constant="32" id="haO-74-4Og"/>
+                                </constraints>
+                                <state key="normal" title="Close" image="cancel icon.ico">
+                                    <color key="titleColor" red="0.30566988119999999" green="0.30566988119999999" blue="0.30566988119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissDetail:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="Paa-1S-Kmy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="6PY-eE-fEO" firstAttribute="trailing" secondItem="oIP-Hd-mrk" secondAttribute="trailing" id="9rL-sb-I7F"/>
                             <constraint firstItem="6PY-eE-fEO" firstAttribute="leading" secondItem="oIP-Hd-mrk" secondAttribute="leading" id="D76-FN-L0I"/>
+                            <constraint firstItem="oIP-Hd-mrk" firstAttribute="trailing" secondItem="OXe-05-0Hx" secondAttribute="trailing" constant="16" id="MxD-7P-n8g"/>
+                            <constraint firstItem="OXe-05-0Hx" firstAttribute="top" secondItem="oIP-Hd-mrk" secondAttribute="top" constant="16" id="aHw-Ji-7me"/>
                             <constraint firstItem="6PY-eE-fEO" firstAttribute="bottom" secondItem="oIP-Hd-mrk" secondAttribute="bottom" id="aL0-zr-eGd"/>
                             <constraint firstItem="6PY-eE-fEO" firstAttribute="top" secondItem="1sP-j8-lqt" secondAttribute="top" id="pNq-Y6-S0l"/>
                         </constraints>

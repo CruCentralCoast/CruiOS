@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,15 +13,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="363" id="KGk-i7-Jjw" customClass="EventsTableCell" customModule="CruCentralCoast" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="363"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="327" id="KGk-i7-Jjw" customClass="EventsTableCell" customModule="CruCentralCoast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="327"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" userLabel="content View">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="326.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yUs-wa-c5i" userLabel="cellMask">
-                        <rect key="frame" x="20" y="11" width="374" height="341"/>
+                        <rect key="frame" x="20" y="11" width="374" height="305"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9R4-fk-mQg">
@@ -31,13 +31,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Event Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="fZK-YH-ocJ">
-                        <rect key="frame" x="40" y="255.5" width="334" height="41.5"/>
+                        <rect key="frame" x="40" y="255.5" width="334" height="19.5"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Short Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERY-Bh-MGa">
-                        <rect key="frame" x="40" y="305" width="334" height="21"/>
+                        <rect key="frame" x="40" y="283" width="334" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailingMargin" secondItem="fZK-YH-ocJ" secondAttribute="trailing" constant="20" id="0b8-Km-YjW"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="ERY-Bh-MGa" secondAttribute="bottom" constant="26" id="0u4-7C-nTw"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="ERY-Bh-MGa" secondAttribute="bottom" constant="12" id="0u4-7C-nTw"/>
                     <constraint firstAttribute="trailingMargin" secondItem="9R4-fk-mQg" secondAttribute="trailing" id="4A1-bf-1XV"/>
                     <constraint firstItem="yUs-wa-c5i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4qq-ID-jOJ"/>
                     <constraint firstItem="fZK-YH-ocJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="20" id="4vi-ji-OPg"/>
@@ -76,7 +76,7 @@
                 <outlet property="shortDescription" destination="ERY-Bh-MGa" id="vid-D0-525"/>
                 <outlet property="titleLabel" destination="fZK-YH-ocJ" id="A83-y3-Vbi"/>
             </connections>
-            <point key="canvasLocation" x="34" y="124.5"/>
+            <point key="canvasLocation" x="34" y="106.5"/>
         </tableViewCell>
     </objects>
 </document>
