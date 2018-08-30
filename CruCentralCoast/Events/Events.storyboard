@@ -65,7 +65,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-9O-O3u">
-                                        <rect key="frame" x="20" y="241" width="73.333333333333329" height="18"/>
+                                        <rect key="frame" x="20" y="241" width="73.666666666666671" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -88,54 +88,27 @@
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="knk-lC-Fu0">
-                                        <rect key="frame" x="52" y="405.66666666666669" width="310" height="40"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu5-Zb-0Vs" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
-                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="40" id="FSu-im-KUa"/>
-                                                    <constraint firstAttribute="width" constant="160" id="MqO-Ub-IDv"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="20" maxY="10"/>
-                                                <state key="normal" title="Add To Calendar" image="events_icon">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="15"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="addToCalendarButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="wa5-83-LlQ"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Si-BSE" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                                <rect key="frame" x="180" y="0.0" width="130" height="40"/>
-                                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="130" id="Q8q-5Z-v6t"/>
-                                                    <constraint firstAttribute="height" constant="40" id="a94-JR-hVd"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="20" maxY="10"/>
-                                                <state key="normal" title="View In FB" image="facebook_icon">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </state>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                        <real key="value" value="15"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                                <connections>
-                                                    <action selector="facebookButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="abh-MR-Ft4"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Si-BSE" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="403.66666666666669" width="382" height="50"/>
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="t31-ju-GBn"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="20" maxY="10"/>
+                                        <state key="normal" title="View In FB" image="facebook_icon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="facebookButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="abh-MR-Ft4"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
                                         <rect key="frame" x="43" y="300.33333333333331" width="351" height="28"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
@@ -144,22 +117,46 @@
                                             <action selector="locationButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="b6I-SJ-g3E"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu5-Zb-0Vs" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="465.66666666666669" width="382" height="50.000000000000057"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ogd-c4-e0g"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="20" maxY="10"/>
+                                        <state key="normal" title="Add To Calendar" image="events_icon">
+                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="15"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="addToCalendarButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="wa5-83-LlQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="knk-lC-Fu0" firstAttribute="centerX" secondItem="6PY-eE-fEO" secondAttribute="centerX" id="2X7-id-KmE"/>
+                                    <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="16" id="2FC-bb-Zrx"/>
                                     <constraint firstAttribute="trailing" secondItem="7k4-Tz-JY1" secondAttribute="trailing" constant="20" id="5Q6-Q5-gef"/>
-                                    <constraint firstItem="knk-lC-Fu0" firstAttribute="top" secondItem="3lv-CQ-HAd" secondAttribute="bottom" constant="32" id="C9p-DV-zdu"/>
+                                    <constraint firstAttribute="trailing" secondItem="Eu5-Zb-0Vs" secondAttribute="trailing" constant="16" id="9U6-Gr-kdc"/>
                                     <constraint firstAttribute="trailing" secondItem="3lv-CQ-HAd" secondAttribute="trailing" constant="20" id="Dru-La-dVE"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="8" id="Hsg-oD-Xad"/>
+                                    <constraint firstAttribute="bottom" secondItem="Eu5-Zb-0Vs" secondAttribute="bottom" constant="24" id="JbG-2r-2gM"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="16" id="MlX-Ab-wkx"/>
                                     <constraint firstItem="7k4-Tz-JY1" firstAttribute="leading" secondItem="glu-cR-yHR" secondAttribute="trailing" constant="4" id="Oyh-1q-9DK"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" id="R56-sQ-hrV"/>
                                     <constraint firstItem="7k4-Tz-JY1" firstAttribute="centerY" secondItem="glu-cR-yHR" secondAttribute="centerY" id="STd-MU-cQg"/>
+                                    <constraint firstItem="IJy-Si-BSE" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="16" id="UEq-bq-FM7"/>
+                                    <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="top" secondItem="IJy-Si-BSE" secondAttribute="bottom" constant="12" id="WcP-4t-eZS"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="8" id="Wuy-9A-fwa"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" id="ghP-Sf-gPf"/>
-                                    <constraint firstAttribute="bottom" secondItem="knk-lC-Fu0" secondAttribute="bottom" constant="183" id="iqE-fn-tE9"/>
                                     <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="8" id="jHi-Gh-b5n"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="jsy-SD-dew"/>
+                                    <constraint firstItem="IJy-Si-BSE" firstAttribute="top" secondItem="3lv-CQ-HAd" secondAttribute="bottom" constant="30" id="mbh-bo-EoB"/>
+                                    <constraint firstAttribute="trailing" secondItem="IJy-Si-BSE" secondAttribute="trailing" constant="16" id="oXg-AL-YeP"/>
                                     <constraint firstAttribute="trailing" secondItem="UYN-ct-CuI" secondAttribute="trailing" id="oiq-ut-XsQ"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="25" id="pH7-NB-BSb"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="pgW-Vk-mtZ"/>
