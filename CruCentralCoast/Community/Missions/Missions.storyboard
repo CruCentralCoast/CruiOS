@@ -129,7 +129,7 @@
                                     <constraint firstItem="e8m-sO-ElP" firstAttribute="leading" secondItem="Fqr-4x-vZM" secondAttribute="leading" id="zXD-bE-B08"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-YG-kN7">
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLb-YG-kN7">
                                 <rect key="frame" x="327" y="36" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="tEv-Gk-Sun"/>

@@ -128,7 +128,7 @@
                                     <constraint firstItem="vbZ-p6-tpG" firstAttribute="top" secondItem="GR7-2u-vv6" secondAttribute="bottom" constant="40" id="hsK-Xz-3qB"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gr5-bC-MEw">
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gr5-bC-MEw">
                                 <rect key="frame" x="327" y="36" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Uxh-EY-7E1"/>
