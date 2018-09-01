@@ -74,6 +74,7 @@ extension ProfileVC: UITableViewDataSource {
         switch self.tableViewLayout[indexPath.section][indexPath.row] {
         case .email:
             cell = tableView.dequeueCell(ProfileEmailCell.self, indexPath: indexPath)
+            (cell as! ProfileEmailCell).configure(with: LoginManager.instance.user)
         case .notifications:
             cell = tableView.dequeueCell(ProfileNotificationsCell.self, indexPath: indexPath)
         case .chooseMovements:
@@ -99,6 +100,7 @@ extension ProfileVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if section == 0 {
+            self.profileHeaderView.configure(with: LoginManager.instance.user)
             return self.profileHeaderView
         }
         return nil

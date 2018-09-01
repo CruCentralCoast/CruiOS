@@ -7,13 +7,27 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
 
-    @IBOutlet weak var imageLabel: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        self.imageView.layer.cornerRadius = self.imageView.frame.width / 2
+        self.imageView.clipsToBounds = true
+    }
+    
+    func configure(with user: User?) {
+        if user == nil {
+            self.imageView.image = #imageLiteral(resourceName: "profile_icon")
+            self.nameLabel.text = "First Last"
+        } else {
+            self.imageView.downloadedFrom(url: user?.photoURL)
+            self.nameLabel.text = user?.displayName
+        }
     }
 }

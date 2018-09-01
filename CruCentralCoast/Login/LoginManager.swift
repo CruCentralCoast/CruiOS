@@ -55,6 +55,7 @@ class LoginManager: NSObject {
             viewController?.presentAlert(title: "Successful Logout", message: "You have sucessfully been logged out")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
+            viewController?.presentAlert(title: "Failed Logout", message: "Check your internet connection and try again")
         }
     }
 }
