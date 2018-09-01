@@ -43,11 +43,6 @@ class EventsVC: UITableViewController {
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.dataArray = DatabaseManager.instance.getEvents()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        self.updateProfileButtonImage()
-    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

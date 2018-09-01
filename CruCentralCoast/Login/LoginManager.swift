@@ -52,6 +52,7 @@ class LoginManager: NSObject {
     func logout(sender viewController: UIViewController?) {
         do {
             try Auth.auth().signOut()
+            NotificationCenter.default.post(name: NSNotification.Name.UserDidLogout, object: nil)
             viewController?.presentAlert(title: "Successful Logout", message: "You have sucessfully been logged out")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
@@ -79,6 +80,7 @@ extension LoginManager: GIDSignInDelegate {
             }
             // User is signed in
             print("Successful Google sign-in")
+            NotificationCenter.default.post(name: NSNotification.Name.UserDidLogin, object: nil)
             LoginManager.instance.dismissLogin()
         }
     }
@@ -106,6 +108,7 @@ extension LoginManager: FBSignInDelegate {
             }
             // User is signed in
             print("Successful Facebook sign-in")
+            NotificationCenter.default.post(name: NSNotification.Name.UserDidLogin, object: nil)
             LoginManager.instance.dismissLogin()
         }
     }
