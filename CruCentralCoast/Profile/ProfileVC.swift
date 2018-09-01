@@ -25,14 +25,15 @@ class ProfileVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.registerCell(ProfileEmailCell.self)
         self.tableView.registerCell(ProfileNotificationsCell.self)
         self.tableView.registerCell(ProfileSelectableTextCell.self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        // get rid of lines below the cells
-        self.tableView.tableFooterView = UIView()
+        self.tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -121,7 +122,13 @@ extension ProfileVC: UITableViewDelegate {
             self.present(navVC, animated: true, completion: nil)
             break
         case .loginLogout:
-            break
+            let userIsLoggedIn = LoginManager.instance.user != nil
+            if userIsLoggedIn {
+                LoginManager.instance.logout(sender: self)
+                self.tableView.reloadData()
+            } else {
+                LoginManager.instance.presentLogin(from: self)
+            }
         default:
             return
         }

@@ -48,6 +48,15 @@ class LoginManager: NSObject {
             completion?()
         }
     }
+    
+    func logout(sender viewController: UIViewController?) {
+        do {
+            try Auth.auth().signOut()
+            viewController?.presentAlert(title: "Successful Logout", message: "You have sucessfully been logged out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+    }
 }
 
 extension LoginManager: GIDSignInDelegate {
