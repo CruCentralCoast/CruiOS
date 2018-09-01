@@ -14,6 +14,9 @@ public extension UIViewController {
             String(describing: type(of: $0)) == "_UINavigationBarLargeTitleView" } ) {
             
             let profileButton = UIButton()
+            profileButton.tag = 1
+            profileButton.layer.cornerRadius = 16
+            profileButton.clipsToBounds = true
             profileButton.setImage(#imageLiteral(resourceName: "profile_icon"), for: .normal)
             profileButton.tintColor = .appTint
             largeTitleView.addSubview(profileButton)
@@ -28,6 +31,23 @@ public extension UIViewController {
             profileButton.addTarget(self, action: #selector(self.presentProfileViewController), for: .touchUpInside)
             profileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: [.touchDown, .touchDragEnter])
             profileButton.addTarget(self, action: #selector(self.profileButtonReleased), for: [.touchUpInside,.touchCancel,.touchUpOutside, .touchDragExit])
+        }
+    }
+    
+    func updateProfileButtonImage() {
+        if let largeTitleView = self.navigationController?.navigationBar.subviews.first(where: {
+            String(describing: type(of: $0)) == "_UINavigationBarLargeTitleView" } ) {
+            if let profileButton = largeTitleView.subviews.first(where: { $0.tag == 1 }) as? UIButton {
+                if let imageUrl = LoginManager.instance.user?.photoURL {
+                    ImageManager.instance.fetch(imageUrl) { image in
+                        DispatchQueue.main.async {
+                            profileButton.setImage(image, for: .normal)
+                        }
+                    }
+                } else {
+                    profileButton.setImage(#imageLiteral(resourceName: "profile_icon"), for: .normal)
+                }
+            }
         }
     }
     

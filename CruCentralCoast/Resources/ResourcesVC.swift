@@ -34,6 +34,11 @@ class ResourcesVC: UIViewController {
         self.resources = DatabaseManager.instance.getResources()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.updateProfileButtonImage()
+    }
+    
     private func configureSearch() {
         // Setup the Search Controller
         self.searchController.searchResultsUpdater = self
