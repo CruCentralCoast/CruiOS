@@ -5,60 +5,56 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="ProfileNotificationsCell" customModule="CruCentralCoast" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="286" height="49.5"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="bOV-U2-QBK" customClass="ProfileNotificationsCell" customModule="CruCentralCoast" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bOV-U2-QBK" id="Rm3-WX-MbA">
+                <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SCd-uA-b3d">
-                        <rect key="frame" x="16" y="8" width="97" height="33.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UsS-up-pnx">
+                        <rect key="frame" x="16" y="11" width="102" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5R-Rt-EBg">
-                        <rect key="frame" x="270.5" y="15" width="19.5" height="20"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="awF-aE-MTS">
+                        <rect key="frame" x="310" y="12" width="31" height="20"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L2j-iA-ME4">
-                                <rect key="frame" x="6" y="3.5" width="7.5" height="13.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YUG-Jw-ngW">
+                                <rect key="frame" x="6" y="3.5" width="19" height="13.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.8666666666666667" green="0.49019607843137253" blue="0.10588235294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.86666666670000003" green="0.49019607840000001" blue="0.1058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="L2j-iA-ME4" firstAttribute="centerY" secondItem="W5R-Rt-EBg" secondAttribute="centerY" id="Cmz-Sh-s2g"/>
-                            <constraint firstItem="L2j-iA-ME4" firstAttribute="leading" secondItem="W5R-Rt-EBg" secondAttribute="leading" constant="6" id="PQg-pk-urN"/>
-                            <constraint firstAttribute="trailing" secondItem="L2j-iA-ME4" secondAttribute="trailing" constant="6" id="Q8w-ia-PAO"/>
-                            <constraint firstAttribute="height" constant="20" id="e28-TD-L5A"/>
+                            <constraint firstAttribute="height" constant="20" id="6d8-i5-bEd"/>
+                            <constraint firstItem="YUG-Jw-ngW" firstAttribute="centerY" secondItem="awF-aE-MTS" secondAttribute="centerY" id="DIb-4X-gdQ"/>
+                            <constraint firstItem="YUG-Jw-ngW" firstAttribute="leading" secondItem="awF-aE-MTS" secondAttribute="leading" constant="6" id="qH9-Uy-dmV"/>
+                            <constraint firstAttribute="trailing" secondItem="YUG-Jw-ngW" secondAttribute="trailing" constant="6" id="yhz-PU-4WZ"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="SCd-uA-b3d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="arM-kr-VLo"/>
-                    <constraint firstAttribute="bottom" secondItem="SCd-uA-b3d" secondAttribute="bottom" constant="8" id="cZh-qU-9fF"/>
-                    <constraint firstItem="SCd-uA-b3d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="gNd-h6-ZsG"/>
-                    <constraint firstItem="W5R-Rt-EBg" firstAttribute="centerY" secondItem="SCd-uA-b3d" secondAttribute="centerY" id="jX8-JU-9gi"/>
+                    <constraint firstAttribute="trailing" secondItem="awF-aE-MTS" secondAttribute="trailing" id="BeX-ir-5rE"/>
+                    <constraint firstItem="UsS-up-pnx" firstAttribute="centerY" secondItem="Rm3-WX-MbA" secondAttribute="centerY" id="UZ6-Ug-kZg"/>
+                    <constraint firstItem="UsS-up-pnx" firstAttribute="leading" secondItem="Rm3-WX-MbA" secondAttribute="leadingMargin" id="hNb-SG-5OS"/>
+                    <constraint firstItem="awF-aE-MTS" firstAttribute="centerY" secondItem="Rm3-WX-MbA" secondAttribute="centerY" id="tNa-70-oCO"/>
                 </constraints>
             </tableViewCellContentView>
-            <constraints>
-                <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="W5R-Rt-EBg" secondAttribute="trailing" constant="30" id="yx2-ye-3YN"/>
-            </constraints>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="notificationNumberContainerView" destination="W5R-Rt-EBg" id="yzE-xu-3il"/>
-                <outlet property="notificationsNumberLabel" destination="L2j-iA-ME4" id="r5A-da-B7O"/>
+                <outlet property="notificationNumberContainerView" destination="awF-aE-MTS" id="R3S-j8-7LL"/>
+                <outlet property="notificationsNumberLabel" destination="YUG-Jw-ngW" id="SPL-We-EYz"/>
             </connections>
-            <point key="canvasLocation" x="34" y="57"/>
+            <point key="canvasLocation" x="45" y="-283"/>
         </tableViewCell>
     </objects>
 </document>

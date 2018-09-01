@@ -17,27 +17,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pLd-AF-aVP">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="pLd-AF-aVP">
                                 <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7J-JG-sLK">
-                                <rect key="frame" x="346" y="30" width="19" height="22"/>
-                                <color key="tintColor" white="0.40000000000000002" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="336" y="40" width="19" height="22"/>
+                                <color key="tintColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="cross"/>
                                 <connections>
                                     <action selector="didPressCloseButton:" destination="aNR-5Y-JWV" eventType="touchUpInside" id="bnu-hJ-VXr"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="pLd-AF-aVP" firstAttribute="top" secondItem="6n5-Na-orx" secondAttribute="top" constant="20" id="S7Y-kW-eIl"/>
-                            <constraint firstAttribute="bottom" secondItem="pLd-AF-aVP" secondAttribute="bottom" id="TzY-P0-loT"/>
-                            <constraint firstItem="m3P-al-aAk" firstAttribute="trailing" secondItem="Y7J-JG-sLK" secondAttribute="trailing" constant="10" id="VM5-Yt-hR0"/>
+                            <constraint firstItem="m3P-al-aAk" firstAttribute="trailing" secondItem="Y7J-JG-sLK" secondAttribute="trailing" constant="20" id="VM5-Yt-hR0"/>
+                            <constraint firstItem="m3P-al-aAk" firstAttribute="top" secondItem="pLd-AF-aVP" secondAttribute="top" id="WU7-WQ-fEd"/>
                             <constraint firstItem="m3P-al-aAk" firstAttribute="trailing" secondItem="pLd-AF-aVP" secondAttribute="trailing" id="fCJ-L9-dsz"/>
+                            <constraint firstItem="pLd-AF-aVP" firstAttribute="bottom" secondItem="m3P-al-aAk" secondAttribute="bottom" id="jHA-Iz-Zh3"/>
                             <constraint firstItem="pLd-AF-aVP" firstAttribute="leading" secondItem="m3P-al-aAk" secondAttribute="leading" id="wSG-UB-ZQh"/>
-                            <constraint firstItem="Y7J-JG-sLK" firstAttribute="top" secondItem="m3P-al-aAk" secondAttribute="top" constant="10" id="yXn-8f-O0P"/>
+                            <constraint firstItem="Y7J-JG-sLK" firstAttribute="top" secondItem="m3P-al-aAk" secondAttribute="top" constant="20" id="yXn-8f-O0P"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m3P-al-aAk"/>
                     </view>

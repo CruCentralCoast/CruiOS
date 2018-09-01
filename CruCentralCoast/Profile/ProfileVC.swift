@@ -19,7 +19,7 @@ class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let tableViewLayout: [ProfileTableViewCellType] = [.email, .notifications, .chooseMovements, .loginLogout]
+    let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.loginLogout]]
     let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
     private var shadowImageView: UIImageView?
     
@@ -60,13 +60,17 @@ class ProfileVC: UIViewController {
 }
 
 extension ProfileVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.tableViewLayout.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableViewLayout[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
-        switch self.tableViewLayout[indexPath.row] {
+        switch self.tableViewLayout[indexPath.section][indexPath.row] {
         case .email:
             cell = tableView.dequeueCell(ProfileEmailCell.self, indexPath: indexPath)
         case .notifications:
@@ -93,15 +97,21 @@ extension ProfileVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.profileHeaderView
+        if section == 0 {
+            return self.profileHeaderView
+        }
+        return nil
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.profileHeaderView.frame.height
+        if section == 0 {
+            return self.profileHeaderView.frame.height
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch self.tableViewLayout[indexPath.row] {
+        switch self.tableViewLayout[indexPath.section][indexPath.row] {
         case .notifications:
             self.show(NotificationsVC(), sender: self)
         case .chooseMovements:
@@ -117,5 +127,4 @@ extension ProfileVC: UITableViewDelegate {
         }
         tableView.cellForRow(at: indexPath)?.isSelected = false
     }
-    
 }

@@ -12,13 +12,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
 
     @IBOutlet weak var imageLabel: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var fakeBottomOfNavBar: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.fakeBottomOfNavBar.addBorders(edges: .bottom, color: .navBarLineGray, thickness: 0.5)
     }
-    
-    
-    
 }
