@@ -119,10 +119,9 @@ extension ProfileVC: UITableViewDelegate {
             self.show(NotificationsVC(), sender: self)
         case .chooseMovements:
             let vc = ChooseCampusVC()
-            vc.title = "Choose Campus"
+            vc.title = "Choose Campus/Movement"
             let navVC = UINavigationController(rootViewController: vc)
             self.present(navVC, animated: true, completion: nil)
-            break
         case .loginLogout:
             let userIsLoggedIn = LoginManager.instance.user != nil
             if userIsLoggedIn {
