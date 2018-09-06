@@ -65,36 +65,30 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-9O-O3u">
-                                        <rect key="frame" x="20" y="241" width="76.333333333333329" height="18"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                        <rect key="frame" x="20" y="243" width="79.333333333333329" height="19.333333333333314"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description textbox:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lv-CQ-HAd">
-                                        <rect key="frame" x="20" y="353.33333333333331" width="374" height="20.333333333333314"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="20" y="341" width="374" height="21.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" semanticContentAttribute="spatial" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location icon.ico" translatesAutoresizingMaskIntoConstraints="NO" id="glu-cR-yHR">
-                                        <rect key="frame" x="16" y="306.33333333333331" width="23" height="16"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="glu-cR-yHR" secondAttribute="height" multiplier="13:9" id="pd5-sW-Ooa"/>
-                                        </constraints>
-                                    </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkD-pk-Jlf">
-                                        <rect key="frame" x="20" y="267" width="374" height="31.333333333333314"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                        <rect key="frame" x="20" y="266.33333333333331" width="374" height="28.666666666666686"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Si-BSE" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="413.66666666666669" width="334" height="50"/>
+                                        <rect key="frame" x="40" y="402.66666666666669" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="t31-ju-GBn"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="20" maxY="10"/>
                                         <state key="normal" title="View In FB" image="facebook_icon">
@@ -102,7 +96,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
+                                                <real key="value" value="9"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -110,27 +104,29 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
-                                        <rect key="frame" x="43" y="300.33333333333331" width="351" height="28"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <state key="normal" title="location Button"/>
+                                        <rect key="frame" x="20" y="299" width="374" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="location Button">
+                                            <color key="titleColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
                                         <connections>
                                             <action selector="locationButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="b6I-SJ-g3E"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu5-Zb-0Vs" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="475.66666666666669" width="334" height="50.000000000000057"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="40" y="464.66666666666669" width="334" height="50.000000000000057"/>
+                                        <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ogd-c4-e0g"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="20" maxY="10"/>
-                                        <state key="normal" title="Add To Calendar" image="events_icon">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <state key="normal" title="Add To Calendar">
+                                            <color key="titleColor" red="0.24313725490196078" green="0.69411764705882351" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
+                                                <real key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -140,38 +136,37 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="40" id="0Hi-yy-Fv6"/>
+                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="4" id="0zb-Wo-N6X"/>
                                     <constraint firstAttribute="trailing" secondItem="7k4-Tz-JY1" secondAttribute="trailing" constant="20" id="5Q6-Q5-gef"/>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="centerX" secondItem="6PY-eE-fEO" secondAttribute="centerX" id="90r-xd-sMD"/>
                                     <constraint firstItem="IJy-Si-BSE" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="40" id="Di5-fd-9iT"/>
                                     <constraint firstAttribute="trailing" secondItem="3lv-CQ-HAd" secondAttribute="trailing" constant="20" id="Dru-La-dVE"/>
-                                    <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="8" id="Hsg-oD-Xad"/>
+                                    <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="4" id="Hsg-oD-Xad"/>
                                     <constraint firstAttribute="bottom" secondItem="Eu5-Zb-0Vs" secondAttribute="bottom" constant="40" id="JbG-2r-2gM"/>
-                                    <constraint firstItem="glu-cR-yHR" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="16" id="MlX-Ab-wkx"/>
-                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="leading" secondItem="glu-cR-yHR" secondAttribute="trailing" constant="4" id="Oyh-1q-9DK"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" id="R56-sQ-hrV"/>
-                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="centerY" secondItem="glu-cR-yHR" secondAttribute="centerY" id="STd-MU-cQg"/>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="top" secondItem="IJy-Si-BSE" secondAttribute="bottom" constant="12" id="WcP-4t-eZS"/>
-                                    <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="8" id="Wuy-9A-fwa"/>
+                                    <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="10" id="Wuy-9A-fwa"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" id="ghP-Sf-gPf"/>
-                                    <constraint firstItem="glu-cR-yHR" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="8" id="jHi-Gh-b5n"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="jsy-SD-dew"/>
                                     <constraint firstItem="IJy-Si-BSE" firstAttribute="top" secondItem="3lv-CQ-HAd" secondAttribute="bottom" constant="40" id="mbh-bo-EoB"/>
                                     <constraint firstAttribute="trailing" secondItem="UYN-ct-CuI" secondAttribute="trailing" id="oiq-ut-XsQ"/>
-                                    <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="25" id="pH7-NB-BSb"/>
+                                    <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="12" id="pH7-NB-BSb"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="pgW-Vk-mtZ"/>
                                     <constraint firstItem="IJy-Si-BSE" firstAttribute="centerX" secondItem="6PY-eE-fEO" secondAttribute="centerX" id="q3y-1D-51a"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="width" secondItem="6PY-eE-fEO" secondAttribute="width" id="wlP-nx-R4y"/>
                                     <constraint firstAttribute="trailing" secondItem="LkD-pk-Jlf" secondAttribute="trailing" constant="20" id="x8w-tC-cRJ"/>
+                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="xSs-hd-4UV"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="zs7-me-8Sy"/>
                                 </constraints>
                             </scrollView>
-                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-05-0Hx">
+                            <button alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-05-0Hx">
                                 <rect key="frame" x="366" y="36" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="R2v-Db-4Ej"/>
                                     <constraint firstAttribute="width" constant="32" id="haO-74-4Og"/>
                                 </constraints>
-                                <state key="normal" title="Close" image="cancel icon.ico">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Close" image="close_button">
                                     <color key="titleColor" red="0.30566988119999999" green="0.30566988119999999" blue="0.30566988119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -206,9 +201,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cancel icon.ico" width="48" height="48"/>
+        <image name="close_button" width="50" height="50"/>
         <image name="events_icon" width="25" height="25"/>
         <image name="facebook_icon" width="24" height="24"/>
-        <image name="location icon.ico" width="16" height="16"/>
     </resources>
 </document>

@@ -18,7 +18,7 @@ import UIKit
     private var currentImageLink: String?
     @objc var event: Event! {
         didSet {
-            self.dateLabel.text = event.startDate.toString(dateFormat: "MMM-dd-yyyy")
+            self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
             self.titleLabel.text = self.event.title
             self.currentImageLink = self.event.imageLink
             self.imageCellView.image = nil
