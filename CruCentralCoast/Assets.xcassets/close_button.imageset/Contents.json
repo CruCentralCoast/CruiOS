@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "close_button.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "close_button@2x.pdf",
       "scale" : "2x"
     },
     {
@@ -19,6 +19,7 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "template"
+    "template-rendering-intent" : "template",
+    "preserves-vector-representation" : true
   }
 }
