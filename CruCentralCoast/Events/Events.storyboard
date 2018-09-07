@@ -64,26 +64,26 @@
                                             <constraint firstAttribute="width" secondItem="UYN-ct-CuI" secondAttribute="height" multiplier="16:9" id="jMC-Lt-MV3"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-9O-O3u">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odd-9O-O3u">
                                         <rect key="frame" x="20" y="243" width="79.333333333333329" height="19.333333333333314"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
-                                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.51372549019607838" green="0.51372549019607838" blue="0.51372549019607838" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description textbox:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lv-CQ-HAd">
-                                        <rect key="frame" x="20" y="341" width="374" height="21.666666666666686"/>
+                                        <rect key="frame" x="20" y="331" width="374" height="21.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkD-pk-Jlf">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkD-pk-Jlf">
                                         <rect key="frame" x="20" y="266.33333333333331" width="374" height="28.666666666666686"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Si-BSE" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="402.66666666666669" width="334" height="50"/>
+                                        <rect key="frame" x="40" y="392.66666666666669" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="t31-ju-GBn"/>
@@ -103,18 +103,19 @@
                                             <action selector="facebookButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="abh-MR-Ft4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
-                                        <rect key="frame" x="20" y="299" width="374" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="location Button">
-                                            <color key="titleColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
+                                        <rect key="frame" x="20" y="299" width="374" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
+                                        <state key="normal" title="Location Button">
+                                            <color key="titleColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         </state>
                                         <connections>
                                             <action selector="locationButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="b6I-SJ-g3E"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu5-Zb-0Vs" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="464.66666666666669" width="334" height="50.000000000000057"/>
+                                        <rect key="frame" x="40" y="454.66666666666669" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="ogd-c4-e0g"/>
@@ -166,7 +167,7 @@
                                     <constraint firstAttribute="width" constant="32" id="haO-74-4Og"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Close" image="close_button">
+                                <state key="normal" image="close_button">
                                     <color key="titleColor" red="0.30566988119999999" green="0.30566988119999999" blue="0.30566988119999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
