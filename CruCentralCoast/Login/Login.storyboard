@@ -196,6 +196,70 @@
             </objects>
             <point key="canvasLocation" x="34" y="144"/>
         </scene>
+        <!--Forgot PasswordVC-->
+        <scene sceneID="t6f-LG-Zds">
+            <objects>
+                <viewController storyboardIdentifier="ForgotPasswordVC" modalTransitionStyle="flipHorizontal" id="Kom-xw-uiI" customClass="ForgotPasswordVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="brh-Ac-xhn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-We-0Qn" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="62" y="362" width="290" height="32"/>
+                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="IPl-hd-2ZZ"/>
+                                    <constraint firstAttribute="width" constant="290" id="rjT-oz-e2q"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-xG-jyd">
+                                <rect key="frame" x="142" y="414" width="129" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendEmailButtonPressed:" destination="Kom-xw-uiI" eventType="touchUpInside" id="J0h-2B-KyY"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-Lo-IoG">
+                                <rect key="frame" x="184" y="468" width="45" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Login">
+                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="Kom-xw-uiI" eventType="touchUpInside" id="wmO-Dz-gbk"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="fbT-Lo-IoG" firstAttribute="top" secondItem="rbK-xG-jyd" secondAttribute="bottom" constant="20" id="1qO-r8-GYm"/>
+                            <constraint firstItem="J02-sY-DR8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dFO-We-0Qn" secondAttribute="trailing" constant="20" id="Oq0-0I-C3r"/>
+                            <constraint firstItem="rbK-xG-jyd" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="YtW-UR-u2A"/>
+                            <constraint firstItem="dFO-We-0Qn" firstAttribute="centerY" secondItem="J02-sY-DR8" secondAttribute="centerY" id="ZBN-U8-Pw1"/>
+                            <constraint firstItem="fbT-Lo-IoG" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="e7D-B9-uHQ"/>
+                            <constraint firstItem="dFO-We-0Qn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J02-sY-DR8" secondAttribute="leading" constant="20" id="goH-ig-kZr"/>
+                            <constraint firstItem="rbK-xG-jyd" firstAttribute="top" secondItem="dFO-We-0Qn" secondAttribute="bottom" constant="20" id="uVt-Xb-9p3"/>
+                            <constraint firstItem="dFO-We-0Qn" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="z4A-ZY-shn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J02-sY-DR8"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="dFO-We-0Qn" id="Vgs-Jn-HmK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p4y-pB-dZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="901.63043478260875"/>
+        </scene>
         <!--Sign UpVC-->
         <scene sceneID="Tl2-EO-jyG">
             <objects>

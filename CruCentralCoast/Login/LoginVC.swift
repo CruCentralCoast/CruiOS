@@ -86,8 +86,9 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func forgotPassword() {
-        // TODO
-        self.presentAlert(title: "Forgot Password", message: "Coming Soon...")
+        let forgotPasswordVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(ForgotPasswordVC.self)
+        forgotPasswordVC.email = self.emailTextField.text
+        self.show(forgotPasswordVC, sender: self)
     }
     
     @IBAction func signUp() {
