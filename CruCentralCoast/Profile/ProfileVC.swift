@@ -80,7 +80,7 @@ extension ProfileVC: UITableViewDataSource {
         case .chooseMovements:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             if let cell = cell as? ProfileSelectableTextCell {
-                cell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Choose Movement")
+                cell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Change Campus")
             }
         case .loginLogout:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
@@ -119,7 +119,6 @@ extension ProfileVC: UITableViewDelegate {
             self.show(NotificationsVC(), sender: self)
         case .chooseMovements:
             let vc = ChooseCampusVC()
-            vc.title = "Choose Campus/Movement"
             let navVC = UINavigationController(rootViewController: vc)
             self.present(navVC, animated: true, completion: nil)
         case .loginLogout:

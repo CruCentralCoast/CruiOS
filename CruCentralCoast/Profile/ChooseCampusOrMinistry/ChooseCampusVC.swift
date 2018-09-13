@@ -1,5 +1,5 @@
 //
-//  ChangeCampusOrMinistryVC.swift
+//  ChooseCampusVC.swift
 //  CruCentralCoast
 //
 //  Created by Michael Cantrell on 4/26/18.
@@ -7,32 +7,29 @@
 //
 
 import UIKit
+import RealmSwift
 
-class ChooseCampusVC: UIViewController {
+class ChooseCampusVC: UITableViewController {
+    
+    var subscribedMovements = [String]()
     
     private let searchController = UISearchController(searchResultsController: nil)
-    private var tableView = UITableView()
-    private var movements: [String] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
-    private var filteredMovements: [String] = []
     
-    init() {
-        self.movements = ["Campus 1", "Campus 2", "Campus 3", "Campus 4", "Campus 5"]
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var campuses: Results<Campus>!
+    private var filteredCampuses = [Campus]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Choose Campus"
         self.configureTableView()
         self.configureSearchController()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonPressed))
+        
+        self.subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
+        
+        DatabaseManager.instance.subscribeToDatabaseUpdates(self)
+        self.campuses = DatabaseManager.instance.getCampuses()
+        let _ = DatabaseManager.instance.getMovements()
     }
     
     private func configureSearchController() {
@@ -44,19 +41,8 @@ class ChooseCampusVC: UIViewController {
     }
     
     private func configureTableView() {
-        self.view.addSubview(self.tableView)
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            ])
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.registerCell(CampusTableViewCell.self)
-        self.navigationItem.searchController = UISearchController()
+        self.tableView.registerCell(CampusCell.self)
     }
     
     private func searchBarIsEmpty() -> Bool {
@@ -65,10 +51,7 @@ class ChooseCampusVC: UIViewController {
     }
     
     private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        self.filteredMovements = self.movements.filter({( objectTitle : String) -> Bool in
-            return objectTitle.lowercased().contains(searchText.lowercased())
-        })
-        
+        self.filteredCampuses = self.campuses.filter { $0.name.lowercased().contains(searchText.lowercased()) }
         self.tableView.reloadData()
     }
     
@@ -77,42 +60,112 @@ class ChooseCampusVC: UIViewController {
     }
     
     @objc private func doneButtonPressed() {
+        self.finalizeSubsciption()
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
+    
+    private func campusAt(_ indexPath: IndexPath) -> Campus {
+        if self.isFiltering() {
+            return self.filteredCampuses[indexPath.row]
+        } else {
+            return self.campuses[indexPath.row]
+        }
+    }
 }
 
-extension ChooseCampusVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ChooseCampusVC {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if self.isFiltering() {
-            return self.filteredMovements.count
+            return self.filteredCampuses.count
         }
-        
-        return self.movements.count
+        return self.campuses.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(CampusTableViewCell.self, indexPath: indexPath)
-        cell.titleLabel.text = self.isFiltering() ? self.filteredMovements[indexPath.row] : self.movements[indexPath.row]
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(CampusCell.self, indexPath: indexPath)
+        cell.configure(with: self.campusAt(indexPath), subscribedMovements: self.subscribedMovements)
         return cell
     }
-}
-
-extension ChooseCampusVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath)
-        let vc = ChooseMovementVC()
-        vc.title = "Choose Movements"
-        self.show(vc, sender: self)
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)
+        let selectedCampus = self.campusAt(indexPath)
         cell?.isSelected = false
+        
+        if selectedCampus.movements.count > 1 {
+            let vc = ChooseMovementVC()
+            vc.campus = selectedCampus
+            vc.movementSubscriptionDelegate = self
+            self.show(vc, sender: self)
+        } else {
+            let selectedMovement = selectedCampus.movements[0]
+            if self.isSubscribed(to: selectedMovement.id) {
+                cell?.accessoryType = .none
+                self.unsubscribe(from: selectedMovement.id)
+            } else {
+                cell?.accessoryType = .checkmark
+                self.subscribe(to: selectedMovement.id)
+            }
+        }
     }
 }
 
 extension ChooseCampusVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        guard let searchBarText = searchController.searchBar.text else {
-            return
-        }
+        guard let searchBarText = searchController.searchBar.text else { return }
+        
         self.filterContentForSearchText(searchBarText)
     }
+}
+
+extension ChooseCampusVC: DatabaseListenerProtocol {
+    func updatedCampuses() {
+        print("Campuses were updated - refreshing UI")
+        self.tableView.reloadData()
+    }
+    
+    func updatedMovements() {
+        print("Movements were updated - refreshing UI")
+        self.tableView.reloadData()
+    }
+}
+
+extension ChooseCampusVC: MovementSubscriptionDelegate {
+    func isSubscribed(to movementId: String) -> Bool {
+        return self.subscribedMovements.contains(movementId)
+    }
+    
+    func subscribe(to movementId: String) {
+        guard !self.isSubscribed(to: movementId) else {
+            print("Already subscribed to movement: \(movementId)")
+            return
+        }
+        
+        self.subscribedMovements.append(movementId)
+    }
+    
+    func unsubscribe(from movementId: String) {
+        guard self.isSubscribed(to: movementId) else {
+            print("Already unsubscribed from movement: \(movementId)")
+            return
+        }
+        
+        let existingMovementIndex = self.subscribedMovements.index(of: movementId)!
+        self.subscribedMovements.remove(at: existingMovementIndex)
+    }
+    
+    func finalizeSubsciption() {
+        // Save id's of chosen movements in UserDefaults
+        LocalStorage.preferences.set(self.subscribedMovements, forKey: .subscribedMovements)
+        // TODO (Issue #186): Update data on backend if logged in
+    }
+}
+
+protocol MovementSubscriptionDelegate {
+    var subscribedMovements: [String] { get set }
+    
+    func isSubscribed(to movementId: String) -> Bool
+    func subscribe(to movementId: String)
+    func unsubscribe(from movementId: String)
+    func finalizeSubsciption()
 }

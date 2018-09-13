@@ -77,12 +77,12 @@
 		AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		AD652AA620B65990002FF565 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AA520B65990002FF565 /* Resource.swift */; };
-		ADAC30492104E5B800DBCA89 /* CampusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */; };
+		ADAC30492104E5B800DBCA89 /* CampusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC30472104E5B800DBCA89 /* CampusCell.xib */; };
 		ADAC304B210568FF00DBCA89 /* ChooseCampusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */; };
-		ADAC304D2105696900DBCA89 /* CampusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */; };
+		ADAC304D2105696900DBCA89 /* CampusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304C2105696800DBCA89 /* CampusCell.swift */; };
 		ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */; };
-		ADAC305321056EE000DBCA89 /* MovementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */; };
-		ADAC305421056EE000DBCA89 /* MovementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */; };
+		ADAC305321056EE000DBCA89 /* MovementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC305121056EE000DBCA89 /* MovementCell.swift */; };
+		ADAC305421056EE000DBCA89 /* MovementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC305221056EE000DBCA89 /* MovementCell.xib */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
 		ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */; };
 		ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */; };
@@ -195,12 +195,12 @@
 		AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		AD652AA520B65990002FF565 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampusTableViewCell.xib; sourceTree = "<group>"; };
+		ADAC30472104E5B800DBCA89 /* CampusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampusCell.xib; sourceTree = "<group>"; };
 		ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCampusVC.swift; sourceTree = "<group>"; };
-		ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusTableViewCell.swift; sourceTree = "<group>"; };
+		ADAC304C2105696800DBCA89 /* CampusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusCell.swift; sourceTree = "<group>"; };
 		ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMovementVC.swift; sourceTree = "<group>"; };
-		ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementTableViewCell.swift; sourceTree = "<group>"; };
-		ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementTableViewCell.xib; sourceTree = "<group>"; };
+		ADAC305121056EE000DBCA89 /* MovementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementCell.swift; sourceTree = "<group>"; };
+		ADAC305221056EE000DBCA89 /* MovementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementCell.xib; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
 		ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeueExtensions.swift; sourceTree = "<group>"; };
 		ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -482,10 +482,10 @@
 			children = (
 				ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */,
 				ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */,
-				ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */,
-				ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */,
-				ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */,
-				ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */,
+				ADAC304C2105696800DBCA89 /* CampusCell.swift */,
+				ADAC30472104E5B800DBCA89 /* CampusCell.xib */,
+				ADAC305121056EE000DBCA89 /* MovementCell.swift */,
+				ADAC305221056EE000DBCA89 /* MovementCell.xib */,
 			);
 			path = ChooseCampusOrMinistry;
 			sourceTree = "<group>";
@@ -658,14 +658,14 @@
 			files = (
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */,
-				ADAC305421056EE000DBCA89 /* MovementTableViewCell.xib in Resources */,
+				ADAC305421056EE000DBCA89 /* MovementCell.xib in Resources */,
 				2FC07F442117922100DDCE0B /* MissionCell.xib in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				AD12F3C7211FAF9E008AACA4 /* Resources.storyboard in Resources */,
 				2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */,
 				2F2BD9952077250400512170 /* Assets.xcassets in Resources */,
 				5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */,
-				ADAC30492104E5B800DBCA89 /* CampusTableViewCell.xib in Resources */,
+				ADAC30492104E5B800DBCA89 /* CampusCell.xib in Resources */,
 				5E0C2F2620BFC80A001E6F7C /* MinistryTeams.storyboard in Resources */,
 				5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */,
 				AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */,
@@ -855,7 +855,7 @@
 				2FE8BBEB21092EDD00AF9E57 /* Location.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
 				ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */,
-				ADAC304D2105696900DBCA89 /* CampusTableViewCell.swift in Sources */,
+				ADAC304D2105696900DBCA89 /* CampusCell.swift in Sources */,
 				AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */,
 				2FA9FE882107073E007A8658 /* Movement.swift in Sources */,
 				E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */,
@@ -885,7 +885,7 @@
 				2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */,
 				E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
-				ADAC305321056EE000DBCA89 /* MovementTableViewCell.swift in Sources */,
+				ADAC305321056EE000DBCA89 /* MovementCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

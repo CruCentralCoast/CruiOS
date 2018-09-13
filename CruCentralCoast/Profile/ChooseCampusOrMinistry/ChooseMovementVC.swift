@@ -8,110 +8,53 @@
 
 import UIKit
 
-class ChooseMovementVC: UIViewController {
+class ChooseMovementVC: UITableViewController {
     
-    private let searchController = UISearchController(searchResultsController: nil)
-    private var tableView = UITableView()
-    private var movements: [String] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
-    private var filteredMovements: [String] = []
-    
-    init() {
-        self.movements = ["Movement 1", "Movement 2", "Movement 3"]
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var campus: Campus!
+    var movementSubscriptionDelegate: MovementSubscriptionDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Choose Movement"
         self.configureTableView()
-        self.configureSearchController()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonPressed))
     }
     
-    private func configureSearchController() {
-        self.searchController.searchResultsUpdater = self
-        self.searchController.obscuresBackgroundDuringPresentation = false
-        self.searchController.searchBar.placeholder = "Search Movements"
-        self.navigationItem.searchController = self.searchController
-        self.definesPresentationContext = true
-    }
-    
     private func configureTableView() {
-        self.view.addSubview(self.tableView)
-        self.tableView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            self.tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
-            self.tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-            self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            self.tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-            ])
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.registerCell(CampusTableViewCell.self)
-        self.navigationItem.searchController = UISearchController()
-    }
-    
-    private func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return self.searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        self.filteredMovements = self.movements.filter({( objectTitle : String) -> Bool in
-            return objectTitle.lowercased().contains(searchText.lowercased())
-        })
-        
-        self.tableView.reloadData()
-    }
-    
-    private func isFiltering() -> Bool {
-        return self.searchController.isActive && !self.searchBarIsEmpty()
+        self.tableView.registerCell(MovementCell.self)
     }
     
     @objc private func doneButtonPressed() {
+        self.movementSubscriptionDelegate.finalizeSubsciption()
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }
 
-extension ChooseMovementVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.isFiltering() {
-            return self.filteredMovements.count
-        }
-        
-        return self.movements.count
+extension ChooseMovementVC {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.campus.movements.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(CampusTableViewCell.self, indexPath: indexPath)
-        cell.titleLabel.text = self.isFiltering() ? self.filteredMovements[indexPath.row] : self.movements[indexPath.row]
-        cell.accessoryType = .none
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(MovementCell.self, indexPath: indexPath)
+        let movement = self.campus.movements[indexPath.row]
+        let isSubscribed = self.movementSubscriptionDelegate.isSubscribed(to: movement.id)
+        cell.configure(with: movement, subscriptionStatus: isSubscribed)
         return cell
     }
-}
-
-extension ChooseMovementVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath)
-        cell?.accessoryType = cell?.accessoryType == .checkmark ? .none : .checkmark
+        let selectedMovement = self.campus.movements[indexPath.row]
         cell?.isSelected = false
         
-    }
-}
-
-extension ChooseMovementVC: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        guard let searchBarText = searchController.searchBar.text else {
-            return
+        if self.movementSubscriptionDelegate.isSubscribed(to: selectedMovement.id) {
+            cell?.accessoryType = .none
+            self.movementSubscriptionDelegate.unsubscribe(from: selectedMovement.id)
+        } else {
+            cell?.accessoryType = .checkmark
+            self.movementSubscriptionDelegate.subscribe(to: selectedMovement.id)
         }
-        self.filterContentForSearchText(searchBarText)
     }
 }
