@@ -51,8 +51,8 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="notificationNumberContainerView" destination="awF-aE-MTS" id="R3S-j8-7LL"/>
-                <outlet property="notificationsNumberLabel" destination="YUG-Jw-ngW" id="SPL-We-EYz"/>
+                <outlet property="notificationCountContainerView" destination="awF-aE-MTS" id="OKq-QA-jgj"/>
+                <outlet property="notificationCountLabel" destination="YUG-Jw-ngW" id="tpb-L4-Fpc"/>
             </connections>
             <point key="canvasLocation" x="45" y="-283"/>
         </tableViewCell>

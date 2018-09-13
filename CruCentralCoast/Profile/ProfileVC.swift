@@ -77,6 +77,8 @@ extension ProfileVC: UITableViewDataSource {
             (cell as! ProfileEmailCell).configure(with: LoginManager.instance.user)
         case .notifications:
             cell = tableView.dequeueCell(ProfileNotificationsCell.self, indexPath: indexPath)
+            // TODO (Issue #187): Change this value when push notifications are properly implemented
+            (cell as! ProfileNotificationsCell).configure(with: 0)
         case .chooseMovements:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             if let cell = cell as? ProfileSelectableTextCell {
@@ -116,11 +118,13 @@ extension ProfileVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch self.tableViewLayout[indexPath.section][indexPath.row] {
         case .notifications:
-            self.show(NotificationsVC(), sender: self)
+            let vc = NotificationsVC()
+            let navVC = UINavigationController(rootViewController: vc)
+            self.show(navVC, sender: self)
         case .chooseMovements:
             let vc = ChooseCampusVC()
             let navVC = UINavigationController(rootViewController: vc)
-            self.present(navVC, animated: true, completion: nil)
+            self.show(navVC, sender: self)
         case .loginLogout:
             let userIsLoggedIn = LoginManager.instance.user != nil
             if userIsLoggedIn {
