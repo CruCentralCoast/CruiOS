@@ -35,14 +35,6 @@ class ProfileVC: UIViewController {
         self.tableView.tableFooterView = UIView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if self.shadowImageView == nil {
-            self.shadowImageView = self.findShadowImage(under: self.navigationController!.navigationBar)
-        }
-        self.shadowImageView?.isHidden = true
-    }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
@@ -62,6 +54,9 @@ class ProfileVC: UIViewController {
         return nil
     }
     
+    @IBAction func didPressCloseButton(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
 }
 
 extension ProfileVC: UITableViewDataSource {

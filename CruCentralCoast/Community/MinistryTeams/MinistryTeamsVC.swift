@@ -40,7 +40,7 @@ class MinistryTeamsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "MinistryTeams", bundle: nil).instantiateViewController(MinistryTeamDetailsVC.self)
         vc.configure(with: self.dataArray[indexPath.row])
-        self.navigationController?.pushViewController(vc, animated: true)
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
