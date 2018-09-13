@@ -37,4 +37,8 @@ class ForgotPasswordVC: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
+    
+    @IBAction func dismissLogin(_ sender: Any) {
+        LoginManager.instance.dismissLogin()
+    }
 }
