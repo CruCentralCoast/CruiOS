@@ -22,7 +22,7 @@ class ChooseMovementVC: UITableViewController {
     
     private func configureTableView() {
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.registerCell(MovementCell.self)
+        self.tableView.registerCell(ChooseMovementCell.self)
     }
     
     @objc private func doneButtonPressed() {
@@ -37,7 +37,7 @@ extension ChooseMovementVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(MovementCell.self, indexPath: indexPath)
+        let cell = tableView.dequeueCell(ChooseMovementCell.self, indexPath: indexPath)
         let movement = self.campus.movements[indexPath.row]
         let isSubscribed = self.movementSubscriptionDelegate.isSubscribed(to: movement.id)
         cell.configure(with: movement, subscriptionStatus: isSubscribed)

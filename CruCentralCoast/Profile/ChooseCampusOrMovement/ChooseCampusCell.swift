@@ -1,5 +1,5 @@
 //
-//  CampusCell.swift
+//  ChooseCampusCell.swift
 //  CruCentralCoast
 //
 //  Created by Michael Cantrell on 7/22/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CampusCell: UITableViewCell {
+class ChooseCampusCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var campusImageView: UIImageView!

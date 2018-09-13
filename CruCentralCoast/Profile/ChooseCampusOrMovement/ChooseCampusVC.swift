@@ -42,7 +42,7 @@ class ChooseCampusVC: UITableViewController {
     
     private func configureTableView() {
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.registerCell(CampusCell.self)
+        self.tableView.registerCell(ChooseCampusCell.self)
     }
     
     private func searchBarIsEmpty() -> Bool {
@@ -82,7 +82,7 @@ extension ChooseCampusVC {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell(CampusCell.self, indexPath: indexPath)
+        let cell = tableView.dequeueCell(ChooseCampusCell.self, indexPath: indexPath)
         cell.configure(with: self.campusAt(indexPath), subscribedMovements: self.subscribedMovements)
         return cell
     }

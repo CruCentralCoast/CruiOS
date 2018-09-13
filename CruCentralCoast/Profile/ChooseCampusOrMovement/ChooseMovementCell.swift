@@ -1,5 +1,5 @@
 //
-//  MovementCell.swift
+//  ChooseMovementCell.swift
 //  CruCentralCoast
 //
 //  Created by Michael Cantrell on 7/22/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovementCell: UITableViewCell {
+class ChooseMovementCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     
