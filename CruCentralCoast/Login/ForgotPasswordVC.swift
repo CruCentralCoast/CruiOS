@@ -36,8 +36,4 @@ class ForgotPasswordVC: UIViewController {
     @IBAction func loginButtonPressed(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    
-    // TODO List:
-    // 3. Ask about keyboard will show and keyboard will hide in the login VCs... can we put this all in one place?
-    
 }
