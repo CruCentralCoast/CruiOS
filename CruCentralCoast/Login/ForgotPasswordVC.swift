@@ -24,6 +24,7 @@ class ForgotPasswordVC: UIViewController {
             self.presentAlert(title: "Email Field Empty", message: "Type the email associated with the account that you want to reset the password of")
             return
         }
+        
         Auth.auth().sendPasswordReset(withEmail: email) { error in
             if let error = error {
                 self.presentAlert(title: error.localizedDescription, message: nil)
