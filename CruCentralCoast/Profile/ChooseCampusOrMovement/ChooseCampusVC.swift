@@ -12,6 +12,8 @@ import RealmSwift
 class ChooseCampusVC: UITableViewController {
     
     var subscribedMovements = [String]()
+    var shouldReloadSelectedIndexPath = false
+    var selectedIndexPath: IndexPath?
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -32,6 +34,15 @@ class ChooseCampusVC: UITableViewController {
         let _ = DatabaseManager.instance.getMovements()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // If a campus with multiple movements has had its subscription changed, update the cell
+        if shouldReloadSelectedIndexPath, let indexPath = self.selectedIndexPath {
+            self.shouldReloadSelectedIndexPath = false
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
     private func configureSearchController() {
         self.searchController.searchResultsUpdater = self
         self.searchController.obscuresBackgroundDuringPresentation = false
@@ -45,40 +56,19 @@ class ChooseCampusVC: UITableViewController {
         self.tableView.registerCell(ChooseCampusCell.self)
     }
     
-    private func searchBarIsEmpty() -> Bool {
-        // Returns true if the text is empty or nil
-        return self.searchController.searchBar.text?.isEmpty ?? true
-    }
-    
-    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
-        self.filteredCampuses = self.campuses.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-        self.tableView.reloadData()
-    }
-    
-    private func isFiltering() -> Bool {
-        return self.searchController.isActive && !self.searchBarIsEmpty()
-    }
-    
     @objc private func doneButtonPressed() {
         self.finalizeSubsciption()
         self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     private func campusAt(_ indexPath: IndexPath) -> Campus {
-        if self.isFiltering() {
-            return self.filteredCampuses[indexPath.row]
-        } else {
-            return self.campuses[indexPath.row]
-        }
+        return self.isFiltering() ? self.filteredCampuses[indexPath.row] : self.campuses[indexPath.row]
     }
 }
 
 extension ChooseCampusVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.isFiltering() {
-            return self.filteredCampuses.count
-        }
-        return self.campuses.count
+        return self.isFiltering() ? self.filteredCampuses.count : self.campuses.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,11 +83,14 @@ extension ChooseCampusVC {
         cell?.isSelected = false
         
         if selectedCampus.movements.count > 1 {
+            self.selectedIndexPath = indexPath
             let vc = ChooseMovementVC()
             vc.campus = selectedCampus
             vc.movementSubscriptionDelegate = self
+            vc.chooseMovementObserver = self
             self.show(vc, sender: self)
         } else {
+            self.selectedIndexPath = nil
             let selectedMovement = selectedCampus.movements[0]
             if self.isSubscribed(to: selectedMovement.id) {
                 cell?.accessoryType = .none
@@ -115,6 +108,20 @@ extension ChooseCampusVC: UISearchResultsUpdating {
         guard let searchBarText = searchController.searchBar.text else { return }
         
         self.filterContentForSearchText(searchBarText)
+    }
+    
+    private func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return self.searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        self.filteredCampuses = self.campuses.filter { $0.name.lowercased().contains(searchText.lowercased()) }
+        self.tableView.reloadData()
+    }
+    
+    private func isFiltering() -> Bool {
+        return self.searchController.isActive && !self.searchBarIsEmpty()
     }
 }
 
@@ -161,6 +168,12 @@ extension ChooseCampusVC: MovementSubscriptionDelegate {
     }
 }
 
+extension ChooseCampusVC: ChooseMovementObserver {
+    func movementSubscriptionChanged() {
+        self.shouldReloadSelectedIndexPath = true
+    }
+}
+
 protocol MovementSubscriptionDelegate {
     var subscribedMovements: [String] { get set }
     
@@ -168,4 +181,11 @@ protocol MovementSubscriptionDelegate {
     func subscribe(to movementId: String)
     func unsubscribe(from movementId: String)
     func finalizeSubsciption()
+}
+
+protocol ChooseMovementObserver {
+    var selectedIndexPath: IndexPath? { get set }
+    var shouldReloadSelectedIndexPath: Bool { get set }
+    
+    func movementSubscriptionChanged()
 }

@@ -11,7 +11,9 @@ import UIKit
 class ChooseMovementVC: UITableViewController {
     
     var campus: Campus!
+    var selectedCampusCell: ChooseCampusCell?
     var movementSubscriptionDelegate: MovementSubscriptionDelegate!
+    var chooseMovementObserver: ChooseMovementObserver!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,5 +58,6 @@ extension ChooseMovementVC {
             cell?.accessoryType = .checkmark
             self.movementSubscriptionDelegate.subscribe(to: selectedMovement.id)
         }
+        self.chooseMovementObserver.movementSubscriptionChanged()
     }
 }
