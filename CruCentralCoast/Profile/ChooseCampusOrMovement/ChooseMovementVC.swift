@@ -29,7 +29,6 @@ class ChooseMovementVC: UITableViewController {
     
     @objc private func doneButtonPressed() {
         self.movementSubscriptionDelegate.finalizeSubsciption()
-        self.navigationController?.dismiss(animated: true, completion: nil)
     }
 }
 

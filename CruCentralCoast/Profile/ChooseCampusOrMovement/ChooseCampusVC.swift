@@ -58,7 +58,6 @@ class ChooseCampusVC: UITableViewController {
     
     @objc private func doneButtonPressed() {
         self.finalizeSubsciption()
-        self.navigationController?.dismiss(animated: true, completion: nil)
     }
     
     private func campusAt(_ indexPath: IndexPath) -> Campus {
@@ -162,9 +161,17 @@ extension ChooseCampusVC: MovementSubscriptionDelegate {
     }
     
     func finalizeSubsciption() {
+        guard self.subscribedMovements.count > 0 else {
+            self.navigationController!.presentAlert(title: "Invalid Subscription Count", message: "You must subscribe to at least one campus or movement.")
+            return
+        }
+        
         // Save id's of chosen movements in UserDefaults
         LocalStorage.preferences.set(self.subscribedMovements, forKey: .subscribedMovements)
+        
         // TODO (Issue #186): Update data on backend if logged in
+        
+        self.navigationController!.dismiss(animated: true, completion: nil)
     }
 }
 
