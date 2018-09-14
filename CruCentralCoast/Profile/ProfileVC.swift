@@ -19,10 +19,9 @@ class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.loginLogout]]
-    let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
-    private var shadowImageView: UIImageView?
-    
+    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.loginLogout]]
+    private let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerCell(ProfileEmailCell.self)
@@ -34,25 +33,6 @@ class ProfileVC: UIViewController {
         super.viewDidAppear(animated)
         
         self.tableView.reloadData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        self.shadowImageView?.isHidden = false
-    }
-    
-    private func findShadowImage(under view: UIView) -> UIImageView? {
-        if view is UIImageView && view.bounds.size.height <= 1 {
-            return (view as! UIImageView)
-        }
-        
-        for subview in view.subviews {
-            if let imageView = self.findShadowImage(under: subview) {
-                return imageView
-            }
-        }
-        return nil
     }
     
     @IBAction func didPressCloseButton(_ sender: Any) {
@@ -81,15 +61,11 @@ extension ProfileVC: UITableViewDataSource {
             (cell as! ProfileNotificationsCell).configure(with: 0)
         case .chooseMovements:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
-            if let cell = cell as? ProfileSelectableTextCell {
-                cell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Change Campus")
-            }
+            (cell as! ProfileSelectableTextCell).configure(with: "Change Campus")
         case .loginLogout:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             let userIsLoggedIn = LoginManager.instance.user != nil
-            if let loginLogoutCell = cell as? ProfileSelectableTextCell {
-                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: userIsLoggedIn ? "Logout" : "Login")
-            }
+            (cell as! ProfileSelectableTextCell).configure(with: userIsLoggedIn ? "Logout" : "Login")
         }
         return cell
     }
