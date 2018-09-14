@@ -53,6 +53,7 @@ class LoginManager: NSObject {
         do {
             try Auth.auth().signOut()
             NotificationCenter.default.post(name: NSNotification.Name.UserDidLogout, object: nil)
+            LocalStorage.preferences.set([], forKey: .subscribedMovements)
             viewController?.presentAlert(title: "Successful Logout", message: "You have sucessfully been logged out")
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
