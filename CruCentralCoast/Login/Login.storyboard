@@ -218,18 +218,8 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rbK-xG-jyd">
-                                <rect key="frame" x="142.66666666666666" y="414" width="128.99999999999997" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Reset Password">
-                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resetPasswordButtonPressed" destination="Kom-xw-uiI" eventType="touchUpInside" id="9xX-4A-xe1"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-Lo-IoG">
-                                <rect key="frame" x="184.66666666666666" y="468" width="45" height="34"/>
+                                <rect key="frame" x="184.66666666666666" y="464" width="45" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
@@ -253,20 +243,41 @@
                                     <action selector="dismissLogin:" destination="Kom-xw-uiI" eventType="touchUpInside" id="JaC-ee-dWm"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t73-Yy-OUK" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="62.333333333333343" y="404" width="290" height="50"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gyI-bI-WQJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetPasswordButtonPressed" destination="Kom-xw-uiI" eventType="touchUpInside" id="nVO-Cp-Dat"/>
+                                    <action selector="signIn" destination="omq-0y-5au" eventType="touchUpInside" id="nlc-PD-rxs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="fbT-Lo-IoG" firstAttribute="top" secondItem="rbK-xG-jyd" secondAttribute="bottom" constant="20" id="1qO-r8-GYm"/>
                             <constraint firstItem="iAH-re-69c" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="5vb-i2-0vi"/>
+                            <constraint firstItem="t73-Yy-OUK" firstAttribute="top" secondItem="dFO-We-0Qn" secondAttribute="bottom" constant="10" id="Ecj-Ui-Lbm"/>
+                            <constraint firstItem="fbT-Lo-IoG" firstAttribute="top" secondItem="t73-Yy-OUK" secondAttribute="bottom" constant="10" id="NbV-aJ-L6F"/>
                             <constraint firstItem="J02-sY-DR8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dFO-We-0Qn" secondAttribute="trailing" constant="20" id="Oq0-0I-C3r"/>
-                            <constraint firstItem="rbK-xG-jyd" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="YtW-UR-u2A"/>
                             <constraint firstItem="dFO-We-0Qn" firstAttribute="centerY" secondItem="J02-sY-DR8" secondAttribute="centerY" id="ZBN-U8-Pw1"/>
+                            <constraint firstItem="t73-Yy-OUK" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="cg2-vk-HvM"/>
                             <constraint firstItem="fkd-AG-ggE" firstAttribute="top" secondItem="J02-sY-DR8" secondAttribute="top" constant="16" id="dht-oh-Fdo"/>
                             <constraint firstItem="fbT-Lo-IoG" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="e7D-B9-uHQ"/>
+                            <constraint firstItem="t73-Yy-OUK" firstAttribute="width" secondItem="dFO-We-0Qn" secondAttribute="width" id="gIN-S4-Sl5"/>
                             <constraint firstItem="dFO-We-0Qn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J02-sY-DR8" secondAttribute="leading" constant="20" id="goH-ig-kZr"/>
                             <constraint firstItem="J02-sY-DR8" firstAttribute="trailing" secondItem="fkd-AG-ggE" secondAttribute="trailing" constant="20" id="ocL-fd-92J"/>
                             <constraint firstItem="iAH-re-69c" firstAttribute="centerY" secondItem="dFO-We-0Qn" secondAttribute="centerY" multiplier="0.5" id="trG-fb-Zff"/>
-                            <constraint firstItem="rbK-xG-jyd" firstAttribute="top" secondItem="dFO-We-0Qn" secondAttribute="bottom" constant="20" id="uVt-Xb-9p3"/>
                             <constraint firstItem="dFO-We-0Qn" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="z4A-ZY-shn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J02-sY-DR8"/>
@@ -274,7 +285,7 @@
                     <connections>
                         <outlet property="emailTextField" destination="dFO-We-0Qn" id="Vgs-Jn-HmK"/>
                         <outlet property="loginButton" destination="fbT-Lo-IoG" id="F9i-vS-nA8"/>
-                        <outlet property="resetPasswordButton" destination="rbK-xG-jyd" id="2qS-Xd-EGd"/>
+                        <outlet property="resetPasswordButton" destination="t73-Yy-OUK" id="vHT-CK-KOz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p4y-pB-dZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
