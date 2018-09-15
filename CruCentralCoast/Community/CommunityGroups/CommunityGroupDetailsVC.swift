@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import MessageUI
 
-class CommunityGroupDetailsVC: UIViewController {
+class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerDelegate {
+
+    
 
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var genderLabel: UILabel!
@@ -19,8 +22,12 @@ class CommunityGroupDetailsVC: UIViewController {
     @IBOutlet weak var movementLabel: UILabel!
     @IBOutlet weak var leaderNamesLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var contactLeaderButton: UIButton!
+    @IBOutlet weak var joinCommunityGroupButton: CruButton!
     @IBOutlet weak var imageViewAspectRatioConstraint: NSLayoutConstraint!
-
+    
+    var leaderPhoneNumbers : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -32,6 +39,23 @@ class CommunityGroupDetailsVC: UIViewController {
         self.presentAlert(title: "Join Community Group", message: "Coming Soon...")
     }
     
+    @IBAction func didTapContactLeader() {
+        if (MFMessageComposeViewController.canSendText()) {
+            let controller = MFMessageComposeViewController()
+            controller.body = "Hey I'm interested in joining your community group!"
+            controller.recipients = leaderPhoneNumbers
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        }
+        else{print("error cant send text")}
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        // Dismiss the message compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
+    
+    
     func configure(with communityGroup: CommunityGroup) {
         DispatchQueue.main.async {
             self.genderLabel.text = communityGroup.gender.rawValue.uppercased()
@@ -42,6 +66,19 @@ class CommunityGroupDetailsVC: UIViewController {
             self.movementLabel.text = communityGroup.movement?.name
             self.leaderNamesLabel.text = "Leaders: \(communityGroup.leaderNames ?? "N/A")"
             self.summaryLabel.text = communityGroup.summary
+            //hide the join group button for now
+            self.joinCommunityGroupButton.isHidden = true
+            
+            for leader in communityGroup.leaders {
+                if let phoneNumber = leader.phone{
+                    self.leaderPhoneNumbers.append(phoneNumber)
+                }
+            }
+            
+            if self.leaderPhoneNumbers.count > 1 {
+                self.contactLeaderButton.titleLabel?.text = "Contact Leaders"
+            }
+
             self.bannerImageView.downloadedFrom(link: communityGroup.imageLink, contentMode: .scaleAspectFill)
             // If no image link exists, remove the image's size constraint
             self.imageViewAspectRatioConstraint.isActive = (communityGroup.imageLink != nil && !communityGroup.imageLink!.isEmpty)
