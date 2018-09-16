@@ -24,7 +24,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     func configure(with user: User?) {
         if user == nil {
             self.imageView.image = #imageLiteral(resourceName: "profile_icon")
-            self.nameLabel.text = "First Last"
+            self.nameLabel.text = "Guest"
         } else {
             self.imageView.downloadedFrom(url: user?.photoURL)
             self.nameLabel.text = user?.displayName

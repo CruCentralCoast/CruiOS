@@ -72,8 +72,8 @@ public extension UIViewController {
             profileButton.addTarget(self, action: #selector(self.profileButtonPressed), for: [.touchDown, .touchDragEnter])
             profileButton.addTarget(self, action: #selector(self.profileButtonReleased), for: [.touchUpInside,.touchCancel,.touchUpOutside, .touchDragExit])
             
-            NotificationCenter.default.addObserver(self, selector: #selector(self.updateProfileButtonImage), name: NSNotification.Name.UserDidLogin, object: nil)
-            NotificationCenter.default.addObserver(self, selector: #selector(self.updateProfileButtonImage), name: NSNotification.Name.UserDidLogout, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.updateProfileButtonImage), name: .UserDidLogin, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(self.updateProfileButtonImage), name: .UserDidLogout, object: nil)
         }
     }
     

@@ -12,7 +12,6 @@ import RealmSwift
 class ChooseCampusVC: UITableViewController {
     
     var subscribedMovements = [String]()
-    var shouldReloadSelectedIndexPath = false
     var selectedIndexPath: IndexPath?
     
     private let searchController = UISearchController(searchResultsController: nil)
@@ -32,15 +31,6 @@ class ChooseCampusVC: UITableViewController {
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.campuses = DatabaseManager.instance.getCampuses()
         let _ = DatabaseManager.instance.getMovements()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // If a campus with multiple movements has had its subscription changed, update the cell
-        if shouldReloadSelectedIndexPath, let indexPath = self.selectedIndexPath {
-            self.shouldReloadSelectedIndexPath = false
-            self.tableView.reloadRows(at: [indexPath], with: .automatic)
-        }
     }
     
     private func configureSearchController() {
@@ -177,7 +167,10 @@ extension ChooseCampusVC: MovementSubscriptionDelegate {
 
 extension ChooseCampusVC: ChooseMovementObserver {
     func movementSubscriptionChanged() {
-        self.shouldReloadSelectedIndexPath = true
+        // If a campus with multiple movements has had its subscription changed, update the cell
+        if let indexPath = self.selectedIndexPath {
+            self.tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
     }
 }
 
@@ -192,7 +185,6 @@ protocol MovementSubscriptionDelegate {
 
 protocol ChooseMovementObserver {
     var selectedIndexPath: IndexPath? { get set }
-    var shouldReloadSelectedIndexPath: Bool { get set }
     
     func movementSubscriptionChanged()
 }

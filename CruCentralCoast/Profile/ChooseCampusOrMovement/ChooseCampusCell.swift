@@ -27,6 +27,7 @@ class ChooseCampusCell: UITableViewCell {
         }
         self.titleLabel.text = campus.name
         // TODO: Remove "http:" when backend image links are fixed
+        // and simplify the logic to "if let imageLink = campus.imageLink"
         self.currentImageLink = (campus.imageLink == nil) ? nil : "http:\(campus.imageLink!)"
         if let imageLink = ((campus.imageLink == nil) ? nil : "http:\(campus.imageLink!)") {
             ImageManager.instance.fetch(imageLink) { [weak self] image in

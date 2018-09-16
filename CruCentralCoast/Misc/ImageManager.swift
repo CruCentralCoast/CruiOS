@@ -15,9 +15,9 @@ class ImageManager {
 }
 
 extension ImageManager {
-    func fetch(_ urlString: String?, _ completion: ((UIImage)->Void)? = nil) {
-        guard let _urlString = urlString, let url = URL(string: _urlString) else {
-            print("WARN: Could not convert string to url: \(urlString ?? "nil").")
+    func fetch(_ urlString: String, _ completion: ((UIImage)->Void)? = nil) {
+        guard let url = URL(string: urlString) else {
+            print("WARN: Could not convert string to url: \(urlString).")
             return
         }
         
