@@ -11,6 +11,7 @@ import FirebaseAuth
 
 
 class ForgotPasswordVC: UIViewController {
+    
     @IBOutlet weak var emailTextField: CruTextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: UIButton!
@@ -31,8 +32,8 @@ class ForgotPasswordVC: UIViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let buttonPosition = self.loginButton.frame.origin.y + self.loginButton.frame.height
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let buttonPosition = self.view.frame.origin.y + self.resetPasswordButton.frame.origin.y + self.resetPasswordButton.frame.height
             let keyboardPosition = self.view.frame.height - keyboardSize.height
             let buffer: CGFloat = 10
             if buttonPosition + buffer >= keyboardPosition {

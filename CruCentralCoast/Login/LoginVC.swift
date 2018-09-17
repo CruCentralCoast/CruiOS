@@ -36,8 +36,8 @@ class LoginVC: UIViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            let buttonPosition = self.signInButton.frame.origin.y + self.signInButton.frame.height
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            let buttonPosition = self.view.frame.origin.y + self.signInButton.frame.origin.y + self.signInButton.frame.height
             let keyboardPosition = self.view.frame.height - keyboardSize.height
             let buffer: CGFloat = 10
             if buttonPosition + buffer >= keyboardPosition {
