@@ -20,7 +20,6 @@ class CommunityGroupsVC: UITableViewController {
         super.viewDidLoad()
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(CommunityGroupCell.self)
-        
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
         
@@ -43,8 +42,13 @@ class CommunityGroupsVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let day = days[section]
-        let communityGroups = self.dataDictionary[day]!
-        return communityGroups.count
+        if let communityGroups = self.dataDictionary[day] {
+            return communityGroups.count
+        }
+        else {
+            return 0
+        }
+        
     }
     
     
@@ -52,16 +56,17 @@ class CommunityGroupsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(CommunityGroupCell.self, indexPath: indexPath)
         
-        let day = self.dataDictionary[days[indexPath.section]]!
-        
-        cell.configure(with: day[indexPath.row])
-
+        if let day = self.dataDictionary[days[indexPath.section]] {
+            cell.configure(with: day[indexPath.row])
+        }
+         
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "CommunityGroups", bundle: nil).instantiateViewController(CommunityGroupDetailsVC.self)
-        vc.configure(with: self.dataArray[indexPath.row])
+        let day = self.dataDictionary[days[indexPath.section]]!
+        vc.configure(with: day[indexPath.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

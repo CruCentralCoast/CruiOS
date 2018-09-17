@@ -132,7 +132,7 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O6c-bR-p80">
                                         <rect key="frame" x="20" y="390" width="335" height="30"/>
-                                        <state key="normal" title="Contact Leader"/>
+                                        <state key="normal" title="CONTACT LEADER"/>
                                         <connections>
                                             <action selector="didTapContactLeader" destination="Edg-hD-esJ" eventType="touchUpInside" id="wRI-S6-lcr"/>
                                         </connections>

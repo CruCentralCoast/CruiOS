@@ -40,18 +40,19 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
     }
     
     @IBAction func didTapContactLeader() {
-        if (MFMessageComposeViewController.canSendText()) {
+        if MFMessageComposeViewController.canSendText() {
             let controller = MFMessageComposeViewController()
             controller.body = "Hey I'm interested in joining your community group!"
-            controller.recipients = leaderPhoneNumbers
+            controller.recipients = self.leaderPhoneNumbers
             controller.messageComposeDelegate = self
             self.present(controller, animated: true, completion: nil)
         }
-        else{print("error cant send text")}
+        else {
+            print("error cant send text")
+        }
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
-        // Dismiss the message compose view controller.
         controller.dismiss(animated: true, completion: nil)
     }
     
@@ -66,7 +67,7 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
             self.movementLabel.text = communityGroup.movement?.name
             self.leaderNamesLabel.text = "Leaders: \(communityGroup.leaderNames ?? "N/A")"
             self.summaryLabel.text = communityGroup.summary
-            //hide the join group button for now
+            
             self.joinCommunityGroupButton.isHidden = true
             
             for leader in communityGroup.leaders {
@@ -76,7 +77,7 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
             }
             
             if self.leaderPhoneNumbers.count > 1 {
-                self.contactLeaderButton.titleLabel?.text = "Contact Leaders"
+                self.contactLeaderButton.titleLabel?.text = "CONTACT LEADERS"
             }
 
             self.bannerImageView.downloadedFrom(link: communityGroup.imageLink, contentMode: .scaleAspectFill)
