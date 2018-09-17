@@ -11,6 +11,8 @@
 		2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F18085C20795FF100693C7B /* GoogleService-Info.plist */; };
 		2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */; };
 		2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F180861207980F100693C7B /* UIViewControllerExtensions.swift */; };
+		2F1C4380213A3C4D0033C911 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C437F213A3C4D0033C911 /* NotificationExtensions.swift */; };
+		2F1C4382213B6A2F0033C911 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C4381213B6A2F0033C911 /* LocalStorage.swift */; };
 		2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F2BD98A2075AD6F00512170 /* Login.storyboard */; };
 		2F2BD98D2075B97C00512170 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2BD98C2075B97C00512170 /* LoginVC.swift */; };
 		2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2BD98E2076C0A100512170 /* CruImageButton.swift */; };
@@ -73,12 +75,12 @@
 		AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */; };
 		AD5DCBDC207691630084BE64 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */; };
 		AD652AA620B65990002FF565 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD652AA520B65990002FF565 /* Resource.swift */; };
-		ADAC30492104E5B800DBCA89 /* CampusTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */; };
+		ADAC30492104E5B800DBCA89 /* ChooseCampusCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC30472104E5B800DBCA89 /* ChooseCampusCell.xib */; };
 		ADAC304B210568FF00DBCA89 /* ChooseCampusVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */; };
-		ADAC304D2105696900DBCA89 /* CampusTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */; };
+		ADAC304D2105696900DBCA89 /* ChooseCampusCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304C2105696800DBCA89 /* ChooseCampusCell.swift */; };
 		ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */; };
-		ADAC305321056EE000DBCA89 /* MovementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */; };
-		ADAC305421056EE000DBCA89 /* MovementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */; };
+		ADAC305321056EE000DBCA89 /* ChooseMovementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADAC305121056EE000DBCA89 /* ChooseMovementCell.swift */; };
+		ADAC305421056EE000DBCA89 /* ChooseMovementCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADAC305221056EE000DBCA89 /* ChooseMovementCell.xib */; };
 		ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADE645102075BA6600C1EA1B /* ResourcesVC.swift */; };
 		ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */; };
 		ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */; };
@@ -119,6 +121,8 @@
 		2F18085E2079636E00693C7B /* CruCentralCoast.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CruCentralCoast.entitlements; sourceTree = "<group>"; };
 		2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		2F180861207980F100693C7B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		2F1C437F213A3C4D0033C911 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
+		2F1C4381213B6A2F0033C911 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		2F2BD98A2075AD6F00512170 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		2F2BD98C2075B97C00512170 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		2F2BD98E2076C0A100512170 /* CruImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruImageButton.swift; sourceTree = "<group>"; };
@@ -187,12 +191,12 @@
 		AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		AD5DCBDB207691630084BE64 /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		AD652AA520B65990002FF565 /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
-		ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CampusTableViewCell.xib; sourceTree = "<group>"; };
+		ADAC30472104E5B800DBCA89 /* ChooseCampusCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseCampusCell.xib; sourceTree = "<group>"; };
 		ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCampusVC.swift; sourceTree = "<group>"; };
-		ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CampusTableViewCell.swift; sourceTree = "<group>"; };
+		ADAC304C2105696800DBCA89 /* ChooseCampusCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseCampusCell.swift; sourceTree = "<group>"; };
 		ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMovementVC.swift; sourceTree = "<group>"; };
-		ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementTableViewCell.swift; sourceTree = "<group>"; };
-		ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovementTableViewCell.xib; sourceTree = "<group>"; };
+		ADAC305121056EE000DBCA89 /* ChooseMovementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMovementCell.swift; sourceTree = "<group>"; };
+		ADAC305221056EE000DBCA89 /* ChooseMovementCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseMovementCell.xib; sourceTree = "<group>"; };
 		ADE645102075BA6600C1EA1B /* ResourcesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourcesVC.swift; sourceTree = "<group>"; };
 		ADFA56D8206D7E87006F7099 /* DequeueExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DequeueExtensions.swift; sourceTree = "<group>"; };
 		ADFA56E2206D9FB6006F7099 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
@@ -280,6 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				2FB416522115217700037DA2 /* ImageManager.swift */,
+				2F1C4381213B6A2F0033C911 /* LocalStorage.swift */,
 			);
 			path = Misc;
 			sourceTree = "<group>";
@@ -442,11 +447,11 @@
 		AD24E8B820916B1A0089E370 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				ADAC305021056D3400DBCA89 /* ChooseCampusOrMinistry */,
-				AD24E8DC20919C670089E370 /* NotificationsVC.swift */,
-				AD24E8C3209172970089E370 /* Cells */,
-				AD24E8B920916B470089E370 /* ProfileVC.swift */,
 				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
+				AD24E8B920916B470089E370 /* ProfileVC.swift */,
+				AD24E8DC20919C670089E370 /* NotificationsVC.swift */,
+				ADAC305021056D3400DBCA89 /* ChooseCampusOrMovement */,
+				AD24E8C3209172970089E370 /* Cells */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -466,17 +471,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
-		ADAC305021056D3400DBCA89 /* ChooseCampusOrMinistry */ = {
+		ADAC305021056D3400DBCA89 /* ChooseCampusOrMovement */ = {
 			isa = PBXGroup;
 			children = (
 				ADAC304A210568FF00DBCA89 /* ChooseCampusVC.swift */,
 				ADAC304E21056CE700DBCA89 /* ChooseMovementVC.swift */,
-				ADAC304C2105696800DBCA89 /* CampusTableViewCell.swift */,
-				ADAC30472104E5B800DBCA89 /* CampusTableViewCell.xib */,
-				ADAC305121056EE000DBCA89 /* MovementTableViewCell.swift */,
-				ADAC305221056EE000DBCA89 /* MovementTableViewCell.xib */,
+				ADAC304C2105696800DBCA89 /* ChooseCampusCell.swift */,
+				ADAC30472104E5B800DBCA89 /* ChooseCampusCell.xib */,
+				ADAC305121056EE000DBCA89 /* ChooseMovementCell.swift */,
+				ADAC305221056EE000DBCA89 /* ChooseMovementCell.xib */,
 			);
-			path = ChooseCampusOrMinistry;
+			path = ChooseCampusOrMovement;
 			sourceTree = "<group>";
 		};
 		ADFA56E4206DADF1006F7099 /* Extensions */ = {
@@ -491,6 +496,7 @@
 				AD55A0E6209AC31E009F62FB /* UIImageViewExtensions.swift */,
 				E0AFD0FC20AD2A6800B2EF40 /* UIImageExtensions.swift */,
 				E0C32C9D20EAF5D00026EBBD /* DateExtensions.swift */,
+				2F1C437F213A3C4D0033C911 /* NotificationExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -646,14 +652,14 @@
 			files = (
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */,
-				ADAC305421056EE000DBCA89 /* MovementTableViewCell.xib in Resources */,
+				ADAC305421056EE000DBCA89 /* ChooseMovementCell.xib in Resources */,
 				2FC07F442117922100DDCE0B /* MissionCell.xib in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				AD12F3C7211FAF9E008AACA4 /* Resources.storyboard in Resources */,
 				2F2BD98B2075AD6F00512170 /* Login.storyboard in Resources */,
 				2F2BD9952077250400512170 /* Assets.xcassets in Resources */,
 				5EC413C8203FAD4D00E2184D /* placeholder.jpg in Resources */,
-				ADAC30492104E5B800DBCA89 /* CampusTableViewCell.xib in Resources */,
+				ADAC30492104E5B800DBCA89 /* ChooseCampusCell.xib in Resources */,
 				5E0C2F2620BFC80A001E6F7C /* MinistryTeams.storyboard in Resources */,
 				5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */,
 				AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */,
@@ -821,6 +827,7 @@
 				5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */,
 				AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */,
 				5EDA143420AD150F0040EC22 /* CommunityGroupsVC.swift in Sources */,
+				2F1C4382213B6A2F0033C911 /* LocalStorage.swift in Sources */,
 				ADE645112075BA6600C1EA1B /* ResourcesVC.swift in Sources */,
 				2FE8BBEF210954E500AF9E57 /* CommunityGroup.swift in Sources */,
 				2FE8BBF5210955C000AF9E57 /* Person.swift in Sources */,
@@ -834,12 +841,13 @@
 				2FA9FE8621070716007A8658 /* Campus.swift in Sources */,
 				5E0C2F2820BFC843001E6F7C /* MinistryTeamsVC.swift in Sources */,
 				ADFA56E3206D9FB6006F7099 /* UIColorExtensions.swift in Sources */,
+				2F1C4380213A3C4D0033C911 /* NotificationExtensions.swift in Sources */,
 				5E5416D82088269600A56279 /* MissionDetailsVC.swift in Sources */,
 				2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */,
 				2FE8BBEB21092EDD00AF9E57 /* Location.swift in Sources */,
 				2FD4ACF5207EFFA7001BB0A6 /* SignUpVC.swift in Sources */,
 				ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */,
-				ADAC304D2105696900DBCA89 /* CampusTableViewCell.swift in Sources */,
+				ADAC304D2105696900DBCA89 /* ChooseCampusCell.swift in Sources */,
 				AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */,
 				2FA9FE882107073E007A8658 /* Movement.swift in Sources */,
 				E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */,
@@ -869,7 +877,7 @@
 				2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */,
 				E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,
-				ADAC305321056EE000DBCA89 /* MovementTableViewCell.swift in Sources */,
+				ADAC305321056EE000DBCA89 /* ChooseMovementCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

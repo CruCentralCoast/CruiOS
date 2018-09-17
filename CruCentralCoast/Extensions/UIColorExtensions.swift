@@ -9,6 +9,10 @@
 import UIKit
 
 public extension UIColor {
+    static var appTint: UIColor {
+        return .cruBrightBlue
+    }
+    
     static var cruGold: UIColor {
         return UIColor(red: 249/255.0, green: 182/255.0, blue: 37/255.0, alpha: 1)
     }

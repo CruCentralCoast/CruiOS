@@ -19,39 +19,20 @@ class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    let tableViewLayout: [ProfileTableViewCellType] = [.email, .notifications, .chooseMovements, .loginLogout]
-    let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
-    private var shadowImageView: UIImageView?
-    
+    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.loginLogout]]
+    private let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
         self.tableView.registerCell(ProfileEmailCell.self)
         self.tableView.registerCell(ProfileNotificationsCell.self)
         self.tableView.registerCell(ProfileSelectableTextCell.self)
-        
-        // get rid of lines below the cells
-        self.tableView.tableFooterView = UIView()
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        self.shadowImageView?.isHidden = false
-    }
-    
-    private func findShadowImage(under view: UIView) -> UIImageView? {
-        if view is UIImageView && view.bounds.size.height <= 1 {
-            return (view as! UIImageView)
-        }
-        
-        for subview in view.subviews {
-            if let imageView = self.findShadowImage(under: subview) {
-                return imageView
-            }
-        }
-        return nil
+        self.tableView.reloadData()
     }
     
     @IBAction func didPressCloseButton(_ sender: Any) {
@@ -60,28 +41,31 @@ class ProfileVC: UIViewController {
 }
 
 extension ProfileVC: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return self.tableViewLayout.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.tableViewLayout[section].count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell
-        switch self.tableViewLayout[indexPath.row] {
+        switch self.tableViewLayout[indexPath.section][indexPath.row] {
         case .email:
             cell = tableView.dequeueCell(ProfileEmailCell.self, indexPath: indexPath)
+            (cell as! ProfileEmailCell).configure(with: LoginManager.instance.user)
         case .notifications:
             cell = tableView.dequeueCell(ProfileNotificationsCell.self, indexPath: indexPath)
+            // TODO (Issue #187): Change this value when push notifications are properly implemented
+            (cell as! ProfileNotificationsCell).configure(with: 0)
         case .chooseMovements:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
-            if let cell = cell as? ProfileSelectableTextCell {
-                cell.viewModel = ProfileSelectableTextCell.ViewModel(text: "Choose Movement")
-            }
+            (cell as! ProfileSelectableTextCell).configure(with: "Change Campus")
         case .loginLogout:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             let userIsLoggedIn = LoginManager.instance.user != nil
-            if let loginLogoutCell = cell as? ProfileSelectableTextCell {
-                loginLogoutCell.viewModel = ProfileSelectableTextCell.ViewModel(text: userIsLoggedIn ? "Logout" : "Login")
-            }
+            (cell as! ProfileSelectableTextCell).configure(with: userIsLoggedIn ? "Logout" : "Login")
         }
         return cell
     }
@@ -93,29 +77,41 @@ extension ProfileVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return self.profileHeaderView
+        if section == 0 {
+            self.profileHeaderView.configure(with: LoginManager.instance.user)
+            return self.profileHeaderView
+        }
+        return nil
     }
 
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return self.profileHeaderView.frame.height
+        if section == 0 {
+            return self.profileHeaderView.frame.height
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch self.tableViewLayout[indexPath.row] {
+        switch self.tableViewLayout[indexPath.section][indexPath.row] {
         case .notifications:
-            self.show(NotificationsVC(), sender: self)
+            let vc = NotificationsVC()
+            let navVC = UINavigationController(rootViewController: vc)
+            self.show(navVC, sender: self)
         case .chooseMovements:
             let vc = ChooseCampusVC()
-            vc.title = "Choose Campus"
             let navVC = UINavigationController(rootViewController: vc)
-            self.present(navVC, animated: true, completion: nil)
-            break
+            self.show(navVC, sender: self)
         case .loginLogout:
-            break
+            let userIsLoggedIn = LoginManager.instance.user != nil
+            if userIsLoggedIn {
+                LoginManager.instance.logout(sender: self)
+                self.tableView.reloadData()
+            } else {
+                LoginManager.instance.presentLogin(from: self)
+            }
         default:
             return
         }
         tableView.cellForRow(at: indexPath)?.isSelected = false
     }
-    
 }
