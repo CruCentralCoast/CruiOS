@@ -13,6 +13,10 @@ public extension UICollectionView {
         self.register(UINib(nibName: String(describing: cellType.self), bundle: nil), forCellWithReuseIdentifier: String(describing: cellType.self))
     }
     
+    func registerClass<T: UICollectionViewCell>(_ cellType: T.Type){
+        self.register(cellType.self, forCellWithReuseIdentifier: String(describing: cellType.self))
+    }
+    
     func dequeueCell<T: UICollectionViewCell>(_ cellType: T.Type, indexPath: IndexPath) -> T {
         let reuseID = String(describing: T.self)
         guard let cell = self.dequeueReusableCell(withReuseIdentifier: reuseID, for: indexPath) as? T else {
@@ -25,6 +29,10 @@ public extension UICollectionView {
 public extension UITableView {
     func registerCell<T: UITableViewCell>(_ cellType: T.Type){
         self.register(UINib(nibName: String(describing: cellType.self), bundle: nil), forCellReuseIdentifier: String(describing: cellType.self))
+    }
+    
+    func registerClass<T: UITableViewCell>(_ cellType: T.Type){
+        self.register(cellType.self, forCellReuseIdentifier: String(describing: cellType.self))
     }
     
     func dequeueCell<T: UITableViewCell>(_ cellType: T.Type, indexPath: IndexPath) -> T {

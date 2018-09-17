@@ -24,7 +24,9 @@ extension ImageManager {
         self.fetch(url, completion)
     }
     
-    func fetch(_ url: URL, _ completion: ((UIImage)->Void)? = nil) {
+    func fetch(_ url: URL?, _ completion: ((UIImage)->Void)? = nil) {
+        guard let url = url else { return }
+        
         // Get the image location in local storage
         let imageDiskLocation = self.diskLocationForImage(url)
         

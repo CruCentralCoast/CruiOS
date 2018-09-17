@@ -42,7 +42,7 @@
                                 <rect key="frame" x="62" y="513" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="290" id="2CQ-SN-NVD"/>
+                                    <constraint firstAttribute="width" priority="999" constant="290" id="2CQ-SN-NVD"/>
                                     <constraint firstAttribute="height" constant="50" id="eEF-KI-VXS"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -305,7 +305,7 @@
                                 <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0qi-ci-DAi"/>
-                                    <constraint firstAttribute="width" constant="290" id="2kg-fV-Uyp"/>
+                                    <constraint firstAttribute="width" priority="999" constant="290" id="2kg-fV-Uyp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Sign up">

@@ -48,6 +48,18 @@ class LoginManager: NSObject {
             completion?()
         }
     }
+    
+    func logout(sender viewController: UIViewController?) {
+        do {
+            try Auth.auth().signOut()
+            NotificationCenter.default.post(name: .UserDidLogout, object: nil)
+            LocalStorage.preferences.set([], forKey: .subscribedMovements)
+            viewController?.presentAlert(title: "Successful Logout", message: "You have sucessfully been logged out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+            viewController?.presentAlert(title: "Failed Logout", message: "Check your internet connection and try again")
+        }
+    }
 }
 
 extension LoginManager: GIDSignInDelegate {
@@ -69,6 +81,7 @@ extension LoginManager: GIDSignInDelegate {
             }
             // User is signed in
             print("Successful Google sign-in")
+            NotificationCenter.default.post(name: .UserDidLogin, object: nil)
             LoginManager.instance.dismissLogin()
         }
     }
@@ -96,6 +109,7 @@ extension LoginManager: FBSignInDelegate {
             }
             // User is signed in
             print("Successful Facebook sign-in")
+            NotificationCenter.default.post(name: .UserDidLogin, object: nil)
             LoginManager.instance.dismissLogin()
         }
     }

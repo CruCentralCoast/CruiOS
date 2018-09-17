@@ -26,6 +26,7 @@ class Person: RealmObject {
     let communityGroups = List<CommunityGroup>()
     let ministryTeams = List<MinistryTeam>()
     let missions = List<Mission>()
+    let movements = List<Movement>()
     
     func set(with dict: [String : Any]) -> Bool {
         guard let id = dict["id"] as? String,
@@ -47,6 +48,9 @@ class Person: RealmObject {
     }
     
     func relate(with dict: [String: Any]) {
+        if let movementsArray = dict["movements"] as? [DocumentReference] {
+            DatabaseManager.instance.assignRelationList("movements", on: self, with: movementsArray, ofType: Movement.self)
+        }
         if let communityGroupsArray = dict["communityGroups"] as? [DocumentReference] {
             DatabaseManager.instance.assignRelationList("communityGroups", on: self, with: communityGroupsArray, ofType: CommunityGroup.self)
         }

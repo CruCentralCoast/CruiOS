@@ -31,7 +31,21 @@ class DatabaseManager {
     // Objects listening to changes in the database
     private var listeners: [WeakRef<DatabaseListener>] = []
     
-    private init() {}
+    private init() {
+        // Handle database migrations
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            // Set the new schema version. This must be greater than the previously used
+            // version (if you've never set a schema version before, the version is 0).
+            schemaVersion: 1,
+            
+            // Set the block which will be called automatically when opening a Realm with
+            // a schema version lower than the one set above
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < 1) {
+                    // Added Person.movements
+                }
+        })
+    }
     
     /// Creates a Firebase listener on a collection of elements. Every time one of these elements is modified in Firebase,
     /// the app is immediately notified and the realm database is updated.
