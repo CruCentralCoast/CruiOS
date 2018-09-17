@@ -21,7 +21,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gir-2l-neW" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="443" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.97647058823529409" green="0.71372549019607845" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Y4o-GA-qgn"/>
                                 </constraints>
@@ -88,7 +88,7 @@
                                 <rect key="frame" x="62" y="628" width="126" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Forgot Password?">
-                                    <color key="titleColor" red="0.24313725490196078" green="0.69411764705882351" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="forgotPassword" destination="omq-0y-5au" eventType="touchUpInside" id="ERn-6E-bbP"/>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dHp-tM-h6r">
-                                <rect key="frame" x="107.33333333333331" y="109.33333333333331" width="200" height="124.66666666666669"/>
+                                <rect key="frame" x="107" y="109.66666666666669" width="200" height="124.33333333333331"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dHp-tM-h6r" secondAttribute="height" multiplier="360:224" id="4kO-fP-Ej1"/>
                                     <constraint firstAttribute="width" constant="200" id="xLW-C0-C6W"/>
@@ -113,7 +113,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8m4-Q6-Isu" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="343" width="290" height="32"/>
-                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="gD2-Yd-ncj"/>
                                 </constraints>
@@ -129,7 +129,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="94I-YA-yE9" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="391" width="290" height="32"/>
-                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="Og2-gr-uz7"/>
                                 </constraints>
@@ -196,6 +196,102 @@
             </objects>
             <point key="canvasLocation" x="34" y="144"/>
         </scene>
+        <!--Forgot PasswordVC-->
+        <scene sceneID="t6f-LG-Zds">
+            <objects>
+                <viewController storyboardIdentifier="ForgotPasswordVC" modalTransitionStyle="flipHorizontal" id="Kom-xw-uiI" customClass="ForgotPasswordVC" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="brh-Ac-xhn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="dFO-We-0Qn" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="62" y="362" width="290" height="32"/>
+                                <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="IPl-hd-2ZZ"/>
+                                    <constraint firstAttribute="width" constant="290" id="rjT-oz-e2q"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="email"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Email"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-Lo-IoG">
+                                <rect key="frame" x="118.66666666666669" y="474" width="178" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <state key="normal" title="Change your mind? Login">
+                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="loginButtonPressed:" destination="Kom-xw-uiI" eventType="touchUpInside" id="wmO-Dz-gbk"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-re-69c">
+                                <rect key="frame" x="107" y="126.66666666666669" width="200" height="125"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iAH-re-69c" secondAttribute="height" multiplier="360:224" id="JA8-7e-8uj"/>
+                                    <constraint firstAttribute="width" constant="200" id="sjL-TN-qkP"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fkd-AG-ggE">
+                                <rect key="frame" x="375" y="36" width="19" height="22"/>
+                                <color key="tintColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                <state key="normal" image="cross"/>
+                                <connections>
+                                    <action selector="dismissLogin:" destination="Kom-xw-uiI" eventType="touchUpInside" id="JaC-ee-dWm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t73-Yy-OUK" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                <rect key="frame" x="62.333333333333343" y="414" width="290" height="50"/>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gyI-bI-WQJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Reset Password">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resetPasswordButtonPressed" destination="Kom-xw-uiI" eventType="touchUpInside" id="nVO-Cp-Dat"/>
+                                    <action selector="signIn" destination="omq-0y-5au" eventType="touchUpInside" id="nlc-PD-rxs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iAH-re-69c" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="5vb-i2-0vi"/>
+                            <constraint firstItem="t73-Yy-OUK" firstAttribute="top" secondItem="dFO-We-0Qn" secondAttribute="bottom" constant="20" id="Ecj-Ui-Lbm"/>
+                            <constraint firstItem="fbT-Lo-IoG" firstAttribute="top" secondItem="t73-Yy-OUK" secondAttribute="bottom" constant="10" id="NbV-aJ-L6F"/>
+                            <constraint firstItem="J02-sY-DR8" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dFO-We-0Qn" secondAttribute="trailing" constant="20" id="Oq0-0I-C3r"/>
+                            <constraint firstItem="dFO-We-0Qn" firstAttribute="centerY" secondItem="J02-sY-DR8" secondAttribute="centerY" id="ZBN-U8-Pw1"/>
+                            <constraint firstItem="t73-Yy-OUK" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="cg2-vk-HvM"/>
+                            <constraint firstItem="fkd-AG-ggE" firstAttribute="top" secondItem="J02-sY-DR8" secondAttribute="top" constant="16" id="dht-oh-Fdo"/>
+                            <constraint firstItem="fbT-Lo-IoG" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="e7D-B9-uHQ"/>
+                            <constraint firstItem="t73-Yy-OUK" firstAttribute="width" secondItem="dFO-We-0Qn" secondAttribute="width" id="gIN-S4-Sl5"/>
+                            <constraint firstItem="dFO-We-0Qn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="J02-sY-DR8" secondAttribute="leading" constant="20" id="goH-ig-kZr"/>
+                            <constraint firstItem="J02-sY-DR8" firstAttribute="trailing" secondItem="fkd-AG-ggE" secondAttribute="trailing" constant="20" id="ocL-fd-92J"/>
+                            <constraint firstItem="iAH-re-69c" firstAttribute="centerY" secondItem="dFO-We-0Qn" secondAttribute="centerY" multiplier="0.5" id="trG-fb-Zff"/>
+                            <constraint firstItem="dFO-We-0Qn" firstAttribute="centerX" secondItem="J02-sY-DR8" secondAttribute="centerX" id="z4A-ZY-shn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="J02-sY-DR8"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="dFO-We-0Qn" id="Vgs-Jn-HmK"/>
+                        <outlet property="loginButton" destination="fbT-Lo-IoG" id="F9i-vS-nA8"/>
+                        <outlet property="resetPasswordButton" destination="t73-Yy-OUK" id="vHT-CK-KOz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="p4y-pB-dZd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="901.63043478260875"/>
+        </scene>
         <!--Sign UpVC-->
         <scene sceneID="Tl2-EO-jyG">
             <objects>
@@ -206,7 +302,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBR-6w-DWX" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="490" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0qi-ci-DAi"/>
                                     <constraint firstAttribute="width" priority="999" constant="290" id="2kg-fV-Uyp"/>
@@ -225,7 +321,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="WcQ-eZ-20y">
-                                <rect key="frame" x="107.33333333333331" y="116.33333333333331" width="200" height="124.66666666666669"/>
+                                <rect key="frame" x="107" y="116.66666666666669" width="200" height="124.33333333333331"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WcQ-eZ-20y" secondAttribute="height" multiplier="360:224" id="3oP-Qx-VFm"/>
                                     <constraint firstAttribute="width" constant="200" id="vpB-Fc-hln"/>
@@ -233,7 +329,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fOT-96-mVT" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="341" width="290" height="32"/>
-                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="1hh-j8-fMC"/>
                                 </constraints>
@@ -249,7 +345,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5xz-x9-81t" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="389" width="290" height="32"/>
-                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="0wc-5f-b0D"/>
                                 </constraints>
@@ -265,7 +361,7 @@
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bDK-pJ-nW7" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="437.66666666666669" width="290" height="32"/>
-                                <color key="tintColor" red="0.97647058819999999" green="0.71372549019999998" blue="0.1450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="da1-sy-d3r"/>
                                 </constraints>
@@ -280,7 +376,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ml-5o-taB">
-                                <rect key="frame" x="95.666666666666686" y="556" width="223" height="30"/>
+                                <rect key="frame" x="95.666666666666686" y="550" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Already have an account? Login">
                                     <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -317,7 +413,7 @@
                             <constraint firstItem="5xz-x9-81t" firstAttribute="width" secondItem="MBR-6w-DWX" secondAttribute="width" id="tC1-gE-fdY"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="centerX" secondItem="HIe-74-mFl" secondAttribute="centerX" id="vsx-29-pEX"/>
                             <constraint firstItem="fOT-96-mVT" firstAttribute="width" secondItem="MBR-6w-DWX" secondAttribute="width" id="xFH-y0-Vj4"/>
-                            <constraint firstItem="4ml-5o-taB" firstAttribute="top" secondItem="MBR-6w-DWX" secondAttribute="bottom" constant="16" id="xpA-zf-ZjY"/>
+                            <constraint firstItem="4ml-5o-taB" firstAttribute="top" secondItem="MBR-6w-DWX" secondAttribute="bottom" constant="10" id="xpA-zf-ZjY"/>
                             <constraint firstItem="MBR-6w-DWX" firstAttribute="top" secondItem="bDK-pJ-nW7" secondAttribute="bottom" constant="20" id="yJk-by-SPt"/>
                             <constraint firstItem="bDK-pJ-nW7" firstAttribute="top" secondItem="5xz-x9-81t" secondAttribute="bottom" constant="16" id="zex-Gj-vwV"/>
                         </constraints>

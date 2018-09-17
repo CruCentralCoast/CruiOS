@@ -60,6 +60,7 @@
 		AD12F3C4211FAF6E008AACA4 /* ResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD12F3C2211FAF6E008AACA4 /* ResourceTableViewCell.swift */; };
 		AD12F3C5211FAF6E008AACA4 /* ResourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD12F3C3211FAF6E008AACA4 /* ResourceTableViewCell.xib */; };
 		AD12F3C7211FAF9E008AACA4 /* Resources.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD12F3C6211FAF9E008AACA4 /* Resources.storyboard */; };
+		AD23D5DB2149FFED005EE66E /* ForgotPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD23D5DA2149FFED005EE66E /* ForgotPasswordVC.swift */; };
 		AD24E8BA20916B470089E370 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8B920916B470089E370 /* ProfileVC.swift */; };
 		AD24E8BE20916BE00089E370 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AD24E8BD20916BE00089E370 /* Profile.storyboard */; };
 		AD24E8C12091728F0089E370 /* ProfileNotificationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */; };
@@ -176,6 +177,7 @@
 		AD12F3C2211FAF6E008AACA4 /* ResourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTableViewCell.swift; sourceTree = "<group>"; };
 		AD12F3C3211FAF6E008AACA4 /* ResourceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResourceTableViewCell.xib; sourceTree = "<group>"; };
 		AD12F3C6211FAF9E008AACA4 /* Resources.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Resources.storyboard; sourceTree = "<group>"; };
+		AD23D5DA2149FFED005EE66E /* ForgotPasswordVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordVC.swift; sourceTree = "<group>"; };
 		AD24E8B920916B470089E370 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		AD24E8BD20916BE00089E370 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		AD24E8BF2091728F0089E370 /* ProfileNotificationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileNotificationsCell.swift; sourceTree = "<group>"; };
@@ -249,6 +251,7 @@
 				2F2BD98A2075AD6F00512170 /* Login.storyboard */,
 				2F2BD98C2075B97C00512170 /* LoginVC.swift */,
 				2FD4ACF4207EFFA7001BB0A6 /* SignUpVC.swift */,
+				AD23D5DA2149FFED005EE66E /* ForgotPasswordVC.swift */,
 				2FEA0538208405AA00F1491C /* LoginManager.swift */,
 			);
 			path = Login;
@@ -857,6 +860,7 @@
 				E0D2A85320E9D69200192360 /* EventsVC.swift in Sources */,
 				2F2BD98F2076C0A100512170 /* CruImageButton.swift in Sources */,
 				E0AFD0FD20AD2A6800B2EF40 /* UIImageExtensions.swift in Sources */,
+				AD23D5DB2149FFED005EE66E /* ForgotPasswordVC.swift in Sources */,
 				ADFCD8B920927A39009D5BC6 /* CustomSegmentedControl.swift in Sources */,
 				2FC07F46211793D400DDCE0B /* CommunityGroupDetailsVC.swift in Sources */,
 				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
