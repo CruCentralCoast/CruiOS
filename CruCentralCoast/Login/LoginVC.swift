@@ -19,6 +19,9 @@ class LoginVC: UIViewController {
     
     var fbSignInDelegate: FBSignInDelegate?
     
+    override var viewNotCoveredByKeyboard: UIView? { return self.signInButton }
+    override var keyboardOffset: CGFloat { return 10 }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,28 +33,8 @@ class LoginVC: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self.view, action: #selector(self.view.endEditing))
         self.view.addGestureRecognizer(tapGesture)
         
-        // Listen for keyboard events
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
-    }
-    
-    @objc private func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            let buttonPosition = self.view.frame.origin.y + self.signInButton.frame.origin.y + self.signInButton.frame.height
-            let keyboardPosition = self.view.frame.height - keyboardSize.height
-            let buffer: CGFloat = 10
-            if buttonPosition + buffer >= keyboardPosition {
-                self.view.frame.origin.y -= buttonPosition + buffer - keyboardPosition
-            }
-        }
-    }
-    
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y = 0
-            }
-        }
+        // Adjust screen position if keyboard is shown
+        self.listenForKeyboardEvents()
     }
     
     @IBAction func signIn() {

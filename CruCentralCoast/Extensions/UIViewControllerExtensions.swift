@@ -107,3 +107,51 @@ public extension UIViewController {
         self.present(vc, animated: true)
     }
 }
+
+@objc protocol KeyboardOffsetProtocol: AnyObject {
+    var view: UIView! { get set }
+    /// A view that must be visible when the keyboard is displayed.
+    /// The screen will be offset to ensure this view is visible.
+    var viewNotCoveredByKeyboard: UIView? { get }
+    /// The distance the screen is offset from the viewNotCoveredByKeyboard.
+    /// If viewNotCoveredByKeyboard is nil, the screen will be offset from its origin.
+    var keyboardOffset: CGFloat { get }
+    
+    func listenForKeyboardEvents()
+    @objc func keyboardWillShow(notification: NSNotification)
+    @objc func keyboardWillHide(notification: NSNotification)
+}
+
+extension UIViewController: KeyboardOffsetProtocol {
+    var viewNotCoveredByKeyboard: UIView? { return nil }
+    var keyboardOffset: CGFloat { return 10 }
+    
+    func listenForKeyboardEvents() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if let visibleView = self.viewNotCoveredByKeyboard {
+                let visibleViewPosition = self.view.frame.origin.y + visibleView.frame.origin.y + visibleView.frame.height
+                let keyboardPosition = self.view.frame.height - keyboardSize.height
+                if visibleViewPosition + self.keyboardOffset > keyboardPosition {
+                    self.view.frame.origin.y -= visibleViewPosition + self.keyboardOffset - keyboardPosition
+                }
+            } else {
+                if self.view.frame.origin.y == 0 {
+                    self.view.frame.origin.y -= self.keyboardOffset
+                }
+            }
+        }
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if let _ = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0 {
+                self.view.frame.origin.y = 0
+            }
+        }
+    }
+}
