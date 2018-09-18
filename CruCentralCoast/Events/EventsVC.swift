@@ -12,24 +12,6 @@ import RealmSwift
 class EventsVC: UITableViewController {
     
     var dataArray: Results<Event>!
-    
-    var statusBarIsHidden: Bool = false {
-        didSet{
-            UIView.animate(withDuration: 0.25) { () -> Void in
-                self.setNeedsStatusBarAppearanceUpdate()
-            }
-        }
-    }
-    
-    override var prefersStatusBarHidden: Bool {
-        get {
-            return self.statusBarIsHidden
-        }
-    }
-    
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .slide
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

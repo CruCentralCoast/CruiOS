@@ -25,6 +25,8 @@ class EventDetailsVC: UIViewController {
     
     private var currentImageLink: String?
     
+    override var prefersStatusBarHidden: Bool { return true }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
