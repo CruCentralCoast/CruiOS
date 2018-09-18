@@ -10,7 +10,8 @@
 import UIKit
 
 extension UIImageView {
-    func downloadedFrom(url: URL, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+    func downloadedFrom(url: URL?, contentMode mode: UIViewContentMode = .scaleAspectFit) {
+        guard let url = url else { return }
         contentMode = mode
         ImageManager.instance.fetch(url) { [weak self] image in
             DispatchQueue.main.async {

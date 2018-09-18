@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileEmailCell: UITableViewCell {
 
     @IBOutlet weak var emailLabel: UILabel!
     
+    func configure(with user: User?) {
+        if user == nil {
+            self.emailLabel.text = "someone@me.com"
+        } else {
+            self.emailLabel.text = user?.email ?? user?.providerData[0].email ?? "N/A"
+        }
+    }
 }
