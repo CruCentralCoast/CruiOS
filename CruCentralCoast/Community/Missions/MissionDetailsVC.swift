@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SafariServices
 
 class MissionDetailsVC: UIViewController {
     
@@ -17,7 +16,7 @@ class MissionDetailsVC: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
-    var missionURLString: String?
+    private var missionURLString: String?
     
     override var prefersStatusBarHidden: Bool { return true }
     
@@ -32,18 +31,11 @@ class MissionDetailsVC: UIViewController {
     }
     
     @IBAction func learnMore() {
-        // TODO
+        guard let missionURL = self.missionURLString else { return }
         
-        if let url = URL(string: missionURLString!) {
+        if let url = URL(string: missionURL) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//            let config = SFSafariViewController.Configuration()
-//            config.entersReaderIfAvailable = true
-//
-//            let vc = SFSafariViewController(url: url, configuration: config)
-//            self.present(vc, animated: true)
         }
-        
-//        self.presentAlert(title: "Learn More", message: "Coming Soon...")
     }
     
     func configure(with mission: Mission) {
