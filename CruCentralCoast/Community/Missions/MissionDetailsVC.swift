@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class MissionDetailsVC: UIViewController {
     
@@ -15,6 +16,8 @@ class MissionDetailsVC: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
+    
+    var missionURLString: String?
     
     override var prefersStatusBarHidden: Bool { return true }
     
@@ -30,7 +33,17 @@ class MissionDetailsVC: UIViewController {
     
     @IBAction func learnMore() {
         // TODO
-        self.presentAlert(title: "Learn More", message: "Coming Soon...")
+        
+        if let url = URL(string: missionURLString!) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+//            let config = SFSafariViewController.Configuration()
+//            config.entersReaderIfAvailable = true
+//
+//            let vc = SFSafariViewController(url: url, configuration: config)
+//            self.present(vc, animated: true)
+        }
+        
+//        self.presentAlert(title: "Learn More", message: "Coming Soon...")
     }
     
     func configure(with mission: Mission) {
@@ -40,6 +53,7 @@ class MissionDetailsVC: UIViewController {
             self.locationLabel.text = mission.location?.string
             self.summaryLabel.text = mission.summary
             self.bannerImageView.downloadedFrom(link: mission.imageLink, contentMode: .scaleAspectFill)
+            self.missionURLString = mission.url
         }
     }
 }
