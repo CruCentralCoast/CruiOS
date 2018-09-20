@@ -21,7 +21,7 @@ class CommunityGroupsVC: UITableViewController {
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(CommunityGroupCell.self)
         self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 140
+        self.tableView.estimatedRowHeight = 100
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.dataArray = DatabaseManager.instance.getCommunityGroups()

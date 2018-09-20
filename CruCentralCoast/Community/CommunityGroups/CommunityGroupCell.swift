@@ -14,6 +14,7 @@ class CommunityGroupCell: UITableViewCell {
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
     
     @IBOutlet weak var imageViewAspectRatioConstraint: NSLayoutConstraint!
     
@@ -26,10 +27,10 @@ class CommunityGroupCell: UITableViewCell {
     
     func configure(with communityGroup: CommunityGroup) {
         self.genderLabel.text = communityGroup.gender.rawValue.uppercased()
-        self.timeLabel.text = communityGroup.time
+        self.timeLabel.text = communityGroup.time 
         self.nameLabel.text = communityGroup.name
         self.currentImageLink = communityGroup.imageLink
-        
+        self.yearLabel.text = communityGroup.year.rawValue.uppercased()
     }
         
 //        // TODO: image dowload handling once we're ready to handle leader images

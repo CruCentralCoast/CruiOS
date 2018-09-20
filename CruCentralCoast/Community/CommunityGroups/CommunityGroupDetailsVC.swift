@@ -32,6 +32,7 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
         super.viewDidLoad()
 
         self.navigationItem.largeTitleDisplayMode = .never
+        
     }
     
     @IBAction func joinCommunityGroup() {
@@ -74,10 +75,6 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
                 if let phoneNumber = leader.phone{
                     self.leaderPhoneNumbers.append(phoneNumber)
                 }
-            }
-            
-            if self.leaderPhoneNumbers.count > 1 {
-                self.contactLeaderButton.titleLabel?.text = "CONTACT LEADERS"
             }
 
             self.bannerImageView.downloadedFrom(link: communityGroup.imageLink, contentMode: .scaleAspectFill)
