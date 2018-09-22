@@ -33,16 +33,16 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb2057094051176570</string>
+				<string>fb252251342299027</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>5</string>
 	<key>FacebookAppID</key>
-	<string>2057094051176570</string>
+	<string>252251342299027</string>
 	<key>FacebookDisplayName</key>
-	<string>Cru</string>
+	<string>Cru Central Coast</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
