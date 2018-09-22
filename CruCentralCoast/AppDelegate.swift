@@ -33,6 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 LoginManager.instance.presentLogin(from: self.window?.rootViewController, animated: false)
             }
         }
+        
+        //set the app tint color to cruBrightBlue
+        window?.tintColor = .cruBrightBlue
     
         return true
     }

@@ -25,29 +25,13 @@ class EventDetailsVC: UIViewController {
     
     private var currentImageLink: String?
     
-    var statusBarIsHidden: Bool = true {
-        didSet {
-            UIView.animate(withDuration: 0.25) { () -> Void in
-                self.setNeedsStatusBarAppearanceUpdate()
-            }
-        }
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        get {
-            return self.statusBarIsHidden
-        }
-    }
-
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation {
-        return .slide
-    }
+    override var prefersStatusBarHidden: Bool { return true }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.titleLabel.text = self.event?.title
-        self.dateLabel.text = self.event?.startDate.toString(dateFormat: "MMM-dd-yyyy")
+        self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
         self.descriptionLabel.text = self.event?.summary
         self.locationButton.setTitle(self.event?.location?.street, for: .normal)
         self.currentImageLink = self.event?.imageLink
@@ -63,7 +47,6 @@ class EventDetailsVC: UIViewController {
     }
     
     @IBAction func dismissDetail(_ sender: Any) {
-        self.statusBarIsHidden = false
         self.topConstraint.constant = -20
         closeButton.removeFromSuperview()
         self.dismiss(animated: true, completion: nil)

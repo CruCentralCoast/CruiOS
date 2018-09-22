@@ -16,6 +16,8 @@ class MissionDetailsVC: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
     
+    private var missionURLString: String?
+    
     override var prefersStatusBarHidden: Bool { return true }
     
     override func viewDidLoad() {
@@ -29,8 +31,11 @@ class MissionDetailsVC: UIViewController {
     }
     
     @IBAction func learnMore() {
-        // TODO
-        self.presentAlert(title: "Learn More", message: "Coming Soon...")
+        guard let missionURL = self.missionURLString else { return }
+        
+        if let url = URL(string: missionURL) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
     
     func configure(with mission: Mission) {
@@ -40,6 +45,7 @@ class MissionDetailsVC: UIViewController {
             self.locationLabel.text = mission.location?.string
             self.summaryLabel.text = mission.summary
             self.bannerImageView.downloadedFrom(link: mission.imageLink, contentMode: .scaleAspectFill)
+            self.missionURLString = mission.url
         }
     }
 }

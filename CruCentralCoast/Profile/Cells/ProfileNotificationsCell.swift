@@ -10,14 +10,18 @@ import UIKit
 
 class ProfileNotificationsCell: UITableViewCell {
     
-    @IBOutlet weak var notificationsNumberLabel: UILabel!
-    @IBOutlet weak var notificationNumberContainerView: UIView!
+    @IBOutlet weak var notificationCountLabel: UILabel!
+    @IBOutlet weak var notificationCountContainerView: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        self.notificationNumberContainerView.layer.cornerRadius = self.notificationNumberContainerView.frame.height/2
-        self.notificationNumberContainerView.clipsToBounds = true
+        self.notificationCountContainerView.layer.cornerRadius = self.notificationCountContainerView.frame.height/2
+        self.notificationCountContainerView.clipsToBounds = true
     }
     
+    func configure(with notificationCount: Int) {
+        self.notificationCountLabel.text = "\(notificationCount)"
+        self.notificationCountContainerView.isHidden = notificationCount == 0
+    }
 }

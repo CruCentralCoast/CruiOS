@@ -9,6 +9,10 @@
 import UIKit
 
 public extension UIColor {
+    static var appTint: UIColor {
+        return .cruBrightBlue
+    }
+    
     static var cruGold: UIColor {
         return UIColor(red: 249/255.0, green: 182/255.0, blue: 37/255.0, alpha: 1)
     }
@@ -31,6 +35,10 @@ public extension UIColor {
     
     static var navBarLineGray: UIColor {
         return UIColor(red: 206/255.0, green: 206/255.0, blue: 206/255.0, alpha: 1)
+    }
+    
+    static var appleGray: UIColor {
+        return UIColor(red: 240/255.0, green: 240/255.0, blue: 247/255.0, alpha: 1)
     }
     
     // Credit to https://stackoverflow.com/questions/22868182/uicolor-transition-based-on-progress-value/24687720#24687720

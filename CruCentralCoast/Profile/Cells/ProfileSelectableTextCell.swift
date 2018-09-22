@@ -12,18 +12,7 @@ class ProfileSelectableTextCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
     
-    
-    struct ViewModel {
-        let text: String
-        
-        static let empty: ViewModel = ViewModel(text: "")
+    func configure(with text: String?) {
+        self.titleLabel.text = text
     }
-    
-    var viewModel: ViewModel = .empty {
-        didSet {
-            self.titleLabel.text = self.viewModel.text
-        }
-    }
-    
-    
 }
