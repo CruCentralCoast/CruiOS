@@ -26,10 +26,7 @@ class CommunityGroupsVC: UITableViewController {
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.dataArray = DatabaseManager.instance.getCommunityGroups()
         
-        self.dataDictionary = self.dataArray.toDictionary { $0.weekDay }
-        print("KEYS:")
-        print(self.dataDictionary.keys)
-        print()
+        
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -75,6 +72,7 @@ class CommunityGroupsVC: UITableViewController {
 extension CommunityGroupsVC: DatabaseListenerProtocol {
     func updatedCommunityGroups() {
         print("Community Groups were updated - refreshing UI")
+        self.dataDictionary = self.dataArray.toDictionary { $0.weekDay }
         self.tableView.reloadData()
     }
 }

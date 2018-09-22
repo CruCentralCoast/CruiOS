@@ -60,10 +60,10 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
             self.nameLabel.text = communityGroup.name
             self.movementLabel.text = communityGroup.movement?.name
             
-            let gender = communityGroup.gender.rawValue.localizedCapitalized ?? "N/A"
-            let day = communityGroup.weekDay.rawValue.localizedCapitalized ?? "N/A"
+            let gender = communityGroup.gender.rawValue.localizedCapitalized
+            let day = communityGroup.weekDay.rawValue.localizedCapitalized
             let time = communityGroup.time ?? "N/A"
-            let year = communityGroup.year.rawValue.localizedCapitalized ?? "N/A"
+            let year = communityGroup.year.rawValue.localizedCapitalized 
             
             if day == "" || time == "" {
                 self.dayTimeLabel.text = "No meeting time listed"

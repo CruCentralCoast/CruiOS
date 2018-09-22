@@ -26,13 +26,20 @@ class CommunityGroupCell: UITableViewCell {
     func configure(with communityGroup: CommunityGroup) {
         self.nameLabel.text = communityGroup.name
         
-        let gender = communityGroup.gender.rawValue.uppercased() ?? "N/A"
+        let gender = communityGroup.gender.rawValue.uppercased()
         let time = communityGroup.time ?? "N/A"
-        let year = communityGroup.year.rawValue.uppercased() ?? "N/A"
+        let year = communityGroup.year.rawValue.uppercased()
+        
+        var captionArray = [gender,year,time]
+        
+        //temp workaround for empty string
+        if time == "" {
+            captionArray.remove(at: 2)
+        }
         
         self.currentImageLink = communityGroup.imageLink
         
-        self.captionLabel.text = gender + " | " + year + " | " + time        
+        self.captionLabel.text = captionArray.joined(separator: " | ")
     }
         
 //        // TODO: image dowload handling once we're ready to handle leader images
