@@ -12,6 +12,16 @@ import RealmSwift
 class MinistryTeamsVC: UITableViewController {
     
     var dataArray: Results<MinistryTeam>!
+    var subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
+    
+    private lazy var emptyTableViewLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Ministry Teams"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textColor = UIColor.lightGray
+        label.textAlignment = .center
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +35,23 @@ class MinistryTeamsVC: UITableViewController {
         self.dataArray = DatabaseManager.instance.getMinistryTeams()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.dataArray = DatabaseManager.instance.getMinistryTeams().filter("movement.id IN %@", self.subscribedMovements)
+        self.tableView.reloadData()
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.dataArray.count == 0 {
+            self.tableView.backgroundView = self.emptyTableViewLabel
+            return 0
+        } else {
+            self.tableView.backgroundView = nil
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
