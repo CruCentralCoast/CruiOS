@@ -22,6 +22,9 @@
 		2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */; };
 		2F6DD2042159CE42004084F9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6DD2032159CE42004084F9 /* Onboarding.storyboard */; };
 		2F6DD2082159DA1D004084F9 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD2072159DA1D004084F9 /* WelcomeVC.swift */; };
+		2F6DD20C2159EF36004084F9 /* ProfileTermsOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD20B2159EF36004084F9 /* ProfileTermsOfServiceVC.swift */; };
+		2F6DD20F2159F1B6004084F9 /* ProfileDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD20D2159F1B6004084F9 /* ProfileDetailCell.swift */; };
+		2F6DD2102159F1B6004084F9 /* ProfileDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F6DD20E2159F1B6004084F9 /* ProfileDetailCell.xib */; };
 		2F7E20D020A3C24B00745A9B /* DatabasePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */; };
 		2FA9FE8621070716007A8658 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9FE8521070716007A8658 /* Campus.swift */; };
 		2FA9FE882107073E007A8658 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9FE872107073E007A8658 /* Movement.swift */; };
@@ -136,6 +139,9 @@
 		2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		2F6DD2032159CE42004084F9 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		2F6DD2072159DA1D004084F9 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
+		2F6DD20B2159EF36004084F9 /* ProfileTermsOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTermsOfServiceVC.swift; sourceTree = "<group>"; };
+		2F6DD20D2159F1B6004084F9 /* ProfileDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCell.swift; sourceTree = "<group>"; };
+		2F6DD20E2159F1B6004084F9 /* ProfileDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileDetailCell.xib; sourceTree = "<group>"; };
 		2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePaths.swift; sourceTree = "<group>"; };
 		2FA9FE8521070716007A8658 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
 		2FA9FE872107073E007A8658 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
@@ -470,6 +476,7 @@
 				AD24E8BD20916BE00089E370 /* Profile.storyboard */,
 				AD24E8B920916B470089E370 /* ProfileVC.swift */,
 				AD24E8DC20919C670089E370 /* NotificationsVC.swift */,
+				2F6DD20B2159EF36004084F9 /* ProfileTermsOfServiceVC.swift */,
 				ADAC305021056D3400DBCA89 /* ChooseCampusOrMovement */,
 				AD24E8C3209172970089E370 /* Cells */,
 			);
@@ -487,6 +494,8 @@
 				AD24E8C720917D6B0089E370 /* ProfileEmailCell.xib */,
 				AD24E8CA20917FFD0089E370 /* ProfileHeaderView.swift */,
 				AD24E8CC209180060089E370 /* ProfileHeaderView.xib */,
+				2F6DD20D2159F1B6004084F9 /* ProfileDetailCell.swift */,
+				2F6DD20E2159F1B6004084F9 /* ProfileDetailCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -671,6 +680,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
+				2F6DD2102159F1B6004084F9 /* ProfileDetailCell.xib in Resources */,
 				E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */,
 				ADAC305421056EE000DBCA89 /* ChooseMovementCell.xib in Resources */,
 				2F6DD2042159CE42004084F9 /* Onboarding.storyboard in Resources */,
@@ -858,6 +868,7 @@
 				2F2BD991207715F000512170 /* CruButton.swift in Sources */,
 				2F7E20D020A3C24B00745A9B /* DatabasePaths.swift in Sources */,
 				5E0C2F2420BF56A4001E6F7C /* CommunityGroupCell.swift in Sources */,
+				2F6DD20F2159F1B6004084F9 /* ProfileDetailCell.swift in Sources */,
 				2F2BD98D2075B97C00512170 /* LoginVC.swift in Sources */,
 				2FA9FE8621070716007A8658 /* Campus.swift in Sources */,
 				5E0C2F2820BFC843001E6F7C /* MinistryTeamsVC.swift in Sources */,
@@ -870,6 +881,7 @@
 				ADAC304F21056CE700DBCA89 /* ChooseMovementVC.swift in Sources */,
 				ADAC304D2105696900DBCA89 /* ChooseCampusCell.swift in Sources */,
 				AD5AB30B20AD0A890016ECD7 /* MainTabBarController.swift in Sources */,
+				2F6DD20C2159EF36004084F9 /* ProfileTermsOfServiceVC.swift in Sources */,
 				2FA9FE882107073E007A8658 /* Movement.swift in Sources */,
 				E0D2A86E20EAB65400192360 /* EventsTableCell.swift in Sources */,
 				2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */,

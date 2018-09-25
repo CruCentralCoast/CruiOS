@@ -25,6 +25,7 @@ class NotificationsVC: UITableViewController {
         super.viewDidLoad()
         self.title = "Notifications"
         self.configureTableView()
+        self.navigationController?.isNavigationBarHidden = false
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonPressed))
     }
     
