@@ -29,11 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Present welcome screen if first app launch
         if LocalStorage.preferences.getObject(forKey: .onboarded) == nil {
-            LocalStorage.preferences.set(true, forKey: .onboarded)
-            let welcomeVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(WelcomeVC.self)
-            let nav = UINavigationController(rootViewController: welcomeVC)
-            nav.isNavigationBarHidden = true
-            self.window?.rootViewController?.present(nav, animated: true, completion: nil)
+            DispatchQueue.main.async {
+                LocalStorage.preferences.set(true, forKey: .onboarded)
+                let welcomeVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(WelcomeVC.self)
+                let nav = UINavigationController(rootViewController: welcomeVC)
+                nav.isNavigationBarHidden = true
+                self.window?.rootViewController?.present(nav, animated: true, completion: nil)
+            }
         }
         
         // Set the app tint color
