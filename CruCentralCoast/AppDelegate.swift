@@ -27,15 +27,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Configure Facebook sign-in
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         
-        // Present login view controller
-        if LoginManager.instance.user == nil {
-            DispatchQueue.main.async {
-                LoginManager.instance.presentLogin(from: self.window?.rootViewController, animated: false)
-            }
+        // Present welcome screen if first app launch
+        if LocalStorage.preferences.getObject(forKey: .onboarded) == nil {
+            LocalStorage.preferences.set(true, forKey: .onboarded)
+            let welcomeVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(WelcomeVC.self)
+            let nav = UINavigationController(rootViewController: welcomeVC)
+            nav.isNavigationBarHidden = true
+            self.window?.rootViewController?.present(nav, animated: true, completion: nil)
         }
         
-        //set the app tint color to cruBrightBlue
-        window?.tintColor = .cruBrightBlue
+        // Set the app tint color
+        self.window?.tintColor = .cruBrightBlue
     
         return true
     }

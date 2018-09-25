@@ -20,10 +20,13 @@
 		2F2BD9952077250400512170 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F2BD9942077229100512170 /* Assets.xcassets */; };
 		2F2BD9972077325300512170 /* CruTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F2BD9962077325300512170 /* CruTextField.swift */; };
 		2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */; };
+		2F6DD2042159CE42004084F9 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6DD2032159CE42004084F9 /* Onboarding.storyboard */; };
+		2F6DD2082159DA1D004084F9 /* WelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD2072159DA1D004084F9 /* WelcomeVC.swift */; };
 		2F7E20D020A3C24B00745A9B /* DatabasePaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */; };
 		2FA9FE8621070716007A8658 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9FE8521070716007A8658 /* Campus.swift */; };
 		2FA9FE882107073E007A8658 /* Movement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FA9FE872107073E007A8658 /* Movement.swift */; };
 		2FB416532115217700037DA2 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB416522115217700037DA2 /* ImageManager.swift */; };
+		2FB9A6302155B0DF00967D25 /* TermsOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FB9A62F2155B0DF00967D25 /* TermsOfServiceVC.swift */; };
 		2FC07F3F2117807400DDCE0B /* MinistryTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC07F3D2117807400DDCE0B /* MinistryTeamCell.swift */; };
 		2FC07F402117807400DDCE0B /* MinistryTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2FC07F3E2117807400DDCE0B /* MinistryTeamCell.xib */; };
 		2FC07F432117922100DDCE0B /* MissionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC07F412117922100DDCE0B /* MissionCell.swift */; };
@@ -131,10 +134,13 @@
 		2F2BD9942077229100512170 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F2BD9962077325300512170 /* CruTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CruTextField.swift; sourceTree = "<group>"; };
 		2F43AEC3209AD9E1009BC362 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		2F6DD2032159CE42004084F9 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		2F6DD2072159DA1D004084F9 /* WelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeVC.swift; sourceTree = "<group>"; };
 		2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePaths.swift; sourceTree = "<group>"; };
 		2FA9FE8521070716007A8658 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
 		2FA9FE872107073E007A8658 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
 		2FB416522115217700037DA2 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		2FB9A62F2155B0DF00967D25 /* TermsOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsOfServiceVC.swift; sourceTree = "<group>"; };
 		2FC07F3D2117807400DDCE0B /* MinistryTeamCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamCell.swift; sourceTree = "<group>"; };
 		2FC07F3E2117807400DDCE0B /* MinistryTeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MinistryTeamCell.xib; sourceTree = "<group>"; };
 		2FC07F412117922100DDCE0B /* MissionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissionCell.swift; sourceTree = "<group>"; };
@@ -283,6 +289,16 @@
 			path = Chats;
 			sourceTree = "<group>";
 		};
+		2F6DD2022159CE24004084F9 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				2F6DD2032159CE42004084F9 /* Onboarding.storyboard */,
+				2F6DD2072159DA1D004084F9 /* WelcomeVC.swift */,
+				2FB9A62F2155B0DF00967D25 /* TermsOfServiceVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		2FB4164F2115208700037DA2 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +351,7 @@
 				5E8EC8BA202A3785000F86D8 /* AppDelegate.swift */,
 				5E8EC8C0202A3785000F86D8 /* Main.storyboard */,
 				AD5AB30A20AD0A890016ECD7 /* MainTabBarController.swift */,
+				2F6DD2022159CE24004084F9 /* Onboarding */,
 				2F2BD9892075ACE000512170 /* Login */,
 				AD24E8B820916B1A0089E370 /* Profile */,
 				5EBD534620352C1E0097A853 /* Events */,
@@ -656,6 +673,7 @@
 				AD24E8CD209180060089E370 /* ProfileHeaderView.xib in Resources */,
 				E0D2A86F20EAB65400192360 /* EventsTableCell.xib in Resources */,
 				ADAC305421056EE000DBCA89 /* ChooseMovementCell.xib in Resources */,
+				2F6DD2042159CE42004084F9 /* Onboarding.storyboard in Resources */,
 				2FC07F442117922100DDCE0B /* MissionCell.xib in Resources */,
 				AD24E8DB20919C510089E370 /* ProfileSelectableTextCell.xib in Resources */,
 				AD12F3C7211FAF9E008AACA4 /* Resources.storyboard in Resources */,
@@ -866,6 +884,7 @@
 				AD652AA620B65990002FF565 /* Resource.swift in Sources */,
 				2FE8BBF12109552000AF9E57 /* MinistryTeam.swift in Sources */,
 				E0C32C9E20EAF5D00026EBBD /* DateExtensions.swift in Sources */,
+				2FB9A6302155B0DF00967D25 /* TermsOfServiceVC.swift in Sources */,
 				AD55A0E7209AC31E009F62FB /* UIImageViewExtensions.swift in Sources */,
 				AD24E8C820917D6B0089E370 /* ProfileEmailCell.swift in Sources */,
 				AD24E8DD20919C680089E370 /* NotificationsVC.swift in Sources */,
@@ -875,6 +894,7 @@
 				2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */,
 				AD12F3C4211FAF6E008AACA4 /* ResourceTableViewCell.swift in Sources */,
 				AD24E8CB20917FFD0089E370 /* ProfileHeaderView.swift in Sources */,
+				2F6DD2082159DA1D004084F9 /* WelcomeVC.swift in Sources */,
 				2FE8BBED21093A4B00AF9E57 /* ObjectExtensions.swift in Sources */,
 				ADAC304B210568FF00DBCA89 /* ChooseCampusVC.swift in Sources */,
 				5E888EB920C8C2CE00F534DF /* MissionsVC.swift in Sources */,

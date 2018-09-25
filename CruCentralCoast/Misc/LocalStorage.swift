@@ -21,6 +21,7 @@ class UserDefaultsStorage {
     
     enum UserDefaultsKey: String {
         case subscribedMovements = "SubscribedMovements"
+        case onboarded = "Onboarded"
     }
     
     fileprivate init() {}

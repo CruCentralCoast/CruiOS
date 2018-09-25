@@ -12,6 +12,7 @@ enum ProfileTableViewCellType {
     case email
     case notifications
     case chooseMovements
+    case termsOfService
     case loginLogout
 }
 
@@ -19,7 +20,7 @@ class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.loginLogout]]
+    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.termsOfService], [.loginLogout]]
     private let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
 
     override func viewDidLoad() {
@@ -62,6 +63,9 @@ extension ProfileVC: UITableViewDataSource {
         case .chooseMovements:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             (cell as! ProfileSelectableTextCell).configure(with: "Change Campus")
+        case .termsOfService:
+            cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
+            (cell as! ProfileSelectableTextCell).configure(with: "Terms of Service")
         case .loginLogout:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             let userIsLoggedIn = LoginManager.instance.user != nil
@@ -101,6 +105,10 @@ extension ProfileVC: UITableViewDelegate {
             let vc = ChooseCampusVC()
             let navVC = UINavigationController(rootViewController: vc)
             self.show(navVC, sender: self)
+//        case .termsOfService:
+//            let vc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(TermsOfServiceVC.self)
+//            let navVC = UINavigationController(rootViewController: vc)
+//            self.show(navVC, sender: self)
         case .loginLogout:
             let userIsLoggedIn = LoginManager.instance.user != nil
             if userIsLoggedIn {
