@@ -12,7 +12,6 @@ import RealmSwift
 class CommunityGroupsVC: UITableViewController {
     
     var dataArray: Results<CommunityGroup>!
-    var subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
     
     private lazy var emptyTableViewLabel: UILabel = {
         let label = UILabel()
@@ -35,7 +34,8 @@ class CommunityGroupsVC: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.dataArray = DatabaseManager.instance.getCommunityGroups().filter("movement.id IN %@", self.subscribedMovements)
+        let subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
+        self.dataArray = DatabaseManager.instance.getCommunityGroups().filter("movement.id IN %@", subscribedMovements)
         self.tableView.reloadData()
     }
     

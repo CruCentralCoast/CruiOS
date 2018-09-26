@@ -11,7 +11,18 @@ import RealmSwift
 
 class EventsVC: UITableViewController {
     
-    var dataArray: Results<Event>!
+    
+    var dataArray = List<Event>()
+    var databaseArray: Results<Event>!
+    
+    private lazy var emptyTableViewLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Community Groups"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textColor = UIColor.lightGray
+        label.textAlignment = .center
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +34,38 @@ class EventsVC: UITableViewController {
         self.tableView.estimatedRowHeight = 140
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
-        self.dataArray = DatabaseManager.instance.getEvents()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
+        self.databaseArray = DatabaseManager.instance.getEvents()
+        
+        //reset the dataArray because I am appending it below.
+        self.dataArray.removeAll()
+        
+        self.databaseArray.forEach { (event) in
+            event.movements.forEach({ (movement) in
+                //check if the movement is in the subscribed movements and the dataArray does not already have the event to avoid repeats.
+                if subscribedMovements.contains(movement.id) && !self.dataArray.contains(event){
+                    self.dataArray.append(event)
+                    //return since at least one movement from the event is in the subscribed movements.
+                    return
+                }
+            })
+        }
+        
+        //reload the data in the tableview.
+        self.tableView.reloadData()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if self.dataArray.count == 0 {
+            self.tableView.backgroundView = self.emptyTableViewLabel
+            return 0
+        } else {
+            self.tableView.backgroundView = nil
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
