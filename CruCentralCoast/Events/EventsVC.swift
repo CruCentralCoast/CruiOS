@@ -17,7 +17,7 @@ class EventsVC: UITableViewController {
     
     private lazy var emptyTableViewLabel: UILabel = {
         let label = UILabel()
-        label.text = "No Community Groups"
+        label.text = "No Events"
         label.font = UIFont.systemFont(ofSize: 24)
         label.textColor = UIColor.lightGray
         label.textAlignment = .center
