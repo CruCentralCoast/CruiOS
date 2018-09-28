@@ -9,23 +9,41 @@
 import UIKit
 import RealmSwift
 
+class CommunityGroupHeader: UIView {
+    
+}
+
 class CommunityGroupsVC: UITableViewController {
 
     
     let days: [WeekDay] = [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
+    
     var dataArray: Results<CommunityGroup>!
     var dataDictionary = [WeekDay : [CommunityGroup]]()
     
+    var filteredArray: [CommunityGroup] = []
+    var filteredDictionary = [WeekDay : [CommunityGroup]]()
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(CommunityGroupCell.self)
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 100
         
+        // Setup the Search Controller
+        self.searchController.searchResultsUpdater = self
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.placeholder = "Search for Groups"
+        self.navigationItem.searchController = searchController
+        self.definesPresentationContext = true
+        
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.dataArray = DatabaseManager.instance.getCommunityGroups()
-        
         
     }
     
@@ -39,22 +57,36 @@ class CommunityGroupsVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let day = days[section]
-        if let communityGroups = self.dataDictionary[day] {
-            return communityGroups.count
+        
+        if isFiltering() {
+            if let filteredGroups = self.filteredDictionary[day] {
+                return filteredGroups.count
+            }
         }
         else {
+            if let communityGroups = self.dataDictionary[day] {
+                return communityGroups.count
+            }
+            
             return 0
         }
         
+        return 0
+        
     }
-    
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(CommunityGroupCell.self, indexPath: indexPath)
         
-        if let day = self.dataDictionary[days[indexPath.section]] {
-            cell.configure(with: day[indexPath.row])
+        if isFiltering() {
+            if let filteredDay = self.filteredDictionary[days[indexPath.section]] {
+                cell.configure(with: filteredDay[indexPath.row])
+            }
+        }
+        else {
+            if let day = self.dataDictionary[days[indexPath.section]] {
+                cell.configure(with: day[indexPath.row])
+            }
         }
          
         return cell
@@ -66,7 +98,47 @@ class CommunityGroupsVC: UITableViewController {
         vc.configure(with: day[indexPath.row])
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+    
+    // MARK: - Private instance methods
+    
+    func searchBarIsEmpty() -> Bool {
+        // Returns true if the text is empty or nil
+        return searchController.searchBar.text?.isEmpty ?? true
+    }
+    
+    func isFiltering() -> Bool {
+        return searchController.isActive && !searchBarIsEmpty()
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        
+        filteredArray = dataArray.filter({ (communityGroup : CommunityGroup) -> Bool in
+            // specified search criteria to filter
+            let searchArray = [communityGroup.gender.rawValue,
+                               communityGroup.leaderNames,
+                               communityGroup.time,
+                               communityGroup.weekDay.rawValue,
+                               communityGroup.year.rawValue]
+            for category in searchArray {
+                if category?.lowercased().contains(searchText.lowercased()) ?? false {
+                    return true
+                }
+            }
+            return false
+        })
+        
+        self.filteredDictionary = self.filteredArray.toDictionary { $0.weekDay }
+        tableView.reloadData()
+    }
+}
 
+extension CommunityGroupsVC: UISearchResultsUpdating {
+    // MARK: - UISearchResultsUpdating Delegate
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearchText(searchController.searchBar.text!)
+    }
 }
 
 extension CommunityGroupsVC: DatabaseListenerProtocol {
@@ -92,3 +164,20 @@ extension Results {
         return dict
     }
 }
+
+extension Array {
+    public func toDictionary<Key: Hashable>(with selectKey: (Element) -> Key) -> [Key:[Element]] {
+        var dict = [Key:[Element]]()
+        for elements in self {
+            if (dict[selectKey(elements)] != nil) {
+                dict[selectKey(elements)]?.append(elements)
+            }
+            else {
+                dict[selectKey(elements)] = [elements]
+            }
+            
+        }
+        return dict
+    }
+}
+

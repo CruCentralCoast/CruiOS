@@ -57,7 +57,13 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
     
     func configure(with communityGroup: CommunityGroup) {
         DispatchQueue.main.async {
-            self.nameLabel.text = communityGroup.name
+            
+            var leaderArray : [String] = []
+            for leader in communityGroup.leaders {
+                leaderArray.append(leader.name)
+            }
+            self.nameLabel.text = leaderArray.joined(separator: ", ")
+            
             self.movementLabel.text = communityGroup.movement?.name
             
             let gender = communityGroup.gender.rawValue.localizedCapitalized

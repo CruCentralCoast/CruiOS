@@ -24,7 +24,26 @@ class CommunityGroupCell: UITableViewCell {
     }
     
     func configure(with communityGroup: CommunityGroup) {
-        self.nameLabel.text = communityGroup.name
+        
+        
+        var leaderArray : [String] = []
+        for leader in communityGroup.leaders {
+            leaderArray.append(leader.name)
+        }
+        
+        if leaderArray.isEmpty {
+            if communityGroup.gender.rawValue.lowercased() == "male" {
+                self.nameLabel.text = "Men's Group"
+            }  else if communityGroup.gender.rawValue.lowercased() == "female" {
+                self.nameLabel.text = "Women's Group"
+            } else {
+                self.nameLabel.text = "Co-ed Group"
+            }
+        } else {
+            self.nameLabel.text = leaderArray.joined(separator: ", ")
+        }
+        
+        
         
         let gender = communityGroup.gender.rawValue.uppercased()
         let time = communityGroup.time ?? "N/A"
@@ -32,13 +51,12 @@ class CommunityGroupCell: UITableViewCell {
         
         var captionArray = [gender,year,time]
         
-        //temp workaround for empty string
+        //temp workaround for empty time string
         if time == "" {
             captionArray.remove(at: 2)
         }
         
         self.currentImageLink = communityGroup.imageLink
-        
         self.captionLabel.text = captionArray.joined(separator: " | ")
     }
         
