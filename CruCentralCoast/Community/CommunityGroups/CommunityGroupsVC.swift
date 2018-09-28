@@ -24,6 +24,10 @@ class CommunityGroupsVC: UITableViewController {
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.dataArray = DatabaseManager.instance.getCommunityGroups()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.displaySpinner(view: self.view)
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray.count
