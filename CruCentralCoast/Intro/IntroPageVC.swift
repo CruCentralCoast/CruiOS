@@ -34,7 +34,8 @@ class IntroPageVC: UIPageViewController {
         let navCC = UINavigationController(rootViewController: chooseCampusVC)
         navCC.navigationBar.barTintColor = UIColor.white
         
-        return [welcomeVC, navTOS, navPP, navCC]
+        // TODO: Re-enable privacy policy screen when we have an updated privacy policy
+        return [welcomeVC, navTOS, /*navPP,*/ navCC]
     }()
 
     override func viewDidLoad() {
