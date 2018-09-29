@@ -30,11 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Present welcome screen if first app launch
         if LocalStorage.preferences.getObject(forKey: .onboarded) == nil {
             DispatchQueue.main.async {
-                LocalStorage.preferences.set(true, forKey: .onboarded)
-                let welcomeVC = UIStoryboard(name: "Onboarding", bundle: nil).instantiateViewController(WelcomeVC.self)
-                let nav = UINavigationController(rootViewController: welcomeVC)
-                nav.isNavigationBarHidden = true
-                self.window?.rootViewController?.present(nav, animated: true, completion: nil)
+                let introVC = UIStoryboard(name: "Intro", bundle: nil).instantiateViewController(IntroPageContainerVC.self)
+                self.window?.rootViewController?.present(introVC, animated: true, completion: nil)
             }
         }
         
