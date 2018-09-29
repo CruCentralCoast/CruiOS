@@ -29,7 +29,7 @@
                                 <rect key="frame" x="168" y="741" width="39" height="37"/>
                             </pageControl>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="KHo-Ux-1I7" firstAttribute="top" secondItem="3dN-yE-q0m" secondAttribute="top" id="Pmn-wI-Qvp"/>
                             <constraint firstAttribute="bottom" secondItem="KHo-Ux-1I7" secondAttribute="bottom" id="bo6-Iu-zLw"/>
