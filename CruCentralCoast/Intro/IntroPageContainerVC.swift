@@ -18,6 +18,7 @@ class IntroPageContainerVC: UIViewController {
 
         self.pageControl.pageIndicatorTintColor = UIColor.cruGray.withAlphaComponent(0.5)
         self.pageControl.currentPageIndicatorTintColor = UIColor.cruGray
+        self.pageControl.isUserInteractionEnabled = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
