@@ -11,9 +11,7 @@ import RealmSwift
 
 class EventsVC: UITableViewController {
     
-    
-    var dataArray = List<Event>()
-    var databaseArray: Results<Event>!
+    var dataArray: Results<Event>!
     
     private lazy var emptyTableViewLabel: UILabel = {
         let label = UILabel()
@@ -38,23 +36,7 @@ class EventsVC: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
-        self.databaseArray = DatabaseManager.instance.getEvents()
-        
-        //reset the dataArray because I am appending it below.
-        self.dataArray.removeAll()
-        
-        self.databaseArray.forEach { (event) in
-            event.movements.forEach({ (movement) in
-                //check if the movement is in the subscribed movements and the dataArray does not already have the event to avoid repeats.
-                if subscribedMovements.contains(movement.id) && !self.dataArray.contains(event){
-                    self.dataArray.append(event)
-                    //return since at least one movement from the event is in the subscribed movements.
-                    return
-                }
-            })
-        }
-        
-        //reload the data in the tableview.
+        self.dataArray = DatabaseManager.instance.getEvents().filter("ANY movements.id IN %@", subscribedMovements)
         self.tableView.reloadData()
     }
     
