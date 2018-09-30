@@ -222,7 +222,7 @@
                                 <rect key="frame" x="118" y="474" width="178" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Change your mind? Login">
-                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="appTintColor"/>
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="Kom-xw-uiI" eventType="touchUpInside" id="wmO-Dz-gbk"/>
@@ -245,7 +245,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t73-Yy-OUK" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="414" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="appTintColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="gyI-bI-WQJ"/>
                                 </constraints>
