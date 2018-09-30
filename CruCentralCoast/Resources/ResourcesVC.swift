@@ -43,7 +43,6 @@ class ResourcesVC: UIViewController {
         // Setup the Scope Bar
         self.searchController.searchBar.scopeButtonTitles = [Scope.all.rawValue, Scope.audio.rawValue, Scope.videos.rawValue, Scope.articles.rawValue]
         self.searchController.searchBar.delegate = self
-        self.searchController.searchBar.tintColor = .cruBrightBlue
     }
     
     private func configureTableView() {
