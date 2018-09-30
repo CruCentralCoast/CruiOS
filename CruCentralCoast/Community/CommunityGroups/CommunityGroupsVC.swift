@@ -27,6 +27,16 @@ class CommunityGroupsVC: UITableViewController {
     let searchController = UISearchController(searchResultsController: nil)
     
     
+    
+    private lazy var emptyTableViewLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Community Groups"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textColor = UIColor.lightGray
+        label.textAlignment = .center
+        return label
+    }()
+        
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -45,6 +55,22 @@ class CommunityGroupsVC: UITableViewController {
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
         self.dataArray = DatabaseManager.instance.getCommunityGroups()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
+        self.dataArray = DatabaseManager.instance.getCommunityGroups().filter("movement.id IN %@", subscribedMovements)
+        self.tableView.reloadData()
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        if self.dataArray.count == 0 {
+            self.tableView.backgroundView = self.emptyTableViewLabel
+            return 0
+        } else {
+            self.tableView.backgroundView = nil
+            return 1
+        }
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
