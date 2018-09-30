@@ -26,8 +26,9 @@ class LoginVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let googleGray = UIColor(white: 117/255.0, alpha: 1.0)
         self.googleButton.layer.borderWidth = 1
-        self.googleButton.layer.borderColor = UIColor.gray.cgColor
+        self.googleButton.layer.borderColor = googleGray.cgColor
         
         // Use this to display spinner while waiting for app switch to occur
         // Need to implement the methods of the delegate protocol

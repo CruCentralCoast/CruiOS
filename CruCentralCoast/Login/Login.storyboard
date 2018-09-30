@@ -24,7 +24,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Y4o-GA-qgn"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Login">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -39,12 +39,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OKw-nI-k6g" customClass="CruImageButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="513" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.25882352941176467" green="0.40392156862745099" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" priority="999" constant="290" id="2CQ-SN-NVD"/>
                                     <constraint firstAttribute="height" constant="50" id="eEF-KI-VXS"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Sign in with Facebook" image="facebook_icon">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -66,7 +66,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="96U-fc-YKh"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Sign in with Google" image="google_icon">
                                     <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -252,7 +252,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="gyI-bI-WQJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Reset Password">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -310,7 +310,7 @@
                                     <constraint firstAttribute="height" constant="50" id="0qi-ci-DAi"/>
                                     <constraint firstAttribute="width" priority="999" constant="290" id="2kg-fV-Uyp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <state key="normal" title="Sign up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
