@@ -44,7 +44,8 @@ class EventsVC: UITableViewController {
         self.dataArray = DatabaseManager.instance.getEvents()
             .filter("ANY movements.id IN %@", subscribedMovements)
             .filter("endDate >= %@", dateOffset)
-            .sorted(byKeyPath: "endDate")
+            .sorted(byKeyPath: "startDate")
+        
         self.tableView.reloadData()
     }
     
