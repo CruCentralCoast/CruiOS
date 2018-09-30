@@ -10,12 +10,11 @@ import UIKit
 import RealmSwift
 
 class CommunityGroupHeader: UIView {
-    
+    // TODO: make header view with text describing what a community group is
 }
 
 class CommunityGroupsVC: UITableViewController {
 
-    
     let days: [WeekDay] = [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
     var filteredDays: [WeekDay] = []
     
