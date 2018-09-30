@@ -17,6 +17,7 @@ class CommunityGroupsVC: UITableViewController {
 
     
     let days: [WeekDay] = [.sunday, .monday, .tuesday, .wednesday, .thursday, .friday, .saturday]
+    var filteredDays: [WeekDay] = []
     
     var dataArray: Results<CommunityGroup>!
     var dataDictionary = [WeekDay : [CommunityGroup]]()
@@ -48,43 +49,51 @@ class CommunityGroupsVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return days[section].rawValue.capitalized
+        if isFiltering() {
+            print("filtered days: ", self.filteredDays)
+            return self.filteredDays[section].rawValue.capitalized
+        }
+        
+        return self.days[section].rawValue.capitalized
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return days.count
+        if isFiltering() {
+            return self.filteredDays.count
+        }
+        
+        return self.days.count
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let day = days[section]
-        
         if isFiltering() {
+            let day = self.filteredDays[section]
             if let filteredGroups = self.filteredDictionary[day] {
                 return filteredGroups.count
             }
         }
         else {
+            let day = days[section]
             if let communityGroups = self.dataDictionary[day] {
                 return communityGroups.count
             }
-            
-            return 0
         }
         
         return 0
-        
+
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(CommunityGroupCell.self, indexPath: indexPath)
-        
         if isFiltering() {
-            if let filteredDay = self.filteredDictionary[days[indexPath.section]] {
+            // check if there's item(s) for that day
+            if let filteredDay = self.filteredDictionary[self.filteredDays[indexPath.section]] {
                 cell.configure(with: filteredDay[indexPath.row])
             }
         }
         else {
-            if let day = self.dataDictionary[days[indexPath.section]] {
+            // check if there's item(s) for that day
+            if let day = self.dataDictionary[self.days[indexPath.section]] {
                 cell.configure(with: day[indexPath.row])
             }
         }
@@ -94,8 +103,17 @@ class CommunityGroupsVC: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "CommunityGroups", bundle: nil).instantiateViewController(CommunityGroupDetailsVC.self)
-        let day = self.dataDictionary[days[indexPath.section]]!
-        vc.configure(with: day[indexPath.row])
+        if isFiltering() {
+            if let filteredDay = self.filteredDictionary[self.filteredDays[indexPath.section]] {
+                vc.configure(with: filteredDay[indexPath.row])
+            }
+        }
+        else {
+            if let day = self.dataDictionary[self.days[indexPath.section]] {
+                vc.configure(with: day[indexPath.row])
+            }
+        }
+        
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -114,7 +132,9 @@ class CommunityGroupsVC: UITableViewController {
     
     func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         
-        filteredArray = dataArray.filter({ (communityGroup : CommunityGroup) -> Bool in
+        self.filteredDays.removeAll()
+        self.filteredArray = self.dataArray.filter({ (communityGroup : CommunityGroup) -> Bool in
+            
             // specified search criteria to filter
             let searchArray = [communityGroup.gender.rawValue,
                                communityGroup.leaderNames,
@@ -130,6 +150,11 @@ class CommunityGroupsVC: UITableViewController {
         })
         
         self.filteredDictionary = self.filteredArray.toDictionary { $0.weekDay }
+        for day in self.days {
+            if self.filteredDictionary[day] != nil {
+                self.filteredDays.append(day)
+            }
+        }
         tableView.reloadData()
     }
 }
@@ -149,6 +174,7 @@ extension CommunityGroupsVC: DatabaseListenerProtocol {
     }
 }
 
+// extension for Results from Firebase
 extension Results {
     public func toDictionary<Key: Hashable>(with selectKey: (Element) -> Key) -> [Key:[Element]] {
         var dict = [Key:[Element]]()
@@ -165,6 +191,7 @@ extension Results {
     }
 }
 
+// extensions for items in array to be filtered for searching
 extension Array {
     public func toDictionary<Key: Hashable>(with selectKey: (Element) -> Key) -> [Key:[Element]] {
         var dict = [Key:[Element]]()
@@ -180,4 +207,3 @@ extension Array {
         return dict
     }
 }
-

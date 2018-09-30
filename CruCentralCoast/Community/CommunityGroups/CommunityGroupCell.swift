@@ -45,9 +45,9 @@ class CommunityGroupCell: UITableViewCell {
         
         
         
-        let gender = communityGroup.gender.rawValue.uppercased()
+        let gender = communityGroup.gender.rawValue.localizedCapitalized
         let time = communityGroup.time ?? "N/A"
-        let year = communityGroup.year.rawValue.uppercased()
+        let year = communityGroup.year.rawValue.localizedCapitalized
         
         var captionArray = [gender,year,time]
         
