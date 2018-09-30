@@ -25,7 +25,6 @@ class CommunityGroupCell: UITableViewCell {
     
     func configure(with communityGroup: CommunityGroup) {
         
-        
         var leaderArray : [String] = []
         for leader in communityGroup.leaders {
             leaderArray.append(leader.name)
@@ -42,19 +41,12 @@ class CommunityGroupCell: UITableViewCell {
         } else {
             self.nameLabel.text = leaderArray.joined(separator: ", ")
         }
-        
-        
-        
+ 
         let gender = communityGroup.gender.rawValue.localizedCapitalized
         let time = communityGroup.time ?? "N/A"
         let year = communityGroup.year.rawValue.localizedCapitalized
         
-        var captionArray = [gender,year,time]
-        
-        //temp workaround for empty time string
-        if time == "" {
-            captionArray.remove(at: 2)
-        }
+        let captionArray = (time.isEmpty) ? [gender, year] : [gender, year, time]
         
         self.currentImageLink = communityGroup.imageLink
         self.captionLabel.text = captionArray.joined(separator: " | ")

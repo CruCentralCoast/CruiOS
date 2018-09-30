@@ -26,8 +26,6 @@ class CommunityGroupsVC: UITableViewController {
     
     let searchController = UISearchController(searchResultsController: nil)
     
-    
-    
     private lazy var emptyTableViewLabel: UILabel = {
         let label = UILabel()
         label.text = "No Community Groups"
@@ -53,13 +51,13 @@ class CommunityGroupsVC: UITableViewController {
         self.definesPresentationContext = true
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
-        self.dataArray = DatabaseManager.instance.getCommunityGroups()
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
         let subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
         self.dataArray = DatabaseManager.instance.getCommunityGroups().filter("movement.id IN %@", subscribedMovements)
+        self.dataDictionary = self.dataArray.toDictionary(with: { $0.weekDay })
         self.tableView.reloadData()
     }
     
@@ -69,8 +67,13 @@ class CommunityGroupsVC: UITableViewController {
             return 0
         } else {
             self.tableView.backgroundView = nil
-            return 1
         }
+        
+        if isFiltering() {
+            return self.filteredDays.count
+        }
+        
+        return self.days.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -82,14 +85,6 @@ class CommunityGroupsVC: UITableViewController {
         return self.days[section].rawValue.capitalized
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        if isFiltering() {
-            return self.filteredDays.count
-        }
-        
-        return self.days.count
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isFiltering() {
             let day = self.filteredDays[section]
@@ -97,15 +92,15 @@ class CommunityGroupsVC: UITableViewController {
                 return filteredGroups.count
             }
         }
+        
         else {
-            let day = days[section]
+            let day = self.days[section]
             if let communityGroups = self.dataDictionary[day] {
                 return communityGroups.count
             }
         }
         
         return 0
-
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -116,6 +111,7 @@ class CommunityGroupsVC: UITableViewController {
                 cell.configure(with: filteredDay[indexPath.row])
             }
         }
+        
         else {
             // check if there's item(s) for that day
             if let day = self.dataDictionary[self.days[indexPath.section]] {
@@ -133,6 +129,7 @@ class CommunityGroupsVC: UITableViewController {
                 vc.configure(with: filteredDay[indexPath.row])
             }
         }
+        
         else {
             if let day = self.dataDictionary[self.days[indexPath.section]] {
                 vc.configure(with: day[indexPath.row])
@@ -142,20 +139,18 @@ class CommunityGroupsVC: UITableViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    
     // MARK: - Private instance methods
     
-    func searchBarIsEmpty() -> Bool {
+    private func searchBarIsEmpty() -> Bool {
         // Returns true if the text is empty or nil
         return searchController.searchBar.text?.isEmpty ?? true
     }
     
-    func isFiltering() -> Bool {
+    private func isFiltering() -> Bool {
         return searchController.isActive && !searchBarIsEmpty()
     }
     
-    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+    private func filterContentForSearchText(_ searchText: String, scope: String = "All") {
         
         self.filteredDays.removeAll()
         self.filteredArray = self.dataArray.filter({ (communityGroup : CommunityGroup) -> Bool in
@@ -175,12 +170,8 @@ class CommunityGroupsVC: UITableViewController {
         })
         
         self.filteredDictionary = self.filteredArray.toDictionary { $0.weekDay }
-        for day in self.days {
-            if self.filteredDictionary[day] != nil {
-                self.filteredDays.append(day)
-            }
-        }
-        tableView.reloadData()
+        self.filteredDays = self.days.filter({ self.filteredDictionary[$0] != nil })
+        self.tableView.reloadData()
     }
 }
 
@@ -210,7 +201,6 @@ extension Results {
             else {
                 dict[selectKey(elements)] = [elements]
             }
-            
         }
         return dict
     }

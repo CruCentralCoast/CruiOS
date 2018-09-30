@@ -11,8 +11,6 @@ import MessageUI
 
 class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerDelegate {
 
-    
-
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var dayTimeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -34,18 +32,14 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
         if MFMessageComposeViewController.canSendText() {
             if self.leaderPhoneNumbers.isEmpty {
                 self.presentAlert(title: "Can't Contact Leader", message: "Sorry, there is no phone number listed for this group")
-            }
-            
-            else {
+            } else {
                 let controller = MFMessageComposeViewController()
                 controller.body = "Hey I'm interested in joining your community group!"
                 controller.recipients = self.leaderPhoneNumbers
                 controller.messageComposeDelegate = self
                 self.present(controller, animated: true, completion: nil)
             }
-            
-        }
-        else {
+        } else {
             print("error cant send text")
         }
     }
@@ -54,16 +48,11 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
         controller.dismiss(animated: true, completion: nil)
     }
     
-    
     func configure(with communityGroup: CommunityGroup) {
         DispatchQueue.main.async {
             
-            var leaderArray : [String] = []
-            for leader in communityGroup.leaders {
-                leaderArray.append(leader.name)
-            }
-            self.nameLabel.text = leaderArray.joined(separator: ", ")
-            
+
+            self.nameLabel.text = communityGroup.leaders.compactMap({ $0.name }).joined(separator: ", ")
             self.movementLabel.text = communityGroup.movement?.name
             
             let gender = communityGroup.gender.rawValue.localizedCapitalized
@@ -73,20 +62,13 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
             
             if day == "" || time == "" {
                 self.dayTimeLabel.text = "No meeting time listed"
-            }
-            else {
+            } else {
                 self.dayTimeLabel.text = "Meets on " + day + " at " + time
             }
             
             self.yearGenderLabel.text = year + " | " + gender
             
-            //self.leaderNamesLabel.text = "Leaders: \(communityGroup.leaderNames ?? "N/A")"
-            
-            for leader in communityGroup.leaders {
-                if let phoneNumber = leader.phone{
-                    self.leaderPhoneNumbers.append(phoneNumber)
-                }
-            }
+            self.leaderPhoneNumbers = communityGroup.leaders.filter({ $0.phone != nil }).compactMap({ $0.phone! })
 
             self.bannerImageView.downloadedFrom(link: communityGroup.imageLink, contentMode: .scaleAspectFill)
             // If no image link exists, remove the image's size constraint
