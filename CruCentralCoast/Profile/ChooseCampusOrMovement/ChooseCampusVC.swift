@@ -25,8 +25,6 @@ class ChooseCampusVC: UITableViewController {
         self.title = "Choose Campus"
         self.configureTableView()
         self.configureSearchController()
-        self.navigationController?.isNavigationBarHidden = false
-        self.navigationItem.hidesBackButton = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.doneButtonPressed))
         
         self.subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []

@@ -27,7 +27,6 @@ class ProfileVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = true
         self.tableView.registerCell(ProfileEmailCell.self)
         self.tableView.registerCell(ProfileNotificationsCell.self)
         self.tableView.registerCell(ProfileSelectableTextCell.self)
