@@ -126,19 +126,26 @@ public extension UIViewController {
 //Credits: http://brainwashinc.com/2017/07/21/loading-activity-indicator-ios-swift/
 public extension UIViewController {
     func displaySpinner(view : UIView){
-        let spinnerView = UIView.init(frame: UIScreen.main.bounds)
+        let spinnerView = UIView.init(frame: CGRect.zero)
         spinnerView.layer.cornerRadius = 20
-        spinnerView.backgroundColor = UIColor.cruBrightBlue.withAlphaComponent(0.75)
+        spinnerView.backgroundColor = UIColor.cruBrightBlue
         
         let spinner = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
         spinner.startAnimating()
-        spinner.center = spinnerView.center
         
         spinnerView.addSubview(spinner)
         view.addSubview(spinnerView)
+        spinnerView.center = view.center
+        
+        UIView.animate(withDuration: 0.3) {
+//            spinnerView.center = view.center
+            spinnerView.frame = CGRect(x: view.center.x - 100, y: view.center.y - 200, width: 200, height: 200)
+            spinner.center = CGPoint(x: view.center.x - 100, y: view.center.y - 300)
+        }
+        
         UIApplication.shared.beginIgnoringInteractionEvents()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
             spinnerView.removeFromSuperview()
             UIApplication.shared.endIgnoringInteractionEvents()
         }
