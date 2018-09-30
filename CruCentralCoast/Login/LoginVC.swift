@@ -16,6 +16,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var emailTextField: CruTextField!
     @IBOutlet weak var passwordTextField: CruTextField!
     @IBOutlet weak var signInButton: CruButton!
+    @IBOutlet weak var googleButton: CruImageButton!
     
     var fbSignInDelegate: FBSignInDelegate?
     
@@ -24,6 +25,9 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.googleButton.layer.borderWidth = 1
+        self.googleButton.layer.borderColor = UIColor.gray.cgColor
         
         // Use this to display spinner while waiting for app switch to occur
         // Need to implement the methods of the delegate protocol

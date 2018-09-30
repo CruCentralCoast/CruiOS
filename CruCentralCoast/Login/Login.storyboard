@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-0y-5au">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="omq-0y-5au">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,6 +52,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="imageColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signInWithFacebook" destination="omq-0y-5au" eventType="touchUpInside" id="XnL-yu-q8f"/>
@@ -60,13 +62,13 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y97-xz-eKp" customClass="CruImageButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62" y="568" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.8666666666666667" green="0.29411764705882354" blue="0.22352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="96U-fc-YKh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <state key="normal" title="Sign in with Google" image="google_icon">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -95,7 +97,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwK-nW-XeO">
-                                <rect key="frame" x="296" y="628" width="56" height="30"/>
+                                <rect key="frame" x="297" y="628" width="55" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.24313725490196078" green="0.69411764705882351" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -105,7 +107,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="dHp-tM-h6r">
-                                <rect key="frame" x="107" y="109.66666666666669" width="200" height="124.33333333333331"/>
+                                <rect key="frame" x="107" y="109.33333333333334" width="200" height="124.33333333333334"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="dHp-tM-h6r" secondAttribute="height" multiplier="360:224" id="4kO-fP-Ej1"/>
                                     <constraint firstAttribute="width" constant="200" id="xLW-C0-C6W"/>
@@ -188,6 +190,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="8m4-Q6-Isu" id="P3V-h1-n7G"/>
+                        <outlet property="googleButton" destination="y97-xz-eKp" id="xzK-UO-ZK8"/>
                         <outlet property="passwordTextField" destination="94I-YA-yE9" id="dJP-DF-l6U"/>
                         <outlet property="signInButton" destination="Gir-2l-neW" id="Isr-yY-BIY"/>
                     </connections>
@@ -219,7 +222,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbT-Lo-IoG">
-                                <rect key="frame" x="118.66666666666669" y="474" width="178" height="30"/>
+                                <rect key="frame" x="118" y="474" width="178" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Change your mind? Login">
                                     <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -229,7 +232,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="iAH-re-69c">
-                                <rect key="frame" x="107" y="126.66666666666669" width="200" height="125"/>
+                                <rect key="frame" x="107" y="126.66666666666666" width="200" height="124.66666666666666"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="iAH-re-69c" secondAttribute="height" multiplier="360:224" id="JA8-7e-8uj"/>
                                     <constraint firstAttribute="width" constant="200" id="sjL-TN-qkP"/>
@@ -244,7 +247,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t73-Yy-OUK" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="62.333333333333343" y="414" width="290" height="50"/>
+                                <rect key="frame" x="62" y="414" width="290" height="50"/>
                                 <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="gyI-bI-WQJ"/>
@@ -321,14 +324,14 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cru_logo" translatesAutoresizingMaskIntoConstraints="NO" id="WcQ-eZ-20y">
-                                <rect key="frame" x="107" y="116.66666666666669" width="200" height="124.33333333333331"/>
+                                <rect key="frame" x="107" y="116.66666666666666" width="200" height="124.66666666666666"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WcQ-eZ-20y" secondAttribute="height" multiplier="360:224" id="3oP-Qx-VFm"/>
                                     <constraint firstAttribute="width" constant="200" id="vpB-Fc-hln"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fOT-96-mVT" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="62" y="341" width="290" height="32"/>
+                                <rect key="frame" x="62" y="342" width="290" height="32"/>
                                 <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="1hh-j8-fMC"/>
@@ -344,7 +347,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="5xz-x9-81t" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="62" y="389" width="290" height="32"/>
+                                <rect key="frame" x="62" y="390" width="290" height="32"/>
                                 <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="0wc-5f-b0D"/>
@@ -360,7 +363,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="bDK-pJ-nW7" customClass="CruTextField" customModule="CruCentralCoast" customModuleProvider="target">
-                                <rect key="frame" x="62" y="437.66666666666669" width="290" height="32"/>
+                                <rect key="frame" x="62" y="438" width="290" height="32"/>
                                 <color key="tintColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="da1-sy-d3r"/>
@@ -434,7 +437,7 @@
     <resources>
         <image name="cross" width="19" height="19"/>
         <image name="cru_logo" width="360" height="224"/>
-        <image name="facebook_icon" width="24" height="24"/>
-        <image name="google_icon" width="24" height="24"/>
+        <image name="facebook_icon" width="18" height="18"/>
+        <image name="google_icon" width="18" height="18"/>
     </resources>
 </document>
