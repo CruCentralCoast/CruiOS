@@ -28,9 +28,9 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
         
         let googleGray = UIColor(white: 117/255.0, alpha: 1.0)
-        self.googleButton.layer.borderWidth = 1
+        self.googleButton.layer.borderWidth = 0.5
         self.googleButton.layer.borderColor = googleGray.cgColor
-        self.facebookButton.layer.borderWidth = 1
+        self.facebookButton.layer.borderWidth = 0.5
         self.facebookButton.layer.borderColor = googleGray.cgColor
         
         // Use this to display spinner while waiting for app switch to occur
