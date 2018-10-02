@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIColor {
     static var appTint: UIColor {
-        return .cruBrightBlue
+        return .cruDeepBlue
     }
     
     static var cruGold: UIColor {

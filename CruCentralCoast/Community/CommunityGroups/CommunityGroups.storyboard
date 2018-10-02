@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -82,7 +83,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Kh-vu-wqA" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="62.5" y="577" width="250" height="50"/>
-                                <color key="backgroundColor" red="0.24313725490196078" green="0.69411764705882351" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="appTintColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JyA-jl-ZUD"/>
                                     <constraint firstAttribute="width" constant="250" id="q44-mU-Za5"/>
@@ -146,5 +147,8 @@
     </scenes>
     <resources>
         <image name="community_icon" width="31" height="21"/>
+        <namedColor name="appTintColor">
+            <color red="0.0" green="0.45098039215686275" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

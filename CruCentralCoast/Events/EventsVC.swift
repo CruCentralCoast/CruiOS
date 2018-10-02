@@ -35,8 +35,17 @@ class EventsVC: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        //offset by 1 to keep the event for one more day
+        let dateOffset = calendar.date(byAdding: .day, value: -1, to: currentDate)
+        
         let subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
-        self.dataArray = DatabaseManager.instance.getEvents().filter("ANY movements.id IN %@", subscribedMovements)
+        self.dataArray = DatabaseManager.instance.getEvents()
+            .filter("ANY movements.id IN %@", subscribedMovements)
+            .filter("endDate >= %@", dateOffset)
+            .sorted(byKeyPath: "startDate")
+        
         self.tableView.reloadData()
     }
     

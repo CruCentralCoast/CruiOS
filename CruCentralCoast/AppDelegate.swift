@@ -34,8 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        //set the app tint color to cruBrightBlue
-        window?.tintColor = .cruBrightBlue
+        //set the app tint color to cruDeepBlue
+        window?.tintColor = .cruDeepBlue
     
         return true
     }
