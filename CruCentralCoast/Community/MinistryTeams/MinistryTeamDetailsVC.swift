@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import MessageUI
 
-class MinistryTeamDetailsVC: UIViewController {
+class MinistryTeamDetailsVC: UIViewController, MFMessageComposeViewControllerDelegate{
     
     @IBOutlet weak var bannerImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var movementLabel: UILabel!
     @IBOutlet weak var leaderNamesLabel: UILabel!
     @IBOutlet weak var summaryLabel: UILabel!
+    
+    var leaderPhoneNumbers : [String] = []
     
     override var prefersStatusBarHidden: Bool { return true }
     
@@ -29,8 +32,23 @@ class MinistryTeamDetailsVC: UIViewController {
     }
     
     @IBAction func joinMinistryTeam() {
-        // TODO
-        self.presentAlert(title: "Join Ministry Team", message: "Coming Soon...")
+        if MFMessageComposeViewController.canSendText() {
+            if self.leaderPhoneNumbers.isEmpty {
+                self.presentAlert(title: "Can't contact Leader", message: "Sorry, there is no phone number listed for this Ministry Team")
+            } else {
+                let controller = MFMessageComposeViewController()
+                controller.body = "Hey I'm interested in joining your Ministry Team!"
+                controller.recipients = self.leaderPhoneNumbers
+                controller.messageComposeDelegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
+        } else {
+            print("error can't send text")
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func configure(with ministryTeam: MinistryTeam) {
@@ -40,6 +58,8 @@ class MinistryTeamDetailsVC: UIViewController {
             self.leaderNamesLabel.text = "Leaders: \(ministryTeam.leaderNames ?? "N/A")"
             self.summaryLabel.text = ministryTeam.summary
             self.bannerImageView.downloadedFrom(link: ministryTeam.imageLink, contentMode: .scaleAspectFill)
+            
+            self.leaderPhoneNumbers = ministryTeam.leaders.filter({ $0.phone != nil }).compactMap({ $0.phone! })
         }
     }
 }
