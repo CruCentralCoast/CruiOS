@@ -12,6 +12,8 @@ enum ProfileTableViewCellType {
     case email
     case notifications
     case chooseMovements
+    case termsOfService
+    case privacyPolicy
     case loginLogout
 }
 
@@ -19,7 +21,8 @@ class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.loginLogout]]
+    // TODO: Re-enable privacy policy cell when we have an updated privacy policy
+    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.termsOfService/*, .privacyPolicy*/], [.loginLogout]]
     private let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
 
     override func viewDidLoad() {
@@ -27,6 +30,12 @@ class ProfileVC: UIViewController {
         self.tableView.registerCell(ProfileEmailCell.self)
         self.tableView.registerCell(ProfileNotificationsCell.self)
         self.tableView.registerCell(ProfileSelectableTextCell.self)
+        self.tableView.registerCell(ProfileDetailCell.self)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +71,12 @@ extension ProfileVC: UITableViewDataSource {
         case .chooseMovements:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             (cell as! ProfileSelectableTextCell).configure(with: "Change Campus")
+        case .termsOfService:
+            cell = tableView.dequeueCell(ProfileDetailCell.self, indexPath: indexPath)
+            (cell as! ProfileDetailCell).configure(with: "Terms of Service")
+        case .privacyPolicy:
+            cell = tableView.dequeueCell(ProfileDetailCell.self, indexPath: indexPath)
+            (cell as! ProfileDetailCell).configure(with: "Privacy Policy")
         case .loginLogout:
             cell = tableView.dequeueCell(ProfileSelectableTextCell.self, indexPath: indexPath)
             let userIsLoggedIn = LoginManager.instance.user != nil
@@ -95,12 +110,17 @@ extension ProfileVC: UITableViewDelegate {
         switch self.tableViewLayout[indexPath.section][indexPath.row] {
         case .notifications:
             let vc = NotificationsVC()
-            let navVC = UINavigationController(rootViewController: vc)
-            self.show(navVC, sender: self)
+            self.show(vc, sender: self)
         case .chooseMovements:
             let vc = ChooseCampusVC()
-            let navVC = UINavigationController(rootViewController: vc)
-            self.show(navVC, sender: self)
+            let nav = UINavigationController(rootViewController: vc)
+            self.show(nav, sender: self)
+        case .termsOfService:
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(ProfileTermsOfServiceVC.self)
+            self.show(vc, sender: self)
+        case .privacyPolicy:
+            let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(ProfilePrivacyPolicyVC.self)
+            self.show(vc, sender: self)
         case .loginLogout:
             let userIsLoggedIn = LoginManager.instance.user != nil
             if userIsLoggedIn {

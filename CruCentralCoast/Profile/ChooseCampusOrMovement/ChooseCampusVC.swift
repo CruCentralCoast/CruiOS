@@ -13,6 +13,7 @@ class ChooseCampusVC: UITableViewController {
     
     var subscribedMovements = [String]()
     var selectedIndexPath: IndexPath?
+    var pageVCDelegate: PageVCDelegate?
     
     private let searchController = UISearchController(searchResultsController: nil)
     
@@ -160,6 +161,9 @@ extension ChooseCampusVC: MovementSubscriptionDelegate {
         LocalStorage.preferences.set(self.subscribedMovements, forKey: .subscribedMovements)
         
         // TODO (Issue #186): Update data on backend if logged in
+        
+        // Record completion of onboarding if pageVCDelegate is not nil
+        self.pageVCDelegate?.finishOnboarding()
         
         self.navigationController!.dismiss(animated: true, completion: nil)
     }

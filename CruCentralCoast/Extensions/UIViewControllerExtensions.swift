@@ -104,7 +104,8 @@ public extension UIViewController {
     
     @objc private func presentProfileViewController(sender: UIButton) {
         let vc = UIStoryboard(name: "Profile", bundle: nil).instantiateViewController(ProfileVC.self)
-        self.present(vc, animated: true)
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true)
     }
 }
 

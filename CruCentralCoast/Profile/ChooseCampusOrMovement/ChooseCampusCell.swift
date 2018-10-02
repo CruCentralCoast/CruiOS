@@ -22,10 +22,15 @@ class ChooseCampusCell: UITableViewCell {
             let filteredMovements = campus.movements.filter({ subscribedMovements.contains($0.id) })
             self.movementsLabel.text = filteredMovements.map({ $0.name }).joined(separator: ", ")
         } else {
-            self.accessoryType = subscribedMovements.contains(campus.movements[0].id) ? .checkmark : .none
+            if let movement = campus.movements.first, subscribedMovements.contains(movement.id) {
+                self.accessoryType = .checkmark
+            } else {
+                self.accessoryType = .none
+            }
             self.movementsLabel.text = ""
         }
         self.titleLabel.text = campus.name
+        
         // TODO: Remove "http:" when backend image links are fixed
         // and simplify the logic to "if let imageLink = campus.imageLink"
         self.currentImageLink = (campus.imageLink == nil) ? nil : "http:\(campus.imageLink!)"
