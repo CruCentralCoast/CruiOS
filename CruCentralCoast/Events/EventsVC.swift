@@ -12,6 +12,15 @@ import RealmSwift
 class EventsVC: UITableViewController {
     
     var dataArray: Results<Event>!
+    
+    private lazy var emptyTableViewLabel: UILabel = {
+        let label = UILabel()
+        label.text = "No Events"
+        label.font = UIFont.systemFont(ofSize: 24)
+        label.textColor = UIColor.lightGray
+        label.textAlignment = .center
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +32,31 @@ class EventsVC: UITableViewController {
         self.tableView.estimatedRowHeight = 140
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
-        self.dataArray = DatabaseManager.instance.getEvents()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        //offset by 1 to keep the event for one more day
+        let dateOffset = calendar.date(byAdding: .day, value: -1, to: currentDate)
+        
+        let subscribedMovements = LocalStorage.preferences.getObject(forKey: .subscribedMovements) as? [String] ?? []
+        self.dataArray = DatabaseManager.instance.getEvents()
+            .filter("ANY movements.id IN %@", subscribedMovements)
+            .filter("endDate >= %@", dateOffset)
+            .sorted(byKeyPath: "startDate")
+        
+        self.tableView.reloadData()
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        if self.dataArray.count == 0 {
+            self.tableView.backgroundView = self.emptyTableViewLabel
+            return 0
+        } else {
+            self.tableView.backgroundView = nil
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

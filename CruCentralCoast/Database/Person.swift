@@ -38,9 +38,9 @@ class Person: RealmObject {
         }
         
         self.id = id
-        self.name = firstName
+        self.name = firstName.trimmingCharacters(in: .whitespaces)
         if let lastName = nameDict["last"] as? String, !lastName.isEmpty {
-            self.name = "\(firstName) \(lastName)"
+            self.name = "\(firstName.trimmingCharacters(in: .whitespaces)) \(lastName.trimmingCharacters(in: .whitespaces))"
         }
         self.email = dict["email"] as? String
         self.phone = dict["phone"] as? String

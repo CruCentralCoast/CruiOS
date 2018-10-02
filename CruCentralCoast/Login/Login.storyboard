@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,7 +21,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gir-2l-neW" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="42.666666666666657" y="481" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="appTintColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Y4o-GA-qgn"/>
                                 </constraints>
@@ -90,7 +91,7 @@
                                 <rect key="frame" x="42.666666666666657" y="666" width="126" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Forgot Password?">
-                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="appTintColor"/>
                                 </state>
                                 <connections>
                                     <action selector="forgotPassword" destination="omq-0y-5au" eventType="touchUpInside" id="ERn-6E-bbP"/>
@@ -100,7 +101,7 @@
                                 <rect key="frame" x="277.66666666666669" y="666" width="55" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Sign Up">
-                                    <color key="titleColor" red="0.24313725490196078" green="0.69411764705882351" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="appTintColor"/>
                                 </state>
                                 <connections>
                                     <action selector="signUp" destination="omq-0y-5au" eventType="touchUpInside" id="Ltz-0F-xZE"/>
@@ -226,7 +227,7 @@
                                 <rect key="frame" x="98.666666666666686" y="507" width="178" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Change your mind? Login">
-                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="appTintColor"/>
                                 </state>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="Kom-xw-uiI" eventType="touchUpInside" id="wmO-Dz-gbk"/>
@@ -249,7 +250,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t73-Yy-OUK" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="42.666666666666657" y="447" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="appTintColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="gyI-bI-WQJ"/>
                                 </constraints>
@@ -306,7 +307,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MBR-6w-DWX" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                 <rect key="frame" x="42.666666666666657" y="528" width="290" height="50"/>
-                                <color key="backgroundColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="appTintColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0qi-ci-DAi"/>
                                     <constraint firstAttribute="width" priority="999" constant="290" id="2kg-fV-Uyp"/>
@@ -383,7 +384,7 @@
                                 <rect key="frame" x="76" y="588" width="223" height="30"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
                                 <state key="normal" title="Already have an account? Login">
-                                    <color key="titleColor" red="0.24313725489999999" green="0.69411764710000001" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="appTintColor"/>
                                 </state>
                                 <connections>
                                     <action selector="signIn" destination="Rf4-k7-f5s" eventType="touchUpInside" id="aTT-qC-geB"/>
@@ -440,5 +441,8 @@
         <image name="cru_logo" width="360" height="224"/>
         <image name="facebook_icon" width="18" height="18"/>
         <image name="google_icon" width="18" height="18"/>
+        <namedColor name="appTintColor">
+            <color red="0.0" green="0.45098039215686275" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
