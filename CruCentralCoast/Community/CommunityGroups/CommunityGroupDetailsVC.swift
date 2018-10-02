@@ -7,41 +7,69 @@
 //
 
 import UIKit
+import MessageUI
 
-class CommunityGroupDetailsVC: UIViewController {
+class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerDelegate {
 
     @IBOutlet weak var bannerImageView: UIImageView!
-    @IBOutlet weak var genderLabel: UILabel!
-    @IBOutlet weak var dayLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dayTimeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var yearLabel: UILabel!
+    @IBOutlet weak var yearGenderLabel: UILabel!
     @IBOutlet weak var movementLabel: UILabel!
-    @IBOutlet weak var leaderNamesLabel: UILabel!
-    @IBOutlet weak var summaryLabel: UILabel!
+    @IBOutlet weak var joinCommunityGroupButton: CruButton!
     @IBOutlet weak var imageViewAspectRatioConstraint: NSLayoutConstraint!
-
+    
+    var leaderPhoneNumbers : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationItem.largeTitleDisplayMode = .never
+        
     }
     
-    @IBAction func joinCommunityGroup() {
-        // TODO
-        self.presentAlert(title: "Join Community Group", message: "Coming Soon...")
+    @IBAction func didTapContactLeader() {
+        if MFMessageComposeViewController.canSendText() {
+            if self.leaderPhoneNumbers.isEmpty {
+                self.presentAlert(title: "Can't Contact Leader", message: "Sorry, there is no phone number listed for this group")
+            } else {
+                let controller = MFMessageComposeViewController()
+                controller.body = "Hey I'm interested in joining your community group!"
+                controller.recipients = self.leaderPhoneNumbers
+                controller.messageComposeDelegate = self
+                self.present(controller, animated: true, completion: nil)
+            }
+        } else {
+            print("error cant send text")
+        }
+    }
+    
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        controller.dismiss(animated: true, completion: nil)
     }
     
     func configure(with communityGroup: CommunityGroup) {
         DispatchQueue.main.async {
-            self.genderLabel.text = communityGroup.gender.rawValue.uppercased()
-            self.dayLabel.text = communityGroup.weekDay.rawValue.uppercased()
-            self.timeLabel.text = communityGroup.time
-            self.nameLabel.text = communityGroup.name
-            self.yearLabel.text = communityGroup.year.rawValue.uppercased()
+            
+
+            self.nameLabel.text = communityGroup.leaders.compactMap({ $0.name }).joined(separator: ", ")
             self.movementLabel.text = communityGroup.movement?.name
-            self.leaderNamesLabel.text = "Leaders: \(communityGroup.leaderNames ?? "N/A")"
-            self.summaryLabel.text = communityGroup.summary
+            
+            let gender = communityGroup.gender.rawValue.localizedCapitalized
+            let day = communityGroup.weekDay.rawValue.localizedCapitalized
+            let time = communityGroup.time ?? "N/A"
+            let year = communityGroup.year.rawValue.localizedCapitalized 
+            
+            if day == "" || time == "" {
+                self.dayTimeLabel.text = "No meeting time listed"
+            } else {
+                self.dayTimeLabel.text = "Meets on " + day + " at " + time
+            }
+            
+            self.yearGenderLabel.text = year + " | " + gender
+            
+            self.leaderPhoneNumbers = communityGroup.leaders.filter({ $0.phone != nil }).compactMap({ $0.phone! })
+
             self.bannerImageView.downloadedFrom(link: communityGroup.imageLink, contentMode: .scaleAspectFill)
             // If no image link exists, remove the image's size constraint
             self.imageViewAspectRatioConstraint.isActive = (communityGroup.imageLink != nil && !communityGroup.imageLink!.isEmpty)

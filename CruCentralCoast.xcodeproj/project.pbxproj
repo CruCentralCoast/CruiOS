@@ -47,6 +47,7 @@
 		2FE8BBF32109552900AF9E57 /* Mission.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBF22109552900AF9E57 /* Mission.swift */; };
 		2FE8BBF5210955C000AF9E57 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE8BBF4210955C000AF9E57 /* Person.swift */; };
 		2FEA0539208405AA00F1491C /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA0538208405AA00F1491C /* LoginManager.swift */; };
+		5E0AC4AB215C7F7000174A2B /* CommunityGroupsHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0AC4AA215C7F7000174A2B /* CommunityGroupsHeader.xib */; };
 		5E0C2F1C20BF5084001E6F7C /* CommunityGroups.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */; };
 		5E0C2F2320BF56A4001E6F7C /* CommunityGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2120BF56A3001E6F7C /* CommunityGroupCell.xib */; };
 		5E0C2F2420BF56A4001E6F7C /* CommunityGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0C2F2220BF56A3001E6F7C /* CommunityGroupCell.swift */; };
@@ -168,6 +169,7 @@
 		2FE8BBF22109552900AF9E57 /* Mission.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mission.swift; sourceTree = "<group>"; };
 		2FE8BBF4210955C000AF9E57 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		2FEA0538208405AA00F1491C /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		5E0AC4AA215C7F7000174A2B /* CommunityGroupsHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityGroupsHeader.xib; sourceTree = "<group>"; };
 		5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommunityGroups.storyboard; sourceTree = "<group>"; };
 		5E0C2F2120BF56A3001E6F7C /* CommunityGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommunityGroupCell.xib; sourceTree = "<group>"; };
 		5E0C2F2220BF56A3001E6F7C /* CommunityGroupCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityGroupCell.swift; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0C2F1B20BF5084001E6F7C /* CommunityGroups.storyboard */,
+				5E0AC4AA215C7F7000174A2B /* CommunityGroupsHeader.xib */,
 				5EDA143220AD150F0040EC22 /* CommunityGroupsVC.swift */,
 				2FC07F45211793D400DDCE0B /* CommunityGroupDetailsVC.swift */,
 				5E0C2F2220BF56A3001E6F7C /* CommunityGroupCell.swift */,
@@ -717,6 +720,7 @@
 				AD24E8C22091728F0089E370 /* ProfileNotificationsCell.xib in Resources */,
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
 				5EBD534820352C410097A853 /* Events.storyboard in Resources */,
+				5E0AC4AB215C7F7000174A2B /* CommunityGroupsHeader.xib in Resources */,
 				5E888EB520C8C21000F534DF /* Missions.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -100,6 +100,13 @@ class EventDetailsVC: UIViewController {
     @IBAction func addToCalendarButtonPressed(_ sender: Any) {
         let eventStore: EKEventStore = EKEventStore()
         
+        let event: EKEvent = EKEvent(eventStore: eventStore)
+        event.title = self.event?.title
+        event.startDate = self.event?.startDate
+        event.endDate = self.event?.endDate
+        event.notes = self.event?.description
+        event.calendar = eventStore.defaultCalendarForNewEvents
+        
         eventStore.requestAccess(to: .event) { (granted, error) in
             if let error = error {
                 print(error)
@@ -109,15 +116,8 @@ class EventDetailsVC: UIViewController {
                 print("Calender access denied.")
                 return
             }
-
-            let event: EKEvent = EKEvent(eventStore: eventStore)
-            event.title = self.event?.title
-            event.startDate = self.event?.startDate
-            event.endDate = self.event?.endDate
-            event.notes = self.event?.description
-            event.calendar = eventStore.defaultCalendarForNewEvents
             do {
-                try eventStore.save(event,span: .thisEvent)
+                try eventStore.save(event, span: .thisEvent)
                 self.presentAlert(title: "Calendar", message: "Event Successfully added to calendar")
             } catch let error as NSError {
                 print(error)

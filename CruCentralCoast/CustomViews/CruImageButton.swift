@@ -52,7 +52,6 @@ class CruImageButton: UIButton {
         // Customizations
         self.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
         self.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        self.setImage(self.currentImage?.withRenderingMode(.alwaysTemplate), for: .normal)
         self.imageView?.tintColor = (self.imageColor == UIColor.clear) ? self.currentTitleColor : self.imageColor
         self.layer.cornerRadius = (self.cornerRadius >= 0) ? self.cornerRadius : self.bounds.height / 2
     }
