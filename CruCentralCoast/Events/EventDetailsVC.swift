@@ -33,11 +33,12 @@ class EventDetailsVC: UIViewController {
         
         guard let street = self.event?.location?.street,
             let city = self.event?.location?.city else { return }
+        let locationButtonTitle = "\(street)" + ", \(city)"
         
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
         self.descriptionLabel.text = self.event?.summary
-        self.locationButton.setTitle("\(street)" +  ", \(city)", for: .normal)
+        self.locationButton.setTitle(locationButtonTitle, for: .normal)
         self.currentImageLink = self.event?.imageLink
         if let imageLink = self.event?.imageLink {
             ImageManager.instance.fetch(imageLink) { [weak self] image in
