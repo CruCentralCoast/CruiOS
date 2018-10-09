@@ -47,8 +47,8 @@ class EventDetailsVC: UIViewController {
             }
         }
         
-        // gray out the facebook button if there is no link
-        if ((self.event?.facebookUrl) == "") {
+        // remove facebook Button if the url is empty or nil
+        if ((self.event?.facebookUrl) == "" || self.event?.facebookUrl == nil) {
             self.facebookButton.isHidden = true
         }
     }
