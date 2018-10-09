@@ -21,6 +21,7 @@ class Event: RealmObject {
     @objc dynamic var imageLink: String?
     @objc dynamic var facebookUrl: String?
     @objc dynamic var location: Location?
+    @objc dynamic var locationString: String?
     
     // Relations
     let movements = List<Movement>()
@@ -44,6 +45,7 @@ class Event: RealmObject {
         self.imageLink = dict["imageLink"] as? String
         self.facebookUrl = dict["url"] as? String
         self.location = Location(dict: dict["location"] as? NSDictionary)
+        self.locationString = dict["location"] as? String
         return true
     }
     

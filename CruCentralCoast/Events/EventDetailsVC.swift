@@ -20,6 +20,7 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var facebookButton: CruButton!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -30,10 +31,13 @@ class EventDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
+        let locationButtonTitle = self.event?.locationString ?? "TBD"
+        
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
         self.descriptionLabel.text = self.event?.summary
-        self.locationButton.setTitle(self.event?.location?.street, for: .normal)
+        self.locationButton.setTitle(locationButtonTitle, for: .normal)
         self.currentImageLink = self.event?.imageLink
         if let imageLink = self.event?.imageLink {
             ImageManager.instance.fetch(imageLink) { [weak self] image in
@@ -44,6 +48,11 @@ class EventDetailsVC: UIViewController {
                 }
             }
         }
+        
+        // remove facebook Button if the url is empty or nil
+        if ((self.event?.facebookUrl) == "" || self.event?.facebookUrl == nil) {
+            self.facebookButton.isHidden = true
+        }
     }
     
     @IBAction func dismissDetail(_ sender: Any) {
@@ -53,7 +62,7 @@ class EventDetailsVC: UIViewController {
     }
     
     @IBAction func locationButtonPressed(_ sender: Any) {
-        guard let eventLocation = self.event?.location?.string else { return }
+        guard let eventLocation = self.event?.locationString else { return }
         
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(eventLocation) { (placemarks, error) in
@@ -79,7 +88,7 @@ class EventDetailsVC: UIViewController {
             ]
             let mkPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: mkPlacemark)
-            mapItem.name = self.event?.location?.street
+            mapItem.name = self.event?.locationString
             mapItem.openInMaps(launchOptions: options)
         }
     }
@@ -94,6 +103,8 @@ class EventDetailsVC: UIViewController {
             
             let vc = SFSafariViewController(url: url, configuration: config)
             self.present(vc, animated: true)
+        } else {
+            self.presentAlert(title: "No Event", message: "No facebook event available")
         }
     }
 
