@@ -96,7 +96,6 @@ class EventDetailsVC: UIViewController {
         guard let facebookURL = event?.facebookUrl else { return }
         
         if let url = URL(string: facebookURL) {
-            self.facebookButton.backgroundColor = UIColor(red: 59, green: 89, blue: 153, alpha: 1)
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
             
