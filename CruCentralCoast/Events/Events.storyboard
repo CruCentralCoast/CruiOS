@@ -194,6 +194,7 @@
                         <outlet property="closeButton" destination="OXe-05-0Hx" id="82Z-W6-hKo"/>
                         <outlet property="dateLabel" destination="Odd-9O-O3u" id="tKu-c6-WSm"/>
                         <outlet property="descriptionLabel" destination="3lv-CQ-HAd" id="HL2-Vy-gvP"/>
+                        <outlet property="facebookButton" destination="IJy-Si-BSE" id="n8y-tE-dRz"/>
                         <outlet property="imageView" destination="UYN-ct-CuI" id="BB6-ny-EKf"/>
                         <outlet property="locationButton" destination="7k4-Tz-JY1" id="OX7-IW-7yv"/>
                         <outlet property="titleLabel" destination="LkD-pk-Jlf" id="Jih-Ss-FeQ"/>
