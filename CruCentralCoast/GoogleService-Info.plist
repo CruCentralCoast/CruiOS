@@ -7,9 +7,9 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>218939421534-pmpfb84as2p6huear2uchnn5vot23nsa.apps.googleusercontent.com</string>
+	<string>218939421534-fuolt2ui4c1i2hhuungnqqr2cep3c13e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.218939421534-pmpfb84as2p6huear2uchnn5vot23nsa</string>
+	<string>com.googleusercontent.apps.218939421534-fuolt2ui4c1i2hhuungnqqr2cep3c13e</string>
 	<key>API_KEY</key>
 	<string>AIzaSyBFFXAWBzHfkKB6D1JHCvSXLWHl4u70hoA</string>
 	<key>GCM_SENDER_ID</key>
@@ -17,7 +17,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.crucc.beta.tydahlwave</string>
+	<string>com.crucc.calpoly.beta</string>
 	<key>PROJECT_ID</key>
 	<string>cru-central-coast-prod</string>
 	<key>STORAGE_BUCKET</key>
@@ -33,7 +33,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:218939421534:ios:829e7ab8a98c916e</string>
+	<string>1:218939421534:ios:b7a429cbdec0258f</string>
 	<key>DATABASE_URL</key>
 	<string>https://cru-central-coast-prod.firebaseio.com</string>
 </dict>

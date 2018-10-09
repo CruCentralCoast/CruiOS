@@ -11,6 +11,9 @@ PODS:
   - BoringSSL/Implementation (10.0):
     - BoringSSL/Interface (= 10.0)
   - BoringSSL/Interface (10.0)
+  - Crashlytics (3.10.9):
+    - Fabric (~> 1.7.13)
+  - Fabric (1.7.13)
   - FBSDKCoreKit (4.31.1):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.31.1):
@@ -98,6 +101,8 @@ PODS:
     - Realm (= 3.7.4)
 
 DEPENDENCIES:
+  - Crashlytics (~> 3.10.7)
+  - Fabric (~> 1.7.11)
   - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
@@ -109,6 +114,8 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Bolts
     - BoringSSL
+    - Crashlytics
+    - Fabric
     - FBSDKCoreKit
     - FBSDKLoginKit
     - Firebase
@@ -134,6 +141,8 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
   BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
+  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
+  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
   FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
   FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
   Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
@@ -156,6 +165,6 @@ SPEC CHECKSUMS:
   Realm: a469bb59e33f9926102ccaea4349822c53b9117e
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
 
-PODFILE CHECKSUM: 81a833f785fbeec8ceb8abb0e62b12e9a002f314
+PODFILE CHECKSUM: 0ace51bc2eb356c49610fecb889efcacebc73a71
 
 COCOAPODS: 1.5.3
