@@ -20,10 +20,12 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var facebookButton: CruButton!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     private var currentImageLink: String?
+    private var locationButtonTitle: String = ""
     
     override var prefersStatusBarHidden: Bool { return true }
     
@@ -33,7 +35,7 @@ class EventDetailsVC: UIViewController {
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
         self.descriptionLabel.text = self.event?.summary
-        self.locationButton.setTitle(self.event?.location?.street, for: .normal)
+        self.locationButton.setTitle(self.locationButtonTitle + "\(self.event?.location?.street)" +  " , \(self.event?.location?.city)", for: .normal)
         self.currentImageLink = self.event?.imageLink
         if let imageLink = self.event?.imageLink {
             ImageManager.instance.fetch(imageLink) { [weak self] image in
@@ -43,6 +45,11 @@ class EventDetailsVC: UIViewController {
                     }
                 }
             }
+        }
+        
+        // gray out the facebook button if there is no link
+        if ((self.event?.facebookUrl) == "") {
+            self.facebookButton.isHidden = true
         }
     }
     
@@ -89,11 +96,14 @@ class EventDetailsVC: UIViewController {
         guard let facebookURL = event?.facebookUrl else { return }
         
         if let url = URL(string: facebookURL) {
+            self.facebookButton.backgroundColor = UIColor(red: 59, green: 89, blue: 153, alpha: 1)
             let config = SFSafariViewController.Configuration()
             config.entersReaderIfAvailable = true
             
             let vc = SFSafariViewController(url: url, configuration: config)
             self.present(vc, animated: true)
+        } else {
+            self.presentAlert(title: "No Event", message: "No facebook event available")
         }
     }
 
