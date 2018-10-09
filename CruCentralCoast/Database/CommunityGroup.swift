@@ -75,7 +75,7 @@ enum Gender: String {
 }
 
 enum Year: String {
-    case freshman = "freshmen"
+    case freshman = "freshman"
     case sophomore = "sophomore"
     case junior = "junior"
     case senior = "senior"

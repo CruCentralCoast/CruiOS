@@ -21,8 +21,7 @@ class ProfileVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
-    // TODO: Re-enable privacy policy cell when we have an updated privacy policy
-    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.termsOfService/*, .privacyPolicy*/], [.loginLogout]]
+    private let tableViewLayout: [[ProfileTableViewCellType]] = [[.email, .notifications, .chooseMovements], [.termsOfService, .privacyPolicy], [.loginLogout]]
     private let profileHeaderView = UINib(nibName: "ProfileHeaderView", bundle: nil).instantiate(withOwner: self, options: nil)[0] as! ProfileHeaderView
 
     override func viewDidLoad() {

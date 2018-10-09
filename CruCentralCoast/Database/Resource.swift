@@ -33,6 +33,9 @@ class Resource: RealmObject {
             let url = dict["url"] as? String,
             let typeString = dict["type"] as? String
         else {
+            // TODO: Present an alert saying that this version of the app is no longer stable and that the user should update their app
+            // This can happen because the names of fields changed on the backend/Firebase
+            // We should include both the old and new field on Firebase for 1-2 releases, and then remove the old field and show this alert instead
             assertionFailure("Client and Server data models don't agree: \(self.className())")
             return false
         }

@@ -31,7 +31,8 @@ class EventDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
+        //let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
+        let locationButtonTitle = self.event?.locationString ?? "TBD"
         
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
@@ -61,7 +62,7 @@ class EventDetailsVC: UIViewController {
     }
     
     @IBAction func locationButtonPressed(_ sender: Any) {
-        guard let eventLocation = self.event?.location?.string else { return }
+        guard let eventLocation = self.event?.locationString else { return }
         
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(eventLocation) { (placemarks, error) in
@@ -87,7 +88,7 @@ class EventDetailsVC: UIViewController {
             ]
             let mkPlacemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: mkPlacemark)
-            mapItem.name = self.event?.location?.street
+            mapItem.name = self.event?.locationString
             mapItem.openInMaps(launchOptions: options)
         }
     }
