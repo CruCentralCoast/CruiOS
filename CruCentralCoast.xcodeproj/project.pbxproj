@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F18085A20795EBF00693C7B /* Chats.storyboard */; };
-		2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F18085C20795FF100693C7B /* GoogleService-Info.plist */; };
 		2F180860207975F200693C7B /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */; };
 		2F180862207980F100693C7B /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F180861207980F100693C7B /* UIViewControllerExtensions.swift */; };
 		2F1C4380213A3C4D0033C911 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F1C437F213A3C4D0033C911 /* NotificationExtensions.swift */; };
@@ -26,6 +25,7 @@
 		2F685576215F339000B4DB3F /* IntroTermsOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F685575215F339000B4DB3F /* IntroTermsOfServiceVC.swift */; };
 		2F685578215F33F500B4DB3F /* IntroWelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F685577215F33F500B4DB3F /* IntroWelcomeVC.swift */; };
 		2F68557A215F53D600B4DB3F /* ProfilePrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F685579215F53D600B4DB3F /* ProfilePrivacyPolicyVC.swift */; };
+		2F68557D216C8ABA00B4DB3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F68557C216C8ABA00B4DB3F /* GoogleService-Info.plist */; };
 		2F6DD2042159CE42004084F9 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6DD2032159CE42004084F9 /* Intro.storyboard */; };
 		2F6DD20C2159EF36004084F9 /* ProfileTermsOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD20B2159EF36004084F9 /* ProfileTermsOfServiceVC.swift */; };
 		2F6DD20F2159F1B6004084F9 /* ProfileDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD20D2159F1B6004084F9 /* ProfileDetailCell.swift */; };
@@ -129,7 +129,6 @@
 		0AF97FF6B5F06274FCA5CFBA /* Pods-CruCentralCoast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast.debug.xcconfig"; sourceTree = "<group>"; };
 		24494561B0D08A04FB30B7E1 /* Pods-CruCentralCoastUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2F18085A20795EBF00693C7B /* Chats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
-		2F18085C20795FF100693C7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F18085E2079636E00693C7B /* CruCentralCoast.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CruCentralCoast.entitlements; sourceTree = "<group>"; };
 		2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		2F180861207980F100693C7B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -148,6 +147,7 @@
 		2F685575215F339000B4DB3F /* IntroTermsOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTermsOfServiceVC.swift; sourceTree = "<group>"; };
 		2F685577215F33F500B4DB3F /* IntroWelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWelcomeVC.swift; sourceTree = "<group>"; };
 		2F685579215F53D600B4DB3F /* ProfilePrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePrivacyPolicyVC.swift; sourceTree = "<group>"; };
+		2F68557C216C8ABA00B4DB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F6DD2032159CE42004084F9 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		2F6DD20B2159EF36004084F9 /* ProfileTermsOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTermsOfServiceVC.swift; sourceTree = "<group>"; };
 		2F6DD20D2159F1B6004084F9 /* ProfileDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCell.swift; sourceTree = "<group>"; };
@@ -382,7 +382,7 @@
 				5EC413C7203FAD4D00E2184D /* placeholder.jpg */,
 				5E8EC8C5202A3785000F86D8 /* LaunchScreen.storyboard */,
 				5E8EC8C8202A3785000F86D8 /* Info.plist */,
-				2F18085C20795FF100693C7B /* GoogleService-Info.plist */,
+				2F68557C216C8ABA00B4DB3F /* GoogleService-Info.plist */,
 				2F18085E2079636E00693C7B /* CruCentralCoast.entitlements */,
 			);
 			path = CruCentralCoast;
@@ -714,11 +714,11 @@
 				5E8EC8C7202A3785000F86D8 /* LaunchScreen.storyboard in Resources */,
 				AD24E8C920917D6B0089E370 /* ProfileEmailCell.xib in Resources */,
 				AD12F3C5211FAF6E008AACA4 /* ResourceTableViewCell.xib in Resources */,
-				2F18085D20795FF100693C7B /* GoogleService-Info.plist in Resources */,
 				5E0C2F2320BF56A4001E6F7C /* CommunityGroupCell.xib in Resources */,
 				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
 				5E0C2F1C20BF5084001E6F7C /* CommunityGroups.storyboard in Resources */,
 				AD24E8C22091728F0089E370 /* ProfileNotificationsCell.xib in Resources */,
+				2F68557D216C8ABA00B4DB3F /* GoogleService-Info.plist in Resources */,
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
 				5EBD534820352C410097A853 /* Events.storyboard in Resources */,
 				5E0AC4AB215C7F7000174A2B /* CommunityGroupsHeader.xib in Resources */,
