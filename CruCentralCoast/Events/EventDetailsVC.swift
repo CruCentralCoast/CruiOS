@@ -31,9 +31,7 @@ class EventDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard let street = self.event?.location?.street,
-            let city = self.event?.location?.city else { return }
-        let locationButtonTitle = "\(street)" + ", \(city)"
+        let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
         
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
