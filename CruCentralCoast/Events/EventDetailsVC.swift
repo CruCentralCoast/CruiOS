@@ -20,6 +20,7 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
+    @IBOutlet weak var facebookButton: CruButton!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -30,10 +31,12 @@ class EventDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
+        
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
         self.descriptionLabel.text = self.event?.summary
-        self.locationButton.setTitle(self.event?.location?.street, for: .normal)
+        self.locationButton.setTitle(locationButtonTitle, for: .normal)
         self.currentImageLink = self.event?.imageLink
         if let imageLink = self.event?.imageLink {
             ImageManager.instance.fetch(imageLink) { [weak self] image in
@@ -43,6 +46,11 @@ class EventDetailsVC: UIViewController {
                     }
                 }
             }
+        }
+        
+        // remove facebook Button if the url is empty or nil
+        if ((self.event?.facebookUrl) == "" || self.event?.facebookUrl == nil) {
+            self.facebookButton.isHidden = true
         }
     }
     
@@ -94,6 +102,8 @@ class EventDetailsVC: UIViewController {
             
             let vc = SFSafariViewController(url: url, configuration: config)
             self.present(vc, animated: true)
+        } else {
+            self.presentAlert(title: "No Event", message: "No facebook event available")
         }
     }
 
