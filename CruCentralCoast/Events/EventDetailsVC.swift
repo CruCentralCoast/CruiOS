@@ -25,17 +25,19 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     private var currentImageLink: String?
-    private var locationButtonTitle: String = ""
     
     override var prefersStatusBarHidden: Bool { return true }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let street = self.event?.location?.street,
+            let city = self.event?.location?.city else { return }
+        
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
         self.descriptionLabel.text = self.event?.summary
-        self.locationButton.setTitle(self.locationButtonTitle + "\(self.event?.location?.street)" +  " , \(self.event?.location?.city)", for: .normal)
+        self.locationButton.setTitle("\(street)" +  ", \(city)", for: .normal)
         self.currentImageLink = self.event?.imageLink
         if let imageLink = self.event?.imageLink {
             ImageManager.instance.fetch(imageLink) { [weak self] image in
