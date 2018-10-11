@@ -20,6 +20,7 @@ class Mission: RealmObject {
     @objc dynamic var imageLink: String?
     @objc dynamic var url: String?
     @objc dynamic var location: Location?
+    @objc dynamic var locationString: String?
     
     // Relations
     /// Inverse relationship that is auto-updated
@@ -42,6 +43,7 @@ class Mission: RealmObject {
         self.startDate = startDate
         self.endDate = endDate
         self.location = Location(dict: dict["location"] as? NSDictionary)
+        self.locationString = dict["location"] as? String
         self.imageLink = dict["imageLink"] as? String
         self.url = dict["url"] as? String
         return true

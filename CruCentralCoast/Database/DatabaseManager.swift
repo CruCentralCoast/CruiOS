@@ -36,17 +36,15 @@ class DatabaseManager {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
             // Set the new schema version. This must be greater than the previously used
             // version (if you've never set a schema version before, the version is 0).
-            schemaVersion: 3,
+            schemaVersion: 4,
             
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 1 {
-                    // Added Person.movements
-                } else if oldSchemaVersion < 2 {
-                    // Added Mission.url
-                } else if oldSchemaVersion < 3 {
-                    // Added Event.locationString
+                if oldSchemaVersion < 1 { // Added Person.movements
+                } else if oldSchemaVersion < 2 { // Added Mission.url
+                } else if oldSchemaVersion < 3 { // Added Event.locationString
+                } else if oldSchemaVersion < 4 { // Added Mission.locationString
                 }
         })
     }
