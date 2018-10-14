@@ -32,10 +32,14 @@ class EventDetailsVC: UIViewController {
         super.viewDidLoad()
         
         //let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
-        let locationButtonTitle = self.event?.locationString ?? "TBD"
+        let locationButtonTitle = self.event?.locationTitle ?? "TBD"
+        
+        guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
+        guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
+        let startEndDateArray = [startdate, endDate]
         
         self.titleLabel.text = self.event?.title
-        self.dateLabel.text = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased()
+        self.dateLabel.text = startEndDateArray.joined(separator: " - ")
         self.descriptionLabel.text = self.event?.summary
         self.locationButton.setTitle(locationButtonTitle, for: .normal)
         self.currentImageLink = self.event?.imageLink
@@ -62,6 +66,10 @@ class EventDetailsVC: UIViewController {
     }
     
     @IBAction func locationButtonPressed(_ sender: Any) {
+        if (locationButton.titleLabel?.text == "TBD"){
+            return
+        }
+        
         guard let eventLocation = self.event?.locationString else { return }
         
         let geoCoder = CLGeocoder()
@@ -115,7 +123,7 @@ class EventDetailsVC: UIViewController {
         event.title = self.event?.title
         event.startDate = self.event?.startDate
         event.endDate = self.event?.endDate
-        event.notes = self.event?.description
+        event.notes = self.event?.summary
         event.calendar = eventStore.defaultCalendarForNewEvents
         
         eventStore.requestAccess(to: .event) { (granted, error) in
