@@ -32,7 +32,7 @@ class EventDetailsVC: UIViewController {
         super.viewDidLoad()
         
         //let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
-        let locationButtonTitle = self.event?.locationString ?? "TBD"
+        let locationButtonTitle = self.event?.locationTitle ?? "TBD"
         
         guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
         guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
