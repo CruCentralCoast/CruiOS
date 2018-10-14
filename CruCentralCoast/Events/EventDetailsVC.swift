@@ -16,6 +16,7 @@ class EventDetailsVC: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var closeButton: UIButton!
@@ -34,12 +35,13 @@ class EventDetailsVC: UIViewController {
         //let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
         let locationButtonTitle = self.event?.locationTitle ?? "TBD"
         
-        guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
-        guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
+        guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none) else { return }
+        guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none) else { return }
         let startEndDateArray = [startdate, endDate]
         
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = startEndDateArray.joined(separator: " - ")
+        self.timeLabel.text = self.event?.startDate.toString(dateStyle: .none, timeStyle: .short).uppercased()
         self.descriptionLabel.text = self.event?.summary
         self.locationButton.setTitle(locationButtonTitle, for: .normal)
         self.currentImageLink = self.event?.imageLink
