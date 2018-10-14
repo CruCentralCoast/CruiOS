@@ -50,7 +50,7 @@ class Event: RealmObject {
     }
     
     func relate(with dict: [String: Any]) {
-        if let movementsArray = dict["ministries"] as? [DocumentReference] {
+        if let movementsArray = dict["movements"] as? [DocumentReference] {
             DatabaseManager.instance.assignRelationList("movements", on: self, with: movementsArray, ofType: Movement.self)
         }
     }

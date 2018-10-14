@@ -17,11 +17,11 @@ extension Person: DatabasePath {
 }
 
 extension Campus: DatabasePath {
-    static var databasePath: String = "campus"
+    static var databasePath: String = "campuses"
 }
 
 extension Movement: DatabasePath {
-    static var databasePath: String = "ministries"
+    static var databasePath: String = "movements"
 }
 
 extension Event: DatabasePath {
@@ -37,7 +37,7 @@ extension MinistryTeam: DatabasePath {
 }
 
 extension Mission: DatabasePath {
-    static var databasePath: String = "summermissions"
+    static var databasePath: String = "missions"
 }
 
 extension Resource: DatabasePath {

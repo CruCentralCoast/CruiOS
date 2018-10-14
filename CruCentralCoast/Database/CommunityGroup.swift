@@ -51,15 +51,15 @@ class CommunityGroup: RealmObject {
         self.name = name
         self.summary = dict["discription"] as? String
         self.genderString = (dict["gender"] as? String ?? "").lowercased()//genderString.lowercased()
-        self.yearString = (dict["type"] as? String ?? "").lowercased()//yearString.lowercased()
-        self.weekDayString = (dict["dayOfWeek"] as? String ?? "").lowercased()//weekDayString.lowercased()
-        self.time = (dict["meetingTime"] as? String ?? "").lowercased()//time
+        self.yearString = (dict["year"] as? String ?? "").lowercased()//yearString.lowercased()
+        self.weekDayString = (dict["day"] as? String ?? "").lowercased()//weekDayString.lowercased()
+        self.time = (dict["time"] as? String ?? "").lowercased()//time
         self.imageLink = dict["imageLink"] as? String
         return true
     }
     
     func relate(with dict: [String : Any]) {
-        if let movementReference = dict["ministry"] as? DocumentReference {
+        if let movementReference = dict["movement"] as? DocumentReference {
             DatabaseManager.instance.assignRelation("movement", on: self, with: movementReference, ofType: Movement.self)
         }
         if let leadersArray = dict["leaders"] as? [DocumentReference] {
