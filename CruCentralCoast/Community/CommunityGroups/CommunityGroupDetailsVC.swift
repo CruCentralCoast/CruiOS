@@ -29,10 +29,18 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
     }
     
     @IBAction func didTapContactLeader() {
+        let userIsLoggedIn = LoginManager.instance.user != nil
+        
+        if !userIsLoggedIn {
+            print("got here")
+            LoginManager.instance.presentLogin(from: self)
+        }
+        
         if MFMessageComposeViewController.canSendText() {
             if self.leaderPhoneNumbers.isEmpty {
                 self.presentAlert(title: "Can't Contact Leader", message: "Sorry, there is no phone number listed for this group")
             } else {
+                
                 let controller = MFMessageComposeViewController()
                 controller.body = "Hey I'm interested in joining your community group!"
                 controller.recipients = self.leaderPhoneNumbers
@@ -42,6 +50,7 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
         } else {
             print("error cant send text")
         }
+
     }
     
     func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
