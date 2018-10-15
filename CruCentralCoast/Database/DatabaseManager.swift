@@ -41,10 +41,9 @@ class DatabaseManager {
             // Set the block which will be called automatically when opening a Realm with
             // a schema version lower than the one set above
             migrationBlock: { migration, oldSchemaVersion in
-                // if schemaVersion < 1 {
-                //    // Added CLASS.PROPERTY
-                // }
-            }
+//                 if schemaVersion < 1 {
+//                    // Added CLASS.PROPERTY
+//                 }
         })
     }
     
