@@ -15,8 +15,8 @@ class Person: RealmObject {
     // Properties
     @objc dynamic var id: String!
     @objc dynamic var name: String!
-    @objc dynamic var email: String!
-    @objc dynamic var phone: String!
+    @objc dynamic var email: String?
+    @objc dynamic var phone: String?
     
     // Relations
     /// Inverse relationship that is auto-updated
@@ -58,7 +58,7 @@ class Person: RealmObject {
             DatabaseManager.instance.assignRelationList("ministryTeams", on: self, with: ministryTeamsArray, ofType: MinistryTeam.self)
         }
         // TODO: Uncomment when User missions are fixed on backend
-//        if let missionsArray = dict["summerMissions"] as? [DocumentReference] {
+//        if let missionsArray = dict["missions"] as? [DocumentReference] {
 //            DatabaseManager.instance.assignRelationList("missions", on: self, with: missionsArray, ofType: Mission.self)
 //        }
     }
