@@ -75,9 +75,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asO-YO-FYj">
-                                <rect key="frame" x="0.0" y="140" width="375" height="548"/>
+                                <rect key="frame" x="20" y="88" width="335" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Thank you for using this Mobile App!  This Mobile App is provided by Cru.  These Terms of Use (“Terms”) govern your access to and use of this Mobile App.  Please read these Terms carefully.  By accessing or using our Mobile App, you agree to be bound by these Terms and by our Privacy Notice.
+                                <string key="text">Thank you for using this Mobile App!  This Mobile App is provided by Cru.  These Terms of Use (“Terms”) govern your access to and use of this Mobile App.  Please read these Terms carefully.  By accessing or using our Mobile App, you agree to be bound by these Terms and by our Privacy Notice.
 
 1. USING THIS MOBILE APP
 
@@ -176,7 +176,7 @@ Assignment.  These Terms, and any rights and licenses granted hereunder, may not
 
 Entire Agreement/Severability.  These Terms, together with the Privacy Notice and any amendments and any additional agreements you may enter into with Cru in connection with this Mobile App, constitutes the entire agreement between you and Cru concerning this Mobile App.  If any provision of these Terms is deemed invalid, then that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions of these Terms will remain in full force and effect.
 
-No Waiver.  No waiver of any term of these Terms will be deemed a further or continuing waiver of such term or any other term, and Cru’s failure to assert any right or provision under these Terms will not constitute a waiver of such right or provision.</mutableString>
+No Waiver.  No waiver of any term of these Terms will be deemed a further or continuing waiver of such term or any other term, and Cru’s failure to assert any right or provision under these Terms will not constitute a waiver of such right or provision.</string>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -206,9 +206,9 @@ No Waiver.  No waiver of any term of these Terms will be deemed a further or con
                             <constraint firstItem="eBZ-jc-QfR" firstAttribute="bottom" secondItem="5bv-uv-CLb" secondAttribute="bottom" constant="40" id="0l0-wB-O0C"/>
                             <constraint firstItem="asO-YO-FYj" firstAttribute="top" secondItem="eBZ-jc-QfR" secondAttribute="top" id="8Ts-1J-2gz"/>
                             <constraint firstItem="5bv-uv-CLb" firstAttribute="leading" secondItem="eBZ-jc-QfR" secondAttribute="leading" id="Ckh-xK-sEe"/>
-                            <constraint firstItem="asO-YO-FYj" firstAttribute="trailing" secondItem="eBZ-jc-QfR" secondAttribute="trailing" id="LSH-rc-XYG"/>
+                            <constraint firstItem="asO-YO-FYj" firstAttribute="trailing" secondItem="eBZ-jc-QfR" secondAttribute="trailing" constant="-20" id="LSH-rc-XYG"/>
                             <constraint firstItem="5bv-uv-CLb" firstAttribute="top" secondItem="asO-YO-FYj" secondAttribute="bottom" id="Rvo-vd-R6a"/>
-                            <constraint firstItem="asO-YO-FYj" firstAttribute="leading" secondItem="eBZ-jc-QfR" secondAttribute="leading" id="lst-Qd-M1D"/>
+                            <constraint firstItem="asO-YO-FYj" firstAttribute="leading" secondItem="eBZ-jc-QfR" secondAttribute="leading" constant="20" id="lst-Qd-M1D"/>
                             <constraint firstItem="5bv-uv-CLb" firstAttribute="centerX" secondItem="yww-0W-sBT" secondAttribute="centerX" id="pfp-RU-Jfu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eBZ-jc-QfR"/>
@@ -307,9 +307,9 @@ No Waiver.  No waiver of any term of these Terms will be deemed a further or con
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sV9-70-TVn">
-                                <rect key="frame" x="0.0" y="140" width="375" height="548"/>
+                                <rect key="frame" x="20" y="88" width="335" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Thank you for using Cru Central Coast!  This Privacy Notice explains what information we collect, how we use it, and what choices you have.  While we’ve tried to make the explanations clear and simple, some of the concepts are technical due to the nature of the product.
+                                <string key="text">Thank you for using Cru Central Coast!  This Privacy Notice explains what information we collect, how we use it, and what choices you have.  While we’ve tried to make the explanations clear and simple, some of the concepts are technical due to the nature of the product.
 
 LAST UPDATED: MAY 2018
 
@@ -571,7 +571,7 @@ Under California’s “Shine the Light” law, California residents who provide
 If you have any questions about this policy or the way we use your personal information, you may contact:
 Email: crucentralcoast@cru.org
 Phone: +1 (407) 826-2948
-Mailing Address: Campus Crusade for Christ 100 Lake Hart Drive Orlando, FL 32832, USA</mutableString>
+Mailing Address: Campus Crusade for Christ 100 Lake Hart Drive Orlando, FL 32832, USA</string>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -597,11 +597,11 @@ Mailing Address: Campus Crusade for Christ 100 Lake Hart Drive Orlando, FL 3
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="sV9-70-TVn" firstAttribute="trailing" secondItem="8x4-0u-dgK" secondAttribute="trailing" id="0iS-sb-WbS"/>
+                            <constraint firstItem="sV9-70-TVn" firstAttribute="trailing" secondItem="8x4-0u-dgK" secondAttribute="trailing" constant="-20" id="0iS-sb-WbS"/>
                             <constraint firstItem="7Ph-1h-Vz1" firstAttribute="leading" secondItem="8x4-0u-dgK" secondAttribute="leading" id="5e1-RR-0co"/>
                             <constraint firstItem="7Ph-1h-Vz1" firstAttribute="centerX" secondItem="uPg-Xa-SU2" secondAttribute="centerX" id="BSz-SD-0xp"/>
                             <constraint firstItem="8x4-0u-dgK" firstAttribute="bottom" secondItem="7Ph-1h-Vz1" secondAttribute="bottom" constant="40" id="KzN-8d-TFv"/>
-                            <constraint firstItem="sV9-70-TVn" firstAttribute="leading" secondItem="8x4-0u-dgK" secondAttribute="leading" id="YTv-Rq-4Cr"/>
+                            <constraint firstItem="sV9-70-TVn" firstAttribute="leading" secondItem="8x4-0u-dgK" secondAttribute="leading" constant="20" id="YTv-Rq-4Cr"/>
                             <constraint firstItem="7Ph-1h-Vz1" firstAttribute="top" secondItem="sV9-70-TVn" secondAttribute="bottom" id="nja-6o-TrH"/>
                             <constraint firstItem="sV9-70-TVn" firstAttribute="top" secondItem="8x4-0u-dgK" secondAttribute="top" id="rDz-6F-rXs"/>
                         </constraints>

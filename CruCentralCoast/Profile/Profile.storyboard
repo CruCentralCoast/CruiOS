@@ -64,9 +64,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4t2-GL-Nhd">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="20" y="44" width="335" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Thank you for using this Mobile App!  This Mobile App is provided by Cru.  These Terms of Use (“Terms”) govern your access to and use of this Mobile App.  Please read these Terms carefully.  By accessing or using our Mobile App, you agree to be bound by these Terms and by our Privacy Notice.
+                                <string key="text">Thank you for using this Mobile App!  This Mobile App is provided by Cru.  These Terms of Use (“Terms”) govern your access to and use of this Mobile App.  Please read these Terms carefully.  By accessing or using our Mobile App, you agree to be bound by these Terms and by our Privacy Notice.
 
 1. USING THIS MOBILE APP
 
@@ -165,7 +165,7 @@ Assignment.  These Terms, and any rights and licenses granted hereunder, may not
 
 Entire Agreement/Severability.  These Terms, together with the Privacy Notice and any amendments and any additional agreements you may enter into with Cru in connection with this Mobile App, constitutes the entire agreement between you and Cru concerning this Mobile App.  If any provision of these Terms is deemed invalid, then that provision will be limited or eliminated to the minimum extent necessary, and the remaining provisions of these Terms will remain in full force and effect.
 
-No Waiver.  No waiver of any term of these Terms will be deemed a further or continuing waiver of such term or any other term, and Cru’s failure to assert any right or provision under these Terms will not constitute a waiver of such right or provision.</mutableString>
+No Waiver.  No waiver of any term of these Terms will be deemed a further or continuing waiver of such term or any other term, and Cru’s failure to assert any right or provision under these Terms will not constitute a waiver of such right or provision.</string>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -173,9 +173,9 @@ No Waiver.  No waiver of any term of these Terms will be deemed a further or con
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Cds-ig-W4i" firstAttribute="trailing" secondItem="4t2-GL-Nhd" secondAttribute="trailing" id="4bw-Lc-Nim"/>
+                            <constraint firstItem="Cds-ig-W4i" firstAttribute="trailing" secondItem="4t2-GL-Nhd" secondAttribute="trailing" constant="20" id="4bw-Lc-Nim"/>
                             <constraint firstItem="Cds-ig-W4i" firstAttribute="bottom" secondItem="4t2-GL-Nhd" secondAttribute="bottom" id="KpV-CE-vuE"/>
-                            <constraint firstItem="4t2-GL-Nhd" firstAttribute="leading" secondItem="Cds-ig-W4i" secondAttribute="leading" id="Yem-Sz-gyU"/>
+                            <constraint firstItem="4t2-GL-Nhd" firstAttribute="leading" secondItem="Cds-ig-W4i" secondAttribute="leading" constant="20" id="Yem-Sz-gyU"/>
                             <constraint firstItem="4t2-GL-Nhd" firstAttribute="top" secondItem="Cds-ig-W4i" secondAttribute="top" id="yoG-ZL-Lw6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cds-ig-W4i"/>
@@ -198,9 +198,9 @@ No Waiver.  No waiver of any term of these Terms will be deemed a further or con
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" adjustsFontForContentSizeCategory="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="plA-sb-mX6">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <rect key="frame" x="20" y="44" width="335" height="734"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">Thank you for using Cru Central Coast!  This Privacy Notice explains what information we collect, how we use it, and what choices you have.  While we’ve tried to make the explanations clear and simple, some of the concepts are technical due to the nature of the product.
+                                <string key="text">Thank you for using Cru Central Coast!  This Privacy Notice explains what information we collect, how we use it, and what choices you have.  While we’ve tried to make the explanations clear and simple, some of the concepts are technical due to the nature of the product.
 
 LAST UPDATED: MAY 2018
 
@@ -462,7 +462,7 @@ Under California’s “Shine the Light” law, California residents who provide
 If you have any questions about this policy or the way we use your personal information, you may contact:
 Email: crucentralcoast@cru.org
 Phone: +1 (407) 826-2948
-Mailing Address: Campus Crusade for Christ 100 Lake Hart Drive Orlando, FL 32832, USA</mutableString>
+Mailing Address: Campus Crusade for Christ 100 Lake Hart Drive Orlando, FL 32832, USA</string>
                                 <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -471,8 +471,8 @@ Mailing Address: Campus Crusade for Christ 100 Lake Hart Drive Orlando, FL 3
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="MF8-gD-MmC" firstAttribute="bottom" secondItem="plA-sb-mX6" secondAttribute="bottom" id="5xC-IV-LJy"/>
-                            <constraint firstItem="MF8-gD-MmC" firstAttribute="trailing" secondItem="plA-sb-mX6" secondAttribute="trailing" id="9HH-f0-Vy9"/>
-                            <constraint firstItem="plA-sb-mX6" firstAttribute="leading" secondItem="MF8-gD-MmC" secondAttribute="leading" id="Qhi-iY-Say"/>
+                            <constraint firstItem="MF8-gD-MmC" firstAttribute="trailing" secondItem="plA-sb-mX6" secondAttribute="trailing" constant="20" id="9HH-f0-Vy9"/>
+                            <constraint firstItem="plA-sb-mX6" firstAttribute="leading" secondItem="MF8-gD-MmC" secondAttribute="leading" constant="20" id="Qhi-iY-Say"/>
                             <constraint firstItem="plA-sb-mX6" firstAttribute="top" secondItem="MF8-gD-MmC" secondAttribute="top" id="vHo-3a-J9g"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MF8-gD-MmC"/>
