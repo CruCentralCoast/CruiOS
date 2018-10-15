@@ -72,19 +72,19 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description textbox:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3lv-CQ-HAd">
-                                        <rect key="frame" x="20" y="370" width="374" height="21.666666666666686"/>
+                                        <rect key="frame" x="20" y="360" width="374" height="21.666666666666686"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LkD-pk-Jlf">
-                                        <rect key="frame" x="20" y="302.33333333333331" width="374" height="28.666666666666686"/>
+                                        <rect key="frame" x="20" y="292.33333333333331" width="374" height="28.666666666666686"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Si-BSE" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="432" width="334" height="50"/>
+                                        <rect key="frame" x="40" y="422" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.25882352941176467" green="0.40392156862745099" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="IJy-Si-BSE" secondAttribute="height" multiplier="167:25" id="q17-UD-aOF"/>
@@ -108,7 +108,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
-                                        <rect key="frame" x="20" y="336" width="130" height="22"/>
+                                        <rect key="frame" x="20" y="326" width="130" height="22"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
                                         <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
                                         <state key="normal" title="Location Button">
@@ -119,7 +119,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu5-Zb-0Vs" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
-                                        <rect key="frame" x="40" y="494" width="334" height="50"/>
+                                        <rect key="frame" x="40" y="484" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Eu5-Zb-0Vs" secondAttribute="height" multiplier="167:25" id="C1w-fo-QrR"/>
@@ -139,13 +139,13 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="ZSj-3C-z9h">
-                                        <rect key="frame" x="155" y="336" width="19" height="19"/>
+                                        <rect key="frame" x="155" y="326" width="19" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ZSj-3C-z9h" secondAttribute="height" multiplier="1:1" id="Qfu-Pr-aVB"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pm1-4L-d6r">
-                                        <rect key="frame" x="20" y="272.33333333333331" width="82" height="20"/>
+                                        <rect key="frame" x="20" y="267.33333333333331" width="82" height="20"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="textColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -153,10 +153,10 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="40" id="7lS-yg-0jf"/>
-                                    <constraint firstItem="Pm1-4L-d6r" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="10" id="H7c-av-Tw3"/>
+                                    <constraint firstItem="Pm1-4L-d6r" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="5" id="H7c-av-Tw3"/>
                                     <constraint firstItem="7k4-Tz-JY1" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="5" id="ILd-35-4dn"/>
                                     <constraint firstAttribute="trailing" secondItem="IJy-Si-BSE" secondAttribute="trailing" constant="40" id="IZy-hA-7xQ"/>
-                                    <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="Pm1-4L-d6r" secondAttribute="bottom" constant="10" id="KJZ-fe-Mel"/>
+                                    <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="Pm1-4L-d6r" secondAttribute="bottom" constant="5" id="KJZ-fe-Mel"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="ZSj-3C-z9h" secondAttribute="bottom" constant="15" id="P2F-1B-jMq"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" id="R56-sQ-hrV"/>
                                     <constraint firstItem="Pm1-4L-d6r" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="R6v-7f-Fln"/>

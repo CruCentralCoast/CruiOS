@@ -35,8 +35,8 @@ class EventDetailsVC: UIViewController {
         //let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
         let locationButtonTitle = self.event?.locationTitle ?? "TBD"
         
-        guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none) else { return }
-        guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none) else { return }
+        guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
+        guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
         var startEndDateArray = [startdate, endDate]
 
         // if endDate time is less than 12hrs away, remove it
