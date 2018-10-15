@@ -33,6 +33,7 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
         
         if !userIsLoggedIn {
             LoginManager.instance.presentLogin(from: self)
+            return
         }
         
         if MFMessageComposeViewController.canSendText() {

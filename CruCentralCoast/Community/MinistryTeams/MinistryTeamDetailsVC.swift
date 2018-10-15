@@ -36,6 +36,7 @@ class MinistryTeamDetailsVC: UIViewController, MFMessageComposeViewControllerDel
 
         if !userIsLoggedIn {
             LoginManager.instance.presentLogin(from: self)
+            return
         }
         
         if MFMessageComposeViewController.canSendText() {
