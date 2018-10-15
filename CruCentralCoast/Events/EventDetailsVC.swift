@@ -39,9 +39,15 @@ class EventDetailsVC: UIViewController {
         guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none) else { return }
         var startEndDateArray = [startdate, endDate]
 
-        if (self.event?.endDate)!.timeIntervalSince((self.event?.startDate)!) < 43200{
-            startEndDateArray.removeLast()
+        // if endDate time is less than 12hrs away, remove it
+        if let start = self.event?.startDate {
+            if let end = self.event?.endDate {
+                if start.timeIntervalSince(end) < 43200 {
+                    startEndDateArray.removeLast()
+                }
+            }
         }
+
         
         
         
