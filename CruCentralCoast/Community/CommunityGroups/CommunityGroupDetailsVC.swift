@@ -32,7 +32,6 @@ class CommunityGroupDetailsVC: UIViewController, MFMessageComposeViewControllerD
         let userIsLoggedIn = LoginManager.instance.user != nil
         
         if !userIsLoggedIn {
-            print("got here")
             LoginManager.instance.presentLogin(from: self)
         }
         

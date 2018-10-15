@@ -32,6 +32,12 @@ class MinistryTeamDetailsVC: UIViewController, MFMessageComposeViewControllerDel
     }
     
     @IBAction func joinMinistryTeam() {
+        let userIsLoggedIn = LoginManager.instance.user != nil
+
+        if !userIsLoggedIn {
+            LoginManager.instance.presentLogin(from: self)
+        }
+        
         if MFMessageComposeViewController.canSendText() {
             if self.leaderPhoneNumbers.isEmpty {
                 self.presentAlert(title: "Can't contact Leader", message: "Sorry, there is no phone number listed for this Ministry Team")
