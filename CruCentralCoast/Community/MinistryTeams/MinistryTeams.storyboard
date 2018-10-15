@@ -103,7 +103,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEADERS" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZE-3z-Fk4">
-                                        <rect key="frame" x="20" y="277.5" width="70.5" height="19.5"/>
+                                        <rect key="frame" x="20" y="277.5" width="335" height="19.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                         <color key="textColor" red="0.51213515229999995" green="0.51213515229999995" blue="0.51213515229999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
@@ -123,6 +123,7 @@
                                     <constraint firstAttribute="trailing" secondItem="GR7-2u-vv6" secondAttribute="trailing" constant="20" id="TaZ-Zt-mfo"/>
                                     <constraint firstItem="kgh-aF-OmD" firstAttribute="top" secondItem="vbe-DD-PfN" secondAttribute="top" id="Uag-uq-L43"/>
                                     <constraint firstItem="vbZ-p6-tpG" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" constant="40" id="XcD-KD-YJl"/>
+                                    <constraint firstAttribute="trailing" secondItem="XZE-3z-Fk4" secondAttribute="trailing" constant="20" id="Xzg-TS-a0Z"/>
                                     <constraint firstItem="lf2-DB-0JC" firstAttribute="top" secondItem="kgh-aF-OmD" secondAttribute="bottom" constant="10" id="eMb-Q7-nMo"/>
                                     <constraint firstAttribute="bottom" secondItem="vbZ-p6-tpG" secondAttribute="bottom" constant="40" id="fw7-30-J2d"/>
                                     <constraint firstItem="lf2-DB-0JC" firstAttribute="leading" secondItem="vbe-DD-PfN" secondAttribute="leading" constant="20" id="hed-Z8-HSs"/>

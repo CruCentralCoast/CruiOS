@@ -40,17 +40,12 @@ class EventDetailsVC: UIViewController {
         var startEndDateArray = [startdate, endDate]
 
         // if endDate time is less than 12hrs away, remove it
-        if let start = self.event?.startDate {
-            if let end = self.event?.endDate {
-                if start.timeIntervalSince(end) < 43200 {
-                    startEndDateArray.removeLast()
-                }
+        if let start = self.event?.startDate, let end = self.event?.endDate {
+            if start.timeIntervalSince(end) < 43200 {
+                startEndDateArray.removeLast()
             }
         }
 
-        
-        
-        
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = startEndDateArray.joined(separator: " - ")
         self.timeLabel.text = self.event?.startDate.toString(dateStyle: .none, timeStyle: .short).uppercased()
