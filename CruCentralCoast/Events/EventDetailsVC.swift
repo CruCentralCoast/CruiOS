@@ -37,7 +37,13 @@ class EventDetailsVC: UIViewController {
         
         guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none) else { return }
         guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none) else { return }
-        let startEndDateArray = [startdate, endDate]
+        var startEndDateArray = [startdate, endDate]
+
+        if (self.event?.endDate)!.timeIntervalSince((self.event?.startDate)!) < 43200{
+            startEndDateArray.removeLast()
+        }
+        
+        
         
         self.titleLabel.text = self.event?.title
         self.dateLabel.text = startEndDateArray.joined(separator: " - ")
