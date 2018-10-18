@@ -1,46 +1,29 @@
-project 'Cru.xcodeproj'
+platform :ios, '11.0'
 
-# Uncomment this line to define a global platform for your project
-platform :ios, '8.0'
+target 'CruCentralCoast' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  
+  # ignore all warnings from all pods
+  inhibit_all_warnings!
 
-# Uncomment this line if you're using Swift
-use_frameworks!
+  # Pods for CruCentralCoast
+  pod 'Firebase/Core'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
+  pod 'RealmSwift'
+  pod 'Fabric', '~> 1.7.11'
+  pod 'Crashlytics', '~> 3.10.7'
 
-def cru_pods
-    pod 'SideMenu', '2.2.0'
-    pod 'Google/CloudMessaging', '1.3.2'
-    pod 'DatePickerCell'
-    pod 'LocationPickerViewController', '3.0.0'
-    pod 'IQKeyboardManagerSwift', '4.0.8'
-    pod 'SwiftValidator', :git => 'https://github.com/jpotts18/SwiftValidator.git', :branch => 'master'
-    pod 'MRProgress'
-    pod 'Alamofire', '~> 4.3'
-    pod 'RadioButton'
-    pod 'ActionSheetPicker-3.0'
-    pod 'DZNEmptyDataSet'
-    pod 'ImageLoader'
-    pod 'HTMLReader', '~> 1.0'
-    pod 'SwiftyJSON', '3.1.4'
-    pod 'LocationPicker'
-    pod 'GooglePlaces'
-    pod 'GooglePlacePicker'
-    pod 'GoogleMaps'
+  target 'CruCentralCoastTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'CruCentralCoastUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
 end
-
-def crash_monitor
-    pod 'Fabric'
-    pod 'Crashlytics'
-    pod 'Appsee'
-end
-
-target 'Cru' do
-    cru_pods
-    crash_monitor
-end
-
-target 'CruTests' do
-    cru_pods
-    crash_monitor
-end
-
-
