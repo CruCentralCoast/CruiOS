@@ -1,236 +1,170 @@
 PODS:
-  - ActionSheetPicker-3.0 (2.2.0)
-  - Alamofire (4.3.0)
-  - AlamofireImage (3.2.0):
-    - Alamofire (~> 4.1)
-  - AmazonS3RequestManager (1.2.0):
-    - Alamofire (~> 4.1)
-    - SWXMLHash (~> 4.1.0)
-  - AnimatedTextInput (0.5.1)
-  - Appsee (2.3.1)
-  - AWSCognito (2.5.10):
-    - AWSCore (= 2.5.10)
-  - AWSCognitoAuth (2.5.10)
-  - AWSCore (2.5.10)
-  - AWSS3 (2.5.10):
-    - AWSCore (= 2.5.10)
-  - Crashlytics (3.8.3):
-    - Fabric (~> 1.6.3)
-  - DatePickerCell (1.0.5)
-  - DropDown (2)
-  - DZNEmptyDataSet (1.8.1)
-  - Fabric (1.6.11)
-  - Firebase/Auth (4.0.4):
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - BoringSSL (10.0):
+    - BoringSSL/Implementation (= 10.0)
+    - BoringSSL/Interface (= 10.0)
+  - BoringSSL/Implementation (10.0):
+    - BoringSSL/Interface (= 10.0)
+  - BoringSSL/Interface (10.0)
+  - Crashlytics (3.10.9):
+    - Fabric (~> 1.7.13)
+  - Fabric (1.7.13)
+  - FBSDKCoreKit (4.31.1):
+    - Bolts (~> 1.7)
+  - FBSDKLoginKit (4.31.1):
+    - FBSDKCoreKit
+  - Firebase/Auth (4.11.0):
     - Firebase/Core
-    - FirebaseAuth (= 4.0.0)
-  - Firebase/Core (4.0.4):
-    - FirebaseAnalytics (= 4.0.2)
-    - FirebaseCore (= 4.0.4)
-  - Firebase/Messaging (4.0.4):
+    - FirebaseAuth (= 4.5.0)
+  - Firebase/Core (4.11.0):
+    - FirebaseAnalytics (= 4.1.0)
+    - FirebaseCore (= 4.0.18)
+  - Firebase/Firestore (4.11.0):
     - Firebase/Core
-    - FirebaseMessaging (= 2.0.0)
-  - Firebase/RemoteConfig (4.0.4):
-    - Firebase/Core
-    - FirebaseRemoteConfig (= 2.0.1)
-  - FirebaseAnalytics (4.0.2):
+    - FirebaseFirestore (= 0.10.4)
+  - FirebaseAnalytics (4.1.0):
     - FirebaseCore (~> 4.0)
     - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-  - FirebaseAuth (4.0.0):
-    - FirebaseAnalytics (~> 4.0)
-    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
-    - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseCore (4.0.4):
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
     - nanopb (~> 0.3)
-  - FirebaseInstanceID (2.0.0):
+  - FirebaseAuth (4.5.0):
+    - FirebaseAnalytics (~> 4.1)
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - GTMSessionFetcher/Core (~> 1.1)
+  - FirebaseCore (4.0.18):
+    - "GoogleToolboxForMac/NSData+zlib (~> 2.1)"
+  - FirebaseFirestore (0.10.4):
+    - FirebaseAnalytics (~> 4.1)
     - FirebaseCore (~> 4.0)
-  - FirebaseMessaging (2.0.0):
-    - FirebaseAnalytics (~> 4.0)
+    - gRPC-ProtoRPC (~> 1.0)
+    - leveldb-library (~> 1.18)
+    - Protobuf (~> 3.5)
+  - FirebaseInstanceID (2.0.10):
     - FirebaseCore (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/Logger (~> 2.1)
-    - Protobuf (~> 3.1)
-  - FirebaseRemoteConfig (2.0.1):
-    - FirebaseAnalytics (~> 4.0)
-    - FirebaseInstanceID (~> 2.0)
-    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
-    - Protobuf (~> 3.1)
-  - GoogleMaps (2.1.1):
-    - GoogleMaps/Maps (= 2.1.1)
-  - GoogleMaps/Base (2.1.1)
-  - GoogleMaps/Maps (2.1.1):
-    - GoogleMaps/Base
-  - GooglePlacePicker (2.1.1):
-    - GoogleMaps (= 2.1.1)
-    - GooglePlaces (= 2.1.1)
-  - GooglePlaces (2.1.1):
-    - GoogleMaps/Base (= 2.1.1)
-  - GoogleToolboxForMac/DebugUtils (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/Defines (2.1.1)
-  - GoogleToolboxForMac/Logger (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSData+zlib (2.1.1):
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.1):
-    - GoogleToolboxForMac/DebugUtils (= 2.1.1)
-    - GoogleToolboxForMac/Defines (= 2.1.1)
-    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
-  - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
-  - GTMSessionFetcher/Core (1.1.11)
-  - HTMLReader (1.0.1)
-  - ImageLoader (0.12.2)
-  - ImagePicker (2.1.1)
-  - IQKeyboardManagerSwift (4.0.8)
-  - Ji (2.0.1):
-    - Ji/Ji (= 2.0.1)
-  - Ji/Ji (2.0.1):
-    - Ji/Ji-libxml
-  - Ji/Ji-libxml (2.0.1)
-  - LocationPicker (1.0.2)
-  - LocationPickerViewController (3.0.0)
-  - MRProgress (0.8.3):
-    - MRProgress/ActivityIndicator (= 0.8.3)
-    - MRProgress/Blur (= 0.8.3)
-    - MRProgress/Circular (= 0.8.3)
-    - MRProgress/Icons (= 0.8.3)
-    - MRProgress/NavigationBarProgress (= 0.8.3)
-    - MRProgress/Overlay (= 0.8.3)
-  - MRProgress/ActivityIndicator (0.8.3):
-    - MRProgress/Stopable
-  - MRProgress/Blur (0.8.3):
-    - MRProgress/Helper
-  - MRProgress/Circular (0.8.3):
-    - MRProgress/Helper
-    - MRProgress/ProgressBaseClass
-    - MRProgress/Stopable
-  - MRProgress/Helper (0.8.3)
-  - MRProgress/Icons (0.8.3)
-  - MRProgress/NavigationBarProgress (0.8.3):
-    - MRProgress/ProgressBaseClass
-  - MRProgress/Overlay (0.8.3):
-    - MRProgress/ActivityIndicator
-    - MRProgress/Blur
-    - MRProgress/Circular
-    - MRProgress/Helper
-    - MRProgress/Icons
-  - MRProgress/ProgressBaseClass (0.8.3)
-  - MRProgress/Stopable (0.8.3):
-    - MRProgress/Helper
+  - GoogleSignIn (4.1.2):
+    - "GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)"
+    - "GoogleToolboxForMac/NSString+URLArguments (~> 2.1)"
+    - GTMOAuth2 (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/Defines (2.1.3)
+  - "GoogleToolboxForMac/NSData+zlib (2.1.3)":
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+  - "GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3)":
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - "GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)"
+  - "GoogleToolboxForMac/NSString+URLArguments (2.1.3)"
+  - gRPC (1.10.0):
+    - gRPC-RxLibrary (= 1.10.0)
+    - gRPC/Main (= 1.10.0)
+  - gRPC-Core (1.10.0):
+    - gRPC-Core/Implementation (= 1.10.0)
+    - gRPC-Core/Interface (= 1.10.0)
+  - gRPC-Core/Implementation (1.10.0):
+    - BoringSSL (~> 10.0)
+    - gRPC-Core/Interface (= 1.10.0)
+    - nanopb (~> 0.3)
+  - gRPC-Core/Interface (1.10.0)
+  - gRPC-ProtoRPC (1.10.0):
+    - gRPC (= 1.10.0)
+    - gRPC-RxLibrary (= 1.10.0)
+    - Protobuf (~> 3.0)
+  - gRPC-RxLibrary (1.10.0)
+  - gRPC/Main (1.10.0):
+    - gRPC-Core (= 1.10.0)
+    - gRPC-RxLibrary (= 1.10.0)
+  - GTMOAuth2 (1.1.6):
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.1.15):
+    - GTMSessionFetcher/Full (= 1.1.15)
+  - GTMSessionFetcher/Core (1.1.15)
+  - GTMSessionFetcher/Full (1.1.15):
+    - GTMSessionFetcher/Core (= 1.1.15)
+  - leveldb-library (1.20)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
-  - Protobuf (3.3.0)
-  - RadioButton (1.0)
-  - ReadabilityKit (0.6.1):
-    - Ji (~> 2.0.1)
-  - SideMenu (2.2.0)
-  - SwiftValidator (4.0.0)
-  - SwiftyJSON (3.1.4)
-  - SWXMLHash (4.1.1)
-  - UIScrollView-InfiniteScroll (1.0.0)
-  - XLPagerTabStrip (7.0.0)
-  - YouTubePlayer (0.4.0)
+  - Protobuf (3.5.0)
+  - Realm (3.7.4):
+    - Realm/Headers (= 3.7.4)
+  - Realm/Headers (3.7.4)
+  - RealmSwift (3.7.4):
+    - Realm (= 3.7.4)
 
 DEPENDENCIES:
-  - ActionSheetPicker-3.0
-  - Alamofire (~> 4.3)
-  - AlamofireImage (~> 3.2)
-  - AmazonS3RequestManager
-  - AnimatedTextInput (~> 0.5.1)
-  - Appsee
-  - AWSCognito
-  - AWSCognitoAuth
-  - AWSS3
-  - Crashlytics
-  - DatePickerCell
-  - DropDown
-  - DZNEmptyDataSet
-  - Fabric
+  - Crashlytics (~> 3.10.7)
+  - Fabric (~> 1.7.11)
+  - FBSDKLoginKit
   - Firebase/Auth
   - Firebase/Core
-  - Firebase/Messaging
-  - Firebase/RemoteConfig
-  - GoogleMaps
-  - GooglePlacePicker
-  - GooglePlaces
-  - HTMLReader (~> 1.0)
-  - ImageLoader
-  - ImagePicker
-  - IQKeyboardManagerSwift (= 4.0.8)
-  - LocationPicker
-  - LocationPickerViewController (= 3.0.0)
-  - MRProgress
-  - RadioButton
-  - ReadabilityKit
-  - SideMenu (= 2.2.0)
-  - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
-  - SwiftyJSON (= 3.1.4)
-  - UIScrollView-InfiniteScroll (~> 1.0)
-  - XLPagerTabStrip (~> 7.0)
-  - YouTubePlayer
+  - Firebase/Firestore
+  - GoogleSignIn
+  - RealmSwift
 
-EXTERNAL SOURCES:
-  SwiftValidator:
-    :branch: master
-    :git: https://github.com/jpotts18/SwiftValidator.git
-
-CHECKOUT OPTIONS:
-  SwiftValidator:
-    :commit: 2a6c23ad9efd76127f6109445515cb9780e5ad92
-    :git: https://github.com/jpotts18/SwiftValidator.git
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Bolts
+    - BoringSSL
+    - Crashlytics
+    - Fabric
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseAuth
+    - FirebaseCore
+    - FirebaseFirestore
+    - FirebaseInstanceID
+    - GoogleSignIn
+    - GoogleToolboxForMac
+    - gRPC
+    - gRPC-Core
+    - gRPC-ProtoRPC
+    - gRPC-RxLibrary
+    - GTMOAuth2
+    - GTMSessionFetcher
+    - leveldb-library
+    - nanopb
+    - Protobuf
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
-  ActionSheetPicker-3.0: d11a4c12c6aaf704b8a3f56d179198c99f3e41e6
-  Alamofire: 856a113053a7bc9cbe5d6367a555d773fc5cfef7
-  AlamofireImage: 157ed682cc81d3b9db4fb90c1f12180ac552d93b
-  AmazonS3RequestManager: fe0b95154175931b2637303d7a152ef249476362
-  AnimatedTextInput: 0fde4c9c8d71dafc032b9b222531a788767536fb
-  Appsee: 78b5d4b281ceb83d5fd17d7df18d5ff8c292e031
-  AWSCognito: 75de3956984129b9a270f99261c431fa1eb87c26
-  AWSCognitoAuth: e8a157b9c201bbb94bde19f3433fa3bb90a8857e
-  AWSCore: 490c988f6af48a10ea113ff06c53a1ef72a3534b
-  AWSS3: cd25080951a7637668d4f33393fe24bcb04dfac7
-  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
-  DatePickerCell: 8cd5d7fc93d195b85a7b2389b0ea4a9017c51f9b
-  DropDown: 744784d9c9aa505100e942c16acd05430cbb2f0a
-  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  Firebase: 1492bf04e1b73a7353b4fb2cf5a20bac9692f341
-  FirebaseAnalytics: ad41720e3e67fc63fbe3d2948d3e26932a8de311
-  FirebaseAuth: ebb6abcbabae00fc47446d690c19ce68d8484fde
-  FirebaseCore: cfc042628ef9f20debe09c0eb683135fcd404cb4
-  FirebaseInstanceID: 9fbf536668f4d3f0880e7438456dabd1376e294b
-  FirebaseMessaging: 227406c05b0dc9290702d2e9f18ab5528f0c2cf2
-  FirebaseRemoteConfig: 328244399f64226cfdfa32efee596bb010ef5665
-  GoogleMaps: a5b5bbe47734e2443bde781a6aa64e69fdb6d785
-  GooglePlacePicker: 665f39f931f2df32f9dd3fcc45f7e8abf71e535c
-  GooglePlaces: 35636d86e5020cba3856eb988c09a5491de0a65a
-  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-  GTMSessionFetcher: 5ad62e8200fa00ed011fe5e08d27fef72c5b1429
-  HTMLReader: 9c9a018b11d7e9884a52ab97ce1bd23bdca7fddb
-  ImageLoader: f461c9641350d0b8df39c2d3785b263f15cd63c2
-  ImagePicker: fe4c699abb56ff03994fa98d8b02e3883ee118be
-  IQKeyboardManagerSwift: c04bc9f68473823f825eb44d958fce98d921bead
-  Ji: 6bb602a28dd08b804158f64990e6051ed5de0110
-  LocationPicker: 240b6328b8d7799530cc0da9973ea3f02dc646f4
-  LocationPickerViewController: ee898cc76d9a06083b398c59e67d3c16aa298636
-  MRProgress: 16de7cc9f347e8846797a770db102a323fe7ef09
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  BoringSSL: 32764dbaf5f5888cf51fbaa172a010126b41bcd4
+  Crashlytics: 55e24fc23989680285a21cb1146578d9d18e432c
+  Fabric: 25d0963b691fc97be566392243ff0ecef5a68338
+  FBSDKCoreKit: e08ccfcefa7bc1347a07c276dac9bf6c7fe57024
+  FBSDKLoginKit: 99797ac39252fef6f72600b886f6ee60b4b29cab
+  Firebase: cc13dfab1038c8b45d7903e01fc690451d6d0b24
+  FirebaseAnalytics: 3dfae28d4a5e06f86c4fae830efc2ad3fadb19bc
+  FirebaseAuth: 147bf340a0706b44ca1753d6b41ebafd9687cfe6
+  FirebaseCore: b981f47e5254cbcfdeb483355300d743f6fcab2c
+  FirebaseFirestore: 796df79c29cf8ecf806564f4d347665bdafa6ef0
+  FirebaseInstanceID: 8d20d890d65c917f9f7d9950b6e10a760ad34321
+  GoogleSignIn: d9ef55b10f0aa401a5de2747f59b725e4b9732ac
+  GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  gRPC: f54f0e6d603052b4562447da442ce2ff30bcdacc
+  gRPC-Core: a030b1678ded49c88ec5ba7c90ee8ee5f47ec6e1
+  gRPC-ProtoRPC: 22712b23eb1bda656a59715fa5c1da0ea1493ea4
+  gRPC-RxLibrary: a41a4652d220f230ba1c0491a94ce2ee04c6180a
+  GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
+  GTMSessionFetcher: 5fa5b80fd20e439ef5f545fb2cb3ca6c6714caa2
+  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
-  Protobuf: d582fecf68201eac3d79ed61369ef45734394b9c
-  RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
-  ReadabilityKit: 49c26a2da9708ae3b355854d5bee6a7edee2dfee
-  SideMenu: eeff6b85456c5c6e14165655691d2033f6b24969
-  SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
-  SWXMLHash: 2ac748d1b7a429725d5fc99bb1177a685c4b84c7
-  UIScrollView-InfiniteScroll: d26885be71caca7485cdb37eab513a8f89036bb0
-  XLPagerTabStrip: 9be80a66c6b7d60306b2c0a6004965016d68f813
-  YouTubePlayer: 028451f6772f372d4759866db99824c676ac1473
+  Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
+  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
 
-PODFILE CHECKSUM: 89d98d4facd45db6bdf04927479845bf4880aa4a
+PODFILE CHECKSUM: 0ace51bc2eb356c49610fecb889efcacebc73a71
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

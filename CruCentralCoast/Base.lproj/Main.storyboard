@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="yl2-sM-qoP">
+            <objects>
+                <tabBarController id="49e-Tb-3d3" customClass="MainTabBarController" customModule="CruCentralCoast" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
+                        <rect key="frame" x="0.0" y="975" width="768" height="49"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" name="appTintColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="oVo-NX-my7" kind="relationship" relationship="viewControllers" id="lfR-HK-G4q"/>
+                        <segue destination="XfT-hN-Ktt" kind="relationship" relationship="viewControllers" id="hgt-b1-iZU"/>
+                        <segue destination="Htr-Ra-lEm" kind="relationship" relationship="viewControllers" id="7AU-Tq-cSf"/>
+                        <segue destination="ezS-hD-Jq0" kind="relationship" relationship="viewControllers" id="Z5K-Uu-8fV"/>
+                        <segue destination="if1-ot-TXG" kind="relationship" relationship="viewControllers" id="cIo-Os-fdo"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="0.0" y="0.0"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="yhK-9C-a5S">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="EventsVC" storyboardName="Events" id="oVo-NX-my7" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="events_icon" id="CVz-ut-Z2Y"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CiP-YB-anl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="634" y="-125"/>
+        </scene>
+        <!--CommunityGroups-->
+        <scene sceneID="2aQ-0c-LA0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CommunityGroups" id="XfT-hN-Ktt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Community" image="community_icon" id="6mu-MP-erd"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FWH-Ma-84G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="692" y="-64"/>
+        </scene>
+        <!--MinistryTeams-->
+        <scene sceneID="dQE-ae-MHQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MinistryTeams" id="Htr-Ra-lEm" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Ministry" image="ministry" id="yI1-eu-P8V"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wGi-i4-HUI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="673" y="-1"/>
+        </scene>
+        <!--Missions-->
+        <scene sceneID="TmF-dp-Jz1">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Missions" id="ezS-hD-Jq0" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Missions" image="earth" id="S3m-lI-fpH"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FfU-TN-U0g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="60"/>
+        </scene>
+        <!--Resources-->
+        <scene sceneID="QAq-OE-A1r">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ResourcesVC" storyboardName="Resources" id="if1-ot-TXG" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Resources" image="resources_icon" id="r5s-3e-oIg"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="swp-gp-H2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="653" y="124"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="community_icon" width="31" height="21"/>
+        <image name="earth" width="26" height="26"/>
+        <image name="events_icon" width="25" height="25"/>
+        <image name="ministry" width="26" height="25"/>
+        <image name="resources_icon" width="26" height="22"/>
+        <namedColor name="appTintColor">
+            <color red="0.0" green="0.45098039215686275" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
