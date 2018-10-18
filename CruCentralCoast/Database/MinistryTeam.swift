@@ -39,12 +39,12 @@ class MinistryTeam: RealmObject {
         self.id = id
         self.name = name
         self.summary = summary
-        self.imageLink = dict["teamImageLink"] as? String
+        self.imageLink = dict["imageLink"] as? String
         return true
     }
     
     func relate(with dict: [String : Any]) {
-        if let movementReference = dict["parentMinistry"] as? DocumentReference {
+        if let movementReference = dict["movement"] as? DocumentReference {
             DatabaseManager.instance.assignRelation("movement", on: self, with: movementReference, ofType: Movement.self)
         }
         if let leadersArray = dict["leaders"] as? [DocumentReference] {

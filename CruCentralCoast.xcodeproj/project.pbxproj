@@ -25,7 +25,6 @@
 		2F685576215F339000B4DB3F /* IntroTermsOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F685575215F339000B4DB3F /* IntroTermsOfServiceVC.swift */; };
 		2F685578215F33F500B4DB3F /* IntroWelcomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F685577215F33F500B4DB3F /* IntroWelcomeVC.swift */; };
 		2F68557A215F53D600B4DB3F /* ProfilePrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F685579215F53D600B4DB3F /* ProfilePrivacyPolicyVC.swift */; };
-		2F68557D216C8ABA00B4DB3F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2F68557C216C8ABA00B4DB3F /* GoogleService-Info.plist */; };
 		2F6DD2042159CE42004084F9 /* Intro.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F6DD2032159CE42004084F9 /* Intro.storyboard */; };
 		2F6DD20C2159EF36004084F9 /* ProfileTermsOfServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD20B2159EF36004084F9 /* ProfileTermsOfServiceVC.swift */; };
 		2F6DD20F2159F1B6004084F9 /* ProfileDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F6DD20D2159F1B6004084F9 /* ProfileDetailCell.swift */; };
@@ -128,7 +127,6 @@
 		0AF97FF6B5F06274FCA5CFBA /* Pods-CruCentralCoast.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoast.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoast/Pods-CruCentralCoast.debug.xcconfig"; sourceTree = "<group>"; };
 		24494561B0D08A04FB30B7E1 /* Pods-CruCentralCoastUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2F18085A20795EBF00693C7B /* Chats.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chats.storyboard; sourceTree = "<group>"; };
-		2F18085E2079636E00693C7B /* CruCentralCoast.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CruCentralCoast.entitlements; sourceTree = "<group>"; };
 		2F18085F207975F200693C7B /* UIStoryboardExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboardExtensions.swift; sourceTree = "<group>"; };
 		2F180861207980F100693C7B /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		2F1C437F213A3C4D0033C911 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
@@ -146,11 +144,12 @@
 		2F685575215F339000B4DB3F /* IntroTermsOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroTermsOfServiceVC.swift; sourceTree = "<group>"; };
 		2F685577215F33F500B4DB3F /* IntroWelcomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroWelcomeVC.swift; sourceTree = "<group>"; };
 		2F685579215F53D600B4DB3F /* ProfilePrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePrivacyPolicyVC.swift; sourceTree = "<group>"; };
-		2F68557C216C8ABA00B4DB3F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F6DD2032159CE42004084F9 /* Intro.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Intro.storyboard; sourceTree = "<group>"; };
 		2F6DD20B2159EF36004084F9 /* ProfileTermsOfServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTermsOfServiceVC.swift; sourceTree = "<group>"; };
 		2F6DD20D2159F1B6004084F9 /* ProfileDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailCell.swift; sourceTree = "<group>"; };
 		2F6DD20E2159F1B6004084F9 /* ProfileDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileDetailCell.xib; sourceTree = "<group>"; };
+		2F7DB9CF217308CA0048D48A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2F7DB9D1217308CF0048D48A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2F7E20CF20A3C24B00745A9B /* DatabasePaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabasePaths.swift; sourceTree = "<group>"; };
 		2FA9FE8521070716007A8658 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
 		2FA9FE872107073E007A8658 /* Movement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movement.swift; sourceTree = "<group>"; };
@@ -316,6 +315,31 @@
 			path = Intro;
 			sourceTree = "<group>";
 		};
+		2F7DB9CC2173089E0048D48A /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				2F7DB9CD217308B70048D48A /* Dev */,
+				2F7DB9CE217308BC0048D48A /* Prod */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		2F7DB9CD217308B70048D48A /* Dev */ = {
+			isa = PBXGroup;
+			children = (
+				2F7DB9CF217308CA0048D48A /* GoogleService-Info.plist */,
+			);
+			path = Dev;
+			sourceTree = "<group>";
+		};
+		2F7DB9CE217308BC0048D48A /* Prod */ = {
+			isa = PBXGroup;
+			children = (
+				2F7DB9D1217308CF0048D48A /* GoogleService-Info.plist */,
+			);
+			path = Prod;
+			sourceTree = "<group>";
+		};
 		2FB4164F2115208700037DA2 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,6 +385,7 @@
 		5E8EC8B9202A3785000F86D8 /* CruCentralCoast */ = {
 			isa = PBXGroup;
 			children = (
+				2F7DB9CC2173089E0048D48A /* Firebase */,
 				2FB4164F2115208700037DA2 /* Misc */,
 				2F43AEC2209AD9BD009BC362 /* Database */,
 				ADFA56E5206DADFC006F7099 /* CustomViews */,
@@ -379,8 +404,6 @@
 				2F2BD9942077229100512170 /* Assets.xcassets */,
 				5E8EC8C5202A3785000F86D8 /* LaunchScreen.storyboard */,
 				5E8EC8C8202A3785000F86D8 /* Info.plist */,
-				2F68557C216C8ABA00B4DB3F /* GoogleService-Info.plist */,
-				2F18085E2079636E00693C7B /* CruCentralCoast.entitlements */,
 			);
 			path = CruCentralCoast;
 			sourceTree = "<group>";
@@ -584,10 +607,11 @@
 				B1B1AB36330C38AA297EBF6C /* [CP] Check Pods Manifest.lock */,
 				5E8EC8B3202A3785000F86D8 /* Sources */,
 				5E8EC8B4202A3785000F86D8 /* Frameworks */,
+				2F7DB9D3217309310048D48A /* Setup Firebase Environment GoogleService-Info.plist */,
 				5E8EC8B5202A3785000F86D8 /* Resources */,
 				EC44F41C6787984AFD488141 /* [CP] Embed Pods Frameworks */,
 				891710666D7C63B49EAAE156 /* [CP] Copy Pods Resources */,
-				2F68557B216C851700B4DB3F /* ShellScript */,
+				2F68557B216C851700B4DB3F /* Setup Firebase Crashlytics and Fabric */,
 			);
 			buildRules = (
 			);
@@ -651,7 +675,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.Push = {
 								enabled = 0;
@@ -717,7 +741,6 @@
 				2F18085B20795EBF00693C7B /* Chats.storyboard in Resources */,
 				5E0C2F1C20BF5084001E6F7C /* CommunityGroups.storyboard in Resources */,
 				AD24E8C22091728F0089E370 /* ProfileNotificationsCell.xib in Resources */,
-				2F68557D216C8ABA00B4DB3F /* GoogleService-Info.plist in Resources */,
 				5E8EC8C2202A3785000F86D8 /* Main.storyboard in Resources */,
 				5EBD534820352C410097A853 /* Events.storyboard in Resources */,
 				5E0AC4AB215C7F7000174A2B /* CommunityGroupsHeader.xib in Resources */,
@@ -742,7 +765,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F68557B216C851700B4DB3F /* ShellScript */ = {
+		2F68557B216C851700B4DB3F /* Setup Firebase Crashlytics and Fabric */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -752,6 +775,7 @@
 			inputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
 			);
+			name = "Setup Firebase Crashlytics and Fabric";
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -759,6 +783,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/Fabric/run\"\n";
+		};
+		2F7DB9D3217309310048D48A /* Setup Firebase Environment GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Firebase Environment GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# https://medium.com/rocket-fuel/using-multiple-firebase-environments-in-ios-12b204cfa6c0\n# Name of the resource we're selectively copying\nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\n# NOTE: These should only live on the file system and should NOT be part of the target (since we'll be adding them to the target manually)\nGOOGLESERVICE_INFO_DEV=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Dev/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/${TARGET_NAME}/Firebase/Prod/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the dev version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_DEV}\"\nif [ ! -f $GOOGLESERVICE_INFO_DEV ]\nthen\necho \"No Development GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Make sure the prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\necho \"No Production GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\nexit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n# Copy over the prod GoogleService-Info.plist for Release builds\nif [ \"${CONFIGURATION}\" == \"Release\" ]\nthen\necho \"Using ${GOOGLESERVICE_INFO_PROD}\"\ncp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nelse\necho \"Using ${GOOGLESERVICE_INFO_DEV}\"\ncp \"${GOOGLESERVICE_INFO_DEV}\" \"${PLIST_DESTINATION}\"\nfi\n";
 		};
 		523915615C3AB0ABF6FDDFB5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1122,7 +1164,6 @@
 			baseConfigurationReference = 0AF97FF6B5F06274FCA5CFBA /* Pods-CruCentralCoast.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CruCentralCoast/CruCentralCoast.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F72R928UK;
 				INFOPLIST_FILE = CruCentralCoast/Info.plist;
@@ -1140,7 +1181,6 @@
 			baseConfigurationReference = B5BF33BE152889DED4A13ABF /* Pods-CruCentralCoast.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = CruCentralCoast/CruCentralCoast.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7F72R928UK;
 				INFOPLIST_FILE = CruCentralCoast/Info.plist;

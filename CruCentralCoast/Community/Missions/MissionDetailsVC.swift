@@ -42,7 +42,7 @@ class MissionDetailsVC: UIViewController {
         DispatchQueue.main.async {
             self.dateLabel.text = (mission.startDate.toString(dateStyle: .medium, timeStyle: .none) + " - " + mission.endDate.toString(dateStyle: .medium, timeStyle: .none)).uppercased()
             self.nameLabel.text = mission.name
-            self.locationLabel.text = mission.location?.string
+            self.locationLabel.text = mission.locationString
             self.summaryLabel.text = mission.summary
             self.bannerImageView.downloadedFrom(link: mission.imageLink, contentMode: .scaleAspectFill)
             self.missionURLString = mission.url

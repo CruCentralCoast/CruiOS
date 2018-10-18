@@ -18,6 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Configure Firebase
+        #if DEBUG
+        print("[Firebase] Using DEV Firestore")
+        #else
+        print("[Firebase] Using PROD Firestore")
+        #endif
         FirebaseApp.configure()
         
         // Configure Google sign-in

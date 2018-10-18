@@ -23,6 +23,8 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google Auth PROD</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.218939421534-fuolt2ui4c1i2hhuungnqqr2cep3c13e</string>
@@ -34,6 +36,16 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb252251342299027</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Google Auth DEV</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.508622621725-5adit95pbqnp1ii54tvvinq42ptmfkdr</string>
 			</array>
 		</dict>
 	</array>
