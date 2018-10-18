@@ -52,6 +52,10 @@
 	</dict>
 	<key>NSCalendarsUsageDescription</key>
 	<string>We need access to your calendar in order to add an event to it.</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

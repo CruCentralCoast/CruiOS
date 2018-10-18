@@ -16,6 +16,7 @@ target 'CruCentralCoast' do
   pod 'RealmSwift'
   pod 'Fabric', '~> 1.7.11'
   pod 'Crashlytics', '~> 3.10.7'
+  pod 'Firebase/Messaging'
 
   target 'CruCentralCoastTests' do
     inherit! :search_paths

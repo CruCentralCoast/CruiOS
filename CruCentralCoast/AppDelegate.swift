@@ -8,16 +8,22 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 import GoogleSignIn
 import FBSDKCoreKit
+import FirebaseMessaging
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let gcmMessageIDKey = "gcm.message_id"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Configure Firebase
+        application.registerForRemoteNotifications()
+        
         FirebaseApp.configure()
         
         // Configure Google sign-in
@@ -35,9 +41,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
+        Messaging.messaging().subscribe(toTopic: "testTopic")
+        
         // Set the app tint color
         self.window?.tintColor = .cruDeepBlue
-    
+        
+        Messaging.messaging().delegate = self
+        
+        if #available(iOS 10.0, *) {
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
+            
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        
+//        application.registerForRemoteNotifications()
+        
+        _registerForPushNotifications()
+        
+        
         return true
     }
 
@@ -75,4 +104,106 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // other URL handling goes here.
         return false
     }
+    
+    func _registerForPushNotifications() {
+        
+        
+    }
+    
+//    func registerForPushNotifications() {
+//        // right now, request access to all types of notifications except [.carPlay]
+//        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in
+//            print("Permission granted: \(granted)")
+//
+//            guard granted else { return }
+//
+//            // In case User changes notifications settings in settings app.
+//            self.getNotificationSetting()
+//        }
+//    }
+//
+//    func getNotificationSetting() {
+//        UNUserNotificationCenter.current().getNotificationSettings { (settings) in
+//            print("Notification settings: \(settings)")
+//            guard settings.authorizationStatus == .authorized else { return }
+//            UIApplication.shared.registerForRemoteNotifications()
+//        }
+//    }
+//
+//    // credits an reference : https://www.raywenderlich.com/584-push-notifications-tutorial-getting-started
+//    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        let tokenParts = deviceToken.map { data -> String in
+//            return String(format: "%02.2hhx", data)
+//        }
+//
+//        let token = tokenParts.joined()
+//        print("Device Token: \(token)")
+//    }
+//
+//    func application(_ application: UIApplication,
+//                     didFailToRegisterForRemoteNotificationsWithError error: Error) {
+//        print("Failed to register: \(error)")
+//    }
+
+}
+
+// [START ios_10_message_handling]
+@available(iOS 10, *)
+extension AppDelegate : UNUserNotificationCenterDelegate {
+    
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        // Print full message.
+        print(userInfo)
+        
+        // Change this to your preferred presentation option
+        completionHandler([.alert, .badge, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        // Print full message.
+        print(userInfo)
+        
+        completionHandler()
+    }
+}
+// [END ios_10_message_handling]
+
+extension AppDelegate : MessagingDelegate {
+    // [START refresh_token]
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
+        print("Firebase registration token: \(fcmToken)")
+        
+        let dataDict:[String: String] = ["token": fcmToken]
+        NotificationCenter.default.post(name: Notification.Name("FCMToken"), object: nil, userInfo: dataDict)
+        // TODO: If necessary send token to application server.
+        // Note: This callback is fired at each app startup and whenever a new token is generated.
+    }
+    // [END refresh_token]
+    // [START ios_10_data_message]
+    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
+    // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
+        print("Received data message: \(remoteMessage.appData)")
+    }
+    // [END ios_10_data_message]
 }
