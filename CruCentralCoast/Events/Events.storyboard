@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yfe-vv-gbm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yfe-vv-gbm">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -107,17 +107,6 @@
                                             <action selector="facebookButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="abh-MR-Ft4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
-                                        <rect key="frame" x="20" y="326" width="130" height="22"/>
-                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
-                                        <state key="normal" title="Location Button">
-                                            <color key="titleColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="locationButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="b6I-SJ-g3E"/>
-                                        </connections>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eu5-Zb-0Vs" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
                                         <rect key="frame" x="40" y="484" width="334" height="50"/>
                                         <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -139,9 +128,10 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location" translatesAutoresizingMaskIntoConstraints="NO" id="ZSj-3C-z9h">
-                                        <rect key="frame" x="155" y="326" width="19" height="19"/>
+                                        <rect key="frame" x="20" y="329" width="19" height="19"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="ZSj-3C-z9h" secondAttribute="height" multiplier="1:1" id="Qfu-Pr-aVB"/>
+                                            <constraint firstAttribute="height" constant="19" id="GHb-gv-nTU"/>
+                                            <constraint firstAttribute="width" constant="19" id="zms-kX-TNa"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pm1-4L-d6r">
@@ -150,35 +140,45 @@
                                         <color key="textColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="1000" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="7k4-Tz-JY1">
+                                        <rect key="frame" x="44" y="329" width="130" height="22"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                        <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="-1" maxY="0.0"/>
+                                        <state key="normal" title="Location Button">
+                                            <color key="titleColor" red="0.51372549020000002" green="0.51372549020000002" blue="0.51372549020000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="locationButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="b6I-SJ-g3E"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="8" id="0Nz-J3-jzy"/>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="40" id="7lS-yg-0jf"/>
                                     <constraint firstItem="Pm1-4L-d6r" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="5" id="H7c-av-Tw3"/>
-                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="5" id="ILd-35-4dn"/>
                                     <constraint firstAttribute="trailing" secondItem="IJy-Si-BSE" secondAttribute="trailing" constant="40" id="IZy-hA-7xQ"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="Pm1-4L-d6r" secondAttribute="bottom" constant="5" id="KJZ-fe-Mel"/>
-                                    <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="ZSj-3C-z9h" secondAttribute="bottom" constant="15" id="P2F-1B-jMq"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" id="R56-sQ-hrV"/>
                                     <constraint firstItem="Pm1-4L-d6r" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="R6v-7f-Fln"/>
+                                    <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="ZSj-3C-z9h" secondAttribute="bottom" constant="12" id="RC3-Tq-G3T"/>
+                                    <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="9" id="REJ-19-Qha"/>
                                     <constraint firstAttribute="trailing" secondItem="Eu5-Zb-0Vs" secondAttribute="trailing" constant="40" id="SEV-bE-fGd"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="SnB-pm-JfQ"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="10" id="Wuy-9A-fwa"/>
-                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="dP9-gd-eO7"/>
-                                    <constraint firstItem="ZSj-3C-z9h" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="5" id="eMP-z2-HIl"/>
+                                    <constraint firstItem="ZSj-3C-z9h" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="8" id="Xfh-mX-pGp"/>
+                                    <constraint firstItem="ZSj-3C-z9h" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="Xnq-gI-DWc"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" id="ghP-Sf-gPf"/>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="top" secondItem="IJy-Si-BSE" secondAttribute="bottom" constant="12" id="hk7-E3-fuC"/>
-                                    <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="12" id="kwV-7Z-ICo"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="mfH-co-PCm"/>
                                     <constraint firstAttribute="trailing" secondItem="UYN-ct-CuI" secondAttribute="trailing" id="oiq-ut-XsQ"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="pgW-Vk-mtZ"/>
-                                    <constraint firstItem="ZSj-3C-z9h" firstAttribute="leading" secondItem="7k4-Tz-JY1" secondAttribute="trailing" constant="5" id="rhS-cy-jx2"/>
+                                    <constraint firstItem="7k4-Tz-JY1" firstAttribute="leading" secondItem="ZSj-3C-z9h" secondAttribute="trailing" constant="5" id="stM-nQ-ueB"/>
                                     <constraint firstItem="IJy-Si-BSE" firstAttribute="top" secondItem="3lv-CQ-HAd" secondAttribute="bottom" constant="40.333333333333314" id="usv-Cr-U8p"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="width" secondItem="6PY-eE-fEO" secondAttribute="width" id="wlP-nx-R4y"/>
                                     <constraint firstAttribute="bottom" secondItem="Eu5-Zb-0Vs" secondAttribute="bottom" constant="40" id="x6b-HQ-JLc"/>
                                     <constraint firstAttribute="trailing" secondItem="3lv-CQ-HAd" secondAttribute="trailing" constant="20" id="xx4-Ye-f9r"/>
                                     <constraint firstItem="IJy-Si-BSE" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="40" id="yX8-yv-kxM"/>
                                     <constraint firstAttribute="trailing" secondItem="LkD-pk-Jlf" secondAttribute="trailing" constant="20" id="z89-BF-l3g"/>
-                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZSj-3C-z9h" secondAttribute="trailing" constant="20" id="zgz-Hx-ac9"/>
                                 </constraints>
                             </scrollView>
                             <button alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OXe-05-0Hx">
@@ -214,6 +214,7 @@
                         <outlet property="facebookButton" destination="IJy-Si-BSE" id="n8y-tE-dRz"/>
                         <outlet property="imageView" destination="UYN-ct-CuI" id="BB6-ny-EKf"/>
                         <outlet property="locationButton" destination="7k4-Tz-JY1" id="OX7-IW-7yv"/>
+                        <outlet property="locationIcon" destination="ZSj-3C-z9h" id="GFN-8M-lQY"/>
                         <outlet property="timeLabel" destination="Pm1-4L-d6r" id="CY9-oh-69w"/>
                         <outlet property="titleLabel" destination="LkD-pk-Jlf" id="Jih-Ss-FeQ"/>
                         <outlet property="topConstraint" destination="pNq-Y6-S0l" id="YMi-Sq-1eC"/>
@@ -228,7 +229,7 @@
         <image name="close_button" width="32" height="32"/>
         <image name="events_icon" width="25" height="25"/>
         <image name="facebook_icon" width="18" height="18"/>
-        <image name="location" width="512" height="512"/>
+        <image name="location" width="361" height="507"/>
         <namedColor name="appTintColor">
             <color red="0.0" green="0.45098039215686275" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

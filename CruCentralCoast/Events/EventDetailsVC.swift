@@ -22,6 +22,7 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var facebookButton: CruButton!
+    @IBOutlet weak var locationIcon: UIImageView!
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -34,6 +35,11 @@ class EventDetailsVC: UIViewController {
         
         //let locationButtonTitle = "\(self.event?.location?.street ?? "TBD") , \(self.event?.location?.city ?? "TBD")"
         let locationButtonTitle = self.event?.locationTitle ?? "TBD"
+        
+        if locationButtonTitle == "" || locationButtonTitle == "TBD" {
+            locationButton.isHidden = true;
+            locationIcon.isHidden = true; 
+        }
         
         guard let startdate = self.event?.startDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
         guard let endDate = self.event?.endDate.toString(dateStyle: .medium, timeStyle: .none).uppercased() else { return }
@@ -66,6 +72,7 @@ class EventDetailsVC: UIViewController {
         if ((self.event?.facebookUrl) == "" || self.event?.facebookUrl == nil) {
             self.facebookButton.isHidden = true
         }
+        
     }
     
     @IBAction func dismissDetail(_ sender: Any) {
