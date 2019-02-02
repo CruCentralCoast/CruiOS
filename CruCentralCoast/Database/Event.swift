@@ -23,6 +23,7 @@ class Event: RealmObject {
     @objc dynamic var location: Location?
     @objc dynamic var locationString: String?
     @objc dynamic var locationTitle: String?
+    @objc dynamic var externalLinkURL: String?
     
     // Relations
     let movements = List<Movement>()
@@ -44,10 +45,11 @@ class Event: RealmObject {
         self.startDate = startDate
         self.endDate = endDate
         self.imageLink = dict["imageLink"] as? String
-        self.facebookUrl = dict["url"] as? String
+        self.facebookUrl = dict["facebookURL"] as? String
         self.location = Location(dict: dict["location"] as? NSDictionary)
         self.locationString = dict["location"] as? String
         self.locationTitle = dict["locationTitle"] as? String
+        self.externalLinkURL = dict["externalLinkURL"] as? String
         return true
     }
     

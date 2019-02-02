@@ -23,6 +23,8 @@ class EventDetailsVC: UIViewController {
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var facebookButton: CruButton!
     @IBOutlet weak var locationIcon: UIImageView!
+    @IBOutlet weak var openLinkButton: CruButton!
+    
     
     @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
@@ -68,9 +70,14 @@ class EventDetailsVC: UIViewController {
             }
         }
         
-        // remove facebook Button if the url is empty or nil
+        // remove Facebook Button if the url is empty or nil
         if ((self.event?.facebookUrl) == "" || self.event?.facebookUrl == nil) {
             self.facebookButton.isHidden = true
+        }
+        
+        // remove 'Open Link' Button if the url is empty or nil
+        if ((self.event?.externalLinkURL) == "" || self.event?.externalLinkURL == nil) {
+            self.openLinkButton.isHidden = true
         }
         
     }
@@ -160,6 +167,21 @@ class EventDetailsVC: UIViewController {
             print("Save Event")
         }
     }
+    
+    @IBAction func openLinkButtonPressed(_ sender: Any) {
+        guard let externalURL = event?.externalLinkURL else { return }
+        
+        if let url = URL(string: externalURL) {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            self.present(vc, animated: true)
+        } else {
+            self.presentAlert(title: "No Event", message: "No external link available")
+        }
+    }
+    
     
     func configure(with event: Event) {
         self.event = event

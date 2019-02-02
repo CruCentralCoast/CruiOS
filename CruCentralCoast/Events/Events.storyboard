@@ -151,10 +151,31 @@
                                             <action selector="locationButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="b6I-SJ-g3E"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSW-vy-vUr" userLabel="Open Button" customClass="CruButton" customModule="CruCentralCoast" customModuleProvider="target">
+                                        <rect key="frame" x="40" y="546" width="334" height="50"/>
+                                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="nSW-vy-vUr" secondAttribute="height" multiplier="167:25" id="s6c-dy-mke"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="10" maxX="20" maxY="10"/>
+                                        <state key="normal" title="Open Link">
+                                            <color key="titleColor" name="appTintColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="openLinkButtonPressed:" destination="h5h-Sf-2nD" eventType="touchUpInside" id="1df-3g-VvF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="7k4-Tz-JY1" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="8" id="0Nz-J3-jzy"/>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="40" id="7lS-yg-0jf"/>
+                                    <constraint firstItem="nSW-vy-vUr" firstAttribute="top" secondItem="Eu5-Zb-0Vs" secondAttribute="bottom" constant="12" id="7le-Hy-grs"/>
                                     <constraint firstItem="Pm1-4L-d6r" firstAttribute="top" secondItem="Odd-9O-O3u" secondAttribute="bottom" constant="5" id="H7c-av-Tw3"/>
                                     <constraint firstAttribute="trailing" secondItem="IJy-Si-BSE" secondAttribute="trailing" constant="40" id="IZy-hA-7xQ"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="top" secondItem="Pm1-4L-d6r" secondAttribute="bottom" constant="5" id="KJZ-fe-Mel"/>
@@ -164,9 +185,11 @@
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="top" secondItem="7k4-Tz-JY1" secondAttribute="bottom" constant="9" id="REJ-19-Qha"/>
                                     <constraint firstAttribute="trailing" secondItem="Eu5-Zb-0Vs" secondAttribute="trailing" constant="40" id="SEV-bE-fGd"/>
                                     <constraint firstItem="3lv-CQ-HAd" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="SnB-pm-JfQ"/>
+                                    <constraint firstItem="nSW-vy-vUr" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="40" id="UKk-B9-pTF"/>
                                     <constraint firstItem="Odd-9O-O3u" firstAttribute="top" secondItem="UYN-ct-CuI" secondAttribute="bottom" constant="10" id="Wuy-9A-fwa"/>
                                     <constraint firstItem="ZSj-3C-z9h" firstAttribute="top" secondItem="LkD-pk-Jlf" secondAttribute="bottom" constant="8" id="Xfh-mX-pGp"/>
                                     <constraint firstItem="ZSj-3C-z9h" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="Xnq-gI-DWc"/>
+                                    <constraint firstAttribute="trailing" secondItem="nSW-vy-vUr" secondAttribute="trailing" constant="40" id="YQh-67-cfl"/>
                                     <constraint firstItem="UYN-ct-CuI" firstAttribute="top" secondItem="6PY-eE-fEO" secondAttribute="top" id="ghP-Sf-gPf"/>
                                     <constraint firstItem="Eu5-Zb-0Vs" firstAttribute="top" secondItem="IJy-Si-BSE" secondAttribute="bottom" constant="12" id="hk7-E3-fuC"/>
                                     <constraint firstItem="LkD-pk-Jlf" firstAttribute="leading" secondItem="6PY-eE-fEO" secondAttribute="leading" constant="20" id="mfH-co-PCm"/>
@@ -215,6 +238,7 @@
                         <outlet property="imageView" destination="UYN-ct-CuI" id="BB6-ny-EKf"/>
                         <outlet property="locationButton" destination="7k4-Tz-JY1" id="OX7-IW-7yv"/>
                         <outlet property="locationIcon" destination="ZSj-3C-z9h" id="GFN-8M-lQY"/>
+                        <outlet property="openLinkButton" destination="nSW-vy-vUr" id="kM2-qt-jzf"/>
                         <outlet property="timeLabel" destination="Pm1-4L-d6r" id="CY9-oh-69w"/>
                         <outlet property="titleLabel" destination="LkD-pk-Jlf" id="Jih-Ss-FeQ"/>
                         <outlet property="topConstraint" destination="pNq-Y6-S0l" id="YMi-Sq-1eC"/>
