@@ -64,6 +64,7 @@
 		5EBD534E20352CDD0097A853 /* Rides.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5EBD534D20352CDD0097A853 /* Rides.storyboard */; };
 		5EDA143420AD150F0040EC22 /* CommunityGroupsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EDA143220AD150F0040EC22 /* CommunityGroupsVC.swift */; };
 		5EEE641A2085269C00AACF91 /* MinistryTeamDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */; };
+		5EFBF99922359075001ADE8E /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFBF99822359075001ADE8E /* DismissAnimator.swift */; };
 		6A096E88C6376481F194DB53 /* Pods_CruCentralCoast.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6AAAF0293E736B835E0E503 /* Pods_CruCentralCoast.framework */; };
 		A66506F3E10C7BCD2101AF6A /* Pods_CruCentralCoastUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 077C9B738C28BA8B1DC38487 /* Pods_CruCentralCoastUITests.framework */; };
 		AD12F3C4211FAF6E008AACA4 /* ResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD12F3C2211FAF6E008AACA4 /* ResourceTableViewCell.swift */; };
@@ -191,6 +192,7 @@
 		5EBD534D20352CDD0097A853 /* Rides.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Rides.storyboard; sourceTree = "<group>"; };
 		5EDA143220AD150F0040EC22 /* CommunityGroupsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityGroupsVC.swift; sourceTree = "<group>"; };
 		5EEE64192085269C00AACF91 /* MinistryTeamDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinistryTeamDetailsVC.swift; sourceTree = "<group>"; };
+		5EFBF99822359075001ADE8E /* DismissAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DismissAnimator.swift; path = CruCentralCoast/Misc/DismissAnimator.swift; sourceTree = SOURCE_ROOT; };
 		6CF951D8F2A54B4B44EBA7C0 /* Pods-CruCentralCoastTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastTests/Pods-CruCentralCoastTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8BD3D47169B5D42EAABD1CAC /* Pods-CruCentralCoastUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CruCentralCoastUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CruCentralCoastUITests/Pods-CruCentralCoastUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		AD12F3C2211FAF6E008AACA4 /* ResourceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceTableViewCell.swift; sourceTree = "<group>"; };
@@ -343,6 +345,7 @@
 		2FB4164F2115208700037DA2 /* Misc */ = {
 			isa = PBXGroup;
 			children = (
+				5EFBF99822359075001ADE8E /* DismissAnimator.swift */,
 				2FB416522115217700037DA2 /* ImageManager.swift */,
 				2F1C4381213B6A2F0033C911 /* LocalStorage.swift */,
 			);
@@ -990,6 +993,7 @@
 				2F685572215F14A800B4DB3F /* IntroPageContainerVC.swift in Sources */,
 				ADAC304B210568FF00DBCA89 /* ChooseCampusVC.swift in Sources */,
 				5E888EB920C8C2CE00F534DF /* MissionsVC.swift in Sources */,
+				5EFBF99922359075001ADE8E /* DismissAnimator.swift in Sources */,
 				2F43AEC4209AD9E1009BC362 /* DatabaseManager.swift in Sources */,
 				E0C81C0A207EED5800A00645 /* EventDetailsVC.swift in Sources */,
 				ADFA56D9206D7E87006F7099 /* DequeueExtensions.swift in Sources */,

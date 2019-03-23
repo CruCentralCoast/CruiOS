@@ -42,7 +42,7 @@ import UIKit
         self.cellMask.layer.shadowColor = UIColor.black.cgColor
         self.cellMask.layer.shadowOpacity = 0.2 // used to be 0.2
         self.cellMask.layer.shadowOffset = CGSize.zero
-        self.cellMask.layer.shadowRadius = 10 // used to be 6
+        self.cellMask.layer.shadowRadius = 4 // used to be 6
         self.imageCellView.layer.cornerRadius = 20
         self.imageCellView.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMinXMinYCorner]
         self.imageCellView.layer.masksToBounds = true

@@ -24,12 +24,16 @@ class EventsVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.transitioningDelegate = self
         self.insertProfileButtonInNavBar()
         self.tableView.registerCell(EventsTableCell.self)
         self.tableView.setContentOffset(self.tableView.contentOffset, animated: false)
         
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 140
+        
+        
+        self.transitioningDelegate = self
         
         DatabaseManager.instance.subscribeToDatabaseUpdates(self)
     }
@@ -73,7 +77,18 @@ class EventsVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = UIStoryboard(name: "Events", bundle: nil).instantiateViewController(EventDetailsVC.self) as EventDetailsVC
         vc.configure(with: self.dataArray[indexPath.item])
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = self
+        
         self.navigationController?.present(vc, animated: true, completion: nil)
+    }
+
+}
+
+// extension enables dismiss animation for detail views
+extension EventsVC: UIViewControllerTransitioningDelegate {
+    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return DismissAnimator()
     }
 }
 

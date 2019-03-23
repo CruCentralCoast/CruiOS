@@ -84,7 +84,7 @@ class EventDetailsVC: UIViewController {
     
     @IBAction func dismissDetail(_ sender: Any) {
         self.topConstraint.constant = -20
-        closeButton.removeFromSuperview()
+        self.closeButton.removeFromSuperview()
         self.dismiss(animated: true, completion: nil)
     }
     
